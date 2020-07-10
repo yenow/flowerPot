@@ -341,11 +341,11 @@
 
 #gnb .gnb_main .gnb a:hover, #gnb .gnb_main .gnb a.on {
 	font-weight: 700;
-	color: #5f0080
+	color: #66cdaa 
 }
 
 #gnb .gnb_main .gnb a:hover .txt {
-	border-bottom: 1px solid #5f0080
+	border-bottom: 1px solid #66cdaa 
 }
 
 #gnb .gnb_main .menu1 a {

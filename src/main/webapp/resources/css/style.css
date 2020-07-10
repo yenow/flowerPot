@@ -11,3 +11,36 @@
 
 .today-best {height: 400px;}
 .today-best h1{text-align: center;}
+
+
+/* 개인정보 수정 */
+
+.member_join .tbl_comm .fst th {
+    padding-top: 29px;
+}
+
+.member_join input[type=text], .member_join input[type=password] {
+    width: 332px;
+}
+
+.type_form textarea, .type_form input[type=text], .type_form input[type=password] {
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    border-radius: 3px;
+    background: #fff;
+    outline: none;
+    vertical-align: top;
+}
+
+.member_mod th {
+    width: 259px;
+    padding-left: 120px;
+}
+
+#formSubmit {margin-bottom: 200px;}
+
+.gnb a.link:hover {color: #66cdaa }
