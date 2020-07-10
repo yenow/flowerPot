@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+.notice .layout-pagination {
+	margin: 0
+}
+
+.eng2 {
+	color: #939393
+}
+
+.xans-board-listheader {
+	font-size: 12px
+}
+
+.search_bt img {width: 34px; height: 34px; padding: 10px; border: 1px solid #66cdaa; background: #66cdaa;}
+
+
+.page_section .user_wrap .order_agree {
+	padding-bottom: 4px
+}
+
+.page_section .user_wrap .order_agree .txt_checkbox {
+	font-size: 12px
+}
+
+.page_section .user_wrap .order_agree .check_all .txt_checkbox {
+	font-size: 14px
+}
+
+.page_section .user_wrap .order_agree .check_view {
+	position: relative;
+	margin-left: 20px
+}
+
+.page_section .user_wrap .order_agree .txt_checkbox .txt_essential {
+	color: #949296
+}
+
+.page_section .user_wrap .order_agree .link_agree {
+	top: 5px;
+	color: #5f0080
+}
+
+.page_section .user_wrap .order_agree .order_info {
+	padding-left: 40px;
+	color: #666
+}
+
+.page_section .user_wrap .reg_bulkorder .txt_info_email {
+	font-size: 12px;
+	color: #666
+}
