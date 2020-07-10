@@ -153,8 +153,9 @@
 }
 
 #userMenu .list_menu {float: right; display: inline-block; margin-top: 12px;}
-#userMenu .menu {display: inline-block; padding: 0 10px; border-right: 1px solid #ddd;}
-#userMenu .menu:last-child {border : none;}
+#userMenu .menu {display: inline-block; margin-left: 10px;}
+#userMenu .menu a {display: inline-block; width: 100%; padding-right: 10px;border-right: 1px solid #ccc;}
+.menu-last a {border: none;}
 
 #gnb.gnb_stop {
 	position: fixed;

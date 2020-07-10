@@ -5,11 +5,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/kurly1.css">
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/kurly1.css"> --%>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/c.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/b.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/a.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/content.css"> 
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/notice.css"> 
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/content.css"> 
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/notice.css">   --%>
 
 <!-- slick -->
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
@@ -25,10 +28,17 @@
 		<div id="pos_scroll"></div>
 		<div id="container">
 			<div id="header">
-				<div class="bnr_header bnr_top_friend" id="top-message">
+				<div class="bnr_header" id="top-message">
 
 
-					<a href="https://www.kurly.com/shop/event/kurlyEvent.php?htmid=event%2Ffriend%2Ffriend_200201"> </a>
+					<a href="https://www.kurly.com/shop/event/kurlyEvent.php?htmid=event/join/join_200624" id="eventLanding"> 지금 가입하고 인기상품 <b>100원</b>에 받아가세요!<img src="https://res.kurly.com/pc/ico/1908/ico_arrow_fff_84x84.png" class="bnr_arr">
+						<div class="bnr_top">
+							<div class="inner_top_close">
+								<button id="top-message-close" class="btn_top_bnr">가입하고 혜택받기</button>
+							</div>
+						</div>
+					</a>
+
 				</div>
 
 				<div id="userMenu-wrap">
@@ -37,7 +47,7 @@
 							<li class="menu"><a href="${pageContext.request.contextPath }/member/login">로그인</a></li>
 							<li class="menu"><a href="${pageContext.request.contextPath }/member/signUp">회원가입</a></li>
 							<li class="menu"><a href="${pageContext.request.contextPath }/customerCenter/notice">고객센터</a></li>
-							<li class="menu"><a href="#">우리회사</a></li>
+							<li class="menu menu-last"><a href="#">우리회사</a></li>
 						</ul>
 					</div>
 				</div>	

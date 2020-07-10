@@ -1,4 +1,4 @@
-@charset "euc-kr"; 
+@charset "utf-8"; 
 
 .lastview-menu {
 	margin-top: 10px;
@@ -1054,7 +1054,7 @@
 .bnr_header a {
 	display: block;
 	height: 42px;
-	background-color: #5f0080;
+	background-color: #66cdaa;
 	color: #fff
 }
 
@@ -1956,7 +1956,7 @@
 
 .goods-view-form .address_search {
 	margin-bottom: 20px;
-	font-family: applesdgothicneo, malgun gothic, ∏º¿∫ ∞ÌµÒ, sans-serif;
+	font-family: applesdgothicneo, malgun gothic, ÎßëÏùÄ Í≥†Îîï, sans-serif;
 	color: #000;
 	letter-spacing: 0
 }
@@ -2836,7 +2836,7 @@ tr#product-review-read p {
 }
 
 .xans-board-listheader {
-	border-top: 2px solid #522772;
+	border-top: 2px solid #66cdaa;
 	font-size: 13px;
 	line-height: 140%
 }
@@ -2850,7 +2850,7 @@ tr#product-review-read p {
 }
 
 .xans-board-listheader.jh {
-	border-bottom: 1px solid #5f0080
+	border-bottom: 1px solid #66cdaa
 }
 
 .xans-board-listheader.jh tr td {
@@ -4360,7 +4360,7 @@ tr#product-review-read p {
 }
 
 .daily_desc .link_goods span {
-	font-family: dotum, µ∏øÚ;
+	font-family: dotum, ÎèãÏõÄ;
 	font-weight: 700
 }
 
@@ -6703,7 +6703,7 @@ table.extra-information td {
 
 .goods-view-order-result {
 	padding-top: 10px;
-	border-top: 1px solid #dedede;
+	border-top: 1px solid #66cdaa;
 	padding-right: 25px;
 	font-size: 16px;
 	text-align: right;
@@ -6758,7 +6758,7 @@ table.extra-information td {
 .bnr_header a {
 	display: block;
 	height: 42px;
-	background-color: #5f0080;
+	background-color: #66cdaa;
 	color: #fff
 }
 
@@ -7660,7 +7660,7 @@ table.extra-information td {
 
 .goods-view-form .address_search {
 	margin-bottom: 20px;
-	font-family: applesdgothicneo, malgun gothic, ∏º¿∫ ∞ÌµÒ, sans-serif;
+	font-family: applesdgothicneo, malgun gothic, ÎßëÏùÄ Í≥†Îîï, sans-serif;
 	color: #000;
 	letter-spacing: 0
 }
@@ -8540,7 +8540,7 @@ tr#product-review-read p {
 }
 
 .xans-board-listheader {
-	border-top: 2px solid #522772;
+	border-top: 2px solid #66cdaa;
 	font-size: 13px;
 	line-height: 140%
 }
@@ -8554,7 +8554,7 @@ tr#product-review-read p {
 }
 
 .xans-board-listheader.jh {
-	border-bottom: 1px solid #5f0080
+	border-bottom: 1px solid #66cdaa
 }
 
 .xans-board-listheader.jh tr td {
@@ -10064,7 +10064,7 @@ tr#product-review-read p {
 }
 
 .daily_desc .link_goods span {
-	font-family: dotum, µ∏øÚ;
+	font-family: dotum, ÎèãÏõÄ;
 	font-weight: 700
 }
 

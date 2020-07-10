@@ -3116,7 +3116,12 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
     padding-top: 29px;
 }
 
-
+.member_join .btn {
+    display: inline-block;
+    width: 120px;
+    margin-left: 5px;
+    vertical-align: top;
+}
 
 .member_pw .tit {
     padding: 0 0 4px;
