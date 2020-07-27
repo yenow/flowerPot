@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.mainVisual {position:relative; height: 400px; }
+.mainVisual {position:relative; height: 400px; z-index: 20;}
 .mainVisual img {max-height: 400px; width: 100%;}
 
 .mainVisual .slick-prev {position:absolute; top:100px; left:10px;  z-index: 10; content: '<'; width: 20px; height: 20px;}
@@ -14,7 +14,6 @@
 
 
 /* 개인정보 수정 */
-
 .member_join .tbl_comm .fst th {
     padding-top: 29px;
 }
@@ -44,3 +43,18 @@
 #formSubmit {margin-bottom: 200px;}
 
 .gnb a.link:hover {color: #66cdaa }
+
+
+.AllCategory { position: relative; }
+
+/* 카테고리 리스트 */
+.category-list { display: none;
+	overflow: hidden;
+	position: absolute;
+	z-index: 301;
+	left: 0;
+	top: 45px;
+	width: 213px;
+	padding-top: 1px}
+.category-list ul {display: inline-block; width: 100px; height: 100px;}
+.category-list ul li {display: block}

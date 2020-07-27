@@ -381,17 +381,22 @@
 	position: absolute;
 	z-index: 301;
 	left: 0;
-	top: 55px;
-	width: 213px;
-	padding-top: 1px
+	top: 56px;
+	width: 400px;
+	padding-top: 1px;
+	background-color: #fff;
+	text-align: left;
+	border: 1px solid #ddd;
+	
 }
 
 #gnb .gnb_sub .inner_sub {
 	width: 100%;
-	border: 1px solid #ddd;
-	background:
+	
+	/* background:
 		url(https://res.kurly.com/pc/service/common/1908/bg_gnb_sub_v3.png)
-		repeat-y 0 0
+		repeat-y 0 0; */
+	background-color: #fff;
 }
 
 #gnb .size_over {
@@ -400,12 +405,24 @@
 }
 
 #gnb .gnb_sub .gnb_menu {
-	width: 219px
+	
 }
+
+#gnb .gnb_sub .gnb_menu .gnb_menu_col {
+	display : inline-block;
+	width: 150px;
+	float: left; margin: 0 10px;
+}
+
+#gnb .gnb_sub .gnb_menu .gnb_menu_col h2 {
+	padding: 20px 10px 10px 10px;
+	border-bottom: 1px solid #ddd;
+}
+
 
 #gnb .gnb_sub .gnb_menu li {
 	width: 100%;
-	text-align: left
+	
 }
 
 #gnb .gnb_sub .gnb_menu li:first-child {

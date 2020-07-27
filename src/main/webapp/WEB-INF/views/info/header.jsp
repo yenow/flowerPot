@@ -18,7 +18,6 @@
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
-
 <!-- jqeury -->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </head>
@@ -38,7 +37,6 @@
 							</div>
 						</div>
 					</a>
-
 				</div>
 
 				<div id="userMenu-wrap">
@@ -78,22 +76,122 @@
 						<div class="inner_gnbkurly">
 							<div class="gnb_main">
 								<ul class="gnb">
-									<li class="menu1"><a href="${pageContext.request.contextPath }/category/categoryTest"><span class="ico"></span><span class="txt">전체 카테고리</span></a></li>
+									<li class="menu1 AllCategory"><a href="${pageContext.request.contextPath }/category/categoryTest"><span class="ico"></span><span class="txt">전체 카테고리</span></a>
+										<!-- 카테고리 리스트 -->
+										<div class="category-list">
+											<ul>
+												<li><h2>유형별</h2></li>
+												<li>a</li>
+												<li>a</li>
+											</ul>
+											<ul>
+												<li><h2>피부고민별</h2></li>
+												<li>a</li>
+												<li>a</li>
+											</ul>
+										</div>
+										
+									</li>
 									<li><a class="link new" href="#"><span class="txt">브랜드</span></a></li>
 									<li><a class="link new" href="#"><span class="txt">오늘의 추천</span></a></li>
 									<li><a class="link new" href="#"><span class="txt">매거진</span></a></li>
 									<li class="lst"><a class="link event " href="#"><span class="txt">이벤트</span></a></li>
-									
 								</ul>
 							</div>
 							<div class="gnb_sub">
 								<div class="inner_sub">
-									<ul class="gnb_menu" data-default="219" data-min="219" data-max="731">
-										<gnb-menu-pc v-for="(item, idx) in dataGnb" :main-menu="item" :sub-menu="item.categories" :sub-open="item.subOpen" :get-category-num="getCategoryNum" :key="'gnb'+idx" :idx="idx"></gnb-menu-pc>
-									</ul>
+									<div class="gnb_menu">
+										<div class="gnb_menu_col">
+											<h2>유형별</h2>
+											
+											<ul>	
+												
+												<li><a class="menu">
+												<span class="tit">채소</span>
+												</a></li>
+												<li><a class="menu">
+												<span class="tit">채소</span>
+												</a></li>
+												<li><a class="menu">
+												<span class="tit">채소</span>
+												</a></li>
+												<li><a class="menu">
+												<span class="tit">채소</span>
+												</a></li>
+												<li><a class="menu">
+												<span class="tit">채소</span>
+												</a></li>
+												<li><a class="menu">
+												<span class="tit">채소</span>
+												</a></li>	
+											</ul>
+										</div>
+										<div class="gnb_menu_col">
+											<h2>피부고민별</h2>
+											
+											<ul>	
+												<li><a class="menu">
+												<span class="tit">채소</span>
+												</a></li>
+												<li><a class="menu">
+												<span class="tit">채소</span>
+												</a></li>
+												<li><a class="menu">
+												<span class="tit">채소</span>
+												</a></li>
+												<li><a class="menu">
+												<span class="tit">채소</span>
+												</a></li>
+												<li><a class="menu">
+												<span class="tit">채소</span>
+												</a></li>
+												<li><a class="menu">
+												<span class="tit">채소</span>
+												</a></li>	
+											</ul>
+										</div>
+										<!-- <gnb-menu-pc v-for="(item, idx) in dataGnb" :main-menu="item" :sub-menu="item.categories" :sub-open="item.subOpen" :get-category-num="getCategoryNum" :key="'gnb'+idx" :idx="idx"></gnb-menu-pc> -->
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			
+<script type="text/javascript">
+
+/* $(document).ready(function() {
+	$('.AllCategory').mouseover(function() {
+		$('.category-list').show();
+	});
+	$('.gnb_sub').mouseover(function() {
+		$('.category-list').show();
+	});
+	$('.gnb_sub').mouseleave(function() {
+		$('.category-list').hide();
+	});
+	$('.AllCategory').mouseleave(function() {
+		$('.category-list').hide();
+	});
+}); */
+
+	$(document).ready(function() {
+		$('.AllCategory').mouseover(function() {
+			$('.gnb_sub').show('500ms');
+			
+		});
+		$('.gnb_sub').mouseover(function() {
+			$('.gnb_sub').show('500ms');
+		
+		});
+		$('.gnb_sub').mouseleave(function() {
+			$('.gnb_sub').hide('500ms');
+			
+		});
+		$('.AllCategory').mouseleave(function() {
+			$('.gnb_sub').hide('500ms');
+			
+		});
+	}); 
+</script>
