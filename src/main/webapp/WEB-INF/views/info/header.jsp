@@ -30,7 +30,7 @@
 				<div class="bnr_header" id="top-message">
 
 
-					<a href="https://www.kurly.com/shop/event/kurlyEvent.php?htmid=event/join/join_200624" id="eventLanding"> 지금 가입하고 인기상품 <b>100원</b>에 받아가세요!<img src="https://res.kurly.com/pc/ico/1908/ico_arrow_fff_84x84.png" class="bnr_arr">
+					<a href="${pageContext.request.contextPath }" id="eventLanding"> 지금 가입하고 인기상품 <b>100원</b>에 받아가세요!<img src="https://res.kurly.com/pc/ico/1908/ico_arrow_fff_84x84.png" class="bnr_arr">
 						<div class="bnr_top">
 							<div class="inner_top_close">
 								<button id="top-message-close" class="btn_top_bnr">가입하고 혜택받기</button>
@@ -45,7 +45,7 @@
 							<li class="menu"><a href="${pageContext.request.contextPath }/member/login">로그인</a></li>
 							<li class="menu"><a href="${pageContext.request.contextPath }/member/signUp">회원가입</a></li>
 							<li class="menu"><a href="${pageContext.request.contextPath }/customerCenter/notice">고객센터</a></li>
-							<li class="menu menu-last"><a href="#">우리회사</a></li>
+							<li class="menu menu-last"><a href="${pageContext.request.contextPath }/ourCompany/Company_main">우리회사</a></li>
 						</ul>
 					</div>
 				</div>	
@@ -178,19 +178,19 @@
 
 	$(document).ready(function() {
 		$('.AllCategory').mouseover(function() {
-			$('.gnb_sub').show('500ms');
+			$('.gnb_sub').show('200ms');
 			
 		});
 		$('.gnb_sub').mouseover(function() {
-			$('.gnb_sub').show('500ms');
+			$('.gnb_sub').show();
 		
 		});
 		$('.gnb_sub').mouseleave(function() {
-			$('.gnb_sub').hide('500ms');
+			$('.gnb_sub').hide();
 			
 		});
 		$('.AllCategory').mouseleave(function() {
-			$('.gnb_sub').hide('500ms');
+			$('.gnb_sub').hide();
 			
 		});
 	}); 

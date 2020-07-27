@@ -9,18 +9,18 @@
 
 <!-- css & href -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-<link rel="stylesheet" href="fonts/icomoon/style.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/jquery-ui.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/jquery.fancybox.min.css">
-<link rel="stylesheet" href="css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-<link rel="stylesheet" href="css/aos.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/video.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ourCompany/fonts/icomoon/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ourCompany/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ourCompany/css/jquery-ui.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ourCompany/css/owl.carousel.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ourCompany/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ourCompany/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ourCompany/css/jquery.fancybox.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ourCompany/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ourCompany/fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ourCompany/css/aos.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ourCompany/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ourCompany/css/video.css">
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -46,7 +46,7 @@
 				<div class="row align-items-center">
 					<div class="col-6 col-xl-2">
 						<h1 class="mb-0 site-logo">
-							<a href="index.html" class="h2 mb-0">화분<span class="text-primary">.</span>
+							<a href="index.html" class="h2 mb-0">화분<span class="text-primary"></span>
 							</a>
 						</h1>
 					</div>
@@ -84,7 +84,7 @@
 		<div class="site-blocks-cover overlay" " data-aos="fade" id="home-section">
 		 <div class="video-section">
             <video autoplay loop playsinline muted class="video">
-            <source src="video/wadiz_video.mp4" type="video/mp4">
+            <source src="${pageContext.request.contextPath }/resources/ourCompany/video/wadiz_video.mp4" type="video/mp4">
             </video>
             </div>
             
@@ -125,7 +125,7 @@
 				<div class="row">
 					<div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
 						<figure class="circle-bg">
-							<img src="images2/logo_02.png" alt="Image" class="img-fluid">
+							<img src="${pageContext.request.contextPath }/resources/ourCompany/images2/logo_02.png" alt="Image" class="img-fluid">
 						</figure>
 					</div>
 
@@ -166,15 +166,15 @@
 					<div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
 
 						<div class="owl-carousel slide-one-item-alt">
-							<img src="images2/per.jpg" alt="Image" class="img-fluid">
-							<img src="images2/good.jpg" alt="Image" class="img-fluid">
-							<img src="images2/goal.jpg" alt="Image" class="img-fluid">
-							<img src="images2/think.jpg" alt="Image" class="img-fluid">
+							<img src="${pageContext.request.contextPath }/resources/ourCompany/images2/per.jpg" alt="Image" class="img-fluid">
+							<img src="${pageContext.request.contextPath }/resources/ourCompany/images2/good.jpg" alt="Image" class="img-fluid">
+							<img src="${pageContext.request.contextPath }/resources/ourCompany/images2/goal.jpg" alt="Image" class="img-fluid">
+							<img src="${pageContext.request.contextPath }/resources/ourCompany/images2/think.jpg" alt="Image" class="img-fluid">
 						</div>
 						<div class="custom-direction">
-							<a href="#" class="custom-prev">
+							<a href="#" class="custom-prev" style="background-color:  #66cdaa">
 							<span><span	class="icon-keyboard_backspace"></span></span></a>
-							<a href="#"	class="custom-next">
+							<a href="#"	class="custom-next" style="background-color: #66cdaa">
 							<span><span class="icon-keyboard_backspace"></span></span></a>
 						</div>
 					</div>
@@ -187,35 +187,35 @@
 								<h2 class="section-title mb-3">끈기</h2>
 								<p class="lead">쉽게 포기하지 않고 한계를 극복합니다.</p>
 								<p>We don't give up easily and overcome limitations.</p>
-								<p><a href="#" class="btn btn-primary mr-2 mb-2">Learn More</a></p>
+								<p><a href="#" class="btn btn-primary mr-2 mb-2" >Learn More</a></p>
 							</div>
 							
 							<div>
 								<h2 class="section-title mb-3">최고지향</h2>
 								<p class="lead">적당한 수준에 타협하지 않고, 늘 더 나은 것을  <br/>추구합니다.</p>
 								<p>We don't compromise at the right level, we always seek for something better.</p>
-								<p><a href="#" class="btn btn-primary mr-2 mb-2">Learn More</a></p>
+								<p><a href="#" class="btn btn-primary mr-2 mb-2" >Learn More</a></p>
 							</div>
 							
 							<div>
 								<h2 class="section-title mb-3">목표달성</h2>
 								<p class="lead">자율적으로 설정한 목표를 책임감 있게  <br/> 달성합니다.</p>
 								<p>We achieve autonomously set goals responsibly .</p>
-								<p><a href="#" class="btn btn-primary mr-2 mb-2">Learn More</a></p>
+								<p><a href="#" class="btn btn-primary mr-2 mb-2" >Learn More</a></p>
 							</div>
 							
 							<div>
 								<h2 class="section-title mb-3">자기인식</h2>
 								<p class="lead">자신에 대해 고민하고 점검하여 스스로를  <br/>개선합니다.</p>
 								<p>We think about ourselves, check on ourselves, and improve ourselves. </p>
-								<p><a href="#" class="btn btn-primary mr-2 mb-2">Learn More</a></p>
+								<p><a href="#" class="btn btn-primary mr-2 mb-2" >Learn More</a></p>
 							</div>
 							
 							<div>
 								<h2 class="section-title mb-3">도전정신</h2>
 								<p class="lead">끊임없이 도전하고 이를 통해 배웁니다.</p>
 								<p>We constantly challenge and learn from it.</p>
-								<p><a href="#" class="btn btn-primary mr-2 mb-2">Learn More</a></p>
+								<p><a href="#" class="btn btn-primary mr-2 mb-2" >Learn More</a></p>
 							</div>
 						</div>
 					</div>
@@ -248,7 +248,7 @@
 									<li><a href="#"><span class="icon-linkedin"></span></a></li>
 									<li><a href="#"><span class="icon-instagram"></span></a></li>
 								</ul>
-								<img src="images2/YS.jpg" alt="Image" class="img-fluid">
+								<img src="${pageContext.request.contextPath }/resources/ourCompany/images2/YS.jpg" alt="Image" class="img-fluid">
 							</figure>
 							<div class="p-3">
 								<h3>윤신영</h3>
@@ -267,7 +267,7 @@
 									<li><a href="#"><span class="icon-linkedin"></span></a></li>
 									<li><a href="#"><span class="icon-instagram"></span></a></li>
 								</ul>
-								<img src="images2/AJ.jpg" alt="Image" class="img-fluid">
+								<img src="${pageContext.request.contextPath }/resources/ourCompany/images2/AJ.jpg" alt="Image" class="img-fluid">
 							</figure>
 							<div class="p-3">
 								<h3>안준언</h3>
@@ -286,7 +286,7 @@
 									<li><a href="#"><span class="icon-linkedin"></span></a></li>
 									<li><a href="#"><span class="icon-instagram"></span></a></li>
 								</ul>
-								<img src="images2/KW.jpg" alt="Image" class="img-fluid">
+								<img src="${pageContext.request.contextPath }/resources/ourCompany/images2/KW.jpg" alt="Image" class="img-fluid">
 							</figure>
 							<div class="p-3">
 								<h3>권누리</h3>
@@ -305,7 +305,7 @@
 									<li><a href="#"><span class="icon-linkedin"></span></a></li>
 									<li><a href="#"><span class="icon-instagram"></span></a></li>
 								</ul>
-								<img src="images2/se.jpg" alt="Image" class="img-fluid">
+								<img src="${pageContext.request.contextPath }/resources/ourCompany/images2/se.jpg" alt="Image" class="img-fluid">
 							</figure>
 							<div class="p-3">
 								<h3>박성은</h3>
@@ -324,7 +324,7 @@
 									<li><a href="#"><span class="icon-linkedin"></span></a></li>
 									<li><a href="#"><span class="icon-instagram"></span></a></li>
 								</ul>
-								<img src="images2/UJ.jpg" alt="Image" class="img-fluid">
+								<img src="${pageContext.request.contextPath }/resources/ourCompany/images2/UJ.jpg" alt="Image" class="img-fluid">
 							</figure>
 							<div class="p-3">
 								<h3>유재혁</h3>
@@ -343,7 +343,7 @@
 									<li><a href="#"><span class="icon-linkedin"></span></a></li>
 									<li><a href="#"><span class="icon-instagram"></span></a></li>
 								</ul>
-								<img src="images2/pooh.jpg" alt="Image" class="img-fluid">
+								<img src="${pageContext.request.contextPath }/resources/ourCompany/images2/pooh.jpg" alt="Image" class="img-fluid">
 							</figure>
 							<div class="p-3">
 								<h3>이정규</h3>
@@ -375,92 +375,92 @@
 
 				<div id="posts" class="row no-gutter">
 					<div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_1.jpg" class="item-wrap fancybox" data-fancybox="gallery2"> 
+						<a href="${pageContext.request.contextPath }/resources/ourCompany/images/img_1.jpg" class="item-wrap fancybox" data-fancybox="gallery2"> 
 						<span class="icon-search2"></span>
-						<img class="img-fluid" src="images/img_1.jpg">
+						<img class="img-fluid" src="${pageContext.request.contextPath }/resources/ourCompany/images/img_1.jpg">
 						</a>
 					</div>
 					
 					<div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images2/All02.JPG" class="item-wrap fancybox" data-fancybox="gallery2"> 
+						<a href="${pageContext.request.contextPath }/resources/ourCompany/images2/All02.JPG" class="item-wrap fancybox" data-fancybox="gallery2"> 
 						<span class="icon-search2"></span>
-						<img class="img-fluid" src="images2/All02.JPG">
+						<img class="img-fluid" src="${pageContext.request.contextPath }/resources/ourCompany/images2/All02.JPG">
 						</a>
 					</div>
 
 					<div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_3.jpg" class="item-wrap fancybox" data-fancybox="gallery2"> 
+						<a href="${pageContext.request.contextPath }/resources/ourCompany/images/img_3.jpg" class="item-wrap fancybox" data-fancybox="gallery2"> 
 						<span class="icon-search2"></span>
-						<img class="img-fluid" src="images/img_3.jpg">
+						<img class="img-fluid" src="${pageContext.request.contextPath }/resources/ourCompany/images/img_3.jpg">
 						</a>
 					</div>
 
 					<div class="item design col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images2/All01.jpg" class="item-wrap fancybox" data-fancybox="gallery2"> 
+						<a href="${pageContext.request.contextPath }/resources/ourCompany/images2/All01.jpg" class="item-wrap fancybox" data-fancybox="gallery2"> 
 						<span class="icon-search2"></span>
-						<img class="img-fluid" src="images2/All01.jpg">
+						<img class="img-fluid" src="${pageContext.request.contextPath }/resources/ourCompany/images2/All01.jpg">
 						</a>
 					</div>
 
 					<div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_5.jpg" class="item-wrap fancybox" data-fancybox="gallery2"> 
+						<a href="${pageContext.request.contextPath }/resources/ourCompany/images/img_5.jpg" class="item-wrap fancybox" data-fancybox="gallery2"> 
 						<span class="icon-search2"></span>
-						<img class="img-fluid" src="images/img_5.jpg">
+						<img class="img-fluid" src="${pageContext.request.contextPath }/resources/ourCompany/images/img_5.jpg">
 						</a>
 					</div>
 
 					<div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_6.jpg" class="item-wrap fancybox"
+						<a href="${pageContext.request.contextPath }/resources/ourCompany/images/img_6.jpg" class="item-wrap fancybox"
 							data-fancybox="gallery2"> <span class="icon-search2"></span>
-							<img class="img-fluid" src="images/img_6.jpg">
+							<img class="img-fluid" src="${pageContext.request.contextPath }/resources/ourCompany/images/img_6.jpg">
 						</a>
 					</div>
 
 					<div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_7.jpg" class="item-wrap fancybox"
+						<a href="${pageContext.request.contextPath }/resources/ourCompany/images/img_7.jpg" class="item-wrap fancybox"
 							data-fancybox="gallery2"> <span class="icon-search2"></span>
-							<img class="img-fluid" src="images/img_7.jpg">
+							<img class="img-fluid" src="${pageContext.request.contextPath }/resources/ourCompany/images/img_7.jpg">
 						</a>
 					</div>
 
 					<div class="item design col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images2/muffin.jpg" class="item-wrap fancybox"
+						<a href="${pageContext.request.contextPath }/resources/ourCompany/images2/muffin.jpg" class="item-wrap fancybox"
 							data-fancybox="gallery2"> <span class="icon-search2"></span>
-							<img class="img-fluid" src="images2/muffin.jpg">
+							<img class="img-fluid" src="${pageContext.request.contextPath }/resources/ourCompany/images2/muffin.jpg">
 						</a>
 					</div>
 
 					<div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_9.jpg" class="item-wrap fancybox"
+						<a href="${pageContext.request.contextPath }/resources/ourCompany/images/img_9.jpg" class="item-wrap fancybox"
 							data-fancybox="gallery2"> <span class="icon-search2"></span>
-							<img class="img-fluid" src="images/img_9.jpg">
+							<img class="img-fluid" src="${pageContext.request.contextPath }/resources/ourCompany/images/img_9.jpg">
 						</a>
 					</div>
 
 					<div class="item design col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images2/UI_Pre.jpg" class="item-wrap fancybox"
+						<a href="${pageContext.request.contextPath }/resources/ourCompany/images2/UI_Pre.jpg" class="item-wrap fancybox"
 							data-fancybox="gallery2"> <span class="icon-search2"></span>
-							<img class="img-fluid" src="images2/UI_Pre.jpg">
+							<img class="img-fluid" src="${pageContext.request.contextPath }/resources/ourCompany/images2/UI_Pre.jpg">
 						</a>
 					</div>
 
 					<div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_11.jpg" class="item-wrap fancybox"
+						<a href="${pageContext.request.contextPath }/resources/ourCompany/images/img_11.jpg" class="item-wrap fancybox"
 							data-fancybox="gallery2"> <span class="icon-search2"></span>
-							<img class="img-fluid" src="images/img_11.jpg">
+							<img class="img-fluid" src="${pageContext.request.contextPath }/resources/ourCompany/images/img_11.jpg">
 						</a>
 					</div>
 
 					<div class="item design col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_12.jpg" class="item-wrap fancybox" data-fancybox="gallery2">
+						<a href="${pageContext.request.contextPath }/resources/ourCompany/images/img_12.jpg" class="item-wrap fancybox" data-fancybox="gallery2">
 						 <span class="icon-search2"></span>
-							<img class="img-fluid" src="images/img_12.jpg">
+							<img class="img-fluid" src="${pageContext.request.contextPath }/resources/ourCompany/images/img_12.jpg">
 						</a>
 					</div>
 
 					<div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-						<a href="images/img_13.jpg" class="item-wrap fancybox" data-fancybox="gallery2"> <span class="icon-search2"></span>
-							<img class="img-fluid" src="images/img_13.jpg">
+						<a href="${pageContext.request.contextPath }/resources/ourCompany/images/img_13.jpg" class="item-wrap fancybox" data-fancybox="gallery2"> <span class="icon-search2"></span>
+							<img class="img-fluid" src="${pageContext.request.contextPath }/resources/ourCompany/images/img_13.jpg">
 						</a>
 					</div>
 				</div>
@@ -485,7 +485,7 @@
 							<div>
 								<h3>가장 믿을 만한 화장품 랭킹</h3>
 								<p>사용자들의 데이터로 만들어지는 화분 랭킹, 카테고리, 브랜드별 원하는 랭킹을 바로 확인하세요</p>
-								<p><a href="#">Learn More</a></p>
+								<p><a href="#" style="color: #66cdaa">Learn More</a></p>
 							</div>
 						</div>
 					</div>
@@ -500,7 +500,7 @@
 								<h3>구매하고 싶은 품목만 결정하면 끝!</h3>
 								<p>많은 브랜드에 고민은 그만! <br/> 화분은 여러 셀럽, MD, 화분인과 함께합니다. 
 								<br/>함께 생각을 나누고, 다양한 정보를 양손 두둑히 가져가세요</p>
-								<p><a href="#">Learn More</a></p>
+								<p><a href="#" style="color: #66cdaa">Learn More</a></p>
 							</div>
 						</div>
 					</div>
@@ -514,7 +514,7 @@
 							<div>
 								<h3>전문 에디터가 만드는 뷰티 콘텐츠</h3>
 								<p>초보에겐 기초팁을, 고수에겐 고급정보를! <br/> 매일 발행되는 화분's PICK를 만나보세요.</p>
-								<p><a href="#">Learn More</a></p>
+								<p><a href="#" style="color: #66cdaa">Learn More</a></p>
 							</div>
 						</div>
 					</div>
@@ -528,7 +528,7 @@
 							<div>
 								<h3>제품별로 쉽게 보는 화장품 전 성분</h3>
 								<p>화분은 제품 정보 및 전 성분 정보를 제공합니다.<br/> 사용중인 화장품의 모든 것을 알 수 있습니다.</p>
-								<p><a href="#">Learn More</a></p>
+								<p><a href="#" style="color: #66cdaa">Learn More</a></p>
 							</div>
 						</div>
 					</div>
@@ -544,7 +544,7 @@
 									직접 선택하고, 평가하는 다양한 이벤트! <br /> 화분인들의 오감을 짜릿 하게, 선물들은 팡팡! <br />
 									안해본 사람은 있어도 한번만 해본사람은 없습니다.
 								</p>
-								<p><a href="#">Learn More</a></p>
+								<p><a href="#" style="color: #66cdaa">Learn More</a></p>
 							</div>
 						</div>
 					</div>
@@ -561,7 +561,7 @@
 									지구를 생각하는 생활속 실천! <br/> 화분의 그린 라이프는 배송시 일회용품을 줄이고, 구매와 동시에 쌓이는
 									기부금들이 전세계 아이들에게 꿈과 희망을 줍니다.
 								</p>
-								<p><a href="#">Learn More</a></p>
+								<p><a href="#" style="color: #66cdaa">Learn More</a></p>
 							</div>
 						</div>
 					</div>
@@ -589,7 +589,7 @@
 						</blockquote>
 						<figure	class="mb-4 d-flex align-items-center justify-content-center">
 							<div>
-								<img src="images2/YS_small.jpg" alt="Image"	class="w-50 img-fluid mb-3">
+								<img src="${pageContext.request.contextPath }/resources/ourCompany/images2/YS_small.jpg" alt="Image"	class="w-50 img-fluid mb-3">
 							</div>
 							<p>윤신영</p>
 						</figure>
@@ -606,7 +606,7 @@
 						</blockquote>
 						<figure	class="mb-4 d-flex align-items-center justify-content-center">
 							<div>
-								<img src="images2/AJ_small.jpg" alt="Image" class="w-50 img-fluid mb-3">
+								<img src="${pageContext.request.contextPath }/resources/ourCompany/images2/AJ_small.jpg" alt="Image" class="w-50 img-fluid mb-3">
 							</div>
 							<p>안준언</p>
 						</figure>
@@ -622,7 +622,7 @@
 						</blockquote>
 						<figure	class="mb-4 d-flex align-items-center justify-content-center">
 							<div>
-								<img src="images2/KW_small.jpg" alt="Image" class="w-50 img-fluid mb-3">
+								<img src="${pageContext.request.contextPath }/resources/ourCompany/images2/KW_small.jpg" alt="Image" class="w-50 img-fluid mb-3">
 							</div>
 							<p>권누리</p>
 						</figure>
@@ -639,7 +639,7 @@
 						</blockquote>
 						<figure class="mb-4 d-flex align-items-center justify-content-center">
 							<div>
-								<img src="images2/se_small.jpg" alt="Image"	class="w-50 img-fluid mb-3">
+								<img src="${pageContext.request.contextPath }/resources/ourCompany/images2/se_small.jpg" alt="Image"	class="w-50 img-fluid mb-3">
 							</div>
 							<p>박성은</p>
 						</figure>
@@ -655,7 +655,7 @@
 						</blockquote>
 						<figure	class="mb-4 d-flex align-items-center justify-content-center">
 							<div>
-								<img src="images2/UJ_small.jpg" alt="Image"	class="w-50 img-fluid mb-3">
+								<img src="${pageContext.request.contextPath }/resources/ourCompany/images2/UJ_small.jpg" alt="Image"	class="w-50 img-fluid mb-3">
 							</div>
 							<p>유재혁</p>
 						</figure>
@@ -672,7 +672,7 @@
 						</blockquote>
 						<figure	class="mb-4 d-flex align-items-center justify-content-center">
 							<div>
-								<img src="images2/pooh.jpg" alt="Image"	class="w-50 img-fluid mb-3">
+								<img src="${pageContext.request.contextPath }/resources/ourCompany/images2/pooh.jpg" alt="Image"	class="w-50 img-fluid mb-3">
 							</div>
 							<p>이정규</p>
 						</figure>
@@ -811,7 +811,7 @@
 			<div class="container">
 				<div class="row mb-5">
 					<div class="col-lg-5 ml-auto mb-5 order-1 order-lg-2" data-aos="fade" data-aos="fade-up" data-aos-delay="">
-						<img src="images2/welfare.jpg" alt="Image" class="img-fluid rounded">
+						<img src="${pageContext.request.contextPath }/resources/ourCompany/images2/welfare.jpg" alt="Image" class="img-fluid rounded">
 					</div>
 					<div class="col-lg-6 order-2 order-lg-1" data-aos="fade">
                      <h2 class="section-title mb-3">화분의 복지</h2>
@@ -827,7 +827,7 @@
 										<p>출퇴근 교통비 및 삼시세끼, 간식 모두 지원합니다.<br/>
 										1분이라도 넘으면 모두 야근 수당으로 받으실 수 있습니다. </p>
 										<p class="mb-0">
-											<a href="#">Learn More</a>
+											<a href="#" style="color: #66cdaa">Learn More</a>
 										</p>
 									</div>
 								</div>
@@ -843,7 +843,7 @@
 										<p>오전 8시 30분부터 11시까지 자유롭게 출근 할 수 있습니다. <br/> 
 										내가 원하는 시간에 와서 즐겁게 일하고 퇴근하면 됩니다.</p>
 										<p class="mb-0">
-											<a href="#">Learn More</a>
+											<a href="#" style="color: #66cdaa">Learn More</a>
 										</p>
 									</div>
 								</div>
@@ -867,57 +867,57 @@
 					<div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up"
 						data-aos-delay="">
 						<div class="h-entry">
-							<a href="single.html"> <img src="images2/cos01.jpg"	alt="Image" class="img-fluid">
+							<a href="single.html"> <img src="${pageContext.request.contextPath }/resources/ourCompany/images2/cos01.jpg"	alt="Image" class="img-fluid">
 							</a>
 							<h2 class="font-size-regular">
 								<a href="#">[Today's]<br/>화분에서 선정한 올 여름 핫 아이템</a>
 							</h2>
 							<div class="meta mb-4">
 								Ham Brook <span class="mx-2">&bullet;</span> Jun 20, 2020<span
-									class="mx-2">&bullet;</span> <a href="#">News</a>
+									class="mx-2">&bullet;</span> <a href="#" style="color: #66cdaa">News</a>
 							</div>
 							<p>올 여름 지속력을 위한 필수 아이템! <br/>
 							화분에서 선정한 올 여름 핫 아이템 !</p>
 							<p>
-								<a href="#">Continue Reading...</a>
+								<a href="#" style="color: #66cdaa">Continue Reading...</a>
 							</p>
 						</div>
 					</div>
 					
 					<div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up"	data-aos-delay="100">
 						<div class="h-entry">
-							<a href="single.html"> <img src="images2/cos02.jpg"	alt="Image" class="img-fluid">
+							<a href="single.html"> <img src="${pageContext.request.contextPath }/resources/ourCompany/images2/cos02.jpg"	alt="Image" class="img-fluid">
 							</a>
 							<h2 class="font-size-regular">
 								<a href="#">[셀럽's pick]<br/>이니스**가 추천한 올해 판매율 1위 !</a>
 							</h2>
 							<div class="meta mb-4">
 								James Phelps <span class="mx-2">&bullet;</span> Jul 15, 2020<span
-									class="mx-2">&bullet;</span> <a href="#">News</a>
+									class="mx-2">&bullet;</span> <a href="#" style="color: #66cdaa">News</a>
 							</div>
 							<p>이니스**가 내세운 HOT ITEM : 그린티 라인! <br/>
 							세럼부터 크림까지 모든 라인을 만나보세요!.</p>
 							<p>
-								<a href="#">Continue Reading...</a>
+								<a href="#" style="color: #66cdaa">Continue Reading...</a>
 							</p>
 						</div>
 					</div>
 					<div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up"
 						data-aos-delay="200">
 						<div class="h-entry">
-							<a href="single.html"> <img src="images2/cos03.jpg"	alt="Image" class="img-fluid">
+							<a href="single.html"> <img src="${pageContext.request.contextPath }/resources/ourCompany/images2/cos03.jpg"	alt="Image" class="img-fluid">
 							</a>
 							<h2 class="font-size-regular">
 								<a href="#">[화분's pick]<br/>이번달 화분인들의 선택을 받은<br/> BEST of BEST?</a>
 							</h2>
 							<div class="meta mb-4">
 								James Phelps <span class="mx-2">&bullet;</span> Aug 35, 2020<span
-									class="mx-2">&bullet;</span> <a href="#">News</a>
+									class="mx-2">&bullet;</span> <a href="#" style="color: #66cdaa">News</a>
 							</div>
 							<p>8월 많은 화분인들이 선정한 여름BEST of BEST !!<br/>
 							미스트부터 각종 색조화장까지 !<br/> 궁금하면 어서 들어와 ^^</p>
 							<p>
-								<a href="#">Continue Reading...</a>
+								<a href="#" style="color: #66cdaa">Continue Reading...</a>
 							</p>
 						</div>
 					</div>
@@ -945,14 +945,14 @@
 					<div class="col-md-4 text-center">
 						<p class="mb-4">
 							<span class="icon-phone d-block h4 text-primary"></span> 
-							<a href="#">+82 - 1666 - 9210 </a>
+							<a href="#" style="color: #66cdaa">+82 - 1666 - 9210 </a>
 						</p>
 					</div>
 					
 					<div class="col-md-4 text-center">
 						<p class="mb-0">
 							<span class="icon-mail_outline d-block h4 text-primary"></span>
-							 <a href="#">aseongen12@gmail.com</a>
+							 <a href="#" style="color: #66cdaa">aseongen12@gmail.com</a>
 						</p>
 					</div>
 				</div>
@@ -1070,17 +1070,17 @@
 	</div>
 	
 <!-- .site-wrap -->
-	<script src="js/jquery-3.3.1.min.js"></script>
-	<script src="js/jquery-ui.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.countdown.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/jquery.fancybox.min.js"></script>
-	<script src="js/jquery.sticky.js"></script>
-	<script src="js/isotope.pkgd.min.js"></script>
-	<script src="js/main.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/ourCompany/js/jquery-3.3.1.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/ourCompany/js/jquery-ui.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/ourCompany/js/popper.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/ourCompany/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/ourCompany/js/owl.carousel.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/ourCompany/js/jquery.countdown.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/ourCompany/js/jquery.easing.1.3.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/ourCompany/js/aos.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/ourCompany/js/jquery.fancybox.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/ourCompany/js/jquery.sticky.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/ourCompany/js/isotope.pkgd.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/ourCompany/js/main.js"></script>
 </body>
 </html>

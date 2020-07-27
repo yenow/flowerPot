@@ -51,4 +51,9 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping("/ourCompany/Company_main")
+	public void Company_main() {
+		
+	}
+
 }
