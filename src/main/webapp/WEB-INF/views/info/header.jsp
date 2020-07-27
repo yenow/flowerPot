@@ -78,7 +78,7 @@
 						<div class="inner_gnbkurly">
 							<div class="gnb_main">
 								<ul class="gnb">
-									<li class="menu1"><a href="#none"><span class="ico"></span><span class="txt">전체 카테고리</span></a></li>
+									<li class="menu1"><a href="${pageContext.request.contextPath }/category/categoryTest"><span class="ico"></span><span class="txt">전체 카테고리</span></a></li>
 									<li><a class="link new" href="#"><span class="txt">브랜드</span></a></li>
 									<li><a class="link new" href="#"><span class="txt">오늘의 추천</span></a></li>
 									<li><a class="link new" href="#"><span class="txt">매거진</span></a></li>

@@ -41,4 +41,14 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping("/category/categoryTest")
+	public void categoryTest() {
+		
+	}
+	
+	@RequestMapping("/category/categoryTest2")
+	public void categoryTest2() {
+		
+	}
+	
 }

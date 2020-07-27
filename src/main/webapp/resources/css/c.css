@@ -6429,7 +6429,7 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
 	display: block;
 	padding-top: 7px;
 	font-size: 14px;
-	color: #5f0080;
+	color: #66cdaa;
 	line-height: 20px;
 	letter-spacing: 0
 }
@@ -7760,20 +7760,20 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
 	width: 128px;
 	height: 54px;
 	margin-right: 12px;
-	border: 1px solid #5f0080;
+	border: 1px solid #66cdaa;
 	border-radius: 3px;
 	background: #fff;
 	font-weight: 700;
 	font-size: 16px;
-	color: #5f0080;
+	color: #66cdaa;
 	line-height: 52px;
 	letter-spacing: -.1px;
 	text-align: center
 }
 
 #cartPut .cart_option .view_function .btn_save.on {
-	border: 1px solid #5f0081;
-	background-color: #5f0080;
+	border: 1px solid #66cdaa;
+	background-color: #66cdaa;
 	color: #fff
 }
 
