@@ -107,22 +107,31 @@
 											<ul>	
 												
 												<li><a class="menu">
-												<span class="tit">채소</span>
+												<span class="tit">전체보기</span>
 												</a></li>
 												<li><a class="menu">
-												<span class="tit">채소</span>
+												<span class="tit">클렌징</span>
 												</a></li>
 												<li><a class="menu">
-												<span class="tit">채소</span>
+												<span class="tit">스킨케어</span>
 												</a></li>
 												<li><a class="menu">
-												<span class="tit">채소</span>
+												<span class="tit">마스크/팩</span>
 												</a></li>
 												<li><a class="menu">
-												<span class="tit">채소</span>
+												<span class="tit">선케어</span>
 												</a></li>
 												<li><a class="menu">
-												<span class="tit">채소</span>
+												<span class="tit">베이스 메이크업</span>
+												</a></li>
+												<li><a class="menu">
+												<span class="tit">립 메이크업</span>
+												</a></li>
+												<li><a class="menu">
+												<span class="tit">아이 메이크업</span>
+												</a></li>
+												<li><a class="menu">
+												<span class="tit">남성용</span>
 												</a></li>	
 											</ul>
 										</div>
@@ -131,22 +140,28 @@
 											
 											<ul>	
 												<li><a class="menu">
-												<span class="tit">채소</span>
+												<span class="tit">수분/보습</span>
 												</a></li>
 												<li><a class="menu">
-												<span class="tit">채소</span>
+												<span class="tit">탄력/주름개선</span>
 												</a></li>
 												<li><a class="menu">
-												<span class="tit">채소</span>
+												<span class="tit">민감성피부</span>
 												</a></li>
 												<li><a class="menu">
-												<span class="tit">채소</span>
+												<span class="tit">모공/피지</span>
 												</a></li>
 												<li><a class="menu">
-												<span class="tit">채소</span>
+												<span class="tit">미백/톤개선</span>
 												</a></li>
 												<li><a class="menu">
-												<span class="tit">채소</span>
+												<span class="tit">영양</span>
+												</a></li>	
+												<li><a class="menu">
+												<span class="tit">각질/결개선</span>
+												</a></li>	
+												<li><a class="menu">
+												<span class="tit">진정/수딩</span>
 												</a></li>	
 											</ul>
 										</div>
@@ -160,21 +175,6 @@
 			</div>
 			
 <script type="text/javascript">
-
-/* $(document).ready(function() {
-	$('.AllCategory').mouseover(function() {
-		$('.category-list').show();
-	});
-	$('.gnb_sub').mouseover(function() {
-		$('.category-list').show();
-	});
-	$('.gnb_sub').mouseleave(function() {
-		$('.category-list').hide();
-	});
-	$('.AllCategory').mouseleave(function() {
-		$('.category-list').hide();
-	});
-}); */
 
 	$(document).ready(function() {
 		$('.AllCategory').mouseover(function() {

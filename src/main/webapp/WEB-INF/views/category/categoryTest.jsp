@@ -6,7 +6,7 @@
 	<div id="content">
 
 		<div class="page_aticle">
-			<div class="lnb_menu" id="lnbMenu" v-cloak>
+			<div class="lnb_menu" id="lnbMenu" >
 				<div id="bnrCategory" class="bnr_category">
 					<div class="thumb">
 						<img src="" alt="카테고리배너">
@@ -14,22 +14,39 @@
 				</div>
 				<div class="inner_lnb">
 					<div class="ico_cate">
-						<span class="ico"><img src="https://res.kurly.com/pc/img/1808/bg_blink_120_91.png" id="goodsListIconView" alt="카테고리 아이콘"></span> <span class="tit" v-html="categoryName"></span>
+						<span class="tit">유형별</span>
 					</div>
+					<!-- 카테고리 네비게이션 부분 -->
 					<ul class="list">
-						<li>aaaa</li>
-						<li>aaaa</li>
-						<li>aaaa</li>
-						<li>aaaa</li>
+						<li>클렌징</li>
+						<li>스킨케어</li>
+						<li>마스크팩</li>
+						<li>선케어</li>
+						<li>베이스 메이크업</li>
+						<li>립 메이크업</li>
+						<li>아이 메이크업</li>
 					</ul>
 				</div>
 			</div>
 			<div id="goodsList" class="page_section section_goodslist">
-				<div class="list_ability">
+				<!-- 신상품순,, 등등 select -->
+				
+				<!-- <div class="list_ability">
 					<div class="sort_menu">
-						<!-- <view-sort :page-type="pageType" :sort-data="sortData" :sort-delivery="sortDelivery" :delivery-check="deliveryCheck" :sort-user-check="sortUserCheck" :type="type" @sort-regist="sortRegist" @sort-layer-view="sortLayerView"></view-sort>  -->
+						<div>
+						<div class="select_type user_sort">
+							<a class="name_select"></a>
+							<ul class="list">
+								<li><a>신상품순</a></li>
+								<li><a>인기상품순</a></li>
+								<li><a>낮은가격순</a></li>
+								<li><a>높은가격순</a></li>
+							</ul>
+						</div>
+						<view-sort :page-type="pageType" :sort-data="sortData" :sort-delivery="sortDelivery" :delivery-check="deliveryCheck" :sort-user-check="sortUserCheck" :type="type" @sort-regist="sortRegist" @sort-layer-view="sortLayerView"></view-sort> 
+						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="list_goods">
 					<div class="inner_listgoods">
 						<ul class="list">

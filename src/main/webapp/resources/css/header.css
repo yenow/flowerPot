@@ -426,7 +426,11 @@
 }
 
 #gnb .gnb_sub .gnb_menu li:first-child {
-	padding-top: 0
+	padding-top: 10px;
+}
+
+#gnb .gnb_sub .gnb_menu li {
+	margin: 0;
 }
 
 #gnb .gnb_sub .menu {

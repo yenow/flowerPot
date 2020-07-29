@@ -16,6 +16,8 @@
 
 #main {
 	border-bottom: 1px solid #f7f7f7;
+	position: relative;
+	z-index: 0;
 }
 
 .noBody {
@@ -4682,7 +4684,7 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
 
 #lnbMenu .list {
 	overflow: hidden;
-	width: 870px
+	width: 1050px;
 }
 
 #lnbMenu li {
