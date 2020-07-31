@@ -52,7 +52,8 @@
 
 				<div id="headerLogo" class="layout-wrapper">
 					<h1 class="logo">
-						<a href="${pageContext.request.contextPath }" class="link_main"> <span id="gnbLogoContainer"></span> <img src="${pageContext.request.contextPath }/resources/img/logo.png" alt="마켓컬리 로고">
+						<a href="${pageContext.request.contextPath }" class="link_main"> 
+							<span id="gnbLogoContainer"></span> <img src="${pageContext.request.contextPath }/resources/img/logo.png" alt="마켓컬리 로고">
 						</a>
 					</h1>
 					<div id="side_search" class="gnb_search">
@@ -94,7 +95,7 @@
 									</li>
 									<li><a class="link new" href="#"><span class="txt">브랜드</span></a></li>
 									<li><a class="link new" href="#"><span class="txt">오늘의 추천</span></a></li>
-									<li><a class="link new" href="#"><span class="txt">매거진</span></a></li>
+									<li><a class="link new" href="${pageContext.request.contextPath }/magazine/magazine"><span class="txt">매거진</span></a></li>
 									<li class="lst"><a class="link event " href="#"><span class="txt">이벤트</span></a></li>
 								</ul>
 							</div>
