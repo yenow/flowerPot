@@ -54,8 +54,8 @@
 							<li>
 								<div class="item">
 									<div class="thumb">
-										<a class="img" style="background-image: url(https://img-cf.kurly.com/shop/data/goods/1470792312213l0.jpg);">
-											<img alt="aaa" src="https://img-cf.kurly.com/shop/data/goods/1470792312213l0.jpg" width="308" height="396">
+										<a class="img" style="background-image: url('${pageContext.request.contextPath }/resources/img/cometic/abc.jpg');">
+											<img alt="aaa" src="${pageContext.request.contextPath }/resources/img/cometic/abc.jpg" width="308" height="396">
 										</a>
 										<div class="group_btn">
 											<button type="button" class="btn btn_cart">
@@ -64,30 +64,9 @@
 										</div>
 									</div>
 									<a class="info"> 
-										<span class="name">무농약...</span> 
+										<span class="name">화장품...</span> 
 										<span class="cost"> <span class="price">1800원</span></span> 
-										<span class="desc">내 마음대로 골라담고 세척되어 바로 먹을 수 있는 신선한 샐러드</span>
-									</a>
-									<span class="tag"></span>
-								</div>
-							</li>
-							<!-- 하나의 리스트 -->
-							<li>
-								<div class="item">
-									<div class="thumb">
-										<a class="img" style="background-image: url(https://img-cf.kurly.com/shop/data/goods/1470792312213l0.jpg);">
-											<img alt="aaa" src="https://img-cf.kurly.com/shop/data/goods/1470792312213l0.jpg" width="308" height="396">
-										</a>
-										<div class="group_btn">
-											<button type="button" class="btn btn_cart">
-												<span class="screen_out">1385</span>
-											</button>
-										</div>
-									</div>
-									<a class="info"> 
-										<span class="name">무농약...</span> 
-										<span class="cost"> <span class="price">1800원</span></span> 
-										<span class="desc">내 마음대로 골라담고 세척되어 바로 먹을 수 있는 신선한 샐러드</span>
+										<span class="desc">촉촉한 화장품</span>
 									</a>
 									<span class="tag"></span>
 								</div>
@@ -106,9 +85,30 @@
 										</div>
 									</div>
 									<a class="info"> 
-										<span class="name">무농약...</span> 
+										<span class="name">화장품...</span> 
 										<span class="cost"> <span class="price">1800원</span></span> 
-										<span class="desc">내 마음대로 골라담고 세척되어 바로 먹을 수 있는 신선한 샐러드</span>
+										<span class="desc">촉촉한 화장품</span>
+									</a>
+									<span class="tag"></span>
+								</div>
+							</li>
+							<!-- 하나의 리스트 -->
+							<li>
+								<div class="item">
+									<div class="thumb">
+										<a class="img" style="background-image: url('${pageContext.request.contextPath }/resources/img/cometic/abc.jpg');">
+											<img alt="aaa" src="${pageContext.request.contextPath }/resources/img/cometic/abc.jpg" width="308" height="396">
+										</a>
+										<div class="group_btn">
+											<button type="button" class="btn btn_cart">
+												<span class="screen_out">1385</span>
+											</button>
+										</div>
+									</div>
+									<a class="info"> 
+										<span class="name">화장품...</span> 
+										<span class="cost"> <span class="price">1800원</span></span> 
+										<span class="desc">촉촉한 화장품</span>
 									</a>
 									<span class="tag"></span>
 								</div>

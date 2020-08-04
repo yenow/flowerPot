@@ -65,4 +65,9 @@ public class HomeController {
 	public void magazine_writer(){
 		
 	}
+	
+	@RequestMapping("/order/order")
+	public void order() {
+		
+	}
 }

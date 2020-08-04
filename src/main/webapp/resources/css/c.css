@@ -356,8 +356,10 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
 
 .label_check.checked {
 	background: #fff
-		url(https://res.kurly.com/pc/service/order/1908/ico_checkbox_on.png)
-		no-repeat 0 2px
+		url(/flowerPot/resources/img/checkbox.jpg) 
+		no-repeat 0 2px;
+	background-size: 16px 16px;
+	
 }
 
 .check_type2 .label_check.checked {
@@ -4981,7 +4983,7 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
 
 #goodsList .list_goods .thumb .btn_cart {
 	background:
-		url(https://res.kurly.com/pc/service/common/1908/ico_list_add_cart.png)
+		url('/flowerPot/resources/img/shop.jpg');
 		no-repeat 50% 50%
 }
 
