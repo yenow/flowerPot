@@ -10,5 +10,6 @@ public class CustomerCenterMemeber {
 	@RequestMapping("/notice")
 	public void notice() {
 		//
+		//
 	}
 }
