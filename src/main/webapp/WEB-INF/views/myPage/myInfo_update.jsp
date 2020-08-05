@@ -6,7 +6,7 @@
 
 <div class="page_aticle aticle_type2">
 	<div id="snb" class="snb_my">
-		<h2 class="tit_snb">마이컬리</h2>
+		<h2 class="tit_snb">마이페이지</h2>
 		<div class="inner_snb">
 			<ul class="list_menu">
 				<li><a href="/shop/mypage/mypage_orderlist.php">주문 내역</a></li>

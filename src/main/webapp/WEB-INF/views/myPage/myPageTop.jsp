@@ -9,7 +9,7 @@
 					<span class="screen_out">등급</span> <span class="ico_grade class6"><span class="inner_grade"><span class="in_grade">웰컴</span></span></span>
 					<div class="grade_bnenfit">
 						<div class="user">
-							<strong class="name">안준언</strong> <span class="txt">님</span>
+							<strong class="name"></strong> <span class="txt">님</span>
 						</div>
 						<!---->
 						<div class="benefit">5% 적립 + 최초 1회 무료배송</div>
@@ -37,7 +37,7 @@
 						</a>
 					</div></li>
 				<li class="user_kurlypass"><div class="link">
-						<div class="tit">컬리패스</div>
+						<div class="tit">화분패스</div>
 						<!---->
 						<a href="/shop/mypage/kurlypass.php" class="info info_link"> 알아보기 <img src="https://res.kurly.com/pc/service/common/1905/ico_arrow_56x56.png" alt="자세히 보기">
 						</a>

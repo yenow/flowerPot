@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>화분</title>
 
 <%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/kurly1.css"> --%>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/c.css">
@@ -58,7 +58,7 @@
 					</h1>
 					<div id="side_search" class="gnb_search">
 						<form action="/shop/goods/goods_search.php?&" onsubmit="return searchTracking(this)">
-							<input type=hidden name=searched value="Y"> <input type=hidden name=log value="1"> <input type=hidden name=skey value="all"> <input type="hidden" name="hid_pr_text" value=""> <input type="hidden" name="hid_link_url" value=""> <input type="hidden" id="edit" name="edit" value=""> <input name=sword type=text id="" class="inp_search" value="" required label="검색어"> <input type=image src="https://res.kurly.com/pc/service/common/1908/ico_search_x2.png" class="btn_search">
+							<input type=hidden name=searched value="Y"> <input type=hidden name=log value="1"> <input type=hidden name=skey value="all"> <input type="hidden" name="hid_pr_text" value=""> <input type="hidden" name="hid_	_url" value=""> <input type="hidden" id="edit" name="edit" value=""> <input name=sword type=text id="" class="inp_search" value="" required label="검색어"> <input type=image src="https://res.kurly.com/pc/service/common/1908/ico_search_x2.png" class="btn_search">
 						</form>
 					</div>
 					<div id="my-content">
