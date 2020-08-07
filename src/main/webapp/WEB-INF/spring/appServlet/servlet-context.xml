@@ -22,7 +22,11 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.flowerPot.controller" />
+	<context:component-scan base-package="com.flowerPot.exception" />
 	
+	<!-- 다중파일 업로드 빈 등록 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+	</beans:bean>
 	
 
 </beans:beans>
