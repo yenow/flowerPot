@@ -21,6 +21,8 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 	crossorigin="anonymous"></script>
+	
+<script src="${pageContext.request.contextPath}/resources/js/summernote-ko-KR.js"></script>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
@@ -131,6 +133,8 @@
 			maxHeight : null, // 최대 높이
 			focus : true, // 에디터 로딩후 포커스를 맞출지 여부
 			lang : "ko-KR", // 한글 설정
+			fontNames: ['fontA',  'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', ],
+		    fontNamesIgnoreCheck: ['fontA'],
 			placeholder : '최대 2048자까지 쓸 수 있습니다', //placeholder 설정
 			callbacks : { //여기 부분이 이미지를 첨부하는 부분
 				onImageUpload : function(files) {
