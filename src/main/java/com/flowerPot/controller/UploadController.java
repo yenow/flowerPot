@@ -1,124 +1,107 @@
 package com.flowerPot.controller;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.io.FileUtils;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.google.gson.JsonObject;
 
 @Controller
 public class UploadController {
 
-	@GetMapping("uploadForm") //get으로 접근하는 매핑주소 처리. 
-	//uploadForm 매핑주소 처리
-	public String uploadForm() {
-		return "uploadForm";//뷰페이지 경로=> /WEB-INF/views/uploadFor
-				//m.jsp
-	}//uploadForm()
-	
-	@PostMapping("uploadFormAction") //uploadFormAction 매핑주소등록
-	//post로 접근하는 매핑주소 처리
-	public void uploadFormAction(MultipartFile[] uploadFile) {
-/* 스프링 API에서 MultipartFile 타입을 제공해서 업로드 되는 파일 데이터를 쉽게 처리.
- * 다중 업로드 파일은 배열로 받는다. <input type="file" name="uploadFile"
- *   네임피라미터이름을 매개변수명으로 지정해서 처리한다. 네임피라미터 이름과 매개변수
- *   명을 같게 한다.		
- */
-		String uploadFolder = "C:\\upload";//업로드 서버 경로
-		/* 폴더가 없을시 폴더 생성 */
-		File f = new File(uploadFolder);
-		if(f.exists()==false) {
-			f.mkdir();
+	/*
+	@PostMapping(value="/uploadSummernoteImageFile", produces = "application/json")
+	@ResponseBody
+	public JsonObject uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile) {
+		
+		JsonObject jsonObject = new JsonObject();
+		
+		String fileRoot = "C:\\summernote_image\\";	//저장될 외부 파일 경로
+		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
+		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
+				
+		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
+		
+		File targetFile = new File(fileRoot + savedFileName);	
+		
+		try {
+			InputStream fileStream = multipartFile.getInputStream();
+			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
+			jsonObject.addProperty("url", "/summernoteImage/"+savedFileName);
+			jsonObject.addProperty("responseCode", "success");
+				
+		} catch (IOException e) {
+			FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
+			jsonObject.addProperty("responseCode", "error");
+			e.printStackTrace();
 		}
 		
-		for(MultipartFile multipartFile : uploadFile) {
-			System.out.println("-------------------------");
-System.out.println("Upload file name : "+
-			multipartFile.getOriginalFilename());//업로드 원본 파일명
-System.out.println("Upload file size :"+
-			multipartFile.getSize());//업로드 파일 크기
+		return jsonObject;
+	}
+	*/
+	
 
-            File saveFile=new File(uploadFolder,
-            		multipartFile.getOriginalFilename());
-//파일과 폴더를 다루는 File클래스 생성자 인자값으로 업로드 서버경로와 첨부된 원본파일명
-//을 가지고 File클래스 객체 생성
-            
-            try {
-             multipartFile.transferTo(saveFile);//업로드 된 원래 파일명
-//으로 c드라이브  upload폴더에 업로드 함.             
-            }catch(Exception e) {e.printStackTrace();}
-		}//자바 5버전이후부터 배열이나 컬렉션의 복수개의 데이터를 쉽게 처리하기위해서
-		//향상된 확장 for반복문을 사용한다.
-	}//uploadFormAction()
 	
-	//비동기식 아작스 뷰페이지 
-	@GetMapping("/uploadAjax") // get방식으로 접근하는 매핑주소 처리=>
-	// uploadAjax  매핑주소 등록
-    public void uploadAjax() {
-		//리턴타입이 없는 void형이면 매핑주소 uploadAjax가 뷰페이지 파일명이 된다.
-		//뷰페이지 경로=> /WEB-INF/views/uploadAjax.jsp
-	}//uploadAjax()
-	
-	@PostMapping("/uploadAjaxAction")
-	//post방식으로 접근하는 매핑주소 처리
-	public void uploadAjaxAction(MultipartFile[] uploadFile) {
-		System.out.println("update ajax post...");
-		String uploadFolder = "C:\\upload";
+	@PostMapping(value="/uploadSummernoteImageFile", produces = "application/json")
+	@ResponseBody
+	public ResponseEntity<Map<String, String>> uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request) {
 		
-		for(MultipartFile multipartFile:uploadFile) {
-			System.out.println("----------------->");
-System.out.println("upload File Name: "+
-			multipartFile.getOriginalFilename());//첨부한 원래 파일명
-System.out.println("Upload File Size: "+
-			multipartFile.getSize());//첨부한 파일크기
-String uploadFileName = multipartFile.getOriginalFilename();
-uploadFileName = uploadFileName.substring(
-		uploadFileName.lastIndexOf("\\")+1);//IE인 경우는 첨부한 전체
-//파일경로를 반환한다. 그러므로 마지막 경로 구분 \를 맨 오른쪽부터 찾아서 가장먼저 나오
-//는 \의 위치번호를 맨 왼쪽 0부터 시작해서 위치번호값을 반환한다.여기에 +1을 하면
-//결국 마지막 경로 이후 첨부한 파일명을 구함.
-System.out.println("only file name :"+uploadFileName);
-         File saveFile=new File(uploadFolder,uploadFileName);
-//생성자 인자값으로 업로드 서버경로,첨부파일명을 가진 파일객체 saveFile을 생성
-         try {
-        	 multipartFile.transferTo(saveFile);
-         }catch(Exception e) {e.printStackTrace();}
-		}//확장 for
-	}//uploadAjaxAction()
+		Map<String, String> map =  new HashMap<String, String>();
+		ResponseEntity<Map<String, String>> r ;
+		
+		String fileRoot = "C:\\summernote_image\\";	//저장될 외부 파일 경로
+		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
+		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
+				
+		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
+		
+		File targetFile = new File(fileRoot + savedFileName);	
+		
+		
+		
+		try {
+			InputStream fileStream = multipartFile.getInputStream();
+			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
+			map.put("url", request.getContextPath()+"/summernoteImage/"+savedFileName);   // 만약에 context 가 /면??
+			map.put("responseCode", "success");
+			r = new ResponseEntity<Map<String,String>>(map,HttpStatus.OK);
+			return  r;  // ResponseEntity.ok().body("/summernoteImage/" + savedFileName);
+			//jsonObject.addProperty("url", "/summernoteImage/"+savedFileName);
+			//jsonObject.addProperty("responseCode", "success");
+				
+		} catch (IOException e) {
+			// FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
+			// jsonObject.addProperty("responseCode", "error");
+			e.printStackTrace();
+			r = new ResponseEntity<Map<String,String>>(HttpStatus.BAD_REQUEST);
+	        return r;
+		}
+
+	}
+	
+	
+	
+	
+
+
+
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

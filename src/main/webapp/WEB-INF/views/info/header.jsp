@@ -5,6 +5,10 @@
 <meta charset="UTF-8">
 <title>화분</title>
 
+<!-- 아이콘 -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href="../resources/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+
 <%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/kurly1.css"> --%>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/c.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/b.css">

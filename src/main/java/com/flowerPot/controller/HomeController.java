@@ -56,15 +56,7 @@ public class HomeController {
 		
 	}
 
-	@RequestMapping("/magazine/magazine")
-	public void magazine() {
-		
-	}
 	
-	@RequestMapping("/magazine/magazine_writer")
-	public void magazine_writer(){
-		
-	}
 	
 	@RequestMapping("/order/order")
 	public void order() {
