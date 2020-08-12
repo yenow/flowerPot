@@ -101,7 +101,7 @@
 			
 						<a href="#main" class="layout-pagination-button layout-pagination-next-page">다음 페이지로 가기</a> 
 						<a href="#main" class="layout-pagination-button layout-pagination-last-page">맨 끝 페이지로 가기</a>
-						<a href="#" class="y-float-right"><button type="button" class="btn_magazin">매거진 등록</button></a>
+						<a href="${pageContext.request.contextPath }/magazine/magazine_writer" class="y-float-right"><button type="button" class="btn_magazin">매거진 등록</button></a>
 					</div>
 				</div>
 			</div>

@@ -24,9 +24,20 @@
 	<context:component-scan base-package="com.flowerPot.controller" />
 	<context:component-scan base-package="com.flowerPot.exception" />
 	
-	<!-- 다중파일 업로드 빈 등록 -->
-	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="defaultEncoding" value="utf-8"></beans:property>
+		<!-- 1024 * 1024 * 10 bytes 10MB -->
+		<beans:property name="maxUploadSize" value="104857560"></beans:property>
+		<!-- 1024 * 1024 * 2 bytes 2MB -->
+		<beans:property name="maxUploadSizePerFile" value="2097152"></beans:property>
+		<beans:property name="uploadTempDir" value="\\192.168.0.8\upload"></beans:property>  <!-- file:/C:/upload/tmp  -->
+		<beans:property name="maxInMemorySize" value="10485756"></beans:property>
 	</beans:bean>
+	
+	<!-- 다중파일 업로드 빈 등록 -->
+	<!-- Servlet 3.1에 있는 라이브러리 -->
+	<!-- <beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+	</beans:bean> -->
 	
 
 </beans:beans>

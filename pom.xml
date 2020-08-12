@@ -171,6 +171,7 @@
 			<version>${org.springframework-version}</version>	<!-- version -->
 			<exclusions>
 				<!-- Exclude Commons Logging in favor of SLF4j -->
+				<!-- commons-logging은 기본적으로 spring-context라이브러리에 포함이 되어있다. JCL를 쓰지 않기 위해서 제외를 해준다 -->
 				<exclusion>
 					<groupId>commons-logging</groupId>
 					<artifactId>commons-logging</artifactId>
