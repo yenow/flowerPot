@@ -53,7 +53,7 @@
 						</ul>
 					</div>
 				</div>	
-
+				<div class="blank"></div>
 				<div id="headerLogo" class="layout-wrapper">
 					<h1 class="logo">
 						<a href="${pageContext.request.contextPath }" class="link_main"> 
@@ -75,6 +75,7 @@
 						</ul>
 					</div>
 				</div>
+				<div class="blank"></div>
 				<div id="gnb">
 					<h2 class="screen_out">메뉴</h2>
 					<div id="gnbMenu" class="gnb_kurly">

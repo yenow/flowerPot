@@ -4914,7 +4914,7 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
 #goodsList .list_goods li {
 	float: left;
 	width: 336px;
-	height: 611px;
+	height: 600px;
 	padding: 25px 28px 0 0
 }
 
@@ -4983,8 +4983,8 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
 
 #goodsList .list_goods .thumb .btn_cart {
 	background:
-		url('/flowerPot/resources/img/shop.jpg');
-		no-repeat 50% 50%
+		url('/flowerPot/resources/img/shop.jpg')
+		no-repeat 50% 50%;
 }
 
 #goodsList .list_goods .thumb .btn_alarm {

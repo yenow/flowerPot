@@ -1,17 +1,18 @@
 package com.flowerPot.controller;
 
-import java.util.UUID;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.flowerPot.dao.MagazineDao;
 import com.flowerPot.service.MagazineService;
 import com.flowerPot.vo.MagazineVo;
 
@@ -25,6 +26,26 @@ public class MagazineController {
 	@RequestMapping("magazine")
 	public void magazine() {
 		
+	}
+	
+	@RequestMapping("magazineAjax")
+	@ResponseBody
+	public ResponseEntity<List<MagazineVo>> magazineAjax() {
+		
+		ResponseEntity<List<MagazineVo>> re;
+		try {
+			List<MagazineVo> mgList =  magazineService.selectMagazineList();
+			for(MagazineVo m : mgList) {
+				m.setRootfolder(m.getRootfolder().substring(m.getRootfolder().indexOf('\\')).replace('\\', '/'));
+				
+			}
+			re = new  ResponseEntity<List<MagazineVo>>(mgList, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			re = new  ResponseEntity<List<MagazineVo>>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return re;
 	}
 	
 	@RequestMapping("magazine_writer")

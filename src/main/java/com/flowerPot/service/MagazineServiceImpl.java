@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +59,14 @@ public class MagazineServiceImpl implements MagazineService {
 		magazine.setUUIDName(uuidName);  // 매거진 객체에 새로운파일 이름 저장
 		magazine.setRootfolder(rootfolder);  // 매거진 객체에 폴더 경로 저장
 		
+		magazineDao.insertMagazine(magazine);
+		
 		return magazine;
+	}
+
+	@Override
+	public List<MagazineVo> selectMagazineList() {
+		return magazineDao.selectMagazineList();
 	}
 	
 }

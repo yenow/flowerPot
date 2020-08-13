@@ -79,7 +79,7 @@
 				<!-- 카테고리 -->
 					<div class="mb-3">
 						<label for="country">카테고리</label> 
-						<select class="custom-select d-block w-100" id="country" required="">
+						<select class="custom-select d-block w-100" id="country" name="category" required="">
 							<option value="">Choose...</option>
 							<option value="TIP">TIP</option>
 							<option value="인터뷰">인터뷰</option>

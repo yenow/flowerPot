@@ -89,6 +89,21 @@
 									<span class="tag"></span>
 								</div>
 							</li>
+							<li>
+								<div class="item">
+									<div class="thumb" id="magazine-test">
+										<a class="img" style="background-image: url('${pageContext.request.contextPath }/resources/img/cometic/abc.jpg');">
+											<img alt="aaa" src="${pageContext.request.contextPath }/resources/img/cometic/abc.jpg" width="308" height="396">
+										</a>
+										
+									</div>
+									<a class="info"> 
+										<span class="name" id="magazine-title">화장품...</span> 
+										<span class="desc" id="magazine-content">내 마음대로 골라담고 세척되어 바로 바를 수 있는 신선한 화장품</span>
+									</a>
+									<span class="tag"></span>
+								</div>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -109,5 +124,25 @@
 	</div>
 </div>
 
+<script>
+
+	$(document).ready(function() {
+		
+		(function yajax() {
+			$.ajax({
+				url : '${pageContext.request.contextPath }/magazine/magazineAjax',
+				type : 'GET',
+				dataType : 'json',
+				success : function (data) {
+					console.log(data);
+					$('#magazine-test a img').attr('src','${pageContext.request.contextPath }'+data[0].rootfolder+data[0].uuidname);
+					$('#magazine-title').html(data[0].title)
+				}
+			});
+
+		})();
+	});
+
+</script>
 
 <jsp:include page="../info/footer.jsp"></jsp:include>
