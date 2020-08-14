@@ -1,203 +1,338 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>화분</title>
+	<title>Home</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="${pageContext.request.contextPath }/resources/images/icons/favicon.png"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/fonts/linearicons-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/slick/slick.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/MagnificPopup/magnific-popup.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/util.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/main.css">
+<!--===============================================================================================-->
 
-<!-- 아이콘 -->
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<link href="../resources/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
-
-<%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/kurly1.css"> --%>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/c.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/b.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/a.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/header.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
-<%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/content.css"> 
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/notice.css">   --%>
-
-<!-- slick -->
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-
-<!-- jqeury -->
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+</style>
 </head>
-<body>
-
-	<div id="wrap" >
-		<div id="pos_scroll"></div>
-		<div id="container">
-			<div id="header">
-				<div class="bnr_header" id="top-message">
-
-
-					<a href="${pageContext.request.contextPath }" id="eventLanding"> 지금 가입하고 인기상품 <b>100원</b>에 받아가세요!<img src="https://res.kurly.com/pc/ico/1908/ico_arrow_fff_84x84.png" class="bnr_arr">
-						<div class="bnr_top">
-							<div class="inner_top_close">
-								<button id="top-message-close" class="btn_top_bnr">가입하고 혜택받기</button>
-							</div>
-						</div>
-					</a>
-				</div>
-
-				<div id="userMenu-wrap">
-					<div id="userMenu">
-						<ul class="list_menu">
-							<li class="menu"><a href="${pageContext.request.contextPath }/member/login">로그인</a></li>
-							<li class="menu"><a href="${pageContext.request.contextPath }/member/signUp">회원가입</a></li>
-							<li class="menu"><a href="${pageContext.request.contextPath }/customerCenter/notice">고객센터</a></li>
-							<li class="menu menu-last"><a href="${pageContext.request.contextPath }/ourCompany/Company_main">우리회사</a></li>
-						</ul>
+<body class="animsition">
+	
+	<!-- Header -->
+	<header>
+		<!-- Header desktop -->
+		<div class="container-menu-desktop">
+			<!-- Topbar -->
+			<div class="top-bar">
+				<div class="content-topbar flex-sb-m h-full container">
+					<div class="left-top-bar">
+						Free shipping for standard order over $100
 					</div>
-				</div>	
-				<div class="blank"></div>
-				<div id="headerLogo" class="layout-wrapper">
-					<h1 class="logo">
-						<a href="${pageContext.request.contextPath }" class="link_main"> 
-							<span id="gnbLogoContainer"></span> <img src="${pageContext.request.contextPath }/resources/img/logo.png" alt="마켓컬리 로고">
+
+					<div class="right-top-bar flex-w h-full">
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							고객센터
 						</a>
-					</h1>
-					<div id="side_search" class="gnb_search">
-						<form action="/shop/goods/goods_search.php?&" onsubmit="return searchTracking(this)">
-							<input type=hidden name=searched value="Y"> <input type=hidden name=log value="1"> <input type=hidden name=skey value="all"> <input type="hidden" name="hid_pr_text" value=""> <input type="hidden" name="hid_	_url" value=""> <input type="hidden" id="edit" name="edit" value=""> <input name=sword type=text id="" class="inp_search" value="" required label="검색어"> <input type=image src="https://res.kurly.com/pc/service/common/1908/ico_search_x2.png" class="btn_search">
-						</form>
-					</div>
-					<div id="my-content">
-						<ul>
-							<li><a href="${pageContext.request.contextPath }/myPage/orderList">마이페이지</a></li>
-						
-							<li><a href="${pageContext.request.contextPath }/shoppingList/shoppingList">장바구니</a></li>
-							
-							<li><a href="#">최근본 상품</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="blank"></div>
-				<div id="gnb">
-					<h2 class="screen_out">메뉴</h2>
-					<div id="gnbMenu" class="gnb_kurly">
-						<div class="inner_gnbkurly">
-							<div class="gnb_main">
-								<ul class="gnb">
-									<li class="menu1 AllCategory"><a href="${pageContext.request.contextPath }/category/categoryTest"><span class="ico"></span><span class="txt">전체 카테고리</span></a>
-										<!-- 카테고리 리스트 -->
-										<div class="category-list">
-											<ul>
-												<li><h2>유형별</h2></li>
-												<li>a</li>
-												<li>a</li>
-											</ul>
-											<ul>
-												<li><h2>피부고민별</h2></li>
-												<li>a</li>
-												<li>a</li>
-											</ul>
-										</div>
-										
-									</li>
-									<li><a class="link new" href="#"><span class="txt">브랜드</span></a></li>
-									<li><a class="link new" href="#"><span class="txt">오늘의 추천</span></a></li>
-									<li><a class="link new" href="${pageContext.request.contextPath }/magazine/magazine"><span class="txt">매거진</span></a></li>
-									<li class="lst"><a class="link event " href="#"><span class="txt">이벤트</span></a></li>
-								</ul>
-							</div>
-							<div class="gnb_sub">
-								<div class="inner_sub">
-									<div class="gnb_menu">
-										<div class="gnb_menu_col">
-											<h2>유형별</h2>
-											
-											<ul>	
-												
-												<li><a class="menu">
-												<span class="tit">전체보기</span>
-												</a></li>
-												<li><a class="menu">
-												<span class="tit">클렌징</span>
-												</a></li>
-												<li><a class="menu">
-												<span class="tit">스킨케어</span>
-												</a></li>
-												<li><a class="menu">
-												<span class="tit">마스크/팩</span>
-												</a></li>
-												<li><a class="menu">
-												<span class="tit">선케어</span>
-												</a></li>
-												<li><a class="menu">
-												<span class="tit">베이스 메이크업</span>
-												</a></li>
-												<li><a class="menu">
-												<span class="tit">립 메이크업</span>
-												</a></li>
-												<li><a class="menu">
-												<span class="tit">아이 메이크업</span>
-												</a></li>
-												<li><a class="menu">
-												<span class="tit">남성용</span>
-												</a></li>	
-											</ul>
-										</div>
-										<div class="gnb_menu_col">
-											<h2>피부고민별</h2>
-											
-											<ul>	
-												<li><a class="menu">
-												<span class="tit">수분/보습</span>
-												</a></li>
-												<li><a class="menu">
-												<span class="tit">탄력/주름개선</span>
-												</a></li>
-												<li><a class="menu">
-												<span class="tit">민감성피부</span>
-												</a></li>
-												<li><a class="menu">
-												<span class="tit">모공/피지</span>
-												</a></li>
-												<li><a class="menu">
-												<span class="tit">미백/톤개선</span>
-												</a></li>
-												<li><a class="menu">
-												<span class="tit">영양</span>
-												</a></li>	
-												<li><a class="menu">
-												<span class="tit">각질/결개선</span>
-												</a></li>	
-												<li><a class="menu">
-												<span class="tit">진정/수딩</span>
-												</a></li>	
-											</ul>
-										</div>
-										<!-- <gnb-menu-pc v-for="(item, idx) in dataGnb" :main-menu="item" :sub-menu="item.categories" :sub-open="item.subOpen" :get-category-num="getCategoryNum" :key="'gnb'+idx" :idx="idx"></gnb-menu-pc> -->
-									</div>
-								</div>
-							</div>
-						</div>
+
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							마이페이지
+						</a>
+
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							로그인
+						</a>
+
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							회원가입
+						</a>
 					</div>
 				</div>
 			</div>
-			
-<script type="text/javascript">
 
-	$(document).ready(function() {
-		$('.AllCategory').mouseover(function() {
-			$('.gnb_sub').show('200ms');
-			
-		});
-		$('.gnb_sub').mouseover(function() {
-			$('.gnb_sub').show();
+			<div class="wrap-menu-desktop">
+				<nav class="limiter-menu-desktop container">
+					
+					<!-- Logo desktop -->		
+					<a href="#" class="logo">
+						<%-- <img src="${pageContext.request.contextPath }/resources/images/icons/logo-01.png" alt="IMG-LOGO"> --%>
+						화분
+					</a>
+
+					<!-- Menu desktop -->
+					<div class="menu-desktop">
+						<ul class="main-menu">
+							<li class="active-menu">
+								<a href="index.html">home</a>
+							</li>
+
+							<li>
+								<a href="product.html">Shop</a>
+								<ul class="sub-menu">
+									<li><a href="index.html">피부타입별</a></li>
+									<li><a href="home-02.html">브랜드별</a></li>
+									<li><a href="home-03.html">유형별</a></li>
+								</ul>
+							</li>
+
+							<li class="label1" data-label1="hot">
+								<a href="shoping-cart.html">브랜드</a>
+							</li>
+
+							<li>
+								<a href="blog.html">매거진</a>
+							</li>
+
+							<li>
+								<a href="about.html">오늘의추천</a>
+							</li>
+
+							<li>
+								<a href="contact.html">이벤트</a>
+							</li>
+						</ul>
+					</div>	
+
+					<!-- Icon header -->
+					<div class="wrap-icon-header flex-w flex-r-m">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+							<i class="zmdi zmdi-search"></i>
+						</div>
+
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+							<i class="zmdi zmdi-shopping-cart"></i>
+						</div>
+
+						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+							<i class="zmdi zmdi-favorite-outline"></i>
+						</a>
+					</div>
+				</nav>
+				
+			</div>	
+		</div>
 		
-		});
-		$('.gnb_sub').mouseleave(function() {
-			$('.gnb_sub').hide();
+		
+
+		<!-- Header Mobile -->
+		<div class="wrap-header-mobile">
+			<!-- Logo moblie -->		
+			<div class="logo-mobile">
+				<a href="index.html"><img src="${pageContext.request.contextPath }/resources/images/icons/logo-01.png" alt="IMG-LOGO"></a>
+			</div>
+
+			<!-- Icon header -->
+			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+					<i class="zmdi zmdi-search"></i>
+				</div>
+
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
+					<i class="zmdi zmdi-shopping-cart"></i>
+				</div>
+
+				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
+					<i class="zmdi zmdi-favorite-outline"></i>
+				</a>
+			</div>
+
+			<!-- Button show menu -->
+			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</div>
+		</div>
+
+
+		<!-- Menu Mobile -->
+		<div class="menu-mobile">
+			<ul class="topbar-mobile">
+				<li>
+					<div class="left-top-bar">
+						Free shipping for standard order over $100
+					</div>
+				</li>
+
+				<li>
+					<div class="right-top-bar flex-w h-full">
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							Help & FAQs
+						</a>
+
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							My Account
+						</a>
+
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							EN
+						</a>
+
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							USD
+						</a>
+					</div>
+				</li>
+			</ul>
+
+			<ul class="main-menu-m">
+				<li>
+					<a href="index.html">Home</a>
+					<ul class="sub-menu-m">
+						<li><a href="index.html">Homepage 1</a></li>
+						<li><a href="home-02.html">Homepage 2</a></li>
+						<li><a href="home-03.html">Homepage 3</a></li>
+					</ul>
+					<span class="arrow-main-menu-m">
+						<i class="fa fa-angle-right" aria-hidden="true"></i>
+					</span>
+				</li>
+
+				<li>
+					<a href="product.html">Shop</a>
+				</li>
+
+				<li>
+					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
+				</li>
+
+				<li>
+					<a href="blog.html">Blog</a>
+				</li>
+
+				<li>
+					<a href="about.html">About</a>
+				</li>
+
+				<li>
+					<a href="contact.html">Contact</a>
+				</li>
+			</ul>
+		</div>
+
+		<!-- Modal Search -->
+		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+			<div class="container-search-header">
+				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+					<img src="${pageContext.request.contextPath }/resources/images/icons/icon-close2.png" alt="CLOSE">
+				</button>
+
+				<form class="wrap-search-header flex-w p-l-15">
+					<button class="flex-c-m trans-04">
+						<i class="zmdi zmdi-search"></i>
+					</button>
+					<input class="plh3" type="text" name="search" placeholder="Search...">
+				</form>
+			</div>
+		</div>
+	</header>
+	
+	<!-- Cart -->
+	<div class="wrap-header-cart js-panel-cart">
+		<div class="s-full js-hide-cart"></div>
+
+		<div class="header-cart flex-col-l p-l-65 p-r-25">
+			<div class="header-cart-title flex-w flex-sb-m p-b-8">
+				<span class="mtext-103 cl2">
+					Your Cart
+				</span>
+
+				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+					<i class="zmdi zmdi-close"></i>
+				</div>
+			</div>
 			
-		});
-		$('.AllCategory').mouseleave(function() {
-			$('.gnb_sub').hide();
-			
-		});
-	}); 
-</script>
+			<div class="header-cart-content flex-w js-pscroll">
+				<ul class="header-cart-wrapitem w-full">
+					<li class="header-cart-item flex-w flex-t m-b-12">
+						<div class="header-cart-item-img">
+							<img src="${pageContext.request.contextPath }/resources/images/item-cart-01.jpg" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt p-t-8">
+							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								White Shirt Pleat
+							</a>
+
+							<span class="header-cart-item-info">
+								1 x $19.00
+							</span>
+						</div>
+					</li>
+
+					<li class="header-cart-item flex-w flex-t m-b-12">
+						<div class="header-cart-item-img">
+							<img src="${pageContext.request.contextPath }/resources/images/item-cart-02.jpg" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt p-t-8">
+							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								Converse All Star
+							</a>
+
+							<span class="header-cart-item-info">
+								1 x $39.00
+							</span>
+						</div>
+					</li>
+
+					<li class="header-cart-item flex-w flex-t m-b-12">
+						<div class="header-cart-item-img">
+							<img src="${pageContext.request.contextPath }/resources/images/item-cart-03.jpg" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt p-t-8">
+							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								Nixon Porter Leather
+							</a>
+
+							<span class="header-cart-item-info">
+								1 x $17.00
+							</span>
+						</div>
+					</li>
+				</ul>
+				
+				<div class="w-full">
+					<div class="header-cart-total w-full p-tb-40">
+						Total: $75.00
+					</div>
+
+					<div class="header-cart-buttons flex-w w-full">
+						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+							View Cart
+						</a>
+
+						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+							Check Out
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		
+	

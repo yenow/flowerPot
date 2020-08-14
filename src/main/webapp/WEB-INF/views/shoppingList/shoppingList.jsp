@@ -1,212 +1,276 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 
-<jsp:include page="../info/header.jsp"></jsp:include>
+<jsp:include page="../info/header2.jsp"></jsp:include>
 
-<div class="layout-wrapper">
-<p class="goods-list-position"></p>
-</div>
+<!-- Cart -->
+	<div class="wrap-header-cart js-panel-cart">
+		<div class="s-full js-hide-cart"></div>
 
-<div class="layout-page-header">
-	<h2 class="layout-page-title">장바구니</h2>
-	<div class="pg_sub_desc">
-		<p>주문하실 상품명 및 수량을 정확하게 확인해 주세요.</p>
+		<div class="header-cart flex-col-l p-l-65 p-r-25">
+			<div class="header-cart-title flex-w flex-sb-m p-b-8">
+				<span class="mtext-103 cl2">
+					Your Cart
+				</span>
+
+				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+					<i class="zmdi zmdi-close"></i>
+				</div>
+			</div>
+			
+			<div class="header-cart-content flex-w js-pscroll">
+				<ul class="header-cart-wrapitem w-full">
+					<li class="header-cart-item flex-w flex-t m-b-12">
+						<div class="header-cart-item-img">
+							<img src="images/item-cart-01.jpg" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt p-t-8">
+							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								White Shirt Pleat
+							</a>
+
+							<span class="header-cart-item-info">
+								1 x $19.00
+							</span>
+						</div>
+					</li>
+
+					<li class="header-cart-item flex-w flex-t m-b-12">
+						<div class="header-cart-item-img">
+							<img src="images/item-cart-02.jpg" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt p-t-8">
+							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								Converse All Star
+							</a>
+
+							<span class="header-cart-item-info">
+								1 x $39.00
+							</span>
+						</div>
+					</li>
+
+					<li class="header-cart-item flex-w flex-t m-b-12">
+						<div class="header-cart-item-img">
+							<img src="images/item-cart-03.jpg" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt p-t-8">
+							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								Nixon Porter Leather
+							</a>
+
+							<span class="header-cart-item-info">
+								1 x $17.00
+							</span>
+						</div>
+					</li>
+				</ul>
+				
+				<div class="w-full">
+					<div class="header-cart-total w-full p-tb-40">
+						Total: $75.00
+					</div>
+
+					<div class="header-cart-buttons flex-w w-full">
+						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+							View Cart
+						</a>
+
+						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+							Check Out
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
 
-<div class="user_form section_cart">
-	<form id="viewCart" name="frmCart" method="post"
-		action="/shop/order/order.php">
-		<input type="hidden" name="mode" value="setOrder">
-		<div class="tbl_comm cart_goods">
-			<table class="tbl_comm tbl_header">
-				<caption>장바구니 목록 제목</caption>
-				<colgroup>
-					<col style="width: 375px">
-					<col style="width: 432px">
-					<col style="width: 115px">
-					<col style="width: 110px">
-					<col style="width: auto">
-				</colgroup>
-				<thead>
-					<tr>
-						<th id="thSelect">
-							<div class="all_select">
-								<label class="label_check" :class="{checked : allChecked}">
-									<input type="checkbox" name="allCheck" class="ico_check"
-									v-model="allChecked" @change="onClickAllChecked">
-								</label> <span class="tit"> 전체선택 (<span class="num_count"
-									v-text="checkedCount"></span>/<span class="num_total"
-									v-text="totalCount"></span>)
-								</span>
-							</div>
-						</th>
-						<th id="thInfo">상품 정보</th>
-						<th id="thCount">수량</th>
-						<th id="thCost">상품금액</th>
-						<th id="thDelete"><span class="screen_out">삭제선택</span></th>
-					</tr>
-				</thead>
-			</table>
-			<div id="viewGoods">
-				<div>
-					<div class="view_goods">
-						<table class="tbl_goods goods">
-							<caption>장바구니 목록 내용</caption>
-							<colgroup>
-								<col style="width: 76px;">
-								<col style="width: 100px;">
-								<col style="width: 488px;">
-								<col style="width: 112px;">
-								<col style="width: 86px;">
-								<col style="width: 110px;">
-								<col style="width: auto;">
-							</colgroup>
-							<tbody>
-								<tr>
-									<td header="thSelect" class="goods_check"><label
-										class="label_check checked"><input type="checkbox"
-											name="" class="ico_check" value="31441"></label> <!----></td>
-									<td header="thInfo" class="goods_thumb"><a
-										href="/shop/goods/goods_view.php?&amp;goodsno=31441"
-										class="thumb"><img
-											src="https://img-cf.kurly.com/shop/data/goods/1542967126271i0.jpg"
-											alt="상품이미지"
-											onerror="this.src='https://res.kurly.com/mobile/service/common/bg_1x1.png'"></a></td>
-									<td header="thInfo" class="goods_info">
-										<!----> <a
-										href="/shop/goods/goods_view.php?&amp;goodsno=31441"
-										class="name"> <!---->[KF365] DOLE 실속 바나나 1.1kg
-									</a>
-										<dl class="goods_cost">
-											<dt class="screen_out">판매가격</dt>
-											<dd class="selling_price">
-												<span class="num">2,850</span> <span class="txt">원</span>
-											</dd>
-											<!---->
-											<!---->
-										</dl> <!---->
-										<p class="txt txt_limit">
-											<!---->
-										</p> <!----> <!---->
-									</td>
-									<td header="thInfo" class="goods_condition"><div
-											class="condition">
-											<!---->
-										</div></td>
-									<td header="thCount"><div class="goods_quantity">
-											<div class="quantity">
-												<strong class="screen_out">수량</strong>
-												<button type="button" class="btn btn_reduce">
-													<img
-														src="https://res.kurly.com/pc/ico/1801/ico_minus_24x4_777.png"
-														alt="감소">
-												</button>
-												<input type="text" readonly="readonly" class="inp_quantity">
-												<button type="button" class="btn btn_rise">
-													<img
-														src="https://res.kurly.com/pc/ico/1801/ico_plus_24x24_777.png"
-														alt="추가">
-												</button>
-											</div>
-										</div></td>
-									<td header="thCost"><dl class="goods_total">
-											<dt class="screen_out">합계</dt>
-											<dd class="result">
-												<span class="num">5,700</span> <span class="txt">원</span>
-											</dd>
-										</dl></td>
-									<td header="thDelete" class="goods_delete"><button
-											type="button" class="btn btn_delete">
-											<img
-												src="https://res.kurly.com/pc/ico/1801/btn_close_24x24_514859.png"
-												alt="삭제">
-										</button></td>
+
+	<!-- breadcrumb -->
+	<div class="container">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
+				Home
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<span class="stext-109 cl4">
+				Shoping Cart
+			</span>
+		</div>
+	</div>
+		
+
+	<!-- Shoping Cart -->
+	<form class="bg0 p-t-75 p-b-85">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+					<div class="m-l-25 m-r--38 m-lr-0-xl">
+						<div class="wrap-table-shopping-cart">
+							<table class="table-shopping-cart">
+								<tr class="table_head">
+									<th class="column-1">Product</th>
+									<th class="column-2"></th>
+									<th class="column-3">Price</th>
+									<th class="column-4">Quantity</th>
+									<th class="column-5">Total</th>
 								</tr>
 
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div v-if="noData" class="no_data">장바구니에 담긴 상품이 없습니다.</div>
-			</div>
-		</div>
-		<div class="all_select select_option">
-			<label class="label_check" :class="{checked : allChecked}"> <input
-				type="checkbox" name="allCheck" class="ico_check"
-				v-model="allChecked" @change="onClickAllChecked">
-			</label> <span class="tit"> 전체선택 (<span class="num_count"
-				v-text="checkedCount"></span>/<span class="num_total"
-				v-text="totalCount"></span>)
-			</span>
-			<button type="button" class="btn_delete"
-				@click="onCheckItem('selection')">선택 삭제</button>
-			<button type="button" class="btn_delete"
-				@click="onCheckItem('soldout')">품절 상품 삭제</button>
-		</div>
-		<div class="cart_result">
-			<div class="cart_amount cell_except">
-				<div class="amount_detail">
-					<dl class="list amount_total">
-						<dt class="tit">상품금액</dt>
-						<dd class="result">
-							<span class="inner_result"><span class="num">316,700</span>
-								<span class="txt">원</span></span>
-						</dd>
-					</dl>
-					<div class="deco deco_minus">
-						<span class="ico fst"></span> <span class="ico"></span>
-					</div>
-					<dl class="list amount_dc">
-						<dt class="tit">상품할인금액</dt>
-						<dd class="result">
-							<span class="inner_result"><span class="num">
-									<!---->0
-							</span> <span class="txt">원</span> <!----></span>
-						</dd>
-					</dl>
-					<!---->
-					<!---->
-					<dl class="list amout_order" style="display: none;">
-						<dt class="tit">주문금액</dt>
-						<dd class="result">
-							<span class="num"><span class="desc">= </span>316,700</span> <span
-								class="txt">원</span>
-						</dd>
-					</dl>
-				</div>
-				<div class="deco deco_plus">
-					<span class="ico fst"></span> <span class="ico"></span>
-				</div>
-				<dl class="list amount_delivery">
-					<dt class="tit">배송비</dt>
-					<dd class="result">
-						<span class="inner_result"><span class="num">
-								<!---->0
-						</span> <span class="txt">원</span> <!----></span>
-					</dd>
-				</dl>
-				<div class="deco deco_equal">
-					<span class="ico fst"></span> <span class="ico"></span>
-				</div>
-				<dl class="list amout_result">
-					<dt class="tit">결제예정금액</dt>
-					<dd class="result">
-						<span class="inner_result add"><span class="num">316,700</span>
-							<span class="txt">원</span> <span class="txt_point">구매시
-								15,835 원 <strong class="emph">적립예정</strong>
-						</span> <!----></span>
-					</dd>
-				</dl>
-			</div>
-			<div class="notice_cart">*쿠폰, 적립금은 다음화면인 ‘주문서’에서 확인가능합니다.</div>
-			<button type="button" id="btnOrder" class="btn_submit">
-				주문하기 <span class="price">(316,700 원)</span>
-			</button>
-			<!---->
-		</div>
-		<p class="info_notice">‘입금확인’ 상태일 때는 주문내역 상세 페이지에서 직접 주문취소가 가능합니다.<br>‘입금확인’ 이후 상태에는 고객행복센터로 문의해주세요.</p>
-	</form>
-</div>
+								<tr class="table_row">
+									<td class="column-1">
+										<div class="how-itemcart1">
+											<img src="images/item-cart-04.jpg" alt="IMG">
+										</div>
+									</td>
+									<td class="column-2">Fresh Strawberries</td>
+									<td class="column-3">$ 36.00</td>
+									<td class="column-4">
+										<div class="wrap-num-product flex-w m-l-auto m-r-0">
+											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+												<i class="fs-16 zmdi zmdi-minus"></i>
+											</div>
 
-<jsp:include page="../info/footer.jsp"></jsp:include>
+											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="1">
+
+											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+												<i class="fs-16 zmdi zmdi-plus"></i>
+											</div>
+										</div>
+									</td>
+									<td class="column-5">$ 36.00</td>
+								</tr>
+
+								<tr class="table_row">
+									<td class="column-1">
+										<div class="how-itemcart1">
+											<img src="images/item-cart-05.jpg" alt="IMG">
+										</div>
+									</td>
+									<td class="column-2">Lightweight Jacket</td>
+									<td class="column-3">$ 16.00</td>
+									<td class="column-4">
+										<div class="wrap-num-product flex-w m-l-auto m-r-0">
+											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+												<i class="fs-16 zmdi zmdi-minus"></i>
+											</div>
+
+											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="1">
+
+											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+												<i class="fs-16 zmdi zmdi-plus"></i>
+											</div>
+										</div>
+									</td>
+									<td class="column-5">$ 16.00</td>
+								</tr>
+							</table>
+						</div>
+
+						<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
+							<div class="flex-w flex-m m-r-20 m-tb-5">
+								<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Coupon Code">
+									
+								<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+									Apply coupon
+								</div>
+							</div>
+
+							<div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
+								Update Cart
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
+					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+						<h4 class="mtext-109 cl2 p-b-30">
+							Cart Totals
+						</h4>
+
+						<div class="flex-w flex-t bor12 p-b-13">
+							<div class="size-208">
+								<span class="stext-110 cl2">
+									Subtotal:
+								</span>
+							</div>
+
+							<div class="size-209">
+								<span class="mtext-110 cl2">
+									$79.65
+								</span>
+							</div>
+						</div>
+
+						<div class="flex-w flex-t bor12 p-t-15 p-b-30">
+							<div class="size-208 w-full-ssm">
+								<span class="stext-110 cl2">
+									Shipping:
+								</span>
+							</div>
+
+							<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
+								<p class="stext-111 cl6 p-t-2">
+									There are no shipping methods available. Please double check your address, or contact us if you need any help.
+								</p>
+								
+								<div class="p-t-15">
+									<span class="stext-112 cl8">
+										Calculate Shipping
+									</span>
+
+									<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
+										<select class="js-select2" name="time">
+											<option>Select a country...</option>
+											<option>USA</option>
+											<option>UK</option>
+										</select>
+										<div class="dropDownSelect2"></div>
+									</div>
+
+									<div class="bor8 bg0 m-b-12">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="state" placeholder="State /  country">
+									</div>
+
+									<div class="bor8 bg0 m-b-22">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="postcode" placeholder="Postcode / Zip">
+									</div>
+									
+									<div class="flex-w">
+										<div class="flex-c-m stext-101 cl2 size-115 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer">
+											Update Totals
+										</div>
+									</div>
+										
+								</div>
+							</div>
+						</div>
+
+						<div class="flex-w flex-t p-t-27 p-b-33">
+							<div class="size-208">
+								<span class="mtext-101 cl2">
+									Total:
+								</span>
+							</div>
+
+							<div class="size-209 p-t-1">
+								<span class="mtext-110 cl2">
+									$79.65
+								</span>
+							</div>
+						</div>
+
+						<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+							Proceed to Checkout
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+		
+		<jsp:include page="../info/footer.jsp"></jsp:include>
