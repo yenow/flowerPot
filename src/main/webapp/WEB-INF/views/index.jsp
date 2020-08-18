@@ -26,7 +26,7 @@
 				</div>
 			</div>
 		  
-			<div class="item-slick1" style="background-image: url(${pageContext.request.contextPath }/resources/images/cos1.jpg);">
+			<div class="item-slick1" style="background-image: url(${pageContext.request.contextPath }/resources/images/cos6.jpg); ">
 				<div class="container h-full">
 					<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 						<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
@@ -44,7 +44,7 @@
 				</div>
 			</div>
 
-			<div class="item-slick1" style="background-image: url(${pageContext.request.contextPath }/resources/images/cos2.jpg); background-size:90%;">
+			<div class="item-slick1" style="background-image: url(${pageContext.request.contextPath }/resources/images/cos4.jpg); ">
 				<div class="container h-full">
 					<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 						<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
