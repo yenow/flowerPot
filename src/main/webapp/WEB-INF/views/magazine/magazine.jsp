@@ -16,6 +16,12 @@
 				<div class="inner_lnb">
 					<div class="ico_cate">
 						<span class="tit">매거진</span>
+						<select> 
+							<option></option>
+							<option></option>
+							<option></option>
+							<option></option>
+						</select>
 					</div>
 				</div>
 			</div>
@@ -40,70 +46,7 @@
 				</div> -->
 				<div class="list_goods">
 					<div class="inner_listgoods">
-						<ul class="list">
-							<!-- 하나의 리스트 -->
-							<li>
-								<div class="item">
-									<div class="thumb">
-										<a class="img" style="background-image: url('${pageContext.request.contextPath }/resources/img/cometic/abc.jpg');">
-											<img alt="aaa" src="${pageContext.request.contextPath }/resources/img/cometic/abc.jpg" width="308" height="396">
-										</a>
-										
-									</div>
-									<a class="info"> 
-										<span class="name">화장품...</span> 
-										<span class="desc">내 마음대로 골라담고 세척되어 바로 바를 수 있는 신선한 화장품</span>
-									</a>
-									<span class="tag"></span>
-								</div>
-							</li>
-							<!-- 하나의 리스트 -->
-							<li>
-								<div class="item">
-									<div class="thumb">
-										<a class="img" style="background-image: url('${pageContext.request.contextPath }/resources/img/cometic/abc.jpg');">
-											<img alt="aaa" src="${pageContext.request.contextPath }/resources/img/cometic/abc.jpg" width="308" height="396">
-										</a>
-										
-									</div>
-									<a class="info"> 
-										<span class="name">화장품...</span> 
-										<span class="desc">내 마음대로 골라담고 세척되어 바로 바를 수 있는 신선한 화장품</span>
-									</a>
-									<span class="tag"></span>
-								</div>
-							</li>
-							<!-- 하나의 리스트 -->
-							<li>
-								<div class="item">
-									<div class="thumb">
-										<a class="img" style="background-image: url('${pageContext.request.contextPath }/resources/img/cometic/abc.jpg');">
-											<img alt="aaa" src="${pageContext.request.contextPath }/resources/img/cometic/abc.jpg" width="308" height="396">
-										</a>
-										
-									</div>
-									<a class="info"> 
-										<span class="name">화장품...</span> 
-										<span class="desc">내 마음대로 골라담고 세척되어 바로 바를 수 있는 신선한 화장품</span>
-									</a>
-									<span class="tag"></span>
-								</div>
-							</li>
-							<li>
-								<div class="item">
-									<div class="thumb" id="magazine-test">
-										<a class="img" style="background-image: url('${pageContext.request.contextPath }/resources/img/cometic/abc.jpg');">
-											<img alt="aaa" src="${pageContext.request.contextPath }/resources/img/cometic/abc.jpg" width="308" height="396">
-										</a>
-										
-									</div>
-									<a class="info"> 
-										<span class="name" id="magazine-title">화장품...</span> 
-										<span class="desc" id="magazine-content">내 마음대로 골라담고 세척되어 바로 바를 수 있는 신선한 화장품</span>
-									</a>
-									<span class="tag"></span>
-								</div>
-							</li>
+						<ul class="list magazine-test" >
 						</ul>
 					</div>
 				</div>
@@ -135,8 +78,12 @@
 				dataType : 'json',
 				success : function (data) {
 					console.log(data);
-					$('#magazine-test a img').attr('src','${pageContext.request.contextPath }'+data[0].rootfolder+data[0].uuidname);
-					$('#magazine-title').html(data[0].title)
+					
+					for(var i=0 ; i<data.length ; i++){
+						$('.magazine-test').append("<li><div class='item'><div class='thumb'><a class='img'><img alt='aaa' src='${pageContext.request.contextPath }"+data[i].rootfolder+data[i].uuidname+"' width='308' height='396'></a></div><a class='info'> <span class='name'>"+data[i].title+"</span> <span class='desc'>내 마음대로 골라담고 세척되어 바로 바를 수 있는 신선한 화장품</span></a><span class='tag'></span></div></li>")
+						
+					}
+					
 				}
 			});
 
