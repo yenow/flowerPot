@@ -37,30 +37,18 @@ public class HomeController {
 		return "index";
 	}
 	
-	@RequestMapping("/shoppingList/shoppingList")
-	public void shoppingList() {
+	@RequestMapping(value = "/index2", method = RequestMethod.GET)
+	public String index2(Locale locale, Model model) {
+		/*logger.info("Welcome home! The client locale is {}.", locale);
 		
-	}
-	
-	@RequestMapping("/category/categoryTest")
-	public void categoryTest() {
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
-	}
-	
-	@RequestMapping("/category/categoryTest2")
-	public void categoryTest2() {
+		String formattedDate = dateFormat.format(date);
 		
-	}
-	
-	@RequestMapping("/ourCompany/Company_main")
-	public void Company_main() {
+		model.addAttribute("serverTime", formattedDate );*/
 		
+		return "index2";
 	}
 
-	
-	
-	@RequestMapping("/order/order")
-	public void order() {
-		
-	}
 }

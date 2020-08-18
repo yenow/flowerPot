@@ -40,8 +40,85 @@
 </style>
 </head>
 <body class="animsition">
+	<header>
+		<!-- Header desktop -->
+		<div class="container-menu-desktop">
+			<div class="top-bar">
+				<div class="content-topbar flex-sb-m h-full container">
+					<div class="left-top-bar">Free shipping for standard order over $100</div>
+
+					<div class="right-top-bar flex-w h-full">
+						<a href="#" class="flex-c-m trans-04 p-lr-25"> 고객센터 </a>
+
+						<a href="#" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
+
+						<a href="#" class="flex-c-m trans-04 p-lr-25"> 로그인 </a>
+
+						<a href="#" class="flex-c-m trans-04 p-lr-25"> 회원가입 </a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<nav class="navbar navbar-expand-lg navbar-light wrap-menu-desktop" style="background-color: #ffffff;">
+		<a class="navbar-brand" href="#">Brand</a>
+
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="main_nav">
+
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home </a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#"> About </a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#"> Services </a>
+				</li>
+				<li class="nav-item dropdown has-megamenu">
+					<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Mega menu </a>
+					<div class="dropdown-menu megamenu">
+
+						This is content of megamenu. <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+					</div>
+					<!-- dropdown-mega-menu.// -->
+				</li>
+			</ul>
+			<ul class="navbar-nav float-right">
+				<li class="nav-item">
+					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+						<i class="zmdi zmdi-search"></i>
+					</div>
+				</li>
+				<li class="nav-item">
+					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+						<i class="zmdi zmdi-shopping-cart"></i>
+					</div>
+				</li>
+				<li class="nav-item">
+					<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+						<i class="zmdi zmdi-favorite-outline"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- navbar-collapse.// -->
+	</nav>
+
+
+	<script type="text/javascript">
+	$(document).on('click', '.dropdown-menu', function (e) {
+		  e.stopPropagation();
+		});
 	
-	<!-- Header -->
+	</script>
+
+	<%-- <!-- Header -->
 	<header>
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
@@ -71,13 +148,13 @@
 					</div>
 				</div>
 			</div>
-
+    		<!--  계속해서 남기는 -->
 			<div class="wrap-menu-desktop">
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->		
 					<a href="#" class="logo">
-						<%-- <img src="${pageContext.request.contextPath }/resources/images/icons/logo-01.png" alt="IMG-LOGO"> --%>
+						<img src="${pageContext.request.contextPath }/resources/images/icons/logo-01.png" alt="IMG-LOGO">
 						화분
 					</a>
 
@@ -247,7 +324,7 @@
 				</form>
 			</div>
 		</div>
-	</header>
+	</header> --%>
 	
 	<!-- Cart -->
 	<div class="wrap-header-cart js-panel-cart">
