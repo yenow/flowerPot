@@ -9,19 +9,23 @@
 
 				<ul>
 					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04"> Women </a>
+						<a href="${pageContext.request.contextPath }/resources" class="stext-107 cl7 hov-cl1 trans-04"> Women </a>
 					</li>
 
 					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04"> Men </a>
+						<a href="${pageContext.request.contextPath }/resources" class="stext-107 cl7 hov-cl1 trans-04"> Men </a>
 					</li>
 
 					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04"> Shoes </a>
+						<a href="${pageContext.request.contextPath }/myPage/myPage" class="stext-107 cl7 hov-cl1 trans-04"> 마이페이지 </a>
 					</li>
 
 					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04"> Watches </a>
+						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter" class="stext-107 cl7 hov-cl1 trans-04"> 고객센터 </a>
+					</li>
+					
+					<li class="p-b-10">
+						<a href="${pageContext.request.contextPath }/admin/dashboard" class="stext-107 cl7 hov-cl1 trans-04"> 관리자 </a>
 					</li>
 				</ul>
 			</div>
@@ -87,23 +91,23 @@
 		<div class="p-t-40">
 			<div class="flex-c-m flex-w p-b-18">
 				<a href="#" class="m-all-1">
-					<img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
+					<img src="${pageContext.request.contextPath }/resources/images/icons/icon-pay-01.png" alt="ICON-PAY">
 				</a>
 
 				<a href="#" class="m-all-1">
-					<img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
+					<img src="${pageContext.request.contextPath }/resources/images/icons/icon-pay-02.png" alt="ICON-PAY">
 				</a>
 
 				<a href="#" class="m-all-1">
-					<img src="images/icons/icon-pay-03.png" alt="ICON-PAY">
+					<img src="${pageContext.request.contextPath }/resources/images/icons/icon-pay-03.png" alt="ICON-PAY">
 				</a>
 
 				<a href="#" class="m-all-1">
-					<img src="images/icons/icon-pay-04.png" alt="ICON-PAY">
+					<img src="${pageContext.request.contextPath }/resources/images/icons/icon-pay-04.png" alt="ICON-PAY">
 				</a>
 
 				<a href="#" class="m-all-1">
-					<img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
+					<img src="${pageContext.request.contextPath }/resources/images/icons/icon-pay-05.png" alt="ICON-PAY">
 				</a>
 			</div>
 

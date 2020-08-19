@@ -1,6 +1,6 @@
 -- magazine
 
-create table magazine (
+create table f_magazine (
 	mgno number(30),
 	title varchar2(100) not null,
 	content varchar2(3000) not null,
@@ -10,7 +10,7 @@ create table magazine (
 	UUIDName varchar2(100),
 	originalName varchar2(100),
 	rootfolder varchar2(100),
-	constraint magazine_mgno_pk primary key (mgno)
+	constraint f_magazine_mgno_pk primary key (mgno)
 	-- mno 필요
 	-- mno 외래키 제약조건 필요
 );
