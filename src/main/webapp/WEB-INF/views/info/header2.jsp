@@ -37,7 +37,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/main.css">
 <!--===============================================================================================-->
 
-
+<!-- 제이쿼리 -->
+<script src="${pageContext.request.contextPath }/resources/vendor/jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body class="animsition">
 

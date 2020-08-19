@@ -17,7 +17,7 @@ import com.flowerPot.service.MagazineService;
 import com.flowerPot.vo.MagazineVo;
 
 @Controller
-@RequestMapping("/magazine")
+@RequestMapping("magazine")
 public class MagazineController {
 
 	@Autowired
@@ -48,12 +48,12 @@ public class MagazineController {
 		return re;
 	}
 	
-	@RequestMapping("magazine_writer")
-	public void magazine_writer() {
+	@RequestMapping("magazine_write")
+	public void magazine_write() {
 		
 	}
 	
-	@PostMapping("magazine_writer_ok")
+	@PostMapping("magazine_write_ok")
 	public String magazine_writer_ok(HttpServletRequest request, MultipartHttpServletRequest mrequset) {
 		/*
 		 * System.out.println(magazine.getTitle());
@@ -66,9 +66,6 @@ public class MagazineController {
 		magazine.setCategory(request.getParameter("category"));
 	
 		magazine = magazineService.insertMagazine(magazine,mrequset);
-		
-		
-	
 		
 		return "redirect:/";   // +request.getContextPath();
 	}
