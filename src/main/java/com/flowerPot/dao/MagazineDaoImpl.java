@@ -29,5 +29,16 @@ public class MagazineDaoImpl implements MagazineDao {
 	public MagazineVo selectMagzineCont(MagazineVo mgno) {
 		return sqlSession.selectOne("selectMagzineCont", mgno);
 	}
+
+	@Override
+	public void deleteMagazine(int mgno) {
+		sqlSession.delete("deleteMagazine", mgno);
+	}
+
+	@Override
+	public void updateMagazine(MagazineVo magazineVo) {
+		sqlSession.update("updateMagazine",magazineVo);
+		
+	}
 	
 }

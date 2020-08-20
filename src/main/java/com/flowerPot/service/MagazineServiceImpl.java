@@ -74,5 +74,15 @@ public class MagazineServiceImpl implements MagazineService {
 	public MagazineVo selectMagzineCont(MagazineVo mgno) {
 		return magazineDao.selectMagzineCont(mgno);
 	}
+
+	@Override
+	public void deleteMagazine(int mgno) {
+		magazineDao.deleteMagazine(mgno);
+	}
+
+	@Override
+	public void updateMagazine(MagazineVo magazineVo) {
+		magazineDao.updateMagazine(magazineVo);
+	}
 	
 }

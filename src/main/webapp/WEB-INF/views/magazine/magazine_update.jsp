@@ -27,7 +27,7 @@
 						Home<span class="sr-only">(current)</span>
 					</a></li>
 				<!-- category -->
-				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/product/product" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">카테고리</a></li>
+				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/product/product" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">shop</a></li>
 				<!-- 매거진 -->
 				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/magazine/magazine" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">매거진</a></li>
 				<!-- 오늘의 추천 -->
@@ -38,14 +38,17 @@
 		</div>
 	</nav>
 	<!-- /nav -->
+	
 	<!-- content -->
 	<div class="container-fluid">
 		<h2 class="text-center my-3">매거진 등록</h2>
-		<form action="${pageContext.request.contextPath}/magazine/magazine_write_ok" method="post" enctype="multipart/form-data">
+		<form action="${pageContext.request.contextPath}/magazine/magazine_update_ok" method="post" enctype="multipart/form-data">
 			<!-- <input type="hidden" name="mno" value="${login.mno }"> -->
+			<input type="hidden" name="mgno" value="${magazine.mgno }">
+			
 			<!-- 카테고리 -->
 			<div class="mb-3">
-				<label for="country">카테고리</label> <select class="custom-select d-block w-100" id="country" name="category" required="">
+				<label for="country">카테고리</label> <select class="custom-select d-block w-100" id="country" name="category">
 					<option value="">Choose...</option>
 					<option value="Tip">Tip</option>
 					<option value="Interview">Interview</option>
@@ -65,9 +68,9 @@
 				<label for="username">제목</label>
 				<div class="input-group">
 					<div class="input-group-prepend">
-						<span class="input-group-text">${magazineVo.title }</span>
+						<span class="input-group-text">제목</span>
 					</div>
-					<input type="text" class="form-control" id="username" name="title" placeholder="Username" required="">
+					<input type="text" class="form-control" id="username" value="${magazine.title }" name="title" placeholder="Username" required="">
 					<div class="invalid-feedback" style="width: 100%;">Your username is required.</div>
 				</div>
 			</div>
@@ -75,12 +78,12 @@
 			<!-- 내용 -->
 			<div class="mb-2">
 				<textarea id="summernote" name="content">
-					${magazineVo.content }
+					${magazine.content }
 				</textarea>
 			</div>
 			<!-- 제출 -->
 			<div class="text-center">
-				<input type="submit" class="btn btn-primary" value="등록">
+				<input type="submit" class="btn btn-primary" value="수정">
 			</div>
 		</form>
 	</div>

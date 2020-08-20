@@ -96,10 +96,6 @@
 								</ul>
 							</li>
 
-							<li class="label1" data-label1="hot">
-								<a href="${pageContext.request.contextPath }/product/product">브랜드</a>
-							</li>
-
 							<li>
 								<a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip" class="dropdown-toggle">매거진</a>
 								

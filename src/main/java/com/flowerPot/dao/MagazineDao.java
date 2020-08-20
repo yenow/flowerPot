@@ -13,4 +13,8 @@ public interface MagazineDao {
 
 	MagazineVo selectMagzineCont(MagazineVo mgno);
 
+	void deleteMagazine(int mgno);
+
+	void updateMagazine(MagazineVo magazineVo);
+
 }

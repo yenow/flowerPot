@@ -97,31 +97,22 @@ public class MagazineController {
 	// 매거진 수정 페이지
 	@RequestMapping("magazine_update")
 	public void magazine_update(MagazineVo magazineVo,Model m) {
-		// MagazineVo magazineVo =  magazineService.selectMagzineCont(mg);
-		
-		// 이부분,, 객체를 받을수 있는지 확인
-		System.out.println(magazineVo);
-		System.out.println(magazineVo.getCategory());
-		System.out.println(magazineVo.getMgno());
-		System.out.println(magazineVo.getTitle());
-		System.out.println(magazineVo.getContent());
+		MagazineVo magazine =  magazineService.selectMagzineCont(magazineVo);
 		// 윤신영 - upload 이하의 주소만 넘김
-		magazineVo.setRootfolder(magazineVo.getRootfolder().substring(magazineVo.getRootfolder().indexOf('\\')).replace('\\', '/'));
-			
-		
-		m.addAttribute("magazineVo", magazineVo);
+		magazine.setRootfolder(magazine.getRootfolder().substring(magazine.getRootfolder().indexOf('\\')).replace('\\', '/'));
+		m.addAttribute("magazine", magazine);
 	}
 	
 	// 매거진 수정 처리 페이지
 	@RequestMapping("magazine_update_ok")
-	public String magazine_update_ok() {
-		
+	public String magazine_update_ok(MagazineVo magazineVo) {
+		magazineService.updateMagazine(magazineVo);
 		return "redirect:/magazine/magazine?category=Tip";
 	}
 	
 	@RequestMapping("magazine_delete")
 	public void magazine_delete(int mgno ,HttpServletResponse response,HttpServletRequest request) {
-		// magazineService.deleteMagazine(mgno);
+		magazineService.deleteMagazine(mgno);
 		
 		PrintWriter out;
 		try {

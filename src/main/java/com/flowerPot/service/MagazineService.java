@@ -15,4 +15,8 @@ public interface MagazineService {
 
 	MagazineVo selectMagzineCont(MagazineVo mg);
 
+	void deleteMagazine(int mgno);
+
+	void updateMagazine(MagazineVo magazineVo);
+
 }

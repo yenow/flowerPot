@@ -35,9 +35,9 @@
 					</div>
 					<hr />
 					<div class="text-right">
-						<a href="${pageContext.request.contextPath }/magazine/magazine_update?magazineVo=${magazineVo}" class="btn btn-secondary btn-primary" >메거진 수정</a> <!-- 이거한번 실험해보자 -->
+						<a href="${pageContext.request.contextPath }/magazine/magazine_update?mgno=${magazineVo.mgno}" class="btn btn-secondary btn-primary" >메거진 수정</a> <!-- 이거한번 실험해보자 -->
 						<a href="${pageContext.request.contextPath }/magazine/magazine_delete?mgno=${magazineVo.mgno}" class="btn btn-secondary btn-primary" >메거진 삭제</a>
-						<a href="${pageContext.request.contextPath }/magazine/magazine?category=${category}" class="btn btn-secondary btn-primary" >메거진 목록</a>
+						<a href="${pageContext.request.contextPath }/magazine/magazine?category=${magazineVo.category}" class="btn btn-secondary btn-primary" >메거진 목록</a>
 					</div>
 					<!-- 태그기능 있으면 좋을듯 -->
 					<!-- <div class="flex-w flex-t p-t-16">

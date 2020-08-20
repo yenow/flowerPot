@@ -17,7 +17,7 @@ public class Criteria { // pageNum 과 amount 값을 같이 전달하는 용도,
  
 
   public Criteria() {
-    this(1, 10);
+    this(1, 5);
   }
 
   public Criteria(int pageNum, int amount) {
