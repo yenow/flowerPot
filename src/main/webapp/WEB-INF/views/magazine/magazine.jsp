@@ -2,8 +2,28 @@
 <jsp:include page="../info/header2.jsp"></jsp:include>
 <!-- Title page -->
 <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/bg-02.jpg');">
-	<h2 class="ltext-105 cl0 txt-center">Blog</h2>
+	<h2 class="ltext-105 cl0 txt-center">Magazine</h2>
 </section>
+
+<div class="container">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
+				홈
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
+				매거진
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<span class="stext-109 cl4">
+				${category }
+			</span>
+		</div>
+	</div>
+	
+	
 <!-- Content page -->
 <section class="bg0 p-t-62 p-b-60">
 	<div class="container">
@@ -34,12 +54,13 @@
 							</div>
 						</div>
 					</div>
-					<!-- Pagination -->
+					
+				</div>
+				<!-- Pagination -->
 					<div class="flex-l-m flex-w w-full p-t-10 m-lr--7">
 						<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1"> 1 </a>
 						<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7"> 2 </a>
 					</div>
-				</div>
 			</div>
 			<div class="col-md-4 col-lg-3 p-b-80">
 				<div class="side-menu">
@@ -52,67 +73,12 @@
 					<div class="p-t-55">
 						<h4 class="mtext-112 cl2 p-b-33">Categories</h4>
 						<ul>
-							<li class="bor18"><a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> TIP </a></li>
-							<li class="bor18"><a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> INTERVIEW </a></li>
-							<li class="bor18"><a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> COVID19 </a></li>
-							<li class="bor18"><a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> Setec </a></li>
+							<li class="bor18"><a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> Tip </a></li>
+							<li class="bor18"><a href="${pageContext.request.contextPath }/magazine/magazine?category=Interview" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> Interview </a></li>
+							<li class="bor18"><a href="${pageContext.request.contextPath }/magazine/magazine?category=COVID19" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> COVID19 </a></li>
+							<li class="bor18"><a href="${pageContext.request.contextPath }/magazine/magazine?category=Setec" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> Setec </a></li>
 						</ul>
 					</div>
-					<%-- <div class="p-t-65">
-							<h4 class="mtext-112 cl2 p-b-33">
-								Featured Products
-							</h4>
-
-							<ul>
-								<li class="flex-w flex-t p-b-30">
-									<a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-										<img src="${pageContext.request.contextPath }/resources/images/product-min-01.jpg" alt="PRODUCT">
-									</a>
-
-									<div class="size-215 flex-col-t p-t-8">
-										<a href="#" class="stext-116 cl8 hov-cl1 trans-04">
-											White Shirt With Pleat Detail Back
-										</a>
-
-										<span class="stext-116 cl6 p-t-20">
-											$19.00
-										</span>
-									</div>
-								</li>
-
-								<li class="flex-w flex-t p-b-30">
-									<a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-										<img src="${pageContext.request.contextPath }/resources/images/product-min-02.jpg" alt="PRODUCT">
-									</a>
-
-									<div class="size-215 flex-col-t p-t-8">
-										<a href="#" class="stext-116 cl8 hov-cl1 trans-04">
-											Converse All Star Hi Black Canvas
-										</a>
-
-										<span class="stext-116 cl6 p-t-20">
-											$39.00
-										</span>
-									</div>
-								</li>
-
-								<li class="flex-w flex-t p-b-30">
-									<a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-										<img src="${pageContext.request.contextPath }/resources/images/product-min-03.jpg" alt="PRODUCT">
-									</a>
-
-									<div class="size-215 flex-col-t p-t-8">
-										<a href="#" class="stext-116 cl8 hov-cl1 trans-04">
-											Nixon Porter Leather Watch In Tan
-										</a>
-
-										<span class="stext-116 cl6 p-t-20">
-											$17.00
-										</span>
-									</div>
-								</li>
-							</ul>
-						</div> --%>
 					<div class="p-t-55">
 						<h4 class="mtext-112 cl2 p-b-20">Archive</h4>
 						<ul>
@@ -203,83 +169,69 @@ $div2 = $('<div class="p-t-32"><h4 class="p-b-15"><a href="blog-detail.html" cla
 		+'</span> <span> 카테고리 <span class="cl12 m-l-4 m-r-6">|</span>'
 		+'</span> <span> 댓글개수 </span> </span> <a href="blog-detail.html" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">Continue Reading <i class="fa fa-long-arrow-right m-l-9"></i></a></div></div>');
 
-<%-- 
-<div class="p-b-63 magazine-item">
-	<a href="blog-detail.html" class="hov-img0 how-pos5-parent">
-		<img src="${pageContext.request.contextPath }/resources/images/blog-04.jpg" alt="IMG-BLOG">
-		<div class="flex-col-c-m size-123 bg9 how-pos5">
-			<span class="ltext-107 cl2 txt-center"> 22 </span> <span class="stext-109 cl3 txt-center"> Jan 2018 </span>
-		</div>
-	</a>
-	<div class="p-t-32">
-		<h4 class="p-b-15">
-			<a href="blog-detail.html" class="ltext-108 cl2 hov-cl1 trans-04"> 8 Inspiring Ways to Wear Dresses in the Winter </a>
-		</h4>
-		<p class="stext-117 cl6">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius</p>
-		<div class="flex-w flex-sb-m p-t-18">
-			<span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10"> <span> <span class="cl4">By</span> Admin <span class="cl12 m-l-4 m-r-6">|</span>
-			</span> <span> StreetStyle, Fashion, Couple <span class="cl12 m-l-4 m-r-6">|</span>
-			</span> <span> 8 Comments </span>
-			</span>
-			<a href="blog-detail.html" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
-				Continue Reading <i class="fa fa-long-arrow-right m-l-9"></i>
-			</a>
-		</div>
-	</div>
-</div> --%>
-
-
-
 $(document).ready(function () {
+	// 윤신영 - 매거진 목록 가져오기, ajax
 	(function yajax() {
+		var Criteria = { category : '${category}'};
+		
 		$.ajax({
 				url: '${pageContext.request.contextPath }/magazine/magazineAjax',
 				type: 'GET',
+				data : Criteria,
 				dataType: 'json',
 				success: function (data) {
 					console.log(data);
-					$div =  $('<div/>',{
-						'class' : 'p-b-63'
-					});
-
-					$a = $('<a/>',{
-						'href' : 'p-b-63',
-						'class' : 'hov-img0 how-pos5-parent'
-					});
-
-					$img = $('<img/>',{
-						'src' : '${pageContext.request.contextPath }'+ data[0].rootfolder+ data[0].uuidname,
-						'alt' : 'IMG-BLOG'
-					});
-
-					$innerdiv =  $('<div/>',{
-						'class' : 'flex-col-c-m size-123 bg9 how-pos5'
-					});
-
-					$span1 = $('<span/>',{
-						'class' : 'ltext-107 cl2 txt-center',
-						'text' : '22'
-					});
-
-					$span2 = $('<span/>',{
-						'class' : 'stext-109 cl3 txt-center',
-						'text' : 'Jan 2018'
-					});
-
-					$innerdiv.append($span1);
-					$innerdiv.append($span2);
-					$a.append($img)
-					$a.append($innerdiv)
-					$div.append($a);
-
-					$div2 = $('<div class="p-t-32"><h4 class="p-b-15"><a href="blog-detail.html" class="ltext-108 cl2 hov-cl1 trans-04"> '+data[0].title+' </a></h4>'
-							+ '<p class="stext-117 cl6"> 소개내용 </p> <div class="flex-w flex-sb-m p-t-18"><span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10"> <span>' 
-							+'<span class="cl4">By</span> 작성자 <span class="cl12 m-l-4 m-r-6">|</span>'
-							+'</span> <span> 카테고리 <span class="cl12 m-l-4 m-r-6">|</span>'
-							+'</span> <span> 댓글개수 </span> </span> <a href="blog-detail.html" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">Continue Reading <i class="fa fa-long-arrow-right m-l-9"></i></a></div></div>');
-					$div.append($div2)
-					$('.magazine-item').append($div);
+					// 윤신영 - 밑에  for문은 data로 받은 magazineVo객체 하나하나를 글목륵으로 바꾸는 작업이다
+					for(var i=0; i<data.length; i++){
+						$div =  $('<div/>',{
+							'class' : 'p-b-63'
+						});
+	
+						$a = $('<a/>',{
+							'href' : '${pageContext.request.contextPath }/magazine/magazine_cont?category=${category}&mgno='+data[i].mgno+'',
+							'class' : 'hov-img0 how-pos5-parent',
+							
+						});
+	
+						$img = $('<img/>',{
+							'src' : '${pageContext.request.contextPath }'+ data[i].rootfolder+ data[i].uuidname,
+							'alt' : 'IMG-BLOG'
+						});
+	
+						$innerdiv =  $('<div/>',{
+							'class' : 'flex-col-c-m size-123 bg9 how-pos5'
+						});
+	
+						$span1 = $('<span/>',{
+							'class' : 'ltext-107 cl2 txt-center',
+							'text' : '22'
+						});
+	
+						$span2 = $('<span/>',{
+							'class' : 'stext-109 cl3 txt-center',
+							'text' : 'Jan 2018'
+						});
+	
+						$innerdiv.append($span1);
+						$innerdiv.append($span2);
+						$a.append($img)
+						$a.append($innerdiv)
+						$div.append($a);
+	
+						$div2 = $('<div class="p-t-32"><h4 class="p-b-15"><a href="${pageContext.request.contextPath }/magazine/magazine_cont?category=${category}&mgno='+data[i].mgno+'" class="ltext-108 cl2 hov-cl1 trans-04"> '+data[i].title+' </a></h4>'
+								+ '<p class="stext-117 cl6"> 소개내용 </p> <div class="flex-w flex-sb-m p-t-18"><span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10"> <span>' 
+								+'<span class="cl4">By</span> 작성자 <span class="cl12 m-l-4 m-r-6">|</span>'
+								+'</span> <span> 카테고리 <span class="cl12 m-l-4 m-r-6">|</span>'
+								+'</span> <span> 댓글개수 </span> </span> '
+								+'<a href="${pageContext.request.contextPath }/magazine/magazine_cont?category=${category}&mgno='+data[i].mgno+'" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">Continue Reading <i class="fa fa-long-arrow-right m-l-9"></i></a></div></div>');  // 매거진 내용 페이로 이동
+						$div.append($div2)
+						$('.magazine-item').append($div);
+						}
+					},
+					error : function () {
+						console.log('error');
 					}
+					
 				});
 
 		})();

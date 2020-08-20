@@ -101,7 +101,22 @@
 							</li>
 
 							<li>
-								<a href="${pageContext.request.contextPath }/magazine/magazine">매거진</a>
+								<a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip" class="dropdown-toggle">매거진</a>
+								
+								<ul class="sub-menu">
+									<li>
+										<a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip">Tip</a>
+									</li>
+									<li>
+										<a href="${pageContext.request.contextPath }/magazine/magazine?category=Interview">Interview</a>
+									</li>
+									<li>
+										<a href="${pageContext.request.contextPath }/magazine/magazine?category=COVID19">COVID19</a>
+									</li>
+									<li>
+										<a href="${pageContext.request.contextPath }/magazine/magazine?category=Setec">Setec</a>
+									</li>
+								</ul>
 							</li>
 
 							<li>

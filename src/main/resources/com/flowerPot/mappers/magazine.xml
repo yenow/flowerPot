@@ -6,11 +6,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="magazine">
 	<insert id="insertMagazine">
-		insert into magazine (mgno,title,content,category,UUIDName,originalName,rootfolder,regdate) values 
-		(mgno_seq.nextval, #{title}, #{content}, #{category}, #{UUIDName}, #{originalName}, #{rootfolder}, sysdate)
+	
+		insert into f_magazine (mgno,<!--  mno,-->title,content,category,UUIDName,originalName,rootfolder,regdate) values 
+		(mgno_seq.nextval,<!--#{mno},-->#{title}, #{content}, #{category}, #{UUIDName}, #{originalName}, #{rootfolder}, sysdate)
 	</insert>
 	
 	<select id="selectMagazineList" resultType="com.flowerPot.vo.MagazineVo">
-		select * from magazine
+		select * from f_magazine where category = #{category}
+	</select>
+	
+	<select id="selectMagzineCont" resultType="com.flowerPot.vo.MagazineVo">
+		select * from f_magazine where category = #{category} and mgno = #{mgno}
 	</select>
 </mapper>

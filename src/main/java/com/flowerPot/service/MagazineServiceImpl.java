@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.flowerPot.dao.MagazineDao;
+import com.flowerPot.domain.Criteria;
 import com.flowerPot.vo.MagazineVo;
 
 @Service
@@ -65,8 +66,13 @@ public class MagazineServiceImpl implements MagazineService {
 	}
 
 	@Override
-	public List<MagazineVo> selectMagazineList() {
-		return magazineDao.selectMagazineList();
+	public List<MagazineVo> selectMagazineList(Criteria c) {
+		return magazineDao.selectMagazineList(c);
+	}
+
+	@Override
+	public MagazineVo selectMagzineCont(MagazineVo mgno) {
+		return magazineDao.selectMagzineCont(mgno);
 	}
 	
 }

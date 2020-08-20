@@ -1,5 +1,3 @@
--- magazine
-
 create table f_magazine (
 	mgno number(30),
 	title varchar2(100) not null,
@@ -14,6 +12,11 @@ create table f_magazine (
 	-- mno 필요
 	-- mno 외래키 제약조건 필요
 );
+alter table f_magazine add mno number(30);
+
+
+-- 매거진 왜래키 설정
+alter table f_magazine add constraint f_magazine_fk_mno foreign key (mno) references f_member(mno);
 
 drop table magazine;
 select * from magazine;
