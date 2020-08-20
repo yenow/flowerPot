@@ -23,6 +23,7 @@ public class MagazineServiceImpl implements MagazineService {
 	@Autowired
 	private MagazineDao magazineDao;
 
+	// 매거진 등록
 	@Override
 	public MagazineVo insertMagazine(MagazineVo magazine, MultipartHttpServletRequest mrequset) {
 		MultipartFile multipart = mrequset.getFile("imgFile");
@@ -65,8 +66,11 @@ public class MagazineServiceImpl implements MagazineService {
 		return magazine;
 	}
 
+	// 매거진 리스트 출력
 	@Override
 	public List<MagazineVo> selectMagazineList(Criteria c) {
+		
+		
 		return magazineDao.selectMagazineList(c);
 	}
 
@@ -83,6 +87,11 @@ public class MagazineServiceImpl implements MagazineService {
 	@Override
 	public void updateMagazine(MagazineVo magazineVo) {
 		magazineDao.updateMagazine(magazineVo);
+	}
+
+	@Override
+	public int getTotalCount(Criteria c) {
+		return magazineDao.getTotalCount(c);
 	}
 	
 }

@@ -30,30 +30,6 @@
 		<div class="row">
 			<div class="col-md-8 col-lg-9 p-b-80">
 				<div class="p-r-45 p-r-0-lg magazine-item">
-					<!-- item blog -->
-					<div class="p-b-63 ">
-						<a href="blog-detail.html" class="hov-img0 how-pos5-parent">
-							<img src="${pageContext.request.contextPath }/resources/images/blog-04.jpg" alt="IMG-BLOG">
-							<div class="flex-col-c-m size-123 bg9 how-pos5">
-								<span class="ltext-107 cl2 txt-center"> 22 </span> <span class="stext-109 cl3 txt-center"> Jan 2018 </span>
-							</div>
-						</a>
-						<div class="p-t-32">
-							<h4 class="p-b-15">
-								<a href="blog-detail.html" class="ltext-108 cl2 hov-cl1 trans-04"> 8 Inspiring Ways to Wear Dresses in the Winter </a>
-							</h4>
-							<p class="stext-117 cl6">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius</p>
-							<div class="flex-w flex-sb-m p-t-18">
-								<span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10"> <span> <span class="cl4">By</span> Admin <span class="cl12 m-l-4 m-r-6">|</span>
-								</span> <span> StreetStyle, Fashion, Couple <span class="cl12 m-l-4 m-r-6">|</span>
-								</span> <span> 8 Comments </span>
-								</span>
-								<a href="blog-detail.html" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
-									Continue Reading <i class="fa fa-long-arrow-right m-l-9"></i>
-								</a>
-							</div>
-						</div>
-					</div>
 					
 				</div>
 				<!-- Pagination -->
@@ -181,20 +157,21 @@ $(document).ready(function () {
 				dataType: 'json',
 				success: function (data) {
 					console.log(data);
+					var mgList = data.mgList;
 					// 윤신영 - 밑에  for문은 data로 받은 magazineVo객체 하나하나를 글목륵으로 바꾸는 작업이다
-					for(var i=0; i<data.length; i++){
+					for(var i=0; i<mgList.length; i++){
 						$div =  $('<div/>',{
 							'class' : 'p-b-63'
 						});
 	
 						$a = $('<a/>',{
-							'href' : '${pageContext.request.contextPath }/magazine/magazine_cont?category=${category}&mgno='+data[i].mgno+'',
+							'href' : '${pageContext.request.contextPath }/magazine/magazine_cont?category=${category}&mgno='+mgList[i].mgno+'',
 							'class' : 'hov-img0 how-pos5-parent',
 							
 						});
 	
 						$img = $('<img/>',{
-							'src' : '${pageContext.request.contextPath }'+ data[i].rootfolder+ data[i].uuidname,
+							'src' : '${pageContext.request.contextPath }'+ mgList[i].rootfolder+ mgList[i].uuidname,
 							'alt' : 'IMG-BLOG'
 						});
 	
@@ -218,12 +195,12 @@ $(document).ready(function () {
 						$a.append($innerdiv)
 						$div.append($a);
 	
-						$div2 = $('<div class="p-t-32"><h4 class="p-b-15"><a href="${pageContext.request.contextPath }/magazine/magazine_cont?category=${category}&mgno='+data[i].mgno+'" class="ltext-108 cl2 hov-cl1 trans-04"> '+data[i].title+' </a></h4>'
-								+ '<p class="stext-117 cl6"> 소개내용 </p> <div class="flex-w flex-sb-m p-t-18"><span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10"> <span>' 
+						$div2 = $('<div class="p-t-32"><h4 class="p-b-15"><a href="${pageContext.request.contextPath }/magazine/magazine_cont?category=${category}&mgno='+mgList[i].mgno+'" class="ltext-108 cl2 hov-cl1 trans-04"> '+mgList[i].title+' </a></h4>'
+								+ '<p class="stext-117 cl6 txt_line"> '+mgList[i].content +' </p> <div class="flex-w flex-sb-m p-t-18"><span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10"> <span>' 
 								+'<span class="cl4">By</span> 작성자 <span class="cl12 m-l-4 m-r-6">|</span>'
-								+'</span> <span> 카테고리 <span class="cl12 m-l-4 m-r-6">|</span>'
-								+'</span> <span> 댓글개수 </span> </span> '
-								+'<a href="${pageContext.request.contextPath }/magazine/magazine_cont?category=${category}&mgno='+data[i].mgno+'" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">Continue Reading <i class="fa fa-long-arrow-right m-l-9"></i></a></div></div>');  // 매거진 내용 페이로 이동
+								+'</span> <span> '+ mgList[i].category +' <span class="cl12 m-l-4 m-r-6">|</span>'
+								+'</span></span> '
+								+'<a href="${pageContext.request.contextPath }/magazine/magazine_cont?category=${category}&mgno='+mgList[i].mgno+'" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">Continue Reading <i class="fa fa-long-arrow-right m-l-9"></i></a></div></div>');  // 매거진 내용 페이로 이동
 						$div.append($div2)
 						$('.magazine-item').append($div);
 						}

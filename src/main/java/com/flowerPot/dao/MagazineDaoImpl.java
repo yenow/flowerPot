@@ -40,5 +40,10 @@ public class MagazineDaoImpl implements MagazineDao {
 		sqlSession.update("updateMagazine",magazineVo);
 		
 	}
+
+	@Override
+	public int getTotalCount(Criteria c) {
+		return sqlSession.selectOne("getTotalCount", c);
+	}
 	
 }

@@ -19,4 +19,6 @@ public interface MagazineService {
 
 	void updateMagazine(MagazineVo magazineVo);
 
+	int getTotalCount(Criteria c);
+
 }

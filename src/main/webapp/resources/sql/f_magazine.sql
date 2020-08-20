@@ -11,6 +11,8 @@ create table f_magazine (
 	constraint f_magazine_mgno_pk primary key (mgno)
 	-- mno 필요
 	-- mno 외래키 제약조건 필요
+	-- writer 
+	
 );
 alter table f_magazine add mno number(30);
 

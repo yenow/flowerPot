@@ -2,7 +2,9 @@ package com.flowerPot.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,12 +15,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.flowerPot.domain.Criteria;
+import com.flowerPot.domain.PageDTO;
 import com.flowerPot.service.MagazineService;
 import com.flowerPot.vo.MagazineVo;
 
@@ -40,10 +42,15 @@ public class MagazineController {
 	@ResponseBody
 	public ResponseEntity<List<MagazineVo>> magazineAjax(Criteria c) {
 		System.out.println(c.getCategory());
-	
+		
+		Map<String, Object> map = new HashMap<String, Object>();
 		ResponseEntity<List<MagazineVo>> re;
 		try {
 			List<MagazineVo> mgList =  magazineService.selectMagazineList(c);
+			map.put("mgList", mgList);
+			int total = magazineService.getTotalCount(c);
+			PageDTO page = new PageDTO(c, total);
+			map.put("Page", page);
 			for(MagazineVo m : mgList) {
 				m.setRootfolder(m.getRootfolder().substring(m.getRootfolder().indexOf('\\')).replace('\\', '/'));
 				
@@ -79,7 +86,7 @@ public class MagazineController {
 	
 		magazine = magazineService.insertMagazine(magazine,mrequset);
 		
-		return "redirect:/";   // +request.getContextPath();
+		return "redirect:/magazine/magazine?category=Tip";   // +request.getContextPath();
 	}
 
 	// 매거진 내용 페이지

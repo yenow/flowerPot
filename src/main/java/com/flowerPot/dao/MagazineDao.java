@@ -17,4 +17,6 @@ public interface MagazineDao {
 
 	void updateMagazine(MagazineVo magazineVo);
 
+	int getTotalCount(Criteria c);
+
 }
