@@ -117,6 +117,8 @@ public class MagazineController {
 		return "redirect:/magazine/magazine?category=Tip";
 	}
 	
+	
+	// 매거진 삭제
 	@RequestMapping("magazine_delete")
 	public void magazine_delete(int mgno ,HttpServletResponse response,HttpServletRequest request) {
 		magazineService.deleteMagazine(mgno);

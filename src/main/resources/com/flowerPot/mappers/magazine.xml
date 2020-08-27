@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 매거진 리스트 가져오기 -->
 	<select id="selectMagazineList" resultType="com.flowerPot.vo.MagazineVo">
-		 <![CDATA[ select * from (select m.*,rownum as rnum from f_magazine m order by mgno desc) where rnum >  #{amount}*(#{page}-1) and rnum <= #{amount}*#{page} and category= #{amount} ]]>
+		 <![CDATA[ select * from (select m.*,rownum as rnum from f_magazine m order by mgno desc) where rnum >  #{amount}*(#{pageNum}-1) and rnum <= #{amount}*#{pageNum} and category= #{amount} ]]>
 		
 	</select>
 	
