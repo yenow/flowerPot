@@ -43,4 +43,13 @@ public class Test2 {
 		
 				
 	}
+	
+	@Test
+	public void test2() {
+		String path = "C:\\upload\\profileImage\\2020-08-22\\161ce973-963b-4f1a-bb58-fd1f2feaa0b9.png";
+		path.indexOf("\\");
+		System.out.println(path.indexOf("\\"));
+		System.out.println(path.replace("\\", "/"));
+		System.out.println(path.substring(2));
+	}
 }
