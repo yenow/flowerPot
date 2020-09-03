@@ -15,4 +15,19 @@ public class MemberDaoImpl implements MemberDao {
 	public MemberVo read(String id) {
 		return sqlSession.selectOne("read",id);
 	}
+
+	@Override
+	public void insertMember(MemberVo member) {
+		sqlSession.insert("m_insertMember", member);
+	}
+
+	@Override
+	public int selectTotalCount() {
+		return sqlSession.selectOne("m_getTotalCount");
+	}
+
+	@Override
+	public void deleteMemberById(String id) {
+		sqlSession.delete("m_deleteMemberById", id);
+	}
 }

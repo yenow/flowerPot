@@ -9,6 +9,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +29,8 @@ import com.flowerPot.vo.MagazineVo;
 @Controller
 @RequestMapping("magazine")
 public class MagazineController {
-
+	private static final Log LOG = LogFactory.getLog( MagazineController.class );
+	
 	@Autowired
 	private MagazineService magazineService;
 	
