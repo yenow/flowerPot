@@ -86,17 +86,17 @@
 							</li>
 
 							<li>
-								<a href="#" class="dropdown-toggle">Shop</a>
+								<a href="${pageContext.request.contextPath }/cosmetic/cosmetic" class="dropdown-toggle">Shop</a>
 								
 								<ul class="sub-menu">
 									<li>
-										<a href="${pageContext.request.contextPath }/product/product">피부타입별</a>
+										<a href="${pageContext.request.contextPath }/cosmetic/cosmetic">피부타입별</a>
 									</li>
 									<li>
-										<a href="${pageContext.request.contextPath }/product/product">브랜드별</a>
+										<a href="${pageContext.request.contextPath }/cosmetic/cosmetic">브랜드별</a>
 									</li>
 									<li>
-										<a href="${pageContext.request.contextPath }/product/product">유형별</a>
+										<a href="${pageContext.request.contextPath }/cosmetic/cosmetic">유형별</a>
 									</li>
 								</ul>
 							</li>
