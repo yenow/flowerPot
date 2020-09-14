@@ -6,5 +6,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="cosmetic">
 	
+	<insert id="c_insertCosmetic">
+		insert into f_cosmetic values (cno_seq.nextval,#{type},#{brand},#{price},#{tag},#{discountPersent},#{stockNumber})
+	</insert>	
 	
+	<delete id="c_deleteAll">
+		delete from f_cosmetic
+	</delete>
+	
+	<select id="c_selectCount" resultType="int">
+		select count(*) from f_cosmetic
+	</select>
 </mapper>

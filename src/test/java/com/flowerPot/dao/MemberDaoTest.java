@@ -57,5 +57,7 @@ public class MemberDaoTest {
 		assertThat(before, is(after-1));
 		log.info("getMno : "+member.getMno());
 		assertNotEquals(member.getMno(), 0);
+		
+	
 	}
 }
