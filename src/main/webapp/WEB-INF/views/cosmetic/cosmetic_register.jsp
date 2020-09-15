@@ -39,8 +39,8 @@
 	<!-- /nav -->
 	<!-- content -->
 	<div class="container-fluid">
-		<h2 class="text-center my-3">화장품 등록<input type="submit" class="btn btn-secondary float-right" value="등록"> </h2>
-		<form action="${pageContext.request.contextPath}" method="post" enctype="multipart/form-data">
+		<h2 class="text-center my-5">화장품 등록 <input type="submit" class="btn btn-secondary float-right" value="등록"> </h2>
+		<form action="${pageContext.request.contextPath}/cosmetic/cosmetic_register_ok" method="post" enctype="multipart/form-data">
 			<!-- 화장품 타입, 화장품 브랜드 -->
 			<div class="row">
 				<%-- <input type="hidden" name="mno" value="${login.mno }"> --%>
@@ -48,28 +48,37 @@
 				<div class="col">
 					<label for="type">타입</label> <select class="custom-select d-block w-100" id="type" name="type" required="">
 						<option value="">Choose...</option>
-						<option value="Tip">스킨케어</option>
-						<option value="Interview">메이크업</option>
-						<option value="COVID19">바디케어</option>
-						<option value="setec">헤어케어</option>
-						<option value="setec">향수/디퓨저</option>
+						<option value="스킨케어">스킨케어</option>
+						<option value="메이크업">메이크업</option>
+						<option value="바디케어">바디케어</option>
+						<option value="헤어케어">헤어케어</option>
+						<option value="향수">향수/디퓨저</option>
 					</select>
 					<div class="invalid-feedback">Please select a valid country.</div>
 				</div>
 				<div class="col">
 					<label for="brand">브랜드</label> <select class="custom-select d-block w-100" id="brand" name="brand" required="">
 						<option value="">Choose...</option>
-						<option value="Tip">Tip</option>
-						<option value="Interview">Interview</option>
-						<option value="COVID19">COVID19</option>
-						<option value="setec">setec</option>
+						<option value="이니스프리">이니스프리</option>
+						<option value="헤라">헤라</option>
+						<option value="바닐라코">바닐라코</option>
+					</select>
+					<div class="invalid-feedback">Please select a valid country.</div>
+				</div>
+				<div class="col">
+					<label for="skinType">피부타입</label>
+					 <select class="custom-select d-block w-100" id="skinType" name="skinType" required="">
+						<option value="">Choose...</option>
+						<option value="지성">지성</option>
+						<option value="건성">건성</option>
+						<option value="복합성">복합성</option>
 					</select>
 					<div class="invalid-feedback">Please select a valid country.</div>
 				</div>
 				<div class="col">
 					<div class="form-group">
 						<label for=""price"">가격</label> 
-						<input type="number" class="form-control" id="price" name=""price"" placeholder="가격을 입력하세요">
+						<input type="number" class="form-control" id="price" name="price" placeholder="가격을 입력하세요">
 					</div>
 				</div>
 			</div>
@@ -78,13 +87,13 @@
 			
 			<!-- 섬네일 이미지 등록 -->
 			<div class="form-group">
-				<label for="customFile">섬네일 이미지</label> 
+				<label for="sumnailImage">섬네일 이미지</label> 
 				<div class="custom-file">
-				  <input type="file" class="custom-file-input" id="customFile">
-				  <label class="custom-file-label" for="customFile">Choose file</label>
+				  <input type="file" class="custom-file-input" id="sumnailImage" multiple="multiple" accept="image/gif,image/jpeg,image/png">
+				  <label class="custom-file-label" for="sumnailImage">Choose file</label>
 				</div>
 				<ul class="image-list list-group my-2">
-					 <li class="list-group-item">파일목록</li>
+					 <li class="list-group-item" style="padding-top: 5px; padding-bottom: 5px;">파일목록</li>
 				</ul>
 			</div>
 			<!-- title -->
@@ -94,7 +103,7 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text">제목</span>
 					</div>
-					<input type="text" class="form-control" id="username" name="title" placeholder="Username" required="">
+					<input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요" required="">
 					<div class="invalid-feedback" style="width: 100%;">Your username is required.</div>
 				</div>
 			</div>
@@ -143,6 +152,7 @@
 			</div>
 		</form>
 	</div>
+	
 <script type="text/javascript">
 		$('#summernote').summernote(
 				{
@@ -168,26 +178,266 @@
 		function uploadSummernoteImageFile(file, editor) {
 			data = new FormData();
 			data.append("file", file);
-			$
-					.ajax({
-						data : data,
-						type : "POST",
-						url : "${pageContext.request.contextPath}/uploadSummernoteImageFile",
-						contentType : false,
-						processData : false,
-						success : function(data) {
-							//항상 업로드된 파일의 url이 있어야 한다.
-							console.log(data);
-							$(editor).summernote('insertImage', data.url);
-						}
-					});	
+			$.ajax({
+				data : data,
+				type : "POST",
+				url : "${pageContext.request.contextPath}/uploadSummernoteImageFile2",
+				contentType : false,
+				processData : false,
+				success : function(data) {
+					//항상 업로드된 파일의 url이 있어야 한다.
+					console.log(data);
+					$(editor).summernote('insertImage', data.url);
+				}
+			});	
 		}
+
+$(document).ready(function () {
+	// 파일 용량 체크
+	function fileSizeCheck(file) {
+		if(file.size>20971520){ // 20MB
+			alert('20MB이상 첨부 불가능');
+			return false; 
+		}  
+	}
+	// 이미지 파일 체크
+	function imageFileCheck(obj) {
+		pathpoint = obj.value.lastIndexOf('.');
+		filepoint = obj.value.substring(pathpoint+1,obj.lengh);
+		filetype = filepoint.toLowerCase();
+		if(filetype=='jpg' || filetype=='gif' || filetype=='png' || filetype=='jpeg' || filetype=='bmp'){
+			// 정상상황
+		}else{
+			alert('이미지파일만 선택할수 있습니다');
+			return false;
+		}
+	}
+	
+	// 파일 선택시 호출됨 -> upload폴더에 파일 저장 및 파일HTML태그 추가
+	$('#sumnailImage').change(function() {
+		// console.log('change');  //// console.log(this.files); //// console.log(this.files[0]); //
+		
+		var files= this.files;
+		var formdata = new FormData();
+		for(var i=0; i<files.length ; i++){
+			fileSizeCheck(files[i]);
+			console.log(files[i]);
+			//imageFileCheck(files[i]);
+			formdata.append('file',files[i]);   // name은 키값인가?
+		}
+		// console.log(formdata);  //// console.log(formdata.get('file'));  //
+		$.ajax({
+			url: '${pageContext.request.contextPath}/sumnailImageFileUpLoad', // 클라이언트가 요청을 보낼 서버의 URL 주소
+			processData : false,   // 이 두개를 반드시 false로 해야한다고함.. 이유는 모름
+			contentType : false, 
+			data: formdata,        // HTTP 요청과 함께 서버로 보낼 데이터
+			type: 'POST',          // HTTP 요청 방식(GET, POST)
+			dataType: 'json',      // 호출 했을 때 결과타입
+			success : function(AttachFileDTOList) {
+				
+				for(var i=0; i<AttachFileDTOList.length; i++){
+					AttachFileDTOArray.push(AttachFileDTOList[i]);
+				}
+				// AttachFileDTO 객체를 받으면
+				if(AttachFileDTOList!=null){
+					attachFileAppend(AttachFileDTOList);
+				} 
+			}
+		});
+	});
+	
+});
+// /ready()	
 		
 // 유효성검증, input타입에 모든 값이 들어가있는지
 
 
 </script>
-	
+<!-- 
+<script type="text/javascript">
+		$('#summernote').summernote({
+			height : 300, // 에디터 높이
+			minHeight : 500, // 최소 높이
+			maxHeight : null, // 최대 높이
+			focus : true, // 에디터 로딩후 포커스를 맞출지 여부
+			lang : "ko-KR", // 한글 설정
+			placeholder : '최대 2048자까지 쓸 수 있습니다', //placeholder 설정
+			callbacks : { //여기 부분이 이미지를 첨부하는 부분
+				onImageUpload : function(files) {
+					uploadSummernoteImageFile(files[0], this);
+				}
+			}
+		});
+
+		var attachFileList = new Object();
+		var AttachFileDTOArray = new Array();
+		var AttachFileDTO = new Object();
+
+		/* 이미지 파일 업로드 */
+		function uploadSummernoteImageFile(file, editor) {
+			data = new FormData();
+			data.append("file", file);
+			$.ajax({
+				data : data,
+				type : "POST",
+				url : "${pageContext.request.contextPath}/uploadSummernoteImageFile",
+				contentType : false,
+				processData : false,
+				success : function(data) {
+							//항상 업로드된 파일의 url이 있어야 한다.
+					console.log(data);
+					AttachFileDTOArray.push(data.attachFileDTO);
+					console.log(AttachFileDTOArray);
+					$(editor).summernote('insertImage',
+					data.attachFileDTO.mappingURL);
+					}
+				});
+		}
+
+
+	    $(document).ready(function () {
+	    	
+	    	// 제출될때 이벤트 발생
+	        $('.submit-button').click(function () {
+	        		// 제목 유효성 검증
+	        		if($('#title').val()==''){
+	        			alert('제목을 입력해주세요');
+	        			return false;
+	        		}
+
+	        	
+	                //폼 태그도 ajax로 보내야함;; 그리고 다 되었으면 다시 ajax로 보내고,, 그리고 location.href로 이동
+	                var data = {};
+	                //serialize() 활용하기
+	                var str = $("form").serialize();
+	                console.log(str);
+	                var category = '${category}';
+	                data.str = str;
+	                // data.AttachFileDTOArray = AttachFileDTOArray;
+	                // data.category = category;
+	                console.log(data);
+
+	                $.ajax({
+	                    data: str,
+	                    type: 'POST',
+	                    dataType: 'html',
+	                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+	                    url: "${pageContext.request.contextPath}/board/boardWriteAjax",
+	                    success: function (data) {
+
+	                        console.log(data);
+	                        data *= 1; // bno 숫자타입으로 만들기
+	                        console.log(typeof bno);
+	                        AttachFileDTOArray[0].bno = data;
+	                        console.log(AttachFileDTOArray[0]);
+
+	                        for (var i = 0; i < AttachFileDTOArray.length; i++) {
+	                            AttachFileDTOArray[i].bno = data;
+	                            AttachFileDTOArray[i].mno = null;
+	                            
+	                        }
+	                        console.log(AttachFileDTOArray);
+
+	                        $.ajax({
+	                                data: JSON.stringify(AttachFileDTOArray),
+	                                type: 'POST',
+	                                dataType: 'html',
+	                                contentType: 'application/json; charset=UTF-8',
+	                                url: "${pageContext.request.contextPath}/board/boardAttachFileDTO",
+	                                success: function (data) {
+	                                    console.log(data);
+	                                    if (data == "success") {
+	                                    	
+	                                    	window.location.replace='${pageContext.request.contextPath}/board/boardList?category=${category}';
+	                                    } else {
+	                                        alert('등록이 되지 않았습니다');
+	                                       
+	                                    }
+	                                }
+	                            }); // end ajax
+	                            
+	                            
+	                    	$.ajax({
+	                    		
+	                    	});
+
+	                    } // end success function
+	                }); // end ajax	  	
+	                // window.location.replace='${pageContext.request.contextPath}/board/boardList?category=${category}';
+	            }); // end  $('#boardWrite-form').submit(function()
+	            	
+	        //summersnote Imagefile 보내기
+	        
+	            		
+	        // 파일 선택시 호출됨 -> upload폴더에 파일 저장 및 파일HTML태그 추가
+	    	$('#customFile').change(function() {
+				// console.log('change');  //// console.log(this.files); //// console.log(this.files[0]); //
+				
+				var files= this.files;
+				var formdata = new FormData();
+				for(var i=0; i<files.length ; i++){
+					formdata.append('file',files[i]);   // name은 키값인가?
+				}
+				// console.log(formdata);  //// console.log(formdata.get('file'));  //
+				$.ajax({
+					url: '${pageContext.request.contextPath}/fileupload', // 클라이언트가 요청을 보낼 서버의 URL 주소
+					processData : false,   // 이 두개를 반드시 false로 해야한다고함.. 이유는 모름
+					contentType : false, 
+					data: formdata,        // HTTP 요청과 함께 서버로 보낼 데이터
+					type: 'POST',          // HTTP 요청 방식(GET, POST)
+					dataType: 'json',      // 호출 했을 때 결과타입
+					success : function(AttachFileDTOList) {
+						
+						for(var i=0; i<AttachFileDTOList.length; i++){
+							AttachFileDTOArray.push(AttachFileDTOList[i]);
+						}
+						// AttachFileDTO 객체를 받으면
+						if(AttachFileDTOList!=null){
+							attachFileAppend(AttachFileDTOList);
+						} 
+					}
+				});
+			});
+	            
+	       	function fileSizeCheck(file) {
+				if(file.size>20971520){ // 20MB
+					alert('20MB이상 첨부 불가능');
+					return false; 
+				}  
+			}
+	       	
+	       	function attachFileAppend(attachFile) {
+				
+	       		for(var i=0; i<attachFile.length; i++){
+	       			console.log(attachFile);
+	       			$('.attach-div ul').append($('<li class="list-group-item" style="font-size: 15px; padding: 0.25rem 0.5rem;">'+attachFile[i].originalFileName+' <a data-realName="'+attachFile[i].realName+'" data-uploadPath="'+attachFile[i].uploadPath+'" onclick="deleteAttachtFile(this);"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x float-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/><path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/></svg></a></li>'));   
+	       		}
+			}
+	    }); // end $(document).ready
+		
+		// x표시 클릭할시, 태그와 upload폴더의 파일 삭제
+		function deleteAttachtFile(data) {
+			$aTag = data;
+			var dataSet = new Object(); 
+			dataSet.realName = $(data).data('realname');
+			dataSet.uploadPath = $(data).data('uploadpath');
+			$.ajax({
+				url: '${pageContext.request.contextPath}/fileDelete', // 클라이언트가 요청을 보낼 서버의 URL 주소
+				data: dataSet,        // HTTP 요청과 함께 서버로 보낼 데이터
+				type: 'GET',          // HTTP 요청 방식(GET, POST)
+				dataType: 'html',      // 호출 했을 때 결과타입
+				success : function(data) {
+					console.log(data);
+					if(data=='success'){
+						$parent = $aTag.parentNode;
+						$parent.remove();
+					}
+				}	
+			});
+		}
+	    
+	</script>	
+	 -->
 	
 	<script src="${pageContext.request.contextPath}/resources/js/summernote-ko-KR.js"></script>
 </body>

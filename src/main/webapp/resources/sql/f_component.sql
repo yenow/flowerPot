@@ -11,5 +11,8 @@ create table f_component(
 	wrinkle char(1),    --  주름개선에 도움이 되는지
 	primary key(cpno)
 );
-
+-- 성분 번호 시퀀스
 create sequence cpno_seq start with 1 increment by 1;
+
+select * from f_component;
+alter table f_component drop column skinType;

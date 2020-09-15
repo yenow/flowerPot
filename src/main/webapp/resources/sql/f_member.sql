@@ -27,6 +27,6 @@ insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,m
 values (mno_seq.nextval,'phantom1','tlsdud5089','윤신영','윤신영','주소','phantom_ysy@naver.com','M','11-29','골드','작성자');
 
 insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,member_rank,authority ) 
-values (mno_seq.nextval,'phantom2','tlsdud5089','윤신영','윤신영','주소','phantom_ysy@naver.com','M','11-29','골드','일반회원');
+values (mno_seq.nextval,'admin','admin','윤신영','윤신영','주소','phantom_ysy@naver.com','M','11-29','골드','일반회원');
 
 select id, password from f_member where id = 'user0';

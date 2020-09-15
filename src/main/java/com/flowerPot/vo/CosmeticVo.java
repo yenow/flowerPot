@@ -11,6 +11,7 @@ public class CosmeticVo {
 	private int cno;
 	private String type;
 	private String brand;
+	private String skinType;
 	private int price;
 	private String tag;
 	private int discountPersent;

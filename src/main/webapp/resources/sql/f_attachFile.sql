@@ -1,6 +1,7 @@
 create table f_attachFile (
 	atno number(30),
-	cno number(30),
+	cno number(30) default 0,
+	mgno number(30) default 0,
 	uuidName varchar2(200),
 	originalFileName varchar2(200),
 	uploadFolderPath varchar2(200),
@@ -11,3 +12,5 @@ create table f_attachFile (
 );
 
 create sequence atno_seq start with 1 increment by 1;
+
+drop table f_attachFile;

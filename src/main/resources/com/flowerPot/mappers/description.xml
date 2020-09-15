@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="description">
+	
+	<insert id="d_insertDescription">
+		insert into f_description values (#{cno},#{capacity},#{period},#{useMethod},#{nation})
+	</insert>
+	
+	<delete id="d_deleteAll">
+		delete from f_description
+	</delete>
+	
+	<select id="d_selectCount" resultType="int">
+		select count(*) from f_description
+	</select>
+</mapper>

@@ -7,7 +7,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="cosmetic">
 	
 	<insert id="c_insertCosmetic">
-		insert into f_cosmetic values (cno_seq.nextval,#{type},#{brand},#{price},#{tag},#{discountPersent},#{stockNumber})
+		insert into f_cosmetic values (cno_seq.nextval,#{type},#{brand},#{price},#{tag},#{discountPersent},#{stockNumber},#{skinType})
+		<selectKey resultType="int" order="AFTER" keyProperty="cno">
+			select cno from f_cosmetic
+		</selectKey>
 	</insert>	
 	
 	<delete id="c_deleteAll">
