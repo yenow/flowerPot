@@ -27,7 +27,7 @@ public class AdminController {
 		
 	}
 	
-	@RequestMapping("/table")
+	@RequestMapping("/userList")
 	public void table() {
 		
 	}
