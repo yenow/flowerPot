@@ -37,7 +37,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/main.css">
 <!--===============================================================================================-->
 
-
+<!-- 제이쿼리 -->
+<script src="${pageContext.request.contextPath }/resources/vendor/jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body class="animsition">
 
@@ -53,6 +54,11 @@
 					<div class="left-top-bar">Free shipping for standard order over $100</div>
 
 					<div class="right-top-bar flex-w h-full">
+						<a class="flex-c-m trans-04 p-lr-25">
+							<form action="${pageContext.request.contextPath}/logout" method="post">
+								<input type="submit" value="로그아웃">
+							</form>
+						</a>
 						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter" class="flex-c-m trans-04 p-lr-25"> 고객센터 </a>
 
 						<a href="${pageContext.request.contextPath }/myPage/myPage" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
@@ -80,27 +86,38 @@
 							</li>
 
 							<li>
-								<a href="#" class="dropdown-toggle">Shop</a>
+								<a href="${pageContext.request.contextPath }/cosmetic/cosmetic" class="dropdown-toggle">Shop</a>
 								
 								<ul class="sub-menu">
 									<li>
-										<a href="${pageContext.request.contextPath }/product/product">피부타입별</a>
+										<a href="${pageContext.request.contextPath }/cosmetic/cosmetic">피부타입별</a>
 									</li>
 									<li>
-										<a href="${pageContext.request.contextPath }/product/product">브랜드별</a>
+										<a href="${pageContext.request.contextPath }/cosmetic/cosmetic">브랜드별</a>
 									</li>
 									<li>
-										<a href="${pageContext.request.contextPath }/product/product">유형별</a>
+										<a href="${pageContext.request.contextPath }/cosmetic/cosmetic">유형별</a>
 									</li>
 								</ul>
 							</li>
 
-							<li class="label1" data-label1="hot">
-								<a href="${pageContext.request.contextPath }/product/product">브랜드</a>
-							</li>
-
 							<li>
-								<a href="${pageContext.request.contextPath }/magazine/magazine">매거진</a>
+								<a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip" class="dropdown-toggle">매거진</a>
+								
+								<ul class="sub-menu">
+									<li>
+										<a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip">Tip</a>
+									</li>
+									<li>
+										<a href="${pageContext.request.contextPath }/magazine/magazine?category=Interview">Interview</a>
+									</li>
+									<li>
+										<a href="${pageContext.request.contextPath }/magazine/magazine?category=COVID19">COVID19</a>
+									</li>
+									<li>
+										<a href="${pageContext.request.contextPath }/magazine/magazine?category=Setec">Setec</a>
+									</li>
+								</ul>
 							</li>
 
 							<li>

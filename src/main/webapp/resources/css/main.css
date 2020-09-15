@@ -3340,3 +3340,12 @@ input.num-product::-webkit-inner-spin-button {
     position: absolute;
 	}
 }
+
+
+.txt_line {
+	
+	
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

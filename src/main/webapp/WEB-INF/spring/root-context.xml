@@ -15,9 +15,10 @@
 		
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"></property>
-		<property name="username" value="projecth"></property>
-		<property name="password" value="projecth"></property>
+		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1522:XE"></property>
+		<property name="username" value="flowerPot"></property>
+		<property name="password" value="flowerPot"></property>
+
 
 	</bean> 
 
@@ -44,12 +45,12 @@
 	
 	<context:component-scan base-package="com.flowerPot.service"></context:component-scan>
 	<context:component-scan base-package="com.flowerPot.dao"></context:component-scan>
-	
+
+	<context:component-scan base-package="com.flowerPot.security"></context:component-scan>
+		
 	<!-- 재혁 관리자단 빈등록 -->
 	<context:component-scan base-package="com.flowerPot.Admin.service"></context:component-scan>
 	<mybatis-spring:scan base-package="com.flowerPot.Admin.dao"/>
-	
-		
 		
 	<!-- aop설정 -->
 	<context:annotation-config></context:annotation-config>

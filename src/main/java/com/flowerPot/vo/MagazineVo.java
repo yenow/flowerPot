@@ -17,6 +17,7 @@ public class MagazineVo {
 	moddate date,
 	imgSrc varchar2(100),*/
 	private int mgno;
+	private int mno;
 	private String title;
 	private String content;
 	private String category;

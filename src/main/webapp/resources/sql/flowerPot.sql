@@ -20,3 +20,4 @@ select * from magazine;
 
 -- 메거진 시퀀스
 create sequence mgno_seq increment by 1 start with 1;
+
