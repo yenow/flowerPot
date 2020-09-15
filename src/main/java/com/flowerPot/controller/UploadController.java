@@ -160,7 +160,7 @@ public class UploadController {
 			
 			AttachFileVo attach = new AttachFileVo(0, 0, uuidName, originalFileName, uploadFolderPath, mappingURL, realName);
 			alist.add(attach);
-			File f = new File(uploadPath + realName);
+			File f = new File(uploadFolderPath + realName);
 			try {
 				m.transferTo(f);
 			} catch (IllegalStateException | IOException e) {

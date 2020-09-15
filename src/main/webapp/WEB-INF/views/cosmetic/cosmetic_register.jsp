@@ -93,7 +93,13 @@
 				  <label class="custom-file-label" for="sumnailImage">Choose file</label>
 				</div>
 				<ul class="image-list list-group my-2">
-					 <li class="list-group-item" style="padding-top: 5px; padding-bottom: 5px;">파일목록</li>
+					 <li class="list-group-item" style="padding-top: 5px; padding-bottom: 5px;">파일목록
+					 <button class="float-right x-button border-0" onclick="return deleteButton();" style="background-color: #fff;">
+					 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					  <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+					</svg>
+					</button>
+					 </li>
 				</ul>
 			</div>
 			<!-- title -->
@@ -192,6 +198,13 @@
 			});	
 		}
 
+		
+// 첨부파일삭제
+function deleteButton() {
+			
+}
+		
+		
 $(document).ready(function () {
 	// 파일 용량 체크
 	function fileSizeCheck(file) {
@@ -202,9 +215,9 @@ $(document).ready(function () {
 	}
 	// 이미지 파일 체크
 	function imageFileCheck(obj) {
-		pathpoint = obj.value.lastIndexOf('.');
-		filepoint = obj.value.substring(pathpoint+1,obj.lengh);
-		filetype = filepoint.toLowerCase();
+		var pathpoint = obj.name.lastIndexOf('.');
+		var filepoint = obj.name.substring(pathpoint+1,obj.lengh);
+		var filetype = filepoint.toLowerCase();
 		if(filetype=='jpg' || filetype=='gif' || filetype=='png' || filetype=='jpeg' || filetype=='bmp'){
 			// 정상상황
 		}else{
@@ -222,7 +235,9 @@ $(document).ready(function () {
 		for(var i=0; i<files.length ; i++){
 			fileSizeCheck(files[i]);
 			console.log(files[i]);
-			//imageFileCheck(files[i]);
+			if(imageFileCheck(files[i])==false){
+				return false;
+			}
 			formdata.append('file',files[i]);   // name은 키값인가?
 		}
 		// console.log(formdata);  //// console.log(formdata.get('file'));  //
@@ -233,15 +248,19 @@ $(document).ready(function () {
 			data: formdata,        // HTTP 요청과 함께 서버로 보낼 데이터
 			type: 'POST',          // HTTP 요청 방식(GET, POST)
 			dataType: 'json',      // 호출 했을 때 결과타입
-			success : function(AttachFileDTOList) {
-				
-				for(var i=0; i<AttachFileDTOList.length; i++){
+			success : function(data) {
+				console.log(data)
+				for(var i=0; i<data.length; i++){
+					$li = $('<li class="list-group-item" style="padding-top: 5px; padding-bottom: 5px;">'+data[i].originalFileName+' <button class="float-right x-button border-0" onclick="return deleteButton();" style="background-color: #fff;"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></button></li>')
+					$('.image-list').append($li);
+				}
+				/* for(var i=0; i<AttachFileDTOList.length; i++){
 					AttachFileDTOArray.push(AttachFileDTOList[i]);
 				}
 				// AttachFileDTO 객체를 받으면
 				if(AttachFileDTOList!=null){
 					attachFileAppend(AttachFileDTOList);
-				} 
+				}  */
 			}
 		});
 	});
