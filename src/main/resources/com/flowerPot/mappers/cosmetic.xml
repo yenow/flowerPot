@@ -4,20 +4,20 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="cosmetic">
+<mapper namespace="com.flowerPot.cosmetic.repository.CosmeticDao">
 	
-	<insert id="c_insertCosmetic">
+	<insert id="insertCosmetic">
 		insert into f_cosmetic values (cno_seq.nextval,#{type},#{brand},#{price},#{tag},#{discountPersent},#{stockNumber},#{skinType})
 		<selectKey resultType="int" order="AFTER" keyProperty="cno">
 			select cno from f_cosmetic
 		</selectKey>
 	</insert>	
 	
-	<delete id="c_deleteAll">
+	<delete id="deleteAll">
 		delete from f_cosmetic
 	</delete>
 	
-	<select id="c_selectCount" resultType="int">
+	<select id="selectCount" resultType="int">
 		select count(*) from f_cosmetic
 	</select>
 </mapper>

@@ -1,4 +1,4 @@
-package com.flowerPot.service;
+package com.flowerPot.cosmetic.service;
 
 import com.flowerPot.vo.CosmeticVo;
 import com.flowerPot.vo.DescriptionVo;

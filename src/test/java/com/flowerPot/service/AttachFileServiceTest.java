@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.flowerPot.attachFile.service.AttachFileService;
-import com.flowerPot.dao.CosmeticDao;
+import com.flowerPot.cosmetic.repository.CosmeticDao;
 import com.flowerPot.vo.AttachFileVo;
 import com.flowerPot.vo.CosmeticVo;
 

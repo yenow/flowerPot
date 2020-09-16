@@ -326,8 +326,6 @@ $(document).ready(function () {
 		console.log("formdata");
 		console.log(formdata);
 		
-		
-		
 		// 화장품, 상세정보 등록 아작스
 		$.ajax({
 			url: '${pageContext.request.contextPath}/cosmetic/cosmeticRegister', // 클라이언트가 요청을 보낼 서버의 URL 주소

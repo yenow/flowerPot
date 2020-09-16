@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flowerPot.attachFile.service.AttachFileService;
-import com.flowerPot.service.CosmeticService;
+import com.flowerPot.cosmetic.service.CosmeticService;
 import com.flowerPot.vo.AttachFileVo;
 import com.flowerPot.vo.CosmeticVo;
 import com.flowerPot.vo.DescriptionVo;

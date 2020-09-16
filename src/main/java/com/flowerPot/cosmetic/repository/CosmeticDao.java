@@ -1,4 +1,4 @@
-package com.flowerPot.dao;
+package com.flowerPot.cosmetic.repository;
 
 import com.flowerPot.vo.CosmeticVo;
 
