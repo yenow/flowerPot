@@ -46,13 +46,6 @@
 	<context:component-scan base-package="com.flowerPot.dao"></context:component-scan>
 	<context:component-scan base-package="com.flowerPot.security"></context:component-scan>
 	
-	<!-- 컴포넌트 스캔 -->
-	<context:component-scan base-package="com.flowerPot.attachFile.service"></context:component-scan>	
-	<mybatis-spring:scan base-package="com.flowerPot.attachFile.repository"/>
-	<context:component-scan base-package="com.flowerPot.cosmetic.service"></context:component-scan>	
-	<mybatis-spring:scan base-package="com.flowerPot.cosmetic.repository"/>
-	<!-- /컴포넌트 스캔 -->	
-	
 	<!-- aop설정 -->
 	<context:annotation-config></context:annotation-config>
 	<context:component-scan base-package="org.zerock.service"></context:component-scan>
@@ -66,4 +59,11 @@
 	</bean>
 	<tx:annotation-driven/>
 	<!-- 트랜잭션설정 -->
+	
+	<!-- 컴포넌트 스캔 -->
+	<context:component-scan base-package="com.flowerPot.attachFile.service"></context:component-scan>	
+	<mybatis-spring:scan base-package="com.flowerPot.attachFile.repository"/>
+	<context:component-scan base-package="com.flowerPot.cosmetic.service"></context:component-scan>	
+	<mybatis-spring:scan base-package="com.flowerPot.cosmetic.repository"/>
+	<!-- /컴포넌트 스캔 -->	
 </beans>

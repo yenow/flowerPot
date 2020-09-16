@@ -7,14 +7,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.flowerPot.cosmetic.repository.CosmeticDao">
 	
 	<insert id="insertCosmetic">
-		insert into f_cosmetic values (cno_seq.nextval,#{type},#{brand},#{price},#{tag},#{discountPersent},#{stockNumber},#{skinType})
+		insert into f_cosmetic (cno,type,brand,price,discountPersent,stockNumber,skinType) values (cno_seq.nextval,#{type},#{brand},#{price},#{discountPersent},#{stockNumber},#{skinType})
+		
 		<selectKey resultType="int" order="AFTER" keyProperty="cno">
-			select cno from f_cosmetic
+			select cno_seq.currval from dual
+			<!-- select cno from f_cosmetic where  -->
 		</selectKey>
 	</insert>	
 	
 	<delete id="deleteAll">
 		delete from f_cosmetic
+	</delete>
+	
+	<delete id="deleteByName">
+		delete from f_cosmetic where name= #{name}
 	</delete>
 	
 	<select id="selectCount" resultType="int">

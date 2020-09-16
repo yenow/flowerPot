@@ -15,4 +15,13 @@ public class DescriptionVo {
 	private String useMethod;
 	private String nation;
 	
+	public DescriptionVo(int cno, int capacity, int period, String nation) {
+		super();
+		this.cno = cno;
+		this.capacity = capacity;
+		this.period = period;
+		this.nation = nation;
+	}
+	
+	
 }

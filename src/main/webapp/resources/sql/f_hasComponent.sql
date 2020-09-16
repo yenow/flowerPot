@@ -5,4 +5,5 @@ create table f_hasComponent(
 	constraint f_hasComponent_fk_cpno foreign key (cpno) references f_component(cpno)
 );
 
+select * from f_hasComponent;
 drop table f_hasComponent;

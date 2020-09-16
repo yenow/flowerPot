@@ -27,13 +27,16 @@ public class CosmeticDaoTest {
 	
 	@Test
 	public void insertCosmetic() {
-		cosmeticDao.deleteAll();
+		cosmeticDao.deleteByName("화장품이름");
 		int before = cosmeticDao.selectCount();
-		CosmeticVo c = new CosmeticVo(0,"스킨","이니스프리","지성",10000,"태그",0,100);
+		//int cno, String type, String brand, String skinType, int price, int discountPersent, int stockNumber
+		CosmeticVo c = new CosmeticVo(0,"화장품이름","스킨","이니스프리","스킨타입",111,0,100);
 		cosmeticDao.insertCosmetic(c);
 		int after = cosmeticDao.selectCount();
 		assertThat(before, is(after-1));
+		
 		log.info("cno : "+c.getCno());  // selectKey 가져오는지
 		assertNotEquals(c.getCno(),0);
+		cosmeticDao.deleteByName("화장품이름");
 	}
 }

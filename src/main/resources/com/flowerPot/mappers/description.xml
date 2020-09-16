@@ -6,8 +6,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="description">
 	
+	<!-- jdbcType=VARCHAR -->
 	<insert id="d_insertDescription">
-		insert into f_description values (#{cno},#{capacity},#{period},#{useMethod},#{nation})
+		insert into f_description (cno,capacity,period,useMethod,nation) values (#{cno},#{capacity},#{period},#{useMethod},#{nation})
 	</insert>
 	
 	<delete id="d_deleteAll">

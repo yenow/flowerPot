@@ -35,9 +35,9 @@ public class AttachFileServiceTest {
 	
 	@Before
 	public void insertCosmetic() {
-		cosmeticDao.deleteAll();
+		cosmeticDao.deleteByName("화장품이름");
 		int before = cosmeticDao.selectCount();
-		c = new CosmeticVo(0,"스킨","이니스프리","지성",10000,"태그",0,100);
+		c = new CosmeticVo(0,"화장품이름","스킨","이니스프리","지성",10000,"태그",0,100);
 		cosmeticDao.insertCosmetic(c);
 		int after = cosmeticDao.selectCount();
 		assertThat(before, is(after-1));

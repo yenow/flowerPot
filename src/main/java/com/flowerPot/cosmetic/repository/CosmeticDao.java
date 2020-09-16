@@ -10,4 +10,6 @@ public interface CosmeticDao {
 
 	int selectCount();
 
+	void deleteByName(String name);
+
 }

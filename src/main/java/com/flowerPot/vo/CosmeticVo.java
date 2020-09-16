@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CosmeticVo {
 	private int cno;
+	private String name;
 	private String type;
 	private String brand;
 	private String skinType;
@@ -16,6 +17,33 @@ public class CosmeticVo {
 	private String tag;
 	private int discountPersent;
 	private int stockNumber;
+	
+	public CosmeticVo(int cno, String type, String brand, String skinType, int price, int discountPersent,
+			int stockNumber) {
+		super();
+		this.cno = cno;
+		this.type = type;
+		this.brand = brand;
+		this.skinType = skinType;
+		this.price = price;
+		this.discountPersent = discountPersent;
+		this.stockNumber = stockNumber;
+	}
+
+	public CosmeticVo(int cno, String name, String type, String brand, String skinType, int price, int discountPersent,
+			int stockNumber) {
+		super();
+		this.cno = cno;
+		this.name = name;
+		this.type = type;
+		this.brand = brand;
+		this.skinType = skinType;
+		this.price = price;
+		this.discountPersent = discountPersent;
+		this.stockNumber = stockNumber;
+	}
+	
+	
 }
 
 

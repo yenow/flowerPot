@@ -5,6 +5,6 @@ import com.flowerPot.vo.DescriptionVo;
 
 public interface CosmeticService {
 
-	void cosmetic_register_ok(CosmeticVo cosmetic, DescriptionVo description);
+	void insertCosmeticAndDescription(CosmeticVo cosmetic, DescriptionVo description);
 
 }

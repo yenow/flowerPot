@@ -1,4 +1,4 @@
-package com.flowerPot.controller;
+package com.flowerPot.cosmetic.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -43,6 +43,7 @@ public class CosmeticController {
 		
 	}
 	
+	/*
 	@RequestMapping(value = "cosmetic_register_ok", method = RequestMethod.POST)
 	@ResponseBody
 	public String cosmetic_register_ok(CosmeticVo cosmetic,  DescriptionVo description) {
@@ -52,6 +53,7 @@ public class CosmeticController {
 		
 		return "cosmetic/cosmetic";
 	}
+	*/
 	
 	@RequestMapping(value = "cosmeticRegister", method = RequestMethod.POST)
 	@ResponseBody
@@ -61,8 +63,14 @@ public class CosmeticController {
 		log.info("cosmetic : "+cosmetic.toString());
 		log.info("description : "+description.toString());
 		
-		// cno 값을 리턴해야함
-		r= new ResponseEntity<>(HttpStatus.OK);
+		try {
+			cosmeticService.insertCosmeticAndDescription(cosmetic,description);
+			r= new ResponseEntity<String>(Integer.toString(cosmetic.getCno()),HttpStatus.OK);
+		} catch (Exception e) {
+			r= new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+			e.printStackTrace();
+		}
+		log.info("cosmetic cno : "+cosmetic.toString());
 		return r;
 	}
 	
@@ -71,8 +79,14 @@ public class CosmeticController {
 	public ResponseEntity<String> AttachRegister(@RequestBody List<AttachFileVo> attachList ){ //Map<String, Object> params
 		ResponseEntity<String> r = null;
 		log.info("attach : "+attachList.toString());
-		
-		r= new ResponseEntity<>(HttpStatus.OK);
+		try {
+			for(AttachFileVo attach : attachList) {
+				attachFileService.insertAttachFile(attach);
+			}
+			r= new ResponseEntity<String>("success",HttpStatus.OK);
+		} catch (Exception e) {
+			r= new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+		}
 		return r;
 	}
 }

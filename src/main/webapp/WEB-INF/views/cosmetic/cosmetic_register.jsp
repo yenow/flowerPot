@@ -93,23 +93,23 @@
 				  <label class="custom-file-label" for="sumnailImage">Choose file</label>
 				</div>
 				<ul class="image-list list-group my-2">
-					 <li class="list-group-item" style="padding-top: 5px; padding-bottom: 5px;">파일목록
+					 <!-- <li class="list-group-item" style="padding-top: 5px; padding-bottom: 5px;">파일목록
 					 <button class="float-right x-button border-0" onclick="return deleteButton();" style="background-color: #fff;">
 					 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 					  <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 					</svg>
 					</button>
-					 </li>
+					 </li> -->
 				</ul>
 			</div>
 			<!-- title -->
 			<div class="mb-3">
-				<label for="username">제목</label>
+				<label for="username">화장품이름</label>
 				<div class="input-group">
 					<div class="input-group-prepend">
-						<span class="input-group-text">제목</span>
+						<span class="input-group-text">이름</span>
 					</div>
-					<input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요" required="">
+					<input type="text" class="form-control" id="name" name="name" placeholder="제목을 입력하세요" required="">
 					<div class="invalid-feedback" style="width: 100%;">Your username is required.</div>
 				</div>
 			</div>
@@ -124,14 +124,14 @@
 				<div class="col-4">
 					<div class="form-group">
 						<label for="capacity">용량</label> 
-						<input type="email" class="form-control" id="capacity" name="capacity" placeholder="용량을 입력해주세요(ml 단위)" aria-describedby="emailHelp"> 
+						<input type="number" class="form-control" id="capacity" name="capacity" placeholder="용량을 입력해주세요(ml 단위)" aria-describedby="emailHelp"> 
 						<small id="emailHelp" class="form-text text-muted"></small>
 					</div>
 				</div>
 				<div class="col-4">
 					<div class="form-group">
 						<label for="period">기간</label> 
-						<input type="email" class="form-control" id="period" name="period" placeholder="기간을 입력해주세요(일 단위)" aria-describedby="emailHelp"> 
+						<input type="number" class="form-control" id="period" name="period" placeholder="기간을 입력해주세요(일 단위)" aria-describedby="emailHelp"> 
 						<small id="emailHelp" class="form-text text-muted"></small>
 					</div>
 				</div>
@@ -293,39 +293,30 @@ $(document).ready(function () {
 		
 		var type = $('#type option:selected').val();
 		console.log(type);
-		
 		var brand = $('#brand option:selected').val();
 		console.log(brand);
-		
 		var skinType = $('#skinType option:selected').val();
 		console.log(skinType);
-		
 		var price = $('#price').val();
 		console.log(price);
-		
-		var title = $('#title').val();
-		console.log(title);
-		
+		var name = $('#name').val();
+		console.log(name);
 		var content = $('.content').val();
 		console.log(content);
-		
 		var capacity = $('#capacity').val();
 		console.log(capacity);
-		
 		var period = $('#period').val();
 		console.log(period);
-		
 		var nation = $('#nation').val();
 		console.log(nation);
-		
 		var useMethod = $('#useMethod').val();
 		console.log(useMethod);
-		
-		var formdata = {'type':type,'brand':brand,'skinType':skinType,'price':price,'title':title
+		var formdata = {'type':type,'brand':brand,'skinType':skinType,'price':price,'name':name
 				,'content':content,'capacity':capacity,'period':period,'nation':nation,'useMethod':useMethod};
 		console.log("formdata");
 		console.log(formdata);
 		
+		var cno;
 		// 화장품, 상세정보 등록 아작스
 		$.ajax({
 			url: '${pageContext.request.contextPath}/cosmetic/cosmeticRegister', // 클라이언트가 요청을 보낼 서버의 URL 주소
@@ -333,23 +324,33 @@ $(document).ready(function () {
 			type: 'POST',          // HTTP 요청 방식(GET, POST)
 			dataType: 'html',      // 호출 했을 때 결과타입
 			success : function(data) {
-				
+				console.log("게시물번호");
+				console.log(data);
+				cno = Number(data);
+				for(var i=0; i<attachList.length;i++){
+					attachList[i].cno = cno;
+				}
 			}
-		});
-		
-		console.log("attach리스트");
-		console.log(attachList);
-		
-		// 첨부파일 등록 ajax
-		$.ajax({
-			url: '${pageContext.request.contextPath}/cosmetic/AttachRegister', // 클라이언트가 요청을 보낼 서버의 URL 주소
-			data: JSON.stringify(attachList),        // HTTP 요청과 함께 서버로 보낼 데이터
-			type: 'POST',          // HTTP 요청 방식(GET, POST)
-			dataType: 'json',      // 호출 했을 때 결과타입
-			contentType: "application/json",
-			success : function(data) {
-				
-			}
+		}).done(function() {
+			
+			console.log("attach리스트");
+			console.log(attachList);
+			// 첨부파일 등록 ajax
+			$.ajax({
+				url: '${pageContext.request.contextPath}/cosmetic/AttachRegister', // 클라이언트가 요청을 보낼 서버의 URL 주소
+				data: JSON.stringify(attachList),        // HTTP 요청과 함께 서버로 보낼 데이터
+				type: 'POST',          // HTTP 요청 방식(GET, POST)
+				dataType: 'html',      // 호출 했을 때 결과타입
+				contentType: 'application/json',
+				success : function(data) {
+					if(data=='success'){
+						alert('등록되었습니다');
+						location.href='${pageContext.request.contextPath}/cosmetic/cosmetic';
+					}else{
+						alert('등록실패했습니다');
+					}
+				}
+			});
 		});
 	});
 	

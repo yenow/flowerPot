@@ -2,6 +2,7 @@ package com.flowerPot.cosmetic.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.flowerPot.cosmetic.repository.CosmeticDao;
 import com.flowerPot.dao.DescriptionDao;
@@ -16,12 +17,13 @@ public class CosmeticServiceImpl implements CosmeticService {
 	@Autowired
 	private DescriptionDao descriptionDao;
 
-
+	@Transactional
 	@Override
-	public void cosmetic_register_ok(CosmeticVo cosmetic, DescriptionVo description) {
+	public void insertCosmeticAndDescription(CosmeticVo cosmetic, DescriptionVo description) {
 		cosmeticDao.insertCosmetic(cosmetic);
+		description.setCno(cosmetic.getCno());
 		descriptionDao.insertDescription(description);
 	}
-	
-	
+
+
 }

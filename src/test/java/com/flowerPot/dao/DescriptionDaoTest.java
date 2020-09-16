@@ -34,9 +34,9 @@ public class DescriptionDaoTest {
 	private CosmeticVo c;
 	@Before
 	public void testCaseCosmetic() {
-		cosmeticDao.deleteAll();
+		cosmeticDao.deleteByName("화장품이름");
 		int before = cosmeticDao.selectCount();
-		c = new CosmeticVo(0,"스킨","이니스프리","지성",10000,"태그",0,100);
+		c = new CosmeticVo(0,"화장품이름","스킨","이니스프리","지성",10000,"태그",0,100);
 		cosmeticDao.insertCosmetic(c);
 		int after = cosmeticDao.selectCount();
 		assertThat(before, is(after-1));
@@ -48,7 +48,7 @@ public class DescriptionDaoTest {
 	public void insertCosmetic() {
 		descriptionDao.deleteAll();
 		int before = descriptionDao.selectCount();
-		DescriptionVo d = new DescriptionVo(c.getCno(),1000,1000,"설명","국가");
+		DescriptionVo d = new DescriptionVo(c.getCno(),1000,1000,"사용방법","국가");
 		descriptionDao.insertDescription(d);
 		int after = descriptionDao.selectCount();
 		assertThat(before, is(after-1));
@@ -57,6 +57,6 @@ public class DescriptionDaoTest {
 	@After
 	public void delete() {
 		descriptionDao.deleteAll();
-		cosmeticDao.deleteAll();
+		cosmeticDao.deleteByName("화장품이름");
 	}
 }
