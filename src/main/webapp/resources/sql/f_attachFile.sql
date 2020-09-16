@@ -14,3 +14,4 @@ create table f_attachFile (
 create sequence atno_seq start with 1 increment by 1;
 
 drop table f_attachFile;
+select * from f_attachFile;
