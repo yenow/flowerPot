@@ -56,7 +56,7 @@ public class MemberDaoTest {
 		// 레코드가 삽입됬는지 확인
 		assertThat(before, is(after-1));
 		log.info("getMno : "+member.getMno());
-		assertNotEquals(member.getMno(), 0);
+		assertNotEquals(member.getMno(), new Integer(0));
 		
 	
 	}

@@ -8,9 +8,13 @@ create table f_cosmetic(
 	tag varchar2(50) ,
 	discountPersent number(30) default 0,
 	stockNumber number(30) default 0,
+	hits number(30) default 0,
+	regdate date,
 	primary key(cno),
 	unique(name)
 );
+-- alter table f_cosmetic add (hits number(30) default 0, regdate date);
+
 -- 시퀀스
 create sequence cno_seq  start with 1 increment by 1;
 --  제약조건

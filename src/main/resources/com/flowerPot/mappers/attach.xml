@@ -18,5 +18,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectCount" resultType="int">
 		select count(*) from f_attachFile
 	</select>
+	
+	<select id="selectMappingURLByCno" resultType="com.flowerPot.vo.AttachFileVo">
+		select mappingURL from f_attachFile where cno = #{cno}
+	</select>
 </mapper>
 

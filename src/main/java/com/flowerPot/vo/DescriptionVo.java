@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DescriptionVo {
 
-	private int cno;
-	private int capacity;
-	private int period;
+	private Integer cno;
+	private Integer capacity;
+	private Integer period;
 	private String useMethod;
 	private String nation;
 	

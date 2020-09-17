@@ -36,19 +36,19 @@ public class DescriptionDaoTest {
 	public void testCaseCosmetic() {
 		cosmeticDao.deleteByName("화장품이름");
 		int before = cosmeticDao.selectCount();
-		c = new CosmeticVo(0,"화장품이름","스킨","이니스프리","지성",10000,"태그",0,100);
+		c = new CosmeticVo(0,"화장품이름","스킨","이니스프리","지성",10000,0,100);
 		cosmeticDao.insertCosmetic(c);
 		int after = cosmeticDao.selectCount();
 		assertThat(before, is(after-1));
 		log.info("cno : "+c.getCno());  // selectKey 가져오는지
-		assertNotEquals(c.getCno(),0);
+		assertNotEquals(c.getCno(),new Integer(0));
 	}
 	
 	@Test
 	public void insertCosmetic() {
 		descriptionDao.deleteAll();
 		int before = descriptionDao.selectCount();
-		DescriptionVo d = new DescriptionVo(c.getCno(),1000,1000,"사용방법","국가");
+		DescriptionVo d = new DescriptionVo(c.getCno(),1000,1000,null,"국가");
 		descriptionDao.insertDescription(d);
 		int after = descriptionDao.selectCount();
 		assertThat(before, is(after-1));

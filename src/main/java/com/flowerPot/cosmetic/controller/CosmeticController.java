@@ -1,7 +1,6 @@
 package com.flowerPot.cosmetic.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flowerPot.attachFile.service.AttachFileService;
 import com.flowerPot.cosmetic.service.CosmeticService;
+import com.flowerPot.domain.Criteria;
 import com.flowerPot.vo.AttachFileVo;
 import com.flowerPot.vo.CosmeticVo;
 import com.flowerPot.vo.DescriptionVo;
@@ -28,14 +28,13 @@ public class CosmeticController {
 
 	@Autowired
 	private CosmeticService cosmeticService;
-	// @Autowired
 	@Autowired
 	private AttachFileService attachFileService;
 	
 	
 	@RequestMapping("cosmetic")
-	public void cosmetic() {
-		
+	public void cosmetic(Model m,Criteria c) {
+		List<CosmeticVo> cList = cosmeticService.selectListCosmeticByCategory(c);
 	}
 	
 	@RequestMapping("cosmetic_register")

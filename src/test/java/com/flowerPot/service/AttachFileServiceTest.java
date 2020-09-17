@@ -37,12 +37,12 @@ public class AttachFileServiceTest {
 	public void insertCosmetic() {
 		cosmeticDao.deleteByName("화장품이름");
 		int before = cosmeticDao.selectCount();
-		c = new CosmeticVo(0,"화장품이름","스킨","이니스프리","지성",10000,"태그",0,100);
+		c = new CosmeticVo(0,"화장품이름","스킨","이니스프리","지성",10000,0,100);
 		cosmeticDao.insertCosmetic(c);
 		int after = cosmeticDao.selectCount();
 		assertThat(before, is(after-1));
 		log.info("cno : "+c.getCno());  // selectKey 가져오는지
-		assertNotEquals(c.getCno(),0);
+		assertNotEquals(c.getCno(),new Integer(0));
 	}
 	
 	@Test

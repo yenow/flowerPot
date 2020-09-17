@@ -55,7 +55,7 @@ public class CosmeticControllerTest {
 		assertThat(before, is(after-1));
 		
 		log.info("cno : "+c.getCno());  // selectKey 가져오는지
-		assertNotEquals(c.getCno(),0);
+		assertNotEquals(c.getCno(),new Integer(0));
 	}
 	
 	@Test
@@ -71,8 +71,7 @@ public class CosmeticControllerTest {
 	@Test
 	public void AttachRegister() throws Exception {
 		// 리퀘스트 바디를 어떻게 해야할지??
-		RequestBuilder builder = MockMvcRequestBuilders.post("/cosmetic/AttachRegister").contentType(MediaType.APPLICATION_JSON).param("cno", Integer.toString(c.getCno())).param("uuidName", "uuidName").param("originalFileName","originalFileName")
-				.param("uploadFolderPath", "uploadFolderPath").param("mappingURL", "mappingURL").param("realName", "realName");
+		RequestBuilder builder = MockMvcRequestBuilders.post("/cosmetic/AttachRegister").contentType(MediaType.APPLICATION_JSON);
 		mockMvc.perform(builder).andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers .print());
 	}
 	

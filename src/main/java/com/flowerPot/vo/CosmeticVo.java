@@ -1,5 +1,7 @@
 package com.flowerPot.vo;
 
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,15 +10,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CosmeticVo {
-	private int cno;
+	private Integer cno;
 	private String name;
 	private String type;
 	private String brand;
 	private String skinType;
-	private int price;
+	private Integer price;
 	private String tag;
-	private int discountPersent;
-	private int stockNumber;
+	private Integer discountPersent;
+	private Integer stockNumber;
+	private Integer hits;
+	private LocalDateTime regdate;
+	
+	private String mappingURL;
+	
 	
 	public CosmeticVo(int cno, String type, String brand, String skinType, int price, int discountPersent,
 			int stockNumber) {
@@ -41,6 +48,20 @@ public class CosmeticVo {
 		this.price = price;
 		this.discountPersent = discountPersent;
 		this.stockNumber = stockNumber;
+	}
+
+	public CosmeticVo(int cno, String name, String type, String brand, String skinType, int price, int discountPersent,
+			int stockNumber, LocalDateTime regdate) {
+		super();
+		this.cno = cno;
+		this.name = name;
+		this.type = type;
+		this.brand = brand;
+		this.skinType = skinType;
+		this.price = price;
+		this.discountPersent = discountPersent;
+		this.stockNumber = stockNumber;
+		this.regdate = regdate;
 	}
 	
 	

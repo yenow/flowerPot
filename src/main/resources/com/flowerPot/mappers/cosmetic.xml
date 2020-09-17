@@ -7,7 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.flowerPot.cosmetic.repository.CosmeticDao">
 	
 	<insert id="insertCosmetic">
-		insert into f_cosmetic (cno,type,brand,price,discountPersent,stockNumber,skinType) values (cno_seq.nextval,#{type},#{brand},#{price},#{discountPersent},#{stockNumber},#{skinType})
+		insert into f_cosmetic (cno,name,type,brand,skinType,price,discountPersent,stockNumber,hits,regdate) 
+		values (cno_seq.nextval,#{name},#{type},#{brand},#{skinType},#{price},#{discountPersent},#{stockNumber},#{hits, jdbcType=NUMERIC},sysdate)
 		
 		<selectKey resultType="int" order="AFTER" keyProperty="cno">
 			select cno_seq.currval from dual
@@ -25,5 +26,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectCount" resultType="int">
 		select count(*) from f_cosmetic
+	</select>
+	
+	<select id="selectListCosmeticByCategory" resultType="com.flowerPot.vo.CosmeticVo">
+		select * from f_cosmetic 
 	</select>
 </mapper>
