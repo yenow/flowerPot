@@ -36,16 +36,17 @@
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
-
+<!--     <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+ -->
     <!--
 
         Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
         Tip 2: you can also add an image using data-image tag
 
     -->
+    <jsp:include page="sidebar.jsp"/> <%--사이드바 --%>
 
-    	<div class="sidebar-wrapper">
+    	<!-- <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
                     Creative Tim
@@ -68,7 +69,7 @@
                 <li>
                     <a href="table.html">
                         <i class="pe-7s-note2"></i>
-                        <p>Table List</p>
+                        <p>회원목록</p>
                     </a>
                 </li>
                 <li>
@@ -103,7 +104,7 @@
                 </li>
             </ul>
     	</div>
-    </div>
+    </div> -->
 
     <div class="main-panel">
 		<nav class="navbar navbar-default navbar-fixed">

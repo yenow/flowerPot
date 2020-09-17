@@ -11,4 +11,9 @@ public class ProductController {
 	public void product() {
 		
 	}
+	
+	@RequestMapping("product_detail")
+	public void productDetail() {
+		
+	}
 }

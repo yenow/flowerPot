@@ -30,4 +30,6 @@ public class MemberDaoImpl implements MemberDao {
 	public void deleteMemberById(String id) {
 		sqlSession.delete("m_deleteMemberById", id);
 	}
+	
+	
 }
