@@ -64,9 +64,10 @@ public class AttachFileDaoTest {
 		
 		attachFileDao.insertAttachFile(attach);
 		attachFileDao.insertAttachFile(attach2);
-		List<String> list = attachFileDao.selectMappingURLByCno(c.getCno());
+		List<AttachFileVo> list = attachFileDao.selectMappingURLByCno(c.getCno());
+		log.info("확인:"+list);
 		assertThat(list.size(), is(2));
-		
+		log.info("확인:"+attachFileDao.selectMappingURLByCno(0).toString());
 	}
 	
 	@After

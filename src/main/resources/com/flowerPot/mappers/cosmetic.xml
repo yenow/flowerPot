@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="insertCosmetic">
 		insert into f_cosmetic (cno,name,type,brand,skinType,price,discountPersent,stockNumber,hits,regdate) 
-		values (cno_seq.nextval,#{name},#{type},#{brand},#{skinType},#{price},#{discountPersent},#{stockNumber},#{hits, jdbcType=NUMERIC},sysdate)
+		values (cno_seq.nextval,#{name},#{type},#{brand},#{skinType},#{price},#{discountPersent, jdbcType=NUMERIC},#{stockNumber, jdbcType=NUMERIC},#{hits, jdbcType=NUMERIC},sysdate)
 		
 		<selectKey resultType="int" order="AFTER" keyProperty="cno">
 			select cno_seq.currval from dual

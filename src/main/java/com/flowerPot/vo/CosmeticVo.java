@@ -25,6 +25,7 @@ public class CosmeticVo {
 	private String mappingURL;
 	
 	
+	
 	public CosmeticVo(int cno, String type, String brand, String skinType, int price, int discountPersent,
 			int stockNumber) {
 		super();

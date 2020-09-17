@@ -12,5 +12,5 @@ public interface AttachFileDao {
 
 	public int selectCount();
 
-	public List<String> selectMappingURLByCno(int cno);
+	public List<AttachFileVo> selectMappingURLByCno(int cno);
 }

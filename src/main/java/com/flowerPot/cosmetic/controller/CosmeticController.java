@@ -37,6 +37,9 @@ public class CosmeticController {
 		List<CosmeticVo> cList = cosmeticService.selectListCosmeticByCategory(c);
 		model.addAttribute("cList", cList);
 		model.addAttribute("categoryName", c.getCategoryName());
+		for(CosmeticVo cosmetic : cList) {
+			System.out.println("cList : " + cosmetic.toString());
+		}
 	}
 	
 	@RequestMapping("cosmetic_register")
