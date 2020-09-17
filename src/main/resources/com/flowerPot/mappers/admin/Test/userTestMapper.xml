@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.flowerPot.Admin.dao.UserMapper">
+	<insert id="insertUserT">
+		insert into tf_member (mno,id,name) values (#{mno},#{id},#{name})
+	</insert>
+	
+	<select id="selectUserT" resultType="com.flowerPot.Admin.vo.UserTVO">
+		select * from tf_member order by mno desc
+	</select>
+	
+	<!-- 중복되는 동적 SQL문에 대한 처리 -->
+	<sql id="search">
+		<!-- 동적 SQL구문 -->
+		<if test="condition == 'mno'">
+		WHERE mno LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="condition == 'id'">
+		WHERE id LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="condition == 'name'">
+		WHERE name LIKE '%'||#{keyword}||'%'
+		</if>
+	</sql>
+	
+	<!-- 현강 페이징,검색처리 소스 기반  오라클 쿼리문-->
+	<!-- <select id="getArticleList" resultType="com.flowerPot.Admin.vo.UserTVO">		
+		SELECT * FROM 
+		(SELECT rownum rnum, mno, id, name FROM 
+		(SELECT * FROM tf_member 
+		<include refid="search"/>
+		 ORDER BY mno DESC))
+		WHERE  rnum BETWEEN #{pageStart} AND #{pageEnd}
+	</select> -->
+	<!-- 현강 페이징,검색처리 소스 기반  오라클 쿼리문-->
+	<select id="getArticleList" resultType="com.flowerPot.vo.MemberVo">		
+
+ 		SELECT * FROM 
+		(SELECT rownum rnum, mno, id, name, nickname, address, email, gender, birth, member_rank, regdate, enabled
+		FROM
+		(SELECT * FROM f_member 
+		<include refid="search"/>
+		 ORDER BY mno DESC))
+		WHERE  rnum BETWEEN #{pageStart} AND #{pageEnd}
+	</select>
+	<!-- 현강 페이징,검색처리 소스 기반  오라클 쿼리문-->
+	
+	<!-- 현강 페이징,검색처리 소스 기반  오라클 쿼리문-->
+	<select id="countArticles" resultType="int">
+		SELECT COUNT(*) 
+		FROM f_member
+		<include refid="search" />
+	</select>
+	
+</mapper>
