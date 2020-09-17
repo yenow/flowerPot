@@ -58,7 +58,7 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Table List</a>
+						<a class="navbar-brand" href="#">회원 관리</a>
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-left">
@@ -121,24 +121,8 @@
 						<div class="col-md-12">
 							<div class="card">
 								<div class="header">
-									<h4 class="title">회원목록</h4>
-									<!-- 검색 기능 -->
-									<div>
-										<select id="condition" class="form-control" name="condition">
-											<option value="mno">번호</option>
-											<option value="id">ID</option>
-											<option value="name">이름</option>
-										</select>
-									</div>
-									<div>
-										<div class="input-group">
-											<input type="text" class="form-control" name="keyword"
-												id="keywordInput" placeholder="검색어"> <span
-												class="input-group-btn"> <input type="button"
-												value="검색" class="btn btn-izone btn-flat" id="searchBtn">
-											</span>
-										</div>
-									</div>
+									<h4 class="title" style="display:inline-block;">회원목록</h4>
+									
 									<p class="category">Here is a subtitle for this table</p>
 								</div>
 								<div class="content table-responsive table-full-width">
@@ -148,13 +132,33 @@
 											<th>번호</th>
 											<th>ID</th>
 											<th>이름</th>
+											<th>닉네임</th>
+											<th>주소</th>
+											<th>이메일</th>
+											<th>성별</th>
+											<th>생일</th>
+											<th>등급</th>
+											<th>가입일</th>
+											<th>권한</th>
+											<th>상태</th>
+											<th>비고</th>
 										</thead>
 										<tbody>
-											<c:forEach var="user" items="${ulist}">
+											<c:forEach var="mem" items="${mList}">
 												<tr>
-													<td>${user.mno}</td>
-													<td>${user.id}</td>
-													<td>${user.name}</td>
+													<td>${mem.mno}</td>
+													<td>${mem.id}</td>
+													<td>${mem.name}</td>
+													<td>${mem.nickname}</td>
+													<td>${mem.address}</td>
+													<td>${mem.email}</td>
+													<td>${mem.gender}</td>
+													<td>${mem.birth}</td>
+													<td>${mem.member_rank}</td>
+													<td>${mem.regdate}</td>
+													<td>대빵</td>
+													<td>${mem.enabled}</td>
+													<td>수정</td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -162,14 +166,33 @@
 
 								</div>
 							</div>
+								<!-- 검색 기능 -->
+									<div style="display:inline-block;display:inline-block; float:right; margin-right:60px;">
+										<div class="conditionBox" style="display: inline-block; width: 80px;">
+											<select id="condition" class="form-control" name="condition">
+												<option value="mno">번호</option>
+												<option value="id">ID</option>
+												<option value="name">이름</option>
+											</select>
+										</div>
+										<div class="input-group" style="display:inline-flex;">
+											<input type="text" class="form-control" name="keyword"
+												id="keywordInput" placeholder="검색어"> <span
+												class="input-group-btn"> <input type="button" style="background-color: #9765da; color: white;"
+												value="검색" class="btn btn-izone btn-flat" id="searchBtn">
+											</span>
+										</div>
+									</div>
+							
 						</div>
 										<!-- 페이징 처리 부분  -->
+									<div class="paging" style="text-align: center;">
 										<ul class="pagination justify-content-center">
 											<!-- 이전 버튼 -->
 											<c:if test="${pc.prev}">
 												<li class="page-item"><a class="page-link"
-													href="<c:url value='/admin/user/list${pc.makeURI(pc.beginPage - 1)}' />"
-													style="background-color: #9765da; margin-top: 0; height: 40px; color: white; border: 0px solid #3c2857; opacity: 0.8">이전</a>
+													href="<c:url value='/admin/memList${pc.makeURI(pc.beginPage - 1)}' />"
+													style="background-color: #9765da; margin-top: 0; height: 40px; color: white; border: 0px solid #d3d3d3; opacity: 0.8">이전</a>
 												</li>
 											</c:if>
 
@@ -177,23 +200,25 @@
 											<c:forEach var="pageNum" begin="${pc.beginPage}"
 												end="${pc.endPage}">
 												<li class="page-item"><a
-													href="<c:url value='/admin/user/list${pc.makeURI(pageNum)}'/>"
+													href="<c:url value='/admin/memList${pc.makeURI(pageNum)}'/>"
 													class="page-link ${(pc.paging.page == pageNum) ? 'page-active' : ''}"
-													style="margin-top: 0; height: 40px; color: #9765da; border: 1px solid #3c2857;">${pageNum}</a>
+													style="margin-top: 0; height: 40px; color: #9765da; border: 1px solid #d3d3d3;">${pageNum}</a>
 												</li>
 											</c:forEach>
 
 											<!-- 다음 버튼 -->
 											<c:if test="${pc.next}">
 												<li class="page-item"><a class="page-link"
-													href="<c:url value='/admin/user/list${pc.makeURI(pc.endPage + 1)}' />"
-													style="background-color: #9765da; margin-top: 0; height: 40px; color: white; border: 0px solid #3c2857; opacity: 0.8">다음</a>
+													href="<c:url value='/admin/memList${pc.makeURI(pc.endPage + 1)}' />"
+													style="background-color: #9765da; margin-top: 0; height: 40px; color: white; border: 0px solid #d3d3d3; opacity: 0.8">다음</a>
 												</li>
 											</c:if>
 										</ul>
+									</div>	
 
 
 					</div>
+					
 				</div>
 			</div>
 
@@ -231,7 +256,7 @@ $(function() {
 		console.log('검색어 : '+keyword);
 		const condition = $('#condition option:selected').val();
 		console.log('검색조건 : '+condition);
-		location.href="${pageContext.request.contextPath}/admin/user/list?keyword="+keyword+"&condition="+condition;
+		location.href="${pageContext.request.contextPath}/admin/memList?keyword="+keyword+"&condition="+condition;
 	});
 	
 	$('#keywordInput').keydown(function(key){

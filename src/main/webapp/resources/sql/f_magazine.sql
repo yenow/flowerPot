@@ -18,8 +18,8 @@ alter table f_magazine add mno number(30);
 -- 매거진 왜래키 설정
 alter table f_magazine add constraint f_magazine_fk_mno foreign key (mno) references f_member(mno);
 
-drop table magazine;
-select * from magazine;
+drop table f_magazine;
+select * from f_magazine;
 
 -- 메거진 시퀀스
 create sequence mgno_seq increment by 1 start with 1;
