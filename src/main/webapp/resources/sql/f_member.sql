@@ -1,23 +1,24 @@
 create table f_member (
     mno number(30),
-    id varchar2(100),
+    id varchar2(100) not null,
     password varchar2(100),
-    name varchar2(20),
+    name varchar2(20) not null,
     nickname varchar2(50),
     address varchar2(100),
     email varchar2(100),
     gender varchar2(2),    
     birth varchar2(10),
     member_rank varchar2(15),
-    authority varchar2(15),
+    enabled char(1) default '1',
+    regdate date,
     primary key(mno),
-    unique(id)
+    unique(id),
+    unique(email)
 );
-alter table f_member add(enabled char(1) default '1');
-alter table f_member add(regdate date);
-alter table f_member add(unique(email));
-
+-- 시퀀스
 create sequence mno_seq increment by 1 start with 1 minvalue 1;
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
 select mno_seq.nextval from dual;
 select * from f_member;
 drop table f_member;

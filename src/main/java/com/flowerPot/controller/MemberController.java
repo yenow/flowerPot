@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.flowerPot.service.MemberSerivce;
 import com.flowerPot.vo.MemberVo;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @RequestMapping("/member")
+@Slf4j
 public class MemberController {
 
 	@Autowired
@@ -30,9 +33,12 @@ public class MemberController {
 	
 	// 회원가입 처리
 	@RequestMapping("/signUp_ok")
-	public void signUp_ok(MemberVo member) {
+	public String signUp_ok(MemberVo member) {
 		// 비밀번호 인코딩
+		log.info("회원정보 : "+member.toString());
 		member.setPassword(passwordEncoder.encode(member.getPassword()));
+		log.info("회원정보 : "+member.toString());
 		memberService.insertMember(member);
+		return "redirect:/";
 	}
 }

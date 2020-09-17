@@ -46,7 +46,7 @@ public class MemberDaoTest {
 		authorityDao.deleteAuthorityById("testId");
 		// 기본키 제약조건 제거, 중복된 레코드 삽입불가
 		memberDao.deleteMemberById("testId"); 
-		MemberVo member = new MemberVo(0,"testId","testPassword","testname","testnickname","testaddress","testemail","M","testbirth","브론즈",true);
+		MemberVo member = new MemberVo(0,"testId","testPassword","testname","testnickname","testaddress","testemail","M","testbirth","브론즈",null);
 		// 비밀번호 인코딩
 		member.setPassword(passwordEncoder.encode(member.getPassword()));
 		

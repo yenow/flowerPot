@@ -33,8 +33,10 @@ public class CosmeticController {
 	
 	
 	@RequestMapping("cosmetic")
-	public void cosmetic(Model m,Criteria c) {
+	public void cosmetic(Model model,Criteria c) {
 		List<CosmeticVo> cList = cosmeticService.selectListCosmeticByCategory(c);
+		model.addAttribute("cList", cList);
+		model.addAttribute("categoryName", c.getCategoryName());
 	}
 	
 	@RequestMapping("cosmetic_register")
