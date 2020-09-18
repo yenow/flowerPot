@@ -1,10 +1,8 @@
 package com.flowerPot.dao;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertThat;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,8 +11,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.flowerPot.cosmetic.repository.CosmeticDao;
-import com.flowerPot.vo.CosmeticVo;
+import com.flowerPot.description.repository.DescriptionDao;
+import com.flowerPot.test.DescriptionTestCase;
 import com.flowerPot.vo.DescriptionVo;
 
 import lombok.extern.slf4j.Slf4j;
@@ -27,36 +25,26 @@ import lombok.extern.slf4j.Slf4j;
 public class DescriptionDaoTest {
 
 	@Autowired
-	private DescriptionDao descriptionDao;
+	private DescriptionTestCase descriptionTestCase;
 	@Autowired
-	private CosmeticDao cosmeticDao;
-	
-	private CosmeticVo c;
+	private DescriptionDao descriptionDao;
+	DescriptionVo description;
 	@Before
-	public void testCaseCosmetic() {
-		cosmeticDao.deleteByName("화장품이름");
-		int before = cosmeticDao.selectCount();
-		c = new CosmeticVo(0,"화장품이름","스킨","이니스프리","지성",10000,0,100);
-		cosmeticDao.insertCosmetic(c);
-		int after = cosmeticDao.selectCount();
-		assertThat(before, is(after-1));
-		log.info("cno : "+c.getCno());  // selectKey 가져오는지
-		assertNotEquals(c.getCno(),new Integer(0));
+	public void testCase() {
+		description = descriptionTestCase.insertDescriptionTestCase();
 	}
 	
 	@Test
-	public void insertCosmetic() {
-		descriptionDao.deleteAll();
-		int before = descriptionDao.selectCount();
-		DescriptionVo d = new DescriptionVo(c.getCno(),1000,1000,null,"국가");
-		descriptionDao.insertDescription(d);
-		int after = descriptionDao.selectCount();
-		assertThat(before, is(after-1));
+	public void testCaseTest() {
+		DescriptionVo description = descriptionTestCase.insertDescriptionTestCase();
+		assertNotEquals(description, null);
 	}
 	
-	@After
-	public void delete() {
-		descriptionDao.deleteAll();
-		cosmeticDao.deleteByName("화장품이름");
-	}
+	@Test
+	public void selectOneDescriptionByCno() {
+		DescriptionVo d1 = descriptionDao.selectOneDescriptionByCno(description.getCno());
+		assertNotEquals(d1, null);
+		DescriptionVo d2 = descriptionDao.selectOneDescriptionByCno(null);
+		assertEquals(d2, null);;
+	}	
 }

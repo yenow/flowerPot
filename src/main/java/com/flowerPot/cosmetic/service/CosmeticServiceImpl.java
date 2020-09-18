@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.flowerPot.attachFile.repository.AttachFileDao;
 import com.flowerPot.cosmetic.repository.CosmeticDao;
-import com.flowerPot.dao.DescriptionDao;
+import com.flowerPot.description.repository.DescriptionDao;
 import com.flowerPot.domain.Criteria;
 import com.flowerPot.vo.AttachFileVo;
 import com.flowerPot.vo.CosmeticVo;
@@ -38,6 +38,7 @@ public class CosmeticServiceImpl implements CosmeticService {
 	@Override
 	public List<CosmeticVo> selectListCosmeticByCategory(Criteria c) {
 		 List<CosmeticVo> cList = cosmeticDao.selectListCosmeticByCategory(c);
+		 // 화장품에 섬네일 이미지 하나를 가져오는 작업, 없다면 가져오지 않음
 		 for(CosmeticVo cosmetic : cList) {
 			 List<AttachFileVo> mappingURLList = attachFileDao.selectMappingURLByCno(cosmetic.getCno());
 			 if(mappingURLList.size()!=0) {
@@ -46,6 +47,11 @@ public class CosmeticServiceImpl implements CosmeticService {
 			 }
 		 }
 		 return cList;
+	}
+
+	@Override
+	public CosmeticVo selectOneCosmeticByCno(Integer cno) {
+		return cosmeticDao.selectOneCosmeticByCno(cno);
 	}
 
 }

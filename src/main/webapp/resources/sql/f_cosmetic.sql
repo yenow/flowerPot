@@ -8,10 +8,13 @@ create table f_cosmetic(
 	tag varchar2(50) ,
 	discountPersent number(30) default 0,
 	stockNumber number(30) default 0,
-	hits number(30) default 0,
+	hits number(30) default 0,  -- 조회수
 	regdate date,
 	primary key(cno),
 	unique(name)
+	-- 추가해야할 속성
+	-- 좋아요 개수
+	-- 
 );
 -- alter table f_cosmetic add (hits number(30) default 0, regdate date);
 

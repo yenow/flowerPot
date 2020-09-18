@@ -1,4 +1,4 @@
-package com.flowerPot.dao;
+package com.flowerPot.description.repository;
 
 import com.flowerPot.vo.DescriptionVo;
 
@@ -9,5 +9,7 @@ public interface DescriptionDao {
 	void deleteAll();
 
 	int selectCount();
+
+	DescriptionVo selectOneDescriptionByCno(Integer cno);
 
 }

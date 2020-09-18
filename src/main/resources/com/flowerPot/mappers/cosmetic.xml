@@ -31,4 +31,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectListCosmeticByCategory" resultType="com.flowerPot.vo.CosmeticVo">
 		select * from f_cosmetic 
 	</select>
+	
+	<select id="selectOneCosmeticByCno" resultType="com.flowerPot.vo.CosmeticVo">
+		select * from f_cosmetic where cno = #{cno, jdbcType=NUMERIC}
+	</select>
 </mapper>

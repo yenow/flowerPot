@@ -17,4 +17,6 @@ public interface CosmeticDao {
 
 	List<CosmeticVo> selectListCosmeticByCategory(Criteria c);
 
+	CosmeticVo selectOneCosmeticByCno(Integer cno);
+
 }

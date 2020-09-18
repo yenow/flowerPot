@@ -1,6 +1,11 @@
 package com.flowerPot.cosmetic.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flowerPot.attachFile.service.AttachFileService;
 import com.flowerPot.cosmetic.service.CosmeticService;
+import com.flowerPot.description.service.DescriptionService;
 import com.flowerPot.domain.Criteria;
 import com.flowerPot.vo.AttachFileVo;
 import com.flowerPot.vo.CosmeticVo;
@@ -30,10 +36,38 @@ public class CosmeticController {
 	private CosmeticService cosmeticService;
 	@Autowired
 	private AttachFileService attachFileService;
+	@Autowired
+	private DescriptionService descriptionService;
 	
+	//
+	@RequestMapping("cosmetic_ok")
+	public void cosmetic_ok(Integer cno,HttpServletRequest request,HttpServletResponse response) throws IOException {
+		PrintWriter out = response.getWriter();
+		if(cno==null) {
+			out.print("<script>");
+			out.print("alert('잘못된 접근입니다');");
+			out.print("location.href='"+request.getContextPath()+"cosmetic/cosmetic_list';");
+			out.print("</script>");
+			out.close();
+		}else {
+			out.print("<script>");
+			out.print("location.href='"+request.getContextPath()+"cosmetic/cosmetic?cno="+cno+"';");
+			out.print("</script>");
+			out.close();
+		}
+	}
 	
+	// 화장품 구입 페이지
 	@RequestMapping("cosmetic")
-	public void cosmetic(Model model,Criteria c) {
+	public void cosmetic(Integer cno,Model model) throws IOException {
+		CosmeticVo cosmetic = cosmeticService.selectOneCosmeticByCno(cno);
+		DescriptionVo description = descriptionService.selectOneDescriptionByCno(cno);
+		model.addAttribute("cosmetic", cosmetic);
+		model.addAttribute("description", description);
+	}
+	
+	@RequestMapping("cosmetic_list")
+	public void cosmetic_list(Model model,Criteria c) {
 		List<CosmeticVo> cList = cosmeticService.selectListCosmeticByCategory(c);
 		model.addAttribute("cList", cList);
 		model.addAttribute("categoryName", c.getCategoryName());
