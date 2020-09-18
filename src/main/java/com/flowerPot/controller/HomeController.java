@@ -31,6 +31,11 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping(value = "/shoppingList/wishlist", method = RequestMethod.GET)
+	public void wishlist() {
+		
+	}
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		/*logger.info("Welcome home! The client locale is {}.", locale);

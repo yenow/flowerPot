@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flowerPot.attachFile.service.AttachFileService;
 import com.flowerPot.cosmetic.service.CosmeticService;
+import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
 import com.flowerPot.description.service.DescriptionService;
 import com.flowerPot.domain.Criteria;
 import com.flowerPot.vo.AttachFileVo;
+import com.flowerPot.vo.CosmeticReviewVo;
 import com.flowerPot.vo.CosmeticVo;
 import com.flowerPot.vo.DescriptionVo;
 
@@ -38,6 +40,8 @@ public class CosmeticController {
 	private AttachFileService attachFileService;
 	@Autowired
 	private DescriptionService descriptionService;
+	@Autowired 
+	CosmeticReviewService cosmeticReviewService;
 	
 	//
 	@RequestMapping("cosmetic_ok")
@@ -46,12 +50,12 @@ public class CosmeticController {
 		if(cno==null) {
 			out.print("<script>");
 			out.print("alert('잘못된 접근입니다');");
-			out.print("location.href='"+request.getContextPath()+"cosmetic/cosmetic_list';");
+			out.print("location.href='"+request.getContextPath()+"/cosmetic/cosmetic_list';");
 			out.print("</script>");
 			out.close();
 		}else {
 			out.print("<script>");
-			out.print("location.href='"+request.getContextPath()+"cosmetic/cosmetic?cno="+cno+"';");
+			out.print("location.href='"+request.getContextPath()+"/cosmetic/cosmetic?cno="+cno+"';");
 			out.print("</script>");
 			out.close();
 		}
@@ -62,8 +66,10 @@ public class CosmeticController {
 	public void cosmetic(Integer cno,Model model) throws IOException {
 		CosmeticVo cosmetic = cosmeticService.selectOneCosmeticByCno(cno);
 		DescriptionVo description = descriptionService.selectOneDescriptionByCno(cno);
+		List<CosmeticReviewVo> crList = cosmeticReviewService.selectListCosmeticReviewListByCno(cno);
 		model.addAttribute("cosmetic", cosmetic);
 		model.addAttribute("description", description);
+		model.addAttribute("crList", crList);
 	}
 	
 	@RequestMapping("cosmetic_list")
