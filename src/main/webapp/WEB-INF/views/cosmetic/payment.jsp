@@ -7,7 +7,7 @@
 
 <section class="bg0 p-t-75 p-b-85">
 	<div class="row" style="margin: 0 15px;">
-		<form style="margin : 0 auto;">
+		<form action="${pageContext.request.contextPath }/kakaoPay" method="post" style="margin : 0 auto;">
 		<div class="col-12 m-lr-auto m-b-50">
 				<h2 class="text-center py-5 font-weight-bold">주문서</h2>	
 				
