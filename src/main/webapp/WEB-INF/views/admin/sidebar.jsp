@@ -19,34 +19,40 @@
                         <p>종합 현황</p>
                     </a>
                 </li>
-                <li id="User_Profile">
-                    <a href="${pageContext.request.contextPath}/admin/empList">
+                <li id="brand">
+                    <a href="${pageContext.request.contextPath}/admin/brand">
+                        <i class="pe-7s-ticket"></i>
+                        <p>입점 관리</p>
+                    </a>
+                </li>
+                <li id="employee">
+                    <a href="${pageContext.request.contextPath}/admin/employee">
                         <i class="pe-7s-user"></i>
                         <p>직원 관리</p>
                     </a>
                 </li>
-                <li id="list">
-                    <a href="memList">
-                        <i class="pe-7s-note2"></i>
+                <li id="member">
+                    <a href="${pageContext.request.contextPath}/admin/member">
+                        <i class="pe-7s-id"></i>
                         <p>회원 관리</p>
                     </a>
                 </li>
                 <li id="Typography">
                     <a href="${pageContext.request.contextPath}/admin/goods">
-                        <i class="pe-7s-news-paper"></i>
+                        <i class="pe-7s-note2"></i>
                         <p>재고 관리</p>
                     </a>
                 </li>
                 
                 <li id="Maps">
                     <a href="${pageContext.request.contextPath}/admin/maps">
-                        <i class="pe-7s-map-marker"></i>
+                        <i class="pe-7s-cart"></i>
                         <p>주문 배송</p>
                     </a>
                 </li>
                 <li id="Icons">
                     <a href="icons.html">
-                        <i class="pe-7s-science"></i>
+                        <i class="pe-7s-speaker"></i>
                         <p>소통 관리</p>
                     </a>
                 </li>
@@ -59,7 +65,7 @@
 				<li id="active-pro" class="active-pro">
                     <!-- <a href="upgrade.html">-->
                     <a href="${pageContext.request.contextPath}">
-                        <i class="pe-7s-rocket"></i>
+                        <i class="pe-7s-home"></i>
                         <p>메인 페이지</p>
                     </a>
                 </li>
@@ -71,7 +77,7 @@
 <script src="../resources/assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 
 <script>
-	
+	/* 
 	$(document).ready(function() {
 		$('li').click(function() {
 			var idName = $(this).attr("id");
@@ -105,6 +111,6 @@
 			localStorage.setItem('idName',localStorage.getItem("redirect"));
 		}
 		*/
-	});
+	}); */
 	
 </script> 

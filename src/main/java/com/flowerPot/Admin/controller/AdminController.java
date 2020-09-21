@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.flowerPot.Admin.commons.PageCreator;
 import com.flowerPot.Admin.commons.SearchVO;
 import com.flowerPot.Admin.service.IUserService;
+import com.flowerPot.Admin.vo.EmpVo;
 import com.flowerPot.vo.MemberVo;
 
 @Controller
@@ -21,24 +22,36 @@ public class AdminController {
 	@Autowired
 	private IUserService service;
 	
-	
+	//종합 현황
 	@RequestMapping("/dashboard")
 	public void dashboard() {
 		
 	}
 	
-	@RequestMapping("/icons")
+	//입점 관리(목록)
+	@RequestMapping("/brand")
 	public void icons() {
 		
 	}
-	
-	@RequestMapping("/maps")
-	public void maps() {
+	//브랜드 추가
+	@RequestMapping("/brandAdd")
+	public void brandAdd() {
 		
 	}
 	
+	//직원 관리(목록) 
+	@RequestMapping("/employee")
+	public void employee() {
+		
+	}
+	//직원 추가
+	@RequestMapping("/empAdd")
+	public void empAdd(EmpVo emp) {
+		service.insertEmpOne(emp);
+	}
 	
-	@RequestMapping("/memList")
+	//회원 관리(목록)
+	@RequestMapping("/member")
 	public void memList(SearchVO search, Model model) {
 		System.out.println("찾아옴");
 		System.out.println(search);
@@ -60,22 +73,13 @@ public class AdminController {
 		
 	}
 	
-	@RequestMapping("/upgrade")
+	@RequestMapping("/icons")
 	public void upgrade() {
-		
-	}
-	
-	@RequestMapping("/empList")
-	public void empList() {
 		
 	}
 	
 	@RequestMapping("/notifications")
 	public void notifications() {
-		
-	}
-	@RequestMapping("/newEmp")
-	public void newEmp() {
 		
 	}
 	

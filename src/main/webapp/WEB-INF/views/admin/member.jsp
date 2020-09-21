@@ -139,12 +139,27 @@
 											<th>생일</th>
 											<th>등급</th>
 											<th>가입일</th>
-											<th>권한</th>
 											<th>상태</th>
 											<th>비고</th>
 										</thead>
 										<tbody>
-											<c:forEach var="mem" items="${mList}">
+											<%-- <c:forEach begin="1" end="100" step="1"">
+												<tr>
+													<td>mem.mno</td>
+													<td>mem.id</td>
+													<td>mem.name</td>
+													<td>mem.nickname</td>
+													<td>mem.address</td>
+													<td>mem.email</td>
+													<td>mem.gender</td>
+													<td>mem.birth</td>
+													<td>mem.member_rank</td>
+													<td>mem.regdate</td>
+													<td>mem.enabled</td>
+													<td>탈퇴</td>
+												</tr>
+											</c:forEach> --%>
+ 											<c:forEach var="mem" items="${mList}"> 
 												<tr>
 													<td>${mem.mno}</td>
 													<td>${mem.id}</td>
@@ -156,9 +171,8 @@
 													<td>${mem.birth}</td>
 													<td>${mem.member_rank}</td>
 													<td>${mem.regdate}</td>
-													<td>대빵</td>
 													<td>${mem.enabled}</td>
-													<td>수정</td>
+													<td>탈퇴</td>
 												</tr>
 											</c:forEach>
 										</tbody>

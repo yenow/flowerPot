@@ -3,6 +3,7 @@ package com.flowerPot.Admin.dao;
 import java.util.List;
 
 import com.flowerPot.Admin.commons.SearchVO;
+import com.flowerPot.Admin.vo.EmpVo;
 import com.flowerPot.Admin.vo.UserTVO;
 import com.flowerPot.vo.MemberVo;
 
@@ -15,6 +16,9 @@ public interface UserMapper {
 	public List<MemberVo> getArticleList(SearchVO search);
 
 	public Integer countArticles(SearchVO search);
+	
+	//직원추가
+	public void insertEmpOne(EmpVo emp);
 
 	
 } 

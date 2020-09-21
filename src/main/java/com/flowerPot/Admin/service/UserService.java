@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.flowerPot.Admin.commons.SearchVO;
 import com.flowerPot.Admin.dao.UserMapper;
-import com.flowerPot.Admin.vo.UserTVO;
+import com.flowerPot.Admin.vo.EmpVo;
 import com.flowerPot.vo.MemberVo;
 
 @Service
@@ -31,6 +31,13 @@ public class UserService implements IUserService {
 	public Integer countArticles(SearchVO search) {
 		return mapper.countArticles(search);
 	}
+	
+
+	@Override
+	public void insertEmpOne(EmpVo emp) {
+		mapper.insertEmpOne(emp);
+	}
+
 	
 	
 	

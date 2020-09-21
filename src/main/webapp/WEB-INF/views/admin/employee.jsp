@@ -120,15 +120,83 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">사원 등록</h4>
+                            </div>
+                            <div class="content">
+
+                                <form action="${pageContext.request.contextPath}/admin/empAdd" method="post">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Company (disabled)</label>
+                                                <input type="text" class="form-control" disabled placeholder="Company" value="FlowerPot Inc.">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label>부서</label>
+                                                <select id="department" class="form-control" name="deptNo">
+													<option value="10">기획</option>
+													<option value="20">총무</option>
+													<option value="30">인사</option>
+													<option value="40">개발</option>
+													<option value="50">물류</option>
+												</select>
+<!--                                                 <input type="text" class="form-control" name="" placeholder="부서" value="인사">
+ -->                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label>직위</label>
+                                                <select id="position" class="form-control" name="poNo">
+													<option value="1">알바</option>
+													<option value="2">인턴</option>
+													<option value="3">사원</option>
+													<option value="4">주임</option>
+													<option value="5">대리</option>
+													<option value="6">팀장</option>
+													<option value="7">과장</option>
+													<option value="8">차장</option>
+													<option value="9">부장</option>
+													<option value="10">이사</option>
+													<option value="11">상무</option>
+													<option value="12">전무</option>
+													<option value="13">부사장</option>
+													<option value="14">사장</option>
+													<option value="15">부회장</option>
+													<option value="16">회장</option>
+												</select>
+<!--                                                 <input type="text" class="form-control" name="" placeholder="직위" value="팀장">
+ -->                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>사원ID</label>
+                                                <input type="text" class="form-control" name="empId" placeholder="아이디" >
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">이름</label>
+                                                <input type="text" class="form-control" name="empName" placeholder="이름">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-izone btn-flat pull-right" style="background-color: #9765da; color: white;">등록</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+						<div class="col-md-12">
 							<div class="card">
 								<div class="header">
 									<h4 class="title" style="display:inline-block;">직원 목록</h4>
-			<button class="btn btn-izone btn-flat" onclick="location='${pageContext.request.contextPath}/admin/newEmp'"style="background-color: #9765da; color: white; margin-left: 20px;">
-			신입 등록
-			</button>
-									
-									<p class="category">부제</p>
-								</div>
+<!-- 									<p class="category">부제</p>
+ -->								</div>
 								<div class="content table-responsive table-full-width">
 									<table class="table table-hover table-striped">
 										<!-- 게시글 목록 출력 -->
@@ -136,14 +204,22 @@
 											<th>번호</th>
 											<th>ID</th>
 											<th>이름</th>
+											<th></th>
+											<th></th>
 										</thead>
 										<tbody>
 											<c:forEach var="user" items="${ulist}">
 												<tr>
+												
 													<td>${user.mno}</td>
-													<td>${user.id}</td>
+													<td>
+													<c:if test="${empty user.id}">미발급</c:if>
+													<c:if test="${!empty user.id}">${user.id}</c:if>
+													</td>
 													<td>${user.name}</td>
 													<td><button onclick="location='#'">권한 변경</button></td>
+													<td><button class="btn btn-info btn-fill pull-right">아이디발급</button></td>
+													
 												</tr>
 											</c:forEach>
 										</tbody>

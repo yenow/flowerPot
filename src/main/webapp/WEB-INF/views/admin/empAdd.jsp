@@ -123,6 +123,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
+                
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
@@ -134,97 +135,31 @@
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label>Company (disabled)</label>
-                                                <input type="text" class="form-control" disabled placeholder="Company" value="Creative Code Inc.">
+                                                <input type="text" class="form-control" disabled placeholder="Company" value="FlowerPot Inc.">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>부서명</label>
+                                                <input type="text" class="form-control" name="" placeholder="부서명" value="인사팀">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>직위</label>
+                                                <input type="text" class="form-control" name="" placeholder="부서명" value="팀장">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>부서명</label>
-                                                <input type="text" class="form-control" name="" placeholder="부서명" value="팀장">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">이메일 주소</label>
-                                                <input type="email" class="form-control" name="email" placeholder="Email">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>성</label>
-                                                <input type="text" class="form-control" name="firstName" placeholder="성" value="대">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>이름</label>
-                                                <input type="text" class="form-control" name="lastName"placeholder="이름" value="통령">
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-									<div class="row">
-										<div class="col-md-3">
-											<div class="form-group">
-												<label>우편 번호</label> 
-												<input type="text" name ="postcode" id="sample4_postcode"  class="form-control" placeholder="우편 번호"/>
-											</div>
-										</div>
-										<div class="col-md-3" style="margin-top:30px;">
-											<div class="form-group">
-												<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-											</div>	
-										</div>
-									</div>
-									<div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>도로명 주소</label>
-                                                <input type="text" name="roadAddr" id="sample4_roadAddress" class="form-control" placeholder="도로명 주소" >
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>지번 주소</label>
-                                                <input type="text" name="jibunAddr" id="sample4_jibunAddress" class="form-control" placeholder="지번 주소" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- span태그가 없으면 팝업창이 종료되지 않습니다. -->
-                                    <span id="guide" style="color:#999;display:none"></span>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>참고 주소</label>
-												<input type="text" name="extraAddr" id="sample4_extraAddress"  class="form-control"  placeholder="참고 주소" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>상세 주소</label>
-												<input type="text" name="detailAddr" id="sample4_detailAddress" class="form-control" placeholder="상세 주소" />
-                                            </div>
-                                        </div>
-                                    </div>
-									
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>자기소개</label>
-                                                <textarea rows="5" class="form-control" placeholder="Here can be your description" value="나를 소개하세요">적폐청산은 내로남불입니다.</textarea>
+                                                <label for="exampleInputEmail1">이름</label>
+                                                <input type="email" class="form-control" name="name" placeholder="이름">
                                             </div>
                                         </div>
                                     </div>
 
                                     <button type="submit" class="btn btn-info btn-fill pull-right">등록</button>
+                                    <button class="btn btn-info btn-fill pull-right">아이디발급</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
