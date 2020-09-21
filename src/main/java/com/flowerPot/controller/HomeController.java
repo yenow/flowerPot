@@ -22,10 +22,6 @@ public class HomeController {
 	
 	private static final Log LOG = LogFactory.getLog( HomeController.class );
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	
 	@RequestMapping(value = "/shoppingList/shoppingList", method = RequestMethod.GET)
 	public void shoppingList() {
 		

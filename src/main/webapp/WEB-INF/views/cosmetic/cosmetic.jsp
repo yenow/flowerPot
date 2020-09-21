@@ -86,6 +86,11 @@
 					<div class="d-flex justify-content-between py-2">
 						<span class="mtext-106">배송정보</span> <span class="mtext-106">2,500원 ( 20,000 원 이상 무료배송 )</span>
 					</div>
+					
+					<!-- 재고정보 -->
+					<div class="d-flex justify-content-between py-2">
+						<span class="mtext-106">재고</span> <span class="mtext-106">${stock.stockNumber }</span>
+					</div>
 
 					<!-- 화장품가격 -->
 					<div class="d-flex justify-content-between py-2">
@@ -100,7 +105,11 @@
 							</span>
 						</div>
 					</div>
-
+					
+					<!-- 제출폼 -->
+					<form method="get" id="cosmetic-form" >
+					<input type="hidden"  name="cno" value="${cosmetic.cno }"/>
+					<input type="hidden" id="isNextpage" name="isNextpage" />
 					<!-- 구매수량 -->
 					<div class="d-flex justify-content-between py-2">
 						<span class="d-flex align-items-center mtext-106">수량</span>
@@ -109,7 +118,7 @@
 							<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
 								<i class="fs-16 zmdi zmdi-minus"></i>
 							</div>
-							<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
+							<input class="mtext-104 cl3 txt-center num-product" type="number" id="buy-number" name="numProduct" value="1" onchange="">
 							<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 								<i class="fs-16 zmdi zmdi-plus"></i>
 							</div>
@@ -123,9 +132,13 @@
 
 					<!-- 장바구니, 구매 박스 -->
 					<div class="d-flex justify-content-center py-2">
-						<a type="button" class="btn btn-outline-secondary btn-lg mr-2">장바구니</a>
-						<a type="button" class="btn btn-outline-secondary btn-lg">바로구매</a>
+						<!-- 장바구니 버튼 -->
+						<button type="submit" class="btn btn-outline-secondary btn-lg mr-2" id="shoppingCart">장바구니</button>
+						<!--바로구매 버튼 -->
+						<button type="submit" class="btn btn-outline-secondary btn-lg" id="nowBuy">바로구매</button>
 					</div>
+					
+					</form>
 
 					<!-- 페이스북, 구글, 트위터 공유하기  -->
 					<div class="d-flex justify-content-center py-2">
@@ -210,7 +223,7 @@
 									<c:forEach var="cr" items="${crList }">
 										<div class="flex-w flex-t p-b-68">
 											<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-												<img src="${pageContext.request.contextPath }/resources/images/avatar-01.jpg" alt="AVATAR">
+												<img src="${pageContext.request.contextPath }/resources/img/profile-image.png" alt="AVATAR">
 											</div>
 
 											<div class="size-207">
@@ -305,36 +318,54 @@
 </section>
 
 <script>
-	function onsubmitCometicReview() {
-		var star = $('.wrap-rating').children('.zmdi-star');
-		console.log(star.length); // 별표시 개수 찍기
-		$('.rating').val(star.length);
-	}
 
-	$(document)
-			.ready(
-					function() {
-						var ratingTag = $('.show-rating');
-						console.log(ratingTag);
-						console.log(ratingTag[1]);
+/*
+function registerShoppingCart() {
+	$('#buy-number').val();
+	console.log("구매수량");
+	console.log($('#buy-number').val());
+}
+*/
+function onsubmitCometicReview() {
+	var star = $('.wrap-rating').children('.zmdi-star');
+	console.log(star.length); // 별표시 개수 찍기
+	$('.rating').val(star.length);
+}
 
-						for (var i = 0; i < ratingTag.length; i++) {
-							var rating = $(ratingTag[i]).data('rating');
-							console.log(rating);
-							$(ratingTag[i]).empty();
+$(document).ready(function() {
+	var ratingTag = $('.show-rating');
+	console.log(ratingTag);
+	console.log(ratingTag[1]);
 
-							for (var j = 0; j < rating; j++) {
-								$(ratingTag[i])
-										.append(
-												$('<i class="item-rating pointer zmdi zmdi-star"></i>'));
-							}
-							for (var j = rating; j < 5; j++) {
-								$(ratingTag[i])
-										.append(
-												$('<i class="item-rating pointer zmdi zmdi-star-outline"></i>'))
-							}
-						}
-					});
+	// 쇼핑카트 버튼 클릭시 
+	$('#shoppingCart').click(function() {
+		var flag = confirm("상품이 장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
+		if(flag==true){
+			$('#isNextpage').val("1");
+		}else{
+			$('#isNextpage').val("0");
+		}
+		console.log($('#isNextpage').val());
+		$('#cosmetic-form').attr("action", "${pageContext.request.contextPath }/cosmetic/shoppingCart_register");
+	});
+	
+	// 바로구입 버튼 클릭시
+	$('#nowBuy').click(function() {
+		$('#cosmetic-form').attr("action", "${pageContext.request.contextPath }/");
+	});
+	
+	for (var i = 0; i < ratingTag.length; i++) {
+		var rating = $(ratingTag[i]).data('rating');
+		console.log(rating);
+		$(ratingTag[i]).empty();
+
+		for (var j = 0; j < rating; j++) {
+			$(ratingTag[i]).append($('<i class="item-rating pointer zmdi zmdi-star"></i>'));}
+			for (var j = rating; j < 5; j++) {
+				$(ratingTag[i]).append($('<i class="item-rating pointer zmdi zmdi-star-outline"></i>'))
+			}
+		}
+	});
 </script>	
 	
 	

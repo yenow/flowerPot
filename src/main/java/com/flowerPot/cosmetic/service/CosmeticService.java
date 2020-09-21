@@ -2,6 +2,8 @@ package com.flowerPot.cosmetic.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.flowerPot.domain.Criteria;
 import com.flowerPot.vo.CosmeticVo;
 import com.flowerPot.vo.DescriptionVo;
@@ -13,5 +15,7 @@ public interface CosmeticService {
 	List<CosmeticVo> selectListCosmeticByCategory(Criteria c);
 
 	CosmeticVo selectOneCosmeticByCno(Integer cno);
+
+	String shoppingCart_register(Integer cno, Integer isNextpage, Integer numProduct, HttpSession session);
 
 }

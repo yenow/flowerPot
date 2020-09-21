@@ -26,7 +26,7 @@ public class CosmeticTestCase {
 			
 			// 이거전에 제약조건과 관련된 테이블을 삭제하는 코드가 있어야함,,, 이거는 계속있어야할듯
 			cosmeticDao.deleteByName("name"+i); 
-			CosmeticVo cosmetic =  new CosmeticVo(0, "name"+i, "type"+i, "brand"+i,"content"+i ,"skinType"+i, i, "tag"+i, i, i, 0, LocalDateTime.now(), "mappingURL"+i);
+			CosmeticVo cosmetic =  new CosmeticVo(0, "name"+i, "type"+i, "brand"+i,"content"+i ,"skinType"+i, i, "tag"+i, i, i, 0, LocalDateTime.now(),1,"mappingURL"+i);
 			cosmeticDao.insertCosmetic(cosmetic);
 			cList.add(cosmetic);
 		}

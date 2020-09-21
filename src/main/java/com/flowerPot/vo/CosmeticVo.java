@@ -18,11 +18,12 @@ public class CosmeticVo {
 	private String skinType;
 	private Integer price;
 	private String tag;
-	private Integer discountPersent;
-	private Integer stockNumber;
+	private Integer discountPersent;  // 할인률
+	private Integer stockNumber;  // 재고수
 	private Integer hits;
 	private LocalDateTime regdate;
 	
+	private Integer numProduct;
 	private String mappingURL;
 	
 	

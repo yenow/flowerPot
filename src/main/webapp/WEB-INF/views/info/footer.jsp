@@ -378,4 +378,6 @@
 <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
 
 </body>
+
+<!-- 아이콘 제작자 <a href="https://creativemarket.com/Becris" title="Becris">Becris</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon"> www.flaticon.com</a> -->
 </html>

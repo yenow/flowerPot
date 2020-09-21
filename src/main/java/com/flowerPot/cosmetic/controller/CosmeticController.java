@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -43,7 +44,14 @@ public class CosmeticController {
 	@Autowired 
 	CosmeticReviewService cosmeticReviewService;
 	
-	//
+	// 장바구니 담기
+	@RequestMapping("shoppingCart_register")
+	public String shoppingCart_register(Integer cno,Integer isNextpage,Integer numProduct,HttpSession session) {
+		log.info("cno:"+cno+" isNextpage:"+isNextpage+" numProduct: "+numProduct);
+		return cosmeticService.shoppingCart_register(cno,isNextpage,numProduct,session);
+	}
+	
+	// 윤신영 - 화장품 페이지 이동 브랜치
 	@RequestMapping("cosmetic_ok")
 	public void cosmetic_ok(Integer cno,HttpServletRequest request,HttpServletResponse response) throws IOException {
 		PrintWriter out = response.getWriter();
@@ -61,7 +69,7 @@ public class CosmeticController {
 		}
 	}
 	
-	// 화장품 구입 페이지
+	// 윤신영 - 화장품 구입 페이지
 	@RequestMapping("cosmetic")
 	public void cosmetic(Integer cno,Model model) throws IOException {
 		CosmeticVo cosmetic = cosmeticService.selectOneCosmeticByCno(cno);
@@ -72,6 +80,7 @@ public class CosmeticController {
 		model.addAttribute("crList", crList);
 	}
 	
+	// 화장품 리스트 페이지 이동
 	@RequestMapping("cosmetic_list")
 	public void cosmetic_list(Model model,Criteria c) {
 		List<CosmeticVo> cList = cosmeticService.selectListCosmeticByCategory(c);
@@ -82,6 +91,7 @@ public class CosmeticController {
 		}
 	}
 	
+	// 윤신영 - 화장품 등록 페이지 이동
 	@RequestMapping("cosmetic_register")
 	public void cosmetic_register() {
 		
@@ -99,6 +109,7 @@ public class CosmeticController {
 	}
 	*/
 	
+	// 윤신영 - 화장품 등록 (아작스)
 	@RequestMapping(value = "cosmeticRegister", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> cosmeticRegister(CosmeticVo cosmetic,  DescriptionVo description){
@@ -118,6 +129,7 @@ public class CosmeticController {
 		return r;
 	}
 	
+	// 윤신영 - 첨부파일사진 등록 (아작스)
 	@RequestMapping(value = "AttachRegister", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> AttachRegister(@RequestBody List<AttachFileVo> attachList ){ //Map<String, Object> params

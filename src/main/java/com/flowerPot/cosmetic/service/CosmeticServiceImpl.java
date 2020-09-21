@@ -1,10 +1,14 @@
 package com.flowerPot.cosmetic.service;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.flowerPot.attachFile.repository.AttachFileDao;
 import com.flowerPot.cosmetic.repository.CosmeticDao;
@@ -52,6 +56,28 @@ public class CosmeticServiceImpl implements CosmeticService {
 	@Override
 	public CosmeticVo selectOneCosmeticByCno(Integer cno) {
 		return cosmeticDao.selectOneCosmeticByCno(cno);
+	}
+
+	// 세션에 화장품 리스트 넣기
+	@Override
+	public String shoppingCart_register(Integer cno, Integer isNextpage, Integer numProduct, HttpSession session) {
+		CosmeticVo cosmetic = cosmeticDao.selectOneCosmeticByCno(cno);
+		cosmetic.setNumProduct(numProduct);
+		if(session.getAttribute("shoppingCartList")==null) {
+			List<CosmeticVo> shoppingCartList = new ArrayList<CosmeticVo>();
+			shoppingCartList.add(cosmetic);
+			session.setAttribute("shoppingCartList", shoppingCartList);
+		}else {
+			List<CosmeticVo> shoppingCartList = (List<CosmeticVo>) session.getAttribute("shoppingCartList");
+			shoppingCartList.add(cosmetic);
+			session.setAttribute("shoppingCartList", shoppingCartList);
+		}
+
+		if(isNextpage==1) {
+			return "/shoppingList/shoppingList";
+		}else {
+			return "/";
+		}
 	}
 
 }
