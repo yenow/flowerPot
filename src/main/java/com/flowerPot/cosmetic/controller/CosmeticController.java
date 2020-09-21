@@ -44,6 +44,11 @@ public class CosmeticController {
 	@Autowired 
 	CosmeticReviewService cosmeticReviewService;
 	
+	@RequestMapping("payment")
+	public void payment() {
+
+	}
+	
 	// 장바구니 담기
 	@RequestMapping("shoppingCart_register")
 	public String shoppingCart_register(Integer cno,Integer isNextpage,Integer numProduct,HttpSession session) {
