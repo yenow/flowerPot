@@ -7,11 +7,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class CosmeticVo {
 	private Integer cno;
 	private String name;
+	private String code;
 	private String type;
 	private String brand;
 	private String content;
@@ -21,11 +22,18 @@ public class CosmeticVo {
 	private Integer discountPersent;  // 할인률
 	private Integer stockNumber;  // 재고수
 	private Integer hits;
+	private Integer likey;
+	private Boolean enable;
 	private LocalDateTime regdate;
 	
 	private Integer numProduct;
 	private String mappingURL;
 	
+	/*
+alter table f_cosmetic add (likey number(30));
+alter table f_cosmetic add (code varchar2(150));
+alter table f_cosmetic add (enable char(1));
+    */
 	
 	
 	public CosmeticVo(int cno, String type, String brand, String skinType, int price, int discountPersent,
@@ -66,8 +74,7 @@ public class CosmeticVo {
 		this.stockNumber = stockNumber;
 		this.regdate = regdate;
 	}
-	
-	
+
 }
 
 

@@ -39,7 +39,7 @@ public class CosmeticDaoTest {
 	public void testCase() {
 		cList = cosmeticTestCase.insertCosmeticTestCase();
 	}
-	
+	/*
 	@Test
 	public void insertCosmetic() {
 		cosmeticDao.deleteByName("화장품이름");
@@ -55,10 +55,12 @@ public class CosmeticDaoTest {
 		assertNotEquals(c.getCno(),new Integer(0));
 		cosmeticDao.deleteByName("화장품이름");
 	}
+	*/
 	
 	@Test
 	public void insertCosmeticTestCase() {
 		cosmeticTestCase.insertCosmeticTestCase();
+		cosmeticTestCase.deleteAll();
 	}
 	
 	@Test

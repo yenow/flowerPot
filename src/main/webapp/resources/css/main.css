@@ -1796,6 +1796,13 @@ button.mfp-close {
   cursor: pointer;
 }
 
+.y-btn-num-product-up,
+.y-btn-num-product-down {
+  width: 45px;
+  height: 100%;
+  cursor: pointer;
+}
+
 .num-product {
   width: calc(100% - 90px);
   height: 100%;
@@ -3343,9 +3350,17 @@ input.num-product::-webkit-inner-spin-button {
 
 
 .txt_line {
-	
-	
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+
+
+input[type="checkbox"] {
+    -webkit-appearance: checkbox;
+    border-radius: 0;
+}
+input[type="radio"] {
+    -webkit-appearance: radio;
+    border-radius: 0;
 }

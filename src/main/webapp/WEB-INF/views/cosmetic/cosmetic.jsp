@@ -107,7 +107,7 @@
 					</div>
 					
 					<!-- 제출폼 -->
-					<form method="get" id="cosmetic-form" >
+					<form method="post" id="cosmetic-form" >
 					<input type="hidden"  name="cno" value="${cosmetic.cno }"/>
 					<input type="hidden" id="isNextpage" name="isNextpage" />
 					<!-- 구매수량 -->

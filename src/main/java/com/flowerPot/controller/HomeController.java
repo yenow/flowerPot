@@ -2,6 +2,10 @@ package com.flowerPot.controller;
 
 import java.util.Locale;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +44,17 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		return "index";
+	}
+	
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String test(HttpServletRequest request, HttpServletResponse response) {
+		Cookie[] c= request.getCookies();
+		log.info("쿠키:"+c);
+		for(Cookie c1 : c) {
+			log.info("쿠키:"+c1.getName());
+			log.info("쿠키:"+c1.getValue());
+		}
+		return "test";
 	}
 	
 	@RequestMapping(value = "/index2", method = RequestMethod.GET)

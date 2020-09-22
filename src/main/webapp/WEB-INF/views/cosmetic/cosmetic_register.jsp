@@ -345,7 +345,7 @@ $(document).ready(function () {
 				success : function(data) {
 					if(data=='success'){
 						alert('등록되었습니다');
-						location.href='${pageContext.request.contextPath}/cosmetic/cosmetic';
+						location.href='${pageContext.request.contextPath}/cosmetic/cosmetic_list';
 					}else{
 						alert('등록실패했습니다');
 					}

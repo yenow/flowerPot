@@ -2,6 +2,7 @@ package com.flowerPot.cosmetic.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Member;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,7 @@ import com.flowerPot.vo.AttachFileVo;
 import com.flowerPot.vo.CosmeticReviewVo;
 import com.flowerPot.vo.CosmeticVo;
 import com.flowerPot.vo.DescriptionVo;
+import com.flowerPot.vo.MemberVo;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -45,15 +47,40 @@ public class CosmeticController {
 	CosmeticReviewService cosmeticReviewService;
 	
 	@RequestMapping("payment")
-	public void payment() {
-
+	public void payment(Model model) {
+		MemberVo memberVo = new MemberVo();
+		model.addAttribute("member", memberVo);
+		
+	}
+	
+	// ajax, 장바구니에 담긴 화장품 삭제
+	@RequestMapping("shopping_list_del")
+	@ResponseBody
+	public ResponseEntity<String> shopping_list_del(Integer cno,HttpSession session) {
+		log.info("cno:"+cno);
+		List<CosmeticVo> cList = (List<CosmeticVo>) session.getAttribute("shoppingCartList");
+		
+		for(int i=0; i<cList.size(); i++) {
+			if(cList.get(i).getCno()==cno) {
+				cList.remove(i);
+				break;
+			}
+		}
+		return new ResponseEntity<String>("success",HttpStatus.OK);
 	}
 	
 	// 장바구니 담기
 	@RequestMapping("shoppingCart_register")
-	public String shoppingCart_register(Integer cno,Integer isNextpage,Integer numProduct,HttpSession session) {
+	public String shoppingCart_register(Integer cno,Integer isNextpage,Integer numProduct,HttpServletRequest request, HttpServletResponse response , HttpSession session) {
 		log.info("cno:"+cno+" isNextpage:"+isNextpage+" numProduct: "+numProduct);
-		return cosmeticService.shoppingCart_register(cno,isNextpage,numProduct,session);
+		cosmeticService.shoppingCart_register(cno,isNextpage,numProduct,session,request,response);
+		if(isNextpage==1) {
+			// 장바구니 리스트로 이동
+			return "redirect:/shoppingList/shoppingList";
+		}else {
+			// 계속 쇼핑하기
+			return "redirect:/";
+		}
 	}
 	
 	// 윤신영 - 화장품 페이지 이동 브랜치

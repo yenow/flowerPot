@@ -7,8 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.flowerPot.cosmetic.repository.CosmeticDao">
 	
 	<insert id="insertCosmetic">
-		insert into f_cosmetic (cno,name,type,brand,skinType,content,price,discountPersent,stockNumber,hits,regdate) 
-		values (cno_seq.nextval,#{name},#{type},#{brand},#{skinType},#{content},#{price},#{discountPersent, jdbcType=NUMERIC},#{stockNumber, jdbcType=NUMERIC},#{hits, jdbcType=NUMERIC},sysdate)
+		insert into f_cosmetic (cno,name,type,code,brand,skinType,content,price,discountPersent,stockNumber,hits,regdate) 
+		values (cno_seq.nextval,#{name},#{type},#{code,jdbcType=VARCHAR},#{brand},#{skinType},#{content, jdbcType=VARCHAR},#{price},#{discountPersent, jdbcType=NUMERIC},#{stockNumber, jdbcType=NUMERIC},#{hits, jdbcType=NUMERIC},sysdate)
 		
 		<selectKey resultType="int" order="AFTER" keyProperty="cno">
 			select cno_seq.currval from dual

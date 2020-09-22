@@ -2,7 +2,11 @@ package com.flowerPot.cosmetic.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +35,12 @@ public class CosmeticServiceImpl implements CosmeticService {
 	@Autowired
 	private AttachFileDao attachFileDao;
 
+	// 상품등록
 	@Transactional
 	@Override
 	public void insertCosmeticAndDescription(CosmeticVo cosmetic, DescriptionVo description) {
+		String code = cosmetic.getBrand()+"_"+UUID.randomUUID().toString(); // 상품코드 생성
+		cosmetic.setCode(code);
 		cosmeticDao.insertCosmetic(cosmetic);
 		description.setCno(cosmetic.getCno());
 		descriptionDao.insertDescription(description);
@@ -53,6 +60,7 @@ public class CosmeticServiceImpl implements CosmeticService {
 		 return cList;
 	}
 
+	// cno로 화장품 정보 가져오기
 	@Override
 	public CosmeticVo selectOneCosmeticByCno(Integer cno) {
 		return cosmeticDao.selectOneCosmeticByCno(cno);
@@ -60,7 +68,7 @@ public class CosmeticServiceImpl implements CosmeticService {
 
 	// 세션에 화장품 리스트 넣기
 	@Override
-	public String shoppingCart_register(Integer cno, Integer isNextpage, Integer numProduct, HttpSession session) {
+	public void shoppingCart_register(Integer cno, Integer isNextpage, Integer numProduct, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		CosmeticVo cosmetic = cosmeticDao.selectOneCosmeticByCno(cno);
 		cosmetic.setNumProduct(numProduct);
 		if(session.getAttribute("shoppingCartList")==null) {
@@ -72,12 +80,5 @@ public class CosmeticServiceImpl implements CosmeticService {
 			shoppingCartList.add(cosmetic);
 			session.setAttribute("shoppingCartList", shoppingCartList);
 		}
-
-		if(isNextpage==1) {
-			return "/shoppingList/shoppingList";
-		}else {
-			return "/";
-		}
 	}
-
 }
