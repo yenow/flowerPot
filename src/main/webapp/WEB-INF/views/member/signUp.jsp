@@ -25,23 +25,23 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleInputName1">이름</label>
-						<input type="password" class="form-control form-control-lg" name="name" id="exampleInputName1">
+						<input type="text" class="form-control form-control-lg" name="name" id="exampleInputName1">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputNickname1">닉네임</label>
-						<input type="password" class="form-control form-control-lg" name="nickname" id="exampleInputNickname1">
+						<input type="text" class="form-control form-control-lg" name="nickname" id="exampleInputNickname1">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputEmail1">이메일</label>
-						<input type="password" class="form-control form-control-lg" name="email" id="exampleInputEmail1">
+						<input type="email" class="form-control form-control-lg" name="email" id="exampleInputEmail1">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputTel1">전화번호</label>
-						<input type="password" class="form-control form-control-lg" name="tel" id="exampleInputTel1">
+						<input type="tel" class="form-control form-control-lg" name="tel" id="exampleInputTel1">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputAddress1">주소</label>
-						<input type="password" class="form-control form-control-lg" name="address" id="exampleInputAddress1">
+						<input type="text" class="form-control form-control-lg" name="address" id="exampleInputAddress1">
 					</div>
 					<div class="form-check">
 						<input type="radio" name="gender" id="exampleRadios1" value="M" style="display: inline-block">

@@ -19,7 +19,7 @@ import com.flowerPot.vo.MemberVo;
 import lombok.extern.slf4j.Slf4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml","file:src/main/webapp/WEB-INF/spring/security-context.xml"})
+@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/test-context.xml","file:src/main/webapp/WEB-INF/spring/security-context.xml"})
 @Slf4j
 public class MemberDaoTest {
 
@@ -46,7 +46,7 @@ public class MemberDaoTest {
 		authorityDao.deleteAuthorityById("testId");
 		// 기본키 제약조건 제거, 중복된 레코드 삽입불가
 		memberDao.deleteMemberById("testId"); 
-		MemberVo member = new MemberVo(0,"testId","testPassword","testname","testnickname","testaddress","testemail","M","testbirth","브론즈",true);
+		MemberVo member = new MemberVo(0,"testId","testPassword","testname","testnickname","testaddress","testemail","M","testbirth","브론즈",null);
 		// 비밀번호 인코딩
 		member.setPassword(passwordEncoder.encode(member.getPassword()));
 		
@@ -56,6 +56,8 @@ public class MemberDaoTest {
 		// 레코드가 삽입됬는지 확인
 		assertThat(before, is(after-1));
 		log.info("getMno : "+member.getMno());
-		assertNotEquals(member.getMno(), 0);
+		assertNotEquals(member.getMno(), new Integer(0));
+		
+	
 	}
 }

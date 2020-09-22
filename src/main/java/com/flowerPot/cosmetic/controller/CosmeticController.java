@@ -1,0 +1,130 @@
+package com.flowerPot.cosmetic.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.flowerPot.attachFile.service.AttachFileService;
+import com.flowerPot.cosmetic.service.CosmeticService;
+import com.flowerPot.description.service.DescriptionService;
+import com.flowerPot.domain.Criteria;
+import com.flowerPot.vo.AttachFileVo;
+import com.flowerPot.vo.CosmeticVo;
+import com.flowerPot.vo.DescriptionVo;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Controller
+@RequestMapping("cosmetic")
+@Slf4j
+public class CosmeticController {
+
+	@Autowired
+	private CosmeticService cosmeticService;
+	@Autowired
+	private AttachFileService attachFileService;
+	@Autowired
+	private DescriptionService descriptionService;
+	
+	//
+	@RequestMapping("cosmetic_ok")
+	public void cosmetic_ok(Integer cno,HttpServletRequest request,HttpServletResponse response) throws IOException {
+		PrintWriter out = response.getWriter();
+		if(cno==null) {
+			out.print("<script>");
+			out.print("alert('잘못된 접근입니다');");
+			out.print("location.href='"+request.getContextPath()+"cosmetic/cosmetic_list';");
+			out.print("</script>");
+			out.close();
+		}else {
+			out.print("<script>");
+			out.print("location.href='"+request.getContextPath()+"cosmetic/cosmetic?cno="+cno+"';");
+			out.print("</script>");
+			out.close();
+		}
+	}
+	
+	// 화장품 구입 페이지
+	@RequestMapping("cosmetic")
+	public void cosmetic(Integer cno,Model model) throws IOException {
+		CosmeticVo cosmetic = cosmeticService.selectOneCosmeticByCno(cno);
+		DescriptionVo description = descriptionService.selectOneDescriptionByCno(cno);
+		model.addAttribute("cosmetic", cosmetic);
+		model.addAttribute("description", description);
+	}
+	
+	@RequestMapping("cosmetic_list")
+	public void cosmetic_list(Model model,Criteria c) {
+		List<CosmeticVo> cList = cosmeticService.selectListCosmeticByCategory(c);
+		model.addAttribute("cList", cList);
+		model.addAttribute("categoryName", c.getCategoryName());
+		for(CosmeticVo cosmetic : cList) {
+			System.out.println("cList : " + cosmetic.toString());
+		}
+	}
+	
+	@RequestMapping("cosmetic_register")
+	public void cosmetic_register() {
+		
+	}
+	
+	/*
+	@RequestMapping(value = "cosmetic_register_ok", method = RequestMethod.POST)
+	@ResponseBody
+	public String cosmetic_register_ok(CosmeticVo cosmetic,  DescriptionVo description) {
+		log.info("cosmetic : " + cosmetic.toString());
+		log.info("description : " + description.toString());
+		cosmeticService.cosmetic_register_ok(cosmetic,description);
+		
+		return "cosmetic/cosmetic";
+	}
+	*/
+	
+	@RequestMapping(value = "cosmeticRegister", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<String> cosmeticRegister(CosmeticVo cosmetic,  DescriptionVo description){
+		ResponseEntity<String> r = null;
+		
+		log.info("cosmetic : "+cosmetic.toString());
+		log.info("description : "+description.toString());
+		
+		try {
+			cosmeticService.insertCosmeticAndDescription(cosmetic,description);
+			r= new ResponseEntity<String>(Integer.toString(cosmetic.getCno()),HttpStatus.OK);
+		} catch (Exception e) {
+			r= new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+			e.printStackTrace();
+		}
+		log.info("cosmetic cno : "+cosmetic.toString());
+		return r;
+	}
+	
+	@RequestMapping(value = "AttachRegister", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<String> AttachRegister(@RequestBody List<AttachFileVo> attachList ){ //Map<String, Object> params
+		ResponseEntity<String> r = null;
+		log.info("attach : "+attachList.toString());
+		try {
+			for(AttachFileVo attach : attachList) {
+				attachFileService.insertAttachFile(attach);
+			}
+			r= new ResponseEntity<String>("success",HttpStatus.OK);
+		} catch (Exception e) {
+			r= new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+		}
+		return r;
+	}
+}

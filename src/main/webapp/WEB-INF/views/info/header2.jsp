@@ -44,8 +44,7 @@
 
 	<!-- Header -->
 	<header class="header-v4">
-	
-		
+
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
 			<!-- Topbar -->
@@ -70,63 +69,42 @@
 				</div>
 			</div>
 
-			
+
 			<div class="wrap-menu-desktop how-shadow1">
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
-					<a href="${pageContext.request.contextPath }" class="logo"> 화분 </a>
-					
-					
+					<!--  <a href="${pageContext.request.contextPath }" class="logo"> 화분 </a>-->
+					<a href="${pageContext.request.contextPath }" class="logo">
+					<img alt="img" src="${pageContext.request.contextPath }/resources/semiadmin_css/assets/images/font.JPG">
+					 </a>
+
+
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li class="active-menu">
-								<a href="${pageContext.request.contextPath }">home</a>
-							</li>
-
-							<li>
-								<a href="#" class="dropdown-toggle">Shop</a>
-								
+							<li class="active-menu"><a href="${pageContext.request.contextPath }">home</a></li>
+	
+							<!-- 쇼핑 리스트 -->
+							<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list" class="dropdown-toggle">Shop</a>
 								<ul class="sub-menu">
-									<li>
-										<a href="${pageContext.request.contextPath }/product/product">피부타입별</a>
-									</li>
-									<li>
-										<a href="${pageContext.request.contextPath }/product/product">브랜드별</a>
-									</li>
-									<li>
-										<a href="${pageContext.request.contextPath }/product/product">유형별</a>
-									</li>
-								</ul>
-							</li>
+									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list">피부타입별</a></li>
+									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list">브랜드별</a></li>
+									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list">유형별</a></li>
+								</ul></li>
 
-							<li>
-								<a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip" class="dropdown-toggle">매거진</a>
-								
+							<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip" class="dropdown-toggle">매거진</a>
+
 								<ul class="sub-menu">
-									<li>
-										<a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip">Tip</a>
-									</li>
-									<li>
-										<a href="${pageContext.request.contextPath }/magazine/magazine?category=Interview">Interview</a>
-									</li>
-									<li>
-										<a href="${pageContext.request.contextPath }/magazine/magazine?category=COVID19">COVID19</a>
-									</li>
-									<li>
-										<a href="${pageContext.request.contextPath }/magazine/magazine?category=Setec">Setec</a>
-									</li>
-								</ul>
-							</li>
+									<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip">Tip</a></li>
+									<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Interview">Interview</a></li>
+									<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=COVID19">COVID19</a></li>
+									<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Setec">Setec</a></li>
+								</ul></li>
 
-							<li>
-								<a href="${pageContext.request.contextPath }/today/today">오늘의추천</a>
-							</li>
+							<li><a href="${pageContext.request.contextPath }/today/today">오늘의추천</a></li>
 
-							<li>
-								<a href="${pageContext.request.contextPath }/event/event">이벤트</a>
-							</li>
+							<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
 						</ul>
 					</div>
 
@@ -148,111 +126,93 @@
 			</div>
 		</div>
 
-			<!-- Header Mobile -->
-			<div class="wrap-header-mobile">
-				<!-- Logo moblie -->
-				<div class="logo-mobile">
-					<a href="index.html">
-						<img src="${pageContext.request.contextPath }/resources/images/icons/logo-01.png" alt="IMG-LOGO">
-					</a>
+		<!-- Header Mobile -->
+		<div class="wrap-header-mobile">
+			<!-- Logo moblie -->
+			<div class="logo-mobile">
+				<a href="index.html">
+					<img src="${pageContext.request.contextPath }/resources/images/icons/logo-01.png" alt="IMG-LOGO">
+				</a>
+			</div>
+
+			<!-- Icon header -->
+			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+					<i class="zmdi zmdi-search"></i>
 				</div>
 
-				<!-- Icon header -->
-				<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-					<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
+					<i class="zmdi zmdi-shopping-cart"></i>
+				</div>
+
+				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
+					<i class="zmdi zmdi-favorite-outline"></i>
+				</a>
+			</div>
+
+			<!-- Button show menu -->
+			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+				<span class="hamburger-box"> <span class="hamburger-inner"></span>
+				</span>
+			</div>
+		</div>
+
+
+		<!-- Menu Mobile -->
+		<div class="menu-mobile">
+			<ul class="topbar-mobile">
+				<li>
+					<div class="left-top-bar">Free shipping for standard order over $100</div>
+				</li>
+
+				<li>
+					<div class="right-top-bar flex-w h-full">
+						<a href="${pageContext.request.contextPath }/custumerCenter/costomerCenter" class="flex-c-m trans-04 p-lr-25"> 고객센터 </a>
+
+						<a href="${pageContext.request.contextPath }/myPage/myPage" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
+
+						<a href="${pageContext.request.contextPath }/member/login" class="flex-c-m trans-04 p-lr-25"> 로그인 </a>
+
+						<a href="${pageContext.request.contextPath }/member/signUp" class="flex-c-m trans-04 p-lr-25"> 회원가입 </a>
+					</div>
+				</li>
+			</ul>
+
+			<ul class="main-menu-m">
+				<li><a href="${pageContext.request.contextPath }">home</a></li>
+
+				<li><a href="product.html">Shop</a>
+					<ul class="sub-menu">
+						<li><a href="${pageContext.request.contextPath }/category/category">피부타입별</a></li>
+						<li><a href="${pageContext.request.contextPath }/category/category">브랜드별</a></li>
+						<li><a href="${pageContext.request.contextPath }/category/category">유형별</a></li>
+					</ul></li>
+
+				<li class="label1" data-label1="hot"><a href="${pageContext.request.contextPath }/category/category">브랜드</a></li>
+
+				<li><a href="${pageContext.request.contextPath }/magazine/magazine">매거진</a></li>
+
+				<li><a href="${pageContext.request.contextPath }/today/today.jsp">오늘의추천</a></li>
+
+				<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+			</ul>
+		</div>
+
+		<!-- Modal Search -->
+		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+			<div class="container-search-header">
+				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+					<img src="${pageContext.request.contextPath }/resources/images/icons/icon-close2.png" alt="CLOSE">
+				</button>
+
+				<form class="wrap-search-header flex-w p-l-15">
+					<button class="flex-c-m trans-04">
 						<i class="zmdi zmdi-search"></i>
-					</div>
-
-					<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
-						<i class="zmdi zmdi-shopping-cart"></i>
-					</div>
-
-					<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
-						<i class="zmdi zmdi-favorite-outline"></i>
-					</a>
-				</div>
-
-				<!-- Button show menu -->
-				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-					<span class="hamburger-box"> <span class="hamburger-inner"></span>
-					</span>
-				</div>
-			</div>
-
-
-			<!-- Menu Mobile -->
-			<div class="menu-mobile">
-				<ul class="topbar-mobile">
-					<li>
-						<div class="left-top-bar">Free shipping for standard order over $100</div>
-					</li>
-
-					<li>
-						<div class="right-top-bar flex-w h-full">
-							<a href="${pageContext.request.contextPath }/custumerCenter/costomerCenter" class="flex-c-m trans-04 p-lr-25"> 고객센터 </a>
-
-							<a href="${pageContext.request.contextPath }/myPage/myPage" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
-
-							<a href="${pageContext.request.contextPath }/member/login" class="flex-c-m trans-04 p-lr-25"> 로그인 </a>
-
-							<a href="${pageContext.request.contextPath }/member/signUp" class="flex-c-m trans-04 p-lr-25"> 회원가입 </a>
-						</div>
-					</li>
-				</ul>
-
-				<ul class="main-menu-m">
-					<li>
-						<a href="${pageContext.request.contextPath }">home</a>
-					</li>
-
-					<li>
-						<a href="product.html">Shop</a>
-						<ul class="sub-menu">
-							<li>
-								<a href="${pageContext.request.contextPath }/category/category">피부타입별</a>
-							</li>
-							<li>
-								<a href="${pageContext.request.contextPath }/category/category">브랜드별</a>
-							</li>
-							<li>
-								<a href="${pageContext.request.contextPath }/category/category">유형별</a>
-							</li>
-						</ul>
-					</li>
-
-					<li class="label1" data-label1="hot">
-						<a href="${pageContext.request.contextPath }/category/category">브랜드</a>
-					</li>
-
-					<li>
-						<a href="${pageContext.request.contextPath }/magazine/magazine">매거진</a>
-					</li>
-
-					<li>
-						<a href="${pageContext.request.contextPath }/today/today.jsp">오늘의추천</a>
-					</li>
-
-					<li>
-						<a href="${pageContext.request.contextPath }/event/event">이벤트</a>
-					</li>
-				</ul>
-			</div>
-
-			<!-- Modal Search -->
-			<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-				<div class="container-search-header">
-					<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-						<img src="${pageContext.request.contextPath }/resources/images/icons/icon-close2.png" alt="CLOSE">
 					</button>
-
-					<form class="wrap-search-header flex-w p-l-15">
-						<button class="flex-c-m trans-04">
-							<i class="zmdi zmdi-search"></i>
-						</button>
-						<input class="plh3" type="text" name="search" placeholder="Search...">
-					</form>
-				</div>
+					<input class="plh3" type="text" name="search" placeholder="Search...">
+				</form>
 			</div>
+		</div>
 	</header>
 
 	<!-- Cart -->
