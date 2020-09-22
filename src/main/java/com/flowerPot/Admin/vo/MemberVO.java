@@ -1,4 +1,4 @@
-package com.flowerPot.Admin.vo;
+package com.flowerPot.admin.vo;
 
 public class MemberVO {
 

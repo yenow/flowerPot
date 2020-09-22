@@ -3,7 +3,7 @@ package com.flowerPot.vo;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.flowerPot.Admin.vo.EmpVo;
+import com.flowerPot.admin.vo.EmpVo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

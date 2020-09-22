@@ -4,7 +4,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.flowerPot.Admin.dao.UserMapper">
+<mapper namespace="com.flowerPot.admin.dao.UserMapper">
 	<resultMap type="com.flowerPot.vo.MemberVo" id="memberMap">
 		<result property="id" column="id"/>
 		<result property="password" column="password"/>
@@ -18,10 +18,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="authority" column="authority"/>
 	</resultMap>
 	
-	<resultMap type="com.flowerPot.Admin.vo.EmpVo" id="empMap">
+	<resultMap type="com.flowerPot.admin.vo.DeptVo" id="deptMap">
+		<result property="deptNo" column="deptNo"/>
+		<result property="deptName" column="deptName"/>
+	</resultMap>
+	
+	<resultMap type="com.flowerPot.admin.vo.PoVo" id="poMap">
+		<result property="poNo" column="poNo"/>
+		<result property="poName" column="poName"/>
+	</resultMap>
+	
+	<resultMap type="com.flowerPot.admin.vo.EmpVo" id="empMap">
 		<result property="empNo" column="empNo"/>
 		<result property="empId" column="empId"/>
 		<result property="empName" column="empName"/>
+		<collection property="deptList" resultMap="deptMap"/>
+		<collection property="poList" resultMap="poMap"/>
 	</resultMap>
 
 
@@ -29,14 +41,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertEmpOne">
 		insert into employee (empNo, empId, empName, deptNo, poNo) values (eno_seq.nextval,#{empId},#{empName},#{deptNo},#{poNo})
 	</insert>
-
-	
+	<!-- 직원 목록 -->
+	<select id="selectEmpList" resultMap="empMap">
+		select emp.empNo, emp.empId, emp.empName, dept.deptName, po.poName from employee emp 
+		left outer join department dept on emp.deptNo = dept.deptNo 
+		left outer join position po on emp.poNo = po.poNo ORDER BY empNo DESC 
+	</select>
 
 	<insert id="insertUserT">
 		insert into tf_member (mno,id,name) values (#{mno},#{id},#{name})
 	</insert>
 	
-	<select id="selectUserT" resultType="com.flowerPot.Admin.vo.UserTVO">
+	<select id="selectUserT" resultType="com.flowerPot.admin.vo.UserTVO">
 		select * from tf_member order by mno desc
 	</select>
 	

@@ -40,6 +40,8 @@
 	rel='stylesheet' type='text/css'>
 <link href="../resources/assets/css/pe-icon-7-stroke.css"
 	rel="stylesheet" />
+
+
 </head>
 <body>
 
@@ -172,7 +174,7 @@
 													<td>${mem.member_rank}</td>
 													<td>${mem.regdate}</td>
 													<td>${mem.enabled}</td>
-													<td>탈퇴</td>
+													<td><button class="" onclick="location='#'">탈퇴</button></td>
 												</tr>
 											</c:forEach>
 										</tbody>

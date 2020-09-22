@@ -1,4 +1,4 @@
-package com.flowerPot.Admin.commons;
+package com.flowerPot.admin.commons;
 
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;

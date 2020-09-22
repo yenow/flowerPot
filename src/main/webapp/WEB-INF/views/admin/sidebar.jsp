@@ -19,9 +19,15 @@
                         <p>종합 현황</p>
                     </a>
                 </li>
+                <li id="coupon">
+                    <a href="${pageContext.request.contextPath}/admin/coupon">
+                        <i class="pe-7s-ticket"></i>
+                        <p>쿠폰 관리</p>
+                    </a>
+                </li>
                 <li id="brand">
                     <a href="${pageContext.request.contextPath}/admin/brand">
-                        <i class="pe-7s-ticket"></i>
+                        <i class="pe-7s-star"></i>
                         <p>입점 관리</p>
                     </a>
                 </li>

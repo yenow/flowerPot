@@ -14,13 +14,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 	
 	<resultMap type="com.flowerPot.vo.AuthorityVo" id="authMap">
-		
 		<result property="id" column="id"/>
 		<result property="authority" column="authority"/>
 	</resultMap>
 	
-	<resultMap type="com.flowerPot.Admin.vo.EmpVo" id="empMap">
-
+	<resultMap type="com.flowerPot.admin.vo.EmpVo" id="empMap">
 	</resultMap>
 	
 		<!-- 중복되는 동적 SQL문에 대한 처리 -->

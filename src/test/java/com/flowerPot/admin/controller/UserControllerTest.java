@@ -6,9 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.flowerPot.Admin.dao.UserMapper;
-import com.flowerPot.Admin.vo.MemberVO;
-import com.flowerPot.Admin.vo.UserTVO;
+import com.flowerPot.admin.dao.MemMapper;
+import com.flowerPot.admin.vo.UserTVO;
 import com.flowerPot.vo.MemberVo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -16,7 +15,7 @@ import com.flowerPot.vo.MemberVo;
 public class UserControllerTest {
 	
 	@Autowired
-	private UserMapper mapper;
+	private MemMapper mapper;
 	
 	@Test
 	public void userInsertTest() {

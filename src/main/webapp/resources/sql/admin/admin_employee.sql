@@ -18,6 +18,7 @@ create table position(
 	poNo number(38) primary key,
 	poName varchar2(50)
 );
+
 insert into position (poNo,poName) values(1,'알바');
 insert into position (poNo,poName) values(2,'인턴');
 insert into position (poNo,poName) values(3,'사원');
@@ -62,4 +63,4 @@ create sequence dno_seq increment by 1 start with 1;
 
 drop sequence eno_seq;
 
-SELECT * FROM USER_SEQUENCES 
+SELECT * FROM USER_SEQUENCES; 

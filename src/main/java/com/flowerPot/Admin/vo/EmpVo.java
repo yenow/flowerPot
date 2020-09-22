@@ -1,4 +1,4 @@
-package com.flowerPot.Admin.vo;
+package com.flowerPot.admin.vo;
 
 import java.util.List;
 
@@ -14,4 +14,7 @@ public class EmpVo {
 	private String empId;
 	private String deptNo;
 	private String poNo;
+	
+	private List<DeptVo> deptList;
+	private List<PoVo> poList;
 }

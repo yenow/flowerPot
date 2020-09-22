@@ -1,4 +1,4 @@
-package com.flowerPot.Admin.vo;
+package com.flowerPot.admin.vo;
 
 import lombok.Data;
 

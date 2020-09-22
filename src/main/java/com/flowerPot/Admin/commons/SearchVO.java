@@ -1,4 +1,4 @@
-package com.flowerPot.Admin.commons;
+package com.flowerPot.admin.commons;
 
 public class SearchVO extends PageVO {
 	

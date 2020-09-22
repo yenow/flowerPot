@@ -41,6 +41,9 @@
 <link href="../resources/assets/css/pe-icon-7-stroke.css"
 	rel="stylesheet" />
 </head>
+
+<script src="../resources/js/admin_employee.js"></script>
+<script src="../resources/js/jquery.js"></script>
 <body>
 
 	<div class="wrapper">
@@ -126,7 +129,7 @@
                             </div>
                             <div class="content">
 
-                                <form action="${pageContext.request.contextPath}/admin/empAdd" method="post">
+                                <form action="${pageContext.request.contextPath}/admin/empAdd" method="post" onsubmit="return check();">
                                     <div class="row">
                                         <div class="col-md-2">
                                             <div class="form-group">
@@ -174,13 +177,13 @@
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <label>사원ID</label>
-                                                <input type="text" class="form-control" name="empId" placeholder="아이디" >
+                                                <input type="text" id="empId" class="form-control" name="empId" placeholder="아이디" >
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">이름</label>
-                                                <input type="text" class="form-control" name="empName" placeholder="이름">
+                                                <label>이름</label>
+                                                <input type="text" id="empName" class="form-control" name="empName" placeholder="이름">
                                             </div>
                                         </div>
                                     </div>
@@ -201,24 +204,33 @@
 									<table class="table table-hover table-striped">
 										<!-- 게시글 목록 출력 -->
 										<thead>
-											<th>번호</th>
-											<th>ID</th>
+											<th>사원 번호</th>
+											<th>사원 ID</th>
 											<th>이름</th>
-											<th></th>
-											<th></th>
+											<th>부서</th>
+											<th>직급</th>
+											<th>권한</th>
+											<th>비고</th>
 										</thead>
 										<tbody>
-											<c:forEach var="user" items="${ulist}">
+											<c:forEach var="emp" items="${eList}">
 												<tr>
 												
-													<td>${user.mno}</td>
+													<td>${emp.empNo}</td>
 													<td>
-													<c:if test="${empty user.id}">미발급</c:if>
-													<c:if test="${!empty user.id}">${user.id}</c:if>
+													<c:if test="${empty emp.empId}">미발급</c:if>
+													<c:if test="${!empty emp.empId}">${emp.empId}</c:if>
 													</td>
-													<td>${user.name}</td>
+													<td>${emp.empName}</td>
+													<c:forEach var="dept" items="${emp.deptList}">
+													<td>${dept.deptName}</td>
+													</c:forEach>
+													<c:forEach var="po" items="${emp.poList}">
+													<td>${po.poName}</td>
+													</c:forEach>
+													<td></td>
 													<td><button onclick="location='#'">권한 변경</button></td>
-													<td><button class="btn btn-info btn-fill pull-right">아이디발급</button></td>
+													<td><button class=" pull-right" onclick="location='#'">아이디 발급</button></td>
 													
 												</tr>
 											</c:forEach>
