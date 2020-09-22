@@ -471,7 +471,7 @@
     
     <script type="text/javascript">
    
-    const result =delete;
+    const result = "delete";
     
     if(result === "delete"){
     	alert("게시글이 삭제되었습니다.");

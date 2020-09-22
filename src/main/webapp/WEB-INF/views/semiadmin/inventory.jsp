@@ -1,7 +1,8 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +12,8 @@
     
     <link rel="stylesheet" href="../resources/semiadmin_css/assets/css/bootstrap.css">
     
+    <link rel="stylesheet" href="../resources/semiadmin_css/assets/vendors/simple-datatables/style.css">
+
     <link rel="stylesheet" href="../resources/semiadmin_css/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="../resources/semiadmin_css/assets/css/app.css">
     <link rel="shortcut icon" href="../resources/semiadmin_css/assets/images/favicon.svg" type="image/x-icon">
@@ -415,60 +418,43 @@
             Inverse Dark Table, add <code>.table-dark</code> along with <code>.table-bordered</code>.</p>
         </div>
         
+        
+          <section class="section">
+        <div class="card">
+            <div class="card-header">전체공지사항  </div>   
+            <div class="card-body">
+            
+            
+            
         <!-- table bordered -->
         <div class="table-responsive">
           <table class="table table-bordered mb-0">
             <thead>
               <tr>
+                <th>화장품 번호</th>
                 <th>상품명</th>
-                <th>옵션</th>
-                <th>상품번호</th>
-                <th>품절방식</th>
-                <th>현재재고</th>
-                <th>추가</th>
+                <th>상품색상 &emsp; 사이즈</th>
+                <th>기존 수량</th>
+                <th>추가 요청 수량 </th>
+                <th>판매 방식</th>
+                <th>비고</th>
               </tr>
             </thead>
             <tbody>
+            <c:forEach var="i" items="${ilist}">
               <tr>
-                <td class="text-bold-500">Michael Right</td>
-                <td>$15/hr</td>
-                <td class="text-bold-500">UI/UX</td>
-                <td>Remote</td>
-                <td>Austin,Taxes</td>
-            <td><a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a></td>
+                <td class="text-bold-500">${i.cno}</td>
+                <td>${i.name}</td>
+                <td class="text-bold-500">${i.proOption}</td>
+                <td>${i.stockNumber}</td>
+                <td>${i.plusStock}</td>
+                <td>${i.sellWay}</td>
+                <td>
+                    <a href="http://www.google.com">
+                    <i class="badge-circle font-medium-1" data-feather="mail"></i></a>
+                </td>
               </tr>
-              <tr>
-                <td class="text-bold-500">Morgan Vanblum</td>
-                <td>$13/hr</td>
-                <td class="text-bold-500">Graphic concepts</td>
-                <td>Remote</td>
-                <td>Shangai,China</td>
-          <td><a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a></td>
-              </tr>
-              <tr>
-                <td class="text-bold-500">Tiffani Blogz</td>
-                <td>$15/hr</td>
-                <td class="text-bold-500">Animation</td>
-                <td>Remote</td>
-                <td>Austin,Texas</td>
-               <td><a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a></td>
-              </tr>
-              <tr>
-                <td class="text-bold-500">Ashley Boul</td>
-                <td>$15/hr</td>
-                <td class="text-bold-500">Animation</td>
-                <td>Remote</td>
-                <td>Austin,Texas</td>
-             <td><a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a></td>
-              </tr>
-              <tr>
-                <td class="text-bold-500">Mikkey Mice</td>
-                <td>$15/hr</td>
-                <td class="text-bold-500">Animation</td>
-                <td>Remote</td>
-                <td>Austin,Texas</td>
-               <td><a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a></td>
-              </tr>
+            </c:forEach>
             </tbody>
           </table>
         </div>
@@ -490,10 +476,14 @@
             </footer>
         </div>
     </div>
+    
     <script src="../resources/semiadmin_css/assets/js/feather-icons/feather.min.js"></script>
     <script src="../resources/semiadmin_css/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="../resources/semiadmin_css/assets/js/app.js"></script>
     
+    <script src="../resources/semiadmin_css/assets/vendors/simple-datatables/simple-datatables.js"></script>
+    <script src="../resources/semiadmin_css/assets/js/vendors.js"></script>
+
     <script src="../resources/semiadmin_css/assets/js/main.js"></script>
 </body>
 </html>

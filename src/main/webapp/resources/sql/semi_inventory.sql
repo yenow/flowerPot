@@ -12,6 +12,6 @@ drop table semi_inventory;
 
 select * from semi_inventory ;
 
-insert into semi_inventory values (111,'보라스킨','blue/s',3,3,'무한정');
+insert into semi_inventory values (111,'보라스킨','blue/s',3,3,'무제한');
 
 
