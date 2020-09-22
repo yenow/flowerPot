@@ -23,35 +23,66 @@
 								<th class="column-5 text-center">총 가격</th>
 								<th class="column-5 text-center"></th>
 							</tr>
-
-							<c:forEach var="cosmetic" items="${shoppingCartList }">
+							<!-- 장바구니에서 구매시, 상품정보 -->
+							<c:if test="${root==2 }">
+								<c:forEach var="cosmetic" items="${shoppingCartList }">
+									<tr class="table_row">
+										<td class="column-1 text-center">
+											<div class="how-itemcart1">
+												<img src="${cosmetic.mappingURL }" alt="상품사진">
+											</div>
+										</td>
+										<td class="column-2 text-center">${cosmetic.name }</td>
+										<!-- 상품하나의 가격 -->
+										<td class="column-2 text-center">${cosmetic.price }원</td>
+										<!-- 개수선택 -->
+										<td class="column-4 text-center">
+											<div class="wrap-num-product flex-w m-l-auto m-r-0">
+												<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+													<i class="fs-16 zmdi zmdi-minus"></i>
+												</div>
+	
+												<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="${cosmetic.numProduct} ">
+	
+												<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+													<i class="fs-16 zmdi zmdi-plus"></i>
+												</div>
+											</div>
+										</td>
+										<!--  -->
+										<td class="column-5 text-center">가격</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+							<!-- 바로구매시, 상품정보 -->
+							<c:if test="${root==1 }">
 								<tr class="table_row">
-									<td class="column-1 text-center">
-										<div class="how-itemcart1">
-											<img src="${cosmetic.mappingURL }" alt="상품사진">
-										</div>
-									</td>
-									<td class="column-2 text-center">${cosmetic.name }</td>
-									<!-- 상품하나의 가격 -->
-									<td class="column-2 text-center">${cosmetic.price }원</td>
-									<!-- 개수선택 -->
-									<td class="column-4 text-center">
-										<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-minus"></i>
+										<td class="column-1 text-center">
+											<div class="how-itemcart1">
+												<img src="${cosmetic.mappingList[0] }" alt="상품사진">
 											</div>
-
-											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="${cosmetic.numProduct} ">
-
-											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-plus"></i>
+										</td>
+										<td class="column-2 text-center">${cosmetic.name }</td>
+										<!-- 상품하나의 가격 -->
+										<td class="column-2 text-center">${cosmetic.price }원</td>
+										<!-- 개수선택 -->
+										<td class="column-4 text-center">
+											<div class="wrap-num-product flex-w m-l-auto m-r-0">
+												<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+													<i class="fs-16 zmdi zmdi-minus"></i>
+												</div>
+	
+												<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="${cosmetic.numProduct} ">
+	
+												<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+													<i class="fs-16 zmdi zmdi-plus"></i>
+												</div>
 											</div>
-										</div>
-									</td>
-									<!--  -->
-									<td class="column-5 text-center">가격</td>
-								</tr>
-							</c:forEach>
+										</td>
+										<!--  -->
+										<td class="column-5 text-center">가격</td>
+									</tr>
+							</c:if>
 						</table>
 					</div>
 				</div>

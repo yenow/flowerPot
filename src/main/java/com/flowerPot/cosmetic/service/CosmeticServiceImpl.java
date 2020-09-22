@@ -63,6 +63,7 @@ public class CosmeticServiceImpl implements CosmeticService {
 	// cno로 화장품 정보 가져오기
 	@Override
 	public CosmeticVo selectOneCosmeticByCno(Integer cno) {
+		
 		return cosmeticDao.selectOneCosmeticByCno(cno);
 	}
 

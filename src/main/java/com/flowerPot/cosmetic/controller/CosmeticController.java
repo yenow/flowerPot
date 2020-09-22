@@ -47,9 +47,16 @@ public class CosmeticController {
 	CosmeticReviewService cosmeticReviewService;
 	
 	@RequestMapping("payment")
-	public void payment(Model model) {
+	public void payment(Model model,Integer root,CosmeticVo cosmetic) { // root는 장바구니에서 접근하는지, 바로구매인지 구분하는 변수
 		MemberVo memberVo = new MemberVo();
-		model.addAttribute("member", memberVo);
+		log.info("cosmetic:"+cosmetic);
+		if(root==1) {
+			CosmeticVo c = cosmeticService.selectOneCosmeticByCno(cosmetic.getCno());
+			c.setNumProduct(cosmetic.getNumProduct());
+			model.addAttribute("cosmetic", c);
+		}
+		model.addAttribute("member", memberVo);  // 어떤멤버인지
+		model.addAttribute("root", root);
 		
 	}
 	
@@ -99,6 +106,8 @@ public class CosmeticController {
 			out.print("</script>");
 			out.close();
 		}
+		
+		
 	}
 	
 	// 윤신영 - 화장품 구입 페이지

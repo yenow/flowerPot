@@ -29,9 +29,21 @@
 					<div class="wrap-slick3 flex-sb flex-w">
 						<div class="wrap-slick3-dots"></div>
 						<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
 						<div class="slick3 gallery-lb">
-							<div class="item-slick3" data-thumb="${pageContext.request.contextPath }/resources/images/product-detail-01.jpg">
+						
+						<c:forEach var="cosmeticImg" items="${cosmetic.mappingList }">
+							<div class="item-slick3" data-thumb="${cosmeticImg }">
+								<div class="wrap-pic-w pos-relative">
+									<img src="${cosmeticImg }" alt="IMG-PRODUCT">
+
+									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${cosmeticImg }">
+										<i class="fa fa-expand"></i>
+									</a>
+								</div>
+							</div>
+						</c:forEach>
+						
+							<!-- <div class="item-slick3" data-thumb="${pageContext.request.contextPath }/resources/images/product-detail-01.jpg">
 								<div class="wrap-pic-w pos-relative">
 									<img src="${pageContext.request.contextPath }/resources/images/product-detail-01.jpg" alt="IMG-PRODUCT">
 
@@ -60,6 +72,7 @@
 									</a>
 								</div>
 							</div>
+							 -->
 						</div>
 					</div>
 				</div>
@@ -339,7 +352,9 @@ $(document).ready(function() {
 
 	// 쇼핑카트 버튼 클릭시 
 	$('#shoppingCart').click(function() {
+		// 알림창 띄우기
 		var flag = confirm("상품이 장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
+		// 컨트롤로에서 분기
 		if(flag==true){
 			$('#isNextpage').val("1");
 		}else{
@@ -351,7 +366,7 @@ $(document).ready(function() {
 	
 	// 바로구입 버튼 클릭시
 	$('#nowBuy').click(function() {
-		$('#cosmetic-form').attr("action", "${pageContext.request.contextPath }/");
+		$('#cosmetic-form').attr("action", "${pageContext.request.contextPath }/cosmetic/payment?root=1");   // root=1 은 바로구입
 	});
 	
 	for (var i = 0; i < ratingTag.length; i++) {
