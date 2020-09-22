@@ -27,6 +27,7 @@
     <context:component-scan base-package="com.flowerPot.cosmetic.controller" />
     <context:component-scan base-package="com.flowerPot.attachFile.controller" />
 	<context:component-scan base-package="com.flowerPot.controller" />
+	<context:component-scan base-package="com.flowerPot.semiadmin.controller" />
 	<context:component-scan base-package="com.flowerPot.exception" />
 	
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
