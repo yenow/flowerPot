@@ -1,4 +1,4 @@
-package com.flowerPot.service;
+package com.flowerPot.magazine.service;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.flowerPot.dao.MagazineDao;
 import com.flowerPot.domain.Criteria;
+import com.flowerPot.magazine.repository.MagazineDao;
 import com.flowerPot.vo.MagazineVo;
 
 @Service

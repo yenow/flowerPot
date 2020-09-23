@@ -1,4 +1,4 @@
-package com.flowerPot.service;
+package com.flowerPot.magazine.service;
 
 import java.util.List;
 

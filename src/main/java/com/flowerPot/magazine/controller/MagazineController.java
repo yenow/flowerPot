@@ -1,4 +1,4 @@
-package com.flowerPot.controller;
+package com.flowerPot.magazine.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,11 +23,14 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.flowerPot.domain.Criteria;
 import com.flowerPot.domain.PageDTO;
-import com.flowerPot.service.MagazineService;
+import com.flowerPot.magazine.service.MagazineService;
 import com.flowerPot.vo.MagazineVo;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping("magazine")
+@Slf4j
 public class MagazineController {
 	private static final Log LOG = LogFactory.getLog( MagazineController.class );
 	
@@ -37,17 +40,18 @@ public class MagazineController {
 	// 매거진 메인페이지
 	@RequestMapping("magazine")
 	public void magazine(String category,Model m) {
+		// MagazineVo magazine = magazineService.
 		m.addAttribute("category", category);
 	}
 	
 	// 매거진 목록 보여주는 함수
 	@RequestMapping("magazineAjax")
 	@ResponseBody
-	public ResponseEntity<List<MagazineVo>> magazineAjax(Criteria c) {
+	public ResponseEntity<Map<String, Object>> magazineAjax(Criteria c) {
 		System.out.println(c.getCategory());
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		ResponseEntity<List<MagazineVo>> re;
+		ResponseEntity<Map<String, Object>> re;
 		try {
 			List<MagazineVo> mgList =  magazineService.selectMagazineList(c);
 			map.put("mgList", mgList);
@@ -55,13 +59,14 @@ public class MagazineController {
 			PageDTO page = new PageDTO(c, total);
 			map.put("Page", page);
 			for(MagazineVo m : mgList) {
-				m.setRootfolder(m.getRootfolder().substring(m.getRootfolder().indexOf('\\')).replace('\\', '/'));
-				
+				if(m.getOriginalName()!=null) {
+					m.setRootfolder(m.getRootfolder().substring(m.getRootfolder().indexOf('\\')).replace('\\', '/'));
+				}
 			}
-			re = new  ResponseEntity<List<MagazineVo>>(mgList, HttpStatus.OK);
+			re = new  ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			re = new  ResponseEntity<List<MagazineVo>>(HttpStatus.BAD_REQUEST);
+			re = new  ResponseEntity<Map<String, Object>>(HttpStatus.BAD_REQUEST);
 		}
 		
 		return re;

@@ -1,4 +1,4 @@
-package com.flowerPot.dao;
+package com.flowerPot.magazine.repository;
 
 import java.util.List;
 
