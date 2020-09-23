@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.flowerPot.service.MemberSerivce;
 import com.flowerPot.vo.MemberVo;
 
+import lombok.extern.log4j.Log4j;
+
+
 @Controller
 @RequestMapping("/member")
 public class MemberController {
@@ -35,4 +38,5 @@ public class MemberController {
 		member.setPassword(passwordEncoder.encode(member.getPassword()));
 		memberService.insertMember(member);
 	}
+
 }
