@@ -93,217 +93,7 @@
                         <span>To-do List</</span>
                     </a>
                     
-             <li class='sidebar-title'>필요없는 UI </li>
-       
-                 <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="triangle" width="20"></i> 
-                        <span>Components</span>
-                    </a>
-                    
-                    <ul class="submenu ">
-                        
-                        <li>
-                            <a href="component_alert">Alert</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component_badge">Badge</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component_breadcrumb">Breadcrumb</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component_buttons">Buttons</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component_card">Card</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component_carousel">Carousel</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component_dropdowns">Dropdowns</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component_list_group">List Group</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component_modal">Modal</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component_navs">Navs</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component_pagination">Pagination</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component_progress">Progress</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component_spinners">Spinners</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component_tooltips">Tooltips</a>
-                        </li>
-                    </ul>
-                </li>
-            
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="briefcase" width="20"></i> 
-                        <span>Extra Components</span>
-                    </a>
-                    
-                    <ul class="submenu ">
-                        
-                        <li>
-                            <a href="componen_extra_avatar">Avatar</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component_extra_divider">Divider</a>
-                        </li>
-                    </ul>
-                </li>
-       
-                 <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="file-text" width="20"></i> 
-                        <span>Form Elements</span>
-                    </a>
-                    
-                    <ul class="submenu ">
-                        
-                        <li>
-                            <a href="form-element-input.html">Input</a>
-                        </li>
-                        
-                        <li>
-                            <a href="form-element-input-group.html">Input Group</a>
-                        </li>
-                        
-                        <li>
-                            <a href="form-element-select.html">Select</a>
-                        </li>
-                        
-                        <li>
-                            <a href="form-element-radio.html">Radio</a>
-                        </li>
-                        
-                        <li>
-                            <a href="form-element-checkbox.html">Checkbox</a>
-                        </li>
-                        
-                        <li>
-                            <a href="form-element-textarea.html">Textarea</a>
-                        </li>
-                        
-                    </ul>
-                    
-                </li>
-
-            
-                <li class="sidebar-item  ">
-                    <a href="form-layout.html" class='sidebar-link'>
-                        <i data-feather="layout" width="20"></i> 
-                        <span>Form Layout</span>
-                    </a>
-                    
-                </li>
-
-                <li class="sidebar-item  ">
-                    <a href="table" class='sidebar-link'>
-                        <i data-feather="grid" width="20"></i> 
-                        <span>Table</span>
-                    </a>
-                    
-                </li>
-            
-
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="user" width="20"></i> 
-                        <span>Widgets</span>
-                    </a>
-                    
-                    <ul class="submenu ">
-                        
-                        <li>
-                            <a href="ui_chatbox">Chatbox</a>
-                        </li>
-                        
-                        <li>
-                            <a href="ui_pricing">Pricing</a>
-                        </li>
-                        
-                        <li>
-                            <a href="ui_todolist">To-do List</a>
-                        </li>
-                        
-                    </ul>
-                    
-                </li>
-
-                <li class='sidebar-title'>Pages</li>
-
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="user" width="20"></i> 
-                        <span>Authentication</span>
-                    </a>
-                    
-                    <ul class="submenu ">
-                        
-                        <li>
-                            <a href="auth_login">Login</a>
-                        </li>
-                        
-                        <li>
-                            <a href="auth_register">Register</a>
-                        </li>
-                        
-                        <li>
-                            <a href="auth_forgot_password">Forgot Password</a>
-                        </li>
-                        
-                    </ul>
-                    
-                </li>
-
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="alert-circle" width="20"></i> 
-                        <span>Errors</span>
-                    </a>
-                    
-                    <ul class="submenu ">
-                        
-                        <li>
-                            <a href="error_403">403</a>
-                        </li>
-                        
-                        <li>
-                            <a href="error_404">404</a>
-                        </li>
-                        
-                        <li>
-                            <a href="error_500">500</a>
-                        </li>
-                    </ul>
-                </li>
+    
         </ul>
     </div>
     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
@@ -646,14 +436,15 @@
         </div>
     </section>
 </div>
-
-            <footer>
+           <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-left">
-                        <p>2020 &copy; Voler</p>
+                        <p>2020 &copy; FlowerPot </p>
                     </div>
                     <div class="float-right">
-                        <p>Crafted with <span class='text-danger'><i data-feather="heart"></i></span> by <a href="http://ahmadsaugi.com">Ahmad Saugi</a></p>
+                        <p>Crafted with <span class='text-danger'>
+                        <i data-feather="heart"></i></span> by 
+                        <a href="http://ahmadsaugi.com">Light & Salt</a></p>
                     </div>
                 </div>
             </footer>
