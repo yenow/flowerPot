@@ -23,6 +23,6 @@ public interface ISemiNoticeDAO {
 	// Inventory 화장품 번호로  수량 submit 하기}
 	void submitInven(String amount);
 	
-	
+
 
 }

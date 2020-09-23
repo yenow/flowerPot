@@ -252,7 +252,7 @@
                    style="border: 2px solid #0d6efd; width:50%;" >
                 </td>
                 <td>
-                    <select name ="  ${i.sellWay}">
+                    <select name ="${i.sellWay}">
                       <option value='' selected>-- 선택 -- </option>
                       <option value='무제한'>무제한</option>                
                       <option value='강제품절'>강제품절</option>                

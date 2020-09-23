@@ -22,7 +22,7 @@ public class SemiAdminController {
 	@Autowired
 	private ISemiNoticeService service;
 
-	// { 공지사항 게시글 목록 가져오기
+// { 공지사항 게시글 목록 가져오기
 	@RequestMapping("/semi_notice")
 	public void table_datatable(Model model) {
 		System.out.println("semi_notice 실행 !! ");
@@ -32,7 +32,7 @@ public class SemiAdminController {
 
 	}
 	
-	//  공지사항 게시글 번호로 지우기  } 
+//  공지사항 게시글 번호로 지우기  } 
 	@RequestMapping("/semi_notice_del_ok")
 	public String table_datatable_ok(Model model, Integer sBno ) {
 		System.out.println("semi_notice_del_ok : " + sBno);
@@ -41,7 +41,7 @@ public class SemiAdminController {
 		return "redirect:/semiadmin/semi_notice" ; 
 	}
 	
-	//{ Review 후기  } 
+//{ Review 후기  } 
 	@RequestMapping("/review")
 	public void review(Model model) {
 		System.out.println("review 후기 페이지 실행");
@@ -51,6 +51,7 @@ public class SemiAdminController {
 
 	}
 	
+//{ inventory 재고 목록 
 	@RequestMapping("/inventory")
 	public void inventory(Model model) {
 		System.out.println("inventory 후기 페이지 실행 ");
@@ -59,7 +60,7 @@ public class SemiAdminController {
 		model.addAttribute("ilist",ilist);
 		
 	}
-	
+//   inventory  재고 목록  추가 
 	@PostMapping("/inventory")
 	public String inventory(Model model,HttpServletRequest request) {
 		String amount = request.getParameter("plusStock");
@@ -68,10 +69,6 @@ public class SemiAdminController {
 		
 		return "redirect:/semiadmin/inventory";
 	}
-
-	
-	
-
 
 
 }

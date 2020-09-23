@@ -62,14 +62,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  </select>
  
  <!-- {inventory submit 으로 재고 수량 추가하기 -->
- <insert id ="submitInven">
+ <update id ="submitInven">
    update  semi_inventory  
    set stockNumber = stockNumber + #{amount}
- </insert>
+ </update>
  
+ <!-- inventory 판매 방식 변경 } -->
+ <update id ="invenChange">
+   update semi_inventory
+   set sellWay = #{change}
  
- 
- 
- 
+ </update>
  
 </mapper>

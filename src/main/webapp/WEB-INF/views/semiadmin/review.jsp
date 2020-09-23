@@ -445,8 +445,10 @@
                             <td>${r.orderNum}</td>
                             <td>${r.amount}</td>
                             <td>${r.state}</td>
+                            
                             <td> 
                             <fmt:formatDate value="${r.date}" pattern="yyyy년 MM월 dd일 "/> </td>
+                            
                             <td>${r.deliverState}</td>
                             <td>${r.memberRank}</td>
                             <td>${r.point}</td>
@@ -458,10 +460,9 @@
                 </table>
             </div>
         </div>
-
     </section>
 </div>
-
+<!-- Bordered table end -->
           <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-left">
