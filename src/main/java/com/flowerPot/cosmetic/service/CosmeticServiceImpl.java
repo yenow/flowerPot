@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.flowerPot.attachFile.repository.AttachFileDao;
 import com.flowerPot.cosmetic.repository.CosmeticDao;
+import com.flowerPot.cosmeticReview.repository.CosmeticReviewDao;
 import com.flowerPot.description.repository.DescriptionDao;
 import com.flowerPot.domain.Criteria;
 import com.flowerPot.vo.AttachFileVo;
+import com.flowerPot.vo.CosmeticReviewVo;
 import com.flowerPot.vo.CosmeticVo;
 import com.flowerPot.vo.DescriptionVo;
 
@@ -34,6 +36,8 @@ public class CosmeticServiceImpl implements CosmeticService {
 	private DescriptionDao descriptionDao;
 	@Autowired
 	private AttachFileDao attachFileDao;
+	@Autowired
+	private CosmeticReviewDao cosmeticReviewDao;
 
 	// 상품등록
 	@Transactional
@@ -46,9 +50,11 @@ public class CosmeticServiceImpl implements CosmeticService {
 		descriptionDao.insertDescription(description);
 	}
 
+	// 상품 정보 가져오기
 	@Override
 	public List<CosmeticVo> selectListCosmeticByCategory(Criteria c) {
 		 List<CosmeticVo> cList = cosmeticDao.selectListCosmeticByCategory(c);
+		 
 		 // 화장품에 섬네일 이미지 하나를 가져오는 작업, 없다면 가져오지 않음
 		 for(CosmeticVo cosmetic : cList) {
 			 List<AttachFileVo> mappingURLList = attachFileDao.selectMappingURLByCno(cosmetic.getCno());
@@ -63,8 +69,25 @@ public class CosmeticServiceImpl implements CosmeticService {
 	// cno로 화장품 정보 가져오기
 	@Override
 	public CosmeticVo selectOneCosmeticByCno(Integer cno) {
+		CosmeticVo cosmetic = cosmeticDao.selectOneCosmeticByCno(cno);
+		List<CosmeticReviewVo> crList = cosmeticReviewDao.selectListCosmeticReviewListByCnoRating(cno);
+		Integer rating = 0;
+		Double drating = 0.0;
+		// 화장품 평점리스트가 0이 아니면
+		if(crList.size()!=0) {
+			for(CosmeticReviewVo c : crList) {
+				if(c.getRating()!=null){
+					rating += c.getRating();
+					drating += c.getRating();
+				}
+			}
+			cosmetic.setRating(rating/crList.size());
+			cosmetic.setDrating(Math.round(drating/crList.size()*100)/100.0);
+		}else {
+			cosmetic.setRating(rating);
+		}
 		
-		return cosmeticDao.selectOneCosmeticByCno(cno);
+		return cosmetic;
 	}
 
 	// 세션에 화장품 리스트 넣기
@@ -81,5 +104,11 @@ public class CosmeticServiceImpl implements CosmeticService {
 			shoppingCartList.add(cosmetic);
 			session.setAttribute("shoppingCartList", shoppingCartList);
 		}
+	}
+
+	// 조회수 업데이터
+	@Override
+	public void updateCosmeticHitsByCno(Integer cno) {
+		cosmeticDao.updateCosmeticHitsByCno(cno);
 	}
 }

@@ -35,4 +35,5 @@ drop table f_cosmetic;
 drop table f_attachFile;
 drop table f_description;
 select * from f_cosmetic;
+
 delete from f_cosmetic;

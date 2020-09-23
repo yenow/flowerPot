@@ -47,13 +47,13 @@
 									<!-- 개수선택 -->
 									<td class="text-center align-middle">
 										<div class="wrap-num-product flex-w" style="margin : 0 auto;">
-											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" onclick="return changeValue(this,0);">
+											<div class="num-product-down cl8 hov-btn3 trans-04 flex-c-m" onclick="return changeValue(this,0);">
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</div>
 
 											<input class="mtext-104 cl3 txt-center num-product cosmetic-amount" type="text" name="" value="${cosmetic.numProduct}">
 
-											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" onclick="return changeValue(this,1);">
+											<div class="num-product-up cl8 hov-btn3 trans-04 flex-c-m" onclick="return changeValue(this,1);">
 												<i class="fs-16 zmdi zmdi-plus"></i>
 											</div>
 										</div>

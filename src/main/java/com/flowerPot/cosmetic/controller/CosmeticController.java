@@ -113,7 +113,8 @@ public class CosmeticController {
 	// 윤신영 - 화장품 구입 페이지
 	@RequestMapping("cosmetic")
 	public void cosmetic(Integer cno,Model model) throws IOException {
-		CosmeticVo cosmetic = cosmeticService.selectOneCosmeticByCno(cno);
+		cosmeticService.updateCosmeticHitsByCno(cno);
+		CosmeticVo cosmetic = cosmeticService.selectOneCosmeticByCno(cno);  // 상품번호로,, 화장품 정보 가져오기
 		DescriptionVo description = descriptionService.selectOneDescriptionByCno(cno);
 		List<CosmeticReviewVo> crList = cosmeticReviewService.selectListCosmeticReviewListByCno(cno);
 		model.addAttribute("cosmetic", cosmetic);

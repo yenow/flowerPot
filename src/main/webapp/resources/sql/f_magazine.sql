@@ -2,7 +2,7 @@ create table f_magazine (
 	mgno number(30),
 	mno number(30),
 	title varchar2(100) not null,
-	name varchar2(100) ,   -- 글쓴이 / not null
+	name varchar2(100) , --not null -- 글쓴이
 	content varchar2(3000) not null,  -- 내용
 	category varchar2(50),  -- 카테고리
 	regdate date,

@@ -1796,6 +1796,13 @@ button.mfp-close {
   cursor: pointer;
 }
 
+.num-product-up,
+.num-product-down {
+	width: 45px;
+  height: 100%;
+  cursor: pointer;
+}
+
 .y-btn-num-product-up,
 .y-btn-num-product-down {
   width: 45px;
