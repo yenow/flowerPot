@@ -57,15 +57,22 @@
                     </a>
                 </li>
                 <li id="Icons">
-                    <a href="icons.html">
+                    <a href="${pageContext.request.contextPath}/admin/custommer/notice">
                         <i class="pe-7s-speaker"></i>
                         <p>소통 관리</p>
                     </a>
                 </li>
+
                 <li id="Notifications">
                     <a href="notifications.html">
                         <i class="pe-7s-bell"></i>
                         <p>신규 알림</p>
+                    </a>
+                </li>
+                <li id="Icons">
+                    <a href="icons.html">
+                        <i class="pe-7s-speaker"></i>
+                        <p>아이콘목록(개발후지움)</p>
                     </a>
                 </li>
 				<li id="active-pro" class="active-pro">

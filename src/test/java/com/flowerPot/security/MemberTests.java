@@ -26,7 +26,7 @@ public class MemberTests {
 	@Test
 	public void testInsertMember() {
 		String sql = "insert into f_member(mno, id, password,name,nickname,address,email,gender,birth,regdate,enabled) "
-				+ "values (mno_seq.nextval,?,?,?,?,?,'f',?,?,sysdate,'1')";
+				+ "values (mno_seq.nextval,?,?,?,?,?,?,'f',?,sysdate,'1')";
 
 		for(int i = 0; i < 368; i++) {
 
@@ -40,11 +40,11 @@ public class MemberTests {
 				pstmt.setString(1, "user"+i);
 				pstmt.setString(2, passwordEncoder.encode("password"+i));
 				pstmt.setString(3, "이름" + i);
-				pstmt.setString(4, "닉네임"+i);
+				pstmt.setString(4, "닉네임");
 				pstmt.setString(5, "주소");
-				pstmt.setString(6, "이메일");
-				pstmt.setString(8, "생일");
-				pstmt.setString(9, "");
+				pstmt.setString(6, "이메일"+i);
+				pstmt.setString(7, "생일");
+
 				pstmt.executeUpdate();
 
 			}catch(Exception e) {

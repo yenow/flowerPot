@@ -2,8 +2,8 @@ create table employee(
 	empNo number(38) ,
 	empId varchar2(100) null UNIQUE,
 	empName varchar2(100),
-	deptNo number(38),
-	poNo varchar2(100)
+	deptNo int,
+	poNo int
 );
 
 insert into EMPLOYEE (empNo,empId,empName,deptNo,poNo) values('1','admin','유혁',30,10)

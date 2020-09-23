@@ -243,9 +243,9 @@
 									<div style="display:inline-block;display:inline-block; float:right; margin-right:60px;">
 										<div class="conditionBox" style="display: inline-block; width: 80px;">
 											<select id="condition" class="form-control" name="condition">
-												<option value="mno">번호</option>
-												<option value="id">ID</option>
-												<option value="name">이름</option>
+												<option value="empNo">번호</option>
+												<option value="empId">ID</option>
+												<option value="empName">이름</option>
 											</select>
 										</div>
 										<div class="input-group" style="display:inline-flex;">
@@ -263,7 +263,7 @@
 											<!-- 이전 버튼 -->
 											<c:if test="${pc.prev}">
 												<li class="page-item"><a class="page-link"
-													href="<c:url value='/admin/user/list${pc.makeURI(pc.beginPage - 1)}' />"
+													href="<c:url value='/admin/employee${pc.makeURI(pc.beginPage - 1)}' />"
 													style="background-color: #9765da; margin-top: 0; height: 40px; color: white; border: 0px solid #d3d3d3; opacity: 0.8">이전</a>
 												</li>
 											</c:if>
@@ -272,7 +272,7 @@
 											<c:forEach var="pageNum" begin="${pc.beginPage}"
 												end="${pc.endPage}">
 												<li class="page-item"><a
-													href="<c:url value='/admin/user/list${pc.makeURI(pageNum)}'/>"
+													href="<c:url value='/admin/employee${pc.makeURI(pageNum)}'/>"
 													class="page-link ${(pc.paging.page == pageNum) ? 'page-active' : ''}"
 													style="margin-top: 0; height: 40px; color: #9765da; border: 1px solid #d3d3d3;">${pageNum}</a>
 												</li>
@@ -281,7 +281,7 @@
 											<!-- 다음 버튼 -->
 											<c:if test="${pc.next}">
 												<li class="page-item"><a class="page-link"
-													href="<c:url value='/admin/user/list${pc.makeURI(pc.endPage + 1)}' />"
+													href="<c:url value='/admin/employee${pc.makeURI(pc.endPage + 1)}' />"
 													style="background-color: #9765da; margin-top: 0; height: 40px; color: white; border: 0px solid #d3d3d3; opacity: 0.8">다음</a>
 												</li>
 											</c:if>
@@ -327,7 +327,7 @@ $(function() {
 		console.log('검색어 : '+keyword);
 		const condition = $('#condition option:selected').val();
 		console.log('검색조건 : '+condition);
-		location.href="${pageContext.request.contextPath}/admin/user/list?keyword="+keyword+"&condition="+condition;
+		location.href="${pageContext.request.contextPath}/admin/employee?keyword="+keyword+"&condition="+condition;
 	});
 	
 	$('#keywordInput').keydown(function(key){

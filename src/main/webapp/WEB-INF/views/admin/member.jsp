@@ -41,7 +41,8 @@
 <link href="../resources/assets/css/pe-icon-7-stroke.css"
 	rel="stylesheet" />
 
-
+<script src="../resources/js/admin_member.js"></script>
+<script src="../resources/js/jquery.js"></script>
 </head>
 <body>
 
@@ -207,7 +208,7 @@
 											<!-- 이전 버튼 -->
 											<c:if test="${pc.prev}">
 												<li class="page-item"><a class="page-link"
-													href="<c:url value='/admin/memList${pc.makeURI(pc.beginPage - 1)}' />"
+													href="<c:url value='/admin/member${pc.makeURI(pc.beginPage - 1)}' />"
 													style="background-color: #9765da; margin-top: 0; height: 40px; color: white; border: 0px solid #d3d3d3; opacity: 0.8">이전</a>
 												</li>
 											</c:if>
@@ -216,7 +217,7 @@
 											<c:forEach var="pageNum" begin="${pc.beginPage}"
 												end="${pc.endPage}">
 												<li class="page-item"><a
-													href="<c:url value='/admin/memList${pc.makeURI(pageNum)}'/>"
+													href="<c:url value='/admin/member${pc.makeURI(pageNum)}'/>"
 													class="page-link ${(pc.paging.page == pageNum) ? 'page-active' : ''}"
 													style="margin-top: 0; height: 40px; color: #9765da; border: 1px solid #d3d3d3;">${pageNum}</a>
 												</li>
@@ -225,7 +226,7 @@
 											<!-- 다음 버튼 -->
 											<c:if test="${pc.next}">
 												<li class="page-item"><a class="page-link"
-													href="<c:url value='/admin/memList${pc.makeURI(pc.endPage + 1)}' />"
+													href="<c:url value='/admin/member${pc.makeURI(pc.endPage + 1)}' />"
 													style="background-color: #9765da; margin-top: 0; height: 40px; color: white; border: 0px solid #d3d3d3; opacity: 0.8">다음</a>
 												</li>
 											</c:if>
@@ -265,22 +266,7 @@
 </body>
 
 <script>
-$(function() {
-	$('#searchBtn').click(function(){
-		console.log('검색버튼이 클릭됨!');
-		let keyword = $('#keywordInput').val();
-		console.log('검색어 : '+keyword);
-		const condition = $('#condition option:selected').val();
-		console.log('검색조건 : '+condition);
-		location.href="${pageContext.request.contextPath}/admin/memList?keyword="+keyword+"&condition="+condition;
-	});
-	
-	$('#keywordInput').keydown(function(key){
-		if(key.keyCode == 13){
-			$('#searchBtn').click();
-		}
-	});
-});
+
 </script>
 <!--   Core JS Files   -->
 <script src="../resources/assets/js/jquery.3.2.1.min.js"

@@ -23,3 +23,21 @@ create table f_member(
 select * from tF_MEMBER;
 
 drop table f_member;
+
+select * from employee emp 
+		left outer join department dept on emp.deptNo = dept.deptNo 
+		left outer join position po on emp.poNo = po.poNo ORDER BY empNo DESC;
+		
+		
+--employee테이블과 department,position테이블 join후 로우넘까지 성공		
+select * from
+(select rownum rnum, empA.empNo, empA.empId, empA.empName, empA.deptName, empA.poName from 
+(select * from employee emp 
+left outer join department dept on emp.deptNo = dept.deptNo 
+left outer join position po on emp.poNo = po.poNo 
+ORDER BY empNo DESC) empA)
+WHERE  rnum BETWEEN 1 AND 10;
+		
+		
+		
+		

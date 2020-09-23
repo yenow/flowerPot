@@ -123,7 +123,7 @@
 							<div class="card">
 								<div class="header">
 									<h4 class="title" style="display:inline-block;">브랜드 목록</h4>
-			<button class="btn btn-izone btn-flat" onclick="location='${pageContext.request.contextPath}/admin/brandAdd'"style="background-color: #9765da; color: white; margin-left: 20px;">
+			<button class="btn btn-izone btn-flat" onclick="location='${pageContext.request.contextPath}/admin/brandAdd'" style="background-color: #9765da; color: white; margin-left: 20px;">
 			신규 등록
 			</button>
 									
