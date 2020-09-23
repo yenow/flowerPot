@@ -57,7 +57,7 @@ public class KakaoPay {
 		 		}
 		 	}
 		 
-		 
+		 	Integer final_price = olist.get(0).getFinal_price();
 		 
 		 
 	        RestTemplate restTemplate = new RestTemplate();
@@ -71,13 +71,14 @@ public class KakaoPay {
 	        // 서버로 요청할 Body
 	        MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 	        params.add("cid", "TC0ONETIME");
-	        params.add("partner_order_id", "1001");
-	        params.add("partner_user_id", "gorany");
-	        params.add("item_name", "갤럭시S9");
-	        params.add("quantity", "1");
-	        params.add("total_amount", "21000");
-	        params.add("tax_free_amount", "100");
-	        params.add("approval_url", "http://localhost:8282/flowerPot/kakaoPaySuccess");
+	        params.add("partner_order_id", "1001");     			// 가맹점 주문번호
+	        params.add("partner_user_id", "flowerpot");				 // 가명점 회원아이디
+	        params.add("item_name", "갤럭시S9"); 	//변경				 // 상품명
+	        params.add("item_code", order_num); //변경 				 // 상품코드 
+	        params.add("quantity", "1");  	//변경						 // 상품수량
+	        params.add("total_amount", final_price.toString());	//변경	   // 상품 총액
+	        params.add("tax_free_amount", "100");							 // 상품 비과세 금액
+	        params.add("approval_url", "http://localhost:8282/flowerPot/kakaoPaySuccess?order_num"+order_num);
 	        params.add("cancel_url", "http://localhost:8282/flowerPot/kakaoPayCancel");
 	        params.add("fail_url", "http://localhost:8282/flowerPot/kakaoPaySuccessFail");
 	 
@@ -102,10 +103,14 @@ public class KakaoPay {
 	        
 	    }
 	 
-	 public KakaoPayApprovalVO kakaoPayInfo(String pg_token) {
+	 public KakaoPayApprovalVO kakaoPayInfo(String pg_token,String order_num) {
 		 
 	        log.info("KakaoPayInfoVO............................................");
 	        log.info("-----------------------------");
+	        
+	        // order_num 주문번호로.. 상품정보 가져오자!
+	        
+	        // 가격만 일단 맞춰주면 된다;
 	        
 	        RestTemplate restTemplate = new RestTemplate();
 	 
@@ -120,7 +125,7 @@ public class KakaoPay {
 	        params.add("cid", "TC0ONETIME");
 	        params.add("tid", kakaoPayReadyVO.getTid());
 	        params.add("partner_order_id", "1001");
-	        params.add("partner_user_id", "gorany");
+	        params.add("partner_user_id", "flowerpot");
 	        params.add("pg_token", pg_token);
 	        params.add("total_amount", "21000");
 	        
