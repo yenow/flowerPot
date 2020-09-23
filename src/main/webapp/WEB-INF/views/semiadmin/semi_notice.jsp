@@ -469,7 +469,7 @@
         </div>
     </div>
     
-    <script type="text/javascript">
+  <!--   <script type="text/javascript">
    
     const result = "delete";
     
@@ -479,7 +479,7 @@
     	alert("삭제되지 않았습니다. 다시 확인해주세요. ");
     }
     
-    </script>
+    </script> -->
     
     <script src="../resources/semiadmin_css/assets/js/feather-icons/feather.min.js"></script>
     <script src="../resources/semiadmin_css/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>

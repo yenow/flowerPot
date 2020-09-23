@@ -2,9 +2,12 @@ package com.flowerPot.semiadmin.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.flowerPot.semiadmin.model.SemiInventoryVO;
@@ -32,7 +35,7 @@ public class SemiAdminController {
 	//  공지사항 게시글 번호로 지우기  } 
 	@RequestMapping("/semi_notice_del_ok")
 	public String table_datatable_ok(Model model, Integer sBno ) {
-		System.out.println(sBno);
+		System.out.println("semi_notice_del_ok : " + sBno);
 		service.delTable(sBno);
 		
 		return "redirect:/semiadmin/semi_notice" ; 
@@ -55,6 +58,15 @@ public class SemiAdminController {
 		List<SemiInventoryVO> ilist = service.getInvenArticles();
 		model.addAttribute("ilist",ilist);
 		
+	}
+	
+	@PostMapping("/inventory")
+	public String inventory(Model model,HttpServletRequest request) {
+		String amount = request.getParameter("plusStock");
+		System.out.println(amount);
+		service.submitInven(amount);
+		
+		return "redirect:/semiadmin/inventory";
 	}
 
 	@RequestMapping("/table")

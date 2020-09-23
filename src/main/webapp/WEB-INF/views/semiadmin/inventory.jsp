@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,11 +21,11 @@
 </head>
 <body>
      <div id="app">
-        <div id="sidebar" class='active'>
-            <div class="sidebar-wrapper active">
-    <div class="sidebar-header">
-        <img src="../resources/semiadmin_css/assets/images/logo2.JPG" 
-              alt="" srcset=""  style="width:80%; height:80%">
+       <div id="sidebar" class='active'>
+         <div class="sidebar-wrapper active">
+          <div class="sidebar-header">
+            <img src="../resources/semiadmin_css/assets/images/logo2.JPG" 
+                  alt="" srcset=""  style="width:80%; height:80%">
     </div>
      <div class="sidebar-menu">
         <ul class="menu">
@@ -63,7 +64,7 @@
                     </a>
                 </li>
                     
-                <li class="sidebar-item  ">
+                <li class="sidebar-item ">
                     <a href="review" class='sidebar-link'>
                         <i data-feather="file-plus" width="20"></i> 
                         <span>Review후기</span>
@@ -200,27 +201,27 @@
                     <ul class="submenu ">
                         
                         <li>
-                            <a href="form-element-input.html">Input</a>
+                            <a href="form_element_input">Input</a>
                         </li>
                         
                         <li>
-                            <a href="form-element-input-group.html">Input Group</a>
+                            <a href="form_element_input_group">Input Group</a>
                         </li>
                         
                         <li>
-                            <a href="form-element-select.html">Select</a>
+                            <a href="form_element_select">Select</a>
                         </li>
                         
                         <li>
-                            <a href="form-element-radio.html">Radio</a>
+                            <a href="form_element_radio">Radio</a>
                         </li>
                         
                         <li>
-                            <a href="form-element-checkbox.html">Checkbox</a>
+                            <a href="form_element_checkbox">Checkbox</a>
                         </li>
                         
                         <li>
-                            <a href="form-element-textarea.html">Textarea</a>
+                            <a href="form_element_textarea">Textarea</a>
                         </li>
                         
                     </ul>
@@ -229,7 +230,7 @@
 
             
                 <li class="sidebar-item  ">
-                    <a href="form-layout.html" class='sidebar-link'>
+                    <a href="form_layout" class='sidebar-link'>
                         <i data-feather="layout" width="20"></i> 
                         <span>Form Layout</span>
                     </a>
@@ -320,7 +321,8 @@
     </div>
     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
 </div>
-        </div>
+</div>
+</div>
         
         <div id="main">
             <nav class="navbar navbar-header navbar-expand navbar-light">
@@ -414,8 +416,9 @@
       </div>
       <div class="card-content">
         <div class="card-body">
-          <p class="card-text">Add <code>.table-bordered</code> for borders on all sides of the table and cells. For
-            Inverse Dark Table, add <code>.table-dark</code> along with <code>.table-bordered</code>.</p>
+          <p class="card-text">
+          <code>재고를 바로 확인 할 수 있고 필요하신 부분이 있으시면 신청해주시기 바랍니다. </code><br/>
+                        그 외의 문의사항은 언제든지 FlowerPot 담당자에게 메일로 연락주시면 됩니다.</p>
         </div>
         
         
@@ -428,35 +431,49 @@
             
         <!-- table bordered -->
         <div class="table-responsive">
+        <form method="post">
           <table class="table table-bordered mb-0">
             <thead>
               <tr>
                 <th>화장품 번호</th>
                 <th>상품명</th>
-                <th>상품색상 &emsp; 사이즈</th>
+                <th>상품색상 &amp; 사이즈</th>
                 <th>기존 수량</th>
                 <th>추가 요청 수량 </th>
                 <th>판매 방식</th>
-                <th>비고</th>
+                <th>확인</th>
               </tr>
             </thead>
             <tbody>
+            
             <c:forEach var="i" items="${ilist}">
               <tr>
                 <td class="text-bold-500">${i.cno}</td>
                 <td>${i.name}</td>
                 <td class="text-bold-500">${i.proOption}</td>
                 <td>${i.stockNumber}</td>
-                <td>${i.plusStock}</td>
-                <td>${i.sellWay}</td>
                 <td>
-                    <a href="http://www.google.com">
-                    <i class="badge-circle font-medium-1" data-feather="mail"></i></a>
+              
+                   <input type ="text" name="plusStock">
+            
+                </td>
+                <td>
+                    <select name ="  ${i.sellWay}">
+                      <option value='' selected>-- 선택 -- </option>
+                      <option value='무제한'>무제한</option>                
+                      <option value='강제품절'>강제품절</option>                
+                      <option value='한정'>한정</option>                
+                    </select>
+                </td>
+                <td>
+                <input type="image" src="${pageContext.request.contextPath}/semiadmin_css/assets/images/icon.JPG" 
+                value="제출" id="submit">
                 </td>
               </tr>
             </c:forEach>
             </tbody>
           </table>
+         </form>
         </div>
       </div>
     </div>

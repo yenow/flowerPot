@@ -49,17 +49,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   
   <!-- { Review 후기  }  -->
   <select id ="getReviewArticles" resultMap="SemiReviewMap" >
-  select * 
-  from f_orderProduct
-   order by ono asc
+    select * 
+    from f_orderProduct
+    order by ono asc
   </select>
   
  <!-- { inventory 재고 현황  } -->
  
  <select id ="getInvenArticles"  resultType="com.flowerPot.semiadmin.model.SemiInventoryVO">
- select * 
- from semi_inventory
+   select * 
+   from semi_inventory
  </select>
+ 
+ <!-- {inventory submit 으로 재고 수량 추가하기 -->
+ <insert id ="submitInven">
+   update  semi_inventory  
+   set stockNumber = stockNumber + #{amount}
+ </insert>
+ 
+ 
+ 
+ 
  
  
 </mapper>
