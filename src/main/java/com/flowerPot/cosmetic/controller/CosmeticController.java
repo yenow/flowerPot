@@ -47,9 +47,16 @@ public class CosmeticController {
 	CosmeticReviewService cosmeticReviewService;
 	
 	@RequestMapping("payment")
-	public void payment(Model model,Integer root,CosmeticVo cosmetic) { // root는 장바구니에서 접근하는지, 바로구매인지 구분하는 변수
+	public void payment(Model model,Integer root,CosmeticVo cosmetic,HttpSession session) { // root는 장바구니에서 접근하는지, 바로구매인지 구분하는 변수
 		MemberVo memberVo = new MemberVo();
 		log.info("cosmetic:"+cosmetic);
+		//List<CosmeticVo> clist = (List<CosmeticVo>) session.getAttribute("shoppingCartList");
+		//log.info("화장품 리스트");
+		//for(CosmeticVo c : clist) {
+		//	log.info("화장품 : "+c);
+		//}
+		
+		// 이거는 바로 구매를 했을경우 
 		if(root==1) {
 			CosmeticVo c = cosmeticService.selectOneCosmeticByCno(cosmetic.getCno());
 			c.setNumProduct(cosmetic.getNumProduct());
@@ -70,6 +77,7 @@ public class CosmeticController {
 		for(int i=0; i<cList.size(); i++) {
 			if(cList.get(i).getCno()==cno) {
 				cList.remove(i);
+				session.setAttribute("shoppingCartList", cList);
 				break;
 			}
 		}

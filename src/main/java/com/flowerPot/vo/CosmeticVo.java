@@ -33,6 +33,7 @@ public class CosmeticVo {
 	private String mappingURL;   // 하나의 매핑주소
 	private List<String> mappingList;  // 여러개의 매핑주소
 	
+	private List<CosmeticVo> list;
 	
 	/*
 alter table f_cosmetic add (likey number(30));

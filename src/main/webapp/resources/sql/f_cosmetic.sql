@@ -13,12 +13,13 @@ create table f_cosmetic(
 	hits number(30) default 0,  -- 조회수
 	likey number(30) default 0,   -- 좋아요 개수
 	enable char(1)  default 1, -- 사용가능 여부
+	numProduct number(30) default 0,		-- 상품개수
 	regdate date,
 	primary key(cno),
 	unique(name)
 );
 -- alter table f_cosmetic add (hits number(30) default 0, regdate date);
-alter table f_cosmetic add (content varchar2(3000));
+alter table f_cosmetic add (numProduct number(30) default 0);
 --alter table f_cosmetic add (likey number(30));
 --alter table f_cosmetic add (code varchar2(150));
 --alter table f_cosmetic add (enable char(1));

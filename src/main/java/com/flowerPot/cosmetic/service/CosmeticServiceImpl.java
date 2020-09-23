@@ -29,7 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class CosmeticServiceImpl implements CosmeticService {
-	
+
 	@Autowired
 	private CosmeticDao cosmeticDao;
 	@Autowired
@@ -43,7 +43,7 @@ public class CosmeticServiceImpl implements CosmeticService {
 	@Transactional
 	@Override
 	public void insertCosmeticAndDescription(CosmeticVo cosmetic, DescriptionVo description) {
-		String code = cosmetic.getBrand()+"_"+UUID.randomUUID().toString(); // 상품코드 생성
+		String code = cosmetic.getBrand() + "_" + UUID.randomUUID().toString(); // 상품코드 생성
 		cosmetic.setCode(code);
 		cosmeticDao.insertCosmetic(cosmetic);
 		description.setCno(cosmetic.getCno());
@@ -53,17 +53,17 @@ public class CosmeticServiceImpl implements CosmeticService {
 	// 상품 정보 가져오기
 	@Override
 	public List<CosmeticVo> selectListCosmeticByCategory(Criteria c) {
-		 List<CosmeticVo> cList = cosmeticDao.selectListCosmeticByCategory(c);
-		 
-		 // 화장품에 섬네일 이미지 하나를 가져오는 작업, 없다면 가져오지 않음
-		 for(CosmeticVo cosmetic : cList) {
-			 List<AttachFileVo> mappingURLList = attachFileDao.selectMappingURLByCno(cosmetic.getCno());
-			 if(mappingURLList.size()!=0) {
-				 cosmetic.setMappingURL(mappingURLList.get(0).getMappingURL());
-				 log.info("cosmetic : "+cosmetic.toString());
-			 }
-		 }
-		 return cList;
+		List<CosmeticVo> cList = cosmeticDao.selectListCosmeticByCategory(c);
+
+		// 화장품에 섬네일 이미지 하나를 가져오는 작업, 없다면 가져오지 않음
+		for (CosmeticVo cosmetic : cList) {
+			List<AttachFileVo> mappingURLList = attachFileDao.selectMappingURLByCno(cosmetic.getCno());
+			if (mappingURLList.size() != 0) {
+				cosmetic.setMappingURL(mappingURLList.get(0).getMappingURL());
+				log.info("cosmetic : " + cosmetic.toString());
+			}
+		}
+		return cList;
 	}
 
 	// cno로 화장품 정보 가져오기
@@ -74,32 +74,34 @@ public class CosmeticServiceImpl implements CosmeticService {
 		Integer rating = 0;
 		Double drating = 0.0;
 		// 화장품 평점리스트가 0이 아니면
-		if(crList.size()!=0) {
-			for(CosmeticReviewVo c : crList) {
-				if(c.getRating()!=null){
+		if (crList.size() != 0) {
+			for (CosmeticReviewVo c : crList) {
+				if (c.getRating() != null) {
 					rating += c.getRating();
 					drating += c.getRating();
 				}
 			}
-			cosmetic.setRating(rating/crList.size());
-			cosmetic.setDrating(Math.round(drating/crList.size()*100)/100.0);
-		}else {
+			cosmetic.setRating(rating / crList.size());
+			cosmetic.setDrating(Math.round(drating / crList.size() * 100) / 100.0);
+		} else {
 			cosmetic.setRating(rating);
 		}
-		
+
 		return cosmetic;
 	}
 
-	// 세션에 화장품 리스트 넣기
+	// 장바구니 ,세션에 화장품 리스트 넣기
 	@Override
-	public void shoppingCart_register(Integer cno, Integer isNextpage, Integer numProduct, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+	public void shoppingCart_register(Integer cno, Integer isNextpage, Integer numProduct, HttpSession session,
+			HttpServletRequest request, HttpServletResponse response) {
 		CosmeticVo cosmetic = cosmeticDao.selectOneCosmeticByCno(cno);
 		cosmetic.setNumProduct(numProduct);
-		if(session.getAttribute("shoppingCartList")==null) {
+		log.info("장바구니 : 담김"+cosmetic);
+		if (session.getAttribute("shoppingCartList") == null) {
 			List<CosmeticVo> shoppingCartList = new ArrayList<CosmeticVo>();
 			shoppingCartList.add(cosmetic);
 			session.setAttribute("shoppingCartList", shoppingCartList);
-		}else {
+		} else {
 			List<CosmeticVo> shoppingCartList = (List<CosmeticVo>) session.getAttribute("shoppingCartList");
 			shoppingCartList.add(cosmetic);
 			session.setAttribute("shoppingCartList", shoppingCartList);
