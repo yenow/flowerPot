@@ -168,7 +168,7 @@
 											</span>
 										</div>
 									</div>
-						</div>
+								</div>
 										<!-- 페이징 처리 부분  -->
 									<div class="paging" style="text-align: center;">
 										<ul class="pagination justify-content-center">
@@ -199,8 +199,6 @@
 											</c:if>
 										</ul>
 									</div>	
-
-
 					</div>
 				</div>
 			</div>

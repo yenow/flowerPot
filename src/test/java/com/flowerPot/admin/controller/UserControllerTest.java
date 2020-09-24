@@ -16,8 +16,9 @@ import com.flowerPot.admin.vo.UserTVO;
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 public class UserControllerTest {
 	
-	@Autowired
-	private MemMapper mapper;
+	/*
+	 * @Autowired private MemMapper mapper;
+	 */
 	
 	@Autowired
 	private EmpMapper eMapper;
@@ -29,7 +30,7 @@ public class UserControllerTest {
 		EmpVo a = new EmpVo();
 		eMapper.insertEmpOne(a);
 	}
-	
+	/*
 	@Test
 	public void userInsertTest() {
 		for(int i=1; i<=367; i++) {
@@ -40,7 +41,7 @@ public class UserControllerTest {
 			mapper.insertUserT(userT);
 			System.out.println("게시물 등록 성공!");
 		}
-	}
+	}*/
 	@Test
 	public void EmpInsertTest() {
 		for(int i=1; i<=367; i++) {
@@ -62,6 +63,7 @@ public class UserControllerTest {
 		}
 	}
 	
+	/*
 	@Test
 	public void userSelectTest() {
 		mapper.selectUserT().forEach(userT -> System.out.println("회원 목록 : "+userT));
@@ -69,7 +71,7 @@ public class UserControllerTest {
 	@Test
 	public void memSelectTest() {
 		mapper.selectUserT().forEach(userT -> System.out.println("회원 목록 : "+userT));
-	}
+	}*/
 	
 	
 }

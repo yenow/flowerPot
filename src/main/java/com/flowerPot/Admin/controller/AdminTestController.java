@@ -25,7 +25,6 @@ public class AdminTestController {
 	//종합 현황
 	@RequestMapping("/dashboard")
 	public void dashboard() {
-		
 	}
 	
 	
@@ -34,8 +33,8 @@ public class AdminTestController {
 		
 	}
 	
-	@RequestMapping("/typography")
-	public void typography() {
+	@RequestMapping("/maps")
+	public void maps() {
 		
 	}
 	

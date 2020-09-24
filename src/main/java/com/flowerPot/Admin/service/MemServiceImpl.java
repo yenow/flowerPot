@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.flowerPot.admin.commons.SearchVO;
 import com.flowerPot.admin.dao.MemMapper;
-import com.flowerPot.admin.vo.EmpVo;
 import com.flowerPot.vo.MemberVo;
 
 @Service
