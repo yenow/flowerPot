@@ -12,20 +12,20 @@
 				<form action="${pageContext.request.contextPath }/member/signUp_ok" method="post">
 					<div class="form-group">
 						<label for="exampleInputEmail1">아이디</label>
-						<input type="text" class="form-control form-control-lg" name="id" id="exampleInputEmail1" aria-describedby="emailHelp">
+						<input type="text" class="form-control form-control-lg" name="id" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자와 영어로 4-10자">
 						<small id="emailHelp" class="form-text text-muted">  </small>
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">비밀번호</label>
-						<input type="password" class="form-control form-control-lg" name="password" id="exampleInputPassword1">
+						<input type="password" class="form-control form-control-lg" name="password" id="exampleInputPassword1" placeholder="영문과 특수문자를 포함한 최소 8자">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword2">비밀번호확인</label>
-						<input type="password" class="form-control form-control-lg" name="password2" id="exampleInputPassword2">
+						<input type="password" class="form-control form-control-lg" name="password2" id="exampleInputPassword2" placeholder="비밀번호가 일치해야합니다.">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputName1">이름</label>
-						<input type="text" class="form-control form-control-lg" name="name" id="exampleInputName1">
+						<input type="text" class="form-control form-control-lg" name="name" id="exampleInputName1" placeholder="한글로 최대 6자">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputNickname1">닉네임</label>
@@ -33,7 +33,7 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleInputEmail1">이메일</label>
-						<input type="email" class="form-control form-control-lg" name="email" id="exampleInputEmail1">
+						<input type="email" class="form-control form-control-lg" name="email" id="exampleInputEmail1" placeholder="ex)aaa@naver.com">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputTel1">전화번호</label>
@@ -49,7 +49,7 @@
 					주소(우편번호)
 					<div class="form-group">
 					<input type="text" class="form-control form-control-lg" id="sample4_postcode" name="postcode" placeholder="우편번호">
-					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+					<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 					<input type="text" class="form-control form-control-lg" id="sample4_roadAddress" name="street_address" placeholder="도로명주소">
 					<br>
 					<input type="text" class="form-control form-control-lg" id="sample4_jibunAddress" name="parcel_address" placeholder="지번주소">
