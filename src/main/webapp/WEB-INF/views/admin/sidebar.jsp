@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li id="Icons">
-                    <a href="${pageContext.request.contextPath}/admin/custommer/notice">
+                    <a href="${pageContext.request.contextPath}/admin/customer/notice">
                         <i class="pe-7s-speaker"></i>
                         <p>소통 관리</p>
                     </a>
