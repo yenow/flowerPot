@@ -50,16 +50,15 @@
 						<input type="radio" name="gender" id="exampleRadios2" value="F" style="display: inline-block">
 						<label for="exampleRadios2" style="display: inline-block"> 여자 </label>
 					</div>
-						<input type="text" id="sample4_postcode" placeholder="우편번호">
-						
-						
+					<div class="form-group">
+					<input type="text" class="form-control form-control-lg" id="sample4_postcode" name="postcode" placeholder="우편번호">
 					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" id="sample4_roadAddress" placeholder="도로명주소">
-					<input type="text" id="sample4_jibunAddress" placeholder="지번주소">
+					<input type="text" class="form-control form-control-lg" id="sample4_roadAddress" name="street_address" placeholder="도로명주소">
+					<input type="text" class="form-control form-control-lg" id="sample4_jibunAddress" name="parcel_address" placeholder="지번주소">
 					<span id="guide" style="color:#999;display:none"></span>
-					<input type="text" id="sample4_detailAddress" placeholder="상세주소">
-					<input type="text" id="sample4_extraAddress" placeholder="참고항목">
-					
+					<input type="text" class="form-control form-control-lg" id="sample4_detailAddress" name="detail_address"placeholder="상세주소">
+					<input type="text" class="form-control form-control-lg" id="sample4_extraAddress" name="deliver_state" placeholder="참고항목">
+					</div>
 					
 					<button type="submit" class="btn btn-outline-secondary btn-block btn-lg">등록</button>
 				</form>
