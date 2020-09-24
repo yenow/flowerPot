@@ -10,3 +10,4 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 		<typeAlias type="com.flowerPot.admin.vo.CustomerVo" alias="cstmr"/>
 	</typeAliases>
 </configuration>
+

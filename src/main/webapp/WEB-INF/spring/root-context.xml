@@ -22,6 +22,7 @@
 		<property name="password" value="${db.password}"></property>
 	</bean>
 
+
 	<!-- HikariCP configuration -->
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 		<constructor-arg ref="hikariConfig" />
@@ -38,8 +39,7 @@
 	</bean>	
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
-		<constructor-arg name="sqlSessionFactory"
-			ref="sqlSessionFactory" />
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 		<!-- constructor-arg의 뜻은 생성자를 통한 의존성 주입 => DI -->
 	</bean>
 	
@@ -89,5 +89,8 @@
 	
 	<context:component-scan base-package="com.flowerPot.orderProduct.service"/>	
 	<mybatis-spring:scan base-package="com.flowerPot.orderProduct.repository" />
+	
+	<context:component-scan base-package="com.flowerPot.semiadmin.service"/>	
+	<mybatis-spring:scan base-package="com.flowerPot.semiadmin.repository"/>
 	<!-- /컴포넌트 스캔 -->	
 </beans>
