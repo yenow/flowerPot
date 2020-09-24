@@ -1,11 +1,6 @@
 create table f_member (
-<<<<<<< HEAD
     mno number(30),
     id varchar2(100) not null,
-=======
-    mno number(30) primary key,
-    id varchar2(100) unique,
->>>>>>> yoo3
     password varchar2(100),
     name varchar2(20) not null,
     nickname varchar2(50),
@@ -15,43 +10,12 @@ create table f_member (
     birth varchar2(10),
     member_rank varchar2(15),
     enabled char(1) default '1',
-<<<<<<< HEAD
     regdate date,
     primary key(mno),
     unique(id),
     unique(email)
 );
--- 시퀀스
-=======
-    regdate date
-);
-alter table f_member add(enabled char(1) default '1');
-alter table f_member add(regdate date);
-alter table f_member add(unique(email));
 
--- member와 authority를 조인
-select mem.id, mem.password, mem.name, auth.authority from f_member mem left outer join f_authority auth on mem.id = auth.id where mem.id = 'admin'
--- member와 authority, employee를 조인
-
-select mem.id, mem.password, mem.name, auth.authority, emp.empno, emp.empid, emp.empName from f_member mem 
-left outer join f_authority auth on mem.id = auth.id 
-left outer join employee emp on mem.id = emp.empid where auth.authority='ROLE_ADMIN'
-
-
-
-drop table f_member;
-drop table f_authority;
-
-select * from tf_member;
-
--- 권한이 일반회원 1인 멤버 조회
-
--- 권한이 관리자 2인 멤버 조회
-
--- 권한이 판매자 3인 멤버 조회
-
->>>>>>> yoo3
-create sequence mno_seq increment by 1 start with 1 minvalue 1;
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 select mno_seq.nextval from dual;
@@ -66,5 +30,6 @@ insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,m
 values (mno_seq.nextval,'phantom1','tlsdud5089','윤신영','윤신영','주소','phantom_ysy@naver.com','M','11-29','골드','작성자');
 
 insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,member_rank,authority ) 
+
 
 select id, password from f_member where id = 'user0';
