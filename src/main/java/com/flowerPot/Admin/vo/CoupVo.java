@@ -18,7 +18,7 @@ public class CoupVo {
 	private LocalDateTime startDate;
 	private LocalDateTime endDate;
 	
-	/*
+	/*왜?
 	@Override
 	public String toString() {
 		return "CoupVo [couNo=" + couNo + ", couponName=" + couponName + ", discountMoney=" + discountMoney
