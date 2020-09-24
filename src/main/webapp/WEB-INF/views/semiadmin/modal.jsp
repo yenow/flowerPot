@@ -426,13 +426,12 @@
             <div class="col-md-6 col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Basic Modal</h4>
+                        <h4 class="card-title">기본 Modal 제목</h4>
                     </div>
                     <div class="card-body">
                         <p>
-                        Toggle a modal via JavaScript by clicking the button above.
-                        You can use modal to add dialogs to your site for lightboxes, user
-                        notifications, or completely custom content.
+                      		  모달 내용 테스트 합니다유우우우우
+                        
                         </p>
                         <!-- Button trigger for basic modal -->
                         <button type="button" class="btn btn-outline-primary block" data-toggle="modal" data-target="#default">
@@ -445,21 +444,15 @@
                             <div class="modal-dialog modal-dialog-scrollable" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="myModalLabel1">Basic Modal</h5>
+                                        <h5 class="modal-title" id="myModalLabel1">모달창 안의 모달창 제목 	</h5>
                                         <button type="button" class="close rounded-pill" data-dismiss="modal" aria-label="Close">
                                             <i data-feather="x"></i>
                                         </button>
                                     </div>
                                     <div class="modal-body">
                                         <p>
-                                        Bonbon caramels muffin. Chocolate bar oat cake cookie pastry dragée pastry. Carrot cake
-                                        chocolate tootsie roll chocolate bar candy canes biscuit.
-
-                                        Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet roll. Toffee sugar
-                                        plum sugar plum jelly-o jujubes bonbon dessert carrot cake. Cookie dessert tart muffin topping
-                                        donut icing fruitcake. Sweet roll cotton candy dragée danish Candy canes chocolate bar cookie.
-                                        Gingerbread apple pie oat cake. Carrot cake fruitcake bear claw. Pastry gummi bears
-                                        marshmallow jelly-o.
+                                       원하는 내용  <input type ="text" name="modal"  ><br/>
+                                     		  이건 모달창 을 클릭하면 실행되는 실행창입니다웅 
                                         </p>
                                     </div>
                                     <div class="modal-footer">

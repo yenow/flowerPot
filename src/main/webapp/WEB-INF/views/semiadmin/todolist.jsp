@@ -22,318 +22,86 @@
     <div class="sidebar-header">
         <img src="../resources/semiadmin_css/assets/images/logo.svg" alt="" srcset="">
     </div>
-    <div class="sidebar-menu">
+        <div class="sidebar-menu">
         <ul class="menu">
             
+             <li class='sidebar-title'>Main Menu</li>
             
-                <li class='sidebar-title'>Main Menu</li>
-            
-            
-            
-                <li class="sidebar-item  ">
-                    <a href="index.html" class='sidebar-link'>
+                <li class="sidebar-item">
+                    <a href="index" class='sidebar-link'>
                         <i data-feather="home" width="20"></i> 
                         <span>Dashboard</span>
                     </a>
                     
                 </li>
-
             
-            
-            
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="triangle" width="20"></i> 
-                        <span>Components</span>
+                 <li class="sidebar-item">
+                    <a href="semi_notice" class='sidebar-link'>
+                         <i data-feather="layers" width="20"></i> 
+                        <span>공지사항</span>
                     </a>
-                    
-                    <ul class="submenu ">
-                        
-                        <li>
-                            <a href="component-alert.html">Alert</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component-badge.html">Badge</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component-breadcrumb.html">Breadcrumb</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component-buttons.html">Buttons</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component-card.html">Card</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component-carousel.html">Carousel</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component-dropdowns.html">Dropdowns</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component-list-group.html">List Group</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component-modal.html">Modal</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component-navs.html">Navs</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component-pagination.html">Pagination</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component-progress.html">Progress</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component-spinners.html">Spinners</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component-tooltips.html">Tooltips</a>
-                        </li>
-                        
-                    </ul>
-                    
                 </li>
-
-            
-            
-            
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
+                
+                
+             <li class='sidebar-title'>오늘의  &amp; 할 일 </li>
+                        
+                 <li class="sidebar-item  ">
+                    <a href="form_editor" class='sidebar-link'>
                         <i data-feather="briefcase" width="20"></i> 
-                        <span>Extra Components</span>
+                        <span>배송관리</span>
                     </a>
-                    
-                    <ul class="submenu ">
-                        
-                        <li>
-                            <a href="component-extra-avatar.html">Avatar</a>
-                        </li>
-                        
-                        <li>
-                            <a href="component-extra-divider.html">Divider</a>
-                        </li>
-                        
-                    </ul>
-                    
                 </li>
-
-            
-            
-            
-                <li class='sidebar-title'>Forms &amp; Tables</li>
-            
-            
-            
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="file-text" width="20"></i> 
-                        <span>Form Elements</span>
+                
+                 <li class="sidebar-item">
+                    <a href="inventory" class='sidebar-link'>
+                         <i data-feather="layers" width="20"></i> 
+                        <span>재고관리</span>
                     </a>
-                    
-                    <ul class="submenu ">
-                        
-                        <li>
-                            <a href="form-element-input.html">Input</a>
-                        </li>
-                        
-                        <li>
-                            <a href="form-element-input-group.html">Input Group</a>
-                        </li>
-                        
-                        <li>
-                            <a href="form-element-select.html">Select</a>
-                        </li>
-                        
-                        <li>
-                            <a href="form-element-radio.html">Radio</a>
-                        </li>
-                        
-                        <li>
-                            <a href="form-element-checkbox.html">Checkbox</a>
-                        </li>
-                        
-                        <li>
-                            <a href="form-element-textarea.html">Textarea</a>
-                        </li>
-                        
-                    </ul>
-                    
                 </li>
-
-            
-            
-            
-                <li class="sidebar-item  ">
-                    <a href="form-layout.html" class='sidebar-link'>
-                        <i data-feather="layout" width="20"></i> 
-                        <span>Form Layout</span>
-                    </a>
                     
-                </li>
-
-            
-            
-            
-                <li class="sidebar-item  ">
-                    <a href="form-editor.html" class='sidebar-link'>
-                        <i data-feather="layers" width="20"></i> 
-                        <span>Form Editor</span>
-                    </a>
-                    
-                </li>
-
-            
-            
-            
-                <li class="sidebar-item  ">
-                    <a href="table.html" class='sidebar-link'>
-                        <i data-feather="grid" width="20"></i> 
-                        <span>Table</span>
-                    </a>
-                    
-                </li>
-
-            
-            
-            
-                <li class="sidebar-item  ">
-                    <a href="table-datatable.html" class='sidebar-link'>
+                <li class="sidebar-item ">
+                    <a href="review" class='sidebar-link'>
                         <i data-feather="file-plus" width="20"></i> 
-                        <span>Datatable</span>
+                        <span>Review후기</span>
                     </a>
                     
-                </li>
-
-            
-            
-            
-                <li class='sidebar-title'>Extra UI</li>
-            
-            
-            
-                <li class="sidebar-item active has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="user" width="20"></i> 
-                        <span>Widgets</span>
-                    </a>
-                    
-                    <ul class="submenu active">
-                        
-                        <li>
-                            <a href="ui-chatbox.html">Chatbox</a>
-                        </li>
-                        
-                        <li>
-                            <a href="ui-pricing.html">Pricing</a>
-                        </li>
-                        
-                        <li>
-                            <a href="ui-todolist.html">To-do List</a>
-                        </li>
-                        
-                    </ul>
-                    
-                </li>
-
-            
-            
-            
+                            
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i data-feather="trending-up" width="20"></i> 
-                        <span>Charts</span>
+                        <span>현황 Charts</span>
                     </a>
                     
                     <ul class="submenu ">
                         
                         <li>
-                            <a href="ui-chart-chartjs.html">ChartJS</a>
+                            <a href="ui_chart_chartjs">재고수량</a>
                         </li>
                         
                         <li>
-                            <a href="ui-chart-apexchart.html">Apexchart</a>
+                            <a href="ui_chart_apexchart">품목별 판매량</a>
                         </li>
                         
                     </ul>
                     
                 </li>
-
+                    
+             <li class='sidebar-title'>개인 스케줄 </li>
+ 
+                <li class="sidebar-item  ">
+                    <a href="form_layout" class='sidebar-link'>
+                        <i data-feather="layout" width="20"></i> 
+                        <span>Calendar</span>
+                    </a>
+                </li>
             
-            
-            
-                <li class='sidebar-title'>Pages</li>
-            
-            
-            
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="user" width="20"></i> 
-                        <span>Authentication</span>
+                <li class="sidebar-item active">
+                    <a href="ui_todolist" class='sidebar-link'>
+                        <i data-feather="layers" width="20"></i> 
+                        <span>To-do List</</span>
                     </a>
                     
-                    <ul class="submenu ">
-                        
-                        <li>
-                            <a href="auth-login.html">Login</a>
-                        </li>
-                        
-                        <li>
-                            <a href="auth-register.html">Register</a>
-                        </li>
-                        
-                        <li>
-                            <a href="auth-forgot-password.html">Forgot Password</a>
-                        </li>
-                        
-                    </ul>
-                    
-                </li>
-
-            
-            
-            
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="alert-circle" width="20"></i> 
-                        <span>Errors</span>
-                    </a>
-                    
-                    <ul class="submenu ">
-                        
-                        <li>
-                            <a href="error-403.html">403</a>
-                        </li>
-                        
-                        <li>
-                            <a href="error-404.html">404</a>
-                        </li>
-                        
-                        <li>
-                            <a href="error-500.html">500</a>
-                        </li>
-                        
-                    </ul>
-                    
-                </li>
-
-            
-            
-         
+           
         </ul>
     </div>
     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
@@ -406,15 +174,16 @@
             
 <div class="main-content container-fluid">
     <div class="page-title">
-        <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Widget Todo List</h3>
-                <p class="text-subtitle text-muted">A list with checkbox which is helpful for listing what you wanna do.</p>
+        <div class="row" >
+            <div class="col-12 col-md-6 order-md-1 order-last"  >
+                <h3>Todo List</h3>
+                <p class="text-subtitle text-muted">해야 할 일을 적어주세요 </p><br/>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class='breadcrumb-header'>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item">
+                        <a href="index.html">Dashboard</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Todolist</li>
                     </ol>
                 </nav>
@@ -425,26 +194,15 @@
     <!-- Task App Widget Starts -->
     <section class="tasks">
         <div class="row">
-            <div class="col-lg-7">
+            <div class="col-lg-7" style="margin-left:150px; margin-top:10px;">
                 <div class="card widget-todo">
+                
                     <div class="card-header border-bottom d-flex justify-content-between align-items-center">
                         <h4 class="card-title d-flex">
-                            <i class='bx bx-check font-medium-5 pl-25 pr-75'></i>Tasks
+                            <i class='bx bx-check font-medium-5 pl-25 pr-75'></i>오늘의 할 일 
                         </h4>
+                        
                         <ul class="list-inline d-flex mb-0">
-                            <li class="d-flex align-items-center">
-                                <i class='bx bx-check-circle font-medium-3 mr-50'></i>
-                                <div class="dropdown">
-                                    <div class="dropdown-toggle mr-1" role="button" id="dropdownMenuButton"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Task
-                                    </div>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Option 1</a>
-                                        <a class="dropdown-item" href="#">Option 2</a>
-                                        <a class="dropdown-item" href="#">Option 3</a>
-                                    </div>
-                                </div>
-                            </li>
                             <li class="d-flex align-items-center">
                                 <i class='bx bx-sort mr-50 font-medium-3'></i>
                                 <div class="dropdown">
@@ -460,6 +218,7 @@
                             </li>
                         </ul>
                     </div>
+                    
                     <div class="card-body px-0 py-1">
                         <ul class="widget-todo-list-wrapper" id="widget-todo-list">
                             <li class="widget-todo-item">
@@ -471,8 +230,7 @@
                                             <input type="checkbox" class="form-check-input" id="checkbox1">
                                             <label for="checkbox1"></label>
                                         </div>
-                                        <span class="widget-todo-title ml-50">Add SCSS and JS files if
-                                            required</span>
+                                        <span class="widget-todo-title ml-50"> 업체와 미팅하기 </span>
                                     </div>
                                     <div class="widget-todo-item-action d-flex align-items-center">
                                         <div class="badge badge-pill badge-light-success mr-1">frontend</div>
@@ -592,86 +350,21 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5">
-                <div class="card widget-todo">
-                    <div class="card-header border-bottom d-flex justify-content-between align-items-center">
-                        <h4 class="card-title d-flex">
-                            <i class='bx bx-check font-medium-5 pl-25 pr-75'></i>Progress
-                        </h4>
-                        
-                    </div>
-                    <div class="card-body px-0 py-1">
-                        <table class='table table-borderless'>
-                            <tr>
-                                <td class='col-3'>UI Design</td>
-                                <td class='col-6'>
-                                    <div class="progress progress-info">
-                                        <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="0" aria-valuemin="0"
-                                            aria-valuemax="100"></div>
-                                    </div>
-                                </td>
-                                <td class='col-3 text-center'>60%</td>
-                            </tr>
-                            <tr>
-                                <td class='col-3'>VueJS</td>
-                                <td class='col-6'>
-                                    <div class="progress progress-success">
-                                        <div class="progress-bar" role="progressbar" style="width: 35%" aria-valuenow="0" aria-valuemin="0"
-                                            aria-valuemax="100"></div>
-                                    </div>
-                                </td>
-                                <td class='col-3 text-center'>30%</td>
-                            </tr>
-                            <tr>
-                                <td class='col-3'>Laravel</td>
-                                <td class='col-6'>
-                                    <div class="progress progress-danger">
-                                        <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="0" aria-valuemin="0"
-                                            aria-valuemax="100"></div>
-                                    </div>
-                                </td>
-                                <td class='col-3 text-center'>50%</td>
-                            </tr>
-                            <tr>
-                                <td class='col-3'>ReactJS</td>
-                                <td class='col-6'>
-                                    <div class="progress progress-primary">
-                                        <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="0" aria-valuemin="0"
-                                            aria-valuemax="100"></div>
-                                    </div>
-                                </td>
-                                <td class='col-3 text-center'>80%</td>
-                            </tr>
-                            <tr>
-                                <td class='col-3'>Go</td>
-                                <td class='col-6'>
-                                    <div class="progress progress-secondary">
-                                        <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="0" aria-valuemin="0"
-                                            aria-valuemax="100"></div>
-                                    </div>
-                                </td>
-                                <td class='col-3 text-center'>65%</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
     <!-- Task App Widget Ends -->
-   
-    <!-- Progress App Widget Starts -->
-    
-    <!-- Progress App Widget Ends -->
+  
 </div>
 
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-left">
-                        <p>2020 &copy; Voler</p>
+                        <p>2020 &copy; FlowerPot </p>
                     </div>
                     <div class="float-right">
-                        <p>Crafted with <span class='text-danger'><i data-feather="heart"></i></span> by <a href="http://ahmadsaugi.com">Ahmad Saugi</a></p>
+                        <p>Crafted with <span class='text-danger'>
+                        <i data-feather="heart"></i></span> by 
+                        <a href="http://ahmadsaugi.com">Light & Salt</a></p>
                     </div>
                 </div>
             </footer>

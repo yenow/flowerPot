@@ -13,6 +13,7 @@ create table f_cosmetic(
 	hits number(30) default 0,  -- 조회수
 	likey number(30) default 0,   -- 좋아요 개수
 	enable char(1)  default 1, -- 사용가능 여부
+	proOption varchar2(100),
 	regdate date,
 	primary key(cno),
 	unique(name)

@@ -29,6 +29,7 @@
 	<context:component-scan base-package="com.flowerPot.controller" />
 	<context:component-scan base-package="com.flowerPot.semiadmin.controller" />
 	<context:component-scan base-package="com.flowerPot.exception" />
+
 	
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="defaultEncoding" value="utf-8"></beans:property>
