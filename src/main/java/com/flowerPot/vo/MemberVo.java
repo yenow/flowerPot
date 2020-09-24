@@ -46,6 +46,9 @@ public class MemberVo {
 		this.member_rank = member_rank;
 		this.enabled = enabled;
 	}
+
+
+
 	
 	
 }

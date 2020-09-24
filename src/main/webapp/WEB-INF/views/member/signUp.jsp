@@ -37,7 +37,8 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleInputTel1">전화번호</label>
-						<input type="tel" class="form-control form-control-lg" name="tel" id="exampleInputTel1">
+						<input type="tel" class="form-control form-control-lg" name="tel" id="exampleInputTel1" placeholder="(예시:010-1111-1111)">
+
 					</div>
 					<div class="form-group">
 						<label for="exampleInputAddress1">주소</label>
