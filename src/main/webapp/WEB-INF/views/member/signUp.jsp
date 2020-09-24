@@ -40,23 +40,23 @@
 						<input type="tel" class="form-control form-control-lg" name="tel" id="exampleInputTel1" placeholder="(예시:010-1111-1111)">
 
 					</div>
-					<div class="form-group">
-						<label for="exampleInputAddress1">주소</label>
-						<input type="text" class="form-control form-control-lg" name="address" id="exampleInputAddress1">
-					</div>
 					<div class="form-check">
 						<input type="radio" name="gender" id="exampleRadios1" value="M" style="display: inline-block">
 						<label for="exampleRadios1" style="display: inline-block"> 남자 </label>
 						<input type="radio" name="gender" id="exampleRadios2" value="F" style="display: inline-block">
 						<label for="exampleRadios2" style="display: inline-block"> 여자 </label>
 					</div>
+					주소(우편번호)
 					<div class="form-group">
 					<input type="text" class="form-control form-control-lg" id="sample4_postcode" name="postcode" placeholder="우편번호">
 					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 					<input type="text" class="form-control form-control-lg" id="sample4_roadAddress" name="street_address" placeholder="도로명주소">
+					<br>
 					<input type="text" class="form-control form-control-lg" id="sample4_jibunAddress" name="parcel_address" placeholder="지번주소">
 					<span id="guide" style="color:#999;display:none"></span>
+					<br>
 					<input type="text" class="form-control form-control-lg" id="sample4_detailAddress" name="detail_address"placeholder="상세주소">
+					<br>
 					<input type="text" class="form-control form-control-lg" id="sample4_extraAddress" name="deliver_state" placeholder="참고항목">
 					</div>
 					
