@@ -92,7 +92,8 @@
 					</div>
 			</div>
 			
-			<!-- 배송정보 --> <!-- 로그인 되어있을시,, 자동으로 입력되어야함 -->
+			<!-- 배송정보 --> <!-- 로그인 되어있을시,, 값을 가져올수 있어야함 -->
+			
 			<div class="m-l-25 m-r-38 m-lr-0-xl p-t-30 p-b-30">
 				
 				<div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">배송 정보</div>
@@ -124,6 +125,7 @@
 				</div>
 			</div>
 			
+			<!-- 로그인시만 보이게 -->
 			<!-- 쿠폰정보 --> <!-- 로그인 되어있을시,, 자동으로 입력되어야함 -->
 			<div class="m-l-25 m-r-38 m-lr-0-xl p-t-30 p-b-30">
 				<div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">쿠폰 / 적립금</div>
