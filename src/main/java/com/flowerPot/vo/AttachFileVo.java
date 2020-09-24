@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AttachFileVo {
-	private int atno;
-	private int cno;
+	private Integer atno;
+	private Integer cno;
 	private String uuidName;
 	private String originalFileName;
 	private String uploadFolderPath;

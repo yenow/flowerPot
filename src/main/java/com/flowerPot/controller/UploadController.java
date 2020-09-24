@@ -29,6 +29,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,8 +37,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.flowerPot.vo.AttachFileVo;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 @Controller
+@Slf4j
 public class UploadController {
 
 	@PostMapping(value="/uploadSummernoteImageFile2", produces = "application/json")
@@ -173,6 +177,25 @@ public class UploadController {
 		return r;
 	}
 	
+	@PostMapping("deleteSumnailImage")
+	@ResponseBody
+	public ResponseEntity<String> deleteSumnailImage(AttachFileVo attach){
+		ResponseEntity<String> r = null;
+		log.info(attach.toString());
+		// 파일 경로
+		String filePath =  attach.getUploadFolderPath()+attach.getRealName();
+		
+		try {
+			File f = new File(filePath);
+			if(f.exists()==true) {
+				f.delete();
+			}
+			r= new ResponseEntity<String>("success", HttpStatus.OK);
+		} catch (Exception e) {
+			r= new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+		}
+		return r;
+	}
 	
 	/*
 	// summernote

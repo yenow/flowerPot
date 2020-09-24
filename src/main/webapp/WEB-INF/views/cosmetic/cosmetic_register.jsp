@@ -39,8 +39,8 @@
 	<!-- /nav -->
 	<!-- content -->
 	<div class="container-fluid">
-		<h2 class="text-center my-5">화장품 등록 <input type="submit" class="btn btn-secondary float-right" value="등록"> </h2>
-		<form action="${pageContext.request.contextPath}/cosmetic/cosmetic_register_ok" method="post" enctype="multipart/form-data">
+		<h2 class="text-center my-5">화장품 등록 <input type="submit" class="cosmetic-register-button btn btn-secondary float-right" value="등록"> </h2>
+		<form class="cosmetic-form" action="${pageContext.request.contextPath}/cosmetic/cosmetic_register_ok" method="post" enctype="multipart/form-data" onsubmit="return false;">
 			<!-- 화장품 타입, 화장품 브랜드 -->
 			<div class="row">
 				<%-- <input type="hidden" name="mno" value="${login.mno }"> --%>
@@ -93,30 +93,30 @@
 				  <label class="custom-file-label" for="sumnailImage">Choose file</label>
 				</div>
 				<ul class="image-list list-group my-2">
-					 <li class="list-group-item" style="padding-top: 5px; padding-bottom: 5px;">파일목록
+					 <!-- <li class="list-group-item" style="padding-top: 5px; padding-bottom: 5px;">파일목록
 					 <button class="float-right x-button border-0" onclick="return deleteButton();" style="background-color: #fff;">
 					 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 					  <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 					</svg>
 					</button>
-					 </li>
+					 </li> -->
 				</ul>
 			</div>
 			<!-- title -->
 			<div class="mb-3">
-				<label for="username">제목</label>
+				<label for="username">화장품이름</label>
 				<div class="input-group">
 					<div class="input-group-prepend">
-						<span class="input-group-text">제목</span>
+						<span class="input-group-text">이름</span>
 					</div>
-					<input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요" required="">
+					<input type="text" class="form-control" id="name" name="name" placeholder="제목을 입력하세요" required="">
 					<div class="invalid-feedback" style="width: 100%;">Your username is required.</div>
 				</div>
 			</div>
 			<!-- /title -->
 			<!-- 내용 -->
 			<div class="mb-2">
-				<textarea id="summernote" name="content"></textarea>
+				<textarea id="summernote" class="content" name="content"></textarea>
 			</div>
 			
 			<!-- 상품 상세설명 -->
@@ -124,14 +124,14 @@
 				<div class="col-4">
 					<div class="form-group">
 						<label for="capacity">용량</label> 
-						<input type="email" class="form-control" id="capacity" name="capacity" placeholder="용량을 입력해주세요(ml 단위)" aria-describedby="emailHelp"> 
+						<input type="number" class="form-control" id="capacity" name="capacity" placeholder="용량을 입력해주세요(ml 단위)" aria-describedby="emailHelp"> 
 						<small id="emailHelp" class="form-text text-muted"></small>
 					</div>
 				</div>
 				<div class="col-4">
 					<div class="form-group">
 						<label for="period">기간</label> 
-						<input type="email" class="form-control" id="period" name="period" placeholder="기간을 입력해주세요(일 단위)" aria-describedby="emailHelp"> 
+						<input type="number" class="form-control" id="period" name="period" placeholder="기간을 입력해주세요(일 단위)" aria-describedby="emailHelp"> 
 						<small id="emailHelp" class="form-text text-muted"></small>
 					</div>
 				</div>
@@ -151,11 +151,6 @@
 				</div>
 			</div>
 			<!-- /상품 상세설명 -->
-			
-			<!-- 제출 -->
-			<div class="text-center">
-				<input type="submit" class="btn btn-primary" value="등록">
-			</div>
 		</form>
 	</div>
 	
@@ -193,17 +188,42 @@
 				success : function(data) {
 					//항상 업로드된 파일의 url이 있어야 한다.
 					console.log(data);
+					attachList.push(data);
+					console.log(attachList);
+					
 					$(editor).summernote('insertImage', data.url);
 				}
 			});	
 		}
 
+// 첨부파일 리스트
+var attachList = new Array();
 		
 // 첨부파일삭제
-function deleteButton() {
+function deleteButton(data) {
+	console.log(data);
+	var realName=$(data).data('realname');
+	console.log(realName); 
+	alert('성공'); 
+	// 어짜피 한번할떄마다 하나만 삭제
+	for(var i=0; data.length; i++){
+		if(attachList[i].realName==realName){
 			
+			attachList.pop(i);
+			$.ajax({
+				type: "POST", 
+				url: "${pageContext.request.contextPath}/deleteSumnailImage", 
+				data: attachList[i], 
+				success: function(data) { 
+					console.log(data); 
+					
+				}
+			});
+		}
+	}
+	console.log(attachList);
 }
-		
+
 		
 $(document).ready(function () {
 	// 파일 용량 체크
@@ -251,7 +271,10 @@ $(document).ready(function () {
 			success : function(data) {
 				console.log(data)
 				for(var i=0; i<data.length; i++){
-					$li = $('<li class="list-group-item" style="padding-top: 5px; padding-bottom: 5px;">'+data[i].originalFileName+' <button class="float-right x-button border-0" onclick="return deleteButton();" style="background-color: #fff;"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></button></li>')
+					attachList.push(data[i]);
+					console.log("파일 선택후 ")
+					console.log(attachList);
+					$li = $('<li class="list-group-item" style="padding-top: 5px; padding-bottom: 5px;">'+data[i].originalFileName+' <button data-realName='+data[i].realName+' data-uploadFolderPath='+data[i].uploadFolderPath+' class="float-right x-button border-0" onclick="return deleteButton(this);" style="background-color: #fff;"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></button></li>')
 					$('.image-list').append($li);
 				}
 				/* for(var i=0; i<AttachFileDTOList.length; i++){
@@ -265,199 +288,78 @@ $(document).ready(function () {
 		});
 	});
 	
+	// 전송버튼을 클릭했을때, ajax로 데이터 전송
+	$('.cosmetic-register-button').click(function() {
+		
+		var type = $('#type option:selected').val();
+		console.log(type);
+		var brand = $('#brand option:selected').val();
+		console.log(brand);
+		var skinType = $('#skinType option:selected').val();
+		console.log(skinType);
+		var price = $('#price').val();
+		console.log(price);
+		var name = $('#name').val();
+		console.log(name);
+		var content = $('.content').val();
+		console.log(content);
+		var capacity = $('#capacity').val();
+		console.log(capacity);
+		var period = $('#period').val();
+		console.log(period);
+		var nation = $('#nation').val();
+		console.log(nation);
+		var useMethod = $('#useMethod').val();
+		console.log(useMethod);
+		var formdata = {'type':type,'brand':brand,'skinType':skinType,'price':price,'name':name
+				,'content':content,'capacity':capacity,'period':period,'nation':nation,'useMethod':useMethod};
+		console.log("formdata");
+		console.log(formdata);
+		
+		var cno;
+		// 화장품, 상세정보 등록 아작스
+		$.ajax({
+			url: '${pageContext.request.contextPath}/cosmetic/cosmeticRegister', // 클라이언트가 요청을 보낼 서버의 URL 주소
+			data: formdata,        // HTTP 요청과 함께 서버로 보낼 데이터
+			type: 'POST',          // HTTP 요청 방식(GET, POST)
+			dataType: 'html',      // 호출 했을 때 결과타입
+			success : function(data) {
+				console.log("게시물번호");
+				console.log(data);
+				cno = Number(data);
+				for(var i=0; i<attachList.length;i++){
+					attachList[i].cno = cno;
+				}
+			}
+		}).done(function() {
+			
+			console.log("attach리스트");
+			console.log(attachList);
+			// 첨부파일 등록 ajax
+			$.ajax({
+				url: '${pageContext.request.contextPath}/cosmetic/AttachRegister', // 클라이언트가 요청을 보낼 서버의 URL 주소
+				data: JSON.stringify(attachList),        // HTTP 요청과 함께 서버로 보낼 데이터
+				type: 'POST',          // HTTP 요청 방식(GET, POST)
+				dataType: 'html',      // 호출 했을 때 결과타입
+				contentType: 'application/json',
+				success : function(data) {
+					if(data=='success'){
+						alert('등록되었습니다');
+						location.href='${pageContext.request.contextPath}/cosmetic/cosmetic_list';
+					}else{
+						alert('등록실패했습니다');
+					}
+				}
+			});
+		});
+	});
+	
 });
 // /ready()	
 		
 // 유효성검증, input타입에 모든 값이 들어가있는지
-
-
 </script>
-<!-- 
-<script type="text/javascript">
-		$('#summernote').summernote({
-			height : 300, // 에디터 높이
-			minHeight : 500, // 최소 높이
-			maxHeight : null, // 최대 높이
-			focus : true, // 에디터 로딩후 포커스를 맞출지 여부
-			lang : "ko-KR", // 한글 설정
-			placeholder : '최대 2048자까지 쓸 수 있습니다', //placeholder 설정
-			callbacks : { //여기 부분이 이미지를 첨부하는 부분
-				onImageUpload : function(files) {
-					uploadSummernoteImageFile(files[0], this);
-				}
-			}
-		});
+<script src="${pageContext.request.contextPath}/resources/js/summernote-ko-KR.js"></script>
 
-		var attachFileList = new Object();
-		var AttachFileDTOArray = new Array();
-		var AttachFileDTO = new Object();
-
-		/* 이미지 파일 업로드 */
-		function uploadSummernoteImageFile(file, editor) {
-			data = new FormData();
-			data.append("file", file);
-			$.ajax({
-				data : data,
-				type : "POST",
-				url : "${pageContext.request.contextPath}/uploadSummernoteImageFile",
-				contentType : false,
-				processData : false,
-				success : function(data) {
-							//항상 업로드된 파일의 url이 있어야 한다.
-					console.log(data);
-					AttachFileDTOArray.push(data.attachFileDTO);
-					console.log(AttachFileDTOArray);
-					$(editor).summernote('insertImage',
-					data.attachFileDTO.mappingURL);
-					}
-				});
-		}
-
-
-	    $(document).ready(function () {
-	    	
-	    	// 제출될때 이벤트 발생
-	        $('.submit-button').click(function () {
-	        		// 제목 유효성 검증
-	        		if($('#title').val()==''){
-	        			alert('제목을 입력해주세요');
-	        			return false;
-	        		}
-
-	        	
-	                //폼 태그도 ajax로 보내야함;; 그리고 다 되었으면 다시 ajax로 보내고,, 그리고 location.href로 이동
-	                var data = {};
-	                //serialize() 활용하기
-	                var str = $("form").serialize();
-	                console.log(str);
-	                var category = '${category}';
-	                data.str = str;
-	                // data.AttachFileDTOArray = AttachFileDTOArray;
-	                // data.category = category;
-	                console.log(data);
-
-	                $.ajax({
-	                    data: str,
-	                    type: 'POST',
-	                    dataType: 'html',
-	                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-	                    url: "${pageContext.request.contextPath}/board/boardWriteAjax",
-	                    success: function (data) {
-
-	                        console.log(data);
-	                        data *= 1; // bno 숫자타입으로 만들기
-	                        console.log(typeof bno);
-	                        AttachFileDTOArray[0].bno = data;
-	                        console.log(AttachFileDTOArray[0]);
-
-	                        for (var i = 0; i < AttachFileDTOArray.length; i++) {
-	                            AttachFileDTOArray[i].bno = data;
-	                            AttachFileDTOArray[i].mno = null;
-	                            
-	                        }
-	                        console.log(AttachFileDTOArray);
-
-	                        $.ajax({
-	                                data: JSON.stringify(AttachFileDTOArray),
-	                                type: 'POST',
-	                                dataType: 'html',
-	                                contentType: 'application/json; charset=UTF-8',
-	                                url: "${pageContext.request.contextPath}/board/boardAttachFileDTO",
-	                                success: function (data) {
-	                                    console.log(data);
-	                                    if (data == "success") {
-	                                    	
-	                                    	window.location.replace='${pageContext.request.contextPath}/board/boardList?category=${category}';
-	                                    } else {
-	                                        alert('등록이 되지 않았습니다');
-	                                       
-	                                    }
-	                                }
-	                            }); // end ajax
-	                            
-	                            
-	                    	$.ajax({
-	                    		
-	                    	});
-
-	                    } // end success function
-	                }); // end ajax	  	
-	                // window.location.replace='${pageContext.request.contextPath}/board/boardList?category=${category}';
-	            }); // end  $('#boardWrite-form').submit(function()
-	            	
-	        //summersnote Imagefile 보내기
-	        
-	            		
-	        // 파일 선택시 호출됨 -> upload폴더에 파일 저장 및 파일HTML태그 추가
-	    	$('#customFile').change(function() {
-				// console.log('change');  //// console.log(this.files); //// console.log(this.files[0]); //
-				
-				var files= this.files;
-				var formdata = new FormData();
-				for(var i=0; i<files.length ; i++){
-					formdata.append('file',files[i]);   // name은 키값인가?
-				}
-				// console.log(formdata);  //// console.log(formdata.get('file'));  //
-				$.ajax({
-					url: '${pageContext.request.contextPath}/fileupload', // 클라이언트가 요청을 보낼 서버의 URL 주소
-					processData : false,   // 이 두개를 반드시 false로 해야한다고함.. 이유는 모름
-					contentType : false, 
-					data: formdata,        // HTTP 요청과 함께 서버로 보낼 데이터
-					type: 'POST',          // HTTP 요청 방식(GET, POST)
-					dataType: 'json',      // 호출 했을 때 결과타입
-					success : function(AttachFileDTOList) {
-						
-						for(var i=0; i<AttachFileDTOList.length; i++){
-							AttachFileDTOArray.push(AttachFileDTOList[i]);
-						}
-						// AttachFileDTO 객체를 받으면
-						if(AttachFileDTOList!=null){
-							attachFileAppend(AttachFileDTOList);
-						} 
-					}
-				});
-			});
-	            
-	       	function fileSizeCheck(file) {
-				if(file.size>20971520){ // 20MB
-					alert('20MB이상 첨부 불가능');
-					return false; 
-				}  
-			}
-	       	
-	       	function attachFileAppend(attachFile) {
-				
-	       		for(var i=0; i<attachFile.length; i++){
-	       			console.log(attachFile);
-	       			$('.attach-div ul').append($('<li class="list-group-item" style="font-size: 15px; padding: 0.25rem 0.5rem;">'+attachFile[i].originalFileName+' <a data-realName="'+attachFile[i].realName+'" data-uploadPath="'+attachFile[i].uploadPath+'" onclick="deleteAttachtFile(this);"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x float-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/><path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/></svg></a></li>'));   
-	       		}
-			}
-	    }); // end $(document).ready
-		
-		// x표시 클릭할시, 태그와 upload폴더의 파일 삭제
-		function deleteAttachtFile(data) {
-			$aTag = data;
-			var dataSet = new Object(); 
-			dataSet.realName = $(data).data('realname');
-			dataSet.uploadPath = $(data).data('uploadpath');
-			$.ajax({
-				url: '${pageContext.request.contextPath}/fileDelete', // 클라이언트가 요청을 보낼 서버의 URL 주소
-				data: dataSet,        // HTTP 요청과 함께 서버로 보낼 데이터
-				type: 'GET',          // HTTP 요청 방식(GET, POST)
-				dataType: 'html',      // 호출 했을 때 결과타입
-				success : function(data) {
-					console.log(data);
-					if(data=='success'){
-						$parent = $aTag.parentNode;
-						$parent.remove();
-					}
-				}	
-			});
-		}
-	    
-	</script>	
-	 -->
-	
-	<script src="${pageContext.request.contextPath}/resources/js/summernote-ko-KR.js"></script>
 </body>
 </html>

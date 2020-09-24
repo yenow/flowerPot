@@ -18,27 +18,11 @@ import lombok.extern.slf4j.Slf4j;
 @RunWith(SpringJUnit4ClassRunner.class)
 //Test for Controller
 @WebAppConfiguration
-@ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
- "file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" })
+@ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/test-context.xml",
+ "file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml","file:src/main/webapp/WEB-INF/spring/security-context.xml" })
 @Slf4j
 public class BoardControllerTest {
 
-	  
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Setter(onMethod_ = { @Autowired })
 	  private WebApplicationContext ctx;
 
@@ -51,7 +35,7 @@ public class BoardControllerTest {
 
 	  @Test
 	  public void testConvert() throws Exception {
-		  System.out.println(mockMvc.perform(MockMvcRequestBuilders.get("/")).andReturn().getModelAndView().getModelMap());
+		  System.out.println(mockMvc.perform(MockMvcRequestBuilders.get("/test")).andReturn().getModelAndView().getModelMap());
 		  
 	  }
 

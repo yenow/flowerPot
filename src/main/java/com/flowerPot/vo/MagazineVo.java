@@ -16,9 +16,10 @@ public class MagazineVo {
 	regdate date,
 	moddate date,
 	imgSrc varchar2(100),*/
-	private int mgno;
-	private int mno;
+	private Integer mgno;
+	private Integer mno;
 	private String title;
+	private String name;
 	private String content;
 	private String category;
 	private String UUIDName;
