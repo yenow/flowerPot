@@ -7,6 +7,7 @@ create table f_member (
     address varchar2(100),
     email varchar2(100) unique,
     gender varchar2(2),    
+    tel varchar(50),
     birth varchar2(10),
     member_rank varchar2(15),
     enabled char(1) default '1',

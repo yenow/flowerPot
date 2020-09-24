@@ -26,6 +26,7 @@
 	
 
 	<!-- controller 매핑 -->
+	<context:component-scan base-package="com.flowerPot.member.controller" />
 	<context:component-scan base-package="com.flowerPot.cosmeticReview.controller" />
     <context:component-scan base-package="com.flowerPot.cosmetic.controller" />
     <context:component-scan base-package="com.flowerPot.magazine.controller" />

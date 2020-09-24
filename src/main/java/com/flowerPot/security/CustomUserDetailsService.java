@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.flowerPot.dao.MemberDao;
+import com.flowerPot.member.repository.MemberDao;
 import com.flowerPot.security.domain.CustomUser;
 import com.flowerPot.vo.MemberVo;
 
