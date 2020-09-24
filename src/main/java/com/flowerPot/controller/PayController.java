@@ -37,14 +37,17 @@ public class PayController {
         
     }
   
+    // 결제시 배송정보 저장
     @PostMapping("delivery_register")
     @ResponseBody
     public ResponseEntity<String> delivery_register(DeliveryVo delivery) {
     	log.info("배송:"+delivery);
-    	
-    	return new ResponseEntity<String>("2",HttpStatus.OK); 
+    	delivery.setDeliver_num("등기번호");
+    	deliveryService.insertDelivery(delivery);
+    	return new ResponseEntity<String>(Integer.toString(delivery.getDno()),HttpStatus.OK); 
     }
     
+    // 카카오페이
 	@PostMapping("/kakaoPay")
 	@ResponseBody
     public ResponseEntity<String> kakaoPay(@RequestBody List<OrderProductVo> olist /*Map<String,Object> map*/) {
@@ -55,6 +58,7 @@ public class PayController {
  
     }
     
+	// 결제성공시 이동테이블
     @GetMapping("/kakaoPaySuccess")
     public void kakaoPaySuccess(@RequestParam("pg_token") String pg_token, @RequestParam("order_num") String order_num, Model model) {
         log.info("kakaoPaySuccess get............................................");

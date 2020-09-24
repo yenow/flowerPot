@@ -98,26 +98,28 @@
 				<div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">배송 정보</div>
 				<div class="form-group row">
 					<div class="col-sm-3">
-						<input type="text" class="form-control" id="postcode" placeholder="우편번호">
+						<input type="text" class="form-control postcode" id="sample4_postcode"  placeholder="우편번호">
 					</div>
 					<div class="col-sm-3">
-						<input type="button" class="btn btn-outline-secondary" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
+						<input type="button" class="btn btn-outline-secondary" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
 					</div>
 				</div>
 				<div class="form-group row">
 					<div class="col-sm-4">
-						<input type="text"  class="form-control" id="street_address" placeholder="도로명주소">
+						<input type="text"  class="form-control street_address" id="sample4_roadAddress" placeholder="도로명주소">
+						<span id="guide" style="color:#999;display:none"></span>
 					</div>
 					<div class="col-sm-4">
-						<input type="text"  class="form-control" id="parcel_address" placeholder="지번주소">
+						<input type="text"  class="form-control parcel_address" id="sample4_jibunAddress" placeholder="지번주소">
 					</div>
 				</div>
+				
 				<div class="form-group row">
 					<div class="col-sm-4">
-					<input type="text"  class="form-control"  id="detail_address" placeholder="상세주소">
+					<input type="text"  class="form-control detail_address"  id="sample4_detailAddress" placeholder="상세주소">
 					</div>
 					<div class="col-sm-4">
-						<input type="text"  class="form-control" id="more_infomation" placeholder="참고항목">
+						<input type="text"  class="form-control more_infomation" id="sample4_extraAddress" placeholder="참고항목">
 					</div>
 				</div>
 			</div>
@@ -259,54 +261,6 @@
 
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-
-function ordersubmit() {
-	console.log($('.cosmetic-cno').length);
-	console.log($('.cosmetic-cno').get(0));
-	
-	var len = $('.cosmetic-cno').length;
-	var olist = [];
-	for(var i=0; i<len; i++){
-		var OrderProduct={};
-		OrderProduct.cno = $($('.cosmetic-cno').get(i)).val();
-		OrderProduct.mno = 0;
-		OrderProduct.amount = Number($($('.cosmetic-numProduct').get(i)).html());
-		//OrderProduct.coupon_name = $('.coupon-select option:selected').val();
-		OrderProduct.point = $('.cosmetic-point').val();
-		OrderProduct.tel = $('.nomember-tel').val();
-		OrderProduct.email = $('.nomember-email').val();
-		OrderProduct.final_price = Number($('.final_price').html());
-		olist.push(OrderProduct);
-		console.log(OrderProduct);
-	}
-	
-	var delivery = {'postcode': $('#postcode').val() ,'street_address': $('#street_address').val() ,'parcel_address': $('#parcel_address').val() ,'detail_address': $('#detail_address').val(), 'more_infomation': $('#more_infomation').val()};
-	
-	
-	$.ajax({
-		type: "POST",
-		url: "${pageContext.request.contextPath }/delivery_register", 
-		data : delivery,
-		dataType : "html",
-		success : function(data) {
-			console.log(data);
-		}
-	});
-	
-	$.ajax({
-		type: "POST",
-		url: "${pageContext.request.contextPath }/kakaoPay", 
-		data: JSON.stringify(olist), 
-		contentType: "application/json",
-		dataType : "html",
-		success: function(data) { 
-			console.log(data);
-			location.href=data;
-		}
-	});
-	
-}
-	
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function sample4_execDaumPostcode() {
         new daum.Postcode({
@@ -361,6 +315,68 @@ function ordersubmit() {
                 }
             }
         }).open();
+    }
+
+    
+    function ordersubmit() {
+    	console.log($('.cosmetic-cno').length);
+    	console.log($('.cosmetic-cno').get(0));
+    	
+    	var len = $('.cosmetic-cno').length;
+    	var olist = [];
+    	
+    	// 배송 유효성 검증
+    	if($('.postcode').val()==null ||  $('.detail_address').val()==null){
+    		alert('배송정보를 입려해주세요');
+    		return false;
+    	}
+    	
+    	// 배달 정보 객체
+    	var delivery = {'postcode': $('.postcode').val() ,'street_address': $('.street_address').val() ,'parcel_address': $('.parcel_address').val() ,'detail_address': $('.detail_address').val(), 'more_infomation': $('.more_infomation').val()};
+    	
+    	var dno;
+    	$.ajax({
+    		type: "POST",
+    		url: "${pageContext.request.contextPath }/delivery_register", 
+    		data : delivery,
+    		dataType : "html",
+    		success : function(data) {
+    			console.log(data+"배달정보입력");
+    			
+    			dno = Number(data);
+    		}
+    	}).done(function (data) { 
+    		
+    		// 배달정보를 넣은후
+    		for(var i=0; i<len; i++){
+        		var OrderProduct={};
+        		OrderProduct.cno = $($('.cosmetic-cno').get(i)).val();
+        		OrderProduct.mno = 0;
+        		OrderProduct.dno = dno;
+        		OrderProduct.amount = Number($($('.cosmetic-numProduct').get(i)).html());
+        		//OrderProduct.coupon_name = $('.coupon-select option:selected').val();
+        		OrderProduct.point = $('.cosmetic-point').val();
+        		OrderProduct.tel = $('.nomember-tel').val();
+        		OrderProduct.email = $('.nomember-email').val();
+        		OrderProduct.final_price = Number($('.final_price').html());
+        		olist.push(OrderProduct);
+        		console.log(OrderProduct);
+        	}
+    		
+    		$.ajax({
+        		type: "POST",
+        		url: "${pageContext.request.contextPath }/kakaoPay", 
+        		data: JSON.stringify(olist), 
+        		contentType: "application/json",
+        		dataType : "html",
+        		success: function(data) { 
+        			console.log(data);
+        			location.href=data;
+        		}
+        	});
+    		
+    	});
+    	
     }
 </script>
 <jsp:include page="../info/footer.jsp"></jsp:include>

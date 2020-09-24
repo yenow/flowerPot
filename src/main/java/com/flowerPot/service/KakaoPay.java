@@ -42,7 +42,7 @@ public class KakaoPay {
 		 	// 주문번호 생성
 		    CosmeticVo cosmetic = cosmeticDao.selectOneCosmeticByCno(olist.get(0).getCno());
 		    String order_num= cosmetic.getBrand()+UUID.randomUUID().toString();  // 주문번호
-		    
+		    log.info("주문번호:"+order_num);
 		 	// 반복문으로 주문테이블에 저장
 		 	// mno 가 있냐 없냐에 따라서 다른방법으로 db에 저장
 		 	for(OrderProductVo orderProduct : olist) {
@@ -78,7 +78,7 @@ public class KakaoPay {
 	        params.add("quantity", "1");  	//변경						 // 상품수량
 	        params.add("total_amount", final_price.toString());	//변경	   // 상품 총액
 	        params.add("tax_free_amount", "100");							 // 상품 비과세 금액
-	        params.add("approval_url", "http://localhost:8282/flowerPot/kakaoPaySuccess?order_num"+order_num);
+	        params.add("approval_url", "http://localhost:8282/flowerPot/kakaoPaySuccess?order_num="+order_num);
 	        params.add("cancel_url", "http://localhost:8282/flowerPot/kakaoPayCancel");
 	        params.add("fail_url", "http://localhost:8282/flowerPot/kakaoPaySuccessFail");
 	 

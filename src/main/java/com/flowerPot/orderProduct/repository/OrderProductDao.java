@@ -8,4 +8,7 @@ public interface OrderProductDao {
 
 	void insertOrderProductNoMember(OrderProductVo orderProduct);
 
+	void deleteAll();
+	
+	int selectCount();
 }
