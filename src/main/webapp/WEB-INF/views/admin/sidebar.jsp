@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-   <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+   <div class="sidebar" data-color="purple" data-image="../resources/assets/img/sidebar-5.jpg">
 	<div class="sidebar-wrapper">
 
             <div class="logo">
@@ -14,7 +14,7 @@
 
             <ul class="nav">
                 <li id="Dashboard">
-                    <a href="dashboard.html">
+                    <a href="${pageContext.request.contextPath}/admin/dashboard">
                         <i class="pe-7s-graph"></i>
                         <p>종합 현황</p>
                     </a>
@@ -69,6 +69,7 @@
                         <p>신규 알림(아직안함)</p>
                     </a>
                 </li>
+
                 <li><a><i></i><p> </p></a></li>
                 <li><a><i></i><p> </p></a></li>
                 <li><a><i></i><p> </p></a></li>

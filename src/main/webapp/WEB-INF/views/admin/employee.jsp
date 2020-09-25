@@ -230,7 +230,7 @@
 													</c:forEach>
 													<td></td>
 													<td><button onclick="location='#'">권한 변경</button></td>
-													<td><button class=" pull-right" onclick="location='#'">아이디 발급</button></td>
+													<td><button class=" pull-right" onclick="location='${pageContext.request.contextPath}/admin/employee/signUp'">아이디 발급</button></td>
 													
 												</tr>
 											</c:forEach>

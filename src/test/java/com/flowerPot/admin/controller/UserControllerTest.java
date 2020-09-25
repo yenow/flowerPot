@@ -1,5 +1,10 @@
 package com.flowerPot.admin.controller;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import javax.sql.DataSource;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.flowerPot.admin.commons.SearchVO;
 import com.flowerPot.admin.dao.EmpMapper;
-import com.flowerPot.admin.dao.MemMapper;
 import com.flowerPot.admin.vo.EmpVo;
-import com.flowerPot.admin.vo.UserTVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
@@ -22,6 +25,9 @@ public class UserControllerTest {
 	
 	@Autowired
 	private EmpMapper eMapper;
+	
+	@Autowired
+	private DataSource dataSource;
 	
 	@Test
 	public void test() {
@@ -53,6 +59,34 @@ public class UserControllerTest {
 			System.out.println(eT.toString());
 			eMapper.insertEmpOne(eT);
 			System.out.println("게시물 등록 성공!");
+		}
+	}
+	@Test
+	public void EmpInsertTest2() {
+		String sql = "insert into employee (empNo, empName, deptNo, poNo)"
+				+ "values (eno_seq.nextval,?,?,?)";
+
+		for(int i = 0; i < 368; i++) {
+
+			Connection con = null;
+			PreparedStatement pstmt = null;
+
+			try {
+				con = dataSource.getConnection();
+				pstmt = con.prepareStatement(sql);
+
+				pstmt.setString(1, "이름"+i);
+				pstmt.setInt(2, 50);
+				pstmt.setInt(3, 1);
+				pstmt.executeUpdate();
+
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				if(pstmt != null) { try { pstmt.close();  } catch(Exception e) {} }
+				if(con != null) { try { con.close();  } catch(Exception e) {} }
+
+			}
 		}
 	}
 	@Test
