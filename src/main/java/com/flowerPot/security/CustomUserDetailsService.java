@@ -18,7 +18,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		System.out.println("username:" + username);
 		MemberVo vo = memberDao.read(username);
-		System.out.println("username:" + username);
+		System.out.println("회원정보:" + vo);
 		
 		return vo == null ? null : new CustomUser(vo);
 	}

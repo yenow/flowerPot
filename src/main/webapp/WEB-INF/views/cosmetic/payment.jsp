@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 
 <jsp:include page="../info/header2.jsp"></jsp:include>
 
@@ -25,7 +27,10 @@
 							<!-- 장바구니에서 구매시, 상품정보 -->
 							<c:if test="${root==2 }">
 								<c:forEach var="cosmetic" items="${shoppingCartList }">
-									<input type="hidden" class="cosmetic-cno" value="${cosmetic.cno }" />
+									<!-- <sec:authentication property="principal.member"/> -->
+									<input type="hidden" class="member-mno" value="${member.mno }" />
+									<input type="hidden" class="member-member_rank" value="${member.member_rank }" />
+									<input type="hidden" class="cosmetic-mno" value="${member.mno }" />
 									<tr class="table_row">
 										<td class="text-center">
 											<div class="how-itemcart1" style="margin : 0 auto;">
@@ -46,6 +51,9 @@
 							</c:if>
 							<!-- 바로구매시, 상품정보 -->
 							<c:if test="${root==1 }">
+								<!-- <sec:authentication property="principal.member"/> -->
+								<input type="hidden" class="member-mno" value="${member.mno }" />
+								<input type="hidden" class="member-member_rank" value="${member.member_rank }" />
 								<input type="hidden" class="cosmetic-cno" value="${cosmetic.cno }" />
 								<tr class="table_row">
 										<td class="text-center">

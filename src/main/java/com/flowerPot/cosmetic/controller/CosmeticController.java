@@ -2,7 +2,7 @@ package com.flowerPot.cosmetic.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.reflect.Member;
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +25,8 @@ import com.flowerPot.cosmetic.service.CosmeticService;
 import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
 import com.flowerPot.description.service.DescriptionService;
 import com.flowerPot.domain.Criteria;
+import com.flowerPot.member.service.MemberSerivce;
+import com.flowerPot.security.domain.CustomUser;
 import com.flowerPot.vo.AttachFileVo;
 import com.flowerPot.vo.CosmeticReviewVo;
 import com.flowerPot.vo.CosmeticVo;
@@ -44,12 +47,27 @@ public class CosmeticController {
 	@Autowired
 	private DescriptionService descriptionService;
 	@Autowired 
-	CosmeticReviewService cosmeticReviewService;
+	private CosmeticReviewService cosmeticReviewService;
+	@Autowired
+	private MemberSerivce memberSerivce;
 	
+	// 결제 페이지로 이동
 	@RequestMapping("payment")
-	public void payment(Model model,Integer root,CosmeticVo cosmetic,HttpSession session) { // root는 장바구니에서 접근하는지, 바로구매인지 구분하는 변수
+	public void payment(Principal principal ,Model model,Integer root,CosmeticVo cosmetic,HttpSession session) { // root는 장바구니에서 접근하는지, 바로구매인지 구분하는 변수
 		MemberVo memberVo = new MemberVo();
 		log.info("cosmetic:"+cosmetic);
+		if(principal!=null) {
+			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
+			String id = principal.getName();
+			memberVo = memberSerivce.selectOneMemberById(id);
+		}
+		
+		//User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		//if(user!=null) {
+		//	log.info("멤버객체:"+ user.getMemberVo());
+		//}
+	
+		
 		//List<CosmeticVo> clist = (List<CosmeticVo>) session.getAttribute("shoppingCartList");
 		//log.info("화장품 리스트");
 		//for(CosmeticVo c : clist) {

@@ -2,6 +2,7 @@ package com.flowerPot.member.repository;
 
 import java.util.List;
 
+
 import com.flowerPot.vo.MemberVo;
 
 public interface MemberDao {
@@ -13,6 +14,8 @@ public interface MemberDao {
 	public int selectTotalCount();
 
 	public void deleteMemberById(String string);
+
+	public MemberVo selectOneMemberById(String id);
 	
 	//회원가입 기능
 	//void register(MemberVo member);

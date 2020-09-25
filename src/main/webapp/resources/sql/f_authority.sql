@@ -17,8 +17,8 @@ select * from f_authority;
 insert into f_authority values (auno_seq.nextval, 'user0', 'ROLE_USER','ROLE_USER');
 insert into f_authority values (auno_seq.nextval, 'user1', 'ROLE_USER','ROLE_USER');
 insert into f_authority values (auno_seq.nextval, 'user1', 'ROLE_ADMIN','ROLE_ADMIN');
-insert into f_authority values (auno_seq.nextval, 'admin', 'ROLE_USER','ROLE_USER');
-insert into f_authority values (auno_seq.nextval, 'admin', 'ROLE_ADMIN','ROLE_ADMIN');
+insert into f_authority values (auno_seq.nextval, 'phantom1994', 'ROLE_USER','ROLE_USER');
+insert into f_authority values (auno_seq.nextval, 'phantom1994', 'ROLE_ADMIN','ROLE_ADMIN');
 
 
 select mem.id, mem.password,  auth.authority from f_member mem left outer join f_authority auth on mem.id = auth.id where mem.id = 'user1';

@@ -26,4 +26,11 @@ public class MemberServiceImpl implements MemberSerivce {
 		authorityDao.insertAuthority(member);
 	}
 
+
+	@Override
+	public MemberVo selectOneMemberById(String id) {
+		
+		return memberDao.selectOneMemberById(id);
+	}
+
 }

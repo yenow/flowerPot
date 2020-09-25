@@ -31,7 +31,7 @@ public class MemberVo {
 	
 	
 	
-	public MemberVo(int mno, String id, String password, String name, String nickname, String address, String email,
+	public MemberVo(Integer mno, String id, String password, String name, String nickname, String address, String email,
 			String gender, String birth, String member_rank, Boolean enabled) {
 		super();
 		this.mno = mno;

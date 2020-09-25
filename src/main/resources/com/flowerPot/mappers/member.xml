@@ -4,9 +4,10 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="member">
+<mapper namespace="com.flowerPot.member.repository.MemberDao">
 	
 	<resultMap type="com.flowerPot.vo.MemberVo" id="memberMap">
+		<result property="mno" column="mno"/>
 		<result property="id" column="id"/>
 		<result property="password" column="password"/>
 		<result property="name" column="name"/>
@@ -36,10 +37,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</sql>
 	
 	<select id="read" resultMap="memberMap">
-		select mem.id, mem.password, mem.name, auth.authority from f_member mem left outer join f_authority auth on mem.id = auth.id where mem.id = #{id}
+		select mem.mno, mem.id, mem.password, mem.name ,auth.authority from f_member mem left outer join f_authority auth on mem.id = auth.id where mem.id = #{id}
 	</select>
-	
-	
 	
 	<insert id="insertMember">
 		<!-- int mno, String id, String password, String name, String nickname, String address, String email, String gender, String birth, String member_rank, boolean enabled -->
@@ -50,24 +49,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</selectKey>
 	</insert>
 	
-	
-	<!-- <select id="getArticleList" resultMap="memberMap">		
-		SELECT * FROM 
-		(SELECT rownum rnum, mno, id, name, nickname, address, email, gender, birth, member_rank, regdate, enabled(
-		FROM 
-		(SELECT * FROM f_member 
-		<include refid="search"/>
-		 ORDER BY mno DESC))
-		WHERE  rnum BETWEEN #{pageStart} AND #{pageEnd}
-	</select> -->
-	
-	
 	<select id="selectTotalCount" resultType="int">
 		select count(*) from f_member
 	</select>
-
 	
 	<delete id="deleteMemberById">
 		delete from f_member where id=#{id}	
 	</delete>
+	
+	<select id="selectOneMemberById" resultType="com.flowerPot.vo.MemberVo">
+		select * from f_member where id= #{id}
+	</select>
 </mapper>
