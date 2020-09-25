@@ -49,10 +49,25 @@
 					<label for="type">타입</label> <select class="custom-select d-block w-100" id="type" name="type" required="">
 						<option value="">Choose...</option>
 						<option value="스킨케어">스킨케어</option>
-						<option value="메이크업">메이크업</option>
-						<option value="바디케어">바디케어</option>
-						<option value="헤어케어">헤어케어</option>
-						<option value="향수">향수/디퓨저</option>
+						<option value="클렌징/필링">클렌징/필링</option>
+						<option value="클렌징오일">클렌징오일</option>
+						<option value="마스크/팩">마스크/팩</option>
+						<option value="선케어">선케어</option>
+						<option value="베이스">베이스</option>
+						<option value="바디">바디</option>
+					</select>
+					<div class="invalid-feedback">Please select a valid country.</div>
+				</div>
+				<div class="col">
+					<label for="type">서브타입</label> <select class="custom-select d-block w-100" id="type" name="type" required="">
+						<option value="">Choose...</option>
+						<option value="스킨케어">?</option>
+						<option value="클렌징/필링">?</option>
+						<option value="클렌징오일">?</option>
+						<option value="마스크/팩">?</option>
+						<option value="선케어">?</option>
+						<option value="베이스">?</option>
+						<option value="바디">?</option>
 					</select>
 					<div class="invalid-feedback">Please select a valid country.</div>
 				</div>

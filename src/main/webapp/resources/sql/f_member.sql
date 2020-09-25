@@ -9,12 +9,11 @@ create table f_member (
     gender varchar2(2),    
     tel varchar(50),
     birth varchar2(10),
-    member_rank varchar2(15),
+    member_rank varchar2(15) default '씨앗',  -- 씨앗, 새싹, 꽃, 나무
     enabled char(1) default '1',
     regdate date,
     primary key(mno),
-    unique(id),
-    unique(email)
+    unique(id)
 );
 
 

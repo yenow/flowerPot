@@ -3,6 +3,7 @@ create table f_cosmetic(
 	name varchar(50),  -- 화장품 이름
 	code varchar2(150),  -- 상품 코드
 	type varchar2(50) not null,   -- 타입
+	sub_type varchar2(50) not null, -- 서브 타입
 	brand varchar2(50)  not null,   --브랜드
 	skinType varchar2(50)  not null, -- 비푸타입
 	price number(30) default 0,    --화장품 번호
@@ -20,7 +21,6 @@ create table f_cosmetic(
 );
 -- alter table f_cosmetic add (hits number(30) default 0, regdate date);
 alter table f_cosmetic add (numProduct number(30) default 0);
---alter table f_cosmetic add (likey number(30));
 --alter table f_cosmetic add (code varchar2(150));
 --alter table f_cosmetic add (enable char(1));
 
