@@ -13,6 +13,8 @@ public interface MemberDao {
 	public int selectTotalCount();
 
 	public void deleteMemberById(String string);
+
+	public Integer checkId(String member);
 	
 	//회원가입 기능
 	//void register(MemberVo member);
