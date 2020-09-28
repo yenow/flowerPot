@@ -28,10 +28,24 @@ public class MemberServiceImpl implements MemberSerivce {
 
 
 	@Override
-	public MemberVo selectOneMemberById(String id) {
-		
+	public MemberVo selectOneMemberById(String id) {		
 		return memberDao.selectOneMemberById(id);
 	}
 
 
+	public Integer checkId(String member) {
+		return memberDao.checkId(member);
+	}
+
+
+	@Override
+	public Integer checkEmail(String member) {
+		return memberDao.checkEmail(member);
+	}
+
+
+	@Override
+	public Integer checkPhone(String member) {
+		return memberDao.checkPhone(member);
+	}
 }

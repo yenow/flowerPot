@@ -16,19 +16,10 @@ public interface MemberDao {
 	public void deleteMemberById(String string);
 
 	public MemberVo selectOneMemberById(String id);
+
+	public Integer checkId(String member);
 	
-	//회원가입 기능
-	//void register(MemberVo member);
-
-	//아이디 중복체크 기능
-	//public Integer checkId(String member);
-
-	//회원탈퇴 기능
-	//public void delete(String member);
-
-	//회원정보 조회기능
-	//public MemberVo selectOne(String member);
-
-	//회원정보 전체 조회 기능
-	//public List<MemberVo> selectAll();
+	public Integer checkEmail(String member);
+	
+	public Integer checkPhone(String member);
 }

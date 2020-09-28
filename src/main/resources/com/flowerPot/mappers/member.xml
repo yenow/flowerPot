@@ -11,6 +11,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="id" column="id"/>
 		<result property="password" column="password"/>
 		<result property="name" column="name"/>
+		<result property="nickname" column="nickname"/>
+		<result property="address" column="address"/>
+		<result property="email" column="email"/>
+		<result property="phone" column="phone"/>
+		<result property="tel" column="tel"/>
+		<result property="gender" column="gender"/>
+		<result property="birth" column="birth"/>
+		<result property="member_rank" column="member_rank"/>
+		<result property="regdate" column="regdate"/>
 		<collection property="authList" resultMap="authMap"></collection>
 	</resultMap>
 	
@@ -42,8 +51,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="insertMember">
 		<!-- int mno, String id, String password, String name, String nickname, String address, String email, String gender, String birth, String member_rank, boolean enabled -->
-		insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,member_rank,enabled,regdate) values
-		(mno_seq.nextval,#{id},#{password},#{name, jdbcType=VARCHAR},#{nickname, jdbcType=VARCHAR},#{address, jdbcType=VARCHAR},#{email, jdbcType=VARCHAR},#{gender, jdbcType=VARCHAR},#{birth, jdbcType=VARCHAR},#{member_rank, jdbcType=VARCHAR},#{enabled, jdbcType=CHAR},sysdate)
+		insert into f_member (mno,id,password,name,nickname,address,email,gender,tel,birth,member_rank,enabled,regdate) values
+		(mno_seq.nextval,#{id},#{password},#{name, jdbcType=VARCHAR},#{nickname, jdbcType=VARCHAR},#{address, jdbcType=VARCHAR},#{email, jdbcType=VARCHAR},#{gender, jdbcType=VARCHAR},#{tel, jdbcType=VARCHAR},#{birth, jdbcType=VARCHAR},#{member_rank, jdbcType=VARCHAR},#{enabled, jdbcType=CHAR},sysdate)
 		<selectKey resultType="int" keyProperty="mno" order="AFTER">
 			select mno_seq.currval from dual
 		</selectKey>
@@ -53,6 +62,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from f_member
 	</select>
 	
+	<select id="checkId" resultType="int">
+		SELECT COUNT(*) FROM f_member 
+		where id=#{member}
+	</select>
+	
+	<select id="checkEmail" resultType="int">
+		SELECT COUNT(*) FROM f_member 
+		where email=#{member}
+	</select>
+	
+	<select id="checkPhone" resultType="int">
+		SELECT COUNT(*) FROM f_member 
+		where tel=#{member}
+	</select>
 	<delete id="deleteMemberById">
 		delete from f_member where id=#{id}	
 	</delete>

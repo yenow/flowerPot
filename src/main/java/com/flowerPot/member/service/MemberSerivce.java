@@ -9,5 +9,11 @@ public interface MemberSerivce {
 	//회원 가입기능
 	void insertMember(MemberVo member);
 
+	Integer checkId(String member);
+
+	Integer checkEmail(String member);
+
+	Integer checkPhone(String member);
+
 	public MemberVo selectOneMemberById(String id);
 }

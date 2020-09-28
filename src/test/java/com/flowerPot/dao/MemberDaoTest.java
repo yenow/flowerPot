@@ -32,7 +32,7 @@ public class MemberDaoTest {
 	public static MemberVo memberTestCase(MemberDao memberDao,PasswordEncoder passwordEncoder,AuthorityDao authorityDao) {
 		authorityDao.deleteAuthorityById("testId");
 		memberDao.deleteMemberById("testId"); // 해당아이디가 없으면 삭제 당근안함
-		MemberVo member = new MemberVo(0,"testId","testPassword","testname","testnickname","testaddress","testemail","M","testbirth","브론즈",true);
+		MemberVo member = new MemberVo(0,"testId","testPassword","testname","testnickname","testaddress","testtel","testemail","M","testbirth","브론즈",true);
 		member.setPassword(passwordEncoder.encode(member.getPassword()));
 		memberDao.insertMember(member);
 		return member;
@@ -44,7 +44,7 @@ public class MemberDaoTest {
 		authorityDao.deleteAuthorityById("testId");
 		// 기본키 제약조건 제거, 중복된 레코드 삽입불가
 		memberDao.deleteMemberById("testId"); 
-		MemberVo member = new MemberVo(0,"testId","testPassword","testname","testnickname","testaddress","testemail","M","testbirth","브론즈",null);
+		MemberVo member = new MemberVo(0,"testId","testPassword","testname","testnickname","testaddress","testtel","testemail","M","testbirth","브론즈",null);
 		// 비밀번호 인코딩
 		member.setPassword(passwordEncoder.encode(member.getPassword()));
 		
