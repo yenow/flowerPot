@@ -59,7 +59,7 @@
 					<div class="invalid-feedback">Please select a valid country.</div>
 				</div>
 				<div class="col">
-					<label for="type">서브타입</label> <select class="custom-select d-block w-100" id="type" name="type" required="">
+					<label for="type">서브타입</label> <select class="custom-select d-block w-100" id="type" name="sub_type" required="">
 						<option value="">Choose...</option>
 						<option value="스킨케어">?</option>
 						<option value="클렌징/필링">?</option>

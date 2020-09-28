@@ -10,6 +10,4 @@ public interface MemberSerivce {
 	void insertMember(MemberVo member);
 
 	public MemberVo selectOneMemberById(String id);
-	
-
 }

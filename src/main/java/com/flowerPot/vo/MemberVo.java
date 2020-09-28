@@ -24,6 +24,7 @@ public class MemberVo {
 	private String gender;
 	private String birth;
 	private String member_rank;
+	private String tel;
 	private Boolean enabled;
 	private LocalDateTime regdate;
 	private List<AuthorityVo> authList;

@@ -11,3 +11,4 @@ create table f_delivery(
 
 create sequence dno_seq  start with 1 increment by 1;
 	
+select * from f_delivery;

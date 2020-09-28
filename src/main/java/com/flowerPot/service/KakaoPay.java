@@ -43,6 +43,10 @@ public class KakaoPay {
 		    CosmeticVo cosmetic = cosmeticDao.selectOneCosmeticByCno(olist.get(0).getCno());
 		    String order_num= cosmetic.getBrand()+UUID.randomUUID().toString();  // 주문번호
 		    log.info("주문번호:"+order_num);
+		    
+		    //상품명
+		    String item_name="";
+		    
 		 	// 반복문으로 주문테이블에 저장
 		 	// mno 가 있냐 없냐에 따라서 다른방법으로 db에 저장
 		 	for(OrderProductVo orderProduct : olist) {
@@ -55,6 +59,7 @@ public class KakaoPay {
 		 			orderProduct.setOrder_num(order_num);
 		 			orderProductDao.insertOrderProductNoMember(orderProduct);
 		 		}
+		 		item_name=item_name.concat("/"+cosmeticDao.selectOneCosmeticByCno(orderProduct.getCno()));
 		 	}
 		 
 		 	Integer final_price = olist.get(0).getFinal_price();
@@ -107,10 +112,14 @@ public class KakaoPay {
 		 
 	        log.info("KakaoPayInfoVO............................................");
 	        log.info("-----------------------------");
+	        log.info("order_num : " + order_num);
 	        
 	        // order_num 주문번호로.. 상품정보 가져오자!
+	        OrderProductVo orderProduct = orderProductDao.selectOrderProductByOrderNum(order_num);
 	        
 	        // 가격만 일단 맞춰주면 된다;
+	        int total_amount = orderProduct.getPrice();
+	        log.info("total_amount : " + total_amount);
 	        
 	        RestTemplate restTemplate = new RestTemplate();
 	 
@@ -127,7 +136,7 @@ public class KakaoPay {
 	        params.add("partner_order_id", "1001");
 	        params.add("partner_user_id", "flowerpot");
 	        params.add("pg_token", pg_token);
-	        params.add("total_amount", "21000");
+	        params.add("total_amount", Integer.toString(total_amount));
 	        
 	        HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
 	        

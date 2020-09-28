@@ -26,11 +26,13 @@ import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
 import com.flowerPot.description.service.DescriptionService;
 import com.flowerPot.domain.Criteria;
 import com.flowerPot.member.service.MemberSerivce;
+import com.flowerPot.memberAddress.service.MemberAddressService;
 import com.flowerPot.security.domain.CustomUser;
 import com.flowerPot.vo.AttachFileVo;
 import com.flowerPot.vo.CosmeticReviewVo;
 import com.flowerPot.vo.CosmeticVo;
 import com.flowerPot.vo.DescriptionVo;
+import com.flowerPot.vo.MemberAddressVo;
 import com.flowerPot.vo.MemberVo;
 
 import lombok.extern.slf4j.Slf4j;
@@ -50,18 +52,23 @@ public class CosmeticController {
 	private CosmeticReviewService cosmeticReviewService;
 	@Autowired
 	private MemberSerivce memberSerivce;
+	@Autowired
+	private MemberAddressService memberAddressService;
 	
 	// 결제 페이지로 이동
 	@RequestMapping("payment")
 	public void payment(Principal principal ,Model model,Integer root,CosmeticVo cosmetic,HttpSession session) { // root는 장바구니에서 접근하는지, 바로구매인지 구분하는 변수
+		// 로그인된 회원정보 가져오기
 		MemberVo memberVo = new MemberVo();
+		MemberAddressVo memberAddress  = new MemberAddressVo();
 		log.info("cosmetic:"+cosmetic);
 		if(principal!=null) {
 			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
 			String id = principal.getName();
-			memberVo = memberSerivce.selectOneMemberById(id);
+			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
+			memberAddress  = memberAddressService.selectOneMemberAddressByMno(memberVo.getMno());   // 회원주소록 가져오기
 		}
-		
+
 		//User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		//if(user!=null) {
 		//	log.info("멤버객체:"+ user.getMemberVo());
@@ -80,6 +87,8 @@ public class CosmeticController {
 			c.setNumProduct(cosmetic.getNumProduct());
 			model.addAttribute("cosmetic", c);
 		}
+		
+		model.addAttribute("memberAddress", memberAddress);  // 회원 주소정보
 		model.addAttribute("member", memberVo);  // 어떤멤버인지
 		model.addAttribute("root", root);
 		

@@ -33,4 +33,5 @@ public class MemberServiceImpl implements MemberSerivce {
 		return memberDao.selectOneMemberById(id);
 	}
 
+
 }

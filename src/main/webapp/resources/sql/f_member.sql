@@ -29,7 +29,8 @@ delete from f_member where name='윤신영';
 insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,member_rank,authority ) 
 values (mno_seq.nextval,'phantom1','tlsdud5089','윤신영','윤신영','주소','phantom_ysy@naver.com','M','11-29','골드','작성자');
 
-update f_member set tel='010-1111-1111' where name='윤신영';
+update f_member set tel='010-2124-5690' where name='윤신영';
+
 insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,member_rank,authority ) 
 
 

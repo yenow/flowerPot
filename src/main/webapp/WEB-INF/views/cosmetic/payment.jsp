@@ -8,7 +8,7 @@
 
 <!--  <form action="${pageContext.request.contextPath }/kakaoPay" method="post" style="width:100%; margin: 0;">-->
 <section class="bg0 p-t-75 p-b-85">
-	<div class="row" style="margin: 0 15px;">
+	<div class="row" style="margin: 0 auto; max-width: 1000px">
 		
 			<div class="col-12 m-lr-auto m-b-50">
 				<h2 class="text-center py-5 font-weight-bold">주문서</h2>	
@@ -51,7 +51,6 @@
 							</c:if>
 							<!-- 바로구매시, 상품정보 -->
 							<c:if test="${root==1 }">
-								<!-- <sec:authentication property="principal.member"/> -->
 								<input type="hidden" class="member-mno" value="${member.mno }" />
 								<input type="hidden" class="member-member_rank" value="${member.member_rank }" />
 								<input type="hidden" class="cosmetic-cno" value="${cosmetic.cno }" />
@@ -82,19 +81,19 @@
 					<div class="form-group row">
 						<label for="sender" class="col-sm-2 col-form-label">보내는분</label>
 						<div class="col-sm-5">
-							<input type="text" class="form-control" id="sender">
+							<input type="text" class="form-control" value="${member.name }" id="sender">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="tel" class="col-sm-2 col-form-label">휴대폰 번호</label>
 						<div class="col-sm-5">
-							<input type="text" class="form-control nomember-tel"  id="tel" placeholder="-는 뺴고 입력해주세요">
+							<input type="text" class="form-control nomember-tel" value="${member.tel }" id="tel" placeholder="-는 뺴고 입력해주세요">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="email" class="col-sm-2 col-form-label">이메일</label>
 						<div class="col-sm-5">
-							<input type="email" class="form-control nomember-email" id="email">
+							<input type="email" class="form-control nomember-email" value="${member.email }" id="email">
 							<small id="emailHelp" class="form-text text-muted">이메일을 통해 주문처리 과정을 보내드립니다</small>
 						</div>
 					</div>
@@ -103,34 +102,33 @@
 			<!-- 배송정보 --> <!-- 로그인 되어있을시,, 값을 가져올수 있어야함 -->
 			
 			<div class="m-l-25 m-r-38 m-lr-0-xl p-t-30 p-b-30">
-				
-				<div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">배송 정보</div>
-				<div class="form-group row">
-					<div class="col-sm-3">
-						<input type="text" class="form-control postcode" id="sample4_postcode"  placeholder="우편번호">
+					<div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">배송 정보</div>
+					<div class="form-group row">
+						<div class="col-sm-3">
+							<input type="text" class="form-control postcode" value="${memberAddress.postcode }" id="sample4_postcode" placeholder="우편번호">
+						</div>
+						<div class="col-sm-3">
+							<input type="button" class="btn btn-outline-secondary" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+						</div>
 					</div>
-					<div class="col-sm-3">
-						<input type="button" class="btn btn-outline-secondary" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+					<div class="form-group row">
+						<div class="col-sm-4">
+							<input type="text" class="form-control street_address" value="${memberAddress.street_address }" id="sample4_roadAddress" placeholder="도로명주소">
+							<span id="guide" style="color: #999; display: none"></span>
+						</div>
+						<div class="col-sm-4">
+							<input type="text" class="form-control parcel_address" value="${memberAddress.parcel_address }" id="sample4_jibunAddress" placeholder="지번주소">
+						</div>
 					</div>
-				</div>
-				<div class="form-group row">
-					<div class="col-sm-4">
-						<input type="text"  class="form-control street_address" id="sample4_roadAddress" placeholder="도로명주소">
-						<span id="guide" style="color:#999;display:none"></span>
+
+					<div class="form-group row">
+						<div class="col-sm-4">
+							<input type="text" class="form-control detail_address" value="${memberAddress.detail_address }" id="sample4_detailAddress" placeholder="상세주소">
+						</div>
+						<div class="col-sm-4">
+							<input type="text" class="form-control more_infomation" value="${memberAddress.more_infomation }" id="sample4_extraAddress" placeholder="참고항목">
+						</div>
 					</div>
-					<div class="col-sm-4">
-						<input type="text"  class="form-control parcel_address" id="sample4_jibunAddress" placeholder="지번주소">
-					</div>
-				</div>
-				
-				<div class="form-group row">
-					<div class="col-sm-4">
-					<input type="text"  class="form-control detail_address"  id="sample4_detailAddress" placeholder="상세주소">
-					</div>
-					<div class="col-sm-4">
-						<input type="text"  class="form-control more_infomation" id="sample4_extraAddress" placeholder="참고항목">
-					</div>
-				</div>
 			</div>
 			
 			<!-- 로그인시만 보이게 -->
@@ -193,42 +191,42 @@
 			<div class="m-l-25 m-r-38 m-lr-0-xl p-t-30 p-b-30">
 				<div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">결제 금액</div>
 				<div class="row  my-3"  style="border-bottom: 1px solid #ddd;">
-					<div class="col-4">
+					<div class="col-6">
 						주문금액
 					</div>
-					<div class="col-8">
+					<div class="col-6">
 						<span></span><span>원</span>
 					</div>
 				</div>
 				<div class="row  my-3"  style="border-bottom: 1px solid #ddd;">
-					<div class="col-4">
+					<div class="col-6 p-l-30">
 						ㄴ상품금액
 					</div>
-					<div class="col-8">
+					<div class="col-6">
 						<span class=""></span><span>원</span>
 					</div>
 				</div>
 				<div class="row  my-3"  style="border-bottom: 1px solid #ddd;">
-					<div class="col-4">
+					<div class="col-6 p-l-30">
 						ㄴ상품할인
 					</div>
-					<div class="col-8">
+					<div class="col-6">
 						<span class=""></span><span>원</span><span style="display : none" class="discount-percent"></span>
 					</div>
 				</div>
 				<div class="row  my-3"  style="border-bottom: 1px solid #ddd;">
-					<div class="col-4">
+					<div class="col-6">
 						배송비
 					</div>
-					<div class="col-8">
+					<div class="col-6">
 						<span class=""></span><span>원</span>
 					</div>
 				</div>
 				<div class="row  my-3"  style="border-bottom: 1px solid #ddd;">
-					<div class="col-4">
+					<div class="col-6">
 						쿠폰할인
 					</div>
-					<div class="col-8">
+					<div class="col-6">
 						<span class=""></span><span>원</span>
 					</div>
 				</div>
@@ -236,15 +234,15 @@
 					<div class="col-4">
 						적립금사용
 					</div>
-					<div class="col-8">
+					<div class="col-6">
 						<span class=""></span><span>원</span>
 					</div>
 				</div>
 				<div class="row  my-3"  style="border-bottom: 1px solid #ddd;">
-					<div class="col-4">
+					<div class="col-6">
 						최종결재금액
 					</div>
-					<div class="col-8">
+					<div class="col-6">
 						<span class="final_price">10000</span><span>원</span>
 					</div>
 				</div>

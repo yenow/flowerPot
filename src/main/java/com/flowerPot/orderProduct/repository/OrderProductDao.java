@@ -11,4 +11,6 @@ public interface OrderProductDao {
 	void deleteAll();
 	
 	int selectCount();
+
+	OrderProductVo selectOrderProductByOrderNum(String order_num);
 }
