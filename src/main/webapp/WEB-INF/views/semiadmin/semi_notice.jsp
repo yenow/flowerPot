@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -279,5 +279,6 @@
     <script src="../resources/semiadmin_css/assets/js/vendors.js"></script>
 
     <script src="../resources/semiadmin_css/assets/js/main.js"></script>
+    
 </body>
 </html>
