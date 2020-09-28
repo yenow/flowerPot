@@ -40,7 +40,7 @@
 					</div>
 					<div class="form-group">
 						<label for="user_phone"text-align: left"><p><strong>전화번호</strong>&nbsp;&nbsp;&nbsp;<span id="phoneChk"></span></p></label>
-						<input type="tel" class="form-control form-control-lg" name="tel" id="user_phone" placeholder="(예시:010-1111-1111)">
+						<input type="tel" class="form-control form-control-lg" name="tel" id="user_phone" placeholder="(예시:- 하이픈 없이 입력해주세요)">
 
 					</div>
 					<div class="form-check">
@@ -84,7 +84,7 @@ $(function() {
 	const getPwCheck= RegExp(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/);
 	const getName= RegExp(/^[가-힣]+$/);
 	const getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
-	const getPhone = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+	const getPhone = RegExp(/^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/);
 	let chk1 = false, chk2 = false, chk3 = false, chk4 = false, chk5 = false; chk6 = false;
 	
 	//회원가입 검증~~
@@ -134,6 +134,97 @@ $(function() {
 		}
 	});
 	
+	$('#user_email').on('keyup', function() {
+		if($("#user_email").val() === ""){
+			$('#user_email').css("background-color", "pink");
+			$('#emailChk').html('<b style="font-size:14px;color:red;">[이메일는 필수 정보에요!]</b>');
+			chk5 = false;
+		}
+		
+		//이메일 유효성검사
+		else if(!getMail.test($("#user_email").val())){
+			$('#user_email').css("background-color", "pink");
+			$('#emailChk').html('<b style="font-size:14px;color:red;">[영문자,숫자 4-14자]</b>');	  
+			chk5 = false;
+		} 
+		//EMAIL 중복확인 비동기 처리
+		else {
+			//ID 중복확인 비동기 통신
+			const email = $(this).val();
+			console.log(email);
+			
+			$.ajax({
+				type: "POST",
+				url: "${pageContext.request.contextPath}/member/checkEmail",	
+				headers: {
+	                "Content-Type": "application/json"
+	            },
+				dataType: "text",
+				data: email,
+				success: function(result) {
+					if(result === "OK") {
+						$("#user_email").css("background-color", "aqua");
+						$("#emailChk").html("<b style='font-size:14px; color:green;'>[이메일는 사용 가능!]</b>");						
+						chk5 = true;
+					} else {
+						$("#user_email").css("background-color", "pink");
+						$("#emailChk").html("<b style='font-size:14px; color:red;'>[이메일이 중복됨!]</b>");						
+						chk5 = false;
+					}
+				},
+				error: function() {
+					console.log("통신 실패!");
+				}
+			});
+		}
+	});
+	
+	//전화번호 입력값 검증.
+	$('#user_phone').on('keyup', function() {
+		if($("#user_phone").val() === ""){
+			$('#user_phone').css("background-color", "pink");
+			$('#phoneChk').html('<b style="font-size:14px;color:red;">[전화번호는 필수 정보에요!]</b>');
+			chk6 = false;
+		}
+		
+		//전화번호 유효성검사
+		else if(!getPhone.test($("#user_phone").val())){
+			$('#user_phone').css("background-color", "pink");
+			$('#phoneChk').html('<b style="font-size:14px;color:red;">[예시:010-0000-0000]</b>');	  
+			chk6 = false;
+		} 
+		//전화번호 중복확인 비동기 처리
+		else {
+			//전화번호 중복확인 비동기 통신
+			const phone = $(this).val();
+			console.log(phone);
+			
+			$.ajax({
+				type: "POST",
+				url: "${pageContext.request.contextPath}/member/checkPhone",	
+				headers: {
+	                "Content-Type": "application/json"
+	            },
+				dataType: "text",
+				data: phone,
+				success: function(result) {
+					if(result === "OK") {
+						$("#user_phone").css("background-color", "aqua");
+						$("#phoneChk").html("<b style='font-size:14px; color:green;'>[전화번호는 사용 가능!]</b>");						
+						chk6 = true;
+					} else {
+						$("#user_phone").css("background-color", "pink");
+						$("#phoneChk").html("<b style='font-size:14px; color:red;'>[전화번호가 중복됨!]</b>");						
+						chk6 = false;
+					}
+				},
+				error: function() {
+					console.log("통신 실패!");
+				}
+			});
+		}
+	});
+	
 	//패스워드 입력값 검증.
 	$('#password').on('keydown', function() {
 		//비밀번호 공백 확인
@@ -149,7 +240,7 @@ $(function() {
 			chk2 = false;
 		} else {
 			$('#password').css("background-color", "aqua");
-			$('#pwChk').html('<b style="font-size:14px;color:green;">[참 잘했어요]</b>');
+			$('#pwChk').html('<b style="font-size:14px;color:green;">[√]</b>');
 			chk2 = true;
 		}
 		
@@ -170,7 +261,7 @@ $(function() {
 			chk3 = false;
 		} else {
 			$('#password_check').css("background-color", "aqua");
-			$('#pwChk2').html('<b style="font-size:14px;color:green;">[참 잘했어요]</b>');
+			$('#pwChk2').html('<b style="font-size:14px;color:green;">[√]</b>');
 			chk3 = true;
 		}
 		
@@ -199,7 +290,7 @@ $(function() {
 	
 	
 	
-	$('#signup-btn').click(function(e) {
+	/* $('#signup-btn').click(function(e) {
 		if(chk1 && chk2 && chk3 && chk4) {
 			//아이디 정보
 			const id = $("#user_id").val();
@@ -243,13 +334,13 @@ $(function() {
 		} else {
 			alert('입력정보를 다시 확인하세요.');			
 		}
-	});
+	}); */
 	
 	///////////////////////////////////////////////////////////////////////////////////////////
 	
 	//로그인 검증~~
 	//ID 입력값 검증.
-/* 	$('#signInId').on('keyup', function() {
+	$('#signInId').on('keyup', function() {
 		if($("#signInId").val() == ""){
 			$('#signInId').css("background-color", "pink");
 			$('#idCheck').html('<b style="font-size:14px;color:red;">[아이디는 필수!]</b>');
@@ -266,10 +357,10 @@ $(function() {
 			$('#idCheck').html('<b style="font-size:14px;color:green;">[참 잘했어요]</b>');
 			chk1 = true;
 		}
-	}); */
+	});
 	
 	//패스워드 입력값 검증.
-/* 	$('#signInPw').on('keyup', function() {
+	$('#signInPw').on('keyup', function() {
 		//비밀번호 공백 확인
 		if($("#signInPw").val() === ""){
 		    $('#signInPw').css("background-color", "pink");
@@ -287,10 +378,10 @@ $(function() {
 			chk2 = true;
 		}
 		
-	}); */
+	});
 	
 	//로그인 버튼 클릭 이벤트
-/* 	$("#signIn-btn").click(function(){
+	$("#signIn-btn").click(function(){
 		if(chk1 && ch2){
 			//ajax통신으로 서버에서 값 받아오기 
 			const id= $('#signInId').val();
@@ -321,7 +412,7 @@ $(function() {
 		}
 	})
 	
-}); *///end JQuery
+});//end JQuery
 
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function sample4_execDaumPostcode() {

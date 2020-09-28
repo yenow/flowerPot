@@ -15,6 +15,10 @@ public interface MemberDao {
 	public void deleteMemberById(String string);
 
 	public Integer checkId(String member);
+
+	public Integer checkEmail(String member);
+
+	public Integer checkPhone(String member);
 	
 	//회원가입 기능
 	//void register(MemberVo member);

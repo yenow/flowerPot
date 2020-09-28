@@ -33,5 +33,17 @@ public class MemberServiceImpl implements MemberSerivce {
 	}
 
 
+	@Override
+	public Integer checkEmail(String member) {
+		return memberDao.checkEmail(member);
+	}
+
+
+	@Override
+	public Integer checkPhone(String member) {
+		return memberDao.checkPhone(member);
+	}
+
+
 
 }

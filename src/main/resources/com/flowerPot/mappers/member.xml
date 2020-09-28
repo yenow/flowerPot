@@ -13,8 +13,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="nickname" column="nickname"/>
 		<result property="address" column="address"/>
 		<result property="email" column="email"/>
+		<result property="phone" column="phone"/>
 		<result property="tel" column="tel"/>
-		<result property="gender" column="tel"/>
+		<result property="gender" column="gender"/>
 		<result property="birth" column="birth"/>
 		<result property="member_rank" column="member_rank"/>
 		<result property="regdate" column="regdate"/>
@@ -79,6 +80,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where id=#{member}
 	</select>
 	
+	<select id="checkEmail" resultType="int">
+		SELECT COUNT(*) FROM f_member 
+		where email=#{member}
+	</select>
+	
+	<select id="checkPhone" resultType="int">
+		SELECT COUNT(*) FROM f_member 
+		where tel=#{member}
+	</select>
 	<delete id="deleteMemberById">
 		delete from f_member where id=#{id}	
 	</delete>

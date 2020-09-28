@@ -11,6 +11,10 @@ public interface MemberSerivce {
 
 	Integer checkId(String member);
 
+	Integer checkEmail(String member);
+
+	Integer checkPhone(String member);
+
 	
 
 }

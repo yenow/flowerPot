@@ -69,6 +69,45 @@ public class MemberController {
 		}
 		return result;
 	}		
+	// 이메일 중복인 요청 처리
+		@PostMapping("/checkEmail")
+		@ResponseBody
+		public String checkEmail(@RequestBody String member) {
+			System.out.println("/controller/member/checkEmail: POST요청 발생!");
+			System.out.println("parameter:" + member);
+			String result = null;
+			Integer checkNum = memberService.checkEmail(member);
+			System.out.println(checkNum);
+			if (checkNum == 1) {
+				System.out.println("아이디가 중복됨!");
+				result = "NO";
+
+			} else {
+				System.out.println("아이디 사용가능!");
+				result = "OK";
+			}
+			return result;
+		}	
+		
+		// 전화번호 중복인 요청 처리
+				@PostMapping("/checkPhone")
+				@ResponseBody
+				public String checkPhone(@RequestBody String member) {
+					System.out.println("/controller/member/checkPhone: POST요청 발생!");
+					System.out.println("parameter:" + member);
+					String result = null;
+					Integer checkNum = memberService.checkPhone(member);
+					System.out.println(checkNum);
+					if (checkNum == 1) {
+						System.out.println("전화번호가 중복됨!");
+						result = "NO";
+
+					} else {
+						System.out.println("전화번호 사용가능!");
+						result = "OK";
+					}
+					return result;
+				}		
 	
 	/*
 	@PostMapping("/")
