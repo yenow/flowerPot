@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 
 import java.util.List;
 
-import com.flowerPot.admin.vo.EmpVo;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +20,7 @@ public class MemberVo {
 	private String address;
 	private String email;
 	private String gender;
+	private String tel;
 	private String birth;
 	private String member_rank;
 	private Boolean enabled;
@@ -32,7 +31,7 @@ public class MemberVo {
 	
 	
 	public MemberVo(int mno, String id, String password, String name, String nickname, String address, String email,
-			String gender, String birth, String member_rank, Boolean enabled) {
+			String gender, String tel,String birth, String member_rank, Boolean enabled) {
 		super();
 		this.mno = mno;
 		this.id = id;
@@ -42,6 +41,7 @@ public class MemberVo {
 		this.address = address;
 		this.email = email;
 		this.gender = gender;
+		this.tel = tel;
 		this.birth = birth;
 		this.member_rank = member_rank;
 		this.enabled = enabled;

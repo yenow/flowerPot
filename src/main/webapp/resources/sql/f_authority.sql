@@ -10,7 +10,7 @@ alter table f_authority add constraint f_authority_fk_id foreign key (id) refere
 
 create sequence auno_seq increment by 1 start with 1 minvalue 1; -- 시퀀스
 
-drop table f_authority
+drop table f_authority;
 drop sequence auno_seq;
 
 select * from f_authority;

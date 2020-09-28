@@ -51,8 +51,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="insertMember">
 		<!-- int mno, String id, String password, String name, String nickname, String address, String email, String gender, String birth, String member_rank, boolean enabled -->
-		insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,member_rank,enabled,regdate) values
-		(mno_seq.nextval,#{id},#{password},#{name, jdbcType=VARCHAR},#{nickname, jdbcType=VARCHAR},#{address, jdbcType=VARCHAR},#{email, jdbcType=VARCHAR},#{gender, jdbcType=VARCHAR},#{birth, jdbcType=VARCHAR},#{member_rank, jdbcType=VARCHAR},#{enabled, jdbcType=CHAR},sysdate)
+		insert into f_member (mno,id,password,name,nickname,address,email,gender,tel,birth,member_rank,enabled,regdate) values
+		(mno_seq.nextval,#{id},#{password},#{name, jdbcType=VARCHAR},#{nickname, jdbcType=VARCHAR},#{address, jdbcType=VARCHAR},#{email, jdbcType=VARCHAR},#{gender, jdbcType=VARCHAR},#{tel, jdbcType=VARCHAR},#{birth, jdbcType=VARCHAR},#{member_rank, jdbcType=VARCHAR},#{enabled, jdbcType=CHAR},sysdate)
 		<selectKey resultType="int" keyProperty="mno" order="AFTER">
 			select mno_seq.currval from dual
 		</selectKey>

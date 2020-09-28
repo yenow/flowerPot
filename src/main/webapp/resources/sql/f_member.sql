@@ -1,5 +1,5 @@
 create table f_member (
-    mno number(30),
+    mno number(30) primary key,
     id varchar2(100) not null,
     password varchar2(100),
     name varchar2(20) not null,
@@ -7,12 +7,11 @@ create table f_member (
     address varchar2(100),
     email varchar2(100) unique,
     gender varchar2(2),    
-    tel varchar(50),
+    tel varchar2(100),
     birth varchar2(10),
     member_rank varchar2(15),
     enabled char(1) default '1',
     regdate date,
-    primary key(mno),
     unique(id),
     unique(email)
 );
@@ -21,8 +20,11 @@ create table f_member (
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 select mno_seq.nextval from dual;
 
-drop sequence mno_seq;
+drop sequence mno_seq
 select * from f_member;
+ DROP TABLE f_member CASCADE CONSTRAINTS
+
+
 
 drop table f_member;
 delete from f_member where name='윤신영';

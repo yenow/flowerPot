@@ -220,7 +220,7 @@ $(function() {
 			//클라이언트에서 서버와 통신하는 ajax함수(비동기 통신) 
 			$.ajax({
 				type: "POST", //서버에 전송하는 HTTP요청 방식
-				url: "/mvc/user/", //서버 요청 URI
+				url: "/controller/member/signUp_ok", //서버 요청 URI
 				headers: {
 					"Content-Type": "application/json"
 				}, //요청 헤더 정보
@@ -249,7 +249,7 @@ $(function() {
 	
 	//로그인 검증~~
 	//ID 입력값 검증.
-	$('#signInId').on('keyup', function() {
+/* 	$('#signInId').on('keyup', function() {
 		if($("#signInId").val() == ""){
 			$('#signInId').css("background-color", "pink");
 			$('#idCheck').html('<b style="font-size:14px;color:red;">[아이디는 필수!]</b>');
@@ -266,10 +266,10 @@ $(function() {
 			$('#idCheck').html('<b style="font-size:14px;color:green;">[참 잘했어요]</b>');
 			chk1 = true;
 		}
-	});
+	}); */
 	
 	//패스워드 입력값 검증.
-	$('#signInPw').on('keyup', function() {
+/* 	$('#signInPw').on('keyup', function() {
 		//비밀번호 공백 확인
 		if($("#signInPw").val() === ""){
 		    $('#signInPw').css("background-color", "pink");
@@ -287,10 +287,10 @@ $(function() {
 			chk2 = true;
 		}
 		
-	});
+	}); */
 	
 	//로그인 버튼 클릭 이벤트
-	$("#signIn-btn").click(function(){
+/* 	$("#signIn-btn").click(function(){
 		if(chk1 && ch2){
 			//ajax통신으로 서버에서 값 받아오기 
 			const id= $('#signInId').val();
@@ -305,7 +305,7 @@ $(function() {
 			};
 			$.ajax({
 				type:"POST",
-				url: "/mvc/user/loginCheck",
+				url: "/controller/member/signUp_ok",
 				headers:{
 					"Content-Type": "application/json"
 				},
@@ -321,7 +321,7 @@ $(function() {
 		}
 	})
 	
-});//end JQuery
+}); *///end JQuery
 
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function sample4_execDaumPostcode() {
