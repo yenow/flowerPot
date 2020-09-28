@@ -227,7 +227,42 @@
 					<!-- 상품문의 -->
 					<div class="tab-pane fade " id="information" role="tabpanel">
 						<div class="row">
-							<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">상품문의</div>
+							<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
+								<c:forEach var="cr" items="${crList }">
+									<c:if test="${cr.category== \'query\' }">
+										<div class="flex-w flex-t p-b-68">
+											<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
+												<img src="${pageContext.request.contextPath }/resources/img/profile-image.png" alt="AVATAR">
+											</div>
+											<div class="size-207">
+												<div class="flex-w flex-sb-m p-b-17">
+													<span class="mtext-107 cl2 p-r-20"> ${cr.title } </span> 
+
+												</div>
+
+												<p class="stext-102 cl6">${cr.content }</p>
+											</div>
+										</div>
+									</c:if>
+								</c:forEach>
+
+								<form action="${pageContext.request.contextPath }/cosmeticReviewRegister" class="w-full cosmeticReview-form" onsubmit="return onsubmitCometicReview();">
+									<input type="hidden" name="cno" value="${cosmetic.cno }">
+									<input type="hidden" name="category" value="query">
+									<h5 class="mtext-108 cl2 p-b-7">문의 작성</h5>
+
+									<div class="row p-b-25">
+										<div class="col-12 form-group">
+											<input type="text" class="form-control" id="title" name="title" placeholder="제목">
+										</div>
+										<div class="col-12 p-b-5">
+											<textarea class="form-control size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="content" placeholder="댓글내용"></textarea>
+										</div>
+									</div>
+
+									<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">제출</button>
+								</form>
+							</div>
 						</div>
 					</div>
 
@@ -238,21 +273,23 @@
 								<div class="p-b-30 m-lr-15-sm">
 									<!-- Review -->
 									<c:forEach var="cr" items="${crList }">
-										<div class="flex-w flex-t p-b-68">
-											<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-												<img src="${pageContext.request.contextPath }/resources/img/profile-image.png" alt="AVATAR">
-											</div>
-
-											<div class="size-207">
-												<div class="flex-w flex-sb-m p-b-17">
-													<span class="mtext-107 cl2 p-r-20"> ${cr.title } </span> <span class="fs-18 cl11 show-rating" data-rating="${cr.rating }"> <i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star-half"></i>
-													</span>
-
+										<c:if test="${cr.category== \'rating\' }">
+											<div class="flex-w flex-t p-b-68">
+												<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
+													<img src="${pageContext.request.contextPath }/resources/img/profile-image.png" alt="AVATAR">
 												</div>
-
-												<p class="stext-102 cl6">${cr.content }</p>
+	
+												<div class="size-207">
+													<div class="flex-w flex-sb-m p-b-17">
+														<span class="mtext-107 cl2 p-r-20"> ${cr.title } </span> <span class="fs-18 cl11 show-rating" data-rating="${cr.rating }"> <i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star-half"></i>
+														</span>
+	
+													</div>
+	
+													<p class="stext-102 cl6">${cr.content }</p>
+												</div>
 											</div>
-										</div>
+										</c:if>
 									</c:forEach>
 									<!-- /Review -->
 
