@@ -103,7 +103,7 @@
              <li class='sidebar-title'>개인 스케줄 </li>
  
                 <li class="sidebar-item  ">
-                    <a href="form_layout" class='sidebar-link'>
+                    <a href="calendar" class='sidebar-link'>
                         <i data-feather="layout" width="20"></i> 
                         <span>Calendar</span>
                     </a>

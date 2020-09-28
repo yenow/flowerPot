@@ -32,7 +32,6 @@ public class SemiAdminController {
 		List<SemiNoticeVO> blist = service.getArticles();
 		model.addAttribute("blist",blist);
 		
-		
 	}
 	
 // { 공지사항 게시글 목록 가져오기
@@ -97,11 +96,10 @@ public class SemiAdminController {
 		
 		
 	}
-// modal 기능  - > todoList
+// todoList
 	@RequestMapping("/todolist")
 	public void todolist() {
 		System.out.println("todolist 실행중..");
-		
 		
 	}
 	
@@ -110,9 +108,7 @@ public class SemiAdminController {
 		public void form_editor() {
 			System.out.println("todolist 실행중..");
 			
-			
 		}
-		
 		
 //form_editor 기능
 		@RequestMapping("/delivery")
@@ -120,7 +116,21 @@ public class SemiAdminController {
 			System.out.println("delivery 실행중..");
 					
 					
-				}
+}
+//form_editor 기능
+		@RequestMapping("/chart_count")
+		public void chartCount() {
+			System.out.println("chart_count 실행중..");
+			
+			
+		}
+//form_editor 기능
+		@RequestMapping("/chart_product")
+		public void chartProduct() {
+			System.out.println("chart_product 실행중..");
+			
+			
+		}
 
 
 }

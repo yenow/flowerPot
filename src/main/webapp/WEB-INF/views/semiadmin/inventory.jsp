@@ -79,7 +79,7 @@
                     </a>
                     
                             
-                <li class="sidebar-item  has-sub">
+                  <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i data-feather="trending-up" width="20"></i> 
                         <span>현황 Charts</span>
@@ -88,11 +88,11 @@
                     <ul class="submenu ">
                         
                         <li>
-                            <a href="ui_chart_chartjs">재고수량</a>
+                            <a href="chart_count">재고수량</a>
                         </li>
                         
                         <li>
-                            <a href="ui_chart_apexchart">품목별 판매량</a>
+                            <a href="chart_product">품목별 판매량</a>
                         </li>
                     </ul>
                 </li>
@@ -100,17 +100,18 @@
              <li class='sidebar-title'>개인 스케줄 </li>
  
                 <li class="sidebar-item  ">
-                    <a href="form_layout" class='sidebar-link'>
+                    <a href="calendar" class='sidebar-link'>
                         <i data-feather="layout" width="20"></i> 
                         <span>Calendar</span>
                     </a>
                 </li>
             
-                <li class="sidebar-item  ">
-                    <a href="ui_todolist" class='sidebar-link'>
+                <li class="sidebar-item">
+                    <a href="todolist" class='sidebar-link'>
                         <i data-feather="layers" width="20"></i> 
                         <span>To-do List</</span>
                     </a>
+                </li>
            
         </ul>
     </div>
@@ -183,7 +184,7 @@
                     </ul>
                 </div>
             </nav>
-            
+         </div>
 <!-- check: Bordered table start -->
 <div class="main-content container-fluid">
     <div class="page-title">
@@ -202,7 +203,7 @@
             </div>
         </div>
     </div>
-    
+</div> 
 <div class="row" id="table-bordered">
   <div class="col-12">
     <div class="card">
@@ -240,20 +241,20 @@
               <tr>
                <form method="post" onsubmit="return hidden1();">
               
-                <td class="text-bold-500">${i.cno}</td>
-                <td>${i.name}</td>
-                <td class="text-bold-500" >${i.proOption}</td>
-                <td>${i.stockNumber}</td>
+              	  <td class="text-bold-500">${i.cno}</td>
+              	  <td>${i.name}</td>
+              	  <td class="text-bold-500" >${i.proOption}</td>
+               	  <td>${i.stockNumber}</td>
                 
-                <td>
+               	 <td>
                    <input id ="hidden_cno" type ="number" name="plusStock" 
                          style="border: 2px solid #0d6efd; width:50%;">
                    <input type="hidden" name="cno" value="${i.cno}">    
-                </td>
+               	 </td> 
                
-                <td>
-                  <input type="submit" value="확인" class="submit">
-                </td>
+               	<td>
+                 	 <input type="submit" value="확인" class="submit">
+               	 </td>
                 
              </form>
               </tr>

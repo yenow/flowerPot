@@ -66,7 +66,7 @@
                     </a>
                     
                             
-                <li class="sidebar-item  has-sub">
+                  <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i data-feather="trending-up" width="20"></i> 
                         <span>현황 Charts</span>
@@ -75,32 +75,30 @@
                     <ul class="submenu ">
                         
                         <li>
-                            <a href="ui_chart_chartjs">재고수량</a>
+                            <a href="chart_count">재고수량</a>
                         </li>
                         
                         <li>
-                            <a href="ui_chart_apexchart">품목별 판매량</a>
+                            <a href="chart_product">품목별 판매량</a>
                         </li>
-                        
                     </ul>
-                    
-                </li>
+                </li>	
                     
              <li class='sidebar-title'>개인 스케줄 </li>
  
                 <li class="sidebar-item  ">
-                    <a href="form_layout" class='sidebar-link'>
+                    <a href="calendar" class='sidebar-link'>
                         <i data-feather="layout" width="20"></i> 
                         <span>Calendar</span>
                     </a>
                 </li>
-            
-                <li class="sidebar-item active">
-                    <a href="ui_todolist" class='sidebar-link'>
+                
+              <li class="sidebar-item">
+                    <a href="todolist" class='sidebar-link'>
                         <i data-feather="layers" width="20"></i> 
                         <span>To-do List</</span>
                     </a>
-                    
+                </li>
            
         </ul>
     </div>
@@ -284,8 +282,7 @@
                                 </div>
                             </li>
                             <li class="widget-todo-item">
-                                <div
-                                    class="widget-todo-title-wrapper d-flex justify-content-between align-items-center mb-50">
+                                <div class="widget-todo-title-wrapper d-flex justify-content-between align-items-center mb-50">
                                     <div class="widget-todo-title-area d-flex align-items-center">
                                         <i data-feather="list" class='cursor-move'></i>
                                         <div class="checkbox checkbox-shadow">
@@ -327,8 +324,7 @@
                                 </div>
                             </li>
                             <li class="widget-todo-item">
-                                <div
-                                    class="widget-todo-title-wrapper d-flex justify-content-between align-items-center mb-50">
+                                <div class="widget-todo-title-wrapper d-flex justify-content-between align-items-center mb-50">
                                     <div class="widget-todo-title-area d-flex align-items-center">
                                         <i data-feather="list" class='cursor-move'></i>
                                         <div class="checkbox checkbox-shadow">

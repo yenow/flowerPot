@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Voler Admin Dashboard</title>
+    <title>SemiAdmin - Main DashBoard</title>
     
     <link rel="stylesheet" href="../resources/semiadmin_css/assets/css/bootstrap.css">
     
@@ -76,8 +76,7 @@
                         <span>Review후기</span>
                     </a>
                     
-                            
-                <li class="sidebar-item  has-sub">
+                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i data-feather="trending-up" width="20"></i> 
                         <span>현황 Charts</span>
@@ -86,11 +85,11 @@
                     <ul class="submenu ">
                         
                         <li>
-                            <a href="ui_chart_chartjs">재고수량</a>
+                            <a href="chart_count">재고수량</a>
                         </li>
                         
                         <li>
-                            <a href="ui_chart_apexchart">품목별 판매량</a>
+                            <a href="chart_product">품목별 판매량</a>
                         </li>
                     </ul>
                 </li>
@@ -98,17 +97,18 @@
              <li class='sidebar-title'>개인 스케줄 </li>
  
                 <li class="sidebar-item  ">
-                    <a href="form_layout" class='sidebar-link'>
+                    <a href="calendar" class='sidebar-link'>
                         <i data-feather="layout" width="20"></i> 
                         <span>Calendar</span>
                     </a>
                 </li>
             
-                <li class="sidebar-item  ">
-                    <a href="ui_todolist" class='sidebar-link'>
+                <li class="sidebar-item">
+                    <a href="todolist" class='sidebar-link'>
                         <i data-feather="layers" width="20"></i> 
                         <span>To-do List</</span>
                     </a>
+                </li>
            
         </ul>
     </div>
@@ -286,10 +286,10 @@
                 </div>
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4 class="card-title">Orders Today</h4>
+                        <h4 class="card-title">오늘의 공지사항</h4>
                         <div class="d-flex ">
                             <i data-feather="download"></i>
-                        </div>
+                        </div>ㄴ
                     </div>
                     <div class="card-body px-0 pb-0">
                         <div class="table-responsive">

@@ -17,11 +17,10 @@ public interface ISemiNoticeService {
 	//{ Review 후기  } 
 	List<SemiReviewVO> getReviewArticles();
 	
-	
 	// { Inventory 목록
 	List<SemiInventoryVO> getInvenArticles();
 	
-	// Inventory 화장품 번호로  수량 submit 하기}
+	// Inventory 화장품 번호로  수량 submit 하기 }
 	void submitInven(SemiInventoryVO semi);
 
 }

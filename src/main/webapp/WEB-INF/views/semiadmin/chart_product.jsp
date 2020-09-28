@@ -1,48 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datatable - Voler Admin Dashboard</title>
+    <title>ChartJS - Voler Admin Dashboard</title>
     
     <link rel="stylesheet" href="../resources/semiadmin_css/assets/css/bootstrap.css">
     
-    <link rel="stylesheet" href="../resources/semiadmin_css/assets/vendors/simple-datatables/style.css">
+    <link rel="stylesheet" href="../resources/semiadmin_css/assets/vendors/chartjs/Chart.min.css">
 
     <link rel="stylesheet" href="../resources/semiadmin_css/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="../resources/semiadmin_css/assets/css/app.css">
     <link rel="shortcut icon" href="../resources/semiadmin_css/assets/images/favicon.svg" type="image/x-icon">
-
-<style>
-.delButton{ display: inline-block; padding: 0.4rem 0.55rem; 
-                          font-size: 0.75rem; font-weight: 500; line-height: 1; 
-                          background-color:#5A8DEE; border-color: #5A8DEE;
-                          color: #fff; text-align: center; white-space: nowrap; 
-                          vertical-align: baseline; border-radius: 1rem;}
-</style>
-
 </head>
-
-
-
 <body>
     <div id="app">
         <div id="sidebar" class='active'>
             <div class="sidebar-wrapper active">
-         <div class="sidebar-header">
-        <img src="../resources/semiadmin_css/assets/images/logo2.JPG" alt="" srcset=""
-        style="width:80%; height:80%">
+    <div class="sidebar-header">
+        <img src="../resources/semiadmin_css/assets/images/logo2.JPG" alt="" srcset="">
     </div>
-   <div class="sidebar-menu">
+           <div class="sidebar-menu">
         <ul class="menu">
             
-                 <li class='sidebar-title'>Main Menu</li>
+             <li class='sidebar-title'>Main Menu</li>
             
-                <li class="sidebar-item active">
+                <li class="sidebar-item">
                     <a href="dashboard" class='sidebar-link'>
                         <i data-feather="home" width="20"></i> 
                         <span>Dashboard</span>
@@ -50,29 +35,38 @@
                     
                 </li>
             
-             <li class='sidebar-title'>오늘의  &amp; 할 일 </li>
-            
-                 <li class="sidebar-item active ">
+                 <li class="sidebar-item">
                     <a href="semi_notice" class='sidebar-link'>
                          <i data-feather="layers" width="20"></i> 
                         <span>공지사항</span>
                     </a>
                 </li>
-            
-              <li class="sidebar-item  ">
+                
+                
+             <li class='sidebar-title'>오늘의  &amp; 할 일 </li>
+                        
+                 <li class="sidebar-item  ">
                     <a href="delivery" class='sidebar-link'>
                         <i data-feather="briefcase" width="20"></i> 
                         <span>배송관리</span>
                     </a>
                 </li>
+                
+                 <li class="sidebar-item">
+                    <a href="inventory" class='sidebar-link'>
+                         <i data-feather="layers" width="20"></i> 
+                        <span>재고관리</span>
+                    </a>
+                </li>
                     
-                <li class="sidebar-item  ">
+                <li class="sidebar-item ">
                     <a href="review" class='sidebar-link'>
                         <i data-feather="file-plus" width="20"></i> 
                         <span>Review후기</span>
                     </a>
                     
-               <li class="sidebar-item  has-sub">
+                            
+                  <li class="sidebar-item  has-sub active">
                     <a href="#" class='sidebar-link'>
                         <i data-feather="trending-up" width="20"></i> 
                         <span>현황 Charts</span>
@@ -85,10 +79,10 @@
                         </li>
                         
                         <li>
-                            <a href="chart_porduct">품목별 판매량</a>
+                            <a href="chart_product">품목별 판매량</a>
                         </li>
                     </ul>
-                </li>
+                </li>	
                     
              <li class='sidebar-title'>개인 스케줄 </li>
  
@@ -98,15 +92,14 @@
                         <span>Calendar</span>
                     </a>
                 </li>
-            
-               <li class="sidebar-item">
+                
+              <li class="sidebar-item">
                     <a href="todolist" class='sidebar-link'>
                         <i data-feather="layers" width="20"></i> 
                         <span>To-do List</</span>
                     </a>
                 </li>
-                    
-    
+           
         </ul>
     </div>
     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
@@ -163,7 +156,7 @@
                                 <div class="avatar mr-1">
                                     <img src="../resources/semiadmin_css/assets/images/avatar/avatar-s-1.png" alt="" srcset="">
                                 </div>
-                                <div class="d-none d-md-block d-lg-inline-block">Hi, 성은</div>
+                                <div class="d-none d-md-block d-lg-inline-block">Hi, Saugi</div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
@@ -176,66 +169,51 @@
                     </ul>
                 </div>
             </nav>
-<!-- Review 후기  메인  -->  
+            
 <div class="main-content container-fluid">
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Review 후기 </h3>
-                <p class="text-subtitle text-muted">FlowerPot SemiAdmin Notice <a href="https://github.com/fiduswriter/Simple-DataTables/wiki">here</a>.</p>
+                <h3>ChartJS</h3>
+                <p class="text-subtitle text-muted">Lot of variations and customizable chart made with ChartJS. Full documentation click <a href="https://www.chartjs.org/">here</a>.</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class='breadcrumb-header'>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="dashboard">Main</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Review 후기</li>
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">ChartJS</li>
                     </ol>
                 </nav>
             </div>
         </div>
+
     </div>
     <section class="section">
-        <div class="card">
-            <div class="card-header">
-              Review 후기
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Bar Chart</h4>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="bar"></canvas>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <table class='table table-striped' id="table1">
-                    <thead>
-                        <tr>
-                            <th>게시글번호</th>
-                            <th>상품번호</th>
-                            <th>멤버번호</th>
-                            <th>카테고리</th>
-                            <th>아이디</th>
-                            <th>닉네임</th>
-                            <th>제목</th>
-                            <th>내용</th>
-                            <th>별점</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="r" items="${relist}">
-                        <tr >
-                            <td>${r.crno}</td>
-                            <td>${r.cno}</td>
-                            <td>${r.mno}</td>
-                            <td>${r.category}</td>
-                            <td>${r.id}</td>
-                            <td>${r.nickname}</td>
-                            <td>${r.title}</td>
-                            <td>${r.content}</td>
-                            <td>${r.rating}</td>
-                        </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Line Chart</h4>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="line"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 </div>
-<!-- Bordered table end -->
-        
+
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-left">
@@ -248,26 +226,14 @@
             </footer>
         </div>
     </div>
-    
- <!--    <script type="text/javascript">
-   
-    const result ="delete";
-    
-    if(result === "delete"){
-    	alert("게시글이 삭제되었습니다.");
-    }else{
-    	alert("삭제되지 않았습니다. 다시 확인해주세요. ");
-    }
-    
-    </script> -->
-    
     <script src="../resources/semiadmin_css/assets/js/feather-icons/feather.min.js"></script>
     <script src="../resources/semiadmin_css/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="../resources/semiadmin_css/assets/js/app.js"></script>
     
-<script src="../resources/semiadmin_css/assets/vendors/simple-datatables/simple-datatables.js"></script>
-<script src="../resources/semiadmin_css/assets/js/vendors.js"></script>
+    <script src="../resources/semiadmin_css/assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="../resources/semiadmin_css/assets/js/pages/ui-chartjs.js"></script>
 
     <script src="../resources/semiadmin_css/assets/js/main.js"></script>
 </body>
 </html>
+l>
