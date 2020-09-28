@@ -63,157 +63,7 @@
 									<td class="text-center align-middle"><button type="button" class="btn btn-outline-secondary cosmetic-delete">상품삭제</button></td>
 								</tr>
 							</c:forEach>
-							<!-- <tr data-cno="1" class="table_row">
-									<td class="column-1 text-center">
-										<div class="how-itemcart1">
-											<img src="" alt="상품사진">
-										</div>
-									</td>
-									<td class="column-2 text-center">이름</td>
-									상품하나의 가격
-									<td class="column-2 text-center"><span class="price">1111</span><span>원</span></td>
-									개수선택
-									<td class="column-4 text-center">
-										<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<div class="y-btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-minus"></i>
-											</div>
-
-											<input class="mtext-104 cl3 txt-center num-product cosmetic-amount" type="text" name="" value="1">
-
-											<div class="y-btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-plus"></i>
-											</div>
-										</div>
-									</td>
-									
-									<td class="column-5 text-center">가격</td>
-									<td class="text-center" style="width: 100px;"><button type="button" class="btn btn-outline-secondary cosmetic-delete">상품삭제</button></td>
-								</tr>
-								<tr data-cno="2" class="table_row">
-									<td class="column-1 text-center">
-										<div class="how-itemcart1">
-											<img src="" alt="상품사진">
-										</div>
-									</td>
-									<td class="column-2 text-center"><span class="name">이름</span></td>
-									상품하나의 가격
-									<td class="column-2 text-center"><span class="price">2222</span><span>원</span></td>
-									개수선택
-									<td class="column-4 text-center">
-										<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<div class="y-btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" onclick="return changeValue(this,0);">
-												<i class="fs-16 zmdi zmdi-minus"></i>
-											</div>
-
-											<input class="mtext-104 cl3 txt-center num-product cosmetic-amount" type="text" name="" value="1">
-
-											<div class="y-btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" onclick="return changeValue(this,1);">
-												<i class="fs-16 zmdi zmdi-plus"></i>
-											</div>
-										</div>
-									</td>
-									
-									<td class="column-5 text-center">가격</td>
-									<td class="text-center"><button type="button" class="btn btn-outline-secondary cosmetic-delete">상품삭제</button></td>
-								</tr> -->
 						</table>
-						<%-- <table class="table-shopping-cart">
-							<tr class="table_head">
-								<!-- <th class="column-1 text-center"></th> -->
-								<th class="column-1 text-center">상품사진</th>
-								<th class="column-2 text-center">상품이름</th>
-								<th class="column-3 text-center">가격</th>
-								<th class="column-4 text-center">개수</th>
-								<th class="column-5 text-center">총 가격</th>
-								<th class="text-center">삭제</th>
-							</tr>
-
-							<c:forEach var="cosmetic" items="${shoppingCartList }">
-								<tr data-cno="${cosmetic.cno }" class="table_row">
-									<!-- <td class="column-1 text-center"><input class="align-self-center m-l-10" type="checkbox" id=""></td>  --><!-- 요부분 생각좀하자 -->
-									<td class="column-1 text-center">
-										<div class="how-itemcart1">
-										   <img src="${cosmetic.mappingList[0] }" alt="상품사진"  style="margin : 0 auto;">
-										</div>
-									</td>
-									<td class="column-2 text-center">${cosmetic.name }</td>
-									<!-- 상품하나의 가격 -->
-									<td class="column-2 text-center"><span class="price">${cosmetic.price }</span><span>원</span></td>
-									<!-- 개수선택 -->
-									<td class="column-4 text-center">
-										<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" onclick="return changeValue(this,0);">
-												<i class="fs-16 zmdi zmdi-minus"></i>
-											</div>
-
-											<input class="mtext-104 cl3 txt-center num-product cosmetic-amount" type="text" name="" value="${cosmetic.numProduct}">
-
-											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" onclick="return changeValue(this,1);">
-												<i class="fs-16 zmdi zmdi-plus"></i>
-											</div>
-										</div>
-									</td>
-									<!--  -->
-									<td class="column-5 text-center"><span class="price-product"></span><span>원</span></td>
-									<td class="text-center"><button type="button" class="btn btn-outline-secondary cosmetic-delete">상품삭제</button></td>
-								</tr>
-							</c:forEach>
-							<!-- <tr data-cno="1" class="table_row">
-									<td class="column-1 text-center">
-										<div class="how-itemcart1">
-											<img src="" alt="상품사진">
-										</div>
-									</td>
-									<td class="column-2 text-center">이름</td>
-									상품하나의 가격
-									<td class="column-2 text-center"><span class="price">1111</span><span>원</span></td>
-									개수선택
-									<td class="column-4 text-center">
-										<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<div class="y-btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-minus"></i>
-											</div>
-
-											<input class="mtext-104 cl3 txt-center num-product cosmetic-amount" type="text" name="" value="1">
-
-											<div class="y-btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-plus"></i>
-											</div>
-										</div>
-									</td>
-									
-									<td class="column-5 text-center">가격</td>
-									<td class="text-center" style="width: 100px;"><button type="button" class="btn btn-outline-secondary cosmetic-delete">상품삭제</button></td>
-								</tr>
-								<tr data-cno="2" class="table_row">
-									<td class="column-1 text-center">
-										<div class="how-itemcart1">
-											<img src="" alt="상품사진">
-										</div>
-									</td>
-									<td class="column-2 text-center"><span class="name">이름</span></td>
-									상품하나의 가격
-									<td class="column-2 text-center"><span class="price">2222</span><span>원</span></td>
-									개수선택
-									<td class="column-4 text-center">
-										<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<div class="y-btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" onclick="return changeValue(this,0);">
-												<i class="fs-16 zmdi zmdi-minus"></i>
-											</div>
-
-											<input class="mtext-104 cl3 txt-center num-product cosmetic-amount" type="text" name="" value="1">
-
-											<div class="y-btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" onclick="return changeValue(this,1);">
-												<i class="fs-16 zmdi zmdi-plus"></i>
-											</div>
-										</div>
-									</td>
-									
-									<td class="column-5 text-center">가격</td>
-									<td class="text-center"><button type="button" class="btn btn-outline-secondary cosmetic-delete">상품삭제</button></td>
-								</tr> -->
-						</table> --%>
 					</div>
 			</div>
 
@@ -273,20 +123,46 @@
 <script>
 console.log(typeof $($('.price').get(0)).html());
 console.log(typeof $($('.cosmetic-amount').get(0)).val());
+
+
 function changeValue(tag,flag) {
 	if(flag==0){
 		//console.log(tag);
 		var amount = $(tag).siblings("input").val();
 		//console.log(amount);
 		if(amount>=1){
-			$(tag).siblings("input").attr("value",--amount);	
+			$(tag).siblings("input").attr("value",--amount);
+			
+			var cno = $($(tag).parent().parent().parent()).data('cno');
+			
+			$.ajax({
+				type: "POST", 
+				url: "${pageContext.request.contextPath}/cosmetic/shopping_list_update", 
+				data: {'cno':cno, 'numProduct':amount }, 
+				success: 
+					function(data) { 
+					console.log(data); 
+				}
+			});
 		}
 	}else if(flag==1){
 		//console.log(tag);
 		var amount = $(tag).siblings("input").val();
 		//console.log(amount);
 		$(tag).siblings("input").attr("value",++amount);
-		//console.log($(tag).siblings("input"));
+		//console.log($(tag).siblings("input"));$
+		console.log($($(tag).parent().parent().parent()));
+		var cno = $($(tag).parent().parent().parent()).data('cno');
+		
+		$.ajax({
+			type: "POST", 
+			url: "${pageContext.request.contextPath}/cosmetic/shopping_list_update", 
+			data: {'cno':cno, 'numProduct':amount }, 
+			success: 
+				function(data) { 
+				console.log(data); 
+			}
+		});
 	}
 	//console.log($('.price').get(1));  get이라는 함수를 통해서,, 배열인덱스를 가져올수있음.
 	var productPrice=0;

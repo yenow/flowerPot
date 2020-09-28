@@ -40,6 +40,7 @@ public class KakaoPay {
 	    
 	 public String kakaoPayReady(List<OrderProductVo> olist) {
 		 	// 주문번호 생성
+		 	
 		    CosmeticVo cosmetic = cosmeticDao.selectOneCosmeticByCno(olist.get(0).getCno());
 		    String order_num= cosmetic.getBrand()+UUID.randomUUID().toString();  // 주문번호
 		    log.info("주문번호:"+order_num);
@@ -61,9 +62,8 @@ public class KakaoPay {
 		 		}
 		 		item_name=item_name.concat("/"+cosmeticDao.selectOneCosmeticByCno(orderProduct.getCno()));
 		 	}
-		 
+		 	// 최종 결제 가격
 		 	Integer final_price = olist.get(0).getFinal_price();
-		 
 		 
 	        RestTemplate restTemplate = new RestTemplate();
 	        
@@ -78,7 +78,7 @@ public class KakaoPay {
 	        params.add("cid", "TC0ONETIME");
 	        params.add("partner_order_id", "1001");     			// 가맹점 주문번호
 	        params.add("partner_user_id", "flowerpot");				 // 가명점 회원아이디
-	        params.add("item_name", "갤럭시S9"); 	//변경				 // 상품명
+	        params.add("item_name", item_name); 	//변경				 // 상품명
 	        params.add("item_code", order_num); //변경 				 // 상품코드 
 	        params.add("quantity", "1");  	//변경						 // 상품수량
 	        params.add("total_amount", final_price.toString());	//변경	   // 상품 총액
@@ -115,10 +115,10 @@ public class KakaoPay {
 	        log.info("order_num : " + order_num);
 	        
 	        // order_num 주문번호로.. 상품정보 가져오자!
-	        OrderProductVo orderProduct = orderProductDao.selectOrderProductByOrderNum(order_num);
+	        List<OrderProductVo> oList = orderProductDao.selectListOrderProductByOrderNum(order_num);
 	        
 	        // 가격만 일단 맞춰주면 된다;
-	        int total_amount = orderProduct.getPrice();
+	        int total_amount = oList.get(0).getFinal_price();
 	        log.info("total_amount : " + total_amount);
 	        
 	        RestTemplate restTemplate = new RestTemplate();

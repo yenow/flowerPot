@@ -25,7 +25,6 @@ public class OrderProductVo {
 	private LocalDateTime regdate;
 	private String tel;
 	private String email;
-	private Integer price;
 	private Integer final_price;
 	
 	public OrderProductVo(Integer ono, Integer cno, Integer dno, String order_num, Integer amount, String state,
@@ -45,7 +44,6 @@ public class OrderProductVo {
 		this.regdate = regdate;
 		this.tel = tel;
 		this.email = email;
-		this.price = price;
 		this.final_price = final_price;
 	}
 	

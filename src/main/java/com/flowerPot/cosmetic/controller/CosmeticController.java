@@ -94,20 +94,39 @@ public class CosmeticController {
 		
 	}
 	
+	// ajax, 장바구니에 담긴 화장품 개수 업데이트
+	@RequestMapping("shopping_list_update")
+	@ResponseBody
+	public ResponseEntity<String> shopping_list_update(Integer cno,Integer numProduct,HttpSession session) {
+		log.info("장바구니에 담긴 화장품 개수 업데이트");
+		log.info("cno:"+cno);
+		List<CosmeticVo> cList = (List<CosmeticVo>) session.getAttribute("shoppingCartList");
+
+		for(int i=0; i<cList.size(); i++) {
+			if(cList.get(i).getCno().equals(cno)) {
+				cList.get(i).setNumProduct(numProduct);
+				break;
+			}
+		}
+		log.info("장바구니:"+cList);
+		return new ResponseEntity<String>("success",HttpStatus.OK);
+	}
+	
 	// ajax, 장바구니에 담긴 화장품 삭제
 	@RequestMapping("shopping_list_del")
 	@ResponseBody
 	public ResponseEntity<String> shopping_list_del(Integer cno,HttpSession session) {
 		log.info("cno:"+cno);
 		List<CosmeticVo> cList = (List<CosmeticVo>) session.getAttribute("shoppingCartList");
-		
+		log.info("장바구니에 담긴 화장품 삭제:"+cno);
 		for(int i=0; i<cList.size(); i++) {
-			if(cList.get(i).getCno()==cno) {
+			if(cList.get(i).getCno().equals(cno)) {
 				cList.remove(i);
 				session.setAttribute("shoppingCartList", cList);
 				break;
 			}
 		}
+		log.info("장바구니:"+cList);
 		return new ResponseEntity<String>("success",HttpStatus.OK);
 	}
 	

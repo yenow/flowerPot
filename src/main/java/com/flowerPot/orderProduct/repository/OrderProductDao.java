@@ -1,5 +1,7 @@
 package com.flowerPot.orderProduct.repository;
 
+import java.util.List;
+
 import com.flowerPot.vo.OrderProductVo;
 
 public interface OrderProductDao {
@@ -12,5 +14,5 @@ public interface OrderProductDao {
 	
 	int selectCount();
 
-	OrderProductVo selectOrderProductByOrderNum(String order_num);
+	List<OrderProductVo> selectListOrderProductByOrderNum(String order_num);
 }

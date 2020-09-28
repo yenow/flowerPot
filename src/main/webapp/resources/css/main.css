@@ -3371,3 +3371,7 @@ input[type="radio"] {
     -webkit-appearance: radio;
     border-radius: 0;
 }
+
+.mlr-0 {
+	 margin-left: 0;  margin-right: 0;
+}
