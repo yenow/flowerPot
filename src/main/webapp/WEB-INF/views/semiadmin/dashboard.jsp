@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +16,15 @@
     <link rel="stylesheet" href="../resources/semiadmin_css/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="../resources/semiadmin_css/assets/css/app.css">
     <link rel="shortcut icon" href="../resources/semiadmin_css/assets/images/favicon.svg" type="image/x-icon">
+
+<style>
+.delButton{ display: inline-block; padding: 0.4rem 0.55rem; 
+                          font-size: 0.75rem; font-weight: 500; line-height: 1; 
+                          background-color:#5A8DEE; border-color: #5A8DEE;
+                          color: #fff; text-align: center; white-space: nowrap; 
+                          vertical-align: baseline; border-radius: 1rem;}
+</style>
+
 </head>
 <body>
     <div id="app">
@@ -22,36 +33,44 @@
     <div class="sidebar-header">
         <img src="../resources/semiadmin_css/assets/images/logo2.JPG" alt="" srcset="">
     </div>
-    <div class="sidebar-menu">
+     <div class="sidebar-menu">
         <ul class="menu">
             
-                 <li class='sidebar-title'>Main Menu</li>
+             <li class='sidebar-title'>Main Menu</li>
             
                 <li class="sidebar-item active">
-                    <a href="index" class='sidebar-link'>
+                    <a href="dashboard" class='sidebar-link'>
                         <i data-feather="home" width="20"></i> 
                         <span>Dashboard</span>
                     </a>
                     
                 </li>
             
-             <li class='sidebar-title'>오늘의  &amp; 할 일 </li>
-            
-                 <li class="sidebar-item active ">
+                 <li class="sidebar-item">
                     <a href="semi_notice" class='sidebar-link'>
                          <i data-feather="layers" width="20"></i> 
                         <span>공지사항</span>
                     </a>
                 </li>
-            
-              <li class="sidebar-item  ">
-                    <a href="form_editor" class='sidebar-link'>
+                
+                
+             <li class='sidebar-title'>오늘의  &amp; 할 일 </li>
+                        
+                 <li class="sidebar-item">
+                    <a href="delivery" class='sidebar-link'>
                         <i data-feather="briefcase" width="20"></i> 
                         <span>배송관리</span>
                     </a>
                 </li>
+                
+                 <li class="sidebar-item">
+                    <a href="inventory" class='sidebar-link'>
+                         <i data-feather="layers" width="20"></i> 
+                        <span>재고관리</span>
+                    </a>
+                </li>
                     
-                <li class="sidebar-item  ">
+                <li class="sidebar-item ">
                     <a href="review" class='sidebar-link'>
                         <i data-feather="file-plus" width="20"></i> 
                         <span>Review후기</span>
@@ -73,9 +92,7 @@
                         <li>
                             <a href="ui_chart_apexchart">품목별 판매량</a>
                         </li>
-                        
                     </ul>
-                    
                 </li>
                     
              <li class='sidebar-title'>개인 스케줄 </li>
@@ -92,8 +109,7 @@
                         <i data-feather="layers" width="20"></i> 
                         <span>To-do List</</span>
                     </a>
-                    
-    
+           
         </ul>
     </div>
     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
@@ -148,9 +164,9 @@
                         <li class="dropdown">
                             <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                                 <div class="avatar mr-1">
-                                    <img src="../resources/semiadmin_css/assets/images/avatar/avatar-s-1.png" alt="" srcset="">
+                                 <img src="../resources/semiadmin_css/assets/images/avatar/avatar-s-1.png" alt="" srcset="">
                                 </div>
-                                <div class="d-none d-md-block d-lg-inline-block">Hi, Saugi</div>
+                                <div class="d-none d-md-block d-lg-inline-block">Hi, 성은</div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
@@ -280,78 +296,26 @@
                             <table class='table mb-0' id="table1">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>City</th>
-                                        <th>Status</th>
+                                	   <th>숫자</th>
+                         			   <th>제목</th>
+                          			   <th>내용</th>
+                          			   <th>작성자</th>
+                          			   <th>날짜</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Graiden</td>
-                                        <td>vehicula.aliquet@semconsequat.co.uk</td>
-                                        <td>076 4820 8838</td>
-                                        <td>Offenburg</td>
-                                        <td>
-                                            <span class="badge bg-success">Active</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dale</td>
-                                        <td>fringilla.euismod.enim@quam.ca</td>
-                                        <td>0500 527693</td>
-                                        <td>New Quay</td>
-                                        <td>
-                                            <span class="badge bg-success">Active</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nathaniel</td>
-                                        <td>mi.Duis@diam.edu</td>
-                                        <td>(012165) 76278</td>
-                                        <td>Grumo Appula</td>
-                                        <td>
-                                            <span class="badge bg-danger">Inactive</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Darius</td>
-                                        <td>velit@nec.com</td>
-                                        <td>0309 690 7871</td>
-                                        <td>Ways</td>
-                                        <td>
-                                            <span class="badge bg-success">Active</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ganteng</td>
-                                        <td>velit@nec.com</td>
-                                        <td>0309 690 7871</td>
-                                        <td>Ways</td>
-                                        <td>
-                                            <span class="badge bg-success">Active</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Oleg</td>
-                                        <td>rhoncus.id@Aliquamauctorvelit.net</td>
-                                        <td>0500 441046</td>
-                                        <td>Rossignol</td>
-                                        <td>
-                                            <span class="badge bg-success">Active</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Kermit</td>
-                                        <td>diam.Sed.diam@anteVivamusnon.org</td>
-                                        <td>(01653) 27844</td>
-                                        <td>Patna</td>
-                                        <td>
-                                            <span class="badge bg-success">Active</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                        <c:forEach var="b" items="${blist}">
+                        <tr >
+                            <td>${b.sBno}</td>
+                            <td>${b.sTitle}</td>
+                            <td>${b.sContent}</td>
+                            <td>${b.sWriter}</td>
+                            <td> 
+                            <fmt:formatDate value="${b.sDate}" pattern="yyyy년 MM월 dd일 "/> </td>
+                         
+                        </tr>
+                        </c:forEach>
+                        </tbody>
                             </table>
                         </div>
                     </div>

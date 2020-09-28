@@ -29,7 +29,7 @@
                  <li class='sidebar-title'>Main Menu</li>
             
                 <li class="sidebar-item active">
-                    <a href="index" class='sidebar-link'>
+                    <a href="dashboard" class='sidebar-link'>
                         <i data-feather="home" width="20"></i> 
                         <span>Dashboard</span>
                     </a>
@@ -46,7 +46,7 @@
                 </li>
             
               <li class="sidebar-item  ">
-                    <a href="form_editor" class='sidebar-link'>
+                    <a href="delivery" class='sidebar-link'>
                         <i data-feather="briefcase" width="20"></i> 
                         <span>배송관리</span>
                     </a>
@@ -151,7 +151,7 @@
                                 <div class="avatar mr-1">
                                     <img src="../resources/semiadmin_css/assets/images/avatar/avatar-s-1.png" alt="" srcset="">
                                 </div>
-                                <div class="d-none d-md-block d-lg-inline-block">Hi, Saugi</div>
+                                <div class="d-none d-md-block d-lg-inline-block">Hi, 성은</div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>

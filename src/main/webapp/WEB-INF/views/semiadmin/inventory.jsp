@@ -59,7 +59,7 @@
              <li class='sidebar-title'>오늘의  &amp; 할 일 </li>
                         
                  <li class="sidebar-item">
-                    <a href="form_editor" class='sidebar-link'>
+                    <a href="delivery" class='sidebar-link'>
                         <i data-feather="briefcase" width="20"></i> 
                         <span>배송관리</span>
                     </a>
@@ -170,7 +170,7 @@
                                 <div class="avatar mr-1">
                                     <img src="../resources/semiadmin_css/assets/images/avatar/avatar-s-1.png" alt="" srcset="">
                                 </div>
-                                <div class="d-none d-md-block d-lg-inline-block">Hi, Saugi</div>
+                                <div class="d-none d-md-block d-lg-inline-block">Hi, 성은</div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
@@ -244,7 +244,8 @@
                 <td>${i.name}</td>
                 <td class="text-bold-500" >${i.proOption}</td>
                 <td>${i.stockNumber}</td>
-                <td >
+                
+                <td>
                    <input id ="hidden_cno" type ="number" name="plusStock" 
                          style="border: 2px solid #0d6efd; width:50%;">
                    <input type="hidden" name="cno" value="${i.cno}">    

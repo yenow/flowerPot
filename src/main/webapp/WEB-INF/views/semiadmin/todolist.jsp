@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List - Voler Admin Dashboard</title>
+    <title>Todo List - DASHBOARD</title>
     
     <link rel="stylesheet" href="../resources/semiadmin_css/assets/css/bootstrap.css">
     
@@ -28,7 +28,7 @@
              <li class='sidebar-title'>Main Menu</li>
             
                 <li class="sidebar-item">
-                    <a href="index" class='sidebar-link'>
+                    <a href="dashboard" class='sidebar-link'>
                         <i data-feather="home" width="20"></i> 
                         <span>Dashboard</span>
                     </a>
@@ -46,7 +46,7 @@
              <li class='sidebar-title'>오늘의  &amp; 할 일 </li>
                         
                  <li class="sidebar-item  ">
-                    <a href="form_editor" class='sidebar-link'>
+                    <a href="delivery" class='sidebar-link'>
                         <i data-feather="briefcase" width="20"></i> 
                         <span>배송관리</span>
                     </a>
@@ -158,7 +158,7 @@
                                 <div class="avatar mr-1">
                                     <img src="../resources/semiadmin_css/assets/images/avatar/avatar-s-1.png" alt="" srcset="">
                                 </div>
-                                <div class="d-none d-md-block d-lg-inline-block">Hi, Saugi</div>
+                                <div class="d-none d-md-block d-lg-inline-block">Hi, 성은</div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>

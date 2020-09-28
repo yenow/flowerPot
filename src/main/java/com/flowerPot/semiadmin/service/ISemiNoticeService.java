@@ -7,16 +7,15 @@ import com.flowerPot.semiadmin.model.SemiNoticeVO;
 import com.flowerPot.semiadmin.model.SemiReviewVO;
 
 public interface ISemiNoticeService {
-	
+
 	// { 공지사항 게시글 목록 가져오기
 	List<SemiNoticeVO> getArticles();
 
 	//  공지사항 게시글 번호로 지우기  } 
 	void delTable(Integer sBno);
-/////////////////////////////////////////////////
+	
 	//{ Review 후기  } 
 	List<SemiReviewVO> getReviewArticles();
-//////////////////////////////////////////////////
 	
 	
 	// { Inventory 목록

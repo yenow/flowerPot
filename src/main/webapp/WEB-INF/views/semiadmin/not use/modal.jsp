@@ -23,21 +23,15 @@
     <div class="sidebar-menu">
         <ul class="menu">
             
-            
                 <li class='sidebar-title'>Main Menu</li>
-            
-            
-            
-                <li class="sidebar-item  ">
+
+                <li class="sidebar-item">
                     <a href="index.html" class='sidebar-link'>
                         <i data-feather="home" width="20"></i> 
                         <span>Dashboard</span>
                     </a>
                     
                 </li>
-
-            
-            
             
                 <li class="sidebar-item active has-sub">
                     <a href="#" class='sidebar-link'>
@@ -106,9 +100,6 @@
                     </ul>
                     
                 </li>
-
-            
-            
             
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
@@ -129,13 +120,8 @@
                     </ul>
                     
                 </li>
-
-            
-            
             
                 <li class='sidebar-title'>Forms &amp; Tables</li>
-            
-            
             
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>

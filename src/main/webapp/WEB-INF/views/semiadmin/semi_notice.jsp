@@ -42,7 +42,7 @@
              <li class='sidebar-title'>Main Menu</li>
             
                 <li class="sidebar-item">
-                    <a href="index" class='sidebar-link'>
+                    <a href="dashboard" class='sidebar-link'>
                         <i data-feather="home" width="20"></i> 
                         <span>Dashboard</span>
                     </a>
@@ -60,7 +60,7 @@
              <li class='sidebar-title'>오늘의  &amp; 할 일 </li>
                         
                  <li class="sidebar-item  ">
-                    <a href="form_editor" class='sidebar-link'>
+                    <a href="delivery" class='sidebar-link'>
                         <i data-feather="briefcase" width="20"></i> 
                         <span>배송관리</span>
                     </a>
