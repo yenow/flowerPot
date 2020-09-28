@@ -22,6 +22,7 @@ public class SemiAdminController {
 
 	@Autowired
 	private ISemiNoticeService service;
+	
 
 // { dashboard _ main }
 	@RequestMapping("/dashboard")

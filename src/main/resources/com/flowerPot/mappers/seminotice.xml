@@ -42,12 +42,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
  <select id ="getInvenArticles"  resultType="com.flowerPot.semiadmin.model.SemiInventoryVO">
    select * 
-   from f_cosmetic
+   from f_inventory
  </select>
  
  <!-- {inventory submit 으로 재고 수량 추가하기 -->
  <update id ="submitInven">
-   update f_cosmetic  	
+   update f_inventory	
    set stockNumber = stockNumber + #{plusStock} where cno = #{cno}
 
  </update>

@@ -8,6 +8,7 @@ create table f_cosmeticReview(
 	title varchar2(100),    -- 평가제목
 	content varchar2(3000),  -- 평가내용
 	rating number(5) ,  --평점
+	
 	primary key (crno)
 );
 -- 시퀀스
