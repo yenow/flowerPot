@@ -28,12 +28,12 @@ public class AdminTestController {
 	}
 	
 	
-	@RequestMapping("/template")
+	@RequestMapping("/inventory")
 	public void template() {
 		
 	}
 	
-	@RequestMapping("/maps")
+	@RequestMapping("/delivery")
 	public void maps() {
 		
 	}

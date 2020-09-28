@@ -43,20 +43,20 @@
                         <p>회원 관리</p>
                     </a>
                 </li>
-                <li id="Typography">
+                <li id="inventory">
                     <a href="${pageContext.request.contextPath}/admin/goods">
                         <i class="pe-7s-note2"></i>
                         <p>재고 관리(구상도못함)</p>
                     </a>
                 </li>
                 
-                <li id="Maps">
-                    <a href="${pageContext.request.contextPath}/admin/maps">
+                <li id="delevery">
+                    <a href="${pageContext.request.contextPath}/admin/delevery">
                         <i class="pe-7s-cart"></i>
                         <p>주문 배송(손도못댐)</p>
                     </a>
                 </li>
-                <li id="Icons">
+                <li id=communication>
                     <a href="${pageContext.request.contextPath}/admin/customer/notice">
                         <i class="pe-7s-speaker"></i>
                         <p>소통 관리</p>

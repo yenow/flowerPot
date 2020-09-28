@@ -15,6 +15,7 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="admin/customer/resources/**" location="/resources/" />
 	<resources mapping="admin/resources/**" location="/resources/" />
+	<resources mapping="admin2/resources/**" location="/resources/" />
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/upload/**" location="file:///C:/upload/" />
 
@@ -31,6 +32,7 @@
     <context:component-scan base-package="com.flowerPot.magazine.controller" />
     <context:component-scan base-package="com.flowerPot.attachFile.controller" />
 	<context:component-scan base-package="com.flowerPot.admin.controller" />
+	<context:component-scan base-package="com.flowerPot.admin.controller2" />
 	<context:component-scan base-package="com.flowerPot.controller" />
 	<context:component-scan base-package="com.flowerPot.exception" />
 	

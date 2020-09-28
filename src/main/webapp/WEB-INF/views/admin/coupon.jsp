@@ -178,9 +178,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="my_modal">
-            		 모달창임니다
-            <a class="modal_close_btn">닫기</a>
+                    
 						<div class="col-md-12">
 							<div class="card">
 								<div class="header">
@@ -255,7 +253,9 @@
 					</div>
 				</div>
 			</div>
-			
+			<div id="my_modal">
+            		 모달창임니다
+            <a class="modal_close_btn">닫기</a>
         </div>
 			<footer class="footer">
 				<div class="container-fluid">
@@ -278,8 +278,7 @@
 
 
 		</div>
-	</div>
-
+	
 
 </body>
 
