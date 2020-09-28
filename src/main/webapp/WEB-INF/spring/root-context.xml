@@ -94,5 +94,8 @@
 	<context:component-scan base-package="com.flowerPot.memberAddress.service"/>	
 	<mybatis-spring:scan base-package="com.flowerPot.memberAddress.repository" />
 	
+	<context:component-scan base-package="com.flowerPot.brand.service"/>	
+	<mybatis-spring:scan base-package="com.flowerPot.brand.repository" />
+	
 	<!-- /컴포넌트 스캔 -->	
 </beans>

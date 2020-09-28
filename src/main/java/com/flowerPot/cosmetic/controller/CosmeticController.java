@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flowerPot.attachFile.service.AttachFileService;
+import com.flowerPot.brand.service.BrandService;
 import com.flowerPot.cosmetic.service.CosmeticService;
+import com.flowerPot.cosmetic.service.TypeService;
 import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
 import com.flowerPot.description.service.DescriptionService;
 import com.flowerPot.domain.Criteria;
@@ -29,12 +31,15 @@ import com.flowerPot.member.service.MemberSerivce;
 import com.flowerPot.memberAddress.service.MemberAddressService;
 import com.flowerPot.security.domain.CustomUser;
 import com.flowerPot.vo.AttachFileVo;
+import com.flowerPot.vo.BrandVo;
 import com.flowerPot.vo.CosmeticReviewVo;
 import com.flowerPot.vo.CosmeticVo;
 import com.flowerPot.vo.DescriptionVo;
 import com.flowerPot.vo.MemberAddressVo;
 import com.flowerPot.vo.MemberVo;
+import com.flowerPot.vo.TypeVo;
 
+import aj.org.objectweb.asm.Type;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -54,6 +59,10 @@ public class CosmeticController {
 	private MemberSerivce memberSerivce;
 	@Autowired
 	private MemberAddressService memberAddressService;
+	@Autowired
+	private TypeService typeService;
+	@Autowired
+	private BrandService brandService;
 	
 	// 결제 페이지로 이동
 	@RequestMapping("payment")
@@ -189,8 +198,21 @@ public class CosmeticController {
 	
 	// 윤신영 - 화장품 등록 페이지 이동
 	@RequestMapping("cosmetic_register")
-	public void cosmetic_register() {
-		
+	public void cosmetic_register(Model model) {
+		List<TypeVo> tList = typeService.selectListType();
+		List<BrandVo> bList = brandService.selectListAllBrand();
+		log.info("화장품등록페이지로, List: "+tList+bList);
+		model.addAttribute("tList", tList);
+		model.addAttribute("bList", bList);
+	}
+	
+	// 아작스 - 서브 타입 가져오기
+	@RequestMapping("subTypeList")
+	@ResponseBody
+	public ResponseEntity<List<TypeVo>> sub_typeList(String type) {
+		ResponseEntity<List<TypeVo>> responseEntity = null;
+		List<TypeVo> tList =typeService.selectListSubType(type);
+		return new ResponseEntity<List<TypeVo>>(tList,HttpStatus.OK);
 	}
 	
 	/*
