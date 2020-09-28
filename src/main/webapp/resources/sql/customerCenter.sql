@@ -7,11 +7,11 @@ create table f_customerCenter(
 	category varchar2(100),
 	mno number(30),
 	primary key(mno)
-	)
+);
 	
 alter table f_customerCenter add foreign key(mno) references f_member(mno);
 select * from F_CUSTOMERCENTER;
-insert into F_CUSTOMERCENTER values(1,'a','b',sysdate,sysdate,'c',1);
+insert into F_CUSTOMERCENTER values(1,'a','b',sysdate,sysdate,1,1);
 
 delete from f_customerCenter where ccno=1;
 
