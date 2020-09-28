@@ -120,7 +120,7 @@
 			<div class="content">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-md-1">
+						<%-- <div class="col-md-1">
 						<div class="row">
 						<button class="btn btn-izone btn-flat pull-right" 
 			onclick="location='${pageContext.request.contextPath}/admin/customer/notice'"
@@ -136,14 +136,15 @@
 			onclick="location='${pageContext.request.contextPath}/admin/customer/q&a'"
 			style="background-color: white; border: 2px solid #9765da; WIDTH: 60px; color: black; "> Q&A </button>
 						</div>
-						</div>
-						<div class="col-md-8">
+						</div> --%>
+						
+						<div class="col-md-12">
 							<div class="card">
 								<div class="header">
 									<h4 class="title" style="display:inline-block;">F A Q</h4>
 			<button onclick="location='${pageContext.request.contextPath}/admin/customer/faq_write'" class="btn btn-izone btn-flat pull-right"
 			style="background-color: #9765da; color: white; ">등록</button>
-									
+									<p class="category">공지사항, FAQ, Q&A를 관리하는 페이지 입니다.</p>
 									<p class="category">
 									<ul class="nav navbar-nav navbar-center" style="margin-left:-15px;">
 
@@ -209,6 +210,7 @@
 												<option value="titleContent">제목+내용</option>
 											</select>
 										</div>
+										
 										<div class="input-group" style="display:inline-flex;">
 											<input type="text"  class="form-control" name="keyword"
 												id="keywordInput" placeholder="검색어"> <span
@@ -217,6 +219,7 @@
 											</span>
 										</div>
 									</div>
+								</div>
 										<!-- 페이징 처리 부분  -->
 									<div class="paging" style="text-align: center;">
 										<ul class="pagination justify-content-center">
@@ -247,9 +250,6 @@
 											</c:if>
 										</ul>
 									</div>	
-
-
-						</div>
 					</div>
 				</div>
 			</div>

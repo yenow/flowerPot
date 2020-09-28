@@ -178,6 +178,7 @@
                             </div>
                         </div>
                     </div>
+                    
 						<div class="col-md-12">
 							<div class="card">
 								<div class="header">
@@ -208,7 +209,7 @@
 													<c:if test="${!empty coup.discountPercent}">${coup.discountPercent}%</c:if></td>
 													<td><javatime:format value="${ coup.startDate}" pattern="yyyy년 MM월 dd일" /></td> <td>~</td>
 													<td><javatime:format value="${ coup.endDate}" pattern="yyyy년 MM월 dd일" /></td><%-- <fmt:formatDate value="${coup.endPDate}" pattern="yyyy년 MM월 dd일"/> --%></td>
-													<td><button onclick="location='#'">쿠폰 발급</button></td>
+													<td><button id="popup_open_btn">쿠폰 발급</button></td>
 												</tr>
 										</c:forEach>
 										</tbody>
@@ -252,7 +253,10 @@
 					</div>
 				</div>
 			</div>
-
+			<div id="my_modal">
+            		 모달창임니다
+            <a class="modal_close_btn">닫기</a>
+        </div>
 			<footer class="footer">
 				<div class="container-fluid">
 					<nav class="pull-left">
@@ -274,11 +278,77 @@
 
 
 		</div>
-	</div>
-
+	
 
 </body>
 
+<script>
+function modal(id) {
+    var zIndex = 9999;
+    var modal = $('#' + id);
+
+    // 모달 div 뒤에 희끄무레한 레이어
+    var bg = $('<div>')
+        .css({
+            position: 'fixed',
+            zIndex: zIndex,
+            left: '0px',
+            top: '0px',
+            width: '100%',
+            height: '100%',
+            overflow: 'auto',
+            // 레이어 색갈은 여기서 바꾸면 됨
+            backgroundColor: 'rgba(0,0,0,0.4)'
+        })
+        .appendTo('body');
+
+    modal
+        .css({
+            position: 'fixed',
+            boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+
+            // 시꺼먼 레이어 보다 한칸 위에 보이기
+            zIndex: zIndex + 1,
+
+            // div center 정렬
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            msTransform: 'translate(-50%, -50%)',
+            webkitTransform: 'translate(-50%, -50%)'
+        })
+        .show()
+        // 닫기 버튼 처리, 시꺼먼 레이어와 모달 div 지우기
+        .find('.modal_close_btn')
+        .on('click', function() {
+            bg.remove();
+            modal.hide();
+        });
+}
+
+$('#popup_open_btn').on('click', function() {
+    // 모달창 띄우기
+    modal('my_modal');
+});
+
+</script>
+
+<style>
+    #my_modal {
+        display: none;
+        width: 300px;
+        padding: 20px 60px;
+        background-color: #fefefe;
+        border: 1px solid #888;
+        border-radius: 3px;
+    }
+
+    #my_modal .modal_close_btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+</style>
 
 <!--   Core JS Files   -->
 <script src="../resources/assets/js/jquery.3.2.1.min.js"

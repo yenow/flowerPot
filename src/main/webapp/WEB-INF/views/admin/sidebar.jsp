@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-   <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+   <div class="sidebar" data-color="purple" data-image="../resources/assets/img/sidebar-5.jpg">
 	<div class="sidebar-wrapper">
 
             <div class="logo">
@@ -14,7 +14,7 @@
 
             <ul class="nav">
                 <li id="Dashboard">
-                    <a href="dashboard.html">
+                    <a href="${pageContext.request.contextPath}/admin/dashboard">
                         <i class="pe-7s-graph"></i>
                         <p>종합 현황</p>
                     </a>
@@ -43,20 +43,20 @@
                         <p>회원 관리</p>
                     </a>
                 </li>
-                <li id="Typography">
+                <li id="inventory">
                     <a href="${pageContext.request.contextPath}/admin/goods">
                         <i class="pe-7s-note2"></i>
-                        <p>재고 관리</p>
+                        <p>재고 관리(구상도못함)</p>
                     </a>
                 </li>
                 
-                <li id="Maps">
-                    <a href="${pageContext.request.contextPath}/admin/maps">
+                <li id="delevery">
+                    <a href="${pageContext.request.contextPath}/admin/delevery">
                         <i class="pe-7s-cart"></i>
-                        <p>주문 배송</p>
+                        <p>주문 배송(손도못댐)</p>
                     </a>
                 </li>
-                <li id="Icons">
+                <li id=communication>
                     <a href="${pageContext.request.contextPath}/admin/customer/notice">
                         <i class="pe-7s-speaker"></i>
                         <p>소통 관리</p>
@@ -64,13 +64,20 @@
                 </li>
 
                 <li id="Notifications">
-                    <a href="notifications.html">
+                    <a href="${pageContext.request.contextPath}/admin/notifications">
                         <i class="pe-7s-bell"></i>
-                        <p>신규 알림</p>
+                        <p>신규 알림(아직안함)</p>
                     </a>
                 </li>
+
+                <li><a><i></i><p> </p></a></li>
+                <li><a><i></i><p> </p></a></li>
+                <li><a><i></i><p> </p></a></li>
+                <li><a><i></i><p> </p></a></li>
+                <li><a><i></i><p> </p></a></li>
+
                 <li id="Icons">
-                    <a href="icons.html">
+                    <a href="${pageContext.request.contextPath}/admin/icons">
                         <i class="pe-7s-speaker"></i>
                         <p>아이콘목록(개발후지움)</p>
                     </a>

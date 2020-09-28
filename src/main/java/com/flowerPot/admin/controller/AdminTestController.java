@@ -25,17 +25,16 @@ public class AdminTestController {
 	//종합 현황
 	@RequestMapping("/dashboard")
 	public void dashboard() {
-		
 	}
 	
 	
-	@RequestMapping("/template")
+	@RequestMapping("/inventory")
 	public void template() {
 		
 	}
 	
-	@RequestMapping("/typography")
-	public void typography() {
+	@RequestMapping("/delivery")
+	public void maps() {
 		
 	}
 	

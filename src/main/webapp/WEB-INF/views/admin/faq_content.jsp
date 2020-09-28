@@ -41,7 +41,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">공지사항</a>
+                    <a class="navbar-brand" href="#">소통 관리</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -119,7 +119,7 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">공지사항</h4>
+                                <h4 class="title">F A Q</h4>
                             </div>
                             <div class="content">
                                     <div class="row">
