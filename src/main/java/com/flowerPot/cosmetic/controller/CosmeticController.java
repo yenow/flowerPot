@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,10 +25,10 @@ import com.flowerPot.cosmetic.service.CosmeticService;
 import com.flowerPot.cosmetic.service.TypeService;
 import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
 import com.flowerPot.description.service.DescriptionService;
+import com.flowerPot.domain.CosmeticCriteria;
 import com.flowerPot.domain.Criteria;
 import com.flowerPot.member.service.MemberSerivce;
 import com.flowerPot.memberAddress.service.MemberAddressService;
-import com.flowerPot.security.domain.CustomUser;
 import com.flowerPot.vo.AttachFileVo;
 import com.flowerPot.vo.BrandVo;
 import com.flowerPot.vo.CosmeticReviewVo;
@@ -39,7 +38,6 @@ import com.flowerPot.vo.MemberAddressVo;
 import com.flowerPot.vo.MemberVo;
 import com.flowerPot.vo.TypeVo;
 
-import aj.org.objectweb.asm.Type;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -185,15 +183,35 @@ public class CosmeticController {
 		model.addAttribute("crList", crList);
 	}
 	
-	// 화장품 리스트 페이지 이동
+	// 윤신영 - 화장품 리스트 페이지 이동
 	@RequestMapping("cosmetic_list")
-	public void cosmetic_list(Model model,Criteria c) {
+	public void cosmetic_list(Model model,CosmeticCriteria c,String type) {
+		log.info("화장품 리스트 페이지 이동"+c);
+		log.info("받은 파라미터"+c);
+		
 		List<CosmeticVo> cList = cosmeticService.selectListCosmeticByCategory(c);
+		// 화장품 리스트
 		model.addAttribute("cList", cList);
-		model.addAttribute("categoryName", c.getCategoryName());
+		// 카테고리 정보
+		model.addAttribute("CosmeticCriteria", c);
 		for(CosmeticVo cosmetic : cList) {
 			System.out.println("cList : " + cosmetic.toString());
 		}
+		
+		// 타입별 서브타입정보
+		if(type==null) {
+			
+		}else {
+			List<TypeVo> tList = typeService.selectListSubType(type);
+			log.info("타입:"+tList);
+			model.addAttribute("tList", tList);
+		}
+		model.addAttribute("type", type);
+		
+		// 브랜드정보
+		List<BrandVo> bList = brandService.selectListAllBrand();
+		model.addAttribute("bList", bList);
+		
 	}
 	
 	// 윤신영 - 화장품 등록 페이지 이동

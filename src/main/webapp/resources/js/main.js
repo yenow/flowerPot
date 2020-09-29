@@ -170,8 +170,8 @@
     /*==================================================================
     [ Filter / Search product ]*/
     $('.js-show-filter').on('click',function(){
-        $(this).toggleClass('show-filter');
-        $('.panel-filter').slideToggle(400);
+        $(this).toggleClass('show-filter');  // 토글 클래스
+        $('.panel-filter').slideToggle(400); 
 
         if($('.js-show-search').hasClass('show-search')) {
             $('.js-show-search').removeClass('show-search');
@@ -187,6 +187,68 @@
             $('.js-show-filter').removeClass('show-filter');
             $('.panel-filter').slideUp(400);
         }    
+    });
+    
+    // 화장품 필터
+    $('.js-type-filter').on('click',function(){
+        $(this).toggleClass('type-filter');  // brand-filter는 
+        $('.type-panel').slideToggle(400);
+        
+        console.log($('.js-type-filter').get(0));
+        console.log($('.js-type-filter').get(0));
+        if($(this).hasClass('type-filter')){
+        	$(this).html('');
+        	$(this).append($('<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-up-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/></svg><span>닫기</span>'));
+        }else{
+        	$(this).html('');
+        	$(this).append($('<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-down-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg><span>더보기</span>'));
+        }
+        /*
+        if($('.js-show-search').hasClass('show-search')) {
+            $('.js-show-search').removeClass('show-search');
+            $('.panel-search').slideUp(400);
+        }    
+        */
+    });
+    
+    // 브랜드 필터
+    $('.js-brand-filter').on('click',function(){
+        $(this).toggleClass('brand-filter');  // brand-filter는 
+        $('.brand-panel').slideToggle(400);
+        
+        if($(this).hasClass('brand-filter')){
+        	$(this).html('');
+        	$(this).append($('<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-up-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/></svg><span>닫기</span>'));
+        }else{
+        	$(this).html('');
+        	$(this).append($('<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-down-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg><span>더보기</span>'));
+        }
+        /*
+        if($('.js-show-search').hasClass('show-search')) {
+            $('.js-show-search').removeClass('show-search');
+            $('.panel-search').slideUp(400);
+        }    
+        */
+    });
+    
+    // skinType 필터
+    $('.js-skinType-filter').on('click',function(){
+        $(this).toggleClass('skinType-filter');  // brand-filter는 
+        $('.skinType-panel').slideToggle(400);
+        
+        if($(this).hasClass('skinType-filter')){
+        	$(this).html('');
+        	$(this).append($('<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-up-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/></svg><span>닫기</span>'));
+        }else{
+        	$(this).html('');
+        	$(this).append($('<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-down-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg><span>더보기</span>'));
+        }
+        /*
+        if($('.js-show-search').hasClass('show-search')) {
+            $('.js-show-search').removeClass('show-search');
+            $('.panel-search').slideUp(400);
+        }  
+         */  
     });
 
 

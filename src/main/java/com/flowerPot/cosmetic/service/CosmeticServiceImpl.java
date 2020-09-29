@@ -18,6 +18,7 @@ import com.flowerPot.attachFile.repository.AttachFileDao;
 import com.flowerPot.cosmetic.repository.CosmeticDao;
 import com.flowerPot.cosmeticReview.repository.CosmeticReviewDao;
 import com.flowerPot.description.repository.DescriptionDao;
+import com.flowerPot.domain.CosmeticCriteria;
 import com.flowerPot.domain.Criteria;
 import com.flowerPot.vo.AttachFileVo;
 import com.flowerPot.vo.CosmeticReviewVo;
@@ -52,7 +53,7 @@ public class CosmeticServiceImpl implements CosmeticService {
 
 	// 상품 정보 가져오기
 	@Override
-	public List<CosmeticVo> selectListCosmeticByCategory(Criteria c) {
+	public List<CosmeticVo> selectListCosmeticByCategory(CosmeticCriteria c) {
 		List<CosmeticVo> cList = cosmeticDao.selectListCosmeticByCategory(c);
 
 		// 화장품에 섬네일 이미지 하나를 가져오는 작업, 없다면 가져오지 않음

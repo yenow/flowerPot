@@ -86,9 +86,12 @@
 							<!-- 쇼핑 리스트 -->
 							<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list" class="dropdown-toggle">Shop</a>
 								<ul class="sub-menu">
-									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list">피부타입별</a></li>
-									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list">브랜드별</a></li>
-									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list">유형별</a></li>
+									<li style="border-bottom: 1px solid #ccc; margin: 0 10px; " ><a href="#main-menu" class="font-weight-bold" >화장품 종류</a></li>
+									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=스킨케어">스킨케어</a></li>
+									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=메이크업">메이크업</a></li>
+									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=바디케어">바디케어</a></li>
+									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=헤어케어">헤어케어</a></li>
+									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=향수/디퓨져">향수/디퓨져</a></li>
 								</ul></li>
 
 							<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip" class="dropdown-toggle">매거진</a>

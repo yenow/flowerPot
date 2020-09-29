@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.flowerPot.domain.CosmeticCriteria;
 import com.flowerPot.domain.Criteria;
 import com.flowerPot.vo.CosmeticVo;
 import com.flowerPot.vo.DescriptionVo;
@@ -14,7 +15,7 @@ public interface CosmeticService {
 
 	void insertCosmeticAndDescription(CosmeticVo cosmetic, DescriptionVo description);
 
-	List<CosmeticVo> selectListCosmeticByCategory(Criteria c);
+	List<CosmeticVo> selectListCosmeticByCategory(CosmeticCriteria c);
 
 	CosmeticVo selectOneCosmeticByCno(Integer cno);
 

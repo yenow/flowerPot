@@ -2,6 +2,7 @@ package com.flowerPot.cosmetic.repository;
 
 import java.util.List;
 
+import com.flowerPot.domain.CosmeticCriteria;
 import com.flowerPot.domain.Criteria;
 import com.flowerPot.vo.CosmeticVo;
 
@@ -15,7 +16,7 @@ public interface CosmeticDao {
 
 	void deleteByName(String name);
 
-	List<CosmeticVo> selectListCosmeticByCategory(Criteria c);
+	List<CosmeticVo> selectListCosmeticByCategory(CosmeticCriteria c);
 
 	CosmeticVo selectOneCosmeticByCno(Integer cno);
 

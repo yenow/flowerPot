@@ -3376,3 +3376,17 @@ input[type="radio"] {
 .mlr-0 {
 	 margin-left: 0;  margin-right: 0;
 }
+
+.z-index-10 {z-index: 10;}
+
+.cursor_finger {cursor: pointer;}
+
+.td-active {border-color : purple !important;  z-index : 100;  color: purple;}
+
+.fix-actice { background-color: rgba(210,101,222,0.1); color: purple; }
+
+.fluid-actice { background-color: rgba(210,101,222,0.1); color: purple; border-color : purple !important;}
+
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+    border: 1px solid #aaa;
+}
