@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime" %>
+
 <!-- https://fullcalendar.io/docs/initialize-globals  -->
 
 <!DOCTYPE html>
@@ -111,18 +115,17 @@
 			</nav>
 
 			<!-- calendar start  -->
-				<div id='calendar'  ></div>
+				<div id='calendar'  ></div><br/>
 			<!-- calendar end -->
 			
-			<!--Basic Modal -->
-                        
-                   <!-- Button trigger for basic modal -->
+                <!-- Button trigger for basic modal -->
                 <button type="button" class="btn btn-outline-primary block" data-toggle="modal" data-target="#default"
-                style="width:90%; height:90%; margin: 0 20px;">
+                		style="width:90%; height:90%; margin: 0 20px;">
                         Launch Modal
                         </button>
-            <div class="modal fade text-left" id="default" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
-                        aria-hidden="true">
+                        
+            	<div class="modal fade text-left" id="default" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+                       			 aria-hidden="true">
                             <div class="modal-dialog modal-dialog-scrollable" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -133,41 +136,50 @@
                                     </div>
                                     
 <!--  modal  -->
-                                    <div class="modal-body">
+                                	 <div class="modal-body">
                                     
-                                     <div class="schedule_name">
-                                     <div class="row" >
+                                     	<div class="schedule_name">
+                                    	 <div class="row" >
                                      
-                                     
-	                                    <div class="col-md-6" style="font-size: medium;">
-	                                      <div class="form-group">
-	                                      	일정명:
-	                                      	</div>
-	                                    </div>
+                                		<!--  일정명 selected  -->
+                                		<c:forEach var="calendar" items="${cList}">
+	                                   		 <div class="col-md-6" style="font-size: medium;">
+	                                    		  <div class="form-group">
+	                                     		 	일정명:
+	                                     		 	</div>
+	                                    	</div>
 		                                    
-		                               <div class="col-md-6">
-		                                   <input type="text" id="name" placeholder="일정명">
-		                                </div><br/>
-		                                    
-	                                   <div class="col-md-6">
-	                                        <div class="form-group">
-	                                          	  유효기간
-	                                            </div>
-	                                        </div>
-	                                    <div class="col-md-6">
-	                                          <div class="form-group">
-	                                              <input type="date" id="startD" class="form-control" name="startPDate" placeholder="시작">
+		                              		 <div class="col-md-6">
+		                               			   <input type="text" id="name" placeholder="일정 제목">
+		                               			   ${cList.title}
+		                              		  </div><br/>
+		                                
+		                                <!--  날짜 selected  -->
+	                                  		 <div class="col-md-6">
+	                                       		 <div class="form-group">
+	                                         	 	  유효기간:
+	                                         	  </div>
+	                                         </div>
+	                                   		 <div class="col-md-6">
+	                                          	<div class="form-group">
+	                                            	 <input type="date" id="startD" class="form-control" name="startPDate" placeholder="시작">
+	                                       		   	 <javatime:format value="${coup.dateChoice}" pattern="yyyy년 MM월 dd일" /></td>
 	                                            </div>
 	                                        </div><br/>
-	                                        
-                                       <div class="col-md-6" style="font-size: medium;">
-	                                      	내용:
-	                                   </div>
+	                                       
+	                                    <!--  일정내용  selected  --> 
+                                     	 	<div class="col-md-6" style="font-size: medium;">
+	                                    	   <div class="form-group">
+	                                      		일정내용 :
+	                                      		</div>
+	                                   		 </div>
 		                                    
-		                               <div class="col-md-6">
-		                                  <input type="text" id="name" placeholder="내용	">
-		                               </div><br/>
-                                        
+		                             	  <div class="col-md-6">
+		                                  	 <input type="text" id="name" placeholder="일정내용">
+		                                  	 ${cList.content}
+		                              	  </div><br/>
+		                              	  
+		                              	 </c:forEach>
                                      </div>
                                     </div>   
                                     </div>

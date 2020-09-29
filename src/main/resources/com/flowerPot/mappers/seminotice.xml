@@ -4,7 +4,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.flowerPot.semiadmin.repository.ISemiNoticeDAO">
+<mapper namespace="com.flowerPot.semiadmin.repository.ISemiNoticeMapper">
 
  <resultMap  id="SemiMap"
   type="com.flowerPot.semiadmin.model.SemiNoticeVO">
@@ -52,8 +52,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
  </update>
 
-
-
-
+ <!-- { calendar 전체 목록 출력}  -->
+ <select id ="getCalendar" resultType="com.flowerPot.semiadmin.model.SemiCalendarVO" >
+ 	select * from f_calendar order by mno asc
+ </select>
  
+ <!--  calendar 일정 추가 } -->
+ <insert id ="calendarRegist">
+     insert into f_coupon 
+     values (#{mno},#{id},#{title},#{dateChoice},#{content})
+ </insert> 
+
+
+
+
 </mapper>
