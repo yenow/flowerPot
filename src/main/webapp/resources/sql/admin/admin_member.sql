@@ -6,6 +6,26 @@ create table tf_member(
 
 drop table tf_member;
 
+create table f_member (
+    mno number(30),
+    id varchar2(100) not null,
+    password varchar2(100),
+    name varchar2(20) not null,
+    nickname varchar2(50),
+    address varchar2(100),
+    email varchar2(100),
+    phone varchar2(100),
+    gender varchar2(2),    
+    tel varchar2(100),
+    birth varchar2(10),
+    member_rank varchar2(15) default '씨앗',  
+    -- 씨앗, 새싹, 꽃, 나무
+    enabled char(1) default '1',
+    regdate date,
+    primary key(mno),
+    unique(id)
+);
+
 create table f_member(
 	mno number(38) primary key
 	,id varchar2(100) unique
@@ -21,6 +41,7 @@ create table f_member(
 );
 
 select * from tF_MEMBER;
+select * from F_MEMBER;
 
 drop table f_member;
 

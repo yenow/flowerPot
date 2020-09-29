@@ -35,26 +35,20 @@
                                 	      <div class="row">
                                              <div class="col-md-5">
                                             <div class="form-group">
-                                                <label>Company (disabled)</label>
-                                                <input type="text" class="form-control" placeholder="Company" value="Creative Code Inc.">
+                                                <label>Company</label>
+                                                <input type="text" class="form-control" placeholder="Company">
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <label>부서명</label>
-                                                <input type="text" class="form-control" name="" placeholder="부서명" value="팀장">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>직위</label>
-                                                <input type="text" class="form-control" name="" placeholder="부서명" value="팀장">
+                                                <label>브랜드명</label>
+                                                <input type="text" class="form-control" name="" placeholder="브랜드명">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">이름</label>
-                                                <input type="email" class="form-control" name="name" placeholder="이름">
+                                                <label>대표</label>
+                                                <input type="text" class="form-control" name="name" placeholder="대표">
                                             </div>
                                         </div>
                                     </div>
@@ -63,19 +57,19 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>비밀번호</label>
-                                                <input type="text" class="form-control" name="firstName" placeholder="성" value="대">
+                                                <input type="text" class="form-control" name="firstName" placeholder="비밀번호" >
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>비밀번호 확인</label>
-                                                <input type="text" class="form-control" name="firstName" placeholder="성" value="대">
+                                                <input type="text" class="form-control" name="firstName" placeholder="비밀번호 확인" >
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>이메일</label>
-                                                <input type="text" class="form-control" name="lastName"placeholder="이름" value="통령">
+                                                <label for="exampleInputEmail1">이메일</label>
+                                                <input type="email" class="form-control" name="lastName"placeholder="example@xxxxx.xxx" >
                                             </div>
                                         </div>
                                     </div>
@@ -138,7 +132,7 @@
                                         </div>
                                     </div>
 
-                                    <button type="submit" class="btn btn-izone btn-flat pull-right" style="background-color: #9765da; color: white;">등록</button>
+                                    <button type="submit" class="btn btn-izone btn-flat pull-right" style="background-color: #212b52; color: white; border:1px solid #212b52;">등록</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>

@@ -29,6 +29,16 @@ public class MemServiceImpl implements IMemService {
 	public Integer countArticles(SearchVO search) {
 		return mapper.countArticles(search);
 	}
+
+	@Override
+	public void deleteMember(Integer mno) {
+		mapper.deleteMember(mno);
+	}
+
+	@Override
+	public void restoreMember(Integer mno) {
+		mapper.restoreMember(mno);
+	}
 	
 	
 	

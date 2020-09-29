@@ -185,7 +185,7 @@
                                         </div>
                                     </div>
 
-                                    <button type="submit" class="btn btn-izone btn-fill pull-right" style="background-color: #9765da; color: white;">등록</button>
+                                    <button type="submit" class="btn btn-izone btn-fill pull-right" style="background-color: #212b52; color: white; border: 1px solid #212b52;">등록</button>
                                     <div class="clearfix"></div>
                                 </form>
                                 </div>

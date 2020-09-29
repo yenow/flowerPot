@@ -38,6 +38,8 @@ public class AdminQandAController {
 		pc.setPaging(search);
 		List<CustomerVo> qList = service.selectQandAList(search);
 		model.addAttribute("qList",qList);
+		model.addAttribute("pc",pc);
+
 		return "/admin/q&a";
 	}
 

@@ -30,7 +30,7 @@
 										<div class="card-header ">
 											<h4 class="card-title" style="display:inline-block;">F A Q</h4>
 											<a class="nav-link dropdown-toggle"  href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#212b52; display:inline-block;">
-                                    <span class="no-icon" style="color:#212b52">카테고리</span>
+                                    <span class="no-icon" style="color:#212b52;">카테고리</span>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="${pageContext.request.contextPath}/admin/customer/notice">공지사항</a>
@@ -39,7 +39,7 @@
                                 </div>
 														<button class="btn btn-izone btn-flat pull-right" 
 			onclick="location='${pageContext.request.contextPath}/admin/customer/faq_write'"
-			style="background-color: #212b52; color: white; ">작성</button>
+			style="background-color: #212b52; color: white; border: 1px solid #212b52;">작성</button>
 											<p class="card-category">공지사항, FAQ, Q&A를 관리하는 페이지 입니다</p>
 											<br>
 											<!-- 검색 기능 -->

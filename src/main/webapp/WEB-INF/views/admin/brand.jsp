@@ -51,7 +51,7 @@ $(function() {
 									<div class="card strpied-tabled-with-hover">
 										<div class="card-header ">
 											<h4 class="card-title" style="display:inline-block;">브랜드 목록</h4>
-											<button class="btn btn-izone btn-flat" onclick="location='${pageContext.request.contextPath}/admin/brandAdd'" style="display:inline-block; background-color: #212b52; color: white; margin-left: 20px;">
+											<button class="btn btn-izone btn-flat" onclick="location='${pageContext.request.contextPath}/admin/brandAdd';" style="display:inline-block; border: 1px solid #212b52; background-color: #212b52; color: white; margin-left: 20px;">
 											신규 등록
 											</button>
 											<!-- 검색 기능 -->

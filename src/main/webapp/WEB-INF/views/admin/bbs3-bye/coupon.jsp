@@ -207,8 +207,8 @@
 													<c:if test="${!empty coup.discountMoney}">${coup.discountMoney}원</c:if></td>
 													<td><c:if test="${empty coup.discountPercent}">0%</c:if>
 													<c:if test="${!empty coup.discountPercent}">${coup.discountPercent}%</c:if></td>
-													<td><javatime:format value="${ coup.startDate}" pattern="yyyy년 MM월 dd일" /></td> <td>~</td>
-													<td><javatime:format value="${ coup.endDate}" pattern="yyyy년 MM월 dd일" /></td><%-- <fmt:formatDate value="${coup.endPDate}" pattern="yyyy년 MM월 dd일"/> --%></td>
+													<td><javatime:format value="${coup.startDate}" pattern="yyyy년 MM월 dd일" /></td> <td>~</td>
+													<td><javatime:format value="${coup.endDate}" pattern="yyyy년 MM월 dd일" /></td><%-- <fmt:formatDate value="${coup.endPDate}" pattern="yyyy년 MM월 dd일"/> --%></td>
 													<td><button id="popup_open_btn">쿠폰 발급</button></td>
 												</tr>
 										</c:forEach>

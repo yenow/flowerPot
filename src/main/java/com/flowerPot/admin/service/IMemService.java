@@ -13,6 +13,10 @@ public interface IMemService {
 
 	public Integer countArticles(SearchVO search);
 
+	public void deleteMember(Integer mno);
+
+	public void restoreMember(Integer mno);
+
 
 
 }

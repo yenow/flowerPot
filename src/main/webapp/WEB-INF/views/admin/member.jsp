@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime" %>
+
 
 <!DOCTYPE html>
 
@@ -60,7 +62,7 @@ $(function() {
 												id="keywordInput" placeholder="검색어" style="width: 200px;">
 											<span class="input-group-btn "> 
 												<input type="button"
-												style="background-color: #9765da; color: white; display: inline-block;" value="검색"
+												style="background-color: #212b52; color: white; display: inline-block;" value="검색"
 												class="btn btn-izone btn-flat" id="searchBtn" >
 											</span>
 										</div>
@@ -114,9 +116,18 @@ $(function() {
 													<td>${mem.gender}</td>
 													<td>${mem.birth}</td>
 													<td>${mem.member_rank}</td>
-													<td>${mem.regdate}</td>
-													<td>${mem.enabled}</td>
-													<td><button class="" onclick="location='#'">탈퇴</button></td>
+													<td>${mem.regdate}<%-- <javatime:format value="${mem.regdate}" pattern="yyyy년 MM월 dd일"/> --%> </td>
+													<td><c:if test="${mem.enabled eq 'true'}">활성화①</c:if><c:if test="${mem.enabled ne 'true'}">비활성화②</c:if></td>
+													<td>
+													<form action="${pageContext.request.contextPath}/admin/member_delete">
+														<input type="hidden" name="mno" value="${mem.mno}" />
+														<input type="submit" value="탈퇴">
+													</form>
+													<form action="${pageContext.request.contextPath}/admin/member_restore">
+														<input type="hidden" name="mno" value="${mem.mno}" />
+														<input type="submit" value="복구">
+													</form>
+													</td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -152,7 +163,7 @@ $(function() {
 											<c:if test="${pc.prev}">
 												<li class="page-item"><a class="page-link"
 													href="<c:url value='/admin/member/${pc.makeURI(pc.beginPage - 1)}' />"
-													style="background-color: #9765da; margin-top: 0; height: 40px; color: white; border: 0px solid #d3d3d3; opacity: 0.8">이전</a>
+													style="background-color: #212b52; margin-top: 0; height: 40px; color: white; border: 0px solid #212b52; opacity: 0.8">이전</a>
 												</li>
 											</c:if>
 
@@ -162,7 +173,7 @@ $(function() {
 												<li class="page-item"><a
 													href="<c:url value='/admin/member/${pc.makeURI(pageNum)}'/>"
 													class="page-link ${(pc.paging.page == pageNum) ? 'page-active' : ''}"
-													style="margin-top: 0; height: 40px; color: #9765da; text-align: center; border: 1px solid #d3d3d3;">${pageNum}</a>
+													style="margin-top: 0; height: 40px; color: #212b52; text-align: center; border: 1px solid #212b52;">${pageNum}</a>
 												</li>
 											</c:forEach>
 
@@ -170,7 +181,7 @@ $(function() {
 											<c:if test="${pc.next}">
 												<li class="page-item"><a class="page-link"
 													href="<c:url value='/admin/member/${pc.makeURI(pc.endPage + 1)}' />"
-													style="background-color: #9765da; margin-top: 0; height: 40px; color: white; border: 0px solid #d3d3d3; opacity: 0.8">다음</a>
+													style="background-color: #212b52; margin-top: 0; height: 40px; color: white; border: 0px solid #212b52; opacity: 0.8">다음</a>
 												</li>
 											</c:if>
 										</ul>

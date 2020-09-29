@@ -7,18 +7,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.flowerPot.admin.dao.CNoticeMapper">
 	
 	<sql id="search">
-		<if test="condition == 'ccno'"> 
+		<if test="condition == 'cno'"> 
 		WHERE ccno LIKE '%'||#{keyword}||'%' 
 		</if>
 		<if test="condition == 'title'"> 
 		WHERE title LIKE '%'||#{keyword}||'%' 
 		</if>
-		<if test="condition == 'content'">
-		WHERE content LIKE '%'||#{keyword}||'%' 
-		</if>
-		<if test="condition == 'titleContent'">
-		WHERE title LIKE '%'||#{keyword}||'%' 
-		 OR content LIKE '%'||#{keyword}||'%'
+
+		<if test="condition == 'ccnoTitle'">
+		WHERE ccno LIKE '%'||#{keyword}||'%' 
+		 OR title LIKE '%'||#{keyword}||'%'
 		</if>
 	</sql>
 	

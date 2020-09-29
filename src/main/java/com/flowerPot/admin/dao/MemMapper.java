@@ -16,6 +16,10 @@ public interface MemMapper {
 	public List<MemberVo> getArticleList(SearchVO search);
 
 	public Integer countArticles(SearchVO search);
+
+	public void deleteMember(Integer mno);
+
+	public void restoreMember(Integer mno);
 	
 
 

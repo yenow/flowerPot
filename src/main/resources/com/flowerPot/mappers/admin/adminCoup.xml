@@ -5,6 +5,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.flowerPot.admin.dao.CoupMapper">
+
+	<sql id="search">
+		<if test="condition == 'couponName'"> 
+		WHERE couponName LIKE '%'||#{keyword}||'%' 
+		</if>
+	</sql>
 	
 	<insert id="couponRegist">
 		INSERT INTO f_coupon values
@@ -12,6 +18,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="selectCoupList" resultType="coup">
-		SELECT * FROM f_coupon ORDER BY couNo DESC
+		SELECT * FROM 
+		(SELECT rownum rnum, couNo, couponName, discountMoney, discountPercent, startDate, endDate
+		FROM
+		(SELECT * FROM f_coupon 
+		<include refid="search"/>
+		 ORDER BY couNo DESC))
+		WHERE  rnum BETWEEN #{pageStart} AND #{pageEnd}
+	</select>
+	<!-- 쿠폰발급시 발급대상 회원의 ID를 검색하기 위한 쿼리문 -->
+	<select id="selectMemOne" resultType="mem">
+		SELECT * FROM f_member WHERE id = #{id}
+	</select>
+	
+	<select id="countCouponArticles" resultType="int">
+		SELECT COUNT(*) FROM f_coupon
 	</select>
 </mapper>

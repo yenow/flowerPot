@@ -14,8 +14,8 @@ public class AdminBrandController {
 	}
 	//브랜드 추가
 	@RequestMapping("/brandAdd")
-	public void brandAdd() {
-		
+	public String brandAdd() {
+		return"admin/brandAdd";
 	}
 	
 }

@@ -28,6 +28,7 @@ public class AdminFAQController {
 		pc.setPaging(search);
 		List<CustomerVo> fList = service.selectFaQList(search);
 		model.addAttribute("fList",fList);
+		model.addAttribute("pc",pc);
 		return "/admin/faq";
 	}
 

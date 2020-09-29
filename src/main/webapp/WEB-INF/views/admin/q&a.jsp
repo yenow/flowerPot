@@ -51,7 +51,7 @@
 											</div>
 											<button class="btn btn-izone btn-flat pull-right"
 												onclick="location='${pageContext.request.contextPath}/admin/customer/q&a_write'"
-												style="background-color: #212b52; color: white;">등록</button>
+												style="background-color: #212b52; color: white; border: 1px solid #212b52;">작성</button>
 											<p class="card-category">공지사항, FAQ, Q&A를 관리하는 페이지 입니다</p>
 											<br>
 												<!-- 검색 기능 -->

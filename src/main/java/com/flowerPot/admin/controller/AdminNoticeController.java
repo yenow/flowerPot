@@ -28,6 +28,7 @@ public class AdminNoticeController {
 		pc.setPaging(search);
 		List<CustomerVo> nList = service.selectNoticeList(search);
 		model.addAttribute("nList",nList);
+		model.addAttribute("pc",pc);
 		return "/admin/notice";
 	}
 

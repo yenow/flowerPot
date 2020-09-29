@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.flowerPot.admin.commons.SearchVO;
 import com.flowerPot.admin.dao.CoupMapper;
 import com.flowerPot.admin.vo.CoupVo;
+import com.flowerPot.vo.MemberVo;
 
 @Service
 public class CoupServiceImpl implements ICoupService {
@@ -22,6 +23,14 @@ public class CoupServiceImpl implements ICoupService {
 	@Override
 	public List<CoupVo> selectCoupList(SearchVO search) {
 		return mapper.selectCoupList(search);
+	}
+	@Override
+	public MemberVo selectMemOne(String id) {
+		return mapper.selectMemOne(id);
+	}
+	@Override
+	public Integer countCouponArticles(SearchVO search) {
+		return mapper.countCouponArticles(search);
 	}
 	
 }
