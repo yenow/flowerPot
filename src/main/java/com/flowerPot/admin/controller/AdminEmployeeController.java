@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.flowerPot.admin.commons.PageCreator;
@@ -60,7 +61,11 @@ public class AdminEmployeeController {
 	
 	// 회원가입 페이지로 이동
 		@RequestMapping("/employee/signUp")
-		public String signUp() {
+		public String signUp(String empId, Integer empName, Model m) {
+			System.out.println(empId);
+			System.out.println(empName);
+			m.addAttribute("empId",empId);
+			m.addAttribute("empName",empName);
 			return "/admin/signUp";
 		}
 		
