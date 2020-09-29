@@ -28,8 +28,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from f_cosmetic
 	</select>
 	
+	
 	<select id="selectListCosmeticByCategory" resultType="com.flowerPot.vo.CosmeticVo">
 		select * from f_cosmetic 
+		<where>
+			type = #{type, jdbcType=VARCHAR}
+			<if test="sub_type != 'All'">
+				and sub_type = #{sub_type}
+			</if>
+			<if test="brand != 'All'">
+				and brand = #{brand}
+			</if>
+			<if test="skinType != 'All'">
+				and skinType = #{skinType}
+			</if>
+		</where>
 	</select>
 	
 	<resultMap type="com.flowerPot.vo.CosmeticVo" id="cosmetic">

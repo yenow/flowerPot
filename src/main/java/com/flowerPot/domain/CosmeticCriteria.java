@@ -7,6 +7,7 @@ public class CosmeticCriteria {
 	private String sub_type;
 	private String brand;
 	private String skinType;
+	private String type;
 	private int pageNum;
 	private int amount;
 

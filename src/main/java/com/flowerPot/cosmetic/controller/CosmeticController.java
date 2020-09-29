@@ -185,32 +185,27 @@ public class CosmeticController {
 	
 	// 윤신영 - 화장품 리스트 페이지 이동
 	@RequestMapping("cosmetic_list")
-	public void cosmetic_list(Model model,CosmeticCriteria c,String type) {
+	public void cosmetic_list(Model model,CosmeticCriteria c) {
 		log.info("화장품 리스트 페이지 이동"+c);
 		log.info("받은 파라미터"+c);
 		
-		List<CosmeticVo> cList = cosmeticService.selectListCosmeticByCategory(c);
-		// 화장품 리스트
-		model.addAttribute("cList", cList);
-		// 카테고리 정보
-		model.addAttribute("CosmeticCriteria", c);
-		for(CosmeticVo cosmetic : cList) {
-			System.out.println("cList : " + cosmetic.toString());
-		}
-		
-		// 타입별 서브타입정보
-		if(type==null) {
-			
-		}else {
-			List<TypeVo> tList = typeService.selectListSubType(type);
+		List<CosmeticVo> cList = null;
+		// type이 null이 아닐떄, 화장품 리스트를 가져올수 있다.
+		if(c.getType()!=null) {
+			List<TypeVo> tList = typeService.selectListSubType(c.getType()); // 타입에 해당하는 서브 타입 가져오기
+			cList = cosmeticService.selectListCosmeticByCategory(c);  // 화장품 리스트 가져오기
 			log.info("타입:"+tList);
+			
 			model.addAttribute("tList", tList);
 		}
-		model.addAttribute("type", type);
-		
 		// 브랜드정보
 		List<BrandVo> bList = brandService.selectListAllBrand();
+ 
+		model.addAttribute("cList", cList);
 		model.addAttribute("bList", bList);
+		// 카테고리 정보
+		model.addAttribute("CosmeticCriteria", c);
+		model.addAttribute("type", c.getType());
 		
 	}
 	
