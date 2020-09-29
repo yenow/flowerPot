@@ -20,6 +20,10 @@
 	<link rel="stylesheet" href="../resources/semiadmin_css/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
 	<link rel="stylesheet" href="../resources/semiadmin_css/assets/css/app.css">
 	<link rel="shortcut icon" href="../resources/semiadmin_css/assets/images/favicon.svg" type="image/x-icon">
+	<!-- php -->
+	<link rel="stylesheet" href="../resources/semiadmin_css/calendar/php/get-events.php" >
+	<link rel="stylesheet" href="../resources/semiadmin_css/calendar/php/utils.php" >
+	<link rel="stylesheet" href="../resources/semiadmin_css/calendar/php/get-time-zones.php" >
 
 <!-- calendar script -->
 <link href='../resources/semiadmin_css/calendar/main.css' rel='stylesheet' />
@@ -115,7 +119,7 @@
 			</nav>
 
 			<!-- calendar start  -->
-				<div id='calendar'  ></div><br/>
+				<div id='calendar'></div><br/>
 			<!-- calendar end -->
 			
                 <!-- Button trigger for basic modal -->
@@ -155,7 +159,7 @@
 		                              		  </div><br/>
 		                                
 		                                <!--  날짜 selected  -->
-	                                  		 <div class="col-md-6">
+	                                  		 <div class="col-md-6"> 
 	                                       		 <div class="form-group">
 	                                         	 	  유효기간:
 	                                         	  </div>
@@ -178,7 +182,6 @@
 		                                  	 <input type="text" id="name" placeholder="일정내용">
 		                                  	 ${cList.content}
 		                              	  </div><br/>
-		                              	  
 		                              	 </c:forEach>
                                      </div>
                                     </div>   
@@ -211,6 +214,9 @@
 			});
 			calendar.render();
 		});
+		
+
+		
 	</script>
 
 </body>

@@ -21,7 +21,7 @@ public interface ISemiNoticeMapper {
 	// { Inventory 목록 가져오기  }
 	List<SemiInventoryVO> getInvenArticles();
 	
-	// Inventory 화장품 번호로  수량 submit 하기}
+	// Inventory 화장품 번호로  수량 submit 하기 }
 	void submitInven(SemiInventoryVO semi);
 
 	// { 캘린더 목록 출력하기 
