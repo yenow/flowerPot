@@ -6,6 +6,7 @@ import com.flowerPot.semiadmin.model.SemiCalendarVO;
 import com.flowerPot.semiadmin.model.SemiInventoryVO;
 import com.flowerPot.semiadmin.model.SemiNoticeVO;
 import com.flowerPot.semiadmin.model.SemiReviewVO;
+import com.flowerPot.vo.CosmeticVo;
 
 public interface ISemiNoticeService {
 
@@ -31,6 +32,9 @@ public interface ISemiNoticeService {
 
 	// calendar 일정 등록 } 
 	void calendarRegist(SemiCalendarVO sclendar);
+
+	// { productManage 상품 } 
+
 
 
 

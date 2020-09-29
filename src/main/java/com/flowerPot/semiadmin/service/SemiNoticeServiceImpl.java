@@ -11,6 +11,7 @@ import com.flowerPot.semiadmin.model.SemiInventoryVO;
 import com.flowerPot.semiadmin.model.SemiNoticeVO;
 import com.flowerPot.semiadmin.model.SemiReviewVO;
 import com.flowerPot.semiadmin.repository.ISemiNoticeMapper;
+import com.flowerPot.vo.CosmeticVo;
 
 @Service
 @Repository
@@ -60,6 +61,8 @@ public class SemiNoticeServiceImpl implements ISemiNoticeService {
 	public void calendarRegist(SemiCalendarVO sclendar) { 
 		 mapper.calendarRegist(sclendar);
 	}
+
+	// { productManage 상품 } 
 
 
 	

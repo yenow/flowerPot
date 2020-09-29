@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.flowerPot.cosmetic.service.CosmeticService;
 import com.flowerPot.semiadmin.model.SemiCalendarVO;
 import com.flowerPot.semiadmin.model.SemiInventoryVO;
 import com.flowerPot.semiadmin.model.SemiNoticeVO;
 import com.flowerPot.semiadmin.model.SemiReviewVO;
 import com.flowerPot.semiadmin.service.ISemiNoticeService;
+import com.flowerPot.vo.CosmeticVo;
 
 @Controller
 @RequestMapping("/semiadmin")
@@ -24,7 +26,8 @@ public class SemiAdminController {
 
 	@Autowired
 	private ISemiNoticeService service;
-	
+	@Autowired
+	private CosmeticService cosmeticService;
 
 // { dashboard _ main }
 	@RequestMapping("/dashboard")
@@ -75,6 +78,17 @@ public class SemiAdminController {
 		model.addAttribute("ilist",ilist);
 		
 	}
+	
+    // 제품 관리 기능
+	@RequestMapping("/productManage")
+	public void productManage(Model model) {
+		System.out.println("productManage 실행중..");
+		
+		List<CosmeticVo> colist = cosmeticService.productManage(model);
+		model.addAttribute("colist",colist);
+				
+	}
+	
 //   inventory  재고 목록  추가 }
 	@PostMapping("/inventory")
 	public String inventory(Model model,SemiInventoryVO semi) {
