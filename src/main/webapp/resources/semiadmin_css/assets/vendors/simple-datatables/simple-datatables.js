@@ -1,4 +1,4 @@
-(function(f)
+/*(function(f)
 		{if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()
 			}else if(typeof define==="function"&&define.amd){define([],f)
 				}else{var g;if(typeof window!=="undefined"){g=window
@@ -25,3 +25,4 @@
 
 },{"./date-4abbfef1.js":1}]},{},[2])(2)
 });
+*/

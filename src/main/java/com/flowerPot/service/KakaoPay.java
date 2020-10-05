@@ -40,9 +40,14 @@ public class KakaoPay {
 	    
 	 public String kakaoPayReady(List<OrderProductVo> olist) {
 		 	// 주문번호 생성
+		 	
 		    CosmeticVo cosmetic = cosmeticDao.selectOneCosmeticByCno(olist.get(0).getCno());
 		    String order_num= cosmetic.getBrand()+UUID.randomUUID().toString();  // 주문번호
 		    log.info("주문번호:"+order_num);
+		    
+		    //상품명
+		    String item_name="";
+		    
 		 	// 반복문으로 주문테이블에 저장
 		 	// mno 가 있냐 없냐에 따라서 다른방법으로 db에 저장
 		 	for(OrderProductVo orderProduct : olist) {
@@ -55,10 +60,10 @@ public class KakaoPay {
 		 			orderProduct.setOrder_num(order_num);
 		 			orderProductDao.insertOrderProductNoMember(orderProduct);
 		 		}
+		 		item_name=item_name.concat("/"+cosmeticDao.selectOneCosmeticByCno(orderProduct.getCno()));
 		 	}
-		 
+		 	// 최종 결제 가격
 		 	Integer final_price = olist.get(0).getFinal_price();
-		 
 		 
 	        RestTemplate restTemplate = new RestTemplate();
 	        
@@ -73,7 +78,7 @@ public class KakaoPay {
 	        params.add("cid", "TC0ONETIME");
 	        params.add("partner_order_id", "1001");     			// 가맹점 주문번호
 	        params.add("partner_user_id", "flowerpot");				 // 가명점 회원아이디
-	        params.add("item_name", "갤럭시S9"); 	//변경				 // 상품명
+	        params.add("item_name", item_name); 	//변경				 // 상품명
 	        params.add("item_code", order_num); //변경 				 // 상품코드 
 	        params.add("quantity", "1");  	//변경						 // 상품수량
 	        params.add("total_amount", final_price.toString());	//변경	   // 상품 총액
@@ -107,10 +112,14 @@ public class KakaoPay {
 		 
 	        log.info("KakaoPayInfoVO............................................");
 	        log.info("-----------------------------");
+	        log.info("order_num : " + order_num);
 	        
 	        // order_num 주문번호로.. 상품정보 가져오자!
+	        List<OrderProductVo> oList = orderProductDao.selectListOrderProductByOrderNum(order_num);
 	        
 	        // 가격만 일단 맞춰주면 된다;
+	        int total_amount = oList.get(0).getFinal_price();
+	        log.info("total_amount : " + total_amount);
 	        
 	        RestTemplate restTemplate = new RestTemplate();
 	 
@@ -127,7 +136,7 @@ public class KakaoPay {
 	        params.add("partner_order_id", "1001");
 	        params.add("partner_user_id", "flowerpot");
 	        params.add("pg_token", pg_token);
-	        params.add("total_amount", "21000");
+	        params.add("total_amount", Integer.toString(total_amount));
 	        
 	        HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
 	        

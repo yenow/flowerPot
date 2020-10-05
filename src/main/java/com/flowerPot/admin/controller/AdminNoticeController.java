@@ -27,7 +27,10 @@ public class AdminNoticeController {
 		PageCreator pc = new PageCreator();
 		pc.setPaging(search);
 		List<CustomerVo> nList = service.selectNoticeList(search);
+		pc.setArticleTotalCount(service.countNoticeArticles(search));
 		model.addAttribute("nList",nList);
+		model.addAttribute("pc",pc);
+		System.out.println("검색어 컨디션 : "+search.getCondition());
 		return "/admin/notice";
 	}
 

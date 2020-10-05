@@ -17,4 +17,9 @@ public class DeliveryServiceImpl implements DeliveryService {
 		deliveryDao.insertDelivery(delivery);
 	}
 
+	@Override
+	public DeliveryVo selectMemDeliIdInfo(String id) {
+		return deliveryDao.selectMemDeliIdInfo(id);
+	}
+
 }

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.flowerPot.admin.commons.SearchVO;
 import com.flowerPot.admin.dao.MemMapper;
-import com.flowerPot.admin.vo.EmpVo;
 import com.flowerPot.vo.MemberVo;
 
 @Service
@@ -29,6 +28,16 @@ public class MemServiceImpl implements IMemService {
 	@Override
 	public Integer countArticles(SearchVO search) {
 		return mapper.countArticles(search);
+	}
+
+	@Override
+	public void deleteMember(Integer mno) {
+		mapper.deleteMember(mno);
+	}
+
+	@Override
+	public void restoreMember(Integer mno) {
+		mapper.restoreMember(mno);
 	}
 	
 	

@@ -1,191 +1,145 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime" %>
-<!doctype html>
-<html lang="en">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime"%>
+
+<!DOCTYPE html>
+
+<html lang="ko">
 <head>
-<meta charset="utf-8" />
-<link rel="icon" type="image/png" href="assets/img/favicon.ico">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-<title>Light Bootstrap Dashboard by Creative Tim</title>
-
-<meta
-	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
-	name='viewport' />
-<meta name="viewport" content="width=device-width" />
-
-
-<!-- Bootstrap core CSS     -->
-<link href="../resources/assets/css/bootstrap.min.css" rel="stylesheet" />
-
-<!-- Animation library for notifications   -->
-<link href="../resources/assets/css/animate.min.css" rel="stylesheet" />
-
-<!--  Light Bootstrap Table core CSS    -->
-<link
-	href="../resources/assets/css/light-bootstrap-dashboard.css?v=1.4.0"
-	rel="stylesheet" />
-
-
-<!--  CSS for Demo Purpose, don't include it in your project     -->
-<link href="../resources/assets/css/demo.css" rel="stylesheet" />
-
-
-<!--     Fonts and icons     -->
-<link
-	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
-	rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300'
-	rel='stylesheet' type='text/css'>
-<link href="../resources/assets/css/pe-icon-7-stroke.css"
-	rel="stylesheet" />
+<jsp:include page="info/resources.jsp" />
+<%--css,img,script등 정적자원 --%>
+<script>
+$(function() {
+	$('#searchBtn').click(function(){
+		console.log('검색버튼이 클릭됨!');
+		let keyword = $('#keywordInput').val();
+		console.log('검색어 : '+keyword);
+		const condition = $('#condition option:selected').val();
+		console.log('검색조건 : '+condition);
+		location.href="${pageContext.request.contextPath}/admin/coupon?keyword="+keyword+"&condition="+condition;
+	});
 	
-<script src="../resources/js/admin_coupon.js"></script>
-<script src="../resources/js/jquery.js"></script>
+	$('#keywordInput').keydown(function(key){
+		if(key.keyCode == 13){
+			$('#searchBtn').click();
+		}
+	});
+});
+function check(){
+	if($.trim($('#coupName').val())==''){
+		alert('쿠폰 이름을 입력하세요!');
+		$('#coupName').val('').focus();
+		return false;
+	}
+	if(($.trim($('#discMoney').val())=='') && ($.trim($('#discPercent').val())=='')){
+		alert('할인액과 할인률중 하나 이상 입력하세요!');
+		$('#discMoney').val('').focus();
+		return false;
+	}
+	/*if($.trim($('#discPercent').val())==''){
+		alert('할인 율을 입력하세요!');
+		$('#discPercent').val('').focus();
+		return false;
+	}*/
+	if($.trim($('#startD').val())==''){
+		alert('쿠폰 시작기간을 입력하세요!');
+		$('#startD').val('').focus();
+		return false;
+	}
+	if($.trim($('#endD').val())==''){
+		alert('쿠폰 마감기간을 입력하세요!');
+		$('#endD').val('').focus();
+		return false;
+	}
+}
+</script>
 </head>
 <body>
-
 	<div class="wrapper">
-		<jsp:include page="sidebar.jsp" />
+		<!-- 사이드바 -->
+		<jsp:include page="info/sidebar.jsp" />
 		<%--사이드바 --%>
 
-
 		<div class="main-panel">
-			<nav class="navbar navbar-default navbar-fixed">
+			<!-- header(nav) -->
+			<nav class="navbar navbar-expand-lg " color-on-scroll="500">
 				<div class="container-fluid">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse"
-							data-target="#navigation-example-2">
-							<span class="sr-only">Toggle navigation</span> <span
-								class="icon-bar"></span> <span class="icon-bar"></span> <span
-								class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="#">쿠폰 관리</a>
-					</div>
-					<div class="collapse navbar-collapse">
-						<ul class="nav navbar-nav navbar-left">
-							<li><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown"> <i class="fa fa-dashboard"></i>
-									<p class="hidden-lg hidden-md">Dashboard</p>
-							</a></li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown"> <i class="fa fa-globe"></i> <b
-									class="caret hidden-sm hidden-xs"></b> <span
-									class="notification hidden-sm hidden-xs">5</span>
-									<p class="hidden-lg hidden-md">
-										5 Notifications <b class="caret"></b>
-									</p>
-							</a>
-								<ul class="dropdown-menu">
-									<li><a href="#">Notification 1</a></li>
-									<li><a href="#">Notification 2</a></li>
-									<li><a href="#">Notification 3</a></li>
-									<li><a href="#">Notification 4</a></li>
-									<li><a href="#">Another notification</a></li>
-								</ul></li>
-							<li><a href=""> <i class="fa fa-search"></i>
-									<p class="hidden-lg hidden-md">Search</p>
-							</a></li>
-						</ul>
+					<a class="navbar-brand" href="#pablo"> 쿠폰 관리 </a>
+					<jsp:include page="info/header.jsp" />
+					<%--헤더(네비) --%>
 
-						<ul class="nav navbar-nav navbar-right">
-							<li><a href="">
-									<p>Account</p>
-							</a></li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown">
-									<p>
-										Dropdown <b class="caret"></b>
-									</p>
+					<!-- 본문 시작 -->
+					<div class="content">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-md-8">
+									<form action="${pageContext.request.contextPath}/admin/couponRegist" method="post" onsubmit="return check();">
+										<div class="card">
+											<div class="card-header">
+												<button type="submit" class="btn btn-izone btn-flat pull-right" style="background-color: #212b52; color: white; border: 1px solid #212b52;">등록</button>
+												<h4 class="card-title">쿠폰 등록</h4>
+											</div>
+											<div class="card-body">
+												<div class="row">
+													<div class="col-md-2">
+														<div class="form-group">
+															<label>쿠폰 이름</label>
+															<input type="text" id="coupName" class="form-control" name="couponName" placeholder="쿠폰 이름">
+														</div>
+													</div>
 
-							</a>
-								<ul class="dropdown-menu">
-									<li><a href="#">Action</a></li>
-									<li><a href="#">Another action</a></li>
-									<li><a href="#">Something</a></li>
-									<li><a href="#">Another action</a></li>
-									<li><a href="#">Something</a></li>
-									<li class="divider"></li>
-									<li><a href="#">Separated link</a></li>
-								</ul></li>
-							<li><a href="${pageContext.request.contextPath}/logout">
-									<p>로그아웃</p>
-							</a></li>
-							<li class="separator hidden-lg hidden-md"></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-			<div>
-			</div>
-			<div class="content">
-				<div class="container-fluid">
-					<div class="row">
+													<div class="col-md-2">
+														<div class="form-group">
+															<label>할인 액</label>
+															<input type="text" id="discMoney" class="form-control" name="discountMoney" placeholder="할인 금액">
+														</div>
+													</div>
+													<div class="col-md-2">
+														<div class="form-group">
+															<label>할인 율</label>
+															<input type="text" id="discPercent" class="form-control" name="discountPercent" placeholder="할인 율">
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="form-group">
+															<label>유효기간</label>
+															<input type="date" id="startD" class="form-control" name="startPDate" placeholder="시작">
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="form-group">
+															<label>마감기간</label>
+															<input type="date" id="endD" class="form-control" name="endPDate" placeholder="마감">
+														</div>
+													</div>
+												</div>
+												<div class="clearfix"></div>
+									</form>
+								</div>
+							</div>
+						</div>
 						<div class="col-md-12">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">쿠폰 등록</h4>
-                            </div>
-                            <div class="content">
+							<div class="card strpied-tabled-with-hover">
+								<div class="card-header ">
+									<h4 class="card-title" style="display: inline-block;">쿠폰 목록</h4>
+									<div class="pull-right" style="text-align: right;">
 
-                                <form action="${pageContext.request.contextPath}/admin/couponRegist" method="post" onsubmit="return check();">
-                                    <div class="row">
-                                       
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>쿠폰 이름</label>
-                                                <input type="text" id="coupName" class="form-control" name="couponName" placeholder="쿠폰 이름" >
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-1">
-                                            <div class="form-group">
-                                                <label>할인액</label>
-                                                <input type="text" id="discMoney" class="form-control" name="discountMoney" placeholder="할인 금액">
-                                             </div>
-                                        </div>
-                                        <div class="col-md-1">
-                                            <div class="form-group">
-                                                <label>할인율</label>
-                                                <input type="text" id="discPercent" class="form-control" name="discountPercent" placeholder="할인 율">
-                                           </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>유효기간</label>
-                                                <input type="date" id="startD" class="form-control" name="startPDate" placeholder="시작">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                            	<label>　</label>
-                                                <input type="date" id="endD" class="form-control" name="endPDate" placeholder="마감">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                            	<label>　</label>
-                                    <button type="submit" class="btn btn-izone btn-flat pull-right" style="background-color: #9765da; color: white;">등록</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-						<div class="col-md-12">
-							<div class="card">
-								<div class="header">
-									<h4 class="title" style="display:inline-block;">쿠폰 목록</h4>
-<!-- 									<p class="category">부제</p>
- -->								</div>
-								<div class="content table-responsive table-full-width">
+										<div class="input-group pull-right" style="text-align: right !important;">
+											<select id="condition" class="y-form-control" name="condition" style="width: 100px;">
+												<option value="couponName">쿠폰명</option>
+											</select>
+											<input type="text" class="y-form-control" name="keyword" id="keywordInput" placeholder="쿠폰 이름을 입력하세요" style="width: 200px;">
+											<span class="input-group-btn "> <input type="button" style="background-color: #212b52; color: white; display: inline-block;" value="검색" class="btn btn-izone btn-flat" id="searchBtn">
+											</span>
+										</div>
+									</div>
+									<p class="card-category">부제</p>
+								</div>
+								<div class="card-body table-full-width table-responsive">
 									<table class="table table-hover table-striped">
+										<!-- 게시글 목록 출력 -->
+										<!-- 게시글 목록 출력 -->
 										<!-- 쿠폰 목록 출력 -->
 										<thead>
 											<th>쿠폰 번호</th>
@@ -198,110 +152,230 @@
 											<th>비 고</th>
 										</thead>
 										<tbody>
-										<c:forEach var="coup" items="${cList}">
+											<c:forEach var="coup" items="${cList}">
 												<tr>
 													<td>${coup.couNo}</td>
-													<td>${coup.couponName}</td>
-													<td><c:if test="${empty coup.discountMoney}">0원</c:if>
-													<c:if test="${!empty coup.discountMoney}">${coup.discountMoney}원</c:if></td>
-													<td><c:if test="${empty coup.discountPercent}">0%</c:if>
-													<c:if test="${!empty coup.discountPercent}">${coup.discountPercent}%</c:if></td>
-													<td><javatime:format value="${ coup.startDate}" pattern="yyyy년 MM월 dd일" /></td> <td>~</td>
-													<td><javatime:format value="${ coup.endDate}" pattern="yyyy년 MM월 dd일" /></td><%-- <fmt:formatDate value="${coup.endPDate}" pattern="yyyy년 MM월 dd일"/> --%></td>
-													<td><button onclick="location='#'">쿠폰 발급</button></td>
+													<td class="c-name">${coup.couponName}</td>
+													<td>
+														<c:if test="${empty coup.discountMoney}">0원</c:if>
+														<c:if test="${!empty coup.discountMoney}">${coup.discountMoney}원</c:if>
+													</td>
+													<td>
+														<c:if test="${empty coup.discountPercent}">0%</c:if>
+														<c:if test="${!empty coup.discountPercent}">${coup.discountPercent}%</c:if>
+													</td>
+													<td>
+														<javatime:format value="${coup.startDate}" pattern="yyyy년 MM월 dd일" />
+													</td>
+													<td>~</td>
+													<td>
+														<javatime:format value="${coup.endDate}" pattern="yyyy년 MM월 dd일" />
+													</td>
+													<%-- <fmt:formatDate value="${coup.endPDate}" pattern="yyyy년 MM월 dd일"/> --%>
+													</td>
+													<td>
+														<button id="popup_open_btn" data-toggle="modal" data-target="#myModal1" href="#pablo" value="${coup.couponName}" onclick="return giftCoupon(this);">쿠폰 발급</button>
+													</td>
 												</tr>
-										</c:forEach>
+											</c:forEach>
 										</tbody>
 									</table>
-
 								</div>
 							</div>
 						</div>
-										<!-- 페이징 처리 부분  -->
-									<div class="paging" style="text-align: center;">
-										<ul class="pagination justify-content-center">
-											<!-- 이전 버튼 -->
-											<c:if test="${pc.prev}">
-												<li class="page-item"><a class="page-link"
-													href="<c:url value='/admin/coupon${pc.makeURI(pc.beginPage - 1)}' />"
-													style="background-color: #9765da; margin-top: 0; height: 40px; color: white; border: 0px solid #d3d3d3; opacity: 0.8">이전</a>
-												</li>
-											</c:if>
 
-											<!-- 페이지 버튼 -->
-											<c:forEach var="pageNum" begin="${pc.beginPage}"
-												end="${pc.endPage}">
-												<li class="page-item"><a
-													href="<c:url value='/admin/coupon${pc.makeURI(pageNum)}'/>"
-													class="page-link ${(pc.paging.page == pageNum) ? 'page-active' : ''}"
-													style="margin-top: 0; height: 40px; color: #9765da; border: 1px solid #d3d3d3;">${pageNum}</a>
-												</li>
-											</c:forEach>
+						<!-- 검색 기능 -->
+						<!-- <div class="col-md-12 ">
+									<div class="pull-right" style="text-align: right;">
+										<div class="input-group pull-right" style="text-align: right !important; ">
+											<select id="condition" class="y-form-control"
+												name="condition" style="width: 100px;">
+												<option value="mno">번호</option>
+												<option value="id">ID</option>
+												<option value="name">이름</option>
+											</select> <input type="text" class="y-form-control " name="keyword"
+												id="keywordInput" placeholder="검색어" style="width: 200px;">
+											<span class="input-group-btn "> 
+												<input type="button"
+												style="background-color: #212b52; color: white; display: inline-block;" value="검색"
+												class="btn btn-izone btn-flat" id="searchBtn" >
+											</span>
+										</div>
+									</div>
+								</div> -->
+						<div class="col-md-12">
+							<!-- 페이징 처리 부분  -->
+							<div class="paging">
+								<ul class="pagination justify-content-center">
+									<!-- 이전 버튼 -->
+									<c:if test="${pc.prev}">
+										<li class="page-item"><a class="page-link" href="<c:url value='/admin/coupon/${pc.makeURI(pc.beginPage - 1)}' />" style="background-color: #212b52; margin-top: 0; height: 40px; color: white; border: 0px solid #d3d3d3; opacity: 0.8">이전</a></li>
+									</c:if>
 
-											<!-- 다음 버튼 -->
-											<c:if test="${pc.next}">
-												<li class="page-item"><a class="page-link"
-													href="<c:url value='/admin/coupon${pc.makeURI(pc.endPage + 1)}' />"
-													style="background-color: #9765da; margin-top: 0; height: 40px; color: white; border: 0px solid #d3d3d3; opacity: 0.8">다음</a>
-												</li>
-											</c:if>
-										</ul>
-									</div>	
+									<!-- 페이지 버튼 -->
+									<c:forEach var="pageNum" begin="${pc.beginPage}" end="${pc.endPage}">
+										<li class="page-item"><a href="<c:url value='/admin/coupon/${pc.makeURI(pageNum)}'/>" class="page-link ${(pc.paging.page == pageNum) ? 'page-active' : ''}" style="margin-top: 0; height: 40px; color: #212b52; text-align: center; border: 1px solid #d3d3d3;">${pageNum}</a></li>
+									</c:forEach>
 
-
+									<!-- 다음 버튼 -->
+									<c:if test="${pc.next}">
+										<li class="page-item"><a class="page-link" href="<c:url value='/admin/coupon/${pc.makeURI(pc.endPage + 1)}' />" style="background-color: #212b52; margin-top: 0; height: 40px; color: white; border: 0px solid #d3d3d3; opacity: 0.8">다음</a></li>
+									</c:if>
+								</ul>
+							</div>
+						</div>
 					</div>
+
+					<!-- Mini Modal -->
+					<div class="modal fade modal modal-primary" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content" style="border: 3px solid #00498c; border-radius: 20px;">
+								<div class="modal-header justify-content-center" style="display: inline-block;">
+									<h3 style="text-align: center; color: #00498c; font-weight: bold">쿠폰 발급</h3>
+
+									<h4 style="text-align: center;" id="coupon-name">내용</h4>
+
+
+									<!-- 
+                                    <div class="modal-profile">
+                                        <i class="nc-icon nc-bulb-63"></i> 
+                                    </div>
+                                        -->
+								</div>
+								<div class="modal-body text-center">
+
+									<input type="radio" name="radio" value="1" onchange="setDisplay();">
+									모든 회원 &nbsp;
+									<input type="radio" id="appoint" name="radio" value="2" onchange="setDisplay();">
+									특정 회원
+
+
+									<!-- <div id="memApp" style="display: none;">
+                                	<div class="input-group pull-right" >
+										<input type="text"class="y-form-control" name="keyword" id="keywordInput" placeholder="id" style="width: 100px; margin-left: 180px;">
+										<span class="input-group-btn "> 
+											<input type="button" style="background-color: #212b52; color: white; display: inline-block;" value="검색"	 class="btn btn-izone btn-flat"id="searchBtn">
+										</span>
+									</div>
+                                </div> -->
+									<div id="memApp" style="display: none;">
+									
+									<!-- 검색 아이디 유효성 검증 -->
+									<b id="idChk"></b>
+									
+										<div class="input-group mb-3">
+											<input type="text" class="form-control" id="idBox" placeholder="id를 입력하세요" aria-label="Recipient's username" aria-describedby="basic-addon2" style="border: 1px solid #19375e;">
+											<div class="input-group-append">
+												<button class="btn" id="searchId" type="button" style="background-color: #19375e; border: 1px solid #19375e; color: white;">검색</button>
+											</div>
+										</div>
+										<!-- ul -->
+										<ul class="list-group" style="border: 1px solid #19375e; border-radius: 5px;">
+										</ul>
+									</div>
+								</div>
+								<div class="modal-footer pull-right">
+									<form action="#" method="post">
+										<input type="submit" class="btn btn-flat pull-right" data-dismiss="modal" style="background-color: #19375e; color: white; border: 1px solid #19375e; margin-left: 180px;" value="지급">
+									</form>
+									<!-- <button type="button" class="btn btn-link btn-simple">Back</button> -->
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!--  End Modal -->
+
 				</div>
-			</div>
-
-			<footer class="footer">
-				<div class="container-fluid">
-					<nav class="pull-left">
-						<ul>
-							<li><a href="#"> Home </a></li>
-							<li><a href="#"> Company </a></li>
-							<li><a href="#"> Portfolio </a></li>
-							<li><a href="#"> Blog </a></li>
-						</ul>
-					</nav>
-					<p class="copyright pull-right">
-						&copy;
-						<script>document.write(new Date().getFullYear())</script>
-						<a href="http://www.creative-tim.com">Creative Tim</a>, made with
-						love for a better web
-					</p>
-				</div>
-			</footer>
-
-
 		</div>
-	</div>
+		<!-- 모달 -->
 
+		<!-- 본문 끝 -->
+
+		<!-- footer -->
+		<jsp:include page="info/footer.jsp" />
+		<%--푸터 --%>
+
+	</div>
+	</div>
 
 </body>
 
+<script>
 
-<!--   Core JS Files   -->
-<script src="../resources/assets/js/jquery.3.2.1.min.js"
-	type="text/javascript"></script>
-<script src="../resources/assets/js/bootstrap.min.js"
-	type="text/javascript"></script>
+//restAPI와 Ajax()를 활용하여 DB정보를 가져온다
+$(function() {
+	//엔터를 눌렀을때 키다운
+	$('#idBox').keydown(function(key){
+		if(key.keyCode == 13){
+			$('#searchId').click();
+		}
+	});
+	
+	//버튼 클릭 이벤트
+	$("#searchId").click(function(){
+		//ajax통신으로 서버에서 값 받아오기 
+		const id= $('#idBox').val();
+		console.log("id: "+id);
+		
+		/* 모달창의 id입력박스가 비어있을떄 경고메시지 */
+		if($.trim($('#idBox').val())==''){
+			$("#idBox").css("background-color", "pink");
+			$("#idChk").html("<b style='font-size:14px; color:red;'>ID를 입력해주세요</b>");						
+			$('#idBox').val('').focus();
+			/* 비어있지 않다면 ajax 실행 */
+			return false;
+		}	
+		$.ajax({
+			type:"get",
+			url: "${pageContext.request.contextPath}/admin/coupon/"+id,
+			headers:{
+				"Content-Type": "application/json"
+			},
+		/* data: id, */
+			dataType:"json",
+			success:function(result){
+				console.log(result);
+				console.log(result.id);
+				const memberId = result.id;
+				console.log('ID : '+memberId);
+				//.append()함수를통해서 가져온 정보를 html태그와 함께 누적해서 추가한다.
+				$("#idChk").html("<b></b>"); /* 이건 작동됨 */
+				$('#idBox').val('').focus();
 
-<!--  Charts Plugin -->
-<script src="../resources/assets/js/chartist.min.js"></script>
-
-<!--  Notifications Plugin    -->
-<script src="../resources/assets/js/bootstrap-notify.js"></script>
-
-<!--  Google Maps Plugin    -->
-<script type="text/javascript"
-	src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
-<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-<script
-	src="../resources/assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
-
-<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-<script src="../resources/assets/js/demo.js"></script>
+				$("#idBox").css("background-color", "#e8f0fe");/* 이게 안먹음 검색성공하면 녹색으로 색이바껴야하는데 안먹음*/
+				$('.list-group').append('<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #fafad2;" >'+memberId+'<input type="checkbox" value=""></li>');
+			}
+			,error: function() {//DB에 데이터가 없을때 이곳에서 검증
+				$('#idBox').val('').focus();
+				$("#idBox").css("background-color", "pink");/* 이게 안먹음 검색실패하면 핑크색으로 색이바껴야하는데 안먹음*/
+				$("#idChk").html("<b style='font-size:14px; color:red;'>요청하신 회원의 정보를 찾을수 없습니다</b>");						
+				
+			}
+		});
+		
+	})
+});
 
 
+	
+
+
+function giftCoupon(data) {
+	console.log(data);
+	console.log($(data).parent());
+	console.log($(data).parent().parent().children('.c-name').html());
+	$('#coupon-name').html($(data).parent().parent().children('.c-name').html());
+} 
+
+function setDisplay(){
+    if($('input:radio[id=appoint]').is(':checked')){
+        $('#memApp').show();
+    }else{
+        $('#memApp').hide();
+    }
+}
+
+
+</script>
 </html>

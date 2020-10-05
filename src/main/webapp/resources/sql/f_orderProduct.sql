@@ -6,15 +6,15 @@ create table f_orderProduct(
 	dno number(30),  -- 제약조건
 	order_num varchar2(100),  --주문번호
 	amount number(30),   --주문량
-	state varchar2(100),  -- 
-	deliver_state varchar2(100),  -- 배송상태
-	member_rank varchar2(30),  --회원등급
+	state varchar2(100) default '주문완료',  -- 
+	deliver_state varchar2(100) default '배송시작',  -- 배송상태
+	member_rank varchar2(30) default '새싹',  --회원등급
 	point number(30),   --포인트 사용
 	coupon_name varchar2(50),   -- 사용한 쿠폰번호
 	regdate date,   -- 구입날짜
 	tel varchar2(30),    -- 비회원용 전화번호
 	email varchar2(100),   -- 비회원용 이메일
-	final_price number(30)
+	final_price number(30)  -- 최종 액수
 );
 
 

@@ -4,12 +4,22 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="member">
+<mapper namespace="com.flowerPot.member.repository.MemberDao">
 	
 	<resultMap type="com.flowerPot.vo.MemberVo" id="memberMap">
+		<result property="mno" column="mno"/>
 		<result property="id" column="id"/>
 		<result property="password" column="password"/>
 		<result property="name" column="name"/>
+		<result property="nickname" column="nickname"/>
+		<result property="address" column="address"/>
+		<result property="email" column="email"/>
+		<result property="phone" column="phone"/>
+		<result property="tel" column="tel"/>
+		<result property="gender" column="gender"/>
+		<result property="birth" column="birth"/>
+		<result property="member_rank" column="member_rank"/>
+		<result property="regdate" column="regdate"/>
 		<collection property="authList" resultMap="authMap"></collection>
 	</resultMap>
 	
@@ -36,38 +46,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</sql>
 	
 	<select id="read" resultMap="memberMap">
-		select mem.id, mem.password, mem.name, auth.authority from f_member mem left outer join f_authority auth on mem.id = auth.id where mem.id = #{id}
+		select mem.mno, mem.id, mem.password, mem.name ,auth.authority from f_member mem left outer join f_authority auth on mem.id = auth.id where mem.id = #{id}
 	</select>
-	
-	
 	
 	<insert id="insertMember">
 		<!-- int mno, String id, String password, String name, String nickname, String address, String email, String gender, String birth, String member_rank, boolean enabled -->
-		insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,member_rank,enabled,regdate) values
-		(mno_seq.nextval,#{id},#{password},#{name, jdbcType=VARCHAR},#{nickname, jdbcType=VARCHAR},#{address, jdbcType=VARCHAR},#{email, jdbcType=VARCHAR},#{gender, jdbcType=VARCHAR},#{birth, jdbcType=VARCHAR},#{member_rank, jdbcType=VARCHAR},#{enabled, jdbcType=CHAR},sysdate)
+		insert into f_member (mno,id,password,name,nickname,address,email,gender,tel,birth,member_rank,enabled,regdate) values
+		(mno_seq.nextval,#{id},#{password},#{name, jdbcType=VARCHAR},#{nickname, jdbcType=VARCHAR},#{address, jdbcType=VARCHAR},#{email, jdbcType=VARCHAR},#{gender, jdbcType=VARCHAR},#{tel, jdbcType=VARCHAR},#{birth, jdbcType=VARCHAR},#{member_rank, jdbcType=VARCHAR},#{enabled, jdbcType=CHAR},sysdate)
 		<selectKey resultType="int" keyProperty="mno" order="AFTER">
 			select mno_seq.currval from dual
 		</selectKey>
 	</insert>
 	
-	
-	<!-- <select id="getArticleList" resultMap="memberMap">		
-		SELECT * FROM 
-		(SELECT rownum rnum, mno, id, name, nickname, address, email, gender, birth, member_rank, regdate, enabled(
-		FROM 
-		(SELECT * FROM f_member 
-		<include refid="search"/>
-		 ORDER BY mno DESC))
-		WHERE  rnum BETWEEN #{pageStart} AND #{pageEnd}
-	</select> -->
-	
-	
 	<select id="selectTotalCount" resultType="int">
 		select count(*) from f_member
 	</select>
-
 	
+	<select id="checkId" resultType="int">
+		SELECT COUNT(*) FROM f_member 
+		where id=#{member}
+	</select>
+	
+	<select id="checkEmail" resultType="int">
+		SELECT COUNT(*) FROM f_member 
+		where email=#{member}
+	</select>
+	
+	<select id="checkPhone" resultType="int">
+		SELECT COUNT(*) FROM f_member 
+		where tel=#{member}
+	</select>
 	<delete id="deleteMemberById">
 		delete from f_member where id=#{id}	
 	</delete>
+	
+	<select id="selectOneMemberById" resultType="com.flowerPot.vo.MemberVo">
+		select * from f_member where id= #{id}
+	</select>
+
+	<select id="selectOneDeliMemById" resultType="com.flowerPot.vo.MemberVo"> <!-- 배송조회에 필요한 정보만 새로운객체에 담기 -->
+		select * from f_member where id= #{id}
+	</select>
 </mapper>

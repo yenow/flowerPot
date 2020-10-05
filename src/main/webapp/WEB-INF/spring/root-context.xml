@@ -33,8 +33,8 @@
 		<property name="configLocation" value="classpath:/mybatis-config.xml" />
 		<!-- classpath경로는 이클립스 가상경로가 src/main/resources 이다. 이 경로에 있는 mybatis-config.xml 
 			파일을 읽어들임 이 파일의 기능은 데이터 저장빈 클래스의 객체명 별칭을 관리한다. -->
-		<property name="mapperLocations" value="classpath:/com/flowerPot/**/**.xml" />
-
+		<property name="mapperLocations" value="classpath:/com/flowerPot/mappers/**/*.xml" />
+		<!-- <property name="mapperLocations" value="classpath:/com/flowerPot/mappers/*.xml" />  -->
 		<!-- mybatis 쿼리문을 담는 매퍼태그 xml위치 -->
 	</bean>	
 	
@@ -43,6 +43,7 @@
 		<!-- constructor-arg의 뜻은 생성자를 통한 의존성 주입 => DI -->
 	</bean>
 	
+	<context:component-scan base-package="com.flowerPot.test"></context:component-scan>
 	<context:component-scan base-package="com.flowerPot.service"></context:component-scan>
 	<context:component-scan base-package="com.flowerPot.dao"></context:component-scan>
 	<context:component-scan base-package="com.flowerPot.security"></context:component-scan>
@@ -92,5 +93,11 @@
 	
 	<context:component-scan base-package="com.flowerPot.semiadmin.service"/>	
 	<mybatis-spring:scan base-package="com.flowerPot.semiadmin.repository"/>
+
+	<context:component-scan base-package="com.flowerPot.memberAddress.service"/>	
+	<mybatis-spring:scan base-package="com.flowerPot.memberAddress.repository" />
+	
+	<context:component-scan base-package="com.flowerPot.brand.service"/>	
+	<mybatis-spring:scan base-package="com.flowerPot.brand.repository" />
 	<!-- /컴포넌트 스캔 -->	
 </beans>

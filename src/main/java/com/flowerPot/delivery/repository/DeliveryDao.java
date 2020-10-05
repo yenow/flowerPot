@@ -9,4 +9,6 @@ public interface DeliveryDao {
 	void deleteAll();
 	
 	int selectCount();
+
+	DeliveryVo selectMemDeliIdInfo(String id);
 }

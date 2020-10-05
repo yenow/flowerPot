@@ -9,3 +9,8 @@ create table f_memberAddress(
 );
 
 select * from f_memberAddress;
+
+insert into f_memberAddress values (3,'postcode','street_address','parcel_address','detail_address','more_infomation','deliver_state');
+
+-- 현재 계정 모든 테이블 조회
+SELECT * FROM tab;

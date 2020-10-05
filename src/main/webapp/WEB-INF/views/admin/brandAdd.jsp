@@ -1,320 +1,433 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!doctype html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<!DOCTYPE html>
+
+<html lang="ko">
 <head>
-	<meta charset="utf-8" />
-	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<jsp:include page="info/resources.jsp" />
+<%--css,img,script등 정적자원 --%>
+<script>
+$(function() {
+	let chk1 = false, chk2 = false, chk3 = true, chk4 = false; chk5 = false; //제대로된 입력정보 기준 true / false는 문제가있는 상태
+	//회사 체크
+	$('#company').on('keyup', function() {
+		const company = $(this).val();
+		console.log(company);
+		
+		$.ajax({
+			type:"post",
+			url: "${pageContext.request.contextPath}/admin/cmpnyCheck",
+			headers:{
+				"Content-Type": "application/json"
+			},
+	 		data: company, 
+			dataType:"text",
+			success:function(result){
+				if(result === "OK") {
+					$("#company").css("border", "3px solid green");
+					$("#comCheck").html("<b style='font-size:14px; color:green;'>　사용 가능!</b>");	
+					$('#company').focus();
+					chk1 = true;
+				} else {
+					$("#company").css("border", "3px solid red");
+					$("#comCheck").html("<b style='font-size:14px; color:red;'>　중복!</b>");		
+					$("#company").focus();
+					chk1 = false
+				}
+			}
+			,error: function() {//DB에 데이터가 없을때 이곳에서 검증
+			}
+			
+		});
+	
+	});
+	
+	//브랜드명 체크
+	$('#bName').on('keyup', function() {
+		const bName = $(this).val();
+		console.log(bName);
+		
+		$.ajax({
+			type:"post",
+			url: "${pageContext.request.contextPath}/admin/bNameCheck",
+			headers:{
+				"Content-Type": "application/json"
+			},
+	 		data: bName, 
+			dataType:"text",
+			success:function(result){
+				if(result === "OK") {
+					$("#bName").css("border", "3px solid green");
+					$("#bnmCheck").html("<b style='font-size:14px; color:green;'>　사용 가능!</b>");
+					chk2 = true;
 
-	<title>Light Bootstrap Dashboard by Creative Tim</title>
+				} else {
+					$("#bName").css("border", "3px solid red");
+					$("#bnmCheck").html("<b style='font-size:14px; color:red;'>　중복!</b>");	
+					$("#bName").focus();
+					chk2 = false;
+				}
+			}
+			,error: function() {//DB에 데이터가 없을때 이곳에서 검증
+			}
+			
+		});
+	
+	});
+	//사업자번호 체크
+	$('#busNo').on('keyup', function() {
+		const busNo = $(this).val();
+		console.log(busNo);
 
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
+		$.ajax({
+			type:"post",
+			url: "${pageContext.request.contextPath}/admin/busNoCheck",
+			headers:{
+				"Content-Type": "application/json"
+			},
+	 		data: busNo, 
+			dataType:"text",
+			success:function(result){
+				if(result === "OK") {
+					$("#busNo").css("border", "3px solid green");
+					$("#bnoCheck").html("<b style='font-size:14px; color:green;'>　사용 가능!</b>");
+					chk3 = true;
+
+				} else {
+					$("#busNo").css("border", "3px solid red");
+					$("#bnoCheck").html("<b style='font-size:14px; color:red;'>　중복!</b>");						
+					$("#busNo").focus();
+					chk3 = false;
+				}
+			}
+			,error: function() {//DB에 데이터가 없을때 이곳에서 검증
+			}
+			
+		});		
+	
+	});
+	//전화번호 체크
+	$('#tel').on('keyup', function() {
+		const tel = $(this).val();
+		console.log(tel);
+		
+		$.ajax({
+			type:"post",
+			url: "${pageContext.request.contextPath}/admin/telCheck",
+			headers:{
+				"Content-Type": "application/json"
+			},
+	 		data: tel, 
+			dataType:"text",
+			success:function(result){
+				if(result === "OK") {
+					$("#tel").css("border", "3px solid green");
+					$("#tCheck").html("<b style='font-size:14px; color:green;'>　사용 가능!</b>");
+					chk4 = true;
+
+				} else {
+					$("#tel").css("border", "3px solid red");
+					$("#tCheck").html("<b style='font-size:14px; color:red;'>　중복!</b>");						
+					$("#tel").focus();
+					chk4 = false;
+				}
+			}
+			,error: function() {//DB에 데이터가 없을때 이곳에서 검증
+			}
+			
+		});
+	
+	});
+	//이메일 체크
+	$('#email').on('keyup', function() {
+		const email = $(this).val();
+		console.log(email);
+		
+		$.ajax({
+			type:"post",
+			url: "${pageContext.request.contextPath}/admin/emailCheck",
+			headers:{
+				"Content-Type": "application/json"
+			},
+	 		data: email, 
+			dataType:"text",
+			success:function(result){
+				if(result === "OK") {
+					$("#email").css("border", "3px solid green");
+					$("#eCheck").html("<b style='font-size:14px; color:green;'>　사용 가능!</b>");
+					chk5 = true;
+
+				} else {
+					$("#email").css("border", "3px solid red");
+					$("#eCheck").html("<b style='font-size:14px; color:red;'>　중복!</b>");
+					$("#email").focus();
+					chk5 = false;
+				}
+			}
+			,error: function() {//DB에 데이터가 없을때 이곳에서 검증
+			}
+			
+		});
+	
+	});
+	$('#submit').click(function(e) {
+		if($.trim($('#company').val())==''){
+			alert('회사 이름을 입력하세요!');
+			$('#company').val('').focus();
+			return false;
+		}
+
+		if($.trim($('#bName').val())==''){
+			alert('브랜드명을 입력하세요!');
+			$('#bName').val('').focus();
+			return false;
+		}
+		if($.trim($('#bnoCheck').val())==''){ //사업자번호 미입력시에도 가입시키기
+			chk3=true;
+		}
+		if($.trim($('#tel').val())==''){
+			alert('전화번호를 입력하세요!');
+			$('#tel').val('').focus();
+			return false;
+		}
+		if($.trim($('#email').val())==''){
+			alert('이메일을 입력하세요!');
+			$('#email').val('').focus();
+			return false;
+		}
+		if($.trim($('#sample4_roadAddress').val())==''){
+			alert('기본 주소가 비었습니다. 우편번호를 검색하세요!');
+			$('#sample4_roadAddress').val('').focus();
+			return false;
+		}
+		if(chk1 && chk2 && chk3 && chk4 && chk5) {
+			//아이디 정보
+			const company = $("#company").val();
+			const brandName = $("#bName").val();
+			const busNo = $("#busNo").val();
+			const ceoName = $("#ceoName").val();
+			const tel = $("#tel").val();
+			const email = $("#email").val();
+			const postcode = $("#sample4_postcode").val();
+			const roadAddr = $("#sample4_roadAddress").val();
+			const jibunAddr = $("#sample4_jibunAddress").val();
+			const extraAddr = $("#sample4_extraAddress").val();
+			const detailAddr = $("#sample4_detailAddress").val();
+			const introduce = $("#introduce").val();
+			
+			const brand = {
+				company: company,
+				brandName: brandName,
+				busNo: busNo,
+				ceoName: ceoName,
+				tel: tel,
+				email: email,
+				postcode: postcode,
+				roadAddr: roadAddr,
+				jibunAddr: jibunAddr,
+				extraAddr: extraAddr,
+				detailAddr: detailAddr,
+				introduce: introduce
+			};
+			$.ajax({
+				type: "POST", //서버에 전송하는 HTTP요청 방식
+				url: "${pageContext.request.contextPath}/admin/brandAdd_ok", //서버 요청 URI
+				headers: {
+					"Content-Type": "application/json"
+				}, //요청 헤더 정보
+				dataType: "text", //응답받을 데이터의 형태
+				data: JSON.stringify(brand), //서버로 전송할 데이터
+				success: function(result) { //함수의 매개변수는 통신성공시의 데이터가 저장될 곳.
+					console.log("통신 성공!: " + result);
+					if(result === "addSuccess") {
+						alert("브랜드 등록 성공!");
+						location.href="${pageContext.request.contextPath}/admin/brand";
+						
+					} else {
+						alert("브랜드 등록 실패!");
+					}
+				}, //통신 성공시 처리할 내용들을 함수 내부에 작성.
+				error: function() {
+					console.log("통신 실패!");
+				} //통신 실패 시 처리할 내용들을 함수 내부에 작성.
+			});
+		
+		} else {
+			alert('중복된 정보를 확인해주세요');
+		}
+	});
+});
 
 
-    <!-- Bootstrap core CSS     -->
-    <link href="../resources/assets/css/bootstrap.min.css" rel="stylesheet" />
+/* 미입력 유효성 방지 */
+ 
+function check(){
 
-    <!-- Animation library for notifications   -->
-    <link href="../resources/assets/css/animate.min.css" rel="stylesheet"/>
+}
 
-    <!--  Light Bootstrap Table core CSS    -->
-    <link href="../resources/assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
-
-
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="../resources/assets/css/demo.css" rel="stylesheet" />
-
-
-    <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href="../resources/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+</script>
 </head>
 <body>
+	<div class="wrapper">
+		<!-- 사이드바 -->
+		<jsp:include page="info/sidebar.jsp" />
+		<%--사이드바 --%>
 
-<div class="wrapper">
-    <jsp:include page="sidebar.jsp"/> <%--사이드바 --%>
+		<div class="main-panel">
+			<!-- header(nav) -->
+			<nav class="navbar navbar-expand-lg " color-on-scroll="500">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="#pablo"> 입점 관리 </a>
+					<jsp:include page="info/header.jsp" />
+					<%--헤더(네비) --%>
 
-
-    <div class="main-panel">
-		<nav class="navbar navbar-default navbar-fixed">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">브랜드 관리</a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-sm hidden-xs"></b>
-                                    <span class="notification hidden-sm hidden-xs">5</span>
-									<p class="hidden-lg hidden-md">
-										5 Notifications
-										<b class="caret"></b>
-									</p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                           <a href="">
-                                <i class="fa fa-search"></i>
-								<p class="hidden-lg hidden-md">Search</p>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                           <a href="">
-                               <p>Account</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-										Dropdown
-										<b class="caret"></b>
-									</p>
-
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <p>Log out</p>
-                            </a>
-                        </li>
-						<li class="separator hidden-lg hidden-md"></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">브랜드 등록</h4>
-                            </div>
-                            <div class="content">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label>Company (disabled)</label>
-                                                <input type="text" class="form-control" disabled placeholder="Company" value="Creative Code Inc.">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>부서명</label>
-                                                <input type="text" class="form-control" name="" placeholder="부서명" value="팀장">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>직위</label>
-                                                <input type="text" class="form-control" name="" placeholder="부서명" value="팀장">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">이름</label>
-                                                <input type="email" class="form-control" name="name" placeholder="이름">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>비밀번호</label>
-                                                <input type="text" class="form-control" name="firstName" placeholder="성" value="대">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>비밀번호 확인</label>
-                                                <input type="text" class="form-control" name="firstName" placeholder="성" value="대">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>이메일</label>
-                                                <input type="text" class="form-control" name="lastName"placeholder="이름" value="통령">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-
-
-									<div class="row">
-										<div class="col-md-3">
-											<div class="form-group">
-												<label>우편 번호</label> 
-												<input type="text" name ="postcode" id="sample4_postcode"  class="form-control" placeholder="우편 번호"/>
-											</div>
+					<!-- 본문 시작 -->
+					<div class="content">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-md-8">
+									<div class="card">
+										<div class="card-header">
+											<h4 class="card-title">브랜드 등록</h4>
+											<label>중복되는 타 회사와 타 브랜드 이름으로 등록할 수 없습니다.</label>
+											
 										</div>
-										<div class="col-md-3" style="margin-top:30px;">
-											<div class="form-group">
-												<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-											</div>	
+										<div class="card-body">
+											<form method="post" >
+												<!-- url등록하기 -->
+												<div class="row">
+													<div class="col-md-4">
+														<div class="form-group">
+															<label>Company</label><b id="comCheck"></b>
+															<input type="text" class="form-control" name="company" id="company" placeholder="Company">
+														</div> 
+													</div>
+													<div class="col-md-4">
+														<div class="form-group">
+															<label>브랜드명</label><b id="bnmCheck"></b>
+															<input type="text" class="form-control" name="brandName" id="bName" placeholder="브랜드명">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="form-group">
+															<label>사업자 번호</label><b id="bnoCheck"></b>
+															<input type="text" class="form-control" name="busNo" id="busNo" placeholder="대표">
+														</div>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-4">
+														<div class="form-group">
+															<label>대표</label>
+															<input type="text" class="form-control" id="ceoName" placeholder="대표">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="form-group">
+															<label>전화번호</label><b id="tCheck"></b>
+															<input type="text" class="form-control"  id="tel"placeholder="전화번호">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="form-group">
+															<label for="exampleInputEmail1">이메일</label><b id="eCheck"></b>
+															<input type="email" class="form-control" id="email"placeholder="example@xxxxx.xxx">
+														</div>
+													</div>
+												</div>
+
+
+
+												<div class="row">
+													<div class="col-md-3">
+														<div class="form-group">
+															<label>우편 번호</label>
+															<input type="text" name="postcode" id="sample4_postcode" class="form-control" placeholder="우편 번호" />
+														</div>
+													</div>
+													<div class="col-md-3" style="margin-top: 30px;">
+														<div class="form-group">
+															<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+															<br>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label>도로명 주소</label>
+															<input type="text" name="roadAddr" id="sample4_roadAddress" class="form-control" placeholder="도로명 주소">
+														</div>
+													</div>
+
+													<div class="col-md-6">
+														<div class="form-group">
+															<label>지번 주소</label>
+															<input type="text" name="jibunAddr" id="sample4_jibunAddress" class="form-control" placeholder="지번 주소">
+														</div>
+													</div>
+												</div>
+												<!-- span태그가 없으면 팝업창이 종료되지 않습니다. -->
+												<span id="guide" style="color: #999; display: none"></span>
+												<div class="row">
+													<div class="col-md-12">
+														<div class="form-group">
+															<label>참고 주소</label>
+															<input type="text" name="extraAddr" id="sample4_extraAddress" class="form-control" placeholder="참고 주소" />
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-12">
+														<div class="form-group">
+															<label>상세 주소</label>
+															<input type="text" name="detailAddr" id="sample4_detailAddress" class="form-control" placeholder="상세 주소" />
+														</div>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-12">
+														<div class="form-group">
+															<label>브랜드 소개</label>
+															<textarea name="introduce" id="introduce" rows="5" cols="80" class="form-control" placeholder="Here can be your description"></textarea>
+														</div>
+													</div>
+												</div>
+
+												<button type="button" id="submit" class="btn btn-flat pull-right" onclick="return check();" style="background-color: #212b52; color: white; border: 1px solid #212b52;">등록</button>
+												<div class="clearfix"></div>
+											</form>
 										</div>
 									</div>
-									<div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>도로명 주소</label>
-                                                <input type="text" name="roadAddr" id="sample4_roadAddress" class="form-control" placeholder="도로명 주소" >
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>지번 주소</label>
-                                                <input type="text" name="jibunAddr" id="sample4_jibunAddress" class="form-control" placeholder="지번 주소" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- span태그가 없으면 팝업창이 종료되지 않습니다. -->
-                                    <span id="guide" style="color:#999;display:none"></span>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>참고 주소</label>
-												<input type="text" name="extraAddr" id="sample4_extraAddress"  class="form-control"  placeholder="참고 주소" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>상세 주소</label>
-												<input type="text" name="detailAddr" id="sample4_detailAddress" class="form-control" placeholder="상세 주소" />
-                                            </div>
-                                        </div>
-                                    </div>
-									
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>자기소개</label>
-                                                <textarea rows="5" class="form-control" placeholder="Here can be your description" value="나를 소개하세요">적폐청산은 내로남불입니다.</textarea>
-                                            </div>
-                                        </div>
-                                    </div>
+								</div>
 
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">등록</button>
-                                    <div class="clearfix"></div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card card-user">
-                            <div class="image">
-                                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
-                            </div>
-                            <div class="content">
-                                <div class="author">
-                                     <a href="#">
-                                    <img class="avatar border-gray" src="assets/img/faces/face-3.jpg" alt="..."/>
+							</div>
+						</div>
+					</div>
+					<!-- 본문 끝 -->
 
-                                      <h4 class="title">Mike Andrew<br />
-                                         <small>michael24</small>
-                                      </h4>
-                                    </a>
-                                </div>
-                                <p class="description text-center"> "Lamborghini Mercy <br>
-                                                    Your chick she so thirsty <br>
-                                                    I'm in that two seat Lambo"
-                                </p>
-                            </div>
-                            <hr>
-                            <div class="text-center">
-                                <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
-                                <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
-                                <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+					<!-- footer -->
+					<jsp:include page="info/footer.jsp" />
+					<%--푸터 --%>
 
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Company
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Portfolio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                               Blog
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                </p>
-            </div>
-        </footer>
-
-    </div>
-</div>
-
-
-
+				</div>
+		</div>
 </body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+
+        demo.showNotification();
+
+    });
+</script>
+<%--주소 --%>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
@@ -373,23 +486,5 @@
         }).open();
     }
 </script>
-    <!--   Core JS Files   -->
-    <script src="../resources/assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
-	<script src="../resources/assets/js/bootstrap.min.js" type="text/javascript"></script>
-
-	<!--  Charts Plugin -->
-	<script src="../resources/assets/js/chartist.min.js"></script>
-
-    <!--  Notifications Plugin    -->
-    <script src="../resources/assets/js/bootstrap-notify.js"></script>
-
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
-    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-	<script src="../resources/assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
-
-	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="../resources/assets/js/demo.js"></script>
-
 </html>
+
