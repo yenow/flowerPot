@@ -83,4 +83,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectOneMemberById" resultType="com.flowerPot.vo.MemberVo">
 		select * from f_member where id= #{id}
 	</select>
+
+	<select id="selectOneDeliMemById" resultType="com.flowerPot.vo.MemberVo"> <!-- 배송조회에 필요한 정보만 새로운객체에 담기 -->
+		select * from f_member where id= #{id}
+	</select>
 </mapper>

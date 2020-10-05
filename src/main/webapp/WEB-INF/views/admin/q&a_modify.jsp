@@ -48,7 +48,7 @@
 			<div class="mb-3">
 				<div class="input-group">
 					<div class="input-group-prepend" >
-						<span class="input-group-text" style="background-color: #9765da; color: white; opacity: 0.9">제목</span>
+						<span class="input-group-text" style="background-color: #212b52; color: white; opacity: 0.9">제목</span>
 					</div>
 					<input type="text" class="form-control" id="username" name="title" placeholder="Username" required="" value="${qANDa.title}">
 					<div class="invalid-feedback" style="width: 100%;">Your username is required.</div>
@@ -61,8 +61,8 @@
 			</div>
 			<!-- 제출 -->
 			<div class="text-center">
-				<input type="submit" class="btn btn-primary" style="background-color: #9765da; border: 1px solid #9765da; color: white; opacity: 0.9" value="수정">
-				<input type="button" onclick="history.back(-1); return false;" class="btn btn-primary" style="background-color: #9765da; border: 1px solid #9765da; color: white; opacity: 0.9" value="취소">
+				<input type="submit" class="btn btn-primary" style="background-color: #9765da; border: 1px solid #212b52; color: white; opacity: 0.9" value="수정">
+				<input type="button" onclick="history.back(-1); return false;" class="btn btn-primary" style="background-color: #212b52; border: 1px solid #212b52; color: white; opacity: 0.9" value="취소">
 			</div>
 		</form>
 	</div>

@@ -12,7 +12,7 @@
                     <li id="Dashboard">
                         <a class="nav-link" href="${pageContext.request.contextPath}/admin/dashboard">
                             <i class="nc-icon nc-chart-pie-35"></i>
-                            <p>종합 현황</p>
+                            <p>종합 현황(손도못댐)</p>
                         </a>
                     </li>
                     <li id="coupon">
@@ -48,7 +48,7 @@
                 	<li id="delevery">
                         <a class="nav-link" href="${pageContext.request.contextPath}/admin/delivery">
                             <i class="nc-icon nc-delivery-fast"></i>
-                            <p>주문 배송(손도못댐)</p>
+                            <p>주문 배송</p>
                         </a>
                     </li>
                 	<li id="communication">

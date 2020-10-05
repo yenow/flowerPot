@@ -16,6 +16,8 @@ public interface CFaQMapper {
 	void modifyFaQ(CustomerVo notice);
 
 	void delFaQ(Integer ccno);
+
+	Integer countFAQArticles(SearchVO search);
 	
 	
 	

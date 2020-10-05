@@ -66,14 +66,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 ORDER BY mno DESC))
 		WHERE  rnum BETWEEN #{pageStart} AND #{pageEnd}
 	</select>
-	<!-- 현강 페이징,검색처리 소스 기반  오라클 쿼리문-->
+	<!-- 페이징,검색처리 소스 기반  오라클 쿼리문-->
 	
-	<!-- 현강 페이징,검색처리 소스 기반  오라클 쿼리문-->
+	<!-- 페이징,검색처리 소스 기반  오라클 쿼리문-->
 	<select id="countArticles" resultType="int">
 		SELECT COUNT(*) 
 		FROM f_member
 		<include refid="search" />
 	</select>
-
+	
+	<!-- 회원 탈퇴 -->
+	<update id="deleteMember">
+		UPDATE f_member SET enabled='0' WHERE mno=#{mno}
+	</update>
+	<!-- 회원 복구 -->
+	<update id="restoreMember">
+		UPDATE f_member SET enabled='1' WHERE mno=#{mno}
+	</update>
+	
 	
 </mapper>

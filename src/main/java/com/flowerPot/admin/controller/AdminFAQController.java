@@ -27,7 +27,9 @@ public class AdminFAQController {
 		PageCreator pc = new PageCreator();
 		pc.setPaging(search);
 		List<CustomerVo> fList = service.selectFaQList(search);
+		pc.setArticleTotalCount(service.countFAQArticles(search)); //페이징처리를 위한 게시글 갯수
 		model.addAttribute("fList",fList);
+		model.addAttribute("pc",pc);
 		return "/admin/faq";
 	}
 

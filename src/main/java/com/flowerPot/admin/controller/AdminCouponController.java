@@ -4,15 +4,23 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.flowerPot.admin.commons.PageCreator;
 import com.flowerPot.admin.commons.SearchVO;
 import com.flowerPot.admin.service.ICoupService;
 import com.flowerPot.admin.vo.CoupVo;
+import com.flowerPot.vo.MemberVo;
 
 @Controller
 @RequestMapping("/admin")
@@ -23,8 +31,12 @@ public class AdminCouponController {
 	
 	@RequestMapping("/coupon")
 	public void coupon(Model model,SearchVO search) {
+		PageCreator pc = new PageCreator();
+		pc.setPaging(search);
 		List<CoupVo> cList = service.selectCoupList(search);
+		pc.setArticleTotalCount(service.countCouponArticles(search));
 		model.addAttribute("cList",cList);
+		model.addAttribute("pc",pc);
 	}
 	
 	@RequestMapping("/couponRegist")
@@ -43,4 +55,21 @@ public class AdminCouponController {
 			
 		return "redirect:/admin/coupon";
 	}
+	
+	@RequestMapping("/coupon/{id}")
+	@ResponseBody
+	public MemberVo searchId(@PathVariable String id/*HttpServletRequest request*/) {
+//		String id = request.getParameter("id"); 
+		System.out.println("searchId()메서드 접근!");
+		MemberVo mv = service.selectMemOne(id);
+		System.out.println(mv);
+		return mv;
+	}
+	/*
+	public ResponseEntity<MemberVo> searchId(@PathVariable String id) {
+		System.out.println("searchId()메서드 접근!");
+		MemberVo mv = service.selectMemOne(id);
+		System.out.println(mv);
+		return new ResponseEntity<MemberVo>(mv, HttpStatus.OK);
+	}*/
 }

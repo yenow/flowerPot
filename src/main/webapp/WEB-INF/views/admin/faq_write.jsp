@@ -42,12 +42,12 @@
 		<h2 class="text-center my-3">F A Q 등록</h2>
 		<form action="${pageContext.request.contextPath}/admin/customer/faq_write_ok" method="post" enctype="multipart/form-data">
 			<%-- <input type="hidden" name="mno" value="${login.mno }"> --%>
-			
+
 
 			<!-- title -->
 			<div class="mb-3">
 				<div class="input-group">
-					<div class="input-group-prepend" >
+					<div class="input-group-prepend">
 						<span class="input-group-text" style="background-color: #9765da; color: white; opacity: 0.9">제목</span>
 					</div>
 					<input type="text" class="form-control" id="username" name="title" placeholder="Username" required="">
@@ -63,30 +63,31 @@
 			<div class="text-center">
 				<input type="submit" class="btn btn-primary" style="background-color: #9765da; border: 1px solid #9765da; color: white; opacity: 0.9" value="등록">
 				<input type="button" onclick="history.back(-1); return false;" class="btn btn-primary" style="background-color: #9765da; border: 1px solid #9765da; color: white; opacity: 0.9" value="취소">
-			
+
 			</div>
 		</form>
 	</div>
-	
-	<script type="text/javascript">
-		$('#summernote').summernote({
-			height : 300, // 에디터 높이
-			minHeight : 600, // 최소 높이
-			maxHeight : null, // 최대 높이
-			focus : true, // 에디터 로딩후 포커스를 맞출지 여부
-			lang : "ko-KR", // 한글 설정
-			fontNames: ['fontA',  'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', ],
-		    fontNamesIgnoreCheck: ['fontA'],
-			placeholder : '최대 2048자까지 쓸 수 있습니다', //placeholder 설정
-			callbacks : { //여기 부분이 이미지를 첨부하는 부분
-				onImageUpload : function(files) {
-					uploadSummernoteImageFile(files[0], this);
-				}
-			}
-		});
 
-	</script>
-	
-	<script src="${pageContext.request.contextPath}/resources/js/summernote-ko-KR.js"></script>
 </body>
+<script type="text/javascript">
+	$('#summernote').summernote(
+			{
+				height : 300, // 에디터 높이
+				minHeight : 600, // 최소 높이
+				maxHeight : null, // 최대 높이
+				focus : true, // 에디터 로딩후 포커스를 맞출지 여부
+				lang : "ko-KR", // 한글 설정
+				fontNames : [ 'fontA', 'Arial', 'Arial Black', 'Comic Sans MS',
+						'Courier New', ],
+				fontNamesIgnoreCheck : [ 'fontA' ],
+				placeholder : '최대 2048자까지 쓸 수 있습니다', //placeholder 설정
+				callbacks : { //여기 부분이 이미지를 첨부하는 부분
+					onImageUpload : function(files) {
+						uploadSummernoteImageFile(files[0], this);
+					}
+				}
+			});
+</script>
+
+<script src="${pageContext.request.contextPath}/resources/js/summernote-ko-KR.js"></script>
 </html>

@@ -37,7 +37,10 @@ public class AdminQandAController {
 		PageCreator pc = new PageCreator();
 		pc.setPaging(search);
 		List<CustomerVo> qList = service.selectQandAList(search);
+		pc.setArticleTotalCount(service.countQandAArticles(search));
 		model.addAttribute("qList",qList);
+		model.addAttribute("pc",pc);
+
 		return "/admin/q&a";
 	}
 

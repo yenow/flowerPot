@@ -17,4 +17,6 @@ public interface CQandAMapper {
 
 	void delQandA(Integer ccno);
 
+	Integer countQandAArticles(SearchVO search);
+
 }

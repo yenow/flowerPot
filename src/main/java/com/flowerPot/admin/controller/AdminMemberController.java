@@ -32,4 +32,21 @@ public class AdminMemberController {
 		model.addAttribute("mList", mList);
 		model.addAttribute("pc", pc);
 	}
+	
+	//회원 탈퇴
+	@RequestMapping("/member_delete")
+	public String memDelete(Integer mno) {
+		service.deleteMember(mno);
+		
+		return "redirect:/admin/member";
+	}
+	
+	//회원 탈퇴 복구
+	@RequestMapping("/member_restore")
+	public String memRestore(Integer mno) {
+		service.restoreMember(mno);
+		
+		return "redirect:/admin/member";
+	}
+	
 }

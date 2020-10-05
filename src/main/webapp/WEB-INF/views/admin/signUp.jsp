@@ -67,141 +67,146 @@
 </script>
 </head>
 <body>
-    <div class="wrapper">
-    	<!-- 사이드바 -->
-    	<jsp:include page="info/sidebar.jsp"/> <%--사이드바 --%>
-    
-        <div class="main-panel">
-            <!-- header(nav) -->
-        	<nav class="navbar navbar-expand-lg " color-on-scroll="500">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#pablo"> 사원 관리 </a>
-            		<jsp:include page="info/header.jsp"/> <%--헤더(네비) --%>
-            
-            <!-- 본문 시작 -->
-            <div class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">직원 회원가입</h4>
-                                </div>
-                                <div class="card-body">
-                                    <form>
-                                    <div class="row">
-                                        
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>아이디</label>
-                                                <input type="text" class="form-control" name="" placeholder="<c:if test="${empty emp.empId}">미발급 상태입니다.</c:if>" value="<c:if test="${!empty emp.empId}">${emp.empId}</c:if>">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>비밀번호</label>
-                                                <input type="text" class="form-control" name="" placeholder="비밀번호" value="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>비밀번호 확인</label>
-                                                <input type="text" class="form-control" name="" placeholder="비밀번호 확인" value="">
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
+	<div class="wrapper">
+		<!-- 사이드바 -->
+		<jsp:include page="info/sidebar.jsp" />
+		<%--사이드바 --%>
 
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>이름</label>
-                                                <input type="text" class="form-control" name="name" placeholder="이름" value="${empName}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>성별</label>
-                                                <div class="form-control" style="border:0 solid;">
-                                                <input type="radio" name="gender" value="남자">남자
-                                                <input type="radio" name="gender" value="여자">여자
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="form-group">
-                                                <label>이메일</label>
-                                                <input type="text" class="form-control" name="lastName"placeholder="example@abcde.fgh" value="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
+		<div class="main-panel">
+			<!-- header(nav) -->
+			<nav class="navbar navbar-expand-lg " color-on-scroll="500">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="#pablo"> 사원 관리 </a>
+					<jsp:include page="info/header.jsp" />
+					<%--헤더(네비) --%>
 
-
-									<div class="row">
-										<div class="col-md-3">
-											<div class="form-group">
-												<label>우편 번호</label> 
-												<input type="text" name ="postcode" id="sample4_postcode"  class="form-control" placeholder="우편 번호"/>
-											</div>
+					<!-- 본문 시작 -->
+					<div class="content">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-md-8">
+									<div class="card">
+										<div class="card-header">
+											<h4 class="card-title">직원 회원가입</h4>
 										</div>
-										<div class="col-md-3" style="margin-top:30px;">
-											<div class="form-group">
-												<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-											</div>	
+										<div class="card-body">
+											<form>
+												<div class="row">
+
+													<div class="col-md-4">
+														<div class="form-group">
+															<label>아이디</label>
+															<input type="text" class="form-control" name="" placeholder="<c:if test="${empty emp.empId}">미발급 상태입니다.</c:if>" value="<c:if test="${!empty emp.empId}">${emp.empId}</c:if>">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="form-group">
+															<label>비밀번호</label>
+															<input type="text" class="form-control" name="" placeholder="비밀번호" value="">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="form-group">
+															<label>비밀번호 확인</label>
+															<input type="text" class="form-control" name="" placeholder="비밀번호 확인" value="">
+														</div>
+													</div>
+
+												</div>
+
+												<div class="row">
+													<div class="col-md-3">
+														<div class="form-group">
+															<label>이름</label>
+															<input type="text" class="form-control" name="name" placeholder="이름" value="${empName}">
+														</div>
+													</div>
+													<div class="col-md-2">
+														<div class="form-group">
+															<label>성별</label>
+															<div class="form-control" style="border: 0 solid;">
+																<input type="radio" name="gender" value="남자">
+																남자
+																<input type="radio" name="gender" value="여자">
+																여자
+															</div>
+														</div>
+													</div>
+													<div class="col-md-7">
+														<div class="form-group">
+															<label>이메일</label>
+															<input type="text" class="form-control" name="lastName" placeholder="example@abcde.fgh" value="">
+														</div>
+													</div>
+												</div>
+
+
+
+												<div class="row">
+													<div class="col-md-3">
+														<div class="form-group">
+															<label>우편 번호</label>
+															<input type="text" name="postcode" id="sample4_postcode" class="form-control" placeholder="우편 번호" />
+														</div>
+													</div>
+													<div class="col-md-3" style="margin-top: 30px;">
+														<div class="form-group">
+															<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+															<br>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label>도로명 주소</label>
+															<input type="text" name="roadAddr" id="sample4_roadAddress" class="form-control" placeholder="도로명 주소">
+														</div>
+													</div>
+
+													<div class="col-md-6">
+														<div class="form-group">
+															<label>지번 주소</label>
+															<input type="text" name="jibunAddr" id="sample4_jibunAddress" class="form-control" placeholder="지번 주소">
+														</div>
+													</div>
+												</div>
+												<!-- span태그가 없으면 팝업창이 종료되지 않습니다. -->
+												<span id="guide" style="color: #999; display: none"></span>
+												<div class="row">
+													<div class="col-md-12">
+														<div class="form-group">
+															<label>참고 주소</label>
+															<input type="text" name="extraAddr" id="sample4_extraAddress" class="form-control" placeholder="참고 주소" />
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-12">
+														<div class="form-group">
+															<label>상세 주소</label>
+															<input type="text" name="detailAddr" id="sample4_detailAddress" class="form-control" placeholder="상세 주소" />
+														</div>
+													</div>
+												</div>
+
+												<button type="submit" class="btn btn-flat pull-right" >등록</button>
+												<div class="clearfix"></div>
+											</form>
 										</div>
 									</div>
-									<div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>도로명 주소</label>
-                                                <input type="text" name="roadAddr" id="sample4_roadAddress" class="form-control" placeholder="도로명 주소" >
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>지번 주소</label>
-                                                <input type="text" name="jibunAddr" id="sample4_jibunAddress" class="form-control" placeholder="지번 주소" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- span태그가 없으면 팝업창이 종료되지 않습니다. -->
-                                    <span id="guide" style="color:#999;display:none"></span>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>참고 주소</label>
-												<input type="text" name="extraAddr" id="sample4_extraAddress"  class="form-control"  placeholder="참고 주소" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>상세 주소</label>
-												<input type="text" name="detailAddr" id="sample4_detailAddress" class="form-control" placeholder="상세 주소" />
-                                            </div>
-                                        </div>
-                                    </div>
+								</div>
 
-                                    <button type="submit" class="btn btn-izone btn-fill pull-right" style="background-color: #9765da; color: white;">등록</button>
-                                    <div class="clearfix"></div>
-                                </form>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-			<!-- 본문 끝 -->
-			           
-            <!-- footer -->
-            <jsp:include page="info/footer.jsp"/> <%--푸터 --%>
-            
-        </div>
-    </div>
+							</div>
+						</div>
+					</div>
+					<!-- 본문 끝 -->
 
+					<!-- footer -->
+					<jsp:include page="info/footer.jsp" />
+					<%--푸터 --%>
+
+				</div>
+		</div>
 </body>
 </html>

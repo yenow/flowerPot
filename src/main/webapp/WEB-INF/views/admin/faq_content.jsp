@@ -1,13 +1,6 @@
-<%@ page
-	language="java"
-	contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib
-	prefix="c"
-	uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib
-	prefix="fmt"
-	uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 
@@ -25,13 +18,9 @@
 
 		<div class="main-panel">
 			<!-- header(nav) -->
-			<nav
-				class="navbar navbar-expand-lg "
-				color-on-scroll="500">
+			<nav class="navbar navbar-expand-lg " color-on-scroll="500">
 				<div class="container-fluid">
-					<a
-						class="navbar-brand"
-						href="#pablo"> 소통 관리 </a>
+					<a class="navbar-brand" href="#pablo"> 소통 관리 </a>
 					<jsp:include page="info/header.jsp" />
 					<%--헤더(네비) --%>
 
@@ -50,17 +39,13 @@
 													<div class="col-md-1">
 														<div class="form-group">
 															<label>번호</label>
-															<text
-																class="form-control"
-																readonly>${faq.ccno}</text>
+															<text class="form-control" readonly>${faq.ccno}</text>
 														</div>
 													</div>
 													<div class="col-md-11">
 														<div class="form-group">
 															<label>제목</label>
-															<text
-																class="form-control"
-																readonly>${faq.title}</text>
+															<text class="form-control" readonly>${faq.title}</text>
 														</div>
 													</div>
 
@@ -69,21 +54,13 @@
 													<div class="col-md-12">
 														<div class="form-group">
 															<label>내용</label>
-															<text
-																class="form-control"
-																style="height : 200px"
-																readonly>${faq.content}</text>
+															<text class="form-control" style="height : 200px" readonly>${faq.content}</text>
 														</div>
 													</div>
 												</div>
-												<button
-													class="btn btn-info btn-fill pull-right"
-													style="background-color: #9765da; color: white; border: 1px solid #9765da; margin-left: 10px;"
-													onclick="location='${pageContext.request.contextPath}/admin/customer/faq_modify/${faq.ccno}'">수정</button>
-												<button
-													class="btn btn-info btn-fill pull-right"
-													style="background-color: #9765da; color: white; border: 1px solid #9765da;"
-													onclick="location='${pageContext.request.contextPath}/admin/customer/faq/'">목록</button> &nbsp;
+												<button class="btn btn-info btn-fill pull-right" style="background-color: #212b52; color: white; border: 1px solid #212b52; margin-left: 10px;" onclick="location='${pageContext.request.contextPath}/admin/customer/faq_modify/${faq.ccno}'">수정</button>
+												<button class="btn btn-info btn-fill pull-right" style="background-color: #212b52; color: white; border: 1px solid #212b52;" onclick="location='${pageContext.request.contextPath}/admin/customer/faq/'">목록</button>
+												&nbsp;
 												<div class="clearfix"></div>
 											</div>
 										</div>

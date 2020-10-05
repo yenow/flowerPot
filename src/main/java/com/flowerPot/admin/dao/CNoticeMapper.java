@@ -16,6 +16,8 @@ public interface CNoticeMapper {
 	void modifyNotice(CustomerVo notice);
 
 	void delNotice(Integer ccno);
+
+	Integer countNoticeArticles(SearchVO search);
 	
 	
 	

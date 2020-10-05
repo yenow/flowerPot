@@ -61,7 +61,7 @@ public class AdminEmployeeController {
 	
 	// 회원가입 페이지로 이동
 		@RequestMapping("/employee/signUp")
-		public String signUp(String empId, Integer empName, Model m) {
+		public String signUp(String empId, String empName, Model m) {
 			System.out.println(empId);
 			System.out.println(empName);
 			m.addAttribute("empId",empId);
