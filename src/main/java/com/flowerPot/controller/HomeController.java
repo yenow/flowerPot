@@ -66,5 +66,9 @@ public class HomeController {
 	public void ourcompany() {
 		System.out.println("우리회사 홈페이지 ");
 	}
-
+	
+	@RequestMapping(value = "/index3", method = RequestMethod.GET)
+	public String index3(Locale locale, Model model) {
+		return "index3";
+	}
 }
