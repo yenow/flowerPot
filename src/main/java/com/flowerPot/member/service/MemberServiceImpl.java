@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.flowerPot.admin.vo.MemberDeliveryVo;
 import com.flowerPot.dao.AuthorityDao;
 import com.flowerPot.member.repository.MemberDao;
 import com.flowerPot.vo.MemberVo;
@@ -48,4 +49,11 @@ public class MemberServiceImpl implements MemberSerivce {
 	public Integer checkPhone(String member) {
 		return memberDao.checkPhone(member);
 	}
+
+
+	@Override
+	public MemberVo selectOneDeliMemById(String id) {
+		return memberDao.selectOneDeliMemById(id);
+	}
+
 }

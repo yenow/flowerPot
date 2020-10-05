@@ -42,12 +42,12 @@
 		<h2 class="text-center my-3">F A Q 수정</h2>
 		<form action="${pageContext.request.contextPath}/admin/customer/faq_modify_ok" method="post" enctype="multipart/form-data">
 			<%-- <input type="hidden" name="mno" value="${login.mno }"> --%>
-			<input type="hidden" name="ccno" value="${faq.ccno}"/>
+			<input type="hidden" name="ccno" value="${faq.ccno}" />
 
 			<!-- title -->
 			<div class="mb-3">
 				<div class="input-group">
-					<div class="input-group-prepend" >
+					<div class="input-group-prepend">
 						<span class="input-group-text" style="background-color: #212b52; color: white; opacity: 0.9">제목</span>
 					</div>
 					<input type="text" class="form-control" id="username" name="title" placeholder="Username" required="" value="${faq.title}">
@@ -66,8 +66,9 @@
 			</div>
 		</form>
 	</div>
-	
-	<script type="text/javascript">
+
+</body>
+<script type="text/javascript">
 		$('#summernote').summernote({
 			height : 300, // 에디터 높이
 			minHeight : 600, // 최소 높이
@@ -85,7 +86,6 @@
 		});
 
 	</script>
-	
-	<script src="${pageContext.request.contextPath}/resources/js/summernote-ko-KR.js"></script>
-</body>
+
+<script src="${pageContext.request.contextPath}/resources/js/summernote-ko-KR.js"></script>
 </html>

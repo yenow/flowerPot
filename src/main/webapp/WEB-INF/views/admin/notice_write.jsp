@@ -69,6 +69,7 @@
 		</form>
 	</div>
 	
+</body>
 	<script type="text/javascript">
 		$('#summernote').summernote({
 			height : 300, // 에디터 높이
@@ -89,5 +90,4 @@
 	</script>
 	
 	<script src="${pageContext.request.contextPath}/resources/js/summernote-ko-KR.js"></script>
-</body>
 </html>

@@ -124,7 +124,7 @@ function check(){
 								<div class="card-header ">
 									<h4 class="card-title" style="display: inline-block;">쿠폰 목록</h4>
 									<div class="pull-right" style="text-align: right;">
-									
+
 										<div class="input-group pull-right" style="text-align: right !important;">
 											<select id="condition" class="y-form-control" name="condition" style="width: 100px;">
 												<option value="couponName">쿠폰명</option>
@@ -225,14 +225,14 @@ function check(){
 							</div>
 						</div>
 					</div>
-					
+
 					<!-- Mini Modal -->
-					<div  class="modal fade modal modal-primary" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal fade modal modal-primary" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
-							<div class="modal-content"style="border:3px solid #00498c;border-radius: 20px;">
-								<div class="modal-header justify-content-center" style="display:inline-block;">
+							<div class="modal-content" style="border: 3px solid #00498c; border-radius: 20px;">
+								<div class="modal-header justify-content-center" style="display: inline-block;">
 									<h3 style="text-align: center; color: #00498c; font-weight: bold">쿠폰 발급</h3>
-									
+
 									<h4 style="text-align: center;" id="coupon-name">내용</h4>
 
 
@@ -243,14 +243,14 @@ function check(){
                                         -->
 								</div>
 								<div class="modal-body text-center">
-									
+
 									<input type="radio" name="radio" value="1" onchange="setDisplay();">
 									모든 회원 &nbsp;
 									<input type="radio" id="appoint" name="radio" value="2" onchange="setDisplay();">
 									특정 회원
 
 
-						   <!-- <div id="memApp" style="display: none;">
+									<!-- <div id="memApp" style="display: none;">
                                 	<div class="input-group pull-right" >
 										<input type="text"class="y-form-control" name="keyword" id="keywordInput" placeholder="id" style="width: 100px; margin-left: 180px;">
 										<span class="input-group-btn "> 
@@ -259,15 +259,19 @@ function check(){
 									</div>
                                 </div> -->
 									<div id="memApp" style="display: none;">
+									
+									<!-- 검색 아이디 유효성 검증 -->
+									<b id="idChk"></b>
+									
 										<div class="input-group mb-3">
-											<input type="text" class="form-control" id="idBox" placeholder="id를 입력하세요" aria-label="Recipient's username" aria-describedby="basic-addon2" style="border:2px solid #19375e;">
+											<input type="text" class="form-control" id="idBox" placeholder="id를 입력하세요" aria-label="Recipient's username" aria-describedby="basic-addon2" style="border: 1px solid #19375e;">
 											<div class="input-group-append">
-												<button class="btn" id="searchId" type="button" onclick="return check();" style="background-color: #19375e; border: 2px solid #19375e; color:white;">검색</button>
-											</div>											
+												<button class="btn" id="searchId" type="button" style="background-color: #19375e; border: 1px solid #19375e; color: white;">검색</button>
+											</div>
 										</div>
-											<!-- ul -->
-											<ul class="list-group" style="border: 2px solid #19375e; border-radius: 5px;">
-											</ul>
+										<!-- ul -->
+										<ul class="list-group" style="border: 1px solid #19375e; border-radius: 5px;">
+										</ul>
 									</div>
 								</div>
 								<div class="modal-footer pull-right">
@@ -307,13 +311,21 @@ $(function() {
 			$('#searchId').click();
 		}
 	});
+	
 	//버튼 클릭 이벤트
 	$("#searchId").click(function(){
 		//ajax통신으로 서버에서 값 받아오기 
 		const id= $('#idBox').val();
-			
 		console.log("id: "+id);
-			
+		
+		/* 모달창의 id입력박스가 비어있을떄 경고메시지 */
+		if($.trim($('#idBox').val())==''){
+			$("#idBox").css("background-color", "pink");
+			$("#idChk").html("<b style='font-size:14px; color:red;'>ID를 입력해주세요</b>");						
+			$('#idBox').val('').focus();
+			/* 비어있지 않다면 ajax 실행 */
+			return false;
+		}	
 		$.ajax({
 			type:"get",
 			url: "${pageContext.request.contextPath}/admin/coupon/"+id,
@@ -323,24 +335,31 @@ $(function() {
 		/* data: id, */
 			dataType:"json",
 			success:function(result){
-				console.log(result.mno);
+				console.log(result);
 				console.log(result.id);
-				const mv = result.id;
-					console.log(mv);
-					//.append()함수를통해서 가져온 정보를 html태그와 함께 누적해서 추가한다.
-					$('.list-group').append('<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #e8f0fe;" >'+mv+'<input type="checkbox" value=""></li>');
+				const memberId = result.id;
+				console.log('ID : '+memberId);
+				//.append()함수를통해서 가져온 정보를 html태그와 함께 누적해서 추가한다.
+				$("#idChk").html("<b></b>"); /* 이건 작동됨 */
+				$('#idBox').val('').focus();
+
+				$("#idBox").css("background-color", "#e8f0fe");/* 이게 안먹음 검색성공하면 녹색으로 색이바껴야하는데 안먹음*/
+				$('.list-group').append('<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #fafad2;" >'+memberId+'<input type="checkbox" value=""></li>');
+			}
+			,error: function() {//DB에 데이터가 없을때 이곳에서 검증
+				$('#idBox').val('').focus();
+				$("#idBox").css("background-color", "pink");/* 이게 안먹음 검색실패하면 핑크색으로 색이바껴야하는데 안먹음*/
+				$("#idChk").html("<b style='font-size:14px; color:red;'>요청하신 회원의 정보를 찾을수 없습니다</b>");						
+				
 			}
 		});
+		
 	})
 });
 
-function check(){
-	if($.trim($('#idBox').val())==''){
-		alert('id를 입력해주세요.');
-		$('#idBox').val('').focus();
-		return false;
-	}
-}
+
+	
+
 
 function giftCoupon(data) {
 	console.log(data);

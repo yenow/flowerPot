@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 public class DeliveryVo {
 
 	private Integer dno;
-	private String deliver_num;
+	private String t_code; //택배회사 코드
+	private String t_invoice; //운송장번호
 	private String postcode;
 	private String street_address;
 	private String parcel_address;
@@ -16,10 +17,11 @@ public class DeliveryVo {
 	private String more_infomation;
 	private String deliver_state;
 	
-	public DeliveryVo(String deliver_num, String postcode, String street_address, String parcel_address,
+	public DeliveryVo(String t_code, String t_invoice, String postcode, String street_address, String parcel_address,
 			String detail_address, String more_infomation) {
 		super();
-		this.deliver_num = deliver_num;
+		this.t_code = t_code;
+		this.t_invoice = t_invoice;
 		this.postcode = postcode;
 		this.street_address = street_address;
 		this.parcel_address = parcel_address;

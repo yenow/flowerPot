@@ -64,11 +64,15 @@ $(function() {
 											<div class="col-md-12 ">
 												<div class="pull-right" style="text-align: right;">
 													<div class="input-group pull-right" style="text-align: right !important;">
+
+
 														<select id="condition" class="y-form-control" name="condition" style="width: 100px;">
-															<option value="cno">번호</option>
+															<option value="ccno">번호</option>
 															<option value="title">ID</option>
 															<option value="ccnoTitle">번호+ID</option>
 														</select>
+
+
 														<input type="text" class="y-form-control " name="keyword" id="keywordInput" placeholder="검색어" style="width: 200px;">
 														<span class="input-group-btn "> <input type="button" style="background-color: #212b52; color: white; display: inline-block;" value="검색" class="btn btn-izone btn-flat" id="searchBtn">
 														</span>

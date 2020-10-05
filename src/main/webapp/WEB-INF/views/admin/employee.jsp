@@ -78,8 +78,7 @@ function check(){
 															<option value="40">개발</option>
 															<option value="50">물류</option>
 														</select>
-														<!--                                                 <input type="text" class="form-control" name="" placeholder="부서" value="인사">
- -->
+														<!-- <input type="text" class="form-control" name="" placeholder="부서" value="인사"> -->
 													</div>
 												</div>
 												<div class="col-md-2">
@@ -103,8 +102,7 @@ function check(){
 															<option value="15">부회장</option>
 															<option value="16">회장</option>
 														</select>
-														<!--                                                 <input type="text" class="form-control" name="" placeholder="직위" value="팀장">
- -->
+														<!-- <input type="text" class="form-control" name="" placeholder="직위" value="팀장"> -->
 													</div>
 												</div>
 												<div class="col-md-2">
@@ -193,7 +191,6 @@ function check(){
 										</div>
 									</div>
 								</div>
-
 								<!-- 검색 기능 -->
 								<!-- <div class="col-md-12 ">
 									<div class="pull-right" style="text-align: right;">

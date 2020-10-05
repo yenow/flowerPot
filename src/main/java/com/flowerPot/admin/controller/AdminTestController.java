@@ -33,10 +33,7 @@ public class AdminTestController {
 		
 	}
 	
-	@RequestMapping("/delivery")
-	public void maps() {
-		
-	}
+
 	
 	@RequestMapping("/icons")
 	public void upgrade() {
