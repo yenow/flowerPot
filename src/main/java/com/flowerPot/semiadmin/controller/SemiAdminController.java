@@ -139,6 +139,9 @@ public class SemiAdminController {
 	public void todolist() {
 		System.out.println("todolist 실행중..");
 		
+		
+		
+		
 	}
 	
 //form_editor 기능
@@ -169,8 +172,6 @@ public class SemiAdminController {
 			
 			
 		}
-		
-		
-
+			
 
 }

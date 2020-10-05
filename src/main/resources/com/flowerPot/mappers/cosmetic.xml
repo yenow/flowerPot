@@ -73,7 +73,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- { productManage 상품 } -->
-	<select id="getProductlist" resultType="com.flowerPot.vo.cosmeticVo">
+	<select id="getProductlist" resultType="com.flowerPot.vo.CosmeticVo">
 		select cno,name,hits,likey from f_cosmetic 
 	</select>
 	

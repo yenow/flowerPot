@@ -26,7 +26,6 @@ public interface ISemiNoticeService {
 	// Inventory 화장품 번호로  수량 submit 하기 }
 	void submitInven(SemiInventoryVO semi);
 
-	
 	//{ calendar 목록 출력 
 	List<SemiCalendarVO> getCalendar(SemiCalendarVO scalendar);
 
