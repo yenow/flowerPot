@@ -73,7 +73,7 @@ function check(){
 					<div class="content">
 						<div class="container-fluid">
 							<div class="row">
-								<div class="col-md-8">
+								<div class="col-md-12">
 									<form action="${pageContext.request.contextPath}/admin/couponRegist" method="post" onsubmit="return check();">
 										<div class="card">
 											<div class="card-header">
@@ -154,7 +154,7 @@ function check(){
 										<tbody>
 											<c:forEach var="coup" items="${cList}">
 												<tr>
-													<td>${coup.couNo}</td>
+													<td class="c-couNo">${coup.couNo}</td>
 													<td class="c-name">${coup.couponName}</td>
 													<td>
 														<c:if test="${empty coup.discountMoney}">0원</c:if>
@@ -242,44 +242,36 @@ function check(){
                                     </div>
                                         -->
 								</div>
-								<div class="modal-body text-center">
+									<form action="${pageContext.request.contextPath}/admin/couponRegistToMember" method="post">
+									<input type="hidden" id="couNo" name="couNo" value="">
+									<div class="modal-body text-center">
 
-									<input type="radio" name="radio" value="1" onchange="setDisplay();">
-									모든 회원 &nbsp;
-									<input type="radio" id="appoint" name="radio" value="2" onchange="setDisplay();">
-									특정 회원
-
-
-									<!-- <div id="memApp" style="display: none;">
-                                	<div class="input-group pull-right" >
-										<input type="text"class="y-form-control" name="keyword" id="keywordInput" placeholder="id" style="width: 100px; margin-left: 180px;">
-										<span class="input-group-btn "> 
-											<input type="button" style="background-color: #212b52; color: white; display: inline-block;" value="검색"	 class="btn btn-izone btn-flat"id="searchBtn">
-										</span>
-									</div>
-                                </div> -->
-									<div id="memApp" style="display: none;">
+										<input type="radio" name="radio" value="1" onchange="setDisplay();">
+										모든 회원 &nbsp;
+										<input type="radio" id="appoint" name="radio" value="2" onchange="setDisplay();">
+										특정 회원
 									
-									<!-- 검색 아이디 유효성 검증 -->
-									<b id="idChk"></b>
-									
-										<div class="input-group mb-3">
-											<input type="text" class="form-control" id="idBox" placeholder="id를 입력하세요" aria-label="Recipient's username" aria-describedby="basic-addon2" style="border: 1px solid #19375e;">
-											<div class="input-group-append">
-												<button class="btn" id="searchId" type="button" style="background-color: #19375e; border: 1px solid #19375e; color: white;">검색</button>
+										<div id="memApp" style="display: none;">
+
+											<!-- 검색 아이디 유효성 검증 -->
+											<b id="idChk"></b>
+
+											<div class="input-group mb-3">
+												<input type="text" class="form-control" id="idBox" placeholder="id를 입력하세요" aria-label="Recipient's username" aria-describedby="basic-addon2" style="border: 1px solid #19375e;">
+												<div class="input-group-append">
+													<button class="btn" id="searchId" type="button" style="background-color: #19375e; border: 1px solid #19375e; color: white;">검색</button>
+												</div>
 											</div>
+											<!-- ul -->
+											<ul class="list-group" style="border: 1px solid #19375e; border-radius: 5px;">
+											</ul>
 										</div>
-										<!-- ul -->
-										<ul class="list-group" style="border: 1px solid #19375e; border-radius: 5px;">
-										</ul>
 									</div>
-								</div>
-								<div class="modal-footer pull-right">
-									<form action="#" method="post">
-										<input type="submit" class="btn btn-flat pull-right" data-dismiss="modal" style="background-color: #19375e; color: white; border: 1px solid #19375e; margin-left: 180px;" value="지급">
+									<div class="modal-footer pull-right">
+											<input type="submit" class="btn btn-flat pull-right"  style="background-color: #19375e; color: white; border: 1px solid #19375e; margin-left: 180px;" value="지급">
+										<!-- <button type="button" class="btn btn-link btn-simple">Back</button> -->
+									</div>
 									</form>
-									<!-- <button type="button" class="btn btn-link btn-simple">Back</button> -->
-								</div>
 							</div>
 						</div>
 					</div>
@@ -297,11 +289,13 @@ function check(){
 		<%--푸터 --%>
 
 	</div>
-	</div>
-
+	
 </body>
 
 <script>
+
+// 아이디 리스트
+var id_list = new Array();
 
 //restAPI와 Ajax()를 활용하여 DB정보를 가져온다
 $(function() {
@@ -314,9 +308,19 @@ $(function() {
 	
 	//버튼 클릭 이벤트
 	$("#searchId").click(function(){
+		
 		//ajax통신으로 서버에서 값 받아오기 
 		const id= $('#idBox').val();
 		console.log("id: "+id);
+		
+		//중복된 아이디 처리
+		for(var i=0; i<id_list.length; i++){
+			if(id==id_list[i]){
+				alert('중복된 아이디입니다');
+				console.log('중복된 아이디');
+				return false;
+			}
+		}
 		
 		/* 모달창의 id입력박스가 비어있을떄 경고메시지 */
 		if($.trim($('#idBox').val())==''){
@@ -332,19 +336,24 @@ $(function() {
 			headers:{
 				"Content-Type": "application/json"
 			},
-		/* data: id, */
+			/* data: id, */
 			dataType:"json",
 			success:function(result){
 				console.log(result);
 				console.log(result.id);
 				const memberId = result.id;
 				console.log('ID : '+memberId);
+				
+				// id 리스트에 id추가
+				id_list.push(memberId);
+				
+				
 				//.append()함수를통해서 가져온 정보를 html태그와 함께 누적해서 추가한다.
 				$("#idChk").html("<b></b>"); /* 이건 작동됨 */
 				$('#idBox').val('').focus();
 
 				$("#idBox").css("background-color", "#e8f0fe");/* 이게 안먹음 검색성공하면 녹색으로 색이바껴야하는데 안먹음*/
-				$('.list-group').append('<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #fafad2;" >'+memberId+'<input type="checkbox" value=""></li>');
+				$('.list-group').append('<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #fafad2;" >'+memberId+'<input type="hidden" name="id" value="'+memberId+'"><input type="checkbox" value=""></li>');
 			}
 			,error: function() {//DB에 데이터가 없을때 이곳에서 검증
 				$('#idBox').val('').focus();
@@ -357,15 +366,14 @@ $(function() {
 	})
 });
 
-
-	
-
-
 function giftCoupon(data) {
 	console.log(data);
 	console.log($(data).parent());
 	console.log($(data).parent().parent().children('.c-name').html());
 	$('#coupon-name').html($(data).parent().parent().children('.c-name').html());
+	
+	var couNo = Number($(data).parent().parent().children('.c-couNo').html());	
+	$('#couNo').val(couNo);
 } 
 
 function setDisplay(){
@@ -379,3 +387,12 @@ function setDisplay(){
 
 </script>
 </html>
+
+<!-- <div id="memApp" style="display: none;">
+                                	<div class="input-group pull-right" >
+										<input type="text"class="y-form-control" name="keyword" id="keywordInput" placeholder="id" style="width: 100px; margin-left: 180px;">
+										<span class="input-group-btn "> 
+											<input type="button" style="background-color: #212b52; color: white; display: inline-block;" value="검색"	 class="btn btn-izone btn-flat"id="searchBtn">
+										</span>
+									</div>
+                                </div> -->

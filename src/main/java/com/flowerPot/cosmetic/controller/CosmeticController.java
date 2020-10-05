@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.flowerPot.admin.service.CoupService;
 import com.flowerPot.attachFile.service.AttachFileService;
 import com.flowerPot.brand.service.BrandService;
 import com.flowerPot.cosmetic.service.CosmeticService;
@@ -61,6 +62,8 @@ public class CosmeticController {
 	private TypeService typeService;
 	@Autowired
 	private BrandService brandService;
+	@Autowired 
+	private CoupService iCoupService;
 	
 	// 결제 페이지로 이동
 	@RequestMapping("payment")
@@ -75,6 +78,8 @@ public class CosmeticController {
 			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
 			memberAddress  = memberAddressService.selectOneMemberAddressByMno(memberVo.getMno());   // 회원주소록 가져오기
 		}
+		//쿠폰 목록 가져오기
+		
 
 		//User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		//if(user!=null) {

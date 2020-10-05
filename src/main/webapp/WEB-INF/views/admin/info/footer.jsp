@@ -11,7 +11,7 @@
                     <nav>
                         <ul class="footer-menu">
                             <li>
-                                <a href="#">
+                                <a href="${pageContext.request.contextPath }">
                                     Home
                                 </a>
                             </li>

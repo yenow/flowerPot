@@ -6,7 +6,7 @@ import com.flowerPot.admin.commons.SearchVO;
 import com.flowerPot.admin.vo.CoupVo;
 import com.flowerPot.vo.MemberVo;
 
-public interface ICoupService {
+public interface CoupService {
 
 	void couponRegist(CoupVo coupon);
 
@@ -15,5 +15,7 @@ public interface ICoupService {
 	MemberVo selectMemOne(String id);
 
 	Integer countCouponArticles(SearchVO search);
+
+	void insertCouponToMember(String id, Integer couNo,Integer radio);
 
 }

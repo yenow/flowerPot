@@ -34,4 +34,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="countCouponArticles" resultType="int">
 		SELECT COUNT(*) FROM f_coupon
 	</select>
+	
+	<insert id="insertCouponToMember">
+		insert into f_hasCoupon values (#{couNo},#{mno})
+	</insert>
 </mapper>

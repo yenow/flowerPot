@@ -2,13 +2,12 @@ package com.flowerPot.admin.controller;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
+import org.mortbay.log.Log;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flowerPot.admin.commons.PageCreator;
 import com.flowerPot.admin.commons.SearchVO;
-import com.flowerPot.admin.service.ICoupService;
+import com.flowerPot.admin.service.CoupService;
 import com.flowerPot.admin.vo.CoupVo;
 import com.flowerPot.vo.MemberVo;
 
@@ -27,7 +26,7 @@ import com.flowerPot.vo.MemberVo;
 public class AdminCouponController {
 	
 	@Autowired
-	private ICoupService service;
+	private CoupService service;
 	
 	@RequestMapping("/coupon")
 	public void coupon(Model model,SearchVO search) {
@@ -72,4 +71,12 @@ public class AdminCouponController {
 		System.out.println(mv);
 		return new ResponseEntity<MemberVo>(mv, HttpStatus.OK);
 	}*/
+	
+	@RequestMapping("/couponRegistToMember")
+	public String couponRegistToMember(String id, Integer couNo, Integer radio) {
+		Log.info("couNo:"+couNo);
+		
+		service.insertCouponToMember(id,couNo,radio);
+		return "redirect:/admin/coupon";
+	}
 }

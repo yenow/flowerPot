@@ -8,18 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.flowerPot.service.KakaoPay;
-
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -43,11 +37,14 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
+		
 		return "index";
 	}
 	
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String test(HttpServletRequest request, HttpServletResponse response) {
+		
+		
 		Cookie[] c= request.getCookies();
 		log.info("쿠키:"+c);
 		for(Cookie c1 : c) {
@@ -68,7 +65,8 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/index3", method = RequestMethod.GET)
-	public String index3(Locale locale, Model model) {
+	public String index3(Authentication authentication,Locale locale, Model model) {
+		
 		return "index3";
 	}
 }
