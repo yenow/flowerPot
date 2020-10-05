@@ -1,8 +1,6 @@
 package com.flowerPot.member.repository;
 
 import java.util.List;
-
-import com.flowerPot.admin.vo.MemberDeliveryVo;
 import com.flowerPot.vo.MemberVo;
 
 public interface MemberDao {

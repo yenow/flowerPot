@@ -29,7 +29,7 @@ public class DeliveryDaoTest {
 	
 	@Test
 	public void insertDelivery() {
-		DeliveryVo delivery = new DeliveryVo("deliver_num", "postcode", "street_address", "parcel_address",
+		DeliveryVo delivery = new DeliveryVo("del","deliver_num", "postcode", "street_address", "parcel_address",
 				"detail_address", "more_infomation");
 		int before = deliveryDao.selectCount();
 		deliveryDao.insertDelivery(delivery);

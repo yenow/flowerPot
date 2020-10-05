@@ -1,6 +1,5 @@
 package com.flowerPot.delivery.service;
 
-import com.flowerPot.admin.vo.MemberDeliveryVo;
 import com.flowerPot.vo.DeliveryVo;
 
 public interface DeliveryService {
