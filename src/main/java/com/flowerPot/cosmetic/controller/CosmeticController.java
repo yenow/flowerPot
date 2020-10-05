@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,10 +25,10 @@ import com.flowerPot.cosmetic.service.CosmeticService;
 import com.flowerPot.cosmetic.service.TypeService;
 import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
 import com.flowerPot.description.service.DescriptionService;
-import com.flowerPot.domain.Criteria;
+import com.flowerPot.domain.CosmeticCriteria;
+import com.flowerPot.domain.CosmeticPageDTO;
 import com.flowerPot.member.service.MemberSerivce;
 import com.flowerPot.memberAddress.service.MemberAddressService;
-import com.flowerPot.security.domain.CustomUser;
 import com.flowerPot.vo.AttachFileVo;
 import com.flowerPot.vo.BrandVo;
 import com.flowerPot.vo.CosmeticReviewVo;
@@ -39,7 +38,6 @@ import com.flowerPot.vo.MemberAddressVo;
 import com.flowerPot.vo.MemberVo;
 import com.flowerPot.vo.TypeVo;
 
-import aj.org.objectweb.asm.Type;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -175,9 +173,20 @@ public class CosmeticController {
 	
 	// 윤신영 - 화장품 구입 페이지
 	@RequestMapping("cosmetic")
-	public void cosmetic(Integer cno,Model model) throws IOException {
+	public void cosmetic(Integer cno,Model model, HttpSession session) throws IOException {
 		cosmeticService.updateCosmeticHitsByCno(cno);
 		CosmeticVo cosmetic = cosmeticService.selectOneCosmeticByCno(cno);  // 상품번호로,, 화장품 정보 가져오기
+		
+		if(session.getAttribute("Cosmetic"+cno)!=null) {
+			// 화장품에 한번 들어와본적이 있을떄
+			log.info("중복조회");
+		}else {
+			// 화장품에 한번도 안들어 왔을떄
+			cosmeticService.updateHits(cno);  // 화장품 조회수 업데이트
+			session.setAttribute("Cosmetic"+cno, true);
+			session.setMaxInactiveInterval(3600);
+		}
+		
 		DescriptionVo description = descriptionService.selectOneDescriptionByCno(cno);
 		List<CosmeticReviewVo> crList = cosmeticReviewService.selectListCosmeticReviewListByCno(cno);
 		model.addAttribute("cosmetic", cosmetic);
@@ -185,15 +194,34 @@ public class CosmeticController {
 		model.addAttribute("crList", crList);
 	}
 	
-	// 화장품 리스트 페이지 이동
+	// 윤신영 - 화장품 리스트 페이지 이동
 	@RequestMapping("cosmetic_list")
-	public void cosmetic_list(Model model,Criteria c) {
-		List<CosmeticVo> cList = cosmeticService.selectListCosmeticByCategory(c);
-		model.addAttribute("cList", cList);
-		model.addAttribute("categoryName", c.getCategoryName());
-		for(CosmeticVo cosmetic : cList) {
-			System.out.println("cList : " + cosmetic.toString());
+	public void cosmetic_list(Model model,CosmeticCriteria c) {
+		log.info("화장품 리스트 페이지 이동"+c);
+		log.info("받은 파라미터"+c);
+		
+		List<CosmeticVo> cList = null;
+		// type이 null이 아닐떄, 화장품 리스트를 가져올수 있다.
+		if(c.getType()!=null) {
+			List<TypeVo> tList = typeService.selectListSubType(c.getType()); // 타입에 해당하는 서브 타입 가져오기
+			cList = cosmeticService.selectListCosmeticByCategory(c);  // 화장품 리스트 가져오기
+			log.info("타입:"+tList);
+			
+			model.addAttribute("tList", tList);
 		}
+		int total =  cosmeticService.selectCountByCategory(c);
+		CosmeticPageDTO cosmeticPageDTO = new CosmeticPageDTO(c, total);
+		// 브랜드정보
+		List<BrandVo> bList = brandService.selectListAllBrand();
+		
+		log.info("페이징 정보 : "+cosmeticPageDTO);
+		model.addAttribute("cosmeticPageDTO",cosmeticPageDTO);
+		model.addAttribute("cList", cList);
+		model.addAttribute("bList", bList);
+		// 카테고리 정보
+		model.addAttribute("CosmeticCriteria", c);
+		model.addAttribute("type", c.getType());
+		
 	}
 	
 	// 윤신영 - 화장품 등록 페이지 이동
