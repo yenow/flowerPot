@@ -23,4 +23,6 @@ public interface CosmeticService {
 
 	void updateCosmeticHitsByCno(Integer cno);
 
+	int selectCountByCategory(CosmeticCriteria c);
+
 }

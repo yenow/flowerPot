@@ -42,4 +42,20 @@ delete from f_cosmetic;
 update f_cosmetic set type='스킨케어', sub_type='페이셜', skinType='지성', brand='이니스프리';
 
 select rownum as rnum, f_cosmetic.* from f_cosmetic order by cno desc;
-select * from (select rownum as rnum, f_cosmetic.* from f_cosmetic order by cno desc) where rnum >1 and rnum < 10;
+select rownum as rnum, c.* from (select * from f_cosmetic order by cno desc) c where rownum >1 and rownum < 10;
+select rownum as rnum, f_cosmetic.* from f_cosmetic order by cno desc;
+select * from f_cosmetic 
+
+
+select c.* from (select rownum as rnum, f_cosmetic.* from f_cosmetic order by cno desc) c where rnum >1 and rnum < 10;
+
+select c.* from ( select rownum as rnum, f_cosmetic.* from f_cosmetic where type = '스킨케어' and 
+sub_type = '페이셜' order by cno desc ) c where rnum > 1 and rnum < 10;
+
+select rownum as rnum, f_cosmetic.* from f_cosmetic where type = '스킨케어' and 
+sub_type = '페이셜';
+
+select rownum as rnum, c.* from (select * from f_cosmetic where type = '스킨케어' and  sub_type = '페이셜' order by cno desc ) c;
+
+select c.* from (select rownum as rnum, c.* from (select * from f_cosmetic where type = '스킨케어' and  sub_type = '페이셜' order by cno desc ) c) c where rnum >1 and rnum < 10;
+

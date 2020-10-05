@@ -114,4 +114,9 @@ public class CosmeticServiceImpl implements CosmeticService {
 	public void updateCosmeticHitsByCno(Integer cno) {
 		cosmeticDao.updateCosmeticHitsByCno(cno);
 	}
+
+	@Override
+	public int selectCountByCategory(CosmeticCriteria c) {
+		return cosmeticDao.selectCountByCategory(c);
+	}
 }

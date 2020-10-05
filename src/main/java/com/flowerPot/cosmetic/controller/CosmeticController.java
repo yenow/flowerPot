@@ -26,7 +26,7 @@ import com.flowerPot.cosmetic.service.TypeService;
 import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
 import com.flowerPot.description.service.DescriptionService;
 import com.flowerPot.domain.CosmeticCriteria;
-import com.flowerPot.domain.Criteria;
+import com.flowerPot.domain.CosmeticPageDTO;
 import com.flowerPot.member.service.MemberSerivce;
 import com.flowerPot.memberAddress.service.MemberAddressService;
 import com.flowerPot.vo.AttachFileVo;
@@ -198,9 +198,13 @@ public class CosmeticController {
 			
 			model.addAttribute("tList", tList);
 		}
+		int total =  cosmeticService.selectCountByCategory(c);
+		CosmeticPageDTO cosmeticPageDTO = new CosmeticPageDTO(c, total);
 		// 브랜드정보
 		List<BrandVo> bList = brandService.selectListAllBrand();
- 
+		
+		log.info("페이징 정보 : "+cosmeticPageDTO);
+		model.addAttribute("cosmeticPageDTO",cosmeticPageDTO);
 		model.addAttribute("cList", cList);
 		model.addAttribute("bList", bList);
 		// 카테고리 정보

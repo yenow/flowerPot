@@ -17,9 +17,13 @@ public interface CosmeticDao {
 	void deleteByName(String name);
 
 	List<CosmeticVo> selectListCosmeticByCategory(CosmeticCriteria c);
+	
+	List<CosmeticVo> selectListCosmeticByCategory2(CosmeticCriteria c);
 
 	CosmeticVo selectOneCosmeticByCno(Integer cno);
 
 	void updateCosmeticHitsByCno(Integer cno);
+
+	int selectCountByCategory(CosmeticCriteria c);
 
 }

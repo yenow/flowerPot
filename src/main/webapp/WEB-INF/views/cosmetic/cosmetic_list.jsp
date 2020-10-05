@@ -136,16 +136,16 @@
 		<hr class="m-t-15 m-b-15" />
 		
 		<!-- 정렬기준 -->
-		<div class="flex-w flex-l-m filter-tope-group m-b-10 p-b-10">
-				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">All Products</button>
+		<div class="flex-w flex-l-m filter-tope-group m-b-10 p-b-10"> <!-- how-active1 -->
+				<button class="stext-106 cl6 hov1 bor3  m-r-32 m-tb-5 cosmetic-filter" data-filter="All">All Products</button>
 
-				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">인기순</button>
+				<button class="stext-106 cl6 hov1 bor3  m-r-32 m-tb-5 cosmetic-filter" data-filter="인기순">인기순</button>
 
-				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">최신순</button>
+				<button class="stext-106 cl6 hov1 bor3  m-r-32 m-tb-5 cosmetic-filter" data-filter="최신순">최신순</button>
 
-				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">낮은 가격순</button>
+				<button class="stext-106 cl6 hov1 bor3  m-r-32 m-tb-5 cosmetic-filter" data-filter="낮은가격순">낮은 가격순</button>
 				
-				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">높은 가격순</button>
+				<button class="stext-106 cl6 hov1 bor3  m-r-32 m-tb-5 cosmetic-filter" data-filter="높은가격순">높은 가격순</button>
 			</div>
 		
 		<!-- 화장품 리스트 -->
@@ -195,11 +195,32 @@
 		<!-- Load more -->
 		<div class="flex-c-m flex-w w-full p-t-45">
 			<div class="flex-c-m flex-w w-full p-t-10 m-lr--7">
-				<button class="flex-c-m how-pagination1 trans-04 m-all-7"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" /></svg></button>
-				<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1"> 1 </a>
-
-				<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7"> 2 </a>
-				<button class="flex-c-m how-pagination1 trans-04 m-all-7"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg></button>
+				<c:if test="${cosmeticPageDTO.prev == true }">
+					<button class="flex-c-m how-pagination1 trans-04 m-all-7" date-startPage="${cosmeticPageDTO.startPage }" onclick="return prevPage(this)"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" /></svg></button>
+				</c:if>
+				<c:if test="${cosmeticPageDTO.prev == false }">
+					<button class="flex-c-m how-pagination1 trans-04 m-all-7" onclick="alert('처음페이지 입니다');"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" /></svg></button>
+				</c:if>
+				
+				<!-- 숫자 -->
+				<c:forEach var="num" begin="${cosmeticPageDTO.startPage }" end="${cosmeticPageDTO.endPage }" step="1" >
+					<c:if test="${cosmeticPageDTO.cri.pageNum == num}">
+						<a data-page="${num }" class="flex-c-m how-pagination1 trans-04 m-all-7 cosmetic-page active-pagination2">${num}</a>
+					</c:if>
+					<c:if test="${cosmeticPageDTO.cri.pageNum != num}">
+						<a data-page="${num}" class="flex-c-m how-pagination1 trans-04 m-all-7 cosmetic-page">${num}</a>
+					</c:if>
+				</c:forEach>
+				
+				<c:if test="${cosmeticPageDTO.next == true }">
+					<button class="flex-c-m how-pagination1 trans-04 m-all-7" date-startPage="${cosmeticPageDTO.startPage }" onclick="return nextPage(this);"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg></button>
+				</c:if>
+				<c:if test="${cosmeticPageDTO.next == false }">
+					<button class="flex-c-m how-pagination1 trans-04 m-all-7" onclick="alert('마지막페이지 입니다');"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" /></svg></button>
+				</c:if>
+				
+				<!-- <a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1"> 1 </a>
+				<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7"> 2 </a> -->
 			</div>
 		</div>
 	</div>
@@ -236,6 +257,13 @@ $(document).ready(function() {
 			
 		}
 	}
+	for(var i=0; i<$('.cosmetic-filter').length; i++){
+		$tag = $($('.cosmetic-filter').get(i));
+		if($tag.data('filter')=='${CosmeticCriteria.filter}'){
+			$tag.addClass('how-active1');
+		}
+	}
+	
 });
 
 //$('.filter-button').trigger("click");
@@ -243,13 +271,48 @@ $(document).ready(function() {
 $('.brand-panel').slideToggle(400);
 $('.type-panel').slideToggle(400);
 
-
+// 유형선택
 $('.cursor_finger').on({
 	click : function() {
 		var category = $(this).data('category');
 		var name = $(this).data('name');
-		
+		// 쿼리스트링 작업,, 기본적으로 type 값을 받음
 		var query = category+'='+name+'&type=${type}';
+		// 필터방법
+		query += '&filter='+'${CosmeticCriteria.filter}';
+		
+		// 
+		if(category != 'skinType'){
+			query += '&skinType='+'${CosmeticCriteria.skinType}';
+		}
+		if(category != 'sub_type'){
+			query += '&sub_type='+'${CosmeticCriteria.sub_type}';
+		}
+		if(category != 'brand'){
+			query += '&brand='+'${CosmeticCriteria.brand}';
+		}
+
+		
+		location.href='${pageContext.request.contextPath }/cosmetic/cosmetic_list?'+query;
+	},
+	mouseenter : function() {
+		$(this).addClass('fluid-actice');
+	},
+	mouseleave : function() {
+		$(this).removeClass('fluid-actice');
+	}
+});
+
+// 정렬방법 선택
+$('.cosmetic-filter').on({
+	click : function() {
+		var category = $(this).data('category');
+		var name = $(this).data('name');
+		var query = category+'='+name+'&type=${type}';
+	
+		var filter = $(this).data('filter');
+		// 필터방법
+		query += '&filter='+filter;
 		
 		if(category != 'skinType'){
 			query += '&skinType='+'${CosmeticCriteria.skinType}';
@@ -264,12 +327,66 @@ $('.cursor_finger').on({
 		location.href='${pageContext.request.contextPath }/cosmetic/cosmetic_list?'+query;
 	},
 	mouseenter : function() {
-		$(this).addClass('fluid-actice');
+		$(this).addClass('how-active1');
 	},
 	mouseleave : function() {
-		$(this).removeClass('fluid-actice');
+		$(this).removeClass('how-active1');
 	}
-})
+});
+
+//page 클릭
+$('.cosmetic-page').on({
+	click : function() {
+		var page = $(this).data('page');
+		// var category = $(this).data('category');
+		// var name = $(this).data('name');
+		var query = 'type=${type}';
+	
+		// 필터방법
+		query += '&filter='+'${CosmeticCriteria.filter}';
+		query += '&skinType='+'${CosmeticCriteria.skinType}';
+		query += '&sub_type='+'${CosmeticCriteria.sub_type}';
+		query += '&brand='+'${CosmeticCriteria.brand}';
+		query += '&pageNum='+page;
+		
+		location.href='${pageContext.request.contextPath }/cosmetic/cosmetic_list?'+query;
+	},
+	mouseenter : function() {
+		$(this).addClass('active-pagination1');
+	},
+	mouseleave : function() {
+		$(this).removeClass('active-pagination1');
+	}
+});
+
+// 이전 10개 페이지
+function prevPage(tag) {
+	var startPage = $(tag).data('startPage');
+	console.log(startPage);
+	startPage += 10;
+	
+	var query = category+'='+name+'&type=${type}';
+	query += '&filter='+'${CosmeticCriteria.filter}';
+	query += '&skinType='+'${CosmeticCriteria.skinType}';
+	query += '&sub_type='+'${CosmeticCriteria.sub_type}';
+	query += '&brand='+'${CosmeticCriteria.brand}';
+	query += '&pageNum='+page;
+}
+
+// 다음 10개 페이지
+function nextPage(tag) {
+	var startPage = $(tag).data('startPage');
+	console.log(startPage);
+	startPage -= 10;
+	
+	var query = category+'='+name+'&type=${type}';
+	query += '&filter='+'${CosmeticCriteria.filter}';
+	query += '&skinType='+'${CosmeticCriteria.skinType}';
+	query += '&sub_type='+'${CosmeticCriteria.sub_type}';
+	query += '&brand='+'${CosmeticCriteria.brand}';
+	query += '&pageNum='+startPage;
+}
+
 </script>
 
 <jsp:include page="../info/footer.jsp"></jsp:include>
