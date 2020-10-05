@@ -12,6 +12,7 @@ import lombok.Setter;
 @Getter
 public class CoupVo {
 	private Integer couNo;
+	private Integer mno;
 	private String couponName;
 	private Integer discountMoney;
 	private Integer discountPercent;

@@ -3,6 +3,7 @@ package com.flowerPot.cosmetic.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flowerPot.admin.service.CoupService;
+import com.flowerPot.admin.vo.CoupVo;
 import com.flowerPot.attachFile.service.AttachFileService;
 import com.flowerPot.brand.service.BrandService;
 import com.flowerPot.cosmetic.service.CosmeticService;
@@ -63,7 +65,7 @@ public class CosmeticController {
 	@Autowired
 	private BrandService brandService;
 	@Autowired 
-	private CoupService iCoupService;
+	private CoupService CoupService;
 	
 	// 결제 페이지로 이동
 	@RequestMapping("payment")
@@ -71,14 +73,18 @@ public class CosmeticController {
 		// 로그인된 회원정보 가져오기
 		MemberVo memberVo = new MemberVo();
 		MemberAddressVo memberAddress  = new MemberAddressVo();
+		
+		List<CoupVo> coupList = new ArrayList<CoupVo>();
 		log.info("cosmetic:"+cosmetic);
 		if(principal!=null) {
 			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
 			String id = principal.getName();
 			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
 			memberAddress  = memberAddressService.selectOneMemberAddressByMno(memberVo.getMno());   // 회원주소록 가져오기
+			
+			//쿠폰 목록 가져오기
+			coupList = CoupService.selectCoupList(memberVo.getMno());
 		}
-		//쿠폰 목록 가져오기
 		
 
 		//User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -100,6 +106,7 @@ public class CosmeticController {
 			model.addAttribute("cosmetic", c);
 		}
 		
+		model.addAttribute("coupList", coupList);
 		model.addAttribute("memberAddress", memberAddress);  // 회원 주소정보
 		model.addAttribute("member", memberVo);  // 어떤멤버인지
 		model.addAttribute("root", root);

@@ -15,6 +15,7 @@ import com.flowerPot.admin.dao.CoupMapper;
 import com.flowerPot.admin.vo.CoupVo;
 import com.flowerPot.member.repository.MemberDao;
 import com.flowerPot.member.service.MemberSerivce;
+import com.flowerPot.vo.HasCouponVo;
 import com.flowerPot.vo.MemberVo;
 
 @Service
@@ -69,6 +70,17 @@ public class CoupServiceImpl implements CoupService {
 				mapper.insertCouponToMember(map);
 			}
 		}
+	}
+	@Override
+	public List<CoupVo> selectCoupList(Integer mno) {
+		List<HasCouponVo> hasCoupList =  mapper.selectListHasCoupListByMno(mno);
+		List<CoupVo> coupList = new ArrayList<CoupVo>();
+		for(HasCouponVo hc : hasCoupList) {
+			CoupVo coupVo = mapper.selectCoupListByMno(hc.getCouno());
+			coupVo.setMno(mno);
+			coupList.add(coupVo);
+		}
+		return coupList;
 	}
 	
 }

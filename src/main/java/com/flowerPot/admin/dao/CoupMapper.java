@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.flowerPot.admin.commons.SearchVO;
 import com.flowerPot.admin.vo.CoupVo;
+import com.flowerPot.vo.HasCouponVo;
 import com.flowerPot.vo.MemberVo;
 
 public interface CoupMapper {
@@ -22,5 +23,9 @@ public interface CoupMapper {
 	void insertCouponAll(Integer couNo);
 
 	void insertCouponToMember(Map<String, Object> map);
+
+	List<HasCouponVo> selectListHasCoupListByMno(Integer mno);
+
+	CoupVo selectCoupListByMno(Integer couNo);
 
 }

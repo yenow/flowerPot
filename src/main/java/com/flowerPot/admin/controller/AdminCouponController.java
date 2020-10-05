@@ -58,7 +58,7 @@ public class AdminCouponController {
 	@RequestMapping("/coupon/{id}")
 	@ResponseBody
 	public MemberVo searchId(@PathVariable String id/*HttpServletRequest request*/) {
-//		String id = request.getParameter("id"); 
+		//String id = request.getParameter("id"); 
 		System.out.println("searchId()메서드 접근!");
 		MemberVo mv = service.selectMemOne(id);
 		System.out.println(mv);

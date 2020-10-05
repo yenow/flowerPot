@@ -18,4 +18,6 @@ public interface CoupService {
 
 	void insertCouponToMember(String id, Integer couNo,Integer radio);
 
+	List<CoupVo> selectCoupList(Integer mno);
+
 }
