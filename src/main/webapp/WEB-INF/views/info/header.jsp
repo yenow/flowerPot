@@ -6,6 +6,7 @@
 <title>Home</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="${pageContext.request.contextPath }/resources/images/icons/favicon.png" />
 <!--===============================================================================================-->
@@ -31,6 +32,33 @@
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/MagnificPopup/magnific-popup.css">
 <!--===============================================================================================-->
+=======
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="${pageContext.request.contextPath }/resources/images/icons/favicon.png" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/fonts/linearicons-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/slick/slick.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/MagnificPopup/magnific-popup.css">
+<!--===============================================================================================-->
+>>>>>>> se
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/perfect-scrollbar/perfect-scrollbar.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/util.css">
@@ -43,6 +71,7 @@
 <body class="animsition">
 
 	<!-- Header -->
+
 	<header>
 
 		<!-- Header desktop -->
@@ -58,6 +87,24 @@
 								<input type="submit" value="로그아웃">
 							</form>
 						</a>
+						
+						<a href="${pageContext.request.contextPath }/member/signUp" class="flex-c-m trans-04 p-lr-25"> 회원가입 </a>
+					
+						<a href="${pageContext.request.contextPath }/member/login" class="flex-c-m trans-04 p-lr-25"> 로그인 </a>
+
+						<a class="flex-c-m trans-04 p-lr-25">
+							<form action="${pageContext.request.contextPath}/logout" method="post">
+								<input type="submit" value="로그아웃">
+							</form>
+						</a>
+						
+						<a href="${pageContext.request.contextPath }/myPage/myPage" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
+						
+						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter" class="flex-c-m trans-04 p-lr-25"> 고객센터 </a>
+						
+						<a href="${pageContext.request.contextPath }/ourCompany/Company_main" class="flex-c-m trans-04 p-lr-25"> 우리회사 </a>
+						
+						<!-- 
 						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter" class="flex-c-m trans-04 p-lr-25"> 고객센터 </a>
 
 						<a href="${pageContext.request.contextPath }/myPage/myPage" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
@@ -65,10 +112,11 @@
 						<a href="${pageContext.request.contextPath }/member/login" class="flex-c-m trans-04 p-lr-25"> 로그인 </a>
 
 						<a href="${pageContext.request.contextPath }/member/signUp" class="flex-c-m trans-04 p-lr-25"> 회원가입 </a>
+						
+						 -->
 					</div>
 				</div>
 			</div>
-
 
 			<div class="wrap-menu-desktop "> <!-- how-shadow1 -->
 				<nav class="limiter-menu-desktop container">
@@ -254,12 +302,13 @@
 				<div class="w-full">
 					<!-- 총 금액 -->
 					<div class="header-cart-total w-full p-tb-40">총 금액: <span class="t-price"></span><span>원</span></div>
-					
+
 					<div class="header-cart-buttons flex-w w-full">	
 						<!-- 장바구니로 가기 -->
 						<a href="${pageContext.request.contextPath }/shoppingList/shoppingList" 
 						class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10"> 장바구니로 가기 </a>
 						<!-- 구입하기 -->
+
 						<a href="${pageContext.request.contextPath}/cosmetic/payment?root=2" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10"> 구입하기 </a>
 					</div>
 				</div>
@@ -282,3 +331,4 @@ function shoppingList() {
 shoppingList();
 
 </script>
+

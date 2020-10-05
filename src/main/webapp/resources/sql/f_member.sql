@@ -37,6 +37,8 @@ values (mno_seq.nextval,'admin','0000','관리자','대통령','주소','yjk7454
 
 insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,member_rank,authority ) 
 values (mno_seq.nextval,'phantom1','tlsdud5089','윤신영','윤신영','주소','phantom_ysy@naver.com','M','11-29','골드','작성자');
+insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,member_rank,authority ) 
+values (mno_seq.nextval,'admin0','0000','받성은','관리자','주소','1234@naver.com','M','11-29','골드','곤리자');
 
 update f_member set tel='010-2124-5690' where name='윤신영';
 
@@ -49,3 +51,4 @@ values (mno_seq.nextval,'phantom2','tlsdud5089','윤신영','윤신영','주소'
 alter table f_member add(tel varchar2(100));
 alter table f_member add(phone varchar2(100));
 alter table f_member drop column phone;
+

@@ -12,4 +12,5 @@ public interface CoupMapper {
 	List<CoupVo> selectCoupList(SearchVO search);
 	MemberVo selectMemOne(String id);
 	Integer countCouponArticles(SearchVO search);
+
 }

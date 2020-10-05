@@ -28,4 +28,7 @@ public interface CosmeticDao {
 
 	void updateHits(Integer cno);
 
+	List<CosmeticVo> getProductlist();
+
+
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.flowerPot.attachFile.repository.AttachFileDao;
@@ -116,6 +117,7 @@ public class CosmeticServiceImpl implements CosmeticService {
 	}
 
 	@Override
+
 	public int selectCountByCategory(CosmeticCriteria c) {
 		return cosmeticDao.selectCountByCategory(c);
 	}
@@ -123,5 +125,10 @@ public class CosmeticServiceImpl implements CosmeticService {
 	@Override
 	public void updateHits(Integer cno) {
 		cosmeticDao.updateHits(cno);
+	}
+
+	public List<CosmeticVo> productManage(Model model) {
+		
+		return cosmeticDao.getProductlist();
 	}
 }
