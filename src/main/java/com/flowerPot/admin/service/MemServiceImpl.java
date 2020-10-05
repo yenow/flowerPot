@@ -10,7 +10,7 @@ import com.flowerPot.admin.dao.MemMapper;
 import com.flowerPot.vo.MemberVo;
 
 @Service
-public class MemServiceImpl implements IMemService {
+public class MemServiceImpl implements MemService {
 
 	@Autowired
 	private MemMapper mapper;

@@ -74,8 +74,9 @@ public class UserControllerTest {
 			try {
 				con = dataSource.getConnection();
 				pstmt = con.prepareStatement(sql);
-
+				
 				pstmt.setString(1, "이름"+i);
+				
 				pstmt.setInt(2, 50);
 				pstmt.setInt(3, 1);
 				pstmt.executeUpdate();

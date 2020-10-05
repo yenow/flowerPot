@@ -5,7 +5,7 @@ import java.util.List;
 import com.flowerPot.admin.commons.SearchVO;
 import com.flowerPot.vo.MemberVo;
 
-public interface IMemService {
+public interface MemService {
 
 	public List<MemberVo> selectUserT();
 

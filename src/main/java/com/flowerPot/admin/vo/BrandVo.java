@@ -9,6 +9,7 @@ import lombok.Setter;
 @Getter
 public class BrandVo {
 	private int bno;
+	private String name;
 	private String company;
 	private String brandName;
 	private String busNo;
@@ -22,13 +23,15 @@ public class BrandVo {
 	private String detailAddr;
 	private String introduce;
 	private Date regDate;
+	
 	@Override
 	public String toString() {
-		return "BrandVo [bno=" + bno + ", company=" + company + ", brandName=" + brandName + ", busNo=" + busNo
-				+ ", ceoName=" + ceoName + ", tel=" + tel + ", email=" + email + ", postcode=" + postcode
-				+ ", roadAddr=" + roadAddr + ", jibunAddr=" + jibunAddr + ", extraAddr=" + extraAddr + ", detailAddr="
-				+ detailAddr + ", introduce=" + introduce + ", regDate=" + regDate + "]";
+		return "BrandVo [bno=" + bno + ", name=" + name + ", company=" + company + ", brandName=" + brandName
+				+ ", busNo=" + busNo + ", ceoName=" + ceoName + ", tel=" + tel + ", email=" + email + ", postcode="
+				+ postcode + ", roadAddr=" + roadAddr + ", jibunAddr=" + jibunAddr + ", extraAddr=" + extraAddr
+				+ ", detailAddr=" + detailAddr + ", introduce=" + introduce + ", regDate=" + regDate + "]";
 	}
+
 }
 
 

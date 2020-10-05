@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.flowerPot.admin.commons.PageCreator;
 import com.flowerPot.admin.commons.SearchVO;
-import com.flowerPot.admin.dao.CNoticeMapper;
+import com.flowerPot.admin.service.CNoticeService;
 import com.flowerPot.admin.vo.CustomerVo;
 
 @Controller
@@ -19,7 +19,7 @@ import com.flowerPot.admin.vo.CustomerVo;
 public class AdminNoticeController {
 	
 	@Autowired
-	private CNoticeMapper service;
+	private CNoticeService service;
 	
 	//공지사항 목록 페이지
 	@RequestMapping("/notice")

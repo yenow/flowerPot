@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flowerPot.admin.commons.PageCreator;
 import com.flowerPot.admin.commons.SearchVO;
-import com.flowerPot.admin.service.ICoupService;
+import com.flowerPot.admin.service.CoupService;
 import com.flowerPot.admin.vo.CoupVo;
 import com.flowerPot.vo.MemberVo;
 
@@ -27,7 +27,7 @@ import com.flowerPot.vo.MemberVo;
 public class AdminCouponController {
 	
 	@Autowired
-	private ICoupService service;
+	private CoupService service;
 	
 	@RequestMapping("/coupon")
 	public void coupon(Model model,SearchVO search) {

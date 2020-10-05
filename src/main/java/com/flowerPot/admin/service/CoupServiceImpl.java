@@ -11,7 +11,7 @@ import com.flowerPot.admin.vo.CoupVo;
 import com.flowerPot.vo.MemberVo;
 
 @Service
-public class CoupServiceImpl implements ICoupService {
+public class CoupServiceImpl implements CoupService {
 	
 	@Autowired
 	private CoupMapper mapper;

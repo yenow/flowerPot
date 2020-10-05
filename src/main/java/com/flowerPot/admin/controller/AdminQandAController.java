@@ -11,8 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.flowerPot.admin.commons.PageCreator;
 import com.flowerPot.admin.commons.SearchVO;
-import com.flowerPot.admin.dao.CFaQMapper;
-import com.flowerPot.admin.dao.CQandAMapper;
+import com.flowerPot.admin.service.CQandAService;
 import com.flowerPot.admin.vo.CustomerVo;
 
 @Controller
@@ -21,7 +20,7 @@ public class AdminQandAController {
 	
 	
 	 @Autowired
-	 private CQandAMapper service;
+	 private CQandAService service;
 	 
 	
 	/*

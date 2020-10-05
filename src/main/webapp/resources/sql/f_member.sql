@@ -28,6 +28,7 @@ select * from f_member;
 
 
 drop table f_member;
+
 delete from f_member where name='윤신영';
 delete from f_member where name='관리자';
 

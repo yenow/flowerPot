@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 import com.flowerPot.admin.commons.SearchVO;
 import com.flowerPot.admin.dao.EmpMapper;
 import com.flowerPot.admin.vo.EmpVo;
+import com.flowerPot.vo.AuthorityVo;
 
 @Service
-public class EmpServiceImpl implements IEmpService {
+public class EmpServiceImpl implements EmpService {
 	
 	@Autowired
 	private EmpMapper mapper;
@@ -33,6 +34,17 @@ public class EmpServiceImpl implements IEmpService {
 	@Override
 	public Integer countArticles(SearchVO search) {
 		return mapper.countArticles(search);
+	}
+
+	@Override
+	public void restoreEmpOne(EmpVo emp) {
+		mapper.restoreEmpOne(emp);
+		
+	}
+
+	@Override
+	public List<AuthorityVo> selectEmpAuth() {
+		return mapper.selectEmpAuth();
 	}
 
 }

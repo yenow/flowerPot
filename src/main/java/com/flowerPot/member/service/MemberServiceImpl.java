@@ -56,4 +56,10 @@ public class MemberServiceImpl implements MemberSerivce {
 		return memberDao.selectOneDeliMemById(id);
 	}
 
+
+	@Override
+	public void giveAdminAuth(String empId) {
+		memberDao.giveAdminAuth(empId);
+	}
+
 }

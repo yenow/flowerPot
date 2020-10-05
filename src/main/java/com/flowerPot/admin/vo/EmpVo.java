@@ -2,16 +2,15 @@ package com.flowerPot.admin.vo;
 
 import java.util.List;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Setter
-@Getter
+@Data
 public class EmpVo {
 	
 	private Integer empNo;
 	private String empName;
 	private String empId;
+	private Boolean empEnabled;
 	private Integer deptNo;
 	private Integer poNo;
 	
@@ -20,9 +19,12 @@ public class EmpVo {
 	
 	@Override
 	public String toString() {
-		return "EmpVo [empNo=" + empNo + ", empName=" + empName + ", empId=" + empId + ", deptNo=" + deptNo + ", poNo="
-				+ poNo + ", deptList=" + deptList + ", poList=" + poList + "]";
+		return "EmpVo [empNo=" + empNo + ", empName=" + empName + ", empId=" + empId + ", empEnable=" + empEnabled
+				+ ", deptNo=" + deptNo + ", poNo=" + poNo + ", deptList=" + deptList + ", poList=" + poList + "]";
 	}
+
+	
+
 	
 	
 }

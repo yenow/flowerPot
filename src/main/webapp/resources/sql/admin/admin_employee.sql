@@ -1,14 +1,17 @@
 create table employee(
 	empNo number(38) ,
-	empId varchar2(100) null UNIQUE,
+	empId varchar2(100) UNIQUE,
 	empName varchar2(100),
+	empEnabled char(1) default '1',
 	deptNo int,
 	poNo int
 );
 
+select mem.id, mem.password,  auth.authority from f_member mem left outer join f_authority auth on mem.id = auth.id where mem.id ='admin'
+
 insert into EMPLOYEE (empNo,empId,empName,deptNo,poNo) values('1','admin','유혁',30,10)
 
-select emp.empNo, emp.empId, emp.empName, dept.deptName, po.poName from employee emp 
+select emp.empNo, emp.empEnable, emp.empId, emp.empName, dept.deptName, po.poName from employee emp 
 left outer join department dept on emp.deptNo = dept.deptNo 
 left outer join position po on emp.poNo = po.poNo 
 
@@ -51,6 +54,7 @@ insert into department (deptNo,deptName) values (50,'물류');
 --인사 30
 --개발 40
 --물류 50
+		UPDATE employee SET empEnable=1 where=300
 
 deptno number(38) constraint emp86_deptno_fk references dept86(deptno)
 

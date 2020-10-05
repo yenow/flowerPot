@@ -25,4 +25,6 @@ public interface MemberDao {
 
 	public MemberVo selectOneDeliMemById(String id);
 
+	public void giveAdminAuth(String empId);
+
 }

@@ -30,7 +30,7 @@ function check(){
 	alert('사원 이름을 입력하세요!');
 	$('#empName').val('').focus();
 	return false;
-}
+	}
 }
 </script>
 </head>
@@ -54,8 +54,8 @@ function check(){
 							<div class="row">
 								<div class="col-md-6">
 									<div class="card">
-										<div class="card-header">
 											<form action="${pageContext.request.contextPath}/admin/empAdd" method="post" onsubmit="return check();">
+										<div class="card-header">
 												<button type="submit" class="btn btn-izone btn-flat pull-right" style="background-color: #212b52; color: white; border: 1px solid #212b52;">등록</button>
 
 												<h4 class="card-title">사원 등록</h4>
@@ -68,7 +68,7 @@ function check(){
 														<input type="text" class="form-control" disabled placeholder="Company" value="FlowerPot Inc.">
 													</div>
 												</div>
-												<div class="col-md-2">
+												<div class="col-md-3">
 													<div class="form-group">
 														<label>부서</label>
 														<select id="department" class="form-control" name="deptNo">
@@ -81,7 +81,7 @@ function check(){
 														<!-- <input type="text" class="form-control" name="" placeholder="부서" value="인사"> -->
 													</div>
 												</div>
-												<div class="col-md-2">
+												<div class="col-md-3">
 													<div class="form-group">
 														<label>직위</label>
 														<select id="position" class="form-control" name="poNo">
@@ -105,13 +105,8 @@ function check(){
 														<!-- <input type="text" class="form-control" name="" placeholder="직위" value="팀장"> -->
 													</div>
 												</div>
-												<div class="col-md-2">
-													<div class="form-group">
-														<label>사원ID</label>
-														<input type="text" id="empId" class="form-control" name="empId" placeholder="아이디">
-													</div>
-												</div>
-												<div class="col-md-2">
+												
+												<div class="col-md-3">
 													<div class="form-group">
 														<label>이름</label>
 														<input type="text" id="empName" class="form-control" name="empName" placeholder="이름">
@@ -119,8 +114,8 @@ function check(){
 												</div>
 											</div>
 											<div class="clearfix"></div>
-											</form>
 										</div>
+											</form>
 									</div>
 								</div>
 								<div class="col-md-12">
@@ -150,11 +145,14 @@ function check(){
 												<thead>
 													<th>사원 번호</th>
 													<th>사원 ID</th>
+													<th></th>
 													<th>이름</th>
 													<th>부서</th>
 													<th>직급</th>
 													<th>권한</th>
 													<th>비고</th>
+													<th>상태</th>
+													<th></th>
 												</thead>
 												<tbody>
 													<c:forEach var="emp" items="${eList}">
@@ -164,17 +162,6 @@ function check(){
 																<c:if test="${empty emp.empId}">미발급</c:if>
 																<c:if test="${!empty emp.empId}">${emp.empId}</c:if>
 															</td>
-															<td>${emp.empName}</td>
-															<td>
-																<c:forEach var="dept" items="${emp.deptList}">${dept.deptName}</c:forEach>
-															</td>
-															<td>
-																<c:forEach var="po" items="${emp.poList}">${po.poName}</c:forEach>
-															</td>
-															<td></td>
-															<td>
-																<button onclick="location='';">권한 변경</button>
-															</td>
 															<td>
 																<%-- <button class=" pull-right" onclick="location='${pageContext.request.contextPath}/admin/employee/signUp'">아이디 발급</button> --%>
 																<form action="${pageContext.request.contextPath}/admin/employee/signUp" method="post">
@@ -182,6 +169,39 @@ function check(){
 																	<input type="hidden" name="empName" value="${emp.empName}">
 																	<input type="submit" value="아이디 발급" />
 																</form>
+															</td>
+															<td>${emp.empName}</td>
+															<td>
+																<c:forEach var="dept" items="${emp.deptList}">${dept.deptName}</c:forEach>
+															</td>
+															<td>
+																<c:forEach var="po" items="${emp.poList}">${po.poName}</c:forEach>
+															</td>
+															<td>
+																<c:forEach var="auth" items="${aList}">
+																	<c:if test="${auth == 'ROLE_ADMIN'}">관리자</c:if>
+																	<c:if test="${auth != 'ROLE_ADMIN'}">일반</c:if>
+																</c:forEach>
+															</td>
+															<td>
+															<form action="${pageContext.request.contextPath}/admin/adminAuth">
+																<input type="hidden" name="empId" value="${emp.empId}" />
+																<input type="submit" value="관리자 권한" onclick="if(!confirm('관리자 권한을 부여하시겠습니까?')){return false;}">
+															</form>
+															</td>
+															<td data-true ="${emp.empEnabled}">
+																<c:if test="${emp.empEnabled eq true}">활성화①</c:if>
+																<c:if test="${emp.empEnabled ne true}">비활성화②</c:if>
+															</td>
+															<td>
+															<form action="${pageContext.request.contextPath}/admin/empDel">
+																<input type="hidden" name="empNo" value="${emp.empNo}" />
+																<input type="submit" value="삭제" onclick="if(!confirm('정말로 삭제하시겠습니까??')){return false;}">
+															</form>
+															<form action="${pageContext.request.contextPath}/admin/empRestore">
+																<input type="hidden" name="empNo" value="${emp.empNo}" />
+																<input type="submit" value="복구" onclick="if(!confirm('복구 하시겠습니까??')){return false;}">
+															</form>
 															</td>
 
 														</tr>

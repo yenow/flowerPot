@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.flowerPot.admin.commons.PageCreator;
 import com.flowerPot.admin.commons.SearchVO;
-import com.flowerPot.admin.dao.CFaQMapper;
+import com.flowerPot.admin.service.CFaQService;
 import com.flowerPot.admin.vo.CustomerVo;
 
 @Controller
@@ -19,7 +19,7 @@ import com.flowerPot.admin.vo.CustomerVo;
 public class AdminFAQController {
 	
 	@Autowired
-	private CFaQMapper service;
+	private CFaQService service;
 	
 	//FAQ 목록 페이지
 	@RequestMapping("/faq")

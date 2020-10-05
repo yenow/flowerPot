@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.flowerPot.admin.commons.PageCreator;
 import com.flowerPot.admin.commons.SearchVO;
-import com.flowerPot.admin.dao.BrandMapper;
+import com.flowerPot.admin.service.ABrandService;
 import com.flowerPot.admin.vo.BrandVo;
 
 @Controller
@@ -23,7 +22,7 @@ import com.flowerPot.admin.vo.BrandVo;
 public class AdminBrandController {
 
 	@Autowired
-	private BrandMapper service; //서비스단 추가하기
+	private ABrandService service; //서비스단 추가하기
 	//입점 관리(목록)
 	@RequestMapping("/brand")
 	public void brand(Model m, SearchVO search) {

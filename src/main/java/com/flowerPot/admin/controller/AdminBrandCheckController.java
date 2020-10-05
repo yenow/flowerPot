@@ -1,20 +1,19 @@
 package com.flowerPot.admin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.flowerPot.admin.dao.BrandCheckMapper;
+import com.flowerPot.admin.service.BrandCheckService;
 
 @RestController
 @RequestMapping("/admin")
 public class AdminBrandCheckController {
 
 	@Autowired
-	private BrandCheckMapper service;
+	private BrandCheckService service;
 	
 	//회사명 중복체크
 	@PostMapping("/cmpnyCheck")
