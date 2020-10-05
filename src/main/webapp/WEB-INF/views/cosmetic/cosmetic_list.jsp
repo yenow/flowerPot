@@ -205,10 +205,10 @@
 				<!-- 숫자 -->
 				<c:forEach var="num" begin="${cosmeticPageDTO.startPage }" end="${cosmeticPageDTO.endPage }" step="1" >
 					<c:if test="${cosmeticPageDTO.cri.pageNum == num}">
-						<a data-page="${num }" class="flex-c-m how-pagination1 trans-04 m-all-7 cosmetic-page active-pagination2">${num}</a>
+						<a href="#" data-page="${num }" class="flex-c-m how-pagination1 trans-04 m-all-7 cosmetic-page active-pagination2">${num}</a>
 					</c:if>
 					<c:if test="${cosmeticPageDTO.cri.pageNum != num}">
-						<a data-page="${num}" class="flex-c-m how-pagination1 trans-04 m-all-7 cosmetic-page">${num}</a>
+						<a href="#" data-page="${num}" class="flex-c-m how-pagination1 trans-04 m-all-7 cosmetic-page">${num}</a>
 					</c:if>
 				</c:forEach>
 				

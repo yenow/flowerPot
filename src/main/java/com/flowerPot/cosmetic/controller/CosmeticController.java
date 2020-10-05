@@ -173,9 +173,20 @@ public class CosmeticController {
 	
 	// 윤신영 - 화장품 구입 페이지
 	@RequestMapping("cosmetic")
-	public void cosmetic(Integer cno,Model model) throws IOException {
+	public void cosmetic(Integer cno,Model model, HttpSession session) throws IOException {
 		cosmeticService.updateCosmeticHitsByCno(cno);
 		CosmeticVo cosmetic = cosmeticService.selectOneCosmeticByCno(cno);  // 상품번호로,, 화장품 정보 가져오기
+		
+		if(session.getAttribute("Cosmetic"+cno)!=null) {
+			// 화장품에 한번 들어와본적이 있을떄
+			log.info("중복조회");
+		}else {
+			// 화장품에 한번도 안들어 왔을떄
+			cosmeticService.updateHits(cno);  // 화장품 조회수 업데이트
+			session.setAttribute("Cosmetic"+cno, true);
+			session.setMaxInactiveInterval(3600);
+		}
+		
 		DescriptionVo description = descriptionService.selectOneDescriptionByCno(cno);
 		List<CosmeticReviewVo> crList = cosmeticReviewService.selectListCosmeticReviewListByCno(cno);
 		model.addAttribute("cosmetic", cosmetic);

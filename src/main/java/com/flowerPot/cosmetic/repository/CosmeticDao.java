@@ -26,4 +26,6 @@ public interface CosmeticDao {
 
 	int selectCountByCategory(CosmeticCriteria c);
 
+	void updateHits(Integer cno);
+
 }

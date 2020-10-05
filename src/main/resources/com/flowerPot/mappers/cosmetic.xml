@@ -132,6 +132,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				</if>
 			</where>
 	</select>
+	
+	<update id="updateHits">
+		update f_cosmetic set hits = hits + 1 where cno = #{cno}
+	</update>
 </mapper>
 
 	<!-- <sql id="list">
