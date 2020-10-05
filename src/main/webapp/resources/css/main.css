@@ -3376,3 +3376,6 @@ input[type="radio"] {
 .mlr-0 {
 	 margin-left: 0;  margin-right: 0;
 }
+.clear{
+	clear: both;
+}

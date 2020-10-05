@@ -1,13 +1,12 @@
 package com.flowerPot.member.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.flowerPot.dao.AuthorityDao;
 import com.flowerPot.member.repository.MemberDao;
+import com.flowerPot.member.vo.MemberDTO;
 import com.flowerPot.vo.MemberVo;
 
 @Service
@@ -47,5 +46,11 @@ public class MemberServiceImpl implements MemberSerivce {
 	@Override
 	public Integer checkPhone(String member) {
 		return memberDao.checkPhone(member);
+	}
+
+
+	@Override
+	public void authentication(MemberDTO dto) {
+		memberDao.authentication(dto);
 	}
 }

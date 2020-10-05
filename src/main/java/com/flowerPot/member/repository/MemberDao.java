@@ -2,7 +2,7 @@ package com.flowerPot.member.repository;
 
 import java.util.List;
 
-
+import com.flowerPot.member.vo.MemberDTO;
 import com.flowerPot.vo.MemberVo;
 
 public interface MemberDao {
@@ -22,4 +22,6 @@ public interface MemberDao {
 	public Integer checkEmail(String member);
 	
 	public Integer checkPhone(String member);
+
+	public void authentication(MemberDTO dto);
 }

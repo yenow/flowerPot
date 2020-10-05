@@ -25,6 +25,8 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean> 
 	
+	
+
 
 	<beans:bean id="mailSender"	class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<beans:property name="host" value="smtp.gmail.com" />
@@ -41,6 +43,9 @@
 			</beans:props>
 		</beans:property>
 	</beans:bean> 
+	
+	<!-- NaverLoginBO Class에 대한 Bean설정 추가 -->
+	<beans:bean id="naverLoginBO" class="com.flowerPot.member.controller.NaverLoginBO" /> 
 
 	<!-- controller 매핑 -->
 	<context:component-scan base-package="com.flowerPot.member.controller" />
@@ -52,6 +57,8 @@
 	<context:component-scan base-package="com.flowerPot.admin.controller2" />
 	<context:component-scan base-package="com.flowerPot.controller" />
 	<context:component-scan base-package="com.flowerPot.exception" />
+	<context:component-scan base-package="com.test.sts" />
+	
 	
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="defaultEncoding" value="utf-8"></beans:property>

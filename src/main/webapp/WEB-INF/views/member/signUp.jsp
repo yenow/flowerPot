@@ -36,7 +36,14 @@
 					</div>
 					<div class="form-group">
 						<label for="user_email"text-align: left"><p><strong>이메일</strong>&nbsp;&nbsp;&nbsp;<span id="emailChk"></span></p></label>
-						<input type="email" class="form-control form-control-lg" name="email" id="user_email" placeholder="ex)aaa@naver.com">
+						<input type="email" class="form-control form-control-lg" name="email" id="user_email" placeholder="ex)aaa@naver.com" style="width: 50%; float:left;">
+						<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="send_email();" value="인증번호 전송" style="width: 50%;">
+						<div class="clear"></div>
+						<div class="form-group">
+   					    <label for="user_codeNumber" text-align:left"=""></label>
+    					<input type="text" class="form-control form-control-lg" name="code_number" id="code_number" placeholder="인증번호 입력" style="width: 50%; float:left;">
+                        <input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="code_check();" value="인증 번호 확인" style="width: 50%;">
+                        </div>
 					</div>
 					<div class="form-group">
 						<label for="user_phone"text-align: left"><p><strong>전화번호</strong>&nbsp;&nbsp;&nbsp;<span id="phoneChk"></span></p></label>
@@ -469,6 +476,42 @@ $(function() {
             }
         }).open();
     }
+    $(function send_email(){
+    	const boardInfo={
+            email:$("#user_email").val()
+           }
+            $.ajax({
+              type:"post",
+              url:"${pageContext.request.contextPath}/membership/email_send",
+              //headers:{"Content-Type":"application/json"},
+              data:{'email':email},
+               success:function(result){
+            	   console.log(result);
+            	   if(result == "OK"){
+		           		alert("인증번호가 전송되었습니다");    		   
+            	   }else {
+		           		alert("이메일 중복으로 사용불가");    		               		   
+            	   }
+              } 
+        });  	
+    });
+    
+$(function code_check(){
+   
+    	
+    	
+    	
+    	
+    	 	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    });
 </script>
 
  

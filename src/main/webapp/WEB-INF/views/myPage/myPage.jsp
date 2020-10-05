@@ -87,7 +87,7 @@
 								</li>
 								
 								<li class="bor18">
-									<a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+									<a href="${pageContext.request.contextPath }/myPage/" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
 										내정보 관리
 									</a>
 								</li>

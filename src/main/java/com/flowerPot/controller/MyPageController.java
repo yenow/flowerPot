@@ -7,9 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/myPage")
 public class MyPageController {
 
-	@RequestMapping("/myPage")
+	@RequestMapping("/coupon")
 	public void coupon() {
 		
+	}
+	
+	@RequestMapping("/myInfo")
+public String myinfo() throws Exception {
+		return "/member
 	}
 	
 }

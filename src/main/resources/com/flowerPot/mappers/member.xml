@@ -71,7 +71,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT COUNT(*) FROM f_member 
 		where email=#{member}
 	</select>
-	
+	<insert id="authentication" parameterType="com.flowerPot.member.vo.MemberDTO">
+	insert into memberDTO(USER_ID,MEMBER_PASS,e_MAIL)values(#{user_id},0,#{e_mail})
+	</insert>
 	<select id="checkPhone" resultType="int">
 		SELECT COUNT(*) FROM f_member 
 		where tel=#{member}
