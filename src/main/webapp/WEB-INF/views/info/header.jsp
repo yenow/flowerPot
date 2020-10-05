@@ -94,7 +94,10 @@
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
-					<a href="${pageContext.request.contextPath }" class="logo"> 화분 </a>
+					<a href="${pageContext.request.contextPath}" class="logo"> 
+				<img src="${pageContext.request.contextPath }/resources/images/icons/logotest.png" alt="IMG-LOGO">
+					</a>
+
 
 
 					<!-- Menu desktop -->
@@ -151,7 +154,7 @@
 			<!-- Logo moblie -->
 			<div class="logo-mobile">
 				<a href="index.html">
-					<img src="${pageContext.request.contextPath }/resources/images/icons/logo-01.png" alt="IMG-LOGO">
+					<img src="${pageContext.request.contextPath }/resources/images/icons/logo2.JPG" alt="IMG-LOGO">
 				</a>
 			</div>
 

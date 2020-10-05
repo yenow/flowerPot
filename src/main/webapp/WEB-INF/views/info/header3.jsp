@@ -51,7 +51,7 @@
 					
 					<!-- Logo desktop -->		
 					<a href="#" class="logo">
-						<img src="images/icons/logo-02.png" alt="IMG-LOGO">
+						<img src="images/icons/logo2.JPG" alt="IMG-LOGO">
 					</a>
 
 					<!-- Menu desktop -->

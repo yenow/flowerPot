@@ -51,7 +51,7 @@
 					
 					<!-- Logo desktop -->		
 					<a href="#" class="logo">
-						<img src="images/icons/logo-02.png" alt="IMG-LOGO">
+						<img src="${pageContext.request.contextPath }/resources/images/icons/logoMain.png" alt="IMG-LOGO">
 					</a>
 
 					<!-- Menu desktop -->
@@ -112,7 +112,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+				<a href="index.html"><img src="${pageContext.request.contextPath }/resources/images/icons/logotest.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -377,13 +377,13 @@
 						<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
 								<span class="ltext-202 txt-center cl0 respon2">
-									Women Collection 2018
+									New arrivals
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
 								<h2 class="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1">
-									New arrivals
+									Women Collection 2020
 								</h2>
 							</div>
 								
@@ -401,13 +401,13 @@
 						<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
 								<span class="ltext-202 txt-center cl0 respon2">
-									Men New-Season
+									Winter 2020
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
 								<h2 class="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1">
-									Jackets & Coats
+									Men New-Season
 								</h2>
 							</div>
 								
@@ -420,18 +420,18 @@
 					</div>
 				</div>
 
-				<div class="item-slick1 bg-overlay1" style="background-image: url(${pageContext.request.contextPath }/resources/images/slide_iu4.jpg);" data-thumb="${pageContext.request.contextPath }/resources/images/slide_iu4.jpg" data-caption="Men’s Wear">
+				<div class="item-slick1 bg-overlay1" style="background-image: url(${pageContext.request.contextPath }/resources/images/slide_iu3.jpg);" data-thumb="${pageContext.request.contextPath }/resources/images/slide_iu3.jpg" data-caption="Men’s Wear">
 					<div class="container h-full">
 						<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
 								<span class="ltext-202 txt-center cl0 respon2">
-									Men Collection 2018
+								   Love Myself
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
 								<h2 class="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1">
-									NEW SEASON
+									Basic Items
 								</h2>
 							</div>
 								
@@ -457,16 +457,16 @@
 				<div class="col-md-6 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="images/banner-04.jpg" alt="IMG-BANNER">
+						<img src="${pageContext.request.contextPath }/resources/images/banner_isio.jpg" alt="IMG-BANNER">
 
 						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Women
+									스킨 로션
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									New Trend
+									New Arrival
 								</span>
 							</div>
 
@@ -482,16 +482,16 @@
 				<div class="col-md-6 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="images/banner-05.jpg" alt="IMG-BANNER">
+						<img src="${pageContext.request.contextPath }/resources/images/banner_lipstick.JPG" alt="IMG-BANNER">
 
 						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Men
+									Lipstick
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									New Trend
+									Body Lotion
 								</span>
 							</div>
 
@@ -507,16 +507,16 @@
 				<div class="col-md-6 col-lg-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="images/banner-07.jpg" alt="IMG-BANNER">
+						<img src="${pageContext.request.contextPath }/resources/images/banner_hair.jpg" alt="IMG-BANNER">
 
 						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Watches
+									Hair
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									Spring 2018
+									Spring 2020
 								</span>
 							</div>
 
@@ -532,16 +532,16 @@
 				<div class="col-md-6 col-lg-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="images/banner-08.jpg" alt="IMG-BANNER">
+						<img src="${pageContext.request.contextPath }/resources/images/banner_bodyLotion.JPG" alt="IMG-BANNER">
 
 						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Bags
+									BodyLotion
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									Spring 2018
+									Season's 2020
 								</span>
 							</div>
 
@@ -557,7 +557,7 @@
 				<div class="col-md-6 col-lg-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="images/banner-09.jpg" alt="IMG-BANNER">
+						<img src="${pageContext.request.contextPath }/resources/images/banner_perfume.JPG" alt="IMG-BANNER">
 
 						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
@@ -584,7 +584,7 @@
 
 
 	<!-- Product -->
-	<section class="bg0 p-t-23 p-b-130">
+<!--<section class="bg0 p-t-23 p-b-130">
 		<div class="container">
 			<div class="p-b-10">
 				<h3 class="ltext-103 cl5">
@@ -633,7 +633,7 @@
 					</div>
 				</div>
 				
-				<!-- Search product -->
+		<!-- Search product 
 				<div class="dis-none panel-search w-full p-t-10 p-b-15">
 					<div class="bor8 dis-flex p-l-15">
 						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
@@ -644,7 +644,7 @@
 					</div>	
 				</div>
 
-				<!-- Filter -->
+				<!-- Filter 
 				<div class="dis-none panel-filter w-full p-t-10">
 					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
 						<div class="filter-col1 p-r-15 p-b-27">
@@ -836,7 +836,7 @@
 
 			<div class="row isotope-grid">
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+			<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0 label-new" data-label="New">
 							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
@@ -868,7 +868,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+			<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-02.jpg" alt="IMG-PRODUCT">
@@ -900,7 +900,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-					<!-- Block2 -->
+		<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-03.jpg" alt="IMG-PRODUCT">
@@ -932,7 +932,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+			<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-04.jpg" alt="IMG-PRODUCT">
@@ -964,7 +964,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+			<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-05.jpg" alt="IMG-PRODUCT">
@@ -996,7 +996,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches">
-					<!-- Block2 -->
+			<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-06.jpg" alt="IMG-PRODUCT">
@@ -1028,7 +1028,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+			<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-07.jpg" alt="IMG-PRODUCT">
@@ -1060,7 +1060,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+			<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-08.jpg" alt="IMG-PRODUCT">
@@ -1092,7 +1092,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item shoes">
-					<!-- Block2 -->
+			<!-- Block2
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-09.jpg" alt="IMG-PRODUCT">
@@ -1124,7 +1124,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+		<!-- Block2
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-10.jpg" alt="IMG-PRODUCT">
@@ -1156,7 +1156,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-					<!-- Block2 -->
+		<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-11.jpg" alt="IMG-PRODUCT">
@@ -1188,7 +1188,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-					<!-- Block2 -->
+		<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-12.jpg" alt="IMG-PRODUCT">
@@ -1220,7 +1220,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+		<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-13.jpg" alt="IMG-PRODUCT">
@@ -1252,7 +1252,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+					<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-14.jpg" alt="IMG-PRODUCT">
@@ -1284,7 +1284,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches">
-					<!-- Block2 -->
+					<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-15.jpg" alt="IMG-PRODUCT">
@@ -1316,7 +1316,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+					<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-16.jpg" alt="IMG-PRODUCT">
@@ -1348,7 +1348,7 @@
 				</div>
 			</div>
 
-			<!-- Pagination -->
+			<!-- Pagination 
 			<div class="flex-c-m flex-w w-full p-t-38">
 				<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
 					1
@@ -1359,7 +1359,7 @@
 				</a>
 			</div>
 		</div>
-	</section>
+	</section>  -->	
 
 
 	<!-- Footer -->
