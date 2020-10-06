@@ -131,4 +131,9 @@ public class CosmeticServiceImpl implements CosmeticService {
 		
 		return cosmeticDao.getProductlist();
 	}
+
+	@Override
+	public void updateLikey(Integer cno) {
+		cosmeticDao.updateLikey(cno);
+	}
 }

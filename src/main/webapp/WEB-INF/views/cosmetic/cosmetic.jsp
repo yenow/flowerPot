@@ -42,37 +42,7 @@
 								</div>
 							</div>
 						</c:forEach>
-						
-							<!-- <div class="item-slick3" data-thumb="${pageContext.request.contextPath }/resources/images/product-detail-01.jpg">
-								<div class="wrap-pic-w pos-relative">
-									<img src="${pageContext.request.contextPath }/resources/images/product-detail-01.jpg" alt="IMG-PRODUCT">
 
-									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${pageContext.request.contextPath }/resources/images/product-detail-01.jpg">
-										<i class="fa fa-expand"></i>
-									</a>
-								</div>
-							</div>
-
-							<div class="item-slick3" data-thumb="${pageContext.request.contextPath }/resources/images/product-detail-02.jpg">
-								<div class="wrap-pic-w pos-relative">
-									<img src="${pageContext.request.contextPath }/resources/images/product-detail-02.jpg" alt="IMG-PRODUCT">
-
-									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${pageContext.request.contextPath }/resources/images/product-detail-02.jpg">
-										<i class="fa fa-expand"></i>
-									</a>
-								</div>
-							</div>
-
-							<div class="item-slick3" data-thumb="${pageContext.request.contextPath }/resources/images/product-detail-03.jpg">
-								<div class="wrap-pic-w pos-relative">
-									<img src="${pageContext.request.contextPath }/resources/images/product-detail-03.jpg" alt="IMG-PRODUCT">
-
-									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${pageContext.request.contextPath }/resources/images/product-detail-03.jpg">
-										<i class="fa fa-expand"></i>
-									</a>
-								</div>
-							</div>
-							 -->
 						</div>
 					</div>
 				</div>
@@ -83,8 +53,10 @@
 
 					<!-- 브랜드 -->
 					<div class="mtext-106 cl2 py-2">
-						<a href="#">${cosmetic.brand } </a>
-						<img class="dis-block trans-04 float-right" src="${pageContext.request.contextPath }/resources/images/icons/icon-heart-01.png" alt="ICON">
+						<a href="#">${cosmetic.brand }</a>
+						<span class="float-right">
+							
+						</span>
 					</div>
 					<!-- 화장품이름 -->
 					<h4 class="ltext-103 cl2 js-name-detail py-2">${cosmetic.name }</h4>
@@ -97,6 +69,14 @@
 							</c:forEach>
 						</span> 
 						<span>평점 : ${cosmetic.drating }점</span>
+					</div>
+					<hr />
+					<!-- 좋아요 -->
+					<div class="d-flex justify-content-between border-top border-secondary ">
+						<span> <!-- <i class="item-rating pointer zmdi zmdi-star-outline"></i>  -->
+							<img class="trans-04" src="${pageContext.request.contextPath }/resources/images/icons/icon-heart-02.png" alt="ICON">
+						</span> 
+						<span>좋아요 : ${cosmetic.likey }개</span>
 					</div>
 					<hr />
 					<!-- 배송정보 -->

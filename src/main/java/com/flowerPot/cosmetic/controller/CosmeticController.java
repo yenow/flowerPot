@@ -67,6 +67,20 @@ public class CosmeticController {
 	@Autowired 
 	private CoupService CoupService;
 	
+	@RequestMapping("addlikey")
+	@ResponseBody
+	public ResponseEntity<String> addlikey(Integer cno, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("cosmeticlikey"+cno)==null) {
+			session.setAttribute("cosmeticlikey"+cno, cno);
+			session.setMaxInactiveInterval(3600);
+			cosmeticService.updateLikey(cno);
+			return  new ResponseEntity<String>("plus", HttpStatus.OK);
+		}else {
+			return new ResponseEntity<String>("not", HttpStatus.OK);
+		}
+	}
+	
 	// 결제 페이지로 이동
 	@RequestMapping("payment")
 	public void payment(Principal principal ,Model model,Integer root,CosmeticVo cosmetic,HttpSession session) { // root는 장바구니에서 접근하는지, 바로구매인지 구분하는 변수

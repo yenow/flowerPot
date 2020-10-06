@@ -31,4 +31,6 @@ public interface CosmeticService {
 
 	void updateHits(Integer cno);
 
+	void updateLikey(Integer cno);
+
 }

@@ -179,11 +179,10 @@
 
 							<!-- 좋아요 -->
 							<div class="block2-txt-child2 flex-r p-t-3">
-								
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="dis-block trans-04" src="${pageContext.request.contextPath }/resources/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="dis-block trans-04 ab-t-l" src="${pageContext.request.contextPath }/resources/images/icons/icon-heart-02.png" alt="ICON">
-								</a>
+								<button class="likey-button" data-cno="${cosmetic.cno }"> <!-- btn-addwish-b2 dis-block pos-relative js-addwish-b2 -->
+									<img class="trans-04" src="${pageContext.request.contextPath }/resources/images/icons/icon-heart-02.png" alt="ICON">
+									<!-- <img class="trans-04" src="${pageContext.request.contextPath }/resources/images/icons/icon-heart-02.png" alt="ICON">  -->
+								</button>
 							</div>
 						</div>
 					</div>
@@ -263,6 +262,29 @@ $(document).ready(function() {
 			$tag.addClass('how-active1');
 		}
 	}
+	
+	// 클릭시 좋아요처리
+	$('.likey-button').click(function() {
+		$button = $(this);
+		var cno =  $(this).data('cno');
+		console.log(cno);
+		$.ajax({
+			url: '${pageContext.request.contextPath }/cosmetic/addlikey',
+			type: 'post',
+			data: {'cno' : cno},
+			dataType: 'html',
+			success : function(data) {
+				console.log(data);
+				if(data == 'plus'){
+					//$button.empty();
+					//$button.append($('<img class="trans-04" src="${pageContext.request.contextPath }/resources/images/icons/icon-heart-02.png" alt="ICON">'));
+					swal('success','좋아요 성공','success');
+				}else if(data == 'not'){
+					swal('warning','좋아요는 30분에 한번만 가능합니다','warning');
+				}
+			}
+		});		
+	});
 	
 });
 
@@ -392,73 +414,3 @@ function nextPage(tag) {
 <jsp:include page="../info/footer.jsp"></jsp:include>
 
 
-
-
-
-
-<%--
-<div class="flex-w flex-sb-m p-b-20">
-			<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter=".women">피부타입별</button>
-
-				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">브랜드별</button>
-
-				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">유형별</button>
-			</div>
-
-			<div class="flex-w flex-c-m m-tb-10 ">
-				<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
-						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
-						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						 Filter
-				</div>
-				<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
-					<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i> <i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i> Search
-				</div>
-			</div>
-
-			
-				
-			<!-- Search product -->
-			<div class="dis-none panel-search w-full p-t-10 p-b-15">
-				<div class="bor8 dis-flex p-l-15">
-					<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
-						<i class="zmdi zmdi-search"></i>
-					</button>
-
-					<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
-				</div>
-			</div>
-
-			<!-- Filter -->
-			<div class="panel-filter w-full p-t-10">
-				<table class="table table-bordered">
-					<tbody>
-						<c:set var="count" value="1" />
-						<c:set var="len" value="${fn:length(tList)}" />
-						
-						<c:forEach var="t"  items="${tList }">
-							<!-- tr열기 -->
-							<c:if test="${count%5 == 1  }">
-								<tr>
-							</c:if>
-							
-							<td class="cursor_finger">${t.type}</td>
-							
-							<!-- tr닫기 -->
-							<c:if test="${count%5 == 0  }">
-								</tr>
-							</c:if>
-							<c:if test="${count==len}">
-								</tr>
-							</c:if>
-							
-							
-							<c:set var="count" value="${count+1 }" />
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-		</div>
-
- --%>
