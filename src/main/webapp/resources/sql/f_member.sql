@@ -13,6 +13,7 @@ create table f_member (
     member_rank varchar2(15) default '씨앗',  -- 씨앗, 새싹, 꽃, 나무
     enabled char(1) default '1',
     regdate date,
+    point number(30) default 0,  -- 포인트
     primary key(mno),
     unique(id)
 );

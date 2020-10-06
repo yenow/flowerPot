@@ -36,14 +36,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertCouponToMember">
-		insert into f_hasCoupon values (hasCno_seq.nextval,#{couNo},#{mno})
+		insert into f_hasCoupon (hasCno,couNo,mno) values (hasCno_seq.nextval,#{couNo},#{mno})
 	</insert>
 	
 	<select id="selectListHasCoupListByMno" resultType="com.flowerPot.vo.HasCouponVo">
 		select * from f_hasCoupon where mno = #{mno}
 	</select>
 	
-	<select id="selectCoupListByMno" resultType="com.flowerPot.admin.vo.CoupVo.java">
+	<select id="selectCoupListByCouno" resultType="com.flowerPot.admin.vo.CoupVo">
 		select * from f_coupon where couNo = #{couNo}
 	</select>
 	<!-- <select id="selectOneHasCoupon">

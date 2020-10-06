@@ -23,11 +23,9 @@ public class MemberVo {
 	private String member_rank;
 	private Boolean enabled;
 	private LocalDateTime regdate;
+	private Integer point;
 	private List<AuthorityVo> authList;
 //	private List<EmpVo> empList;
-	
-	
-	
 
 	/*
 	 * public MemberVo(Integer mno, String id, String password, String name, String
@@ -52,9 +50,6 @@ public class MemberVo {
 		this.enabled = enabled;
 	}
 
-
-
-
 	@Override
 	public String toString() {
 		return "MemberVo [mno=" + mno + ", id=" + id + ", password=" + password + ", name=" + name + ", nickname="
@@ -62,10 +57,6 @@ public class MemberVo {
 				+ ", birth=" + birth + ", member_rank=" + member_rank + ", enabled=" + enabled + ", regdate=" + regdate
 				+ ", authList=" + authList + "]";
 	}
-
-
-
-	
 	
 }
 

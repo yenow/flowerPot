@@ -26,6 +26,6 @@ public interface CoupMapper {
 
 	List<HasCouponVo> selectListHasCoupListByMno(Integer mno);
 
-	CoupVo selectCoupListByMno(Integer couNo);
+	CoupVo selectCoupListByCouno(Integer couno);
 
 }

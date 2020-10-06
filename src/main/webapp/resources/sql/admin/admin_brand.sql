@@ -1,9 +1,4 @@
-create table f_brand(
-	bno number(30) primary key,
-	name varchar2(50) unique,
-	tel varchar2(50) not null,
-	location varchar2(100) not null
-);
+
 -- 중복방지 -> company, brand, busNo, tel, email
 -- 사업자번호
 -- 회사이름

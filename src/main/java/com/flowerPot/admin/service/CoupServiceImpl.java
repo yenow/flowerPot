@@ -74,9 +74,10 @@ public class CoupServiceImpl implements CoupService {
 	@Override
 	public List<CoupVo> selectCoupList(Integer mno) {
 		List<HasCouponVo> hasCoupList =  mapper.selectListHasCoupListByMno(mno);
+		Log.info("쿠폰목록:"+hasCoupList);
 		List<CoupVo> coupList = new ArrayList<CoupVo>();
 		for(HasCouponVo hc : hasCoupList) {
-			CoupVo coupVo = mapper.selectCoupListByMno(hc.getCouno());
+			CoupVo coupVo = mapper.selectCoupListByCouno(hc.getCouno());
 			coupVo.setMno(mno);
 			coupList.add(coupVo);
 		}

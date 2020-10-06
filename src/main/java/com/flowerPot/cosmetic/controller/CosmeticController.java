@@ -84,6 +84,7 @@ public class CosmeticController {
 			
 			//쿠폰 목록 가져오기
 			coupList = CoupService.selectCoupList(memberVo.getMno());
+			log.info("쿠폰목록:"+coupList);
 		}
 		
 

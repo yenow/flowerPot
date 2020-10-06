@@ -148,12 +148,14 @@
 						쿠폰 적용
 					</div>
 					<div class="col-8">  
-						<select class="custom-select custom-select-lg mb-3 coupon-select" style="width: 100%;">
-						  <option value="n" selected disabled="disabled">사용 가능한 쿠폰</option>
+						<select class="custom-select custom-select-lg mb-3 coupon-select" style="width: 100%;" onchange="return changePrice();">
+						  <option value="no" selected disabled="disabled">사용 가능한 쿠폰</option>
 						  <!-- 쿠폰리스트 -->
-						  <option value="coupon1" >쿠폰이름1</option> <!-- 쿠폰이름에 정보가 있어야할듯 -->
-						  <option value="coupon2">쿠폰이름2</option>
-						  <option value="coupon3">쿠폰이름3</option>
+						  <c:if test="${coupList != null }">
+						  	<c:forEach var="coup" items="${coupList }">
+						  		<option value="${coup.couponName }" data-couNo="${coup.couNo }" data-discountMoney="${coup.discountMoney }" data-discountPercent="${coup.discountPercent }">${coup.couponName }</option> <!-- 쿠폰이름에 정보가 있어야할듯 -->
+						  	</c:forEach>
+						  </c:if>
 						</select>
 					</div>
 				</div>
@@ -165,9 +167,16 @@
 					<div class="col-8">
 						<div class="d-flex justify-content-between mb-3">
 						<span>사용 가능한 적립금</span>
-						<span><span></span><span>원</span></span>
+							<!-- 로그인이 안되어있을떄 -->
+							<c:if test="${member == null}">
+								<span><span class="max-point">0</span><span>원</span></span>
+							</c:if>
+							<!-- 로그인 되어있을떄 -->
+							<c:if test="${member != null}">
+								<span><span class="max-point">${member.point }</span><span>원</span></span>
+							</c:if>
 						</div>
-						<input type="number" class="form-control cosmetic-point" value="0" id="" placeholder="적립금 사용">
+						<input type="number" class="form-control cosmetic-point" value="0" id="" placeholder="적립금 사용" onchange="return maxPoint(this);">
 					</div>
 				</div>
 			</div>
@@ -200,15 +209,15 @@
 			<div class="m-l-25 m-r-38 m-lr-0-xl p-t-30 p-b-30">
 				<div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">결제 금액</div>
 				<div class="row  my-3 mlr-0"  style="border-bottom: 1px solid #ddd;">
-					<div class="col-6">
+					<div class="col-6 pb-3">
 						주문금액
 					</div>
-					<div class="col-6">
+					<div class="col-6 pb-3">
 						<span class="order_price"></span><span>원</span>
 					</div>
 				</div>
 				<div class="row  my-3 mlr-0"  style="border-bottom: 1px solid #ddd;">
-					<div class="col-6 p-l-30">
+					<div class="col-6 p-l-30 pb-3">
 						ㄴ상품금액
 					</div>
 					<div class="col-6">
@@ -216,42 +225,42 @@
 					</div>
 				</div>
 				<div class="row  my-3 mlr-0"  style="border-bottom: 1px solid #ddd;">
-					<div class="col-6 p-l-30">
+					<div class="col-6 p-l-30 pb-3">
 						ㄴ상품할인
 					</div>
-					<div class="col-6">
+					<div class="col-6 pb-3">
 						<span class="product_discount"></span><span>원</span><span style="display : none" class="discount-percent"></span>
 					</div>
 				</div>
 				<div class="row  my-3 mlr-0"  style="border-bottom: 1px solid #ddd;">
-					<div class="col-6">
+					<div class="col-6 pb-3">
 						배송비
 					</div>
-					<div class="col-6">
+					<div class="col-6 pb-3">
 						<span class="delivery_price">2500</span><span>원</span>
 					</div>
 				</div>
 				<div class="row  my-3 mlr-0"  style="border-bottom: 1px solid #ddd;">
-					<div class="col-6">
+					<div class="col-6 pb-3">
 						쿠폰할인
 					</div>
 					<div class="col-6">
-						<span class="coupon_discount"></span><span>원</span>
+						<span class="coupon_discount">0</span><span>원</span>
 					</div>
 				</div>
 				<div class="row  my-3 mlr-0"  style="border-bottom: 1px solid #ddd;">
-					<div class="col-6">
+					<div class="col-6 pb-3">
 						적립금사용
 					</div>
-					<div class="col-6">
+					<div class="col-6 pb-3">
 						<span class="point_discount"></span><span>원</span>
 					</div>
 				</div>
 				<div class="row  my-3 mlr-0"  style="border-bottom: 1px solid #ddd;">
-					<div class="col-6">
+					<div class="col-6 pb-3">
 						최종결재금액
 					</div>
-					<div class="col-6">
+					<div class="col-6 pb-3">
 						<span class="final_price">10000</span><span>원</span>
 					</div>
 				</div>
@@ -349,7 +358,7 @@ function changePrice() {
 		var price = Number($($('.cosmetic-price').get(i)).html());
 		var numProduct = Number($($('.cosmetic-numProduct').get(i)).html());
 		console.log(price);  // 상품가격
-		console.log(numProduct);  // 상품개수
+		console.log(numProduct);   // 상품개수
 		var discountPersent = Number($($('.cosmetic-discountPersent').get(i)).val());  // 할인 퍼센트
 		
 		order_price += price*numProduct*((100-discountPersent)/100);    // 할인적용가격 (포인트와 쿠폰은 적용x)
@@ -366,15 +375,35 @@ function changePrice() {
 	var point_discount = $('.cosmetic-point').val();
 	var final_price = order_price - point_discount + delivery_price; // 최종가격
 	
-	$('.order_price').html(String(order_price));
-	$('.product_price').html(String(product_price));
-	$('.product_discount').html(String(product_discount));
+	var point = $('.cosmetic-point').val(); // 차감 포인트
+	
+	// 쿠폰 할인율, 할인 가격   data-couNo="${coup.couNo }" data-discountMoney="${coup.discountMoney }" data-discountPercent="${coup.discountPercent }
+	if($('.coupon-select option:selected').val()=='no'){
+		final_price = final_price - point; 
+	}else{
+		
+		// 쿠폰 적용시 최종가격
+		var couNo = $($('.coupon-select option:selected').get(0)).data('couno');  // ㅡ.ㅡ 지 멋대로 소문자로 바뀜
+		var discountMoney = $($('.coupon-select option:selected').get(0)).data('discountmoney');
+		var discountPercent = $($('.coupon-select option:selected').get(0)).data('discountpercent');
+		console.log($('.coupon-select option:selected'));
+		//console.log($('.coupon-select option:selected').get(0));
+		//console.log($('.coupon-select option:selected').val());
+		var coupon_discount = Math.round(final_price*(discountPercent/100));
+		
+		$('.coupon_discount').html(coupon_discount); // 쿠폰 할인 가격 표시
+		final_price = final_price - coupon_discount - discountMoney - point;  
+	}
+
+	$('.order_price').html(String(order_price));  // 주문 금액 (상품 자체 할인이 적용된 금액)
+	$('.product_price').html(String(product_price));  // 상품 금액 (상품 고유의 금액)
+	$('.product_discount').html(String(product_discount));  // 상품 자체 할인이 적용될 금액
 	//$('.coupon_discount')
-	$('.point_discount').html($('.cosmetic-point').val());
+	$('.point_discount').html($('.cosmetic-point').val());  
 	$('.final_price').html(String(final_price));
 }
 
-changePrice();
+	changePrice();
     
     function ordersubmit() {
     	console.log($('.cosmetic-cno').length);
@@ -393,6 +422,8 @@ changePrice();
     	var delivery = {'postcode': $('.postcode').val() ,'street_address': $('.street_address').val() ,'parcel_address': $('.parcel_address').val() ,'detail_address': $('.detail_address').val(), 'more_infomation': $('.more_infomation').val()};
     	
     	var dno;
+    	
+    	// 배송정보 아작스
     	$.ajax({
     		type: "POST",
     		url: "${pageContext.request.contextPath }/delivery_register", 
@@ -405,11 +436,11 @@ changePrice();
     		}
     	}).done(function (data) { 
     		
-    		// 배달정보를 넣은후
+    		// 배달정보를 넣은후 여
     		for(var i=0; i<len; i++){
         		var OrderProduct={};
         		OrderProduct.cno = $($('.cosmetic-cno').get(i)).val();
-        		OrderProduct.mno = 0;
+        		OrderProduct.mno = $('.member-mno').val(); 
         		OrderProduct.dno = dno;
         		OrderProduct.amount = Number($($('.cosmetic-numProduct').get(i)).html());
         		//OrderProduct.coupon_name = $('.coupon-select option:selected').val();
@@ -422,6 +453,7 @@ changePrice();
         		console.log(OrderProduct);
         	}
     		
+    		// 카카오 결제
     		$.ajax({
         		type: "POST",
         		url: "${pageContext.request.contextPath }/kakaoPay", 
@@ -437,6 +469,20 @@ changePrice();
     	});
     	
     }
+    
+// 포인트 유효성 검증 (내가 가지고있는 포인트보다 높은 포인트를 입력했을 경우 오류코드 )
+function maxPoint(tag) {
+	var maxPoint = Number($('.max-point').html());
+	
+	if($tag.val() > maxPoint){
+		alert('가지고있는 포인트보다 높은 금액을 입력하였습니다');
+		$tag.val(0);
+		return false;
+	}else{
+		changePrice();
+	}
+	
+}
     
 $(document).ready(function() {
 	// 포인트 입력햇을때

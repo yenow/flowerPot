@@ -1,11 +1,12 @@
 create table f_coupon(
 	couNo int
-	,couponName varchar2(100)
+	,couponName varchar2(100) unique
 	,discountMoney int default 0
 	,discountPercent int default 0
 	,startDate date
 	,endDate date
 );
+
 drop table f_coupon;
 
 create sequence couNo_seq increment by 1 start with 1;

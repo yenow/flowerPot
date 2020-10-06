@@ -7,3 +7,6 @@ create table f_hasCoupon(
 create sequence hasCno_seq increment by 1 start with 1;
 
 drop table f_hasCoupon;
+
+select * from f_hasCoupon;
+delete from f_hasCoupon;

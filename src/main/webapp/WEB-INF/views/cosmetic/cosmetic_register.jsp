@@ -241,6 +241,7 @@ function deleteButton(data) {
 			});
 		}
 	}
+	$(data).parent().remove();
 	console.log(attachList);
 }
 
@@ -410,7 +411,7 @@ $(document).ready(function () {
 				success : function(data) {
 					if(data=='success'){
 						alert('등록되었습니다');
-						location.href='${pageContext.request.contextPath}/cosmetic/cosmetic_list';
+						location.href='${pageContext.request.contextPath}/cosmetic/cosmetic_list?type=스킨케어';
 					}else{
 						alert('등록실패했습니다');
 					}
