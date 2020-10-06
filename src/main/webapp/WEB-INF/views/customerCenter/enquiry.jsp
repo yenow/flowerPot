@@ -27,7 +27,6 @@
 			<div class="col-md-4 col-lg-3 p-b-80">
 				<div class="side-menu">
 					<jsp:include page="keyword.jsp"></jsp:include>
-
 					<jsp:include page="sidebar.jsp"></jsp:include>
 
 
@@ -54,43 +53,11 @@
 			<div class="col-md-8 col-lg-9 p-b-80">
 				<div class="p-r-45 p-r-0-lg">
 					<div class="table col-12 board-list ">
-						<h2 class="my-3">공지사항</h2>
-						<table class="table table-striped table-sm">
-							<thead>
-								<tr>
-									<th></th>
-									<th>제목</th>
-									<th>등록일</th>
-								</tr>
-							</thead>
-							<tbody>
-
-								<c:if test="${!empty notice }">
-									<c:forEach var="notice" items="${notice }">
-										<th>${notice.ccno }</th>
-										<th>${notice.title }</th>
-										<th>${notice.regdate }</th>
-										</tr>
-					
-							</c:forEach>
-							</c:if>
-
-								<c:if test="${empty notice}">
-									<tr>
-										<th colspan="3">공지사항이 존재하지 않습니다.</th>
-									</tr>
-								</c:if>
-							</tbody>
-						</table>
+						<h2 class="my-3">1:1 문의</h2>
+						<jsp:include page="enquiry/list.jsp"></jsp:include>
 					</div>
 
-					<!-- Pagination -->
-					<div class="flex-l-m flex-w w-full p-t-10 m-lr--7 text-center">
-						<a href="#"
-							class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
-							1 </a> <a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7">
-							2 </a>
-					</div>
+
 				</div>
 			</div>
 
@@ -125,15 +92,6 @@
 
 						})();
 					});
-
-	$(function abc(ccno) {
-		$
-				.ajax({
-					url : '${pageContext.request.contextPath }/customerCenter/customerCenter?ccno='
-							+ ccno,
-
-				})
-	})
 </script>
 
 <jsp:include page="../info/footer.jsp"></jsp:include>

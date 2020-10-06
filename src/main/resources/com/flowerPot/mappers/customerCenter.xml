@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="customerCenter">
+	<select id="fq_list" resultType="cc">
+
+		select * from
+		f_customerCenter
+		where category='FAQ'
+	</select>
+
+	<select id="EnqList" resultType="cc">
+		select * from f_customerCenter
+		where category='enquiry' order by ccno desc
+	</select>
+
+	<select id="notice" resultType="cc">
+		select * from
+		f_customerCenter
+		where category='notice'
+	</select>
+
+	<select id="searchKeyword" resultType="cc">
+		select * from
+		f_customerCenter where content like
+		'%'|| #{keyword} || '%' or title
+		like '%' ||#{keyword}||'%'
+	</select>
+	<!-- 와일드카드 이렇게 쓰는거임 권누리 까먹지마 등신아 -->
+	<insert id="wirteEnq">
+		insert into f_customerCenter (mno,ccno , title,
+		content,regdate, moddate, category, url)
+		values(2 , ccno_seq.nextval,
+		#{title}, #{content}, sysdate, sysdate, 'enquiry', #{url})
+	</insert>
+	<insert id="NoImgWriteEnq">
+		insert into f_customerCenter (mno,ccno , title,
+		content,regdate, moddate, category)
+		values(2 , ccno_seq.nextval,
+		#{title}, #{content}, sysdate, sysdate, 'enquiry')
+	</insert>
+	<select id="EnqContent" resultType="cc">
+		select * from f_customerCenter where ccno = #{ccno}
+	</select>
+	<update id="EnqUpdate">
+		update f_customerCenter set title = #{title}, content = #{content}, moddate = sysdate where ccno = #{ccno}
+	</update>
+	<delete id="DeleteEnq">
+	delete from f_customerCenter where ccno = #{ccno}
+	</delete>
+</mapper>
+
