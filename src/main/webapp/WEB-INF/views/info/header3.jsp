@@ -51,7 +51,7 @@
 					
 					<!-- Logo desktop -->		
 					<a href="#" class="logo">
-						<img src="images/icons/logo2.JPG" alt="IMG-LOGO">
+						<img src="${pageContext.request.contextPath }/resources/images/icons/logoblue.png" alt="IMG-LOGO">
 					</a>
 
 					<!-- Menu desktop -->
@@ -112,7 +112,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+				<a href="index.html"><img src="${pageContext.request.contextPath }/resources/images/icons/logoblue.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -202,13 +202,6 @@
 
 			<div class="sidebar-content flex-w w-full p-lr-65 js-pscroll">
 				<ul class="sidebar-link w-full">
-					<li class="p-b-13">
-						<a class="stext-102 cl2 hov-cl1 trans-04">
-							<form action="${pageContext.request.contextPath}/logout" method="post">
-								<input type="submit" value="로그아웃">
-							</form>
-						</a>
-					</li>
 
 					<li class="p-b-13">
 						<a href="#" class="stext-102 cl2 hov-cl1 trans-04">
@@ -223,6 +216,7 @@
 					<li class="p-b-13">
 						<a href="${pageContext.request.contextPath }/member/login" class="stext-102 cl2 hov-cl1 trans-04"> 로그인 </a>
 					</li>
+					
 
 					<li class="p-b-13">
 						<a href="${pageContext.request.contextPath }/myPage/myPage" class="stext-102 cl2 hov-cl1 trans-04"> 마이페이지 </a>

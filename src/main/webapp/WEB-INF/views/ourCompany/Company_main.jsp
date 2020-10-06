@@ -46,7 +46,7 @@
 				<div class="row align-items-center">
 					<div class="col-6 col-xl-2">
 						<h1 class="mb-0 site-logo">
-							<a href="index.html" class="h2 mb-0">화분<span class="text-primary"></span>
+							<a href="${pageContext.request.contextPath}/index3" class="h2 mb-0">화분<span class="text-primary"></span>
 							</a>
 						</h1>
 					</div>

@@ -50,7 +50,7 @@
 			<!-- Topbar -->
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
-					<div class="left-top-bar">Free shipping for standard order over $100</div>
+					<div class="left-top-bar">Welcome to our FlowePot :)</div>
 
 					<div class="right-top-bar flex-w h-full">
 
@@ -79,7 +79,8 @@
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
-					<a href="${pageContext.request.contextPath }" class="logo"> 화분 </a>
+					<a href="${pageContext.request.contextPath}" class="logo"> 
+					<img src="${pageContext.request.contextPath }/resources/images/icons/logoblue.png"/></a>
 
 
 					<!-- Menu desktop -->
@@ -136,7 +137,7 @@
 			<!-- Logo moblie -->
 			<div class="logo-mobile">
 				<a href="index.html">
-					<img src="${pageContext.request.contextPath }/resources/images/icons/logo-01.png" alt="IMG-LOGO">
+					<img src="${pageContext.request.contextPath }/resources/images/icons/logoblue.png" alt="IMG-LOGO">
 				</a>
 			</div>
 
@@ -167,7 +168,7 @@
 		<div class="menu-mobile">
 			<ul class="topbar-mobile">
 				<li>
-					<div class="left-top-bar">Free shipping for standard order over $100</div>
+					<div class="left-top-bar">Welcome to our FlowePot :) </div>
 				</li>
 
 				<li>

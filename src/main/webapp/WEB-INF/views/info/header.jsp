@@ -64,12 +64,6 @@
 					
 						<a href="${pageContext.request.contextPath }/member/login" class="flex-c-m trans-04 p-lr-25"> 로그인 </a>
 
-						<a class="flex-c-m trans-04 p-lr-25">
-							<form action="${pageContext.request.contextPath}/logout" method="post">
-								<input type="submit" value="로그아웃">
-							</form>
-						</a>
-						
 						<a href="${pageContext.request.contextPath }/myPage/myPage" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
 						
 						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter" class="flex-c-m trans-04 p-lr-25"> 고객센터 </a>
@@ -95,7 +89,7 @@
 
 					<!-- Logo desktop -->
 					<a href="${pageContext.request.contextPath}" class="logo"> 
-				<img src="${pageContext.request.contextPath }/resources/images/icons/logotest.png" alt="IMG-LOGO">
+				<img src="${pageContext.request.contextPath }/resources/images/icons/logoWhite.png" alt="IMG-LOGO">
 					</a>
 
 
@@ -154,7 +148,7 @@
 			<!-- Logo moblie -->
 			<div class="logo-mobile">
 				<a href="index.html">
-					<img src="${pageContext.request.contextPath }/resources/images/icons/logo2.JPG" alt="IMG-LOGO">
+					<img src="${pageContext.request.contextPath }/resources/images/icons/logoblue.png" alt="IMG-LOGO">
 				</a>
 			</div>
 
@@ -185,7 +179,7 @@
 		<div class="menu-mobile">
 			<ul class="topbar-mobile">
 				<li>
-					<div class="left-top-bar">Free shipping for standard order over $100</div>
+					<div class="left-top-bar">Welcome to our FlowePot :)</div>
 				</li>
 
 				<li>
