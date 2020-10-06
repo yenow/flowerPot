@@ -121,7 +121,7 @@ public class SemiAdminController {
 		//.atTime() : localDateTime 시 분 초 인스턴스 생성
 		sclendar.setDateChoice(LocalDate.parse(dateChoice,formatter).atTime(0,0,0));
 		
-		service.calendarRegist(sclendar);
+		//service.calendarRegist(sclendar);
 		
 		return "redirect:/semiadmin/coupon";
 	}
