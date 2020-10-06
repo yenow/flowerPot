@@ -24,4 +24,5 @@ public interface CustomerCenterDao {
 
 	void deleteEnq(CustomerCenterVo customer);
 
+
 }

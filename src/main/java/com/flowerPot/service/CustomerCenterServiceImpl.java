@@ -63,13 +63,13 @@ public class CustomerCenterServiceImpl implements CustomerCenterService {
 	@Override
 	public void editEnq(CustomerCenterVo customer) {
 		dao.editEnq(customer);
-		
+
 	}
 
 	@Override
 	public void deleteEnq(CustomerCenterVo customer) {
 		dao.deleteEnq(customer);
-		
+
 	}
 
 }

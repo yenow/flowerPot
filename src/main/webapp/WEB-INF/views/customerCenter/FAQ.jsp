@@ -56,6 +56,7 @@
 				<div class="p-r-45 p-r-0-lg">
 					<div class="table col-12 board-list ">
 						<h2 class="my-3">자주 하는 질문</h2>
+						<h2></h2>
 						<br>
 						<jsp:include page="faq/customerQuestion.jsp"></jsp:include>
 					</div>

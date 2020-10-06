@@ -51,9 +51,11 @@ public class CustomerCenterController {
 	@RequestMapping("FAQ")
 	public void FAQ(Model model) {
 		// 게시판 리스트 where category = 'FAQ'
+		CustomerCenterVo c = new CustomerCenterVo();
 
 		// model 를 이용해서 뷰페이지에 넘거야한다
 		List<CustomerCenterVo> question = service.getFaq();
+
 		model.addAttribute("fq_list", question);
 	}
 
@@ -177,4 +179,5 @@ public class CustomerCenterController {
 		return "redirect:/customerCenter/enquiry";
 
 	}
+
 }

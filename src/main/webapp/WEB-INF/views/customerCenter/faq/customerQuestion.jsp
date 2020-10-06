@@ -83,6 +83,7 @@
 			<!--button type="button" class="showAll">답변 모두 여닫기</button-->
 		</div>
 		<ul class="faqBody">
+
 			<c:forEach var="question" items="${fq_list}">
 				<li class="article" id="a1">
 					<p class="q">
