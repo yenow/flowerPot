@@ -21,3 +21,5 @@ insert into f_brand values (bno_seq.nextval,'베네피트','000-0000-0000','인�
 insert into f_brand values (bno_seq.nextval,'웨이크메이크','000-0000-0000','인천시 부평구 청천동');
 
 select * from f_brand;
+
+select count(*) from f_brand;

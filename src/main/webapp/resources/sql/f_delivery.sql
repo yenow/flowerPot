@@ -10,6 +10,8 @@ create table f_delivery(
 	more_infomation varchar2(100),
 	deliver_state varchar2(100)
 );
+
+alter table f_delivery add (t_invoice varchar2(100),t_code varchar2(100)); --운송장번호 --택배회사 코드 추가
 alter table tbl_inyeon_fboard add constraint fb_fk_email foreign key (email) references tbl_inyeon_user(email);
 
 alter table f_delivery add constraint fd_fk_id foreign key (id) references f_member(id); --주종관계에서 자식이 부모를 참조한다 (좌:자식 우:부모)

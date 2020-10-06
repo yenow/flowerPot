@@ -149,7 +149,7 @@
 					</div>
 					<div class="col-8">  
 						<select class="custom-select custom-select-lg mb-3 coupon-select" style="width: 100%;" onchange="return changePrice();">
-						  <option value="no" selected disabled="disabled">사용 가능한 쿠폰</option>
+						  <option value="no" selected="selected">사용안함</option>
 						  <!-- 쿠폰리스트 -->
 						  <c:if test="${coupList != null }">
 						  	<c:forEach var="coup" items="${coupList }">
@@ -201,8 +201,6 @@
 				  		<label for="kakao" style="display: inline-block;"><label for="naver" style="display: inline-block;"><img alt="" src="${pageContext.request.contextPath }/resources/img/naver-pay.png" ></label>
 					</div>
 				</div>
-				
-				
 			</div>
 			
 			<!-- 결제 금액 요약  -->
@@ -379,6 +377,9 @@ function changePrice() {
 	
 	// 쿠폰 할인율, 할인 가격   data-couNo="${coup.couNo }" data-discountMoney="${coup.discountMoney }" data-discountPercent="${coup.discountPercent }
 	if($('.coupon-select option:selected').val()=='no'){
+		
+		$('.coupon_discount').html('0'); // 쿠폰 할인 가격 표시
+		
 		final_price = final_price - point; 
 	}else{
 		
@@ -412,11 +413,8 @@ function changePrice() {
     	var len = $('.cosmetic-cno').length;
     	var olist = [];
     	
-    	// 배송 유효성 검증
-    	if($('.postcode').val()==null ||  $('.detail_address').val()==null){
-    		alert('배송정보를 입려해주세요');
-    		return false;
-    	}
+    	// 배송정보, 주문자 정보 유효성 검증
+    	validate();
     	
     	// 배달 정보 객체
     	var delivery = {'postcode': $('.postcode').val() ,'street_address': $('.street_address').val() ,'parcel_address': $('.parcel_address').val() ,'detail_address': $('.detail_address').val(), 'more_infomation': $('.more_infomation').val()};
@@ -443,7 +441,7 @@ function changePrice() {
         		OrderProduct.mno = $('.member-mno').val(); 
         		OrderProduct.dno = dno;
         		OrderProduct.amount = Number($($('.cosmetic-numProduct').get(i)).html());
-        		//OrderProduct.coupon_name = $('.coupon-select option:selected').val();
+        		OrderProduct.coupon_name = $('.coupon-select option:selected').val();
 				OrderProduct.member_rank 	=$($('.member-member_rank').get(0)).val()      		
         		OrderProduct.point = $('.cosmetic-point').val();
         		OrderProduct.tel = $('.nomember-tel').val();
@@ -474,12 +472,77 @@ function changePrice() {
 function maxPoint(tag) {
 	var maxPoint = Number($('.max-point').html());
 	
-	if($tag.val() > maxPoint){
+	if($(tag).val() > maxPoint){
 		alert('가지고있는 포인트보다 높은 금액을 입력하였습니다');
-		$tag.val(0);
+		$(tag).val(0);
 		return false;
 	}else{
 		changePrice();
+	}
+	
+}
+/*
+<div class="form-group row">
+						<div class="col-sm-3">
+							<input type="text" class="form-control postcode" value="${memberAddress.postcode }" id="sample4_postcode" placeholder="우편번호">
+						</div>
+						<div class="col-sm-3">
+							<input type="button" class="btn btn-outline-secondary" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-sm-4">
+							<input type="text" class="form-control street_address" value="${memberAddress.street_address }" id="sample4_roadAddress" placeholder="도로명주소">
+							<span id="guide" style="color: #999; display: none"></span>
+						</div>
+						<div class="col-sm-4">
+							<input type="text" class="form-control parcel_address" value="${memberAddress.parcel_address }" id="sample4_jibunAddress" placeholder="지번주소">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-sm-4">
+							<input type="text" class="form-control detail_address" value="${memberAddress.detail_address }" id="sample4_detailAddress" placeholder="상세주소">
+						</div>
+						<div class="col-sm-4">
+							<input type="text" class="form-control more_infomation" value="${memberAddress.more_infomation }" id="sample4_extraAddress" placeholder="참고항목">
+						</div>
+					</div> 
+ */
+
+
+// 유효성 검증
+function validate() {
+	// 배송 유효성
+	if($('.postcode').val()==''){
+		alert('배송 정보를 입력해주세요');
+		return false;
+	}
+	if($('.street_address').val()==''){
+		alert('배송 정보를 입력해주세요');
+		return false;
+	}
+	if($('.parcel_address').val()==''){
+		alert('배송 정보를 입력해주세요');
+		return false;
+	}
+	if($('.detail_address').val()==''){
+		alert('배송 정보를 입력해주세요');
+		return false;
+	}
+	
+	// 주문자 정보 유효성
+	if($('#sender').val()==''){
+		alert('주문자 정보를 입력해주세요');
+		return false;
+	}
+	if($('.tel').val()==''){
+		alert('주문자 정보를 입력해주세요');
+		return false;
+	}
+	if($('#email')==''){
+		alert('주문자 정보를 입력해주세요');
+		return false;
 	}
 	
 }
@@ -489,9 +552,6 @@ $(document).ready(function() {
 	$('.cosmetic-point').blur(function() {
 		changePrice();
 	});
-	
-	//쿠폰이 변경되었을때
-	
 });
 </script>
 <jsp:include page="../info/footer.jsp"></jsp:include>

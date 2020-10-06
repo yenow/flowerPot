@@ -43,7 +43,8 @@ public class PayController {
     public ResponseEntity<String> delivery_register(DeliveryVo delivery) {
     	log.info("배송:"+delivery);
     	//delevery.setT_code("택배회사 번호") //to.팀장님께 / insert 매퍼에 t_code컬럼 따로 추가해 주셔야합니다. VO랑 sql파일 테이블에서 컬럼은 추가했습니다(재혁)
-    	delivery.setT_invoice("등기번호");
+    	delivery.setT_code("운송장 번호");  //  
+    	delivery.setT_invoice("택배회사 번호");   //  랜덤으로 생성?
     	deliveryService.insertDelivery(delivery);
     	return new ResponseEntity<String>(Integer.toString(delivery.getDno()),HttpStatus.OK); 
     }

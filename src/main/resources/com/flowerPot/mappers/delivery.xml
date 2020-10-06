@@ -24,8 +24,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>  -->
 	
 	<insert id="insertDelivery">
-		insert into f_delivery (dno,deliver_num,postcode,street_address,parcel_address,detail_address,more_infomation) 
-		values (dno_seq.nextval,#{deliver_num, jdbcType=VARCHAR},#{postcode, jdbcType=VARCHAR},#{street_address, jdbcType=VARCHAR},#{parcel_address, jdbcType=VARCHAR},#{detail_address, jdbcType=VARCHAR},#{more_infomation, jdbcType=VARCHAR})
+		insert into f_delivery (dno,t_code,postcode,street_address,parcel_address,detail_address,more_infomation) 
+		values (dno_seq.nextval,#{t_code, jdbcType=VARCHAR},#{postcode, jdbcType=VARCHAR},#{street_address, jdbcType=VARCHAR},#{parcel_address, jdbcType=VARCHAR},#{detail_address, jdbcType=VARCHAR},#{more_infomation, jdbcType=VARCHAR})
 		<selectKey keyProperty="dno" resultType="int" order="AFTER">
 			select dno_seq.currval from dual
 		</selectKey>

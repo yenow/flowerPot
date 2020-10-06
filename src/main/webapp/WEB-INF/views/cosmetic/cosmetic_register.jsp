@@ -155,7 +155,7 @@
 				<div class="col-12">
 					<div class="form-group">
 						 <div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">사용방법</div>
-						<input type="text" class="form-control" id="useMethod" name="useMethod" placeholder="용량을 입력해주세요(ml 단위)" aria-describedby="emailHelp"> 
+						<input type="text" class="form-control" id="useMethod" name="useMethod" placeholder="사용방법을 입력해주세요" aria-describedby="emailHelp"> 
 						<small id="emailHelp" class="form-text text-muted"></small>
 					</div>
 				</div>
@@ -311,6 +311,11 @@ $(document).ready(function () {
 	
 	// 전송버튼을 클릭했을때, ajax로 데이터 전송
 	$('.cosmetic-register-button').click(function() {
+		if(attachList.length == 0){
+			alert('첨부파일을 첨부해주세요');
+			return false;
+		}
+		
 		var type = $('#type option:selected').val();
 		if(type==''){
 			alert('1차카테고리를 선택해주세요');
@@ -340,6 +345,10 @@ $(document).ready(function () {
 			alert('가격를 입력해주세요');
 			return false;
 		}
+		if(price<0){
+			alert('가격은 음수값이 나올수 없습니다');
+			return false;
+		}
 		//console.log(price);
 		var name = $('#name').val();
 		if(name==''){
@@ -358,10 +367,19 @@ $(document).ready(function () {
 			alert('용량을 입력해주세요');
 			return false;
 		}
+		//console.log(content);
+		if(capacity<0){
+			alert('용량은 음수값이 나올수 없습니다');
+			return false;
+		}
 		//console.log(capacity);
 		var period = $('#period').val();
 		if(period==''){
 			alert('사용기간을 입력해주세요');
+			return false;
+		}
+		if(period<0){
+			alert('사용기간은 음수값이 나올수 없습니다');
 			return false;
 		}
 		//console.log(period);

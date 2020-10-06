@@ -51,6 +51,11 @@ public class KakaoPay {
 		 	// 반복문으로 주문테이블에 저장
 		 	// mno 가 있냐 없냐에 따라서 다른방법으로 db에 저장
 		 	for(OrderProductVo orderProduct : olist) {
+		 		// 쿠폰 이름이 no 일경우, 쿠폰을 사용하지 않은것
+		 		if(orderProduct.getCoupon_name().equals("no")) {
+		 			orderProduct.setCoupon_name(null);
+		 		}
+		 		
 		 		if(orderProduct.getMno()!=null) {
 		 			// 회원인 경우
 		 			orderProduct.setOrder_num(order_num);
@@ -60,7 +65,7 @@ public class KakaoPay {
 		 			orderProduct.setOrder_num(order_num);
 		 			orderProductDao.insertOrderProductNoMember(orderProduct);
 		 		}
-		 		item_name=item_name.concat("/"+cosmeticDao.selectOneCosmeticByCno(orderProduct.getCno()));
+		 		item_name=item_name.concat("/"+cosmeticDao.selectOneCosmeticByCno(orderProduct.getCno()).getName()); //  이거 좀 비효율적인거같은데
 		 	}
 		 	// 최종 결제 가격
 		 	Integer final_price = olist.get(0).getFinal_price();
