@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:include page="../info/header2.jsp"></jsp:include>
+<jsp:include page="../../info/header2.jsp"></jsp:include>
 
 <!-- Title page -->
 <section class="bg-img1 txt-center p-lr-15 p-tb-92"
@@ -26,9 +26,9 @@
 		<div class="row">
 			<div class="col-md-4 col-lg-3 p-b-80">
 				<div class="side-menu">
-					<jsp:include page="keyword.jsp"></jsp:include>
+					<jsp:include page="../keyword.jsp"></jsp:include>
 
-					<jsp:include page="sidebar.jsp"></jsp:include>
+					<jsp:include page="../sidebar.jsp"></jsp:include>
 
 
 					<div class="p-t-50">
@@ -54,86 +54,77 @@
 			<div class="col-md-8 col-lg-9 p-b-80">
 				<div class="p-r-45 p-r-0-lg">
 					<div class="table col-12 board-list ">
-						<h2 class="my-3">공지사항</h2>
+						<h2 class="my-3">1:1 문의</h2>
 						<table class="table table-striped table-sm">
 							<thead>
 								<tr>
-									<th></th>
-									<th>제목</th>
-									<th>등록일</th>
+
+									<th>${content.title }</th>
+
 								</tr>
+
 							</thead>
 							<tbody>
 
-								<c:if test="${!empty notice }">
-									<c:forEach var="notice" items="${notice }">
-										<th>${notice.ccno }</th>
-										<th>${notice.title }</th>
-										<th>${notice.regdate }</th>
-										</tr>
-					
-							</c:forEach>
-							</c:if>
+								<th>${content.content }</th>
 
-								<c:if test="${empty notice}">
-									<tr>
-										<th colspan="3">공지사항이 존재하지 않습니다.</th>
-									</tr>
-								</c:if>
+
 							</tbody>
-						</table>
-					</div>
 
-					<!-- Pagination -->
-					<div class="flex-l-m flex-w w-full p-t-10 m-lr--7 text-center">
-						<a href="#"
-							class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
-							1 </a> <a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7">
-							2 </a>
+
+
+							<!-- 							<script>
+								$(document)
+										.ready(
+												function() {
+
+													(function yajax() {
+														$
+																.ajax({
+																	url : '${pageContext.request.contextPath }/magazine/magazineAjax',
+																	type : 'GET',
+																	dataType : 'json',
+																	success : function(
+																			data) {
+																		console
+																				.log(data);
+																		$(
+																				'#magazine-test a img')
+																				.attr(
+																						'src',
+																						'${pageContext.request.contextPath }'
+																								+ data[0].rootfolder
+																								+ data[0].uuidname);
+																		$(
+																				'#magazine-title')
+																				.html(
+																						data[0].title)
+																	}
+																});
+
+													})();
+												});
+							</script> -->
+
+						</table>
+						<div style="float: left; width: 100">
+							<input type="button"
+								onclick="location.href='${pageContext.request.contextPath }/customerCenter/enquiry/edit?ccno=${content.ccno}'"
+								value="수정">
+						</div>
+						<div style="float: right; width: 100">
+							<input type="button" onclick="del(${content.ccno})" value="삭제">
+						</div>
 					</div>
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 </section>
 
-<script>
-	$(document)
-			.ready(
-					function() {
-
-						(function yajax() {
-							$
-									.ajax({
-										url : '${pageContext.request.contextPath }/magazine/magazineAjax',
-										type : 'GET',
-										dataType : 'json',
-										success : function(data) {
-											console.log(data);
-											$('#magazine-test a img')
-													.attr(
-															'src',
-															'${pageContext.request.contextPath }'
-																	+ data[0].rootfolder
-																	+ data[0].uuidname);
-											$('#magazine-title').html(
-													data[0].title)
-										}
-									});
-
-						})();
-					});
-
-	$(function abc(ccno) {
-		$
-				.ajax({
-					url : '${pageContext.request.contextPath }/customerCenter/customerCenter?ccno='
-							+ ccno,
-
-				})
-	})
+<script type="text/javascript">
+function del(ccno){
+	location.href = "${pageContext.request.contextPath }/customerCenter/enquiry/delete?ccno="+ccno;
+}
 </script>
-
-<jsp:include page="../info/footer.jsp"></jsp:include>
+<jsp:include page="../../info/footer.jsp"></jsp:include>

@@ -26,7 +26,18 @@
 		<div class="row">
 			<div class="col-md-4 col-lg-3 p-b-80">
 				<div class="side-menu">
-					<jsp:include page="keyword.jsp"></jsp:include>
+					<div class="bor17 of-hidden pos-relative">
+						<!-- 검색창 -->
+
+						<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55"
+							type="text" name="search" placeholder="Search" id="search">
+
+						<!-- 검색 버튼 -->
+						<button id="btnSearch" name="btnSearch"
+							class="flex-c-m size-122 ab-t-r fs-18 cl4 hov-cl1 trans-04">
+							<i class="zmdi zmdi-search" id="btnSearch"></i>
+						</button>
+					</div>
 
 					<jsp:include page="sidebar.jsp"></jsp:include>
 
@@ -58,29 +69,19 @@
 						<table class="table table-striped table-sm">
 							<thead>
 								<tr>
-									<th></th>
+
 									<th>제목</th>
 									<th>등록일</th>
 								</tr>
 							</thead>
 							<tbody>
+								<c:forEach var="notice" items="${searchKeyword}">
 
-								<c:if test="${!empty notice }">
-									<c:forEach var="notice" items="${notice }">
-										<th>${notice.ccno }</th>
-										<th>${notice.title }</th>
-										<th>${notice.regdate }</th>
-										</tr>
-					
-							</c:forEach>
-							</c:if>
-
-								<c:if test="${empty notice}">
-									<tr>
-										<th colspan="3">공지사항이 존재하지 않습니다.</th>
+									<th>${notice.title }</th>
+									<th>${notice.regdate }</th>
 									</tr>
-								</c:if>
 							</tbody>
+							</c:forEach>
 						</table>
 					</div>
 
@@ -100,6 +101,7 @@
 </section>
 
 <script>
+	alert("${searchKeyword}");
 	$(document)
 			.ready(
 					function() {
@@ -135,5 +137,16 @@
 				})
 	})
 </script>
-
+<script>
+	$(document).ready(function() {
+		$("#btnSearch").click(function() {
+			const keyword = $("#search").val();
+			if (keyword == '') {
+				alert("검색어 입력 필수임 ㅇㅅㅇ");
+			} else {
+				location.href = "search?keyword=" + keyword;
+			}
+		});
+	});
+</script>
 <jsp:include page="../info/footer.jsp"></jsp:include>
