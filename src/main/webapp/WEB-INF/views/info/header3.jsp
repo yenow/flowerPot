@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +52,7 @@
 				<nav class="limiter-menu-desktop p-l-45">
 					
 					<!-- Logo desktop -->		
-					<a href="#" class="logo">
+					<a href="${pageContext.request.contextPath }" class="logo">
 						<img src="${pageContext.request.contextPath }/resources/images/icons/logoblue.png" alt="IMG-LOGO">
 					</a>
 
@@ -90,7 +92,7 @@
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m h-full">							
 						<div class="flex-c-m h-full p-r-25 bor6">
-							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
+							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="${fn:length(shoppingCartList)}">
 								<i class="zmdi zmdi-shopping-cart"></i>
 							</div>
 							<!-- 
@@ -114,7 +116,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="index.html"><img src="${pageContext.request.contextPath }/resources/images/icons/logoblue.png" alt="IMG-LOGO"></a>
+				<a href="${pageContext.request.contextPath }"><img src="${pageContext.request.contextPath }/resources/images/icons/logoblue.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -138,37 +140,33 @@
 		<!-- Menu Mobile -->
 		<div class="menu-mobile">
 			<ul class="main-menu-m">
-				<li>
-					<a href="index.html">Home</a>
-					<ul class="sub-menu-m">
-						<li><a href="index.html">Homepage 1</a></li>
-						<li><a href="home-02.html">Homepage 2</a></li>
-						<li><a href="home-03.html">Homepage 3</a></li>
-					</ul>
-					<span class="arrow-main-menu-m">
-						<i class="fa fa-angle-right" aria-hidden="true"></i>
-					</span>
-				</li>
+				<li class="active-menu"><a href="${pageContext.request.contextPath }">home</a></li>
 
-				<li>
-					<a href="product.html">Shop</a>
-				</li>
+				<!-- 쇼핑 리스트 -->
+				<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list" class="dropdown-toggle">Shop</a>
+					<ul class="sub-menu">
+						<li style="border-bottom: 1px solid #ccc; margin: 0 10px;"><a href="#main-menu" class="font-weight-bold">화장품 종류</a></li>
+						<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=스킨케어">스킨케어</a></li>
+						<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=메이크업">메이크업</a></li>
+						<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=바디케어">바디케어</a></li>
+						<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=헤어케어">헤어케어</a></li>
+						<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=향수/디퓨져">향수/디퓨져</a></li>
+					</ul></li>
 
-				<li>
-					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
-				</li>
+				<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip" class="dropdown-toggle">매거진</a>
 
-				<li>
-					<a href="blog.html">Blog</a>
-				</li>
+					<ul class="sub-menu">
+						<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip">Tip</a></li>
+						<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Interview">Interview</a></li>
+						<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=COVID19">COVID19</a></li>
+						<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Setec">Setec</a></li>
+					</ul></li>
 
-				<li>
-					<a href="about.html">About</a>
-				</li>
+				<li><a href="${pageContext.request.contextPath }/today/today">오늘의추천</a></li>
 
-				<li>
-					<a href="contact.html">Contact</a>
-				</li>
+				<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+
+				<li><a href="${pageContext.request.contextPath }/ourCompany/Company_main">우리회사</a></li>
 			</ul>
 		</div>
 

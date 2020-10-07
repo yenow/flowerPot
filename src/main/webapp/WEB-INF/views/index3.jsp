@@ -140,37 +140,33 @@
 		<!-- Menu Mobile -->
 		<div class="menu-mobile">
 			<ul class="main-menu-m">
-				<li>
-					<a href="index.html">Home</a>
-					<ul class="sub-menu-m">
-						<li><a href="index.html">Homepage 1</a></li>
-						<li><a href="home-02.html">Homepage 2</a></li>
-						<li><a href="home-03.html">Homepage 3</a></li>
-					</ul>
-					<span class="arrow-main-menu-m">
-						<i class="fa fa-angle-right" aria-hidden="true"></i>
-					</span>
-				</li>
+				<li class="active-menu"><a href="${pageContext.request.contextPath }">home</a></li>
 
-				<li>
-					<a href="product.html">Shop</a>
-				</li>
+				<!-- 쇼핑 리스트 -->
+				<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list" class="dropdown-toggle">Shop</a>
+					<ul class="sub-menu">
+						<li style="border-bottom: 1px solid #ccc; margin: 0 10px;"><a href="#main-menu" class="font-weight-bold">화장품 종류</a></li>
+						<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=스킨케어">스킨케어</a></li>
+						<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=메이크업">메이크업</a></li>
+						<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=바디케어">바디케어</a></li>
+						<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=헤어케어">헤어케어</a></li>
+						<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=향수/디퓨져">향수/디퓨져</a></li>
+					</ul></li>
 
-				<li>
-					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
-				</li>
+				<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip" class="dropdown-toggle">매거진</a>
 
-				<li>
-					<a href="blog.html">Blog</a>
-				</li>
+					<ul class="sub-menu">
+						<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip">Tip</a></li>
+						<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Interview">Interview</a></li>
+						<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=COVID19">COVID19</a></li>
+						<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Setec">Setec</a></li>
+					</ul></li>
 
-				<li>
-					<a href="about.html">About</a>
-				</li>
+				<li><a href="${pageContext.request.contextPath }/today/today">오늘의추천</a></li>
 
-				<li>
-					<a href="contact.html">Contact</a>
-				</li>
+				<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+
+				<li><a href="${pageContext.request.contextPath }/ourCompany/Company_main">우리회사</a></li>
 			</ul>
 		</div>
 
@@ -209,14 +205,6 @@
 			<div class="sidebar-content flex-w w-full p-lr-65 js-pscroll">
 				<ul class="sidebar-link w-full">
 				
-				   <li class="p-b-13">
-						<a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-						<form action="${pageContext.request.contextPath}/index3" method="post">
-							@FlowerPot   My Wishlist<br/>
-						</form>
-						</a>
-					</li>
-				
 					<li class="p-b-13">
 						<a class="stext-102 cl2 hov-cl1 trans-04">
 							<form action="${pageContext.request.contextPath}/logout" method="post">
@@ -224,8 +212,6 @@
 							</form>
 						</a>
 					</li>
-
-				
 
 					<li class="p-b-13">
 						<a href="${pageContext.request.contextPath }/member/signUp" class="stext-102 cl2 hov-cl1 trans-04"> 회원가입 </a>
@@ -247,82 +233,7 @@
 						<a href="${pageContext.request.contextPath }/ourCompany/Company_main" class="stext-102 cl2 hov-cl1 trans-04"> 우리회사 </a>
 					</li>
 				</ul>
-<!-- 
-				<div class="sidebar-gallery w-full p-tb-30">
-					<span class="mtext-101 cl5">
-						@ FlowerPot
-					</span>
-
-				 	<div class="flex-w flex-sb p-t-36 gallery-lb">
-						<!-- item gallery sidebar 
-						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-01.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-01.jpg');"></a>
-						</div>
-
-					<!-- item gallery sidebar 
-						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-02.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-02.jpg');"></a>
-						</div>
-
-					<!-- item gallery sidebar 
-						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-03.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-03.jpg');"></a>
-						</div>
-
-					<!-- item gallery sidebar 
-						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-04.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-04.jpg');"></a>
-						</div>
-
-					<!-- item gallery sidebar 
-						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-05.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-05.jpg');"></a>
-						</div>
-
-					<!-- item gallery sidebar 
-						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-06.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-06.jpg');"></a>
-						</div>
-
-					<!-- item gallery sidebar 
-						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-07.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-07.jpg');"></a>
-						</div>
-
-					<!-- item gallery sidebar 
-						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-08.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-08.jpg');"></a>
-						</div>
-
-					<!-- item gallery sidebar 
-						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-09.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-09.jpg');"></a>
-						</div>
-					</div>
-				</div>
-                 <br/> <br/>
-				<div class="sidebar-gallery w-full">
-					<span class="mtext-101 cl5">
-					</span>
-
-					<p class="stext-108 cl6 p-t-27">
-					@ We don't give up easily and overcome limitations.<br/>
-					@ We don't compromise at the right level, we always seek for something better.<br/>
-					@ We achieve autonomously set goals responsibly .<br/>
-					@ We think about ourselves, check on ourselves, and improve ourselves.<br/>
-					@ We constantly challenge and learn from it.<br/>
-					</p>
-				</div>
-			</div>-->
+			</div>
 		</div>
 	</aside>
 
