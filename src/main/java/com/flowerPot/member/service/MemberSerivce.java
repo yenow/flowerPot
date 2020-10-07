@@ -25,4 +25,11 @@ public interface MemberSerivce {
 	
 	//비밀번호 수정
 	public void passwordUpdate(MemberVo vo) throws Exception;
+	
+	//회원정보 조회
+	MemberVo viewMember(String id);
+	
+	
+	
+	
 }

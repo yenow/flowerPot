@@ -54,16 +54,28 @@ public class MemberServiceImpl implements MemberSerivce {
 		memberDao.authentication(dto);
 	}
 
-
+//회원 정보 업데이트 수정문
 	@Override
 	public void updateMember(MemberVo vo) throws Exception {
 		memberDao.updateMember(vo);
 	}
 
-
+//비밀번호 수정문
 	@Override
 	public void passwordUpdate(MemberVo vo) throws Exception {
 		memberDao.updatePassword(vo);
 		
 	}
+
+
+	@Override
+	public MemberVo viewMember(String id) {
+
+		return memberDao.viewMember(id);
+	}
+
+
+
+
+
 }

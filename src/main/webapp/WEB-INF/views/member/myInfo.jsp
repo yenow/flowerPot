@@ -128,42 +128,27 @@
 				</div>
 			
 				<div class="col-md-8 col-lg-9 p-b-80" style="padding:50px">
-				<%-- 	<h2 class="text-center">비밀번호 수정</h2>
-				<form action="${pageContext.request.contextPath }/member/signUp_ok" name="signup" id="signUpForm" method="post">
-				
-					<!-- <div class="form-group">
-						<label for="user_id" style="text-align: left"><p><strong>아이디</strong>&nbsp;&nbsp;&nbsp;<span id="idChk"></span></p></label>
-						<input type="text" class="form-control form-control-lg" name="id" id="user_id" aria-describedby="emailHelp" placeholder="숫자와 영어로 4-10자">
-						<small id="emailHelp" class="form-text text-muted">  </small>
-					</div> -->
-					<div class="form-group">
-						<label for="password" style="text-align: left"><p><strong>비밀번호</strong>&nbsp;&nbsp;&nbsp;<span id="pwChk"></span></p></label>
-						<input type="password" class="form-control form-control-lg" name="password" id="password" placeholder="영문과 특수문자를 포함한 최소 8자">
-					</div>
-					<div class="form-group">
-						<label for="password" style="text-align: left"><p><strong>새비밀번호</strong>&nbsp;&nbsp;&nbsp;<span id="pwChk"></span></p></label>
-						<input type="password" class="form-control form-control-lg" name="password" id="password" placeholder="영문과 특수문자를 포함한 최소 8자">
-					</div>
-					<div class="form-group">
-						<label for="password_check" text-align:="" left"=""><p><strong>새비밀번호확인</strong>&nbsp;&nbsp;&nbsp;<span id="pwChk2"></span></p></label>
-						<input type="password" class="form-control form-control-lg" name="password2" id="password_check" placeholder="비밀번호가 일치해야합니다.">
-					</div>
-					<button class="btn btn-outline-secondary btn-block btn-lg" id="signup-btn">비밀번호 변경</button>
-					</form>
-					<br/> --%>
 					<h2 class="text-center">회원정보 수정</h2>
-				<form action="${pageContext.request.contextPath }/member/signUp_ok" name="signup" id="signUpForm" method="post">
+				<form action="${pageContext.request.contextPath }/member/update_do" name="update_do" id="updateForm" method="post">
 					<div class="form-group">
+						<label for="user_id" style="text-align: left"><p><strong>아이디</strong>&nbsp;&nbsp;&nbsp;<span id="idChk"></span></p></label>
+						<!--  id는 수정이 불가능하도록 readonly 속성 추가 -->
+						<input type="text" class="form-control form-control-lg"  value="${dto.id}" readonly="readonly" name="id" id="user_id" aria-describedby="emailHelp">
+						<small id="emailHelp" class="form-text text-muted">  </small>
+					</div>
+					<div class="form-group">
+				
 						<label for="user_name" text-align:="" left"=""><p><strong>이름</strong>&nbsp;&nbsp;&nbsp;<span id="nameChk"></span></p></label>
-						<input type="text" class="form-control form-control-lg" name="name" id="user_name" placeholder="한글로 최대 6자">
+						<input type="text" class="form-control form-control-lg" value="${dto.name}" readonly="readonly" name="name" id="user_name" placeholder="한글로 최대 6자">
 					</div>
 					<div class="form-group">
 						<label for="user_nick" text-align:="" left"=""><p><strong>닉네임</strong>&nbsp;&nbsp;&nbsp;<span id="nickChk"></span></p></label>
-						<input type="text" class="form-control form-control-lg" name="nickname" id="user_nick">
+						<input type="text" class="form-control form-control-lg" value="${dto.nickname}" name="nickname" id="user_nick">
 					</div>
-					<!-- <div class="form-group">
-						<label for="user_email" text-align:="" left"=""><p><strong>이메일</strong>&nbsp;&nbsp;&nbsp;<span id="emailChk"></span></p></label>
-						<input type="email" class="form-control form-control-lg" name="email" id="user_email" placeholder="ex)aaa@naver.com" style="width: 50%; float:left;">
+					
+						<div class="form-group">
+						<label for="user_email"text-align: left"><p><strong>이메일</strong>&nbsp;&nbsp;&nbsp;<span id="emailChk"></span></p></label>
+						<input type="email" class="form-control form-control-lg" name="email" value="${dto.email}" id="user_email" placeholder="ex)aaa@naver.com" style="width: 50%; float:left;">
 						<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="send_email();" value="인증번호 전송" style="width: 50%;">
 						<div class="clear"></div>
 						<div class="form-group">
@@ -171,18 +156,19 @@
     					<input type="text" class="form-control form-control-lg" name="code_number" id="code_number" placeholder="인증번호 입력" style="width: 50%; float:left;">
                         <input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="code_check();" value="인증 번호 확인" style="width: 50%;">
                         </div>
-					</div> -->
+					</div>
 					<div class="form-group">
 						<label for="user_phone" text-align:="" left"=""><p><strong>전화번호</strong>&nbsp;&nbsp;&nbsp;<span id="phoneChk"></span></p></label>
-						<input type="tel" class="form-control form-control-lg" name="tel" id="user_phone" placeholder="(예시:- 하이픈 없이 입력해주세요)">
-
+						<input type="tel" class="form-control form-control-lg" value="${dto.phone}" name="tel" id="user_phone" placeholder="(예시:- 하이픈 없이 입력해주세요)">
+						
+						
 					</div>
-					<!-- <div class="form-check">
-						<input type="radio" name="gender" id="exampleRadios1" value="M" style="display: inline-block">
+					<div class="form-check">
+						<input type="radio" name="gender" id="exampleRadios1" value="M" readonly="readonly" style="display: inline-block">
 						<label for="exampleRadios1" style="display: inline-block"> 남자 </label>
-						<input type="radio" name="gender" id="exampleRadios2" value="F" style="display: inline-block">
+						<input type="radio" name="gender" id="exampleRadios2" value="F" readonly="readonly" style="display: inline-block">
 						<label for="exampleRadios2" style="display: inline-block"> 여자 </label>
-					</div> -->
+					</div> 
 					주소(우편번호)
 					<div class="form-group">
 					<input type="text" class="form-control form-control-lg" id="sample4_postcode" name="postcode" placeholder="우편번호">
@@ -399,6 +385,7 @@ $(function() {
             }
         }).open();
     }
+});
 </script>
 
 <jsp:include page="../info/footer.jsp"></jsp:include>

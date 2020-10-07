@@ -26,6 +26,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,12 +38,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.flowerPot.member.service.MemberSerivce;
 import com.flowerPot.vo.MemberVo;
-import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.model.OAuth2AccessToken;
-import com.github.scribejava.core.model.OAuthRequest;
-import com.github.scribejava.core.model.Response;
-import com.github.scribejava.core.model.Verb;
-import com.github.scribejava.core.oauth.OAuth20Service;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -100,8 +97,11 @@ public class MemberController {
   	
     //나의 회원정보 이동 
     @RequestMapping("/myInfo") 
-	  public String myInfo() {
-    	System.out.println("나의 회원정보 호출됨");	 
+	  public String myInfo(HttpSession session, Model model) {
+    	System.out.println("나의 회원정보 호출됨");
+    	String id = (String)session.getAttribute("id");
+    	MemberVo m = this.memberService.viewMember(id);
+    	model.addAttribute("dto", m);
 		return "member/myInfo"; 
 	   }
     
@@ -376,6 +376,20 @@ public class MemberController {
 			result = "OK";
 		}
 		return result;
+	}
+	
+	//회원정보 상세정보 조회
+	/*
+	 * @RequestMapping("/view_do") public String memberView(String id, Model model)
+	 * { //회원 정보를 model에 저장 model.addAttribute("dto",memberService.viewMember(id));
+	 * System.out.println("아이디 확인"); logger.info("클릭한 아이디:"+id); //myInfo.jsp로 포워드
+	 * return "member/myInfo"; }
+	 */
+	//회원 정보 수정 처리
+	@RequestMapping("/update_do")
+	public String memberUpdate(@ModelAttribute MemberVo vo) throws Exception {
+		memberService.updateMember(vo);
+		return "redirect:/member/myInfo";
 	}
 
 	/*

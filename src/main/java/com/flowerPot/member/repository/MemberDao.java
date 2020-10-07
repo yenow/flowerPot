@@ -32,6 +32,8 @@ public interface MemberDao {
 	
 	//비밀번호 수정
 	public void updatePassword(MemberVo member) throws Exception;
+
+	public MemberVo viewMember(String id);
 		
 	
 }

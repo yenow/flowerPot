@@ -1,8 +1,7 @@
 package com.flowerPot.member.controller;
 
-
 import com.github.scribejava.core.builder.api.DefaultApi20;
- 
+
 public class NaverLoginApi extends DefaultApi20{
  
     protected NaverLoginApi(){
