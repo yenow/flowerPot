@@ -13,20 +13,28 @@ create table f_orderProduct(
 	regdate date,   -- 구입날짜
 	tel varchar2(30),    -- 비회원용 전화번호
 	email varchar2(100),   -- 비회원용 이메일
-	final_price number(30)  -- 최종 액수
+	final_price number(30),  -- 최종 액수
+	brand varchar2(100)
 );
-
 
 create sequence ono_seq increment by 1 start with 1;
 
 drop table f_orderProduct;
 select * from f_orderProduct;
-=======
+
 
 drop sequence ordPro_seq;
+ 
+insert into f_orderProduct values(ono_seq.nextval, 3, 111, 222,'주문번호1414', 2, '주문완료','배송시작','새싹',1500,'쿠폰번호',sysdate,'010-1111-1111','bbbb@naver.com',1300,'이니스프리');
+insert into f_order values(orderno_seq.nextval,3,222,'주문번호1414');
+insert into f_orderProduct values(ono_seq.nextval, 3, 111, 222,'주문번호1415', 2, '주문완료','배송시작','새싹',1500,'쿠폰번호',sysdate,'010-1111-1111','bbbb@naver.com',1300,'이니스프리');
+insert into f_order values(orderno_seq.nextval,3,222,'주문번호1415');
+insert into f_orderProduct values(ono_seq.nextval, 3, 111, 222,'주문번호1416', 2, '주문완료','배송시작','새싹',1500,'쿠폰번호',sysdate,'010-1111-1111','bbbb@naver.com',1300,'이니스프리');
+insert into f_order values(orderno_seq.nextval,3,222,'주문번호1416');
 
-insert into f_orderProduct 
-values(ordPro_seq.nextval, 1, 111, 22222,'주문번호', 2,
-'결제완료','배송준비중','기본랭크',1500,'ng2312312',sysdate,'010-1111-1111','bbbb@naver.com',1300);
+select * from f_cosmetic where brand = '이니스프리';
 
-select * from f_orderProduct ;
+select * from f_orderProduct;
+select * from f_order;
+select * from f_member;
+update f_member set brand= '이니스프리' where mno = 3;

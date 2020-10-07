@@ -26,6 +26,7 @@ public class OrderProductVo {
 	private String tel;
 	private String email;
 	private Integer final_price;
+	private String brand;
 	
 	public OrderProductVo(Integer ono, Integer cno, Integer dno, String order_num, Integer amount, String state,
 			String deliver_state, String member_rank, Integer point, String coupon_name, LocalDateTime regdate,

@@ -1,7 +1,9 @@
 package com.flowerPot.semiadmin.controller;
 
+import java.security.Principal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,21 +15,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.flowerPot.cosmetic.service.CosmeticService;
+import com.flowerPot.member.service.MemberSerivce;
 import com.flowerPot.semiadmin.model.SemiCalendarVO;
 import com.flowerPot.semiadmin.model.SemiInventoryVO;
 import com.flowerPot.semiadmin.model.SemiNoticeVO;
 import com.flowerPot.semiadmin.model.SemiReviewVO;
 import com.flowerPot.semiadmin.service.ISemiNoticeService;
 import com.flowerPot.vo.CosmeticVo;
+import com.flowerPot.vo.MemberVo;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping("/semiadmin")
+@Slf4j
 public class SemiAdminController {
 
 	@Autowired
 	private ISemiNoticeService service;
 	@Autowired
 	private CosmeticService cosmeticService;
+	@Autowired
+	private MemberSerivce memberSerivce;
 
 // { dashboard _ main }
 	@RequestMapping("/dashboard")
@@ -71,12 +80,20 @@ public class SemiAdminController {
 	
 //{ inventory 재고 목록 
 	@GetMapping("/inventory")
-	public void inventory(Model model) {
+	public void inventory(Principal principal, Model model) {
 		System.out.println("inventory 후기 페이지 실행 ");
 		
-		List<CosmeticVo> ilist = cosmeticService.selectListCosmetic();
+		List<CosmeticVo> ilist = new ArrayList<CosmeticVo>();
+		MemberVo memberVo = new MemberVo();
+		if(principal!=null) {
+			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
+			String id = principal.getName();
+			
+			memberVo = memberSerivce.selectOneMemberById(id);
+			String brand = memberVo.getBrand();
+			ilist = cosmeticService.selectListCosmeticByBrand(brand);
+		}
 		model.addAttribute("ilist",ilist);
-		
 	}
 	
     // 제품 관리 기능
@@ -91,10 +108,8 @@ public class SemiAdminController {
 	
 //   inventory  재고 목록  추가 }
 	@PostMapping("/inventory")
-	public String inventory(Model model,CosmeticVo cosmetic) {
+	public String inventory( Model model,CosmeticVo cosmetic) {
 		
-		// System.out.println(semi);
-		// service.submitInven(semi);
 		cosmeticService.updateCosmeticStock(cosmetic);
 		return "redirect:/semiadmin/inventory";
 	}

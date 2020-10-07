@@ -16,11 +16,13 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.flowerPot.cosmetic.repository.CosmeticDao;
+import com.flowerPot.order.repository.OrderDao;
 import com.flowerPot.orderProduct.repository.OrderProductDao;
 import com.flowerPot.vo.CosmeticVo;
 import com.flowerPot.vo.KakaoPayApprovalVO;
 import com.flowerPot.vo.KakaoPayReadyVO;
 import com.flowerPot.vo.OrderProductVo;
+import com.flowerPot.vo.OrderVo;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,6 +39,8 @@ public class KakaoPay {
 	 private OrderProductDao orderProductDao;
 	 @Autowired
 	 private CosmeticDao cosmeticDao;
+	 @Autowired
+	 private OrderDao orderDao;
 	    
 	 public String kakaoPayReady(List<OrderProductVo> olist) {
 		 	// 주문번호 생성
@@ -47,7 +51,9 @@ public class KakaoPay {
 		    
 		    //상품명
 		    String item_name="";
-		    
+		    // 배송번호
+		    Integer dno = null;
+		    Integer mno = null;
 		 	// 반복문으로 주문테이블에 저장
 		 	// mno 가 있냐 없냐에 따라서 다른방법으로 db에 저장
 		 	for(OrderProductVo orderProduct : olist) {
@@ -58,15 +64,26 @@ public class KakaoPay {
 		 		
 		 		if(orderProduct.getMno()!=null) {
 		 			// 회원인 경우
-		 			orderProduct.setOrder_num(order_num);
+		 			orderProduct.setOrder_num(order_num);  //  주문번호 저장
+		 			orderProduct.setBrand(cosmetic.getBrand()); // 브랜드명 저장
 		 			orderProductDao.insertOrderProduct(orderProduct);
+		 			
 		 		}else {
 		 			// 비회원인 경우
-		 			orderProduct.setOrder_num(order_num);
+		 			orderProduct.setOrder_num(order_num);   //  주문번호 저장
+		 			orderProduct.setBrand(cosmetic.getBrand());  // 브랜드명 저장
 		 			orderProductDao.insertOrderProductNoMember(orderProduct);
 		 		}
 		 		item_name=item_name.concat("/"+cosmeticDao.selectOneCosmeticByCno(orderProduct.getCno()).getName()); //  이거 좀 비효율적인거같은데
+		 		dno = orderProduct.getDno();
+		 		mno = orderProduct.getMno();
 		 	}
+		 	OrderVo orderVo = new OrderVo();
+		 	orderVo.setDno(dno);
+		 	orderVo.setMno(mno);
+		 	orderVo.setOrder_num(order_num);
+		 	orderDao.insertOrder(orderVo);
+		 	
 		 	// 최종 결제 가격
 		 	Integer final_price = olist.get(0).getFinal_price();
 		 

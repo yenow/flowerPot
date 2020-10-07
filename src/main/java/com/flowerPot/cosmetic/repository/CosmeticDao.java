@@ -36,5 +36,7 @@ public interface CosmeticDao {
 
 	List<CosmeticVo> selectListCosmetic();
 
+	List<CosmeticVo> selectListCosmeticByBrand(String brand);
+
 
 }
