@@ -3,27 +3,31 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_3_1.xsd">
 
-	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	<!-- The definition of the Root Spring Container shared by all Servlets 
+		and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-		/WEB-INF/spring/root-context.xml
-		/WEB-INF/spring/security-context.xml 
+			/WEB-INF/spring/root-context.xml
+			/WEB-INF/spring/security-context.xml
 		</param-value>
 	</context-param>
-	
+
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+		<listener-class>org.springframework.web.context.ContextLoaderListener
+		</listener-class>
 	</listener>
 
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml
+			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 
@@ -40,33 +44,35 @@
 			<!-- 20MB => 메모리 사용크기 -->
 		</multipart-config>
 	</servlet>
-		
+
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-   <!-- 스프링 시큐리티  -->
+	<!-- 스프링 시큐리티 -->
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy
+		</filter-class>
 	</filter>
 
 	<filter-mapping>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping> 
-   
-   <!-- method=post로 전달되는 한글을 서버에서 받을 때 안깨지게 한다. 만약 이 설정부분을 안하면 스프링 컨트롤러 클래스에서 
+	</filter-mapping>
+
+	<!-- method=post로 전달되는 한글을 서버에서 받을 때 안깨지게 한다. 만약 이 설정부분을 안하면 스프링 컨트롤러 클래스에서 
 		request.setCharacterEncoding ("UTF-8");을 설정해야 한다. -->
-   <!-- 한글필터 -->
-   <filter> 
-  		<!-- filter안에는 filter-name, filter-class, init-param을 추가해 준다. filter-name은 원하는대로 지정해도됨 -->
+	<!-- 한글필터 -->
+	<filter>
+		<!-- filter안에는 filter-name, filter-class, init-param을 추가해 준다. filter-name은 
+			원하는대로 지정해도됨 -->
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter
 		</filter-class>
-		<init-param> 
-		<!-- encoidng값을 UTF-8로 만들어 준다. -->
+		<init-param>
+			<!-- encoidng값을 UTF-8로 만들어 준다. -->
 			<param-name>encoding</param-name>
 			<param-value>UTF-8</param-value>
 		</init-param>
@@ -76,6 +82,10 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+	<!-- 에러페이지 송출 -->
 
+	<error-page>
+		<location>/WEB-INF/views/error/error.jsp</location>
+	</error-page>
 
 </web-app>

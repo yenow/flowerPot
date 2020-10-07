@@ -73,11 +73,11 @@
 						<span>Calendar</span>
 				</a></li>
 
-				<li class="sidebar-item">
+				<!--  <li class="sidebar-item">
 				<a href="todolist" class='sidebar-link'>
 					 <i data-feather="layers" width="20"></i>
 						<span>To-do List</</span>
-				</a></li>
+				</a></li>-->
 			</ul>
 		</div>
 

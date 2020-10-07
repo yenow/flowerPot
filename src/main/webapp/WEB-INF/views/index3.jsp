@@ -49,15 +49,16 @@
 			<div class="wrap-menu-desktop">
 				<nav class="limiter-menu-desktop p-l-45">
 					
-					<!-- Logo desktop -->		
+					<!-- Logo desktop -->	
 					<a href="#" class="logo">
-						<img src="images/icons/logo-02.png" alt="IMG-LOGO">
+						<img src="${pageContext.request.contextPath }/resources/images/icons/logoWhite.png" alt="IMG-LOGO">
 					</a>
 
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li class="active-menu"><a href="${pageContext.request.contextPath }">home</a></li>
+							<li class="active-menu">
+							<a href="${pageContext.request.contextPath }">home</a></li>
 	
 							<!-- 쇼핑 리스트 -->
 							<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list" class="dropdown-toggle">Shop</a>
@@ -82,6 +83,8 @@
 							<li><a href="${pageContext.request.contextPath }/today/today">오늘의추천</a></li>
 
 							<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+							
+							<li><a href="${pageContext.request.contextPath }/ourCompany/Company_main">우리회사</a></li>
 						</ul>
 					</div>	
 
@@ -112,7 +115,8 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+				<a href="index.html">
+				<img src="${pageContext.request.contextPath }/resources/images/icons/logoblue.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -199,9 +203,20 @@
 					<i class="zmdi zmdi-close"></i>
 				</div>
 			</div>
+	          
+
 
 			<div class="sidebar-content flex-w w-full p-lr-65 js-pscroll">
 				<ul class="sidebar-link w-full">
+				
+				   <li class="p-b-13">
+						<a href="#" class="stext-102 cl2 hov-cl1 trans-04">
+						<form action="${pageContext.request.contextPath}/index3" method="post">
+							@FlowerPot   My Wishlist<br/>
+						</form>
+						</a>
+					</li>
+				
 					<li class="p-b-13">
 						<a class="stext-102 cl2 hov-cl1 trans-04">
 							<form action="${pageContext.request.contextPath}/logout" method="post">
@@ -210,11 +225,7 @@
 						</a>
 					</li>
 
-					<li class="p-b-13">
-						<a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-							My Wishlist
-						</a>
-					</li>
+				
 
 					<li class="p-b-13">
 						<a href="${pageContext.request.contextPath }/member/signUp" class="stext-102 cl2 hov-cl1 trans-04"> 회원가입 </a>
@@ -236,79 +247,82 @@
 						<a href="${pageContext.request.contextPath }/ourCompany/Company_main" class="stext-102 cl2 hov-cl1 trans-04"> 우리회사 </a>
 					</li>
 				</ul>
-
+<!-- 
 				<div class="sidebar-gallery w-full p-tb-30">
 					<span class="mtext-101 cl5">
-						@ CozaStore
+						@ FlowerPot
 					</span>
 
-					<div class="flex-w flex-sb p-t-36 gallery-lb">
-						<!-- item gallery sidebar -->
+				 	<div class="flex-w flex-sb p-t-36 gallery-lb">
+						<!-- item gallery sidebar 
 						<div class="wrap-item-gallery m-b-10">
 							<a class="item-gallery bg-img1" href="images/gallery-01.jpg" data-lightbox="gallery" 
 							style="background-image: url('images/gallery-01.jpg');"></a>
 						</div>
 
-						<!-- item gallery sidebar -->
+					<!-- item gallery sidebar 
 						<div class="wrap-item-gallery m-b-10">
 							<a class="item-gallery bg-img1" href="images/gallery-02.jpg" data-lightbox="gallery" 
 							style="background-image: url('images/gallery-02.jpg');"></a>
 						</div>
 
-						<!-- item gallery sidebar -->
+					<!-- item gallery sidebar 
 						<div class="wrap-item-gallery m-b-10">
 							<a class="item-gallery bg-img1" href="images/gallery-03.jpg" data-lightbox="gallery" 
 							style="background-image: url('images/gallery-03.jpg');"></a>
 						</div>
 
-						<!-- item gallery sidebar -->
+					<!-- item gallery sidebar 
 						<div class="wrap-item-gallery m-b-10">
 							<a class="item-gallery bg-img1" href="images/gallery-04.jpg" data-lightbox="gallery" 
 							style="background-image: url('images/gallery-04.jpg');"></a>
 						</div>
 
-						<!-- item gallery sidebar -->
+					<!-- item gallery sidebar 
 						<div class="wrap-item-gallery m-b-10">
 							<a class="item-gallery bg-img1" href="images/gallery-05.jpg" data-lightbox="gallery" 
 							style="background-image: url('images/gallery-05.jpg');"></a>
 						</div>
 
-						<!-- item gallery sidebar -->
+					<!-- item gallery sidebar 
 						<div class="wrap-item-gallery m-b-10">
 							<a class="item-gallery bg-img1" href="images/gallery-06.jpg" data-lightbox="gallery" 
 							style="background-image: url('images/gallery-06.jpg');"></a>
 						</div>
 
-						<!-- item gallery sidebar -->
+					<!-- item gallery sidebar 
 						<div class="wrap-item-gallery m-b-10">
 							<a class="item-gallery bg-img1" href="images/gallery-07.jpg" data-lightbox="gallery" 
 							style="background-image: url('images/gallery-07.jpg');"></a>
 						</div>
 
-						<!-- item gallery sidebar -->
+					<!-- item gallery sidebar 
 						<div class="wrap-item-gallery m-b-10">
 							<a class="item-gallery bg-img1" href="images/gallery-08.jpg" data-lightbox="gallery" 
 							style="background-image: url('images/gallery-08.jpg');"></a>
 						</div>
 
-						<!-- item gallery sidebar -->
+					<!-- item gallery sidebar 
 						<div class="wrap-item-gallery m-b-10">
 							<a class="item-gallery bg-img1" href="images/gallery-09.jpg" data-lightbox="gallery" 
 							style="background-image: url('images/gallery-09.jpg');"></a>
 						</div>
 					</div>
 				</div>
-
+                 <br/> <br/>
 				<div class="sidebar-gallery w-full">
 					<span class="mtext-101 cl5">
-						About Us
 					</span>
 
 					<p class="stext-108 cl6 p-t-27">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur maximus vulputate hendrerit. Praesent faucibus erat vitae rutrum gravida. Vestibulum tempus mi enim, in molestie sem fermentum quis. 
+					@ We don't give up easily and overcome limitations.<br/>
+					@ We don't compromise at the right level, we always seek for something better.<br/>
+					@ We achieve autonomously set goals responsibly .<br/>
+					@ We think about ourselves, check on ourselves, and improve ourselves.<br/>
+					@ We constantly challenge and learn from it.<br/>
 					</p>
 				</div>
-			</div>
+			</div>-->
 		</div>
 	</aside>
 
@@ -377,13 +391,13 @@
 						<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
 								<span class="ltext-202 txt-center cl0 respon2">
-									Women Collection 2018
+									New arrivals
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
 								<h2 class="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1">
-									New arrivals
+									Women Collection 2020
 								</h2>
 							</div>
 								
@@ -401,13 +415,13 @@
 						<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
 								<span class="ltext-202 txt-center cl0 respon2">
-									Men New-Season
+									Winter 2020
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
 								<h2 class="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1">
-									Jackets & Coats
+									Men New-Season
 								</h2>
 							</div>
 								
@@ -420,18 +434,18 @@
 					</div>
 				</div>
 
-				<div class="item-slick1 bg-overlay1" style="background-image: url(${pageContext.request.contextPath }/resources/images/slide_iu4.jpg);" data-thumb="${pageContext.request.contextPath }/resources/images/slide_iu4.jpg" data-caption="Men’s Wear">
+				<div class="item-slick1 bg-overlay1" style="background-image: url(${pageContext.request.contextPath }/resources/images/slide_iu3.jpg);" data-thumb="${pageContext.request.contextPath }/resources/images/slide_iu3.jpg" data-caption="Men’s Wear">
 					<div class="container h-full">
 						<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
 								<span class="ltext-202 txt-center cl0 respon2">
-									Men Collection 2018
+								   Love Myself
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
 								<h2 class="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1">
-									NEW SEASON
+									Basic Items
 								</h2>
 							</div>
 								
@@ -457,16 +471,16 @@
 				<div class="col-md-6 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="images/banner-04.jpg" alt="IMG-BANNER">
+						<img src="${pageContext.request.contextPath }/resources/images/banner_skin.jpg" alt="IMG-BANNER">
 
 						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Women
+								   Skin & Lotion
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									New Trend
+									New Arrival
 								</span>
 							</div>
 
@@ -482,16 +496,16 @@
 				<div class="col-md-6 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="images/banner-05.jpg" alt="IMG-BANNER">
+						<img src="${pageContext.request.contextPath }/resources/images/banner_lipstick.JPG" alt="IMG-BANNER">
 
 						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Men
+									Lipstick
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									New Trend
+									Body Lotion
 								</span>
 							</div>
 
@@ -507,16 +521,16 @@
 				<div class="col-md-6 col-lg-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="images/banner-07.jpg" alt="IMG-BANNER">
+						<img src="${pageContext.request.contextPath }/resources/images/banner_hair.jpg" alt="IMG-BANNER">
 
 						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Watches
+									Hair
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									Spring 2018
+									Spring 2020
 								</span>
 							</div>
 
@@ -532,16 +546,16 @@
 				<div class="col-md-6 col-lg-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="images/banner-08.jpg" alt="IMG-BANNER">
+						<img src="${pageContext.request.contextPath }/resources/images/banner_bodyLotion.JPG" alt="IMG-BANNER">
 
 						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Bags
+									BodyLotion
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									Spring 2018
+									Season's 2020
 								</span>
 							</div>
 
@@ -557,16 +571,16 @@
 				<div class="col-md-6 col-lg-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="images/banner-09.jpg" alt="IMG-BANNER">
+						<img src="${pageContext.request.contextPath }/resources/images/banner_perfume.JPG" alt="IMG-BANNER">
 
 						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Accessories
+									Perfume & Diffuser
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									Spring 2018
+									Hit Product
 								</span>
 							</div>
 
@@ -584,7 +598,7 @@
 
 
 	<!-- Product -->
-	<section class="bg0 p-t-23 p-b-130">
+<!--<section class="bg0 p-t-23 p-b-130">
 		<div class="container">
 			<div class="p-b-10">
 				<h3 class="ltext-103 cl5">
@@ -633,7 +647,7 @@
 					</div>
 				</div>
 				
-				<!-- Search product -->
+		<!-- Search product 
 				<div class="dis-none panel-search w-full p-t-10 p-b-15">
 					<div class="bor8 dis-flex p-l-15">
 						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
@@ -644,7 +658,7 @@
 					</div>	
 				</div>
 
-				<!-- Filter -->
+				<!-- Filter 
 				<div class="dis-none panel-filter w-full p-t-10">
 					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
 						<div class="filter-col1 p-r-15 p-b-27">
@@ -836,7 +850,7 @@
 
 			<div class="row isotope-grid">
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+			<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0 label-new" data-label="New">
 							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
@@ -868,7 +882,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+			<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-02.jpg" alt="IMG-PRODUCT">
@@ -900,7 +914,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-					<!-- Block2 -->
+		<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-03.jpg" alt="IMG-PRODUCT">
@@ -932,7 +946,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+			<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-04.jpg" alt="IMG-PRODUCT">
@@ -964,7 +978,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+			<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-05.jpg" alt="IMG-PRODUCT">
@@ -996,7 +1010,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches">
-					<!-- Block2 -->
+			<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-06.jpg" alt="IMG-PRODUCT">
@@ -1028,7 +1042,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+			<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-07.jpg" alt="IMG-PRODUCT">
@@ -1060,7 +1074,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+			<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-08.jpg" alt="IMG-PRODUCT">
@@ -1092,7 +1106,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item shoes">
-					<!-- Block2 -->
+			<!-- Block2
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-09.jpg" alt="IMG-PRODUCT">
@@ -1124,7 +1138,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+		<!-- Block2
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-10.jpg" alt="IMG-PRODUCT">
@@ -1156,7 +1170,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-					<!-- Block2 -->
+		<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-11.jpg" alt="IMG-PRODUCT">
@@ -1188,7 +1202,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-					<!-- Block2 -->
+		<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-12.jpg" alt="IMG-PRODUCT">
@@ -1220,7 +1234,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+		<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-13.jpg" alt="IMG-PRODUCT">
@@ -1252,7 +1266,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+					<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-14.jpg" alt="IMG-PRODUCT">
@@ -1284,7 +1298,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches">
-					<!-- Block2 -->
+					<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-15.jpg" alt="IMG-PRODUCT">
@@ -1316,7 +1330,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
+					<!-- Block2 
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-16.jpg" alt="IMG-PRODUCT">
@@ -1348,7 +1362,7 @@
 				</div>
 			</div>
 
-			<!-- Pagination -->
+			<!-- Pagination 
 			<div class="flex-c-m flex-w w-full p-t-38">
 				<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
 					1
@@ -1359,134 +1373,11 @@
 				</a>
 			</div>
 		</div>
-	</section>
+	</section>  -->	
 
 
-	<!-- Footer -->
-<footer class="bg3 p-t-75 p-b-32">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-6 col-lg-3 p-b-50">
-				<h4 class="stext-301 cl0 p-b-30">Categories</h4>
-
-				<ul>
-					<li class="p-b-10">
-						<a href="${pageContext.request.contextPath }/resources" class="stext-107 cl7 hov-cl1 trans-04"> Women </a>
-					</li>
-
-					<li class="p-b-10">
-						<a href="${pageContext.request.contextPath }/resources" class="stext-107 cl7 hov-cl1 trans-04"> Men </a>
-					</li>
-
-					<li class="p-b-10">
-						<a href="${pageContext.request.contextPath }/myPage/myPage" class="stext-107 cl7 hov-cl1 trans-04"> 마이페이지 </a>
-					</li>
-
-					<li class="p-b-10">
-						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter" class="stext-107 cl7 hov-cl1 trans-04"> 고객센터 </a>
-					</li>
-					
-					<li class="p-b-10">
-						<a href="${pageContext.request.contextPath }/admin/dashboard" class="stext-107 cl7 hov-cl1 trans-04"> 관리자 </a>
-					</li>
-				</ul>
-			</div>
-
-			<div class="col-sm-6 col-lg-3 p-b-50">
-				<h4 class="stext-301 cl0 p-b-30">Help</h4>
-
-				<ul>
-					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04"> Track Order </a>
-					</li>
-
-					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04"> Returns </a>
-					</li>
-
-					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04"> Shipping </a>
-					</li>
-
-					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04"> FAQs </a>
-					</li>
-				</ul>
-			</div>
-
-			<div class="col-sm-6 col-lg-3 p-b-50">
-				<h4 class="stext-301 cl0 p-b-30">GET IN TOUCH</h4>
-
-				<p class="stext-107 cl7 size-201">Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879</p>
-
-				<div class="p-t-27">
-					<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-						<i class="fa fa-facebook"></i>
-					</a>
-
-					<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-						<i class="fa fa-instagram"></i>
-					</a>
-
-					<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-						<i class="fa fa-pinterest-p"></i>
-					</a>
-				</div>
-			</div>
-
-			<div class="col-sm-6 col-lg-3 p-b-50">
-				<h4 class="stext-301 cl0 p-b-30">Newsletter</h4>
-
-				<form>
-					<div class="wrap-input1 w-full p-b-4">
-						<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
-						<div class="focus-input1 trans-04"></div>
-					</div>
-
-					<div class="p-t-18">
-						<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">Subscribe</button>
-					</div>
-				</form>
-			</div>
-		</div>
-
-		<div class="p-t-40">
-			<div class="flex-c-m flex-w p-b-18">
-				<a href="#" class="m-all-1">
-					<img src="${pageContext.request.contextPath }/resources/images/icons/icon-pay-01.png" alt="ICON-PAY">
-				</a>
-
-				<a href="#" class="m-all-1">
-					<img src="${pageContext.request.contextPath }/resources/images/icons/icon-pay-02.png" alt="ICON-PAY">
-				</a>
-
-				<a href="#" class="m-all-1">
-					<img src="${pageContext.request.contextPath }/resources/images/icons/icon-pay-03.png" alt="ICON-PAY">
-				</a>
-
-				<a href="#" class="m-all-1">
-					<img src="${pageContext.request.contextPath }/resources/images/icons/icon-pay-04.png" alt="ICON-PAY">
-				</a>
-
-				<a href="#" class="m-all-1">
-					<img src="${pageContext.request.contextPath }/resources/images/icons/icon-pay-05.png" alt="ICON-PAY">
-				</a>
-			</div>
-
-			<p class="stext-107 cl6 txt-center">
-				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				Copyright &copy;
-				<script>document.write(new Date().getFullYear());</script>
-				All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by
-				<a href="https://colorlib.com" target="_blank">Colorlib</a>
-				&amp; distributed by
-				<a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-
-			</p>
-		</div>
-	</div>
-</footer>
+<!-- Footer -->
+<jsp:include page="info/footer.jsp"></jsp:include>
 
 
 <!-- Back to top -->

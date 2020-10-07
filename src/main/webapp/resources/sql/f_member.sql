@@ -23,7 +23,7 @@ ALTER TABLE f_member DROP PRIMARY KEY;
 alter table f_member add brand varchar2(100);
 
 create sequence mno_seq increment by 1 start with 1 minvalue 1;
-
+select * from f_member;
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 select mno_seq.nextval from dual;
 

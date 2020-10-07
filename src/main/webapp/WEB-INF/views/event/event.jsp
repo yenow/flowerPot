@@ -126,5 +126,6 @@
 	</div>
 </section>
 
-
 <jsp:include page="../info/footer.jsp"></jsp:include>
+</head>
+</html>

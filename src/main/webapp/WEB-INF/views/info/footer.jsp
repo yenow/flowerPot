@@ -9,41 +9,41 @@
 
 				<ul>
 					<li class="p-b-10">
-						<a href="${pageContext.request.contextPath }/resources" class="stext-107 cl7 hov-cl1 trans-04"> Women </a>
+						<a href="comestic_list.jsp" class="stext-107 cl7 hov-cl1 trans-04"> Skin Care  </a>
 					</li>
 
 					<li class="p-b-10">
-						<a href="${pageContext.request.contextPath }/resources" class="stext-107 cl7 hov-cl1 trans-04"> Men </a>
+						<a href=comestic_list.jsp" class="stext-107 cl7 hov-cl1 trans-04"> Make UP </a>
 					</li>
 
 					<li class="p-b-10">
-						<a href="${pageContext.request.contextPath }/myPage/myPage" class="stext-107 cl7 hov-cl1 trans-04"> 마이페이지 </a>
+						<a href="comestic_list.jsp" class="stext-107 cl7 hov-cl1 trans-04"> Body Care</a>
 					</li>
 
 					<li class="p-b-10">
-						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter" class="stext-107 cl7 hov-cl1 trans-04"> 고객센터 </a>
+						<a href="comestic_list.jsp" class="stext-107 cl7 hov-cl1 trans-04"> Perfume / Diffuser </a>
 					</li>
 					
 					<li class="p-b-10">
-						<a href="${pageContext.request.contextPath }/admin/dashboard" class="stext-107 cl7 hov-cl1 trans-04"> 관리자 </a>
+						<a href="customerCenter.jsp" class="stext-107 cl7 hov-cl1 trans-04">  F A Q </a>
 					</li>
 				</ul>
 			</div>
 
 			<div class="col-sm-6 col-lg-3 p-b-50">
-				<h4 class="stext-301 cl0 p-b-30">Help</h4>
+				<h4 class="stext-301 cl0 p-b-30"> Our Company </h4>
 
 				<ul>
 					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04"> Track Order </a>
+						<a href="${pageContext.request.contextPath }/ourCompany/Company_main" class="stext-107 cl7 hov-cl1 trans-04"> 우리회사  </a>
 					</li>
 
 					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04"> Returns </a>
+						<a href="${pageContext.request.contextPath }/admin/dashboard" class="stext-107 cl7 hov-cl1 trans-04"> 관리자 </a>
 					</li>
 
 					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04"> Shipping </a>
+						<a href="${pageContext.request.contextPath }/seminadmin/dashboard" class="stext-107 cl7 hov-cl1 trans-04"> 브랜드 관리자 </a>
 					</li>
 
 					<li class="p-b-10">
@@ -55,20 +55,34 @@
 			<div class="col-sm-6 col-lg-3 p-b-50">
 				<h4 class="stext-301 cl0 p-b-30">GET IN TOUCH</h4>
 
-				<p class="stext-107 cl7 size-201">Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879</p>
+				<p class="stext-107 cl7 size-201"> 171, Jangseungbaegi-ro, Dongjak-gu, Seoul, Republic of Korea</p>
 
-				<div class="p-t-27">
-					<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-						<i class="fa fa-facebook"></i>
-					</a>
-
-					<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-						<i class="fa fa-instagram"></i>
-					</a>
-
-					<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+				<div class="p-t-27" >
+					<a href="https://github.com/yenow" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
 						<i class="fa fa-pinterest-p"></i>
+					신영 github
 					</a>
+
+					<a href="https://github.com/jamp0824" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+						<i class="fa fa-pinterest-p"></i>
+					준언 github
+					</a><br/>
+
+					<a href="https://github.com/YooHyeok" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+						<i class="fa fa-pinterest-p"></i>
+					재혁 github
+					</a>
+					
+					<a href="https://github.com/aseongen" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+						<i class="fa fa-pinterest-p"></i>
+					성은 github
+					</a><br/>
+					
+					<a href="https://github.com/krinu318995" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+						<i class="fa fa-pinterest-p"></i>
+					누리 github
+					</a>
+					
 				</div>
 			</div>
 
@@ -116,9 +130,9 @@
 				Copyright &copy;
 				<script>document.write(new Date().getFullYear());</script>
 				All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by
-				<a href="https://colorlib.com" target="_blank">Colorlib</a>
+				<a href="https://colorlib.com" target="_blank">FlowerPot</a>
 				&amp; distributed by
-				<a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+				<a href="https://themewagon.com" target="_blank">Light & salt</a>
 				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
 			</p>
@@ -184,7 +198,12 @@
 						</div>
 					</div>
 				</div>
-
+			</div>
+		</div>
+	</div>
+</div>
+				
+<!-- 
 				<div class="col-md-6 col-lg-5 p-b-30">
 					<div class="p-r-50 p-t-5 p-lr-0-lg">
 						<h4 class="mtext-105 cl2 js-name-detail p-b-14">Lightweight Jacket</h4>
@@ -193,7 +212,6 @@
 
 						<p class="stext-102 cl3 p-t-23">Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.</p>
 
-						<!--  -->
 						<div class="p-t-33">
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-203 flex-c-m respon6">Size</div>
@@ -248,7 +266,6 @@
 							</div>
 						</div>
 
-						<!--  -->
 						<div class="flex-w flex-m p-l-100 p-t-40 respon7">
 							<div class="flex-m bor9 p-r-10 m-r-11">
 								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
@@ -273,7 +290,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
 <!--===============================================================================================-->
 <!--  <script src="${pageContext.request.contextPath }/resources/vendor/jquery/jquery-3.2.1.min.js"></script> -->

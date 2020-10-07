@@ -29,10 +29,6 @@ public interface ISemiNoticeService {
 	//{ calendar 목록 출력 
 	List<SemiCalendarVO> getCalendar(SemiCalendarVO scalendar);
 
-	// calendar 일정 등록 } 
-	void calendarRegist(SemiCalendarVO sclendar);
-
-	// { productManage 상품 } 
 
 
 

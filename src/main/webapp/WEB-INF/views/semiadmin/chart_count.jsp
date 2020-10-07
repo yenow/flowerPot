@@ -89,7 +89,7 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Apexchart</h3>
+                <h3>재고수량</h3>
                 <p class="text-subtitle text-muted">Lot of variations and customizable chart made with ApexChart. Full documentation click <a href="https://apexcharts.com/docs/installation/">here</a>.</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">

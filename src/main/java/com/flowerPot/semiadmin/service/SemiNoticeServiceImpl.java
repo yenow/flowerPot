@@ -56,11 +56,7 @@ public class SemiNoticeServiceImpl implements ISemiNoticeService {
 		return mapper.getCalendar(scalendar) ;
 	}
 
-	// calendar 일정 등록 } 
-	@Override
-	public void calendarRegist(SemiCalendarVO sclendar) { 
-		 mapper.calendarRegist(sclendar);
-	}
+
 
 	// { productManage 상품 } 
 
