@@ -70,4 +70,17 @@ public class EventController {
 		}
 		return r;
 	}
+	
+	@RequestMapping("event_cont")
+	public void event_cont(Integer eno, Model model) {
+		EventVo event = eventService.selectOneEventByEno(eno);
+		model.addAttribute("event", event);
+	}
+	
+	@RequestMapping("event_delete")
+	public String event_delete(Integer eno, Model model) {
+		eventService.deleteOneEventByEno(eno);
+		return "redirect:/event/event";
+	}
+	
 }

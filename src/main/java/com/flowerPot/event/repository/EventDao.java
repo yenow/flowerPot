@@ -11,4 +11,8 @@ public interface EventDao {
 
 	List<EventVo> selectListEvent(Criteria c);
 
+	EventVo selectOneEventByEno(Integer eno);
+
+	Object deleteOneEventByEno(Integer eno);
+
 }

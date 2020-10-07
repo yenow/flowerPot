@@ -35,7 +35,7 @@
 				<div class="p-r-45 p-r-0-lg ">
 					<c:forEach var="event" items="${eList }">
 						<div class="p-b-63">
-							<a href="${event.mappingURL }" class="hov-img0 how-pos5-parent">
+							<a href="${pageContext.request.contextPath }/event/event_cont?eno=${event.eno }" class="hov-img0 how-pos5-parent">
 								<img src="${event.mappingURL }" alt="IMG-BLOG">
 								<div class="flex-col-c-m size-123 bg9 how-pos5">
 									<span class="ltext-107 cl2 txt-center"><javatime:format value="${event.moddate}" pattern="dd" /></span><span class="stext-109 cl3 txt-center"><javatime:format value="${event.moddate}" pattern="MMM yyyy" /></span>

@@ -10,7 +10,7 @@
 <section class="bg0 p-t-52 p-b-20">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8 col-lg-9 p-b-80">
+			<div class="col-12 p-b-80">
 				<div class="p-r-45 p-r-0-lg">
 					<!--  -->
 					<div class="wrap-pic-w how-pos5-parent">
@@ -49,7 +49,7 @@
 					
 				</div>
 			</div>
-			<div class="col-md-4 col-lg-3 p-b-80">
+			<div class="col-12 p-b-80">
 				<div class="side-menu">
 					<div class="bor17 of-hidden pos-relative">
 						<form action="#" method="post">

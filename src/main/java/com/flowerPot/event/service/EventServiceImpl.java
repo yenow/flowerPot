@@ -24,4 +24,14 @@ public class EventServiceImpl implements EventService {
 		return eventDao.selectListEvent(c);
 	}
 
+	@Override
+	public EventVo selectOneEventByEno(Integer eno) {
+		return eventDao.selectOneEventByEno(eno);
+	}
+
+	@Override
+	public void deleteOneEventByEno(Integer eno) {
+		eventDao.deleteOneEventByEno(eno);
+	}
+
 }

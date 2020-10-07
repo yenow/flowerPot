@@ -17,4 +17,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectListEvent" resultType="com.flowerPot.vo.EventVo">
 		select * from f_event 
 	</select>
+	
+	<select id="selectOneEventByEno" resultType="com.flowerPot.vo.EventVo">
+		select * from f_event where eno = #{eno}
+	</select>
+	
+	<delete id="deleteOneEventByEno">
+		delete from f_event where eno = #{eno}
+	</delete>
 </mapper>

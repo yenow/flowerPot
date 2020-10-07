@@ -11,4 +11,8 @@ public interface EventService {
 
 	List<EventVo> selectListEvent(Criteria c);
 
+	EventVo selectOneEventByEno(Integer eno);
+
+	void deleteOneEventByEno(Integer eno);
+
 }
