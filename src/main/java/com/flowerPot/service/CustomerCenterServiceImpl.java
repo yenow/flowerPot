@@ -72,4 +72,10 @@ public class CustomerCenterServiceImpl implements CustomerCenterService {
 
 	}
 
+	@Override
+	public CustomerCenterVo getNotice(int ccno) {
+		// TODO Auto-generated method stub
+		return dao.getNotice(ccno);
+	}
+
 }

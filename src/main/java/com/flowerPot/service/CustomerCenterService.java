@@ -24,4 +24,6 @@ public interface CustomerCenterService {
 
 	void deleteEnq(CustomerCenterVo customer);
 
+	CustomerCenterVo getNotice(int ccno);
+
 }
