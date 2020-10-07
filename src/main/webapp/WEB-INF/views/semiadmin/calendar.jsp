@@ -47,9 +47,8 @@ width:80%; height:80%;
 </head>
 <body>
        <!-- sidebar -->
-<jsp:include page="../info/header2.jsp"></jsp:include>
-				
-				
+   <jsp:include page="sidebar.jsp"></jsp:include>
+        				
 		<div id="main">
 		<div class="demo-topbar">
 			<nav class="navbar navbar-header navbar-expand navbar-light">
@@ -132,14 +131,17 @@ width:80%; height:80%;
 					</ul>
 				</div>
 				</div>
+				
 			</nav>
 
 			<!-- calendar start  -->
 				<div id='calendar'></div><br/>
 			<!-- calendar end -->
-			
+		
 
 </div>
+			    <jsp:include page="footerbar.jsp"></jsp:include>
+		
 					<!-- modal 
            Button trigger for basic modal
                 <button type="button" class="btn btn-outline-primary block" data-toggle="modal" data-target="#default"

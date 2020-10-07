@@ -57,7 +57,8 @@
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li class="active-menu"><a href="${pageContext.request.contextPath }">home</a></li>
+							<li class="active-menu">
+							<a href="${pageContext.request.contextPath }">home</a></li>
 	
 							<!-- 쇼핑 리스트 -->
 							<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list" class="dropdown-toggle">Shop</a>
@@ -82,6 +83,8 @@
 							<li><a href="${pageContext.request.contextPath }/today/today">오늘의추천</a></li>
 
 							<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+							
+							<li><a href="${pageContext.request.contextPath }/ourCompany/Company_main">우리회사</a></li>
 						</ul>
 					</div>	
 
