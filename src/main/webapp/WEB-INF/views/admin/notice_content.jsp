@@ -58,7 +58,11 @@
 														</div>
 													</div>
 												</div>
-												<button class="btn btn-info btn-fill pull-right" style="background-color: #212b52; color: white; border: 1px solid #212b52; margin-left: 10px;" onclick="location='${pageContext.request.contextPath}/admin/customer/notice_modify/${notice.ccno}'">수정</button>
+												<form action="${pageContext.request.contextPath}/admin/customer/notice_modify" method="post">
+												<input type="hidden" name="ccno" value="${notice.ccno}">												
+												<button type="submit" class="btn btn-info btn-fill pull-right" style="background-color: #212b52; color: white; border: 1px solid #212b52; margin-left: 10px;" >수정</button>
+												</form>
+
 												<button class="btn btn-info btn-fill pull-right" style="background-color: #212b52; color: white; border: 1px solid #212b52;" onclick="location='${pageContext.request.contextPath}/admin/customer/notice/'">목록</button>
 												&nbsp;
 												<div class="clearfix"></div>

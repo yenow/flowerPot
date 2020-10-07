@@ -106,7 +106,10 @@ $(function() {
 															</td>
 															<td>
 																<button onclick="location='${pageContext.request.contextPath}/admin/customer/faq_content/${faq.ccno}'">내용</button>
-																<button onclick="location='${pageContext.request.contextPath}/admin/customer/faq_del/${faq.ccno}'">삭제</button>
+																<form action="${pageContext.request.contextPath}/admin/customer/faq_del" method="post">
+																	<input type="hidden" name="ccno" value="${faq.ccno}">												
+																	<button type="submit">삭제</button>
+																</form>
 															</td>
 														</tr>
 													</c:forEach>

@@ -190,7 +190,7 @@
 													</div>
 												</div>
 
-												<button type="submit" class="btn btn-flat pull-right" >등록</button>
+												<button type="submit" class="btn btn-flat pull-right" style="background-color: #212b52; border: 1px solid #212b52; color: white;">등록</button>
 												<div class="clearfix"></div>
 											</form>
 										</div>

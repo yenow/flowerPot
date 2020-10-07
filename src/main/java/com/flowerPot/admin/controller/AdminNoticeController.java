@@ -60,8 +60,8 @@ public class AdminNoticeController {
 	}
 	
 	//공지사항 수정 페이지
-	@RequestMapping("/notice_modify/{ccno}")
-	public String notice_modify(@PathVariable Integer ccno,Model model) {
+	@RequestMapping("/notice_modify")
+	public String notice_modify(Integer ccno,Model model) {
 		CustomerVo notice = service.getNoticeCont(ccno);
 		model.addAttribute("notice",notice);
 		return "/admin/notice_modify";
@@ -74,8 +74,8 @@ public class AdminNoticeController {
 		ra.addFlashAttribute("msg","modSuccess");
 		return "redirect:/admin/customer/notice";
 	}
-	@RequestMapping("/notice_del/{ccno}")
-	public String notice_del(@PathVariable Integer ccno, RedirectAttributes ra) {
+	@RequestMapping("/notice_del")
+	public String notice_del(Integer ccno, RedirectAttributes ra) {
 		service.delNotice(ccno);
 		ra.addFlashAttribute("msg","delSuccess");
 		return "redirect:/admin/customer/notice";

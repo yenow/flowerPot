@@ -59,8 +59,8 @@ public class AdminFAQController {
 	}
 	
 	//FAQ 수정 페이지
-	@RequestMapping("/faq_modify/{ccno}")
-	public String faq_modify(@PathVariable Integer ccno,Model model) {
+	@RequestMapping("/faq_modify")
+	public String faq_modify(Integer ccno,Model model) {
 		CustomerVo faq = service.getFaQCont(ccno);
 		model.addAttribute("faq",faq);
 		return "/admin/faq_modify";
@@ -74,8 +74,8 @@ public class AdminFAQController {
 		return "redirect:/admin/customer/faq";
 	}
 	//FAQ 삭제 작업
-	@RequestMapping("/faq_del/{ccno}")
-	public String faq_del(@PathVariable Integer ccno, RedirectAttributes ra) {
+	@RequestMapping("/faq_del")
+	public String faq_del(Integer ccno, RedirectAttributes ra) {
 		service.delFaQ(ccno);
 		ra.addFlashAttribute("msg","delSuccess");
 		return "redirect:/admin/customer/faq";

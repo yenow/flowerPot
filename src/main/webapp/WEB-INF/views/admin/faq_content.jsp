@@ -39,13 +39,13 @@
 													<div class="col-md-1">
 														<div class="form-group">
 															<label>번호</label>
-															<text class="form-control" readonly>${faq.ccno}</text>
+															<text class="form-control" >${faq.ccno}</text>
 														</div>
 													</div>
 													<div class="col-md-11">
 														<div class="form-group">
 															<label>제목</label>
-															<text class="form-control" readonly>${faq.title}</text>
+															<text class="form-control" >${faq.title}</text>
 														</div>
 													</div>
 
@@ -54,11 +54,14 @@
 													<div class="col-md-12">
 														<div class="form-group">
 															<label>내용</label>
-															<text class="form-control" style="height : 200px" readonly>${faq.content}</text>
+															<text class="form-control" style="height : 200px" >${faq.content}</text>
 														</div>
 													</div>
 												</div>
-												<button class="btn btn-info btn-fill pull-right" style="background-color: #212b52; color: white; border: 1px solid #212b52; margin-left: 10px;" onclick="location='${pageContext.request.contextPath}/admin/customer/faq_modify/${faq.ccno}'">수정</button>
+												<form action="${pageContext.request.contextPath}/admin/customer/faq_modify" method="post">
+													<input type="hidden" name="ccno" value="${faq.ccno}">												
+													<button type="submit" class="btn btn-info btn-fill pull-right" style="background-color: #212b52; color: white; border: 1px solid #212b52; margin-left: 10px;">수정</button>
+												</form>
 												<button class="btn btn-info btn-fill pull-right" style="background-color: #212b52; color: white; border: 1px solid #212b52;" onclick="location='${pageContext.request.contextPath}/admin/customer/faq/'">목록</button>
 												&nbsp;
 												<div class="clearfix"></div>

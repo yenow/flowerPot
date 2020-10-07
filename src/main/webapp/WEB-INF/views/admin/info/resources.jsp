@@ -41,5 +41,3 @@
 	<script src="${pageContext.request.contextPath}/resources/assets/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
 	<!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
 	<script src="${pageContext.request.contextPath}/resources/assets/js/demo.js"></script>
-</body>
-</html>
