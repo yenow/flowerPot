@@ -37,6 +37,6 @@ public class BoardControllerTest {
 	  public void testConvert() throws Exception {
 		  System.out.println(mockMvc.perform(MockMvcRequestBuilders.get("/test")).andReturn().getModelAndView().getModelMap());
 		  
-	  }
+	  									}
 
 }

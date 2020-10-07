@@ -68,7 +68,7 @@ public class UploadController {
 		String mappingURL = request.getContextPath()+"/upload/summernoteImage/"+currentDay+"/"+realName;
 		File targetFile = new File(uploadFolderPath + realName);	
 		
-		AttachFileVo attach = new AttachFileVo(0, 0, uuidName, originalFileName, uploadFolderPath, mappingURL, realName);
+		AttachFileVo attach = new AttachFileVo(0, 0, 0 ,0, uuidName, originalFileName, uploadFolderPath, mappingURL, realName);
 		
 		try {
 			InputStream fileStream = multipartFile.getInputStream();
@@ -162,7 +162,7 @@ public class UploadController {
 			// 매핑 URL
 			String mappingURL = request.getContextPath()+"/upload/sumnailImageFileUpLoad/"+currentDay+"/"+realName;
 			
-			AttachFileVo attach = new AttachFileVo(0, 0, uuidName, originalFileName, uploadFolderPath, mappingURL, realName);
+			AttachFileVo attach = new AttachFileVo(0, 0, 0, 0, uuidName, originalFileName, uploadFolderPath, mappingURL, realName);
 			alist.add(attach);
 			File f = new File(uploadFolderPath + realName);
 			try {

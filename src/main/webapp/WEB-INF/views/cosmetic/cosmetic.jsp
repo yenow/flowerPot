@@ -29,37 +29,20 @@
 					<div class="wrap-slick3 flex-sb flex-w">
 						<div class="wrap-slick3-dots"></div>
 						<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
 						<div class="slick3 gallery-lb">
-							<div class="item-slick3" data-thumb="${pageContext.request.contextPath }/resources/images/product-detail-01.jpg">
+						
+						<c:forEach var="cosmeticImg" items="${cosmetic.mappingList }">
+							<div class="item-slick3" data-thumb="${cosmeticImg }">
 								<div class="wrap-pic-w pos-relative">
-									<img src="${pageContext.request.contextPath }/resources/images/product-detail-01.jpg" alt="IMG-PRODUCT">
+									<img src="${cosmeticImg }" alt="IMG-PRODUCT">
 
-									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${pageContext.request.contextPath }/resources/images/product-detail-01.jpg">
+									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${cosmeticImg }">
 										<i class="fa fa-expand"></i>
 									</a>
 								</div>
 							</div>
+						</c:forEach>
 
-							<div class="item-slick3" data-thumb="${pageContext.request.contextPath }/resources/images/product-detail-02.jpg">
-								<div class="wrap-pic-w pos-relative">
-									<img src="${pageContext.request.contextPath }/resources/images/product-detail-02.jpg" alt="IMG-PRODUCT">
-
-									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${pageContext.request.contextPath }/resources/images/product-detail-02.jpg">
-										<i class="fa fa-expand"></i>
-									</a>
-								</div>
-							</div>
-
-							<div class="item-slick3" data-thumb="${pageContext.request.contextPath }/resources/images/product-detail-03.jpg">
-								<div class="wrap-pic-w pos-relative">
-									<img src="${pageContext.request.contextPath }/resources/images/product-detail-03.jpg" alt="IMG-PRODUCT">
-
-									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${pageContext.request.contextPath }/resources/images/product-detail-03.jpg">
-										<i class="fa fa-expand"></i>
-									</a>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -70,21 +53,35 @@
 
 					<!-- 브랜드 -->
 					<div class="mtext-106 cl2 py-2">
-						<a href="#">${cosmetic.brand } </a>
-						<img class="dis-block trans-04 float-right" src="${pageContext.request.contextPath }/resources/images/icons/icon-heart-01.png" alt="ICON">
+						<a href="#">${cosmetic.brand }</a>
+						<span class="float-right">
+							
+						</span>
 					</div>
 					<!-- 화장품이름 -->
 					<h4 class="ltext-103 cl2 js-name-detail py-2">${cosmetic.name }</h4>
 					<hr />
 					<!-- 평점 -->
 					<div class="d-flex justify-content-between border-top border-secondary ">
-						<span> <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-						</span> <span>4.0점</span>
+						<span> <!-- <i class="item-rating pointer zmdi zmdi-star-outline"></i>  -->
+							<c:forEach begin="1" end="${cosmetic.rating }"> 
+								<i class="item-rating pointer zmdi zmdi-star"></i>
+							</c:forEach>
+						</span> 
+						<span>평점 : ${cosmetic.drating }점</span>
+					</div>
+					<hr />
+					<!-- 좋아요 -->
+					<div class="d-flex justify-content-between border-top border-secondary ">
+						<span> <!-- <i class="item-rating pointer zmdi zmdi-star-outline"></i>  -->
+							<img class="trans-04" src="${pageContext.request.contextPath }/resources/images/icons/icon-heart-02.png" alt="ICON">
+						</span> 
+						<span>좋아요 : ${cosmetic.likey }개</span>
 					</div>
 					<hr />
 					<!-- 배송정보 -->
 					<div class="d-flex justify-content-between py-2">
-						<span class="mtext-106">배송정보</span> <span class="mtext-106">2,500원 ( 20,000 원 이상 무료배송 )</span>
+						<span class="mtext-106">배송정보</span> <span class="mtext-106">2,500원</span>
 					</div>
 					
 					<!-- 재고정보 -->
@@ -94,7 +91,7 @@
 
 					<!-- 화장품가격 -->
 					<div class="d-flex justify-content-between py-2">
-						<span class="mtext-106"> 가격 </span> <span class="mtext-106"> ${cosmetic.price }원 </span>
+						<span class="mtext-106"> 가격 </span> <span class="mtext-106"> <span class="product-price"> ${cosmetic.price } </span><span>원</span> </span>
 					</div>
 
 					<!-- 결제 혜택 -->
@@ -114,12 +111,12 @@
 					<div class="d-flex justify-content-between py-2">
 						<span class="d-flex align-items-center mtext-106">수량</span>
 
-						<div class="d-flex align-items-center  wrap-num-product flex-w m-r-20 m-tb-10">
-							<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+						<div class="d-flex align-items-center  wrap-num-product flex-w m-r-20 m-tb-10" ">
+							<div class="num-product-down cl8 hov-btn3 trans-04 flex-c-m" onclick="return changeValue(this,0);">
 								<i class="fs-16 zmdi zmdi-minus"></i>
 							</div>
-							<input class="mtext-104 cl3 txt-center num-product" type="number" id="buy-number" name="numProduct" value="1" onchange="">
-							<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+							<input class="mtext-104 cl3 txt-center num-product cosmetic-amount" type="number" id="buy-number" name="numProduct" value="1" >
+							<div class="num-product-up cl8 hov-btn3 trans-04 flex-c-m" onclick="return changeValue(this,1);">
 								<i class="fs-16 zmdi zmdi-plus"></i>
 							</div>
 						</div>
@@ -127,7 +124,7 @@
 
 					<!-- 총 결제 금액 -->
 					<div class="d-flex justify-content-between py-2">
-						<span class="mtext-106"> 총 결제 금액 </span> <span class="mtext-106"> 0원 </span>
+						<span class="mtext-106"> 총 결제 금액 </span> <span class="mtext-106"><span class="total-price"></span><span>원</span></span>
 					</div>
 
 					<!-- 장바구니, 구매 박스 -->
@@ -210,7 +207,42 @@
 					<!-- 상품문의 -->
 					<div class="tab-pane fade " id="information" role="tabpanel">
 						<div class="row">
-							<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">상품문의</div>
+							<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
+								<c:forEach var="cr" items="${crList }">
+									<c:if test="${cr.category== \'query\' }">
+										<div class="flex-w flex-t p-b-68">
+											<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
+												<img src="${pageContext.request.contextPath }/resources/img/profile-image.png" alt="AVATAR">
+											</div>
+											<div class="size-207">
+												<div class="flex-w flex-sb-m p-b-17">
+													<span class="mtext-107 cl2 p-r-20"> ${cr.title } </span> 
+
+												</div>
+
+												<p class="stext-102 cl6">${cr.content }</p>
+											</div>
+										</div>
+									</c:if>
+								</c:forEach>
+
+								<form action="${pageContext.request.contextPath }/cosmeticReviewRegister" class="w-full cosmeticReview-form" onsubmit="return onsubmitCometicReview();">
+									<input type="hidden" name="cno" value="${cosmetic.cno }">
+									<input type="hidden" name="category" value="query">
+									<h5 class="mtext-108 cl2 p-b-7">문의 작성</h5>
+
+									<div class="row p-b-25">
+										<div class="col-12 form-group">
+											<input type="text" class="form-control" id="title" name="title" placeholder="제목">
+										</div>
+										<div class="col-12 p-b-5">
+											<textarea class="form-control size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="content" placeholder="댓글내용"></textarea>
+										</div>
+									</div>
+
+									<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">제출</button>
+								</form>
+							</div>
 						</div>
 					</div>
 
@@ -221,21 +253,23 @@
 								<div class="p-b-30 m-lr-15-sm">
 									<!-- Review -->
 									<c:forEach var="cr" items="${crList }">
-										<div class="flex-w flex-t p-b-68">
-											<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-												<img src="${pageContext.request.contextPath }/resources/img/profile-image.png" alt="AVATAR">
-											</div>
-
-											<div class="size-207">
-												<div class="flex-w flex-sb-m p-b-17">
-													<span class="mtext-107 cl2 p-r-20"> ${cr.title } </span> <span class="fs-18 cl11 show-rating" data-rating="${cr.rating }"> <i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star-half"></i>
-													</span>
-
+										<c:if test="${cr.category== \'rating\' }">
+											<div class="flex-w flex-t p-b-68">
+												<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
+													<img src="${pageContext.request.contextPath }/resources/img/profile-image.png" alt="AVATAR">
 												</div>
-
-												<p class="stext-102 cl6">${cr.content }</p>
+	
+												<div class="size-207">
+													<div class="flex-w flex-sb-m p-b-17">
+														<span class="mtext-107 cl2 p-r-20"> ${cr.title } </span> <span class="fs-18 cl11 show-rating" data-rating="${cr.rating }"> <i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star-half"></i>
+														</span>
+	
+													</div>
+	
+													<p class="stext-102 cl6">${cr.content }</p>
+												</div>
 											</div>
-										</div>
+										</c:if>
 									</c:forEach>
 									<!-- /Review -->
 
@@ -243,11 +277,11 @@
 									<!-- Add review -->
 									<form action="${pageContext.request.contextPath }/cosmeticReviewRegister" class="w-full cosmeticReview-form" onsubmit="return onsubmitCometicReview();">
 										<input type="hidden" name="cno" value="${cosmetic.cno }">
-
+										<input type="hidden" name="category" value="rating">
 										<h5 class="mtext-108 cl2 p-b-7">리뷰 작성</h5>
 
 										<div class="flex-w flex-m">
-											<span class="stext-102 cl3 m-r-16"> Your Rating </span> <span class="wrap-rating fs-18 cl11 pointer"> <i class="item-rating pointer zmdi zmdi-star-outline"></i> <i class="item-rating pointer zmdi zmdi-star-outline"></i> <i class="item-rating pointer zmdi zmdi-star-outline"></i> <i class="item-rating pointer zmdi zmdi-star-outline"></i> <i class="item-rating pointer zmdi zmdi-star-outline"></i> <input class="dis-none rating" type="number" name="rating">
+											<span class="stext-102 cl3 m-r-16"> 별점 : </span> <span class="wrap-rating fs-18 cl11 pointer"> <i class="item-rating pointer zmdi zmdi-star-outline"></i> <i class="item-rating pointer zmdi zmdi-star-outline"></i> <i class="item-rating pointer zmdi zmdi-star-outline"></i> <i class="item-rating pointer zmdi zmdi-star-outline"></i> <i class="item-rating pointer zmdi zmdi-star-outline"></i> <input class="dis-none rating" type="number" name="rating">
 											</span>
 										</div>
 
@@ -319,13 +353,33 @@
 
 <script>
 
-/*
-function registerShoppingCart() {
-	$('#buy-number').val();
-	console.log("구매수량");
-	console.log($('#buy-number').val());
+function changeValue(tag,flag) {
+	var amount=0;
+	if(flag==0){
+		//console.log(tag);
+		amount = $(tag).siblings("input").val();
+		//console.log(amount);
+		if(amount>=1){
+			$(tag).siblings("input").attr("value",--amount);	
+		}
+	}else if(flag==1){
+		//console.log(tag);
+		amount = $(tag).siblings("input").val();
+		//console.log(amount);
+		$(tag).siblings("input").attr("value",++amount);
+		//console.log($(tag).siblings("input"));
+	}else if(flag==2){
+		amount = $('.cosmetic-amount').val();
+	}
+	
+	//console.log("계산양 :"+amount);
+	var price = $('.product-price').html();
+	//console.log(price);
+	$('.total-price').html(amount*Number(price));
+
 }
-*/
+changeValue(null,2);
+
 function onsubmitCometicReview() {
 	var star = $('.wrap-rating').children('.zmdi-star');
 	console.log(star.length); // 별표시 개수 찍기
@@ -339,7 +393,9 @@ $(document).ready(function() {
 
 	// 쇼핑카트 버튼 클릭시 
 	$('#shoppingCart').click(function() {
+		// 알림창 띄우기
 		var flag = confirm("상품이 장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
+		// 컨트롤로에서 분기
 		if(flag==true){
 			$('#isNextpage').val("1");
 		}else{
@@ -351,7 +407,7 @@ $(document).ready(function() {
 	
 	// 바로구입 버튼 클릭시
 	$('#nowBuy').click(function() {
-		$('#cosmetic-form').attr("action", "${pageContext.request.contextPath }/");
+		$('#cosmetic-form').attr("action", "${pageContext.request.contextPath }/cosmetic/payment?root=1");   // root=1 은 바로구입
 	});
 	
 	for (var i = 0; i < ratingTag.length; i++) {

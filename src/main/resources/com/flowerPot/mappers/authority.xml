@@ -17,4 +17,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="au_deleteAuthorityById">
 		delete from f_authority where id=#{id}
 	</delete>
+	
+	<!-- 권한변경 -->
+	<update id="updateAuthorityById">
+		insert into f_authority  (auno,id,authority) values (auno_seq.nextval,#{id},#{authority})
+	</update>
 </mapper>

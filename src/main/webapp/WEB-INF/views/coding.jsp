@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -31,165 +30,146 @@
 
 <body>
 
-    <form action="./calendarRemove.do" method="post" id="frmCalendarRemove">
+	<form action="./calendarRemove.do" method="post" id="frmCalendarRemove">
 
-        <table class="table table-bordered">
+		<table class="table table-bordered">
 
-            <tr>
+			<tr>
 
-                <th><input type='checkbox' onclick='checkAllDel(this.checked)' />전체</th>
+				<th><input type='checkbox' onclick='checkAllDel(this.checked)' />전체</th>
 
-                <th>캘린더이름</th>
+				<th>캘린더이름</th>
 
-                <th>캘린더코드</th>
+				<th>캘린더코드</th>
 
-            </tr>
+			</tr>
 
-            <c:forEach items="${items}" var="item">
+			<c:forEach items="${items}" var="item">
 
-                <tr>
+				<tr>
 
-                    <td><input type='checkbox' name='chkVal' value="${item.id}" /></td>
+					<td>
+						<input type='checkbox' name='chkVal' value="${item.id}" />
+					</td>
 
-                    <td><input type="hidden" name='summarys' value="${item.summary}" />
+					<td>
+						<input type="hidden" name='summarys' value="${item.summary}" />
 
-                        <a href="./schdule.do?calendarId=${item.id}&title=${item.summary}">${item.summary}</a>
+						<a href="./schdule.do?calendarId=${item.id}&title=${item.summary}">${item.summary}</a>
 
-                    </td>
+					</td>
 
-                    <td>${item.id}</td>
+					<td>${item.id}</td>
 
-                </tr>
+				</tr>
 
-            </c:forEach>
+			</c:forEach>
 
-        </table>
+		</table>
 
-    </form>
+	</form>
 
-    <input type="button" class='btn btn-sm btn-warning' value="캘린더 생성"
+	<input type="button" class='btn btn-sm btn-warning' value="캘린더 생성" onclick="calendarAddForm()" />
 
-        onclick="calendarAddForm()" />
+	<input type="button" class='btn btn-sm btn-warning' value="캘린더 수정" onclick="calendarModifyForm()" />
 
-    <input type="button" class='btn btn-sm btn-warning' value="캘린더 수정"
+	<input type="button" class='btn btn-sm btn-warning' value="캘린더 삭제" onclick="calendarRemove()" />
 
-        onclick="calendarModifyForm()" />
+	<!-- 캘린더 생성 modal -->
 
-    <input type="button" class='btn btn-sm btn-warning' value="캘린더 삭제"
+	<div class="modal fade" id="calendarAddForm" role="dialog">
 
-        onclick="calendarRemove()" />
+		<div class="modal-dialog">
 
-    <!-- 캘린더 생성 modal -->
+			<div class="modal-content">
 
-    <div class="modal fade" id="calendarAddForm" role="dialog">
+				<div class="modal-header">
 
-        <div class="modal-dialog">
+					<button type="button" class="close" data-dismiss="modal">×</button>
 
-            <div class="modal-content">
+					<h4 class="modal-title">캘린더 생성</h4>
 
-                <div class="modal-header">
+				</div>
 
-                    <button type="button" class="close" data-dismiss="modal">×</button>
+				<div class="modal-body">
 
-                    <h4 class="modal-title">캘린더 생성</h4>
+					<!-- 캘린더 생성처리 form -->
 
-                </div>
+					<form action="./calendarAdd.do" method='post' id='frmCalendarAdd'>
 
-                <div class="modal-body">
+						<div class='form-group'>
 
-                    <!-- 캘린더 생성처리 form -->
+							<label>캘린더이름</label>
+							<input class='form-control' type="text" name='summary' id='summary' />
 
-                    <form action="./calendarAdd.do" method='post' id='frmCalendarAdd'>
+						</div>
 
-                        <div class='form-group'>
+						<div class='modal-footer'>
 
-                            <label>캘린더이름</label><input class='form-control' type="text"
+							<input type="button" class='btn btn-sm btn-warning' value="확인" onclick="calendarAdd()" />
+							<input type="reset" class='btn btn-sm btn-warning' value="초기화" />
+							<input type='button' class='btn btn-sm btn-warning' data-dismiss='modal' value="취소" />
 
-                                name='summary' id='summary' />
+						</div>
 
-                        </div>
+					</form>
 
-                        <div class='modal-footer'>
+				</div>
 
-                            <input type="button" class='btn btn-sm btn-warning' value="확인"
+			</div>
 
-                                onclick="calendarAdd()" /> <input type="reset"
+		</div>
 
-                                class='btn btn-sm btn-warning' value="초기화" /> <input
+	</div>
 
-                                type='button' class='btn btn-sm btn-warning'
+	<!-- 캘린더 수정 modal -->
 
-                                data-dismiss='modal' value="취소" />
+	<div class="modal fade" id="calendarModifyForm" role="dialog">
 
-                        </div>
+		<div class="modal-dialog">
 
-                    </form>
+			<div class="modal-content">
 
-                </div>
+				<div class="modal-header">
 
-            </div>
+					<button type="button" class="close" data-dismiss="modal">×</button>
 
-        </div>
+					<h4 class="modal-title">캘린더 수정</h4>
 
-    </div>
+				</div>
 
-    <!-- 캘린더 수정 modal -->
+				<div class="modal-body">
 
-    <div class="modal fade" id="calendarModifyForm" role="dialog">
+					<!-- 캘린더 생성처리 form -->
 
-        <div class="modal-dialog">
+					<form action="./calendarModify.do" method='post' id='frmCalendarModify'>
 
-            <div class="modal-content">
+						<div class='form-group'>
 
-                <div class="modal-header">
+							<label>캘린더이름</label>
+							<input class='form-control' type="text" name='summary' id='summaryModify' />
 
-                    <button type="button" class="close" data-dismiss="modal">×</button>
+						</div>
 
-                    <h4 class="modal-title">캘린더 수정</h4>
+						<input type="hidden" name="calendarId" id='calendarIdModify' />
 
-                </div>
+						<div class='modal-footer'>
 
-                <div class="modal-body">
+							<input type="button" class='btn btn-sm btn-warning' value="확인" onclick="calendarModify()" />
+							<input type="reset" class='btn btn-sm btn-warning' value="초기화" />
+							<input type='button' class='btn btn-sm btn-warning' data-dismiss='modal' value="취소" />
 
-                    <!-- 캘린더 생성처리 form -->
+						</div>
 
-                    <form action="./calendarModify.do" method='post'
+					</form>
 
-                        id='frmCalendarModify'>
+				</div>
 
-                        <div class='form-group'>
+			</div>
 
-                            <label>캘린더이름</label><input class='form-control' type="text"
+		</div>
 
-                                name='summary' id='summaryModify' />
-
-                        </div>
-
-                        <input type="hidden" name="calendarId" id='calendarIdModify' />
-
-                        <div class='modal-footer'>
-
-                            <input type="button" class='btn btn-sm btn-warning' value="확인"
-
-                                onclick="calendarModify()" /> <input type="reset"
-
-                                class='btn btn-sm btn-warning' value="초기화" /> <input
-
-                                type='button' class='btn btn-sm btn-warning'
-
-                                data-dismiss='modal' value="취소" />
-
-                        </div>
-
-                    </form>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+	</div>
 
 </body>
 

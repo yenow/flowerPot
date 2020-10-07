@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Home</title>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -43,39 +46,44 @@
 <body class="animsition">
 
 	<!-- Header -->
-	<header class="header-v4">
-
+	 <header class="header-v4"> 
 
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
 			<!-- Topbar -->
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
-					<div class="left-top-bar">Free shipping for standard order over $100</div>
+					<div class="left-top-bar">Welcome to our FlowePot :)</div>
 
 					<div class="right-top-bar flex-w h-full">
+
+						<a href="${pageContext.request.contextPath }/member/signUp" class="flex-c-m trans-04 p-lr-25"> 회원가입 </a>
+					
+						<a href="${pageContext.request.contextPath }/member/login" class="flex-c-m trans-04 p-lr-25"> 로그인 </a>
+
 						<a class="flex-c-m trans-04 p-lr-25">
 							<form action="${pageContext.request.contextPath}/logout" method="post">
 								<input type="submit" value="로그아웃">
 							</form>
 						</a>
+						
+						<a href="${pageContext.request.contextPath }/member/order" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
+						
 						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter" class="flex-c-m trans-04 p-lr-25"> 고객센터 </a>
+						
+						<a href="${pageContext.request.contextPath }/ourCompany/Company_main" class="flex-c-m trans-04 p-lr-25"> 우리회사 </a>
 
-						<a href="${pageContext.request.contextPath }/myPage/myPage" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
-
-						<a href="${pageContext.request.contextPath }/member/login" class="flex-c-m trans-04 p-lr-25"> 로그인 </a>
-
-						<a href="${pageContext.request.contextPath }/member/signUp" class="flex-c-m trans-04 p-lr-25"> 회원가입 </a>
 					</div>
 				</div>
 			</div>
 
+			<div class="wrap-menu-desktop how-shadow1"> <!-- how-shadow1 -->
 
-			<div class="wrap-menu-desktop how-shadow1">
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
-					<a href="${pageContext.request.contextPath }" class="logo"> 화분 </a>
+					<a href="${pageContext.request.contextPath}" class="logo"> 
+					<img src="${pageContext.request.contextPath }/resources/images/icons/logoblue.png"/></a>
 
 
 					<!-- Menu desktop -->
@@ -86,9 +94,12 @@
 							<!-- 쇼핑 리스트 -->
 							<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list" class="dropdown-toggle">Shop</a>
 								<ul class="sub-menu">
-									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list">피부타입별</a></li>
-									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list">브랜드별</a></li>
-									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list">유형별</a></li>
+									<li style="border-bottom: 1px solid #ccc; margin: 0 10px; " ><a href="#main-menu" class="font-weight-bold" >화장품 종류</a></li>
+									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=스킨케어">스킨케어</a></li>
+									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=메이크업">메이크업</a></li>
+									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=바디케어">바디케어</a></li>
+									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=헤어케어">헤어케어</a></li>
+									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=향수/디퓨져">향수/디퓨져</a></li>
 								</ul></li>
 
 							<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip" class="dropdown-toggle">매거진</a>
@@ -112,7 +123,7 @@
 							<i class="zmdi zmdi-search"></i>
 						</div>
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="${fn:length(shoppingCartList)}">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
@@ -128,8 +139,8 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->
 			<div class="logo-mobile">
-				<a href="index.html">
-					<img src="${pageContext.request.contextPath }/resources/images/icons/logo-01.png" alt="IMG-LOGO">
+				<a href="index3.html">
+					<img src="${pageContext.request.contextPath }/resources/images/icons/logoblue.png" alt="IMG-LOGO">
 				</a>
 			</div>
 
@@ -139,13 +150,10 @@
 					<i class="zmdi zmdi-search"></i>
 				</div>
 
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="${fn:length(shoppingCartList)}">
 					<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
 
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
-					<i class="zmdi zmdi-favorite-outline"></i>
-				</a>
 			</div>
 
 			<!-- Button show menu -->
@@ -160,7 +168,7 @@
 		<div class="menu-mobile">
 			<ul class="topbar-mobile">
 				<li>
-					<div class="left-top-bar">Free shipping for standard order over $100</div>
+					<div class="left-top-bar">Welcome to our FlowePot :) </div>
 				</li>
 
 				<li>
@@ -217,7 +225,7 @@
 	<div class="wrap-header-cart js-panel-cart">
 		<div class="s-full js-hide-cart"></div>
 
-		<div class="header-cart flex-col-l p-l-65 p-r-25">
+		<div class="header-cart flex-col-l p-l-25 p-r-25">
 			<div class="header-cart-title flex-w flex-sb-m p-b-8">
 				<span class="mtext-103 cl2"> 장바구니 목록 </span>
 
@@ -228,55 +236,55 @@
 
 			<div class="header-cart-content flex-w js-pscroll">
 				<ul class="header-cart-wrapitem w-full">
+					<c:forEach var="cosmetic" items="${shoppingCartList }">
 					<li class="header-cart-item flex-w flex-t m-b-12">
+						<input type="hidden" class="c-discount" value="${cosmetic.discountPersent}">
 						<div class="header-cart-item-img">
-							<img src="${pageContext.request.contextPath }/resources/images/item-cart-01.jpg" alt="IMG">
+							<img src="${cosmetic.mappingList[0] }" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04"> White Shirt Pleat </a>
+							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04"> ${cosmetic.name } </a>
 
-							<span class="header-cart-item-info">  1700원 </span>
+							<span class="header-cart-item-info">
+								<span class="c-price">${cosmetic.price }</span> <span>원</span>
+							</span>
+							<span class="header-cart-item-info">
+								<span class="c-num">${cosmetic.numProduct }</span> <span>개</span>
+							</span>
 						</div>
 					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="${pageContext.request.contextPath }/resources/images/item-cart-02.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04"> Converse All Star </a>
-
-							<span class="header-cart-item-info"> 1700원 </span>
-						</div>
-					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="${pageContext.request.contextPath }/resources/images/item-cart-03.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04"> Nixon Porter Leather </a>
-
-							<span class="header-cart-item-info"> 1700원 </span>
-						</div>
-					</li>
+					</c:forEach>
 				</ul>
 
 				<div class="w-full">
 					<!-- 총 금액 -->
-					<div class="header-cart-total w-full p-tb-40">총 금액: 7500원</div>
+					<div class="header-cart-total w-full p-tb-40">총 금액: <span class="t-price"></span><span>원</span></div>
 					
 					<div class="header-cart-buttons flex-w w-full">	
 						<!-- 장바구니로 가기 -->
 						<a href="${pageContext.request.contextPath }/shoppingList/shoppingList" 
 						class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10"> 장바구니로 가기 </a>
 						<!-- 구입하기 -->
-						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10"> 구입하기 </a>
+						<a href="${pageContext.request.contextPath}/cosmetic/payment?root=2" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10"> 구입하기 </a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+<script type="text/javascript">
+function shoppingList() {
+	var totalPrice = 0;
+	for(var i=0; i<$('.c-price').length; i++){
+		var price =  Number($($('.c-price').get(i)).html());
+		var num = Number($($('.c-num').get(i)).html());
+		var discount = $($('.c-discount').get(i)).val();
+		totalPrice += price*num*((100-discount)/100);
+	}
+	$('.t-price').html(String(totalPrice));
+}
+
+shoppingList();
+
+</script>

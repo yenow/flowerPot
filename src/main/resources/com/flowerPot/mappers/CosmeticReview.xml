@@ -14,4 +14,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectListCosmeticReviewListByCno" resultType="com.flowerPot.vo.CosmeticReviewVo">
 		select * from f_cosmeticReview where cno = #{cno}
 	</select>
+	
+	<select id="selectListCosmeticReviewListByCnoRating" resultType="com.flowerPot.vo.CosmeticReviewVo">
+		select * from f_cosmeticReview where cno = #{cno} and category = 'rating'
+	</select>
+	
+	<select id="selectListCosmeticReviewListById" resultType="com.flowerPot.vo.CosmeticReviewVo">
+		select  ccno, title, id, content from f_cosmeticReview where id = #{id} and category = 'rating'
+	</select>
+	
 </mapper>

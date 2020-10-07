@@ -38,48 +38,52 @@
 	</nav>
 	<!-- /nav -->
 	<!-- content -->
-	<div class="container-fluid">
-		<h2 class="text-center my-5">화장품 등록 <input type="submit" class="cosmetic-register-button btn btn-secondary float-right" value="등록"> </h2>
+	<div class="container-fluid p-b-85" style="padding: 0 100px;" >
+		<h2 class="text-center my-5">화장품 등록  </h2>
 		<form class="cosmetic-form" action="${pageContext.request.contextPath}/cosmetic/cosmetic_register_ok" method="post" enctype="multipart/form-data" onsubmit="return false;">
 			<!-- 화장품 타입, 화장품 브랜드 -->
 			<div class="row">
 				<%-- <input type="hidden" name="mno" value="${login.mno }"> --%>
-				
 				<div class="col">
-					<label for="type">타입</label> <select class="custom-select d-block w-100" id="type" name="type" required="">
-						<option value="">Choose...</option>
-						<option value="스킨케어">스킨케어</option>
-						<option value="메이크업">메이크업</option>
-						<option value="바디케어">바디케어</option>
-						<option value="헤어케어">헤어케어</option>
-						<option value="향수">향수/디퓨저</option>
+					<!-- 타입 -->
+					<div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">타입</div>
+					<select class="custom-select d-block w-100" id="type" name="type" onchange="return changeType();">
+						<option value="">1차 카테고리 목록</option>
+						<c:forEach var="type" items="${tList }">
+							<option value="${type.type }">${type.type }</option>
+						</c:forEach>
 					</select>
 					<div class="invalid-feedback">Please select a valid country.</div>
 				</div>
 				<div class="col">
-					<label for="brand">브랜드</label> <select class="custom-select d-block w-100" id="brand" name="brand" required="">
-						<option value="">Choose...</option>
-						<option value="이니스프리">이니스프리</option>
-						<option value="헤라">헤라</option>
-						<option value="바닐라코">바닐라코</option>
+					<!-- 서브타입 -->
+					<div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">서브타입</div>
+					<select class="custom-select d-block w-100" id="sub_type" name="sub_type" >
+						<option value="">2차 카테고리 목록</option>
 					</select>
 					<div class="invalid-feedback">Please select a valid country.</div>
 				</div>
 				<div class="col">
-					<label for="skinType">피부타입</label>
+					<!-- 브랜드 -->
+					<div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">브랜드</div>
+					<select class="custom-select d-block w-100" id="brand" name="brand" required="">
+						<option value="">브랜드 목록</option>
+						<c:forEach var="brand" items="${bList }">
+							<option value="${brand.name }">${brand.name }</option>
+						</c:forEach>
+					</select>
+					<div class="invalid-feedback">Please select a valid country.</div>
+				</div>
+				<div class="col">
+					<!-- 피부타입 -->
+					 <div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">피부타입</div>
 					 <select class="custom-select d-block w-100" id="skinType" name="skinType" required="">
-						<option value="">Choose...</option>
+						<option value="">피부타입</option>
 						<option value="지성">지성</option>
 						<option value="건성">건성</option>
 						<option value="복합성">복합성</option>
 					</select>
 					<div class="invalid-feedback">Please select a valid country.</div>
-				</div>
-				<div class="col">
-					<div class="form-group">
-						<label for=""price"">가격</label> 
-						<input type="number" class="form-control" id="price" name="price" placeholder="가격을 입력하세요">
-					</div>
 				</div>
 			</div>
 			<!-- /카테고리 -->
@@ -87,10 +91,10 @@
 			
 			<!-- 섬네일 이미지 등록 -->
 			<div class="form-group">
-				<label for="sumnailImage">섬네일 이미지</label> 
+				<div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">섬네일 이미지</div>
 				<div class="custom-file">
 				  <input type="file" class="custom-file-input" id="sumnailImage" multiple="multiple" accept="image/gif,image/jpeg,image/png">
-				  <label class="custom-file-label" for="sumnailImage">Choose file</label>
+				  <label class="custom-file-label" for="sumnailImage">이미지 파일 첨부</label>
 				</div>
 				<ul class="image-list list-group my-2">
 					 <!-- <li class="list-group-item" style="padding-top: 5px; padding-bottom: 5px;">파일목록
@@ -102,59 +106,75 @@
 					 </li> -->
 				</ul>
 			</div>
-			<!-- title -->
+			<!-- 이름 -->
 			<div class="mb-3">
-				<label for="username">화장품이름</label>
+				<div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">화장품 이름</div>
 				<div class="input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text">이름</span>
-					</div>
-					<input type="text" class="form-control" id="name" name="name" placeholder="제목을 입력하세요" required="">
+					
+					<input type="text" class="form-control" id="name" name="name" placeholder="화장품 이름을 입력하세요" required="">
 					<div class="invalid-feedback" style="width: 100%;">Your username is required.</div>
 				</div>
 			</div>
-			<!-- /title -->
+			<!-- /이름 -->
 			<!-- 내용 -->
+			
 			<div class="mb-2">
+				<div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">화장품 소개 내용</div>
 				<textarea id="summernote" class="content" name="content"></textarea>
 			</div>
 			
 			<!-- 상품 상세설명 -->
 			<div class="row">
-				<div class="col-4">
+				<div class="col-12">
 					<div class="form-group">
-						<label for="capacity">용량</label> 
+						 <div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">가격</div>
+						<input type="number" class="form-control" id="price" name="price" placeholder="가격을 입력하세요">
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="form-group">
+						 <div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">용량</div> 
 						<input type="number" class="form-control" id="capacity" name="capacity" placeholder="용량을 입력해주세요(ml 단위)" aria-describedby="emailHelp"> 
-						<small id="emailHelp" class="form-text text-muted"></small>
-					</div>
-				</div>
-				<div class="col-4">
-					<div class="form-group">
-						<label for="period">기간</label> 
-						<input type="number" class="form-control" id="period" name="period" placeholder="기간을 입력해주세요(일 단위)" aria-describedby="emailHelp"> 
-						<small id="emailHelp" class="form-text text-muted"></small>
-					</div>
-				</div>
-				<div class="col-4">
-					<div class="form-group">
-						<label for="nation">국가</label> 
-						<input type="email" class="form-control" id="nation" name="nation" aria-describedby="emailHelp"> 
 						<small id="emailHelp" class="form-text text-muted"></small>
 					</div>
 				</div>
 				<div class="col-12">
 					<div class="form-group">
-						<label for="useMethod">사용방법</label> 
-						<input type="email" class="form-control" id="useMethod" name="useMethod" placeholder="용량을 입력해주세요(ml 단위)" aria-describedby="emailHelp"> 
+						 <div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">기간</div>
+						<input type="number" class="form-control" id="period" name="period" placeholder="기간을 입력해주세요(일 단위)" aria-describedby="emailHelp"> 
 						<small id="emailHelp" class="form-text text-muted"></small>
 					</div>
 				</div>
+				<div class="col-12">
+					<div class="form-group">
+						 <div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">국가</div>
+						<input type="text" class="form-control" id="nation" name="nation" aria-describedby="emailHelp" placeholder="제조국을 입력해주세요"> 
+						<small id="emailHelp" class="form-text text-muted"></small>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="form-group">
+						 <div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">사용방법</div>
+						<input type="text" class="form-control" id="useMethod" name="useMethod" placeholder="사용방법을 입력해주세요" aria-describedby="emailHelp"> 
+						<small id="emailHelp" class="form-text text-muted"></small>
+					</div>
+				</div>
+				<div class="col-12">
+					<input type="submit" class="cosmetic-register-button btn btn-secondary btn-lg btn-block" value="등록" style="height: 50px;">
+				</div>
+				
 			</div>
 			<!-- /상품 상세설명 -->
 		</form>
 	</div>
 	
+	<div style="height: 300px;">
+	</div>
+	
 <script type="text/javascript">
+console.log(''===null);
+console.log(''==null);
+
 		$('#summernote').summernote(
 				{
 					height : 300, // 에디터 높이
@@ -195,7 +215,7 @@
 				}
 			});	
 		}
-
+		
 // 첨부파일 리스트
 var attachList = new Array();
 		
@@ -221,6 +241,7 @@ function deleteButton(data) {
 			});
 		}
 	}
+	$(data).parent().remove();
 	console.log(attachList);
 }
 
@@ -290,28 +311,91 @@ $(document).ready(function () {
 	
 	// 전송버튼을 클릭했을때, ajax로 데이터 전송
 	$('.cosmetic-register-button').click(function() {
+		if(attachList.length == 0){
+			alert('첨부파일을 첨부해주세요');
+			return false;
+		}
 		
 		var type = $('#type option:selected').val();
-		console.log(type);
+		if(type==''){
+			alert('1차카테고리를 선택해주세요');
+			return false;
+		}
+		//console.log(type);
+		var sub_type = $('#sub_type option:selected').val();
+		if(sub_type==''){
+			alert('2차카테고리를 선택해주세요');
+			return false;
+		}
+		console.log(sub_type);
 		var brand = $('#brand option:selected').val();
-		console.log(brand);
+		if(brand==''){
+			alert('브랜드를 선택해주세요');
+			return false;
+		}
+		//console.log(brand);
 		var skinType = $('#skinType option:selected').val();
-		console.log(skinType);
+		if(skinType==''){
+			alert('피부타입를 선택해주세요');
+			return false;
+		}
+		//console.log(skinType);
 		var price = $('#price').val();
-		console.log(price);
+		if(price==''){
+			alert('가격를 입력해주세요');
+			return false;
+		}
+		if(price<0){
+			alert('가격은 음수값이 나올수 없습니다');
+			return false;
+		}
+		//console.log(price);
 		var name = $('#name').val();
-		console.log(name);
+		if(name==''){
+			alert('상품이름을 입력해주세요');
+			return false;
+		}
+		//console.log(name);
 		var content = $('.content').val();
-		console.log(content);
+		if(content==''){
+			alert('상품내용을 입력해주세요');
+			return false;
+		}
+		//console.log(content);
 		var capacity = $('#capacity').val();
-		console.log(capacity);
+		if(capacity==''){
+			alert('용량을 입력해주세요');
+			return false;
+		}
+		//console.log(content);
+		if(capacity<0){
+			alert('용량은 음수값이 나올수 없습니다');
+			return false;
+		}
+		//console.log(capacity);
 		var period = $('#period').val();
-		console.log(period);
+		if(period==''){
+			alert('사용기간을 입력해주세요');
+			return false;
+		}
+		if(period<0){
+			alert('사용기간은 음수값이 나올수 없습니다');
+			return false;
+		}
+		//console.log(period);
 		var nation = $('#nation').val();
-		console.log(nation);
+		if(nation==''){
+			alert('제조국을 입력해주세요');
+			return false;
+		}
+		//console.log(nation);
 		var useMethod = $('#useMethod').val();
-		console.log(useMethod);
-		var formdata = {'type':type,'brand':brand,'skinType':skinType,'price':price,'name':name
+		if(useMethod==''){
+			alert('사용방법을 입력해주세요');
+			return false;
+		}
+		//console.log(useMethod);
+		var formdata = {'type':type,'sub_type': sub_type,'brand':brand,'skinType':skinType,'price':price,'name':name
 				,'content':content,'capacity':capacity,'period':period,'nation':nation,'useMethod':useMethod};
 		console.log("formdata");
 		console.log(formdata);
@@ -345,7 +429,7 @@ $(document).ready(function () {
 				success : function(data) {
 					if(data=='success'){
 						alert('등록되었습니다');
-						location.href='${pageContext.request.contextPath}/cosmetic/cosmetic_list';
+						location.href='${pageContext.request.contextPath}/cosmetic/cosmetic_list?type=스킨케어';
 					}else{
 						alert('등록실패했습니다');
 					}
@@ -353,9 +437,29 @@ $(document).ready(function () {
 			});
 		});
 	});
-	
 });
 // /ready()	
+
+
+// 1차 카테고리 변경시
+function changeType() {
+	var type = $("#type option:selected").val();
+	
+	$.ajax({
+		url: '${pageContext.request.contextPath}/cosmetic/subTypeList',
+		data : { 'type':type },
+		type : 'POST',
+		dataType: 'json',
+		success : function(typeList) {
+			console.log(typeList);
+			$('#sub_type').html('');
+			$('#sub_type').append($('<option value="">2차 카테고리 목록</option>'))
+			for(var i=0; i<typeList.length; i++){
+				$('#sub_type').append($('<option value="'+typeList[i].sub_type+'">'+typeList[i].sub_type+'</option>'));
+			}
+		}
+	});
+}
 		
 // 유효성검증, input타입에 모든 값이 들어가있는지
 </script>

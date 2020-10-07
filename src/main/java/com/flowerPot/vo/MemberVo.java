@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class MemberVo {
 	private Integer mno;
 	private String id;
@@ -19,16 +18,24 @@ public class MemberVo {
 	private String address;
 	private String email;
 	private String gender;
+	private String tel;
 	private String birth;
 	private String member_rank;
 	private Boolean enabled;
 	private LocalDateTime regdate;
+	private Integer point;
 	private List<AuthorityVo> authList;
-	
-	
-	
+	private String brand;
+//	private List<EmpVo> empList;
+
+	/*
+	 * public MemberVo(Integer mno, String id, String password, String name, String
+	 * nickname, String address, String email, String gender, String birth, String
+	 * member_rank, Boolean enabled) {
+	 */
+
 	public MemberVo(int mno, String id, String password, String name, String nickname, String address, String email,
-			String gender, String birth, String member_rank, Boolean enabled) {
+		String gender, String tel,String birth, String member_rank, Boolean enabled) {
 		super();
 		this.mno = mno;
 		this.id = id;
@@ -38,11 +45,19 @@ public class MemberVo {
 		this.address = address;
 		this.email = email;
 		this.gender = gender;
+		this.tel = tel;
 		this.birth = birth;
 		this.member_rank = member_rank;
 		this.enabled = enabled;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "MemberVo [mno=" + mno + ", id=" + id + ", password=" + password + ", name=" + name + ", nickname="
+				+ nickname + ", address=" + address + ", email=" + email + ", gender=" + gender + ", tel=" + tel
+				+ ", birth=" + birth + ", member_rank=" + member_rank + ", enabled=" + enabled + ", regdate=" + regdate
+				+ ", authList=" + authList + "]";
+	}
 	
 }
 
