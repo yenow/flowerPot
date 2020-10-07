@@ -68,7 +68,64 @@ public class MemberController {
     private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
         this.naverLoginBO = naverLoginBO;
     }
- 
+    
+ // 마이 페이지로 이동
+    
+ 	@RequestMapping("/myPage")
+ 	public String MyPage() {
+ 		return "member/myPage";
+ 	}
+ 	
+ // 쿠폰 페이지로 이동
+    
+  	@RequestMapping("/coupon")
+  	public String coupon() {
+  		return "member/coupon";
+  }
+  	
+ // 포인트 페이지로 이동
+    
+  	@RequestMapping("/point")
+  	public String point() {
+  		System.out.println("나의 포인트 페이지 호출됨");
+  		return "member/point";
+  	}
+ // 주문관리 페이지로 이동
+    
+  	@RequestMapping("/order")
+  	public String order() {
+  		System.out.println("나의 주문페이지 호출됨");
+  		return "member/order";
+  	}
+  	
+    //나의 회원정보 이동 
+    @RequestMapping("/myInfo") 
+	  public String myInfo() {
+    	System.out.println("나의 회원정보 호출됨");	 
+		return "member/myInfo"; 
+	   }
+    
+    //나의 활동으로 이동 
+    @RequestMapping("/myActivity") 
+	  public String myActivity() {
+    	System.out.println("나의 활동으로 호출됨");
+    	return "member/myActivity";
+	   }
+   
+    //나의 리뷰로 이동
+    @RequestMapping("/review") 
+	  public String review() {
+  	System.out.println("나의 활동으로 호출됨");
+  	return "member/review";
+	   }
+    
+    //나의 비밀번호 변경으로 이동
+    @RequestMapping("/password") 
+	  public String password() {
+  	System.out.println("나의 비밀번호변경으로 호출됨");
+  	return "member/password";
+	   }
+    
     //로그인 첫 화면 요청 메소드
     @RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
     public String login(Model model, HttpSession session) {
@@ -259,6 +316,7 @@ public class MemberController {
 		memberService.insertMember(member);
 		return "redirect:/";
 	}
+	//
 
 	// 아이디 중복인 요청 처리
 	@PostMapping("/checkId")

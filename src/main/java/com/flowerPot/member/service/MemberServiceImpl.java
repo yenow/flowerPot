@@ -53,4 +53,17 @@ public class MemberServiceImpl implements MemberSerivce {
 	public void authentication(MemberDTO dto) {
 		memberDao.authentication(dto);
 	}
+
+
+	@Override
+	public void updateMember(MemberVo vo) throws Exception {
+		memberDao.updateMember(vo);
+	}
+
+
+	@Override
+	public void passwordUpdate(MemberVo vo) throws Exception {
+		memberDao.updatePassword(vo);
+		
+	}
 }

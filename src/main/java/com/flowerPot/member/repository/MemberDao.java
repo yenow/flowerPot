@@ -24,4 +24,14 @@ public interface MemberDao {
 	public Integer checkPhone(String member);
 
 	public void authentication(MemberDTO dto);
+	
+	//회원정보 수정
+	public void updateMember(MemberVo member) throws Exception;
+		//vo에담겨진 파라미터들을 memberMapper.xml에 memberMapper라는 namespace에
+		//아이디가 memberupdate인 쿼리에 파라미터들을 넣어줍니다.
+	
+	//비밀번호 수정
+	public void updatePassword(MemberVo member) throws Exception;
+		
+	
 }

@@ -19,4 +19,10 @@ public interface MemberSerivce {
 	public MemberVo selectOneMemberById(String id);
 	//이메일 전송체크
 	public void authentication(MemberDTO dto);
+	
+	//회원 수정
+	public void updateMember(MemberVo vo) throws Exception;
+	
+	//비밀번호 수정
+	public void passwordUpdate(MemberVo vo) throws Exception;
 }
