@@ -47,7 +47,15 @@ public class CustomerCenterController {
 		model.addAttribute("notice", notice);
 
 	}
-
+	@RequestMapping("noticeContent")
+	public String noticeContent(int ccno, Model model) {
+		System.out.println(ccno);
+		CustomerCenterVo content = service.getNotice(ccno);
+		model.addAttribute("notice", content);
+		return "customerCenter/noticeContent";
+	}
+	
+	
 	@RequestMapping("FAQ")
 	public void FAQ(Model model) {
 		// 게시판 리스트 where category = 'FAQ'

@@ -113,14 +113,15 @@ insert into F_CUSTOMERCENTER (ccno, mno, title, content , regdate, moddate, cate
 insert into F_CUSTOMERCENTER values(ccno_seq.nextval, 3, 'test' ,'test' ,sysdate , sysdate , 'enquiry', 'testurl')
 
 
-
-
+--공지사항 테스트 데이터
+insert into F_CUSTOMERCENTER values(ccno_seq.nextval, 3, 'test2' ,'this is data of test2' ,sysdate , sysdate , 'notice', 'testurl')
 
 delete  from  F_CUSTOMERCENTER where category='faq';
 delete  from  F_CUSTOMERCENTER where category='FAQ';
 select * from F_CUSTOMERCENTER where category ='FAQ'
 
 select * from F_CUSTOMERCENTER where category='enquiry'
+select * from F_CUSTOMERCENTER where category='notice' and ccno = 42
  /*
 create table f_faq(
 fno int primary key,

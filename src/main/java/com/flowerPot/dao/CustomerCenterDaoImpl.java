@@ -69,4 +69,10 @@ public class CustomerCenterDaoImpl implements CustomerCenterDao {
 		
 	}
 
+	@Override
+	public CustomerCenterVo getNotice(int ccno) {
+		// TODO Auto-generated method stub
+		return session.selectOne("noticeContent", ccno);
+	}
+
 }

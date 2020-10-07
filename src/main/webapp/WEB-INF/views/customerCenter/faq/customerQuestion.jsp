@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>FAQ 1</title>
+<title>FAQ</title>
 
 <style>
 /* FAQ */
@@ -90,6 +90,7 @@
 						<a href="#a1">${question.title}</a>
 					</p>
 					<p class="a">${question.content}</p>
+					
 					<hr>
 				</li>
 			</c:forEach>

@@ -26,22 +26,10 @@
 		<div class="row">
 			<div class="col-md-4 col-lg-3 p-b-80">
 				<div class="side-menu">
-					<div class="bor17 of-hidden pos-relative">
-						<!-- 검색창 -->
-
-						<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55"
-							type="text" name="search" placeholder="Search" id="search">
-
-						<!-- 검색 버튼 -->
-						<button id="btnSearch" name="btnSearch"
-							class="flex-c-m size-122 ab-t-r fs-18 cl4 hov-cl1 trans-04">
-							<i class="zmdi zmdi-search" id="btnSearch"></i>
-						</button>
-					</div>
+					<jsp:include page="keyword.jsp"></jsp:include>
 
 					<jsp:include page="sidebar.jsp"></jsp:include>
-					<jsp:include page="keyword.jsp"></jsp:include>
-					
+
 
 					<div class="p-t-50">
 						<h4 class="mtext-112 cl2 p-b-27">Tags</h4>
@@ -66,77 +54,77 @@
 			<div class="col-md-8 col-lg-9 p-b-80">
 				<div class="p-r-45 p-r-0-lg">
 					<div class="table col-12 board-list ">
-
+						<h2 class="my-3">공지사항</h2>
 						<table class="table table-striped table-sm">
 							<thead>
 								<tr>
 
-									<th>제목</th>
-									<th>등록일</th>
+									<th>${notice.title }</th>
+
 								</tr>
+
 							</thead>
 							<tbody>
-								<c:forEach var="notice" items="${searchKeyword}">
 
-									<th>${notice.title }</th>
-									<th>${notice.regdate }</th>
-									</tr>
+								<th>${notice.content }</th>
+
+
 							</tbody>
-							</c:forEach>
-						</table>
-					</div>
 
-					<!-- Pagination -->
-					<div class="flex-l-m flex-w w-full p-t-10 m-lr--7 text-center">
-						<a href="#"
-							class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
-							1 </a> <a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7">
-							2 </a>
+
+
+							<!-- 							<script>
+								$(document)
+										.ready(
+												function() {
+
+													(function yajax() {
+														$
+																.ajax({
+																	url : '${pageContext.request.contextPath }/magazine/magazineAjax',
+																	type : 'GET',
+																	dataType : 'json',
+																	success : function(
+																			data) {
+																		console
+																				.log(data);
+																		$(
+																				'#magazine-test a img')
+																				.attr(
+																						'src',
+																						'${pageContext.request.contextPath }'
+																								+ data[0].rootfolder
+																								+ data[0].uuidname);
+																		$(
+																				'#magazine-title')
+																				.html(
+																						data[0].title)
+																	}
+																});
+
+													})();
+												});
+							</script> -->
+
+						</table>
+						<%-- 						<div style="float: left; width: 100">
+							<input type="button"
+								onclick="location.href='${pageContext.request.contextPath }/customerCenter/enquiry/edit?ccno=${content.ccno}'"
+								value="수정">
+						</div>
+						<div style="float: right; width: 100">
+							<input type="button" onclick="del(${content.ccno})" value="삭제">
+						</div> --%>
 					</div>
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 </section>
 
-<script>
-	alert("${searchKeyword}");
-	$(document)
-			.ready(
-					function() {
-
-						(function yajax() {
-							$
-									.ajax({
-										url : '${pageContext.request.contextPath }/magazine/magazineAjax',
-										type : 'GET',
-										dataType : 'json',
-										success : function(data) {
-											console.log(data);
-											$('#magazine-test a img')
-													.attr(
-															'src',
-															'${pageContext.request.contextPath }'
-																	+ data[0].rootfolder
-																	+ data[0].uuidname);
-											$('#magazine-title').html(
-													data[0].title)
-										}
-									});
-
-						})();
-					});
-
-	$(function abc(ccno) {
-		$
-				.ajax({
-					url : '${pageContext.request.contextPath }/customerCenter/customerCenter?ccno='
-							+ ccno,
-
-				})
-	})
-</script>
-
+<!-- <script type="text/javascript">
+function del(ccno){
+	location.href = "${pageContext.request.contextPath }/customerCenter/enquiry/delete?ccno="+ccno;
+}
+</script> -->
 <jsp:include page="../info/footer.jsp"></jsp:include>

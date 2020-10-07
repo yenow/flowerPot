@@ -68,12 +68,13 @@
 								<c:if test="${!empty notice }">
 									<c:forEach var="notice" items="${notice }">
 										<th>${notice.ccno }</th>
-										<th>${notice.title }</th>
+										<th><a
+											href="${pageContext.request.contextPath }/customerCenter/noticeContent?ccno=${notice.ccno }">${notice.title }</a></th>
 										<th>${notice.regdate }</th>
 										</tr>
-					
-							</c:forEach>
-							</c:if>
+
+									</c:forEach>
+								</c:if>
 
 								<c:if test="${empty notice}">
 									<tr>

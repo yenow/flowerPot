@@ -7,20 +7,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="customerCenter">
 	<select id="fq_list" resultType="cc">
 
-		select * from
-		f_customerCenter
-		where category='FAQ'
+		select* from
+		F_CUSTOMERCENTER
+		where category ='FAQ'
+
 	</select>
 
 	<select id="EnqList" resultType="cc">
-		select * from f_customerCenter
-		where category='enquiry' order by ccno desc
+		select ccno, title,
+		to_char(sysdate, 'yyyy-MM-dd')regdate from F_CUSTOMERCENTER where
+		category='enquiry' order by ccno desc
 	</select>
 
 	<select id="notice" resultType="cc">
-		select * from
-		f_customerCenter
-		where category='notice'
+		select ccno, title, to_char(sysdate, 'yyyy-MM-dd')regdate from
+		F_CUSTOMERCENTER where category='notice' order by ccno desc
 	</select>
 
 	<select id="searchKeyword" resultType="cc">
@@ -43,13 +44,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{title}, #{content}, sysdate, sysdate, 'enquiry')
 	</insert>
 	<select id="EnqContent" resultType="cc">
-		select * from f_customerCenter where ccno = #{ccno}
+		select * from
+		f_customerCenter where ccno = #{ccno}
 	</select>
 	<update id="EnqUpdate">
-		update f_customerCenter set title = #{title}, content = #{content}, moddate = sysdate where ccno = #{ccno}
+		update f_customerCenter set title = #{title}, content
+		= #{content}, moddate = sysdate where ccno = #{ccno}
 	</update>
 	<delete id="DeleteEnq">
-	delete from f_customerCenter where ccno = #{ccno}
+		delete from f_customerCenter where ccno = #{ccno}
 	</delete>
+	<select id="noticeContent" resultType="cc">
+		select * from
+		F_CUSTOMERCENTER where category='notice' and ccno = #{ccno}
+	</select>
 </mapper>
 
