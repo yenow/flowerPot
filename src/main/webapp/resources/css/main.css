@@ -218,6 +218,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 .header-v4 .container-menu-desktop {
   height: 124px;
+ 
 }
 
 
@@ -357,6 +358,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   display: -ms-flexbox;
   display: flex;
   align-items: center;
+
 }
 
 .main-menu > li {
@@ -440,7 +442,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 /*---------------------------------------------*/
 .main-menu > li:hover > a {
   text-decoration: none;
-  color: #fff;
+  color: black;
 }
 
 .main-menu > li:hover > .sub-menu {
