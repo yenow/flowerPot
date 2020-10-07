@@ -1,6 +1,8 @@
 package com.flowerPot.member.repository;
 
 import java.util.List;
+import java.util.Map;
+
 import com.flowerPot.vo.MemberVo;
 
 public interface MemberDao {
@@ -24,5 +26,7 @@ public interface MemberDao {
 	public MemberVo selectOneDeliMemById(String id);
 
 	public List<Integer> selectMnoList();
+
+	public void updateBrandById(Map<String, Object> map);
 
 }

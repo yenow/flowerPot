@@ -17,10 +17,9 @@ drop sequence auno_seq;
 select * from f_authority;
 insert into f_authority values (auno_seq.nextval, 'user0', 'ROLE_ADMIN','ROLE_ADMIN');
 insert into f_authority values (auno_seq.nextval, 'user1', 'ROLE_USER','ROLE_USER');
-<<<<<<< HEAD
 
 insert into f_authority values (auno_seq.nextval, 'admin', 'ROLE_ADMIN','ROLE_ADMIN');
-delete from f_authority where id='admin';
+delete from f_authority where id='phantom1994';
 
 insert into f_authority values (auno_seq.nextval, 'user1', 'ROLE_ADMIN','ROLE_ADMIN');
 insert into f_authority values (auno_seq.nextval, 'phantom1994', 'ROLE_USER','ROLE_USER');

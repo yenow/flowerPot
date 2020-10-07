@@ -38,7 +38,7 @@ $(function() {
 
 		<div class="main-panel">
 			<!-- header(nav) -->
-			<nav class="navbar navbar-expand-lg " color-on-scroll="500">
+			<!--  <nav class="navbar navbar-expand-lg " color-on-scroll="500">  -->
 				<div class="container-fluid">
 					<a class="navbar-brand" href="#pablo"> 회원 관리 </a>
 					<jsp:include page="info/header.jsp" />
@@ -56,6 +56,8 @@ $(function() {
 											<div class="col-md-12 ">
 												<div class="pull-right" style="text-align: right;">
 													<div class="input-group pull-right" style="text-align: right !important;">
+														<button class="btn btn-izone btn-flat authorize-button mr-3" id="popup_open_btn" data-toggle="modal" data-target="#myModal1"  style="background-color: #212b52; color: white;">권한</button>
+
 														<select id="condition" class="y-form-control" name="condition" style="width: 100px;">
 															<option value="mno">번호</option>
 															<option value="id">ID</option>
@@ -74,18 +76,20 @@ $(function() {
 												<!-- 게시글 목록 출력 -->
 												<!-- 게시글 목록 출력 -->
 												<thead>
-													<th>번호</th>
-													<th>ID</th>
-													<th>이름</th>
-													<th>닉네임</th>
-													<th>주소</th>
-													<th>이메일</th>
-													<th>성별</th>
-													<th>생일</th>
-													<th>등급</th>
-													<th>가입일</th>
-													<th>상태</th>
-													<th>비고</th>
+													<tr>
+														<th>번호</th>
+														<th>ID</th>
+														<th>이름</th>
+														<th>닉네임</th>
+														<th>주소</th>
+														<th>이메일</th>
+														<th>성별</th>
+														<th>생일</th>
+														<th>등급</th>
+														<th>가입일</th>
+														<th>상태</th>
+														<th>비고</th>
+													</tr>
 												</thead>
 												<tbody>
 													<%-- <c:forEach begin="1" end="100" step="1"">
@@ -183,13 +187,158 @@ $(function() {
 							</div>
 						</div>
 					</div>
-					<!-- 본문 끝 -->
+					<!-- 본문 끝 -->	
+					<!-- Mini Modal -->
+					<div class="modal fade modal modal-primary" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content" style="border: 3px solid #00498c; border-radius: 20px;">
+								<div class="modal-header justify-content-center" style="display: inline-block;">
+									<h3 style="text-align: center; color: #00498c; font-weight: bold">권한부여</h3>
+								</div>
+								<div class="modal-body text-center">
+									
+										<select class="custom-select" id="Authority-select">
+											<option value="NO" selected="selected">권한 종류</option>
+											<option value="ROLE_USER">일반회원</option>
+											<option value="ROLE_MAGAZINE">매거진</option>
+											<option value="ROLE_BRAND">브랜드 관리자</option>
+											<option value="ROLE_ADMIN">전체 관리자</option>
+										</select>
+										<select class="custom-select" id="brand-select">
+											<option value="" selected="selected">브랜드</option>
+											<option value="이니스프리">이니스프리</option>
+											<option value="이니스프리">이니스프리</option>
+											<option value="이니스프리">이니스프리</option>
+											<option value="이니스프리">이니스프리</option>
+										</select>
+										
+										<div class="input-group my-3">
+											<input type="text" class="form-control" id="idBox" placeholder="id를 입력하세요" aria-label="Recipient's username" aria-describedby="basic-addon2" style="border: 1px solid #19375e;">
+											<div class="input-group-append">
+												<button class="btn" type="button" style="background-color: #19375e; border: 1px solid #19375e; color: white;" onclick="return searchId();">검색</button>
+											</div>
+										</div>
+											
+										<ul class="list-group my-3 id-list">
+										</ul>
+										<input type="submit" class="btn btn-outline-primary btn-lg btn-block" value="부여" style="background-color: #19375e; border: 1px solid #19375e; color: white;" onclick="return authoritySubmit();">
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
-					<!-- footer -->
+
+				<!-- footer -->
 					<jsp:include page="info/footer.jsp" />
 					<%--푸터 --%>
 
 				</div>
-		</div>
+		
+		
+	</div>
+
+<script>
+
+var id_list = new Array();
+
+function searchId() {
+	var id = $('#idBox').val();
+	
+	//ajax통신으로 서버에서 값 받아오기 
+	console.log("id: "+id);
+	
+	//중복된 아이디 처리
+	for(var i=0; i<id_list.length; i++){
+		if(id==id_list[i]){
+			alert('중복된 아이디입니다');
+			console.log('중복된 아이디');
+			return false;
+		}
+	}
+	
+	/* 모달창의 id입력박스가 비어있을떄 경고메시지 */
+	if($.trim($('#idBox').val())==''){
+		alert('ID를 입력해주세요');
+		//$("#idBox").css("background-color", "pink");
+		//$("#idChk").html("<b style='font-size:14px; color:red;'>ID를 입력해주세요</b>");						
+		//$('#idBox').val('').focus();
+		/* 비어있지 않다면 ajax 실행 */
+		return false;
+	}	
+	
+	$.ajax({
+		url: '${pageContext.request.contextPath}/member/searchMemberById',
+		type: 'post',
+		data: {'id' : id},
+		dataType:"html",
+		success:function(data){
+			console.log(data);
+			if(data=='success'){
+				// 회원아이디가 있었을 경우
+				id_list.push(id);
+				$('.id-list').append($('<li class="list-group-item " style="border: 1px solid #19375e;" ><span class="member-id">'+ id +'</span><span class="float-right" onclick="return deleteId(this);" style="cursor: pointer;">X</span></li>'))
+			}else{
+				// 회원아읻가 없었을 경우
+				alert('회원아이디가 없습니다.');
+			}
+		}
+	});
+}
+
+// 리스트 아이디 지우기
+function deleteId(tag) {
+	console.log(tag);
+	var id = $(tag).parent().children('.member-id').html();
+	for(var i=0; i<id_list.length; i++){
+		if(id==id_list[i]){
+			id_list.splice(i, 1); // i번째 1개 삭제
+		}
+	}
+	$(tag).parent().remove();
+}
+	
+// 권한 submit
+function authoritySubmit() {
+	var authority = $('#Authority-select option:selected').val();
+	var brand = $('#brand-select option:selected').val();
+	
+	console.log(authority);
+	console.log(brand);
+	
+	// 유효성검증
+	if(authority=='NO'){
+		alert('권한을 선택해주세요');
+		return false;
+	}
+	if(id_list.length==0){
+		alert('아이디를 입력해주세요');
+		return false;
+	}
+	
+	var data = {"authority" : authority, "brand" : brand, "id_list": id_list };
+	
+	$.ajax({
+		url: '${pageContext.request.contextPath}/member/insertAuthority',
+		type: 'post',
+		data: JSON.stringify(data),
+		dataType:"html",
+		contentType: "application/json",
+		success:function(data){
+			console.log(data);
+			if(data=='success'){
+				location.href='${pageContext.request.contextPath}/admin/member';
+			}else{
+				alert('권한 부여 실패	');
+			}
+		}
+	});
+}
+
+
+	
+</script>
 </body>
+
 </html>

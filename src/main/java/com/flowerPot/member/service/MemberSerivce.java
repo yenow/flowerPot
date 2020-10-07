@@ -17,4 +17,5 @@ public interface MemberSerivce {
 	MemberVo selectOneMemberById(String id);
 
 	MemberVo selectOneDeliMemById(String id);
+
 }

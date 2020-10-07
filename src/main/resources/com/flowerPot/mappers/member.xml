@@ -92,4 +92,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectMnoList" resultType="int">
 		select mno from f_member
 	</select>
+	
+	<update id="updateBrandById">
+		update f_member set brand = #{brand} where id = #{id}
+	</update>
 </mapper>
