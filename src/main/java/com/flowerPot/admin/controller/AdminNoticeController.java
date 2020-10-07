@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.flowerPot.admin.commons.PageCreator;
 import com.flowerPot.admin.commons.SearchVO;
-import com.flowerPot.admin.dao.CNoticeMapper;
+import com.flowerPot.admin.service.CNoticeService;
 import com.flowerPot.admin.vo.CustomerVo;
 
 @Controller
@@ -19,7 +19,7 @@ import com.flowerPot.admin.vo.CustomerVo;
 public class AdminNoticeController {
 	
 	@Autowired
-	private CNoticeMapper service;
+	private CNoticeService service;
 	
 	//공지사항 목록 페이지
 	@RequestMapping("/notice")
@@ -60,8 +60,8 @@ public class AdminNoticeController {
 	}
 	
 	//공지사항 수정 페이지
-	@RequestMapping("/notice_modify/{ccno}")
-	public String notice_modify(@PathVariable Integer ccno,Model model) {
+	@RequestMapping("/notice_modify")
+	public String notice_modify(Integer ccno,Model model) {
 		CustomerVo notice = service.getNoticeCont(ccno);
 		model.addAttribute("notice",notice);
 		return "/admin/notice_modify";
@@ -74,8 +74,8 @@ public class AdminNoticeController {
 		ra.addFlashAttribute("msg","modSuccess");
 		return "redirect:/admin/customer/notice";
 	}
-	@RequestMapping("/notice_del/{ccno}")
-	public String notice_del(@PathVariable Integer ccno, RedirectAttributes ra) {
+	@RequestMapping("/notice_del")
+	public String notice_del(Integer ccno, RedirectAttributes ra) {
 		service.delNotice(ccno);
 		ra.addFlashAttribute("msg","delSuccess");
 		return "redirect:/admin/customer/notice";

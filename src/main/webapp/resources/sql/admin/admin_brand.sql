@@ -11,7 +11,7 @@
 -- 커스텀 후
 create table f_brand(
 	bno number(30) primary key,
-	name varchar2(50) unique,
+	name varchar(100) unique,
 	company varchar2(100) unique,
 	brandName varchar2(100) unique,
 	busNo varchar2(50) null, --unique조건 추가하기
@@ -38,21 +38,23 @@ FROM
 
 drop table f_brand;
 
+drop sequence bno_seq
+
 create sequence bno_seq increment by 1 start with 1;
 
 select * from f_brand
-insert into f_brand values (bno_seq.nextval,'이니스프리','(주)이니스프리','이니스프리','106-86-68127','임혜영','080-380-0114','innisfree@innisfree.com','04386','서울 용산구 한강대로 100','','(한강로2가)','아모레퍼시픽 신본사 7층 이니스프리','',sysdate);
-insert into f_brand values (bno_seq.nextval,'더샘','(주)더샘인터네셔널','더샘','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
-insert into f_brand values (bno_seq.nextval,'클리오','(주)클리오','클리오','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
-insert into f_brand values (bno_seq.nextval,'더페이스샵','(주)더페이스샵','더페이스샵','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
-insert into f_brand values (bno_seq.nextval,'헤라','(주)헤라','헤라','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
-insert into f_brand values (bno_seq.nextval,'시드물','(주)시드물','시드물','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
-insert into f_brand values (bno_seq.nextval,'바닐라코','(주)바닐라코','바닐라코','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
-insert into f_brand values (bno_seq.nextval,'미샤','(주)미샤','미샤','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
-insert into f_brand values (bno_seq.nextval,'키스미','(주)키스미','키스미','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
-insert into f_brand values (bno_seq.nextval,'베네피트','(주)베네피트','베네피트','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
-insert into f_brand values (bno_seq.nextval,'웨이크메이크','(주)웨이크메이크','웨이크메이크','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
 
+insert into f_brand values (bno_seq.nextval,'','(주)이니스프리','이니스프리','106-86-68127','임혜영','080-380-0114','innisfree@innisfree.com','04386','서울 용산구 한강대로 100','','(한강로2가)','아모레퍼시픽 신본사 7층 이니스프리','',sysdate);
+insert into f_brand values (bno_seq.nextval,'','(주)더샘인터네셔널','더샘','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
+insert into f_brand values (bno_seq.nextval,'','(주)클리오','클리오','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
+insert into f_brand values (bno_seq.nextval,'','(주)더페이스샵','더페이스샵','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
+insert into f_brand values (bno_seq.nextval,'','(주)헤라','헤라','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
+insert into f_brand values (bno_seq.nextval,'','(주)시드물','시드물','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
+insert into f_brand values (bno_seq.nextval,'','(주)바닐라코','바닐라코','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
+insert into f_brand values (bno_seq.nextval,'','(주)미샤','(주)미샤','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
+insert into f_brand values (bno_seq.nextval,'','(주)키스미','키스미','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
+insert into f_brand values (bno_seq.nextval,'','(주)베네피트','베네피트','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
+insert into f_brand values (bno_seq.nextval,'','(주)웨이크메이크','웨이크메이크','사업자번호','대표','전화번호','이메일','우편번호','도로명주소','지번주소','참고주소','상세주소','브랜드소개',sysdate);
 
 
 insert into f_brand values (bno_seq.nextval,'이니스프리','000-0000-0000','인천시 부평구 청천동');

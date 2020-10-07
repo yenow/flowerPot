@@ -31,4 +31,6 @@ public interface MemberSerivce {
 	//회원정보 조회
 	MemberVo viewMember(String id);
 
+	void giveAdminAuth(String empId);
+
 }

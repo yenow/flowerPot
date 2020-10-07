@@ -12,8 +12,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.flowerPot.admin.commons.SearchVO;
+import com.flowerPot.admin.dao.CReplyMapper;
 import com.flowerPot.admin.dao.EmpMapper;
 import com.flowerPot.admin.vo.EmpVo;
+import com.flowerPot.admin.vo.ReplyVo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
@@ -74,8 +76,9 @@ public class UserControllerTest {
 			try {
 				con = dataSource.getConnection();
 				pstmt = con.prepareStatement(sql);
-
+				
 				pstmt.setString(1, "이름"+i);
+				
 				pstmt.setInt(2, 50);
 				pstmt.setInt(3, 1);
 				pstmt.executeUpdate();
@@ -106,6 +109,20 @@ public class UserControllerTest {
 	public void memSelectTest() {
 		mapper.selectUserT().forEach(userT -> System.out.println("회원 목록 : "+userT));
 	}*/
+	@Autowired
+	private CReplyMapper service;
 	
+	@Test
+	public void reply(){
+		ReplyVo rpl = new ReplyVo();
+		rpl.setCcno(105);
+		rpl.setReplyer("관리자");
+		rpl.setReplytitle("메롱");
+		rpl.setReplytext("메롱");
+		
+		
+		service.insertReply(rpl);
+	      
+	}
 	
 }

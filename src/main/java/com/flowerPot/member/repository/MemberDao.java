@@ -42,4 +42,8 @@ public interface MemberDao {
 	public void updatePassword(MemberVo member) throws Exception;
 
 	public MemberVo viewMember(String id);
+
+	public void giveAdminAuth(String empId);
+
+
 }

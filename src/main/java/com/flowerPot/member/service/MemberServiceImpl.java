@@ -76,4 +76,11 @@ public class MemberServiceImpl implements MemberSerivce {
 	public MemberVo viewMember(String id) {
 		return memberDao.viewMember(id);
 	}
+
+	@Override
+	public void giveAdminAuth(String empId) {
+		memberDao.giveAdminAuth(empId);
+	}
+
+
 }

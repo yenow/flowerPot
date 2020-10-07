@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.flowerPot.admin.commons.PageCreator;
 import com.flowerPot.admin.commons.SearchVO;
-import com.flowerPot.admin.service.IMemService;
+import com.flowerPot.admin.service.MemService;
 import com.flowerPot.vo.MemberVo;
 
 @Controller
@@ -17,7 +17,7 @@ import com.flowerPot.vo.MemberVo;
 public class AdminMemberController {
 	
 	@Autowired
-	private IMemService service;
+	private MemService service;
 
 	
 	//회원 관리(목록)

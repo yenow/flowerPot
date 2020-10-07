@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.flowerPot.admin.commons.PageCreator;
 import com.flowerPot.admin.commons.SearchVO;
-import com.flowerPot.admin.dao.BrandMapper;
+import com.flowerPot.admin.service.ABrandService;
 import com.flowerPot.admin.vo.BrandVo;
 
 
@@ -23,8 +23,8 @@ import com.flowerPot.admin.vo.BrandVo;
 public class AdminBrandController {
 
 	@Autowired
-	private BrandMapper service; //서비스단 추가하기
-	
+	private ABrandService service; //서비스단 추가하기
+
 	//입점 관리(목록)
 	@RequestMapping("/brand")
 	public void brand(Model m, SearchVO search) {

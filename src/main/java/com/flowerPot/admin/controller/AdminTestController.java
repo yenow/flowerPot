@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.flowerPot.admin.commons.PageCreator;
 import com.flowerPot.admin.commons.SearchVO;
-import com.flowerPot.admin.service.IMemService;
+import com.flowerPot.admin.service.MemService;
 import com.flowerPot.admin.vo.EmpVo;
 import com.flowerPot.vo.MemberVo;
 
@@ -20,7 +20,7 @@ import com.flowerPot.vo.MemberVo;
 public class AdminTestController {
 	
 	@Autowired
-	private IMemService service;
+	private MemService service;
 	
 	//종합 현황
 	@RequestMapping("/dashboard")

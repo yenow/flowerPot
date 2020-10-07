@@ -35,7 +35,6 @@ public class AdminDeleveryCheckController {
 	}
 	
 	
-	
 	//회원정보를 조회한다. 구매내역을 조회한다.
 	@RequestMapping("/delivery/{id}")
 	@ResponseBody

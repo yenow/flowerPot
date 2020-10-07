@@ -21,8 +21,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</sql>
 	
 	<insert id="insertBrand" parameterType="com.flowerPot.admin.vo.BrandVo">
-		insert into f_brand (bno,company,brandName,busNo,ceoName,tel,email,postcode,roadAddr,jibunAddr,extraAddr,introduce,regDate) values
-		(bno_seq.nextval,#{company},#{brandName},#{busNo},#{ceoName},#{tel},#{email},#{postcode},#{roadAddr},#{jibunAddr},#{extraAddr},#{introduce},sysdate)
+		insert into f_brand (bno,name,company,brandName,busNo,ceoName,tel,email,postcode,roadAddr,jibunAddr,extraAddr,introduce,regDate) values
+		(bno_seq.nextval,#{name,jdbcType=VARCHAR},#{company},#{brandName},#{busNo},#{ceoName},#{tel},#{email},#{postcode},#{roadAddr},#{jibunAddr},#{extraAddr},#{introduce},sysdate)
 	</insert>
 
 

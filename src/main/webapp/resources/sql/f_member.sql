@@ -32,6 +32,7 @@ select * from f_member;
 
 alter table f_member modify nickname varchar2(50) not null
 drop table f_member;
+
 delete from f_member where name='윤신영';
 delete from f_member where name='관리자';
 
