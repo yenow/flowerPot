@@ -49,7 +49,7 @@ public class CosmeticServiceTest {
 	@Test
 	public void selectListCosmeticByCategory() {
 		if(cList.size()!=0) {
-			AttachFileVo a = new AttachFileVo(1, 1, "uuidName", "originalFileName", "uploadFolderPath", "mappingURL","realName");
+			AttachFileVo a = new AttachFileVo(1, 1, 0, 0, "uuidName", "originalFileName", "uploadFolderPath", "mappingURL","realName");
 			CosmeticVo cosmetic = cList.get(0);
 			
 			// 첨부파일 삽입

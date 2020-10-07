@@ -25,6 +25,7 @@ public class MemberVo {
 	private LocalDateTime regdate;
 	private Integer point;
 	private List<AuthorityVo> authList;
+	private String brand;
 //	private List<EmpVo> empList;
 
 	/*

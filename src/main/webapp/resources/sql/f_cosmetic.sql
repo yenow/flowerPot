@@ -20,10 +20,8 @@ create table f_cosmetic(
 	primary key(cno),
 	unique(name)
 );
-
-
 -- alter table f_cosmetic add (hits number(30) default 0, regdate date);
-alter table f_cosmetic add (numProduct number(30) default 0);
+alter table f_cosmetic add (proOption varchar2(100) );
 --alter table f_cosmetic add (code varchar2(150));
 --alter table f_cosmetic add (enable char(1));
 

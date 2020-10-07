@@ -136,4 +136,15 @@ public class CosmeticServiceImpl implements CosmeticService {
 	public void updateLikey(Integer cno) {
 		cosmeticDao.updateLikey(cno);
 	}
+
+	@Override
+	public void updateCosmeticStock(CosmeticVo cosmetic) {
+		cosmeticDao.updateCosmeticStock(cosmetic);
+	}
+
+	@Override
+	public List<CosmeticVo> selectListCosmetic() {
+		
+		return cosmeticDao.selectListCosmetic();
+	}
 }

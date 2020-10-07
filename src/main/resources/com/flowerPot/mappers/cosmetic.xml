@@ -148,6 +148,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateLikey">
 		update f_cosmetic set likey = likey + 1 where cno = #{cno}
 	</update>
+	
+	<update id="updateCosmeticStock">
+		update f_cosmetic set stockNumber = stockNumber + #{plusStock} where cno = #{cno}
+	</update>
+	
+	<select id="selectListCosmetic" resultType="com.flowerPot.vo.CosmeticVo">
+		select * from f_cosmetic
+	</select>
 </mapper>
 
 	<!-- <sql id="list">

@@ -47,7 +47,7 @@ public class AttachFileServiceTest {
 	
 	@Test
 	public void insertAttachFile() {
-		AttachFileVo attachFile =  new AttachFileVo(0, c.getCno(), "uuidName", "originalFileName", "uploadFolderPath", "mappingURL", "realName");
+		AttachFileVo attachFile =  new AttachFileVo(0, c.getCno(),0,0, "uuidName", "originalFileName", "uploadFolderPath", "mappingURL", "realName");
 		attachFileService.deleteAll();
 		int before = attachFileService.selectCount();
 		attachFileService.insertAttachFile(attachFile);

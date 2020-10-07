@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime"%>
 
 <jsp:include page="../info/header2.jsp"></jsp:include>
+
+
 <!-- Title page -->
 <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/bg-02.jpg');">
-	<h2 class="ltext-105 cl0 txt-center">Magazine</h2>
+	<h2 class="ltext-105 cl0 txt-center">매거진</h2>
 </section>
 
 <div class="container">
@@ -32,7 +35,7 @@
 		<div class="row">
 			<div class="col-md-8 col-lg-9 p-b-80">
 			 
-			 	<!--  매거진 목록 -->
+			 	<!-- 매거진 목록 -->
 				<div class="p-r-45 p-r-0-lg magazine-item"></div>
 				<!-- 매거진 페이징 넘버 -->
 				<div class="flex-c-m flex-w w-full p-t-10 m-lr--7 magazine-nav">
@@ -136,6 +139,10 @@
 					// 윤신영 - 밑에  for문은 data로 받은 magazineVo객체 하나하나를 글목륵으로 바꾸는 작업이다
 					$('.magazine-item').empty();  // 초기화
 						for(var i=0; i<mgList.length; i++){
+							console.log(mgList[i]);
+							var dt = new Date(); 
+							dt.setTime(mgList[i].regdate);
+							
 							$div =  $('<div/>',{'class' : 'p-b-63'});
 		
 							$a = $('<a/>',{
@@ -155,12 +162,12 @@
 		
 							$span1 = $('<span/>',{
 								'class' : 'ltext-107 cl2 txt-center',
-								'text' : '22'
+								'text' : dt.getDate()
 							});
 		
 							$span2 = $('<span/>',{
 								'class' : 'stext-109 cl3 txt-center',
-								'text' : 'Jan 2018'
+								'text' : dt.getMonth()+1 + '월 '+ dt.getFullYear()
 							});
 		
 							$innerdiv.append($span1);
@@ -170,7 +177,7 @@
 							$div.append($a);
 		
 							$div2 = $('<div class="p-t-32"><h4 class="p-b-15"><a href="${pageContext.request.contextPath }/magazine/magazine_cont?category=${category}&mgno='+mgList[i].mgno+'" class="ltext-108 cl2 hov-cl1 trans-04"> '+mgList[i].title+' </a></h4>'
-									+ '<p class="stext-117 cl6 txt_line"> '+mgList[i].content +' </p> <div class="flex-w flex-sb-m p-t-18"><span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10"> <span>' 
+									+ '<div class="flex-w flex-sb-m p-t-18"><span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10"> <span>'   //'<p class="stext-117 cl6 txt_line"> '+mgList[i].content +' </p>
 									+'<span class="cl4">By</span> 작성자 <span class="cl12 m-l-4 m-r-6">|</span>'
 									+'</span> <span> '+ mgList[i].category +' <span class="cl12 m-l-4 m-r-6">|</span>'
 									+'</span></span> '

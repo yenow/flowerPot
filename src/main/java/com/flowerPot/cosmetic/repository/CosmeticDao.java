@@ -32,5 +32,9 @@ public interface CosmeticDao {
 
 	void updateLikey(Integer cno);
 
+	void updateCosmeticStock(CosmeticVo cosmetic);
+
+	List<CosmeticVo> selectListCosmetic();
+
 
 }

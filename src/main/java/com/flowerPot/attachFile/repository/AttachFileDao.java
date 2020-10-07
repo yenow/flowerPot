@@ -13,4 +13,6 @@ public interface AttachFileDao {
 	public int selectCount();
 
 	public List<AttachFileVo> selectMappingURLByCno(int cno);
+
+	public void insertAttachListToEvent(AttachFileVo attach);
 }

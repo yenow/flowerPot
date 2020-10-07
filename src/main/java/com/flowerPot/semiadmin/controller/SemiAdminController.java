@@ -74,7 +74,7 @@ public class SemiAdminController {
 	public void inventory(Model model) {
 		System.out.println("inventory 후기 페이지 실행 ");
 		
-		List<SemiInventoryVO> ilist = service.getInvenArticles();
+		List<CosmeticVo> ilist = cosmeticService.selectListCosmetic();
 		model.addAttribute("ilist",ilist);
 		
 	}
@@ -91,11 +91,11 @@ public class SemiAdminController {
 	
 //   inventory  재고 목록  추가 }
 	@PostMapping("/inventory")
-	public String inventory(Model model,SemiInventoryVO semi) {
+	public String inventory(Model model,CosmeticVo cosmetic) {
 		
-		System.out.println(semi);
-		service.submitInven(semi);
-		
+		// System.out.println(semi);
+		// service.submitInven(semi);
+		cosmeticService.updateCosmeticStock(cosmetic);
 		return "redirect:/semiadmin/inventory";
 	}
 

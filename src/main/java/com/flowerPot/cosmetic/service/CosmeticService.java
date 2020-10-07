@@ -33,4 +33,8 @@ public interface CosmeticService {
 
 	void updateLikey(Integer cno);
 
+	void updateCosmeticStock(CosmeticVo cosmetic);
+
+	List<CosmeticVo> selectListCosmetic();
+
 }

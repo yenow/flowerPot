@@ -45,8 +45,8 @@ public class AttachFileDaoTest {
 		cosmeticDao.insertCosmetic(c);
 		
 		// AttachFileVo 초기화
-		attach = new AttachFileVo(0, c.getCno(), "uuidName", "originalFileName", "uploadFolderPath", "mappingURL","realName");
-		attach2 = new AttachFileVo(0, c.getCno(), "uuidName", "originalFileName", "uploadFolderPath", "mappingURL","realName");
+		attach = new AttachFileVo(0, c.getCno(), 0, 0, "uuidName", "originalFileName", "uploadFolderPath", "mappingURL","realName");
+		attach2 = new AttachFileVo(0, c.getCno(), 0, 0,"uuidName", "originalFileName", "uploadFolderPath", "mappingURL","realName");
 	}
 	
 	@Test

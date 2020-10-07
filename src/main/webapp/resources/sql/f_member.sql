@@ -14,10 +14,13 @@ create table f_member (
     enabled char(1) default '1',
     regdate date,
     point number(30) default 0,  -- 포인트
+    brand varchar2(100),
     primary key(mno),
     unique(id)
 );
+
 ALTER TABLE f_member DROP PRIMARY KEY;
+alter table f_member add brand varchar2(100);
 
 create sequence mno_seq increment by 1 start with 1 minvalue 1;
 

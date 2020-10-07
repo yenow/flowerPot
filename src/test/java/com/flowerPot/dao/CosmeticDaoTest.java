@@ -71,7 +71,7 @@ public class CosmeticDaoTest {
 	@Test
 	public void selectOneCosmeticByCno() {
 		if(cList.size()!=0) {
-			AttachFileVo a = new AttachFileVo(1, 1, "uuidName", "originalFileName", "uploadFolderPath", "mappingURL","realName");
+			AttachFileVo a = new AttachFileVo(1, 1,0, 0, "uuidName", "originalFileName", "uploadFolderPath", "mappingURL","realName");
 			CosmeticVo cosmetic = cList.get(0);
 			a.setCno(cosmetic.getCno());
 			attachFileDao.insertAttachFile(a);

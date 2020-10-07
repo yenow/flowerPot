@@ -11,6 +11,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (atno_seq.nextval,#{cno},#{uuidName},#{originalFileName},#{uploadFolderPath},#{mappingURL},#{realName})
 	</insert>
 	
+	<insert id="insertAttachListToEvent">
+		insert into f_attachFile (atno,eno,uuidName,originalFileName,uploadFolderPath,mappingURL,realName) 
+		values (atno_seq.nextval,#{eno, jdbcType=NUMERIC},#{uuidName},#{originalFileName},#{uploadFolderPath},#{mappingURL},#{realName})
+	</insert>
+	
 	<delete id="deleteAll">
 		delete from f_attachFile
 	</delete>

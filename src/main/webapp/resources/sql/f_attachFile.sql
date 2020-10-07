@@ -2,6 +2,7 @@ create table f_attachFile (
 	atno number(30),
 	cno number(30) default 0,
 	mgno number(30) default 0,
+	eno number(30) default 0,
 	uuidName varchar2(200) not null,
 	originalFileName varchar2(200) not null,
 	uploadFolderPath varchar2(200) not null,
@@ -17,3 +18,5 @@ drop table f_attachFile;
 select * from f_attachFile;
 
 select c.*,a.mappingURL from f_cosmetic c left outer join f_attachFile a on c.cno=a.cno where c.cno = 2141;
+
+alter table f_attachFile add eno number(30) default 0;
