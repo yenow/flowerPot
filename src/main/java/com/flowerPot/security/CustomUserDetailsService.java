@@ -22,5 +22,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 		
 		return vo == null ? null : new CustomUser(vo);
 	}
+	
+	// 인자값 memberVO
+	// return new CustomUser
 	// memberVO 를 UserDetails 로 변환
 }

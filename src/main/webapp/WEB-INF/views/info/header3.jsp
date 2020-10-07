@@ -219,7 +219,7 @@
 					
 
 					<li class="p-b-13">
-						<a href="${pageContext.request.contextPath }/myPage/myPage" class="stext-102 cl2 hov-cl1 trans-04"> 마이페이지 </a>
+						<a href="${pageContext.request.contextPath }/member/order" class="stext-102 cl2 hov-cl1 trans-04"> 마이페이지 </a>
 					</li>
 
 					<li class="p-b-13">

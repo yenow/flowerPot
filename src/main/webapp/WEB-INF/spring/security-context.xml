@@ -20,11 +20,10 @@
 		<security:intercept-url pattern="/member/login" access="permitAll"/>
 		<!-- <security:intercept-url pattern="/myPage/**" access="hasRole('ROLE_USER')"/> -->
 		<!-- <security:intercept-url pattern="/magazine/magazine_write" access="hasAnyRole('ROLE_USER','ROLE_REGISTER','ROLE_ADMIN')"/> -->
-		
- 		<!-- <security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/> -->
- 		
- 		<security:form-login username-parameter="id" password-parameter="password" login-page="/member/login" default-target-url="/" authentication-failure-url="/member/login?fail=true"/>
-		
+		<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/member/login_naver" access="permitAll"/>
+		<security:form-login username-parameter="id" password-parameter="password" login-page="/member/login" default-target-url="/" authentication-failure-url="/member/login?fail=true"/>
+
 		<security:logout logout-url="/logout" />
 		<security:csrf disabled="true"/>
 	</security:http>

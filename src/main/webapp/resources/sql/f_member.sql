@@ -30,7 +30,7 @@ select mno_seq.nextval from dual;
 drop sequence mno_seq
 select * from f_member;
 
-
+alter table f_member modify nickname varchar2(50) not null
 drop table f_member;
 delete from f_member where name='윤신영';
 delete from f_member where name='관리자';
@@ -39,6 +39,7 @@ insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,m
 values (mno_seq.nextval,'admin','0000','관리자','대통령','주소','yjk7454@naver.com','M','11-29','골드',sysdate);
 -- 관리자 권한으로 로그인이 안되는 이유는 패스워드암호화가 안되기 때문에 이곳에서 추가하지 않고 src/test/java에있는 security패키지의 MemberTest.java에서 암호화된 로직으로 추가해준다.
 
+alter table f_member rename constraint (nick not null);
 insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,member_rank,authority ) 
 values (mno_seq.nextval,'phantom1','tlsdud5089','윤신영','윤신영','주소','phantom_ysy@naver.com','M','11-29','골드','작성자');
 insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,member_rank,authority ) 

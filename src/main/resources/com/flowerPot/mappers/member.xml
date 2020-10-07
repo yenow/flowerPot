@@ -71,7 +71,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT COUNT(*) FROM f_member 
 		where email=#{member}
 	</select>
-	
+	<insert id="authentication" parameterType="com.flowerPot.member.vo.MemberDTO">
+	insert into memberDTO(USER_ID,MEMBER_PASS,e_MAIL)values(#{user_id},0,#{e_mail})
+	</insert>
 	<select id="checkPhone" resultType="int">
 		SELECT COUNT(*) FROM f_member 
 		where tel=#{member}
@@ -96,4 +98,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateBrandById">
 		update f_member set brand = #{brand} where id = #{id}
 	</update>
+	
+	<!-- 회원정보 상세 조회 -->
+	<select id="viewMember" resultType="com.flowerPot.vo.MemberVo">
+		SELECT
+		*
+		from f_member
+		where id =#{id}
+	</select>
+	<!-- 회원정보 수정처리 -->
+	<update id="updateMember">
+	UPDATE f_member SET 
+	nickname=#{nickname},
+	tel=#{tel},
+	address=#{address}
+	where id=#{id}
+	</update>
+	
+	<update id="updatePassword">
+	UPDATE f_member SET 
+	password=#{password}
+	where id=#{id}
+	</update>
+	
 </mapper>

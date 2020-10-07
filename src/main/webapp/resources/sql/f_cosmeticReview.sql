@@ -13,10 +13,12 @@ create table f_cosmeticReview(
 );
 -- 시퀀스
 create sequence crno_seq  start with 1 increment by 1;
-
+insert into F_COSMETICREVIEW values(crno_seq.nextval, 1,1, '아주좋습니다.',5,'abcd1234','june123','aaa123','aaa123')
+insert into F_COSMETICREVIEW values(crno_seq.nextval, 1,1, '아주좋습니다.123',5,'abcd1234','june123','aaa123','aaa123')
 select * from f_cosmeticReview;
 drop table f_cosmeticReview;
 
+<<<<<<< HEAD
 insert into
 F_COSMETICREVIEW  values
 (crno_seq.nextval, 1,222,'category','id','nickame','title','content',3 );
@@ -48,3 +50,5 @@ F_COSMETICREVIEW  values
 insert into
 F_COSMETICREVIEW  values
 (crno_seq.nextval, 2,333,'category2','id2','nickame2','title7','content2',4);
+
+alter table f_cosmeticReview add constraint fk_id foreign key(id) references f_member(id)
