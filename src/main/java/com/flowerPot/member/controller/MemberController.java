@@ -359,6 +359,8 @@ public class MemberController {
 	//회원 정보 수정 처리
 	@RequestMapping("/update_do")
 	public String memberUpdate(MemberVo vo, MemberAddressVo memberAddress) throws Exception {
+		log.info("회원정보:"+vo.toString());
+		log.info("회원정보:"+memberAddress.getMno());
 		memberService.updateMember(vo, memberAddress);
 		return "redirect:/member/myInfo";
 	}

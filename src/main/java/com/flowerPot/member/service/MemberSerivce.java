@@ -32,7 +32,10 @@ public interface MemberSerivce {
 	//회원정보 조회
 	MemberVo viewMember(String id);
 	
+	//회원가입기능
 	void insertMember(MemberVo member, MemberAddressVo memAddressVo);
+	
+	//회원정보 업데이트
 	void updateMember(MemberVo vo, MemberAddressVo memberAddress) throws Exception;
 	
 
