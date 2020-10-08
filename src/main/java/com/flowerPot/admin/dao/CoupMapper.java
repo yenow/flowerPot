@@ -28,4 +28,8 @@ public interface CoupMapper {
 
 	CoupVo selectCoupListByCouno(Integer couno);
 
+	CoupVo selectOneCouponByName(String couponName);
+
+	void deleteCoupon(HasCouponVo hc);
+
 }

@@ -10,19 +10,16 @@ import lombok.extern.slf4j.Slf4j;
 public class ReFact01 {
 
 	public static void main(String[] args) {
-		int a=10, b01=2, b02=0, b03=3,result=0;
-
-		try {
-			result = a / b01;
-			System.out.println(result);
-
-			result = a/ b02;
-			System.out.println(result);
-
-			result = a/b03;
-			System.out.println(result);
-		} catch (Exception e) {
-			System.out.println("오류발생");
-		}
+		
+		int original_price = 12144;
+		int price = 12142;
+		double price2 = 12142;
+		int discountPercent = 0;
+		int amount = 1;
+		int addpoint = 0;
+		addpoint = price * amount * (100-discountPercent)/100;
+		System.out.println(addpoint*2/100);
+		Double addpoint2 = price2 * amount * (100-discountPercent)/100;
+		System.out.println(addpoint2*2/100);
 	} 
 }

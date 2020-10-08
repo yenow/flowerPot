@@ -77,7 +77,7 @@ public class CoupServiceImpl implements CoupService {
 		Log.info("쿠폰목록:"+hasCoupList);
 		List<CoupVo> coupList = new ArrayList<CoupVo>();
 		for(HasCouponVo hc : hasCoupList) {
-			CoupVo coupVo = mapper.selectCoupListByCouno(hc.getCouno());
+			CoupVo coupVo = mapper.selectCoupListByCouno(hc.getCouNo());
 			coupVo.setMno(mno);
 			coupList.add(coupVo);
 		}

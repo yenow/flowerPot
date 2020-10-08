@@ -45,5 +45,7 @@ public interface MemberDao {
 
 	public void giveAdminAuth(String empId);
 
+	public void updatePoint(Map<String, Object> map);
+
 
 }

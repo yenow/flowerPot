@@ -6,5 +6,5 @@ import lombok.Data;
 public class HasCouponVo {
 	private Integer hasCno;
 	private Integer mno;
-	private Integer couno;
+	private Integer couNo;
 }

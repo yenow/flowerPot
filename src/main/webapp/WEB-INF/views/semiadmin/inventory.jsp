@@ -119,7 +119,7 @@
 			<div class="page-title">
 				<div class="row">
 					<div class="col-12 col-md-6 order-md-1 order-last">
-						<h3>재고관리</h3>
+						<h3>상품/재고관리</h3>
 						<p class="text-subtitle text-muted">
 							현재 화장품의 재고 상태를 보여줍니다	
 						</p>
@@ -128,7 +128,7 @@
 						<nav aria-label="breadcrumb" class='breadcrumb-header'>
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-								<li class="breadcrumb-item active" aria-current="page">재고관리</li>
+								<li class="breadcrumb-item active" aria-current="page">상품/재고관리</li>
 							</ol>
 						</nav>
 					</div>
@@ -159,8 +159,10 @@
 												<tr>
 													<th>상품 번호</th>
 													<th>상품명</th>
+													<th>기존 할인율</th>
+													<th style="min-width: 100px;">할인율 조정</th>
 													<th>기존 수량</th>
-													<th>추가 요청 수량</th>
+													<th style="min-width: 100px;">추가 요청 수량</th>
 													<th>확인</th>
 												</tr>
 											</thead>
@@ -169,17 +171,22 @@
 												<c:forEach var="i" items="${ilist}">
 													<tr>
 														<form method="post">
-															<td class="text-bold-500">${i.cno}</td>
-															<td>${i.name}</td>
-															<td>${i.stockNumber}</td>
+															<td class="text-nowrap text-bold-500">${i.cno}</td>
+															<td class="text-nowrap">${i.name}</td>
+															<td >${i.discountPersent}</td>
+															<td style="min-width: 100px;">
+															<input id="plusDiscountPersent" type="number" name="plusDiscountPersent" value="${i.discountPersent}" style="border: 2px solid #0d6efd; width: 50%;">
+																<div id="emailHelp" class="form-text">단위는  %입니다</div>
+															</td>
+															<td >${i.stockNumber}</td>
 
-															<td>
+															<td style="min-width: 100px;">
 																<input id="hidden_cno" type="number" name="plusStock" style="border: 2px solid #0d6efd; width: 50%;">
 																<input type="hidden" name="cno" value="${i.cno}">
 															</td>
 
 															<td>
-																<input type="submit" value="확인" class="submit" onclick="return stocksave(this);">
+																<input type="submit" value="수정" class="submit" onclick="return stocksave(this);">
 															</td>
 														</form>
 													</tr>
@@ -206,6 +213,16 @@ function stocksave(tag) {
 	
 	if($($(tag).parent().prev().children()).val() == ''){
 		alert ("재고를 입력해주세요");
+		return false;
+	}
+	
+	if($($(tag).parent().prev().children('#plusDiscountPersent')).val() == ''){
+		alert ("할인률을 입력해주세요");
+		return false;
+	}
+	
+	if($($(tag).parent().prev().children('#plusDiscountPersent')).val() >100 || $($(tag).parent().prev().children('#plusDiscountPersent')).val() < 0){
+		alert ("유효하지 않은 숫자입니다");
 		return false;
 	}
 	

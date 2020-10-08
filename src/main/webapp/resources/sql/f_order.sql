@@ -10,3 +10,5 @@ create sequence orderno_seq increment by 1 start with 1;
 
 alter table f_order add contraint f_order_fk_mno foreign key mno references f_member(mno);
 alter table f_order add contraint f_order_fk_mno foreign key mno references f_delivery(dno);
+
+select * from f_order;
