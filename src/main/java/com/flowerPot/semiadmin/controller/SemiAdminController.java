@@ -15,12 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.flowerPot.cosmetic.service.CosmeticService;
+import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
 import com.flowerPot.member.service.MemberSerivce;
 import com.flowerPot.semiadmin.model.SemiCalendarVO;
 import com.flowerPot.semiadmin.model.SemiInventoryVO;
 import com.flowerPot.semiadmin.model.SemiNoticeVO;
 import com.flowerPot.semiadmin.model.SemiReviewVO;
 import com.flowerPot.semiadmin.service.ISemiNoticeService;
+import com.flowerPot.vo.CosmeticReviewVo;
 import com.flowerPot.vo.CosmeticVo;
 import com.flowerPot.vo.MemberVo;
 
@@ -37,6 +39,8 @@ public class SemiAdminController {
 	private CosmeticService cosmeticService;
 	@Autowired
 	private MemberSerivce memberSerivce;
+	@Autowired
+	private CosmeticReviewService cosmeticReviewService;
 
 // { dashboard _ main }
 	@RequestMapping("/dashboard")
@@ -59,7 +63,7 @@ public class SemiAdminController {
 
 	}
 	
-//  공지사항 게시글 번호로 지우기  } 
+	//  공지사항 게시글 번호로 지우기  } 
 	@RequestMapping("/semi_notice_del_ok")
 	public String table_datatable_ok(Model model, Integer sBno ) {
 		System.out.println("semi_notice_del_ok : " + sBno);
@@ -68,12 +72,40 @@ public class SemiAdminController {
 		return "redirect:/semiadmin/semi_notice" ; 
 	}
 	
-//{ Review 후기  } 
+	//{ Review 후기  } 
 	@RequestMapping("/review")
-	public void review(Model model) {
+	public void review(Principal principal, Model model, Integer cno) {
 		System.out.println("review 후기 페이지 실행");
+		log.info("cno:"+cno);
 		
-        List<SemiReviewVO> relist = service.getReviewArticles();
+		MemberVo memberVo = new MemberVo();
+		List<CosmeticReviewVo> relist = new ArrayList<CosmeticReviewVo>();
+		List<CosmeticVo> cList = new ArrayList<CosmeticVo>();
+		
+		if(principal!=null) {
+			
+			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
+			String id = principal.getName();
+			
+			memberVo = memberSerivce.selectOneMemberById(id);
+			// 회원정보로부터 브랜드명 가져오기
+			String brand = memberVo.getBrand();
+			// 본사의 화장품 목록이 필요하네..?
+			cList = cosmeticService.selectListCosmeticByBrand(brand);
+			
+			if(cno==null) {
+				
+			}else {
+				// 화장품 리뷰 가져오기
+				log.info("화장품 리뷰 가져오기");
+				relist = cosmeticReviewService.selectListCosmeticReviewListByCno(cno);
+				CosmeticVo cosmetic = cosmeticService.selectOneCosmeticByCno(cno);
+				model.addAttribute("cosmetic",cosmetic);
+			}
+		}
+		
+        //List<SemiReviewVO> relist = service.getReviewArticles();
+		model.addAttribute("cList",cList);
         model.addAttribute("relist",relist);
 
 	}

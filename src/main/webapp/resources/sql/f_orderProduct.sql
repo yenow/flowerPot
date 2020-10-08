@@ -25,15 +25,21 @@ select * from f_orderProduct;
 
 drop sequence ordPro_seq;
  
-insert into f_orderProduct values(ono_seq.nextval, 3, 111, 222,'주문번호1414', 2, '주문완료','배송시작','새싹',1500,'쿠폰번호',sysdate,'010-1111-1111','bbbb@naver.com',1300,'이니스프리');
+insert into f_orderProduct values(ono_seq.nextval, 3, 2401, 222,'주문번호1414', 2, '주문완료','배송시작','새싹',1500,'쿠폰번호',sysdate,'010-1111-1111','bbbb@naver.com',1300,'이니스프리');
 insert into f_order values(orderno_seq.nextval,3,222,'주문번호1414');
-insert into f_orderProduct values(ono_seq.nextval, 3, 111, 222,'주문번호1415', 2, '주문완료','배송시작','새싹',1500,'쿠폰번호',sysdate,'010-1111-1111','bbbb@naver.com',1300,'이니스프리');
+insert into f_orderProduct values(ono_seq.nextval, 3, 2401, 222,'주문번호1415', 2, '주문완료','배송시작','새싹',1500,'쿠폰번호',sysdate,'010-1111-1111','bbbb@naver.com',1300,'이니스프리');
 insert into f_order values(orderno_seq.nextval,3,222,'주문번호1415');
-insert into f_orderProduct values(ono_seq.nextval, 3, 111, 222,'주문번호1416', 2, '주문완료','배송시작','새싹',1500,'쿠폰번호',sysdate,'010-1111-1111','bbbb@naver.com',1300,'이니스프리');
+insert into f_orderProduct values(ono_seq.nextval, 3, 2401, 222,'주문번호1416', 2, '주문완료','배송시작','새싹',1500,'쿠폰번호',sysdate,'010-1111-1111','bbbb@naver.com',1300,'이니스프리');
 insert into f_order values(orderno_seq.nextval,3,222,'주문번호1416');
 
-select * from f_cosmetic where brand = '이니스프리';
+insert into f_cosmeticReview values (crno_seq.nextval, 2401,3, 'rating',5, 'phantom1994','윤신영','title','content');
 
+-- join 작업
+select f_cosmeticReview.* , f_cosmetic.brand from f_cosmeticReview inner join f_cosmetic on f_cosmeticReview.cno = f_cosmetic.cno where f_cosmetic.brand = '이니스프리';
+-- /join 작업
+
+select * from f_cosmetic where brand = '이니스프리';
+select * from f_cosmeticReview;
 select * from f_orderProduct;
 select * from f_order;
 select * from f_member;
