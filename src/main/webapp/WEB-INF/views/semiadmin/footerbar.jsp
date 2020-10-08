@@ -8,7 +8,7 @@
                     </div>
                     <div class="float-right">
                         <p>Crafted with <span class='text-danger'><i data-feather="heart"></i></span> 
-                        by <a href="http://ahmadsaugi.com">Light & Salt</a></p>
+                        by <a href="${pageContext.request.contextPath }/semiadmin/dashboard">Light & Salt</a></p>
                     </div>
                 </div>
             </footer>
@@ -16,6 +16,8 @@
     <script src="../resources/semiadmin_css/assets/js/feather-icons/feather.min.js"></script>
     <script src="../resources/semiadmin_css/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="../resources/semiadmin_css/assets/js/app.js"></script>
+    <script src="../resources/semiadmin_css/assets/vendors/simple-datatables/simple-datatables.js"></script>
+    <script src="../resources/semiadmin_css/assets/js/vendors.js"></script>
     
 	<script src="../resources/semiadmin_css/assets/vendors/dayjs/dayjs.min.js"></script>
 	<script src="../resources/semiadmin_css/assets/vendors/apexcharts/apexcharts.min.js"></script>

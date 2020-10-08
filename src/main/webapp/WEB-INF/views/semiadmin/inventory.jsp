@@ -16,7 +16,6 @@
 
 <link rel="stylesheet" href="../resources/semiadmin_css/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
 <link rel="stylesheet" href="../resources/semiadmin_css/assets/css/app.css">
-<link rel="shortcut icon" href="../resources/semiadmin_css/assets/images/favicon.svg" type="image/x-icon">
 <style>
 .submit {
 	display: inline-block;

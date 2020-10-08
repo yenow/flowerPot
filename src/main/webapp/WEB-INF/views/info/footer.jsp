@@ -43,7 +43,7 @@
 					</li>
 
 					<li class="p-b-10">
-						<a href="${pageContext.request.contextPath }/seminadmin/dashboard" class="stext-107 cl7 hov-cl1 trans-04"> 브랜드 관리자 </a>
+						<a href="${pageContext.request.contextPath }/semiadmin/dashboard" class="stext-107 cl7 hov-cl1 trans-04"> 브랜드 관리자 </a>
 					</li>
 
 					<li class="p-b-10">

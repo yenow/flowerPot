@@ -66,7 +66,7 @@
 					
 						<a href="${pageContext.request.contextPath }/member/login" class="flex-c-m trans-04 p-lr-25"> 로그인 </a>
 
-						<a href="${pageContext.request.contextPath }/myPage/myPage" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
+						<a href="${pageContext.request.contextPath }/member/myPage" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
 						
 						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter" class="flex-c-m trans-04 p-lr-25"> 고객센터 </a>
 						
@@ -189,7 +189,7 @@
 					<div class="right-top-bar flex-w h-full">
 						<a href="${pageContext.request.contextPath }/custumerCenter/costomerCenter" class="flex-c-m trans-04 p-lr-25"> 고객센터 </a>
 
-						<a href="${pageContext.request.contextPath }/myPage/myPage" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
+						<a href="${pageContext.request.contextPath }/member/myPage" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
 
 						<a href="${pageContext.request.contextPath }/member/login" class="flex-c-m trans-04 p-lr-25"> 로그인 </a>
 

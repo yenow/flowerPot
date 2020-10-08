@@ -28,37 +28,8 @@ public class SemiAdminController {
 	private ISemiNoticeService service;
 	@Autowired
 	private CosmeticService cosmeticService;
-
-// { dashboard _ main }
-	@RequestMapping("/dashboard")
-	public void dashboard(Model model) {
-		System.out.println("dashboard 실행중..");
-		
-	// { semi _ notice 같은 게시물 띄우게 하기 }
-		List<SemiNoticeVO> blist = service.getArticles();
-		model.addAttribute("blist",blist);
-		
-	}
 	
-// { 공지사항 게시글 목록 가져오기
-	@RequestMapping("/semi_notice")
-	public void table_datatable(Model model) {
-		System.out.println("semi_notice 실행 !! ");
 
-		List<SemiNoticeVO> blist = service.getArticles();
-		model.addAttribute("blist",blist);
-
-	}
-	
-//  공지사항 게시글 번호로 지우기  } 
-	@RequestMapping("/semi_notice_del_ok")
-	public String table_datatable_ok(Model model, Integer sBno ) {
-		System.out.println("semi_notice_del_ok : " + sBno);
-		service.delTable(sBno);
-		
-		return "redirect:/semiadmin/semi_notice" ; 
-	}
-	
 //{ Review 후기  } 
 	@RequestMapping("/review")
 	public void review(Model model) {
@@ -69,35 +40,6 @@ public class SemiAdminController {
 
 	}
 	
-//{ inventory 재고 목록 
-	@GetMapping("/inventory")
-	public void inventory(Model model) {
-		System.out.println("inventory 후기 페이지 실행 ");
-		
-		List<CosmeticVo> ilist = cosmeticService.selectListCosmetic();
-		model.addAttribute("ilist",ilist);
-		
-	}
-	
-    // 제품 관리 기능
-	@RequestMapping("/productManage")
-	public void productManage(Model model) {
-		System.out.println("productManage 실행중..");
-		
-		List<CosmeticVo> colist = cosmeticService.productManage(model);
-		model.addAttribute("colist",colist);
-				
-	}
-	
-//   inventory  재고 목록  추가 }
-	@PostMapping("/inventory")
-	public String inventory(Model model,CosmeticVo cosmetic) {
-		
-		// System.out.println(semi);
-		// service.submitInven(semi);
-		cosmeticService.updateCosmeticStock(cosmetic);
-		return "redirect:/semiadmin/inventory";
-	}
 
 // calendar 기능 
 	@RequestMapping("/calendar")
@@ -151,21 +93,23 @@ public class SemiAdminController {
 			
 		}
 		
-//form_editor 기능
+		
+		
+//delivery 기능
 		@RequestMapping("/delivery")
 		public void delivery() {
 			System.out.println("delivery 실행중..");
 					
 					
 }
-//form_editor 기능
+//chart_count 기능
 		@RequestMapping("/chart_count")
 		public void chartCount() {
 			System.out.println("chart_count 실행중..");
 			
 			
 		}
-//form_editor 기능
+//chart_product 기능
 		@RequestMapping("/chart_product")
 		public void chartProduct() {
 			System.out.println("chart_product 실행중..");
