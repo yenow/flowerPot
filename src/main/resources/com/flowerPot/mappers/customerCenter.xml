@@ -6,7 +6,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="customerCenter">
 	<select id="fq_list" resultType="cc">
-
 		select* from
 		F_CUSTOMERCENTER
 		where category ='FAQ'
@@ -20,16 +19,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="notice" resultType="cc">
-		select ccno, title, to_char(sysdate, 'yyyy-MM-dd')regdate from
-		F_CUSTOMERCENTER where category='notice' order by ccno desc
+		select ccno, title,
+		to_char(sysdate, 'yyyy-MM-dd')regdate from
+		F_CUSTOMERCENTER where
+		category='notice' order by ccno desc
 	</select>
 
 	<select id="searchKeyword" resultType="cc">
 		select * from
-		f_customerCenter where content like
-		'%'|| #{keyword} || '%' or title
+		f_customerCenter where <!-- content like '%'|| #{keyword} || 
+			'%' or -->
+		title
 		like '%' ||#{keyword}||'%'
 	</select>
+
 	<!-- 와일드카드 이렇게 쓰는거임 권누리 까먹지마 등신아 -->
 	<insert id="wirteEnq">
 		insert into f_customerCenter (mno,ccno , title,
@@ -37,6 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(2 , ccno_seq.nextval,
 		#{title}, #{content}, sysdate, sysdate, 'enquiry', #{url})
 	</insert>
+
 	<insert id="NoImgWriteEnq">
 		insert into f_customerCenter (mno,ccno , title,
 		content,regdate, moddate, category)
@@ -57,6 +61,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="noticeContent" resultType="cc">
 		select * from
 		F_CUSTOMERCENTER where category='notice' and ccno = #{ccno}
+	</select>
+	<select id="ResContent" resultType="cc">
+		select * from f_customerCenter where ccno = #{ccno}
+	</select>
+
+	<select id="SelectListByCategory" resultType="cc">
+		select * from f_customerCenter where category = #{category, jdbcType=VARCHAR} 
+		<if test='searchName != null'>
+			and title like '%' ||#{SearchName}||'%'
+		</if>
 	</select>
 </mapper>
 

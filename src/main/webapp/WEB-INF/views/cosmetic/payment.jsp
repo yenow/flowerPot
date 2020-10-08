@@ -441,7 +441,7 @@ function changePrice() {
         		OrderProduct.mno = $('.member-mno').val(); 
         		OrderProduct.dno = dno;
         		OrderProduct.amount = Number($($('.cosmetic-numProduct').get(i)).html());
-        		OrderProduct.coupon_name = $('.coupon-select option:selected').val();
+        		OrderProduct.couponName = $('.coupon-select option:selected').val();
 				OrderProduct.member_rank 	=$($('.member-member_rank').get(0)).val()      		
         		OrderProduct.point = $('.cosmetic-point').val();
         		OrderProduct.tel = $('.nomember-tel').val();
@@ -473,9 +473,12 @@ function maxPoint(tag) {
 	var maxPoint = Number($('.max-point').html());
 	
 	if($(tag).val() > maxPoint){
-		alert('가지고있는 포인트보다 높은 금액을 입력하였습니다');
+		swal('warn','가지고있는 포인트보다 높은 금액을 입력하였습니다','warn');
 		$(tag).val(0);
 		return false;
+	}else if($(tag).val() < 0){
+		swal('warn','포인트가 0 이하일수 없습니다','warn');
+		$(tag).val(0);
 	}else{
 		changePrice();
 	}
@@ -514,14 +517,11 @@ function maxPoint(tag) {
 // 유효성 검증
 function validate() {
 	// 배송 유효성
-	if($('.postcode').val()==''){
+	if($('.postcode').val()=='' && $('.street_address').val()==''){
 		alert('배송 정보를 입력해주세요');
 		return false;
 	}
-	if($('.street_address').val()==''){
-		alert('배송 정보를 입력해주세요');
-		return false;
-	}
+	
 	if($('.parcel_address').val()==''){
 		alert('배송 정보를 입력해주세요');
 		return false;

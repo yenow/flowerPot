@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.flowerPot.dao.AuthorityDao;
 import com.flowerPot.member.repository.MemberDao;
 import com.flowerPot.member.vo.MemberDTO;
+import com.flowerPot.memberAddress.repository.MemberAddressDao;
+import com.flowerPot.vo.MemberAddressVo;
 import com.flowerPot.vo.MemberVo;
 
 @Service
@@ -18,12 +20,22 @@ public class MemberServiceImpl implements MemberSerivce {
 	@Autowired
 	private AuthorityDao authorityDao;
 	
+	@Autowired
+	private MemberAddressDao memberAddressDao;
 
 	@Transactional
 	@Override
-	public void insertMember(MemberVo member) {
+	public void insertMember(MemberVo member, MemberAddressVo memAddressVo) {
 		memberDao.insertMember(member);
+		System.out.println("회원번호:"+member.getMno());
+		memAddressVo.setMno(member.getMno());
+		memberAddressDao.insertMemberAddress(memAddressVo);
 		authorityDao.insertAuthority(member);
+	}
+	@Override
+	public void updateMember(MemberVo vo, MemberAddressVo memberAddress) throws Exception {
+		memberDao.updateMember(vo);
+		memberAddressDao.updateMemberAddress(memberAddress);
 	}
 
 	@Override
@@ -82,5 +94,7 @@ public class MemberServiceImpl implements MemberSerivce {
 		memberDao.giveAdminAuth(empId);
 	}
 
-
+	public void insertMember(MemberVo member) {
+		
+	}
 }

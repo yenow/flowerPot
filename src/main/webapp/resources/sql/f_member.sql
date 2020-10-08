@@ -4,7 +4,6 @@ create table f_member (
     password varchar2(100),
     name varchar2(20) not null,
     nickname varchar2(50),
-    address varchar2(100),
     email varchar2(100),
     phone varchar2(100),
     gender varchar2(2),    
@@ -18,8 +17,9 @@ create table f_member (
     primary key(mno),
     unique(id)
 );
+create sequence mno_seq increment by 1 start with 1 minvalue 1;  -- 시퀀스
 
-ALTER TABLE f_member DROP PRIMARY KEY;
+ALTER TABLE f_member modify member_rank varchar2(15) default '씨앗';
 alter table f_member add brand varchar2(100);
 
 create sequence mno_seq increment by 1 start with 1 minvalue 1;
@@ -42,19 +42,15 @@ values (mno_seq.nextval,'admin','0000','관리자','대통령','주소','yjk7454
 
 alter table f_member rename constraint (nick not null);
 insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,member_rank,authority ) 
-values (mno_seq.nextval,'phantom1','tlsdud5089','윤신영','윤신영','주소','phantom_ysy@naver.com','M','11-29','골드','작성자');
+values (mno_seq.nextval,'phantom1','tlsdud5089','윤신영','윤신영','주소','phantom_ysy1@naver.com','M','11-29','골드','작성자');
 insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,member_rank,authority ) 
 values (mno_seq.nextval,'admin0','0000','받성은','관리자','주소','1234@naver.com','M','11-29','골드','곤리자');
 
-update f_member set tel='010-2124-5690' where name='윤신영';
+update f_member set member_rank = '씨앗';
 
 insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,member_rank,authority ) 
 
 
-select id, password from f_member where id = 'user0';
-values (mno_seq.nextval,'phantom2','tlsdud5089','윤신영','윤신영','주소','phantom_ysy@naver.com','M','11-29','골드','일반회원');
-
-alter table f_member add(tel varchar2(100));
-alter table f_member add(phone varchar2(100));
-alter table f_member drop column phone;
+select * from f_member;
+select * from f_point;
 

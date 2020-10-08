@@ -18,7 +18,7 @@ insert into F_COSMETICREVIEW values(crno_seq.nextval, 1,1, '아주좋습니다.1
 select * from f_cosmeticReview;
 drop table f_cosmeticReview;
 
-<<<<<<< HEAD
+
 insert into
 F_COSMETICREVIEW  values
 (crno_seq.nextval, 1,222,'category','id','nickame','title','content',3 );

@@ -147,4 +147,10 @@ public class CosmeticServiceImpl implements CosmeticService {
 		
 		return cosmeticDao.selectListCosmetic();
 	}
+
+	@Override
+	public List<CosmeticVo> selectListCosmeticByBrand(String brand) {
+
+		return cosmeticDao.selectListCosmeticByBrand(brand);
+	}
 }

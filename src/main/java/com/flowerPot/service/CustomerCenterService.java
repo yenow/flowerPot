@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.flowerPot.domain.Criteria;
 import com.flowerPot.vo.CustomerCenterVo;
 
 public interface CustomerCenterService {
@@ -25,5 +26,9 @@ public interface CustomerCenterService {
 	void deleteEnq(CustomerCenterVo customer);
 
 	CustomerCenterVo getNotice(int ccno);
+
+	CustomerCenterVo getResCont(int ccno);
+
+	List<CustomerCenterVo> SelectListByCategory(Criteria c);
 
 }

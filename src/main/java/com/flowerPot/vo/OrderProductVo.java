@@ -21,14 +21,15 @@ public class OrderProductVo {
 	private String deliver_state;
 	private String member_rank;
 	private Integer point;
-	private String coupon_name;
+	private String couponName;
 	private LocalDateTime regdate;
 	private String tel;
 	private String email;
 	private Integer final_price;
+	private String brand;
 	
 	public OrderProductVo(Integer ono, Integer cno, Integer dno, String order_num, Integer amount, String state,
-			String deliver_state, String member_rank, Integer point, String coupon_name, LocalDateTime regdate,
+			String deliver_state, String member_rank, Integer point, String couponName, LocalDateTime regdate,
 			String tel, String email, Integer price, Integer final_price) {
 		super();
 		this.ono = ono;
@@ -40,7 +41,7 @@ public class OrderProductVo {
 		this.deliver_state = deliver_state;
 		this.member_rank = member_rank;
 		this.point = point;
-		this.coupon_name = coupon_name;
+		this.couponName = couponName;
 		this.regdate = regdate;
 		this.tel = tel;
 		this.email = email;

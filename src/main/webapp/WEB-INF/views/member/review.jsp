@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <jsp:include page="../info/header2.jsp"></jsp:include>
 
@@ -155,27 +156,20 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:if test='${CEOBoard.ceoBoardList.isEmpty()}'>
-							<tr>
-								<td colspan="4">
-									<h3 style="text-align: center;">작성된 게시글이 없습니다.</h3>
-								</td>
-							</tr>
-						</c:if>
-						<c:if test='${!CEOBoard.ceoBoardList.isEmpty()}'>
-							<c:forEach var="CEOBoardList" items="${CEOBoard.ceoBoardList}">
+						
+							<c:forEach var="cmr" items="${cmrList}">
 								<tr>
-									<td style="text-align: center;">${CEOBoardList.cboard_id}</td>
-									<td>
-										<a href="${pageContext.request.contextPath}/admin/CEOBoardView/view/${CEOBoardList.cboard_id}?page=${param.page}&keyword=${param.keyword}">${CEOBoardList.cboard_title}</a>
+									<td style="text-align: center;">${cmr.cmo}</td>
+									<td style="text-align: center;">${cmr.title}
+										<%-- <a href="${pageContext.request.contextPath}/admin/CEOBoardView/view/${CEOBoardList.cboard_id}?page=${param.page}&keyword=${param.keyword}">${CEOBoardList.cboard_title}</a> --%>
+										
 									</td>
-									<td style="text-align: center;">${CEOBoardList.writer_cid}</td>
-									<td style="text-align: center;">
-										<fmt:formatDate value="${CEOBoardList.cboard_date}" pattern="yyyy-MM-dd HH:mm" />
+									<td style="text-align: center;">${cmr.nickname}</td>
+									<td style="text-align: center;">${cmr.content}
+										
 									</td>
 								</tr>
 							</c:forEach>
-						</c:if>
 					</tbody>
 				</table>
 			</div>

@@ -21,7 +21,9 @@ create table f_cosmetic(
 	unique(name)
 );
 -- alter table f_cosmetic add (hits number(30) default 0, regdate date);
-alter table f_cosmetic add (proOption varchar2(100) );
+alter table f_cosmetic modify stockNumber number(30) default 0;
+discountPersent number(30) default 0,
+	stockNumber number(30) default 0
 --alter table f_cosmetic add (code varchar2(150));
 --alter table f_cosmetic add (enable char(1));
 

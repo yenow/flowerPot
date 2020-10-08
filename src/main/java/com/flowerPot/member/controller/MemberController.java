@@ -1,21 +1,12 @@
 package com.flowerPot.member.controller;
 
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.security.Principal;
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.Random;
-import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
@@ -25,13 +16,14 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,8 +34,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
 import com.flowerPot.member.service.MemberSerivce;
+import com.flowerPot.memberAddress.service.MemberAddressService;
 import com.flowerPot.service.AuthorityService;
+import com.flowerPot.vo.CosmeticReviewVo;
+import com.flowerPot.vo.DeliveryVo;
+import com.flowerPot.vo.MemberAddressVo;
 import com.flowerPot.vo.MemberVo;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 
@@ -54,7 +51,12 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MemberController {
 
-
+	@Autowired
+	private CosmeticReviewService cosmeticReviewService;
+	@Autowired
+	private MemberSerivce memberSerivce;
+	@Autowired
+	private MemberAddressService memberAddressService;
 	/*
 	 * @RequestMapping(value="/kakaologin", produces = "application/json", method=
 	 * {RequestMethod.GET, RequestMethod.POST}) public String
@@ -71,11 +73,25 @@ public class MemberController {
     private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
         this.naverLoginBO = naverLoginBO;
     }
+   
     
  // 마이 페이지로 이동
     
  	@RequestMapping("/myPage")
- 	public String MyPage() {
+ 	public String MyPage(Principal principal) {
+ 		
+ 		MemberVo memberVo = new MemberVo();
+		MemberAddressVo memberAddress  = new MemberAddressVo();
+ 		if(principal!=null) {
+			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
+			String id = principal.getName();
+			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
+			memberAddress  = memberAddressService.selectOneMemberAddressByMno(memberVo.getMno());   // 회원주소록 가져오기
+			
+			
+		}
+ 		
+ 		
  		return "/member/myPage";
  	}
  	
@@ -103,12 +119,19 @@ public class MemberController {
   	
     //나의 회원정보 이동 
     @RequestMapping("/myInfo") 
-	  public String myInfo(HttpSession session, Model model) {
+	  public String myInfo(Principal principal, Model model) {
+    	MemberVo memberVo = new MemberVo();
+		MemberAddressVo memberAddress  = new MemberAddressVo();
     	System.out.println("나의 회원정보 호출됨");
-    	String id = (String)session.getAttribute("id");
-    	MemberVo m = this.memberService.viewMember(id);
-    	model.addAttribute("dto", m);
-		return "/member/myInfo"; 
+    	if(principal!=null) {
+			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
+    	String id = principal.getName();
+    	memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
+    	memberAddress  = memberAddressService.selectOneMemberAddressByMno(memberVo.getMno());   // 회원주소록 가져오기
+    	model.addAttribute("pid",memberVo);
+    	model.addAttribute("paddr",memberAddress);
+    	}
+    	return "/member/myInfo"; 
 	   }
     
     //나의 활동으로 이동 
@@ -120,10 +143,14 @@ public class MemberController {
    
     //나의 리뷰로 이동
     @RequestMapping("/review") 
-	  public String review() {
+	  public String costmeticReviewList(CosmeticReviewVo costmeticReview, Model model) {
+    List<CosmeticReviewVo> cmrList =cosmeticReviewService.selectListCosmeticReviewListById(costmeticReview);
+    model.addAttribute("cmrList",cmrList);
   	System.out.println("나의 활동으로 호출됨");
   	return "/member/review";
 	   }
+    
+   
     
     //나의 비밀번호 변경으로 이동
     @RequestMapping("/password") 
@@ -131,6 +158,8 @@ public class MemberController {
   	System.out.println("나의 비밀번호변경으로 호출됨");
   	return "/member/password";
 	   }
+    
+    
     
     //로그인 첫 화면 요청 메소드
     @RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
@@ -317,15 +346,22 @@ public class MemberController {
 
 	// 회원가입 처리
 	@RequestMapping("/signUp_ok")
-	public String signUp_ok(MemberVo member) {
+	public String signUp_ok(MemberVo member, MemberAddressVo memberAddress) {
 		// 비밀번호 인코딩
 		log.info("회원정보 : " + member.toString());
 		member.setPassword(passwordEncoder.encode(member.getPassword()));
 		log.info("회원정보 : " + member.toString());
-		memberService.insertMember(member);
+		memberService.insertMember(member,memberAddress);
+		
 		return "redirect:/";
 	}
 	//
+	//회원 정보 수정 처리
+	@RequestMapping("/update_do")
+	public String memberUpdate(MemberVo vo, MemberAddressVo memberAddress) throws Exception {
+		memberService.updateMember(vo, memberAddress);
+		return "redirect:/member/myInfo";
+	}
 
 	// 아이디 중복인 요청 처리
 	@PostMapping("/checkId")
@@ -396,12 +432,6 @@ public class MemberController {
 	 * return "member/myInfo"; }
 	 */
 	
-	//회원 정보 수정 처리
-	@RequestMapping("/update_do")
-	public String memberUpdate(@ModelAttribute MemberVo vo) throws Exception {
-		memberService.updateMember(vo);
-		return "redirect:/member/myInfo";
-	}
 
 	/*
 	 * @PostMapping("/") public String register(@RequestBody MemberVo member) {

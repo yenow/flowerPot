@@ -18,6 +18,7 @@ public class CoupVo {
 	private Integer discountPercent;
 	private LocalDateTime startDate;
 	private LocalDateTime endDate;
+	private Boolean enable;
 	
 	/*
 	@Override

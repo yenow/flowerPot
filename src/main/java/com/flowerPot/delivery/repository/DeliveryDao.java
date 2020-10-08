@@ -11,4 +11,6 @@ public interface DeliveryDao {
 	int selectCount();
 
 	DeliveryVo selectMemDeliIdInfo(String id);
+
+	void updateStateByDno(Integer dno);
 }

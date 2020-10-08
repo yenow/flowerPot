@@ -20,7 +20,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectListCosmeticReviewListById" resultType="com.flowerPot.vo.CosmeticReviewVo">
-		select  ccno, title, id, content from f_cosmeticReview where id = #{id} and category = 'rating'
+		select  * from f_cosmeticReview where id = #{id} and category = 'rating'
 	</select>
 	
+	<select id="selectListCosmeticReviewListByBrand" resultType="com.flowerPot.vo.CosmeticReviewVo">
+		select f_cosmeticReview.* from f_cosmeticReview inner join f_cosmetic on f_cosmeticReview.cno = f_cosmetic.cno where brand = #{brand} and category = 'rating'
+	</select>
 </mapper>

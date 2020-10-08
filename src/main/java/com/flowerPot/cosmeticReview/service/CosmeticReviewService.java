@@ -9,5 +9,11 @@ public interface CosmeticReviewService {
 	void insertcosmeticReview(CosmeticReviewVo cosmeticReview);
 
 	List<CosmeticReviewVo> selectListCosmeticReviewListByCno(Integer cno);
+	
+	List<CosmeticReviewVo> selectListCosmeticReviewListById(CosmeticReviewVo costmeticReview);
+
+	List<CosmeticReviewVo> selectListCosmeticReviewByBrand(String brand);
+
+	List<CosmeticReviewVo> selectListCosmeticReviewListByBrand(String brand);
 
 }

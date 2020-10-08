@@ -394,6 +394,10 @@ $(document).ready(function () {
 			alert('사용방법을 입력해주세요');
 			return false;
 		}
+		
+		// 아이디 중복 검증
+		// ajax
+		
 		//console.log(useMethod);
 		var formdata = {'type':type,'sub_type': sub_type,'brand':brand,'skinType':skinType,'price':price,'name':name
 				,'content':content,'capacity':capacity,'period':period,'nation':nation,'useMethod':useMethod};
@@ -428,10 +432,11 @@ $(document).ready(function () {
 				contentType: 'application/json',
 				success : function(data) {
 					if(data=='success'){
-						alert('등록되었습니다');
+						alert('등록성공');
 						location.href='${pageContext.request.contextPath}/cosmetic/cosmetic_list?type=스킨케어';
+						
 					}else{
-						alert('등록실패했습니다');
+						alert('등록실패');
 					}
 				}
 			});

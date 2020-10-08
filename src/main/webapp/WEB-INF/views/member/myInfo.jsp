@@ -129,26 +129,26 @@
 			
 				<div class="col-md-8 col-lg-9 p-b-80" style="padding:50px">
 					<h2 class="text-center">회원정보 수정</h2>
-				<form action="${pageContext.request.contextPath }/member/update_do" name="update_do" id="updateForm" method="post">
+				<form action="${pageContext.request.contextPath }/member/update_do" name="update" id="updateForm" method="post">
 					<div class="form-group">
 						<label for="user_id" style="text-align: left"><p><strong>아이디</strong>&nbsp;&nbsp;&nbsp;<span id="idChk"></span></p></label>
 						<!--  id는 수정이 불가능하도록 readonly 속성 추가 -->
-						<input type="text" class="form-control form-control-lg"  value="${dto.id}" readonly="readonly" name="id" id="user_id" aria-describedby="emailHelp">
+						<input type="text" class="form-control form-control-lg"  value="${pid.id}" readonly="readonly" name="id" id="user_id" aria-describedby="emailHelp">
 						<small id="emailHelp" class="form-text text-muted">  </small>
 					</div>
 					<div class="form-group">
 				
 						<label for="user_name" text-align:="" left"=""><p><strong>이름</strong>&nbsp;&nbsp;&nbsp;<span id="nameChk"></span></p></label>
-						<input type="text" class="form-control form-control-lg" value="${dto.name}" readonly="readonly" name="name" id="user_name" placeholder="한글로 최대 6자">
+						<input type="text" class="form-control form-control-lg" value="${pid.name}" readonly="readonly" name="name" id="user_name" placeholder="한글로 최대 6자">
 					</div>
 					<div class="form-group">
 						<label for="user_nick" text-align:="" left"=""><p><strong>닉네임</strong>&nbsp;&nbsp;&nbsp;<span id="nickChk"></span></p></label>
-						<input type="text" class="form-control form-control-lg" value="${dto.nickname}" name="nickname" id="user_nick">
+						<input type="text" class="form-control form-control-lg" value="${pid.nickname}" name="nickname" id="user_nick">
 					</div>
 					
 						<div class="form-group">
 						<label for="user_email"text-align: left"><p><strong>이메일</strong>&nbsp;&nbsp;&nbsp;<span id="emailChk"></span></p></label>
-						<input type="email" class="form-control form-control-lg" name="email" value="${dto.email}" id="user_email" placeholder="ex)aaa@naver.com" style="width: 50%; float:left;">
+						<input type="email" class="form-control form-control-lg" name="email" value="${pid.email}" id="user_email" placeholder="ex)aaa@naver.com" style="width: 50%; float:left;">
 						<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="send_email();" value="인증번호 전송" style="width: 50%;">
 						<div class="clear"></div>
 						<div class="form-group">
@@ -159,28 +159,23 @@
 					</div>
 					<div class="form-group">
 						<label for="user_phone" text-align:="" left"=""><p><strong>전화번호</strong>&nbsp;&nbsp;&nbsp;<span id="phoneChk"></span></p></label>
-						<input type="tel" class="form-control form-control-lg" value="${dto.phone}" name="tel" id="user_phone" placeholder="(예시:- 하이픈 없이 입력해주세요)">
+						<input type="tel" class="form-control form-control-lg" value="${pid.tel}" name="tel" id="user_phone" placeholder="(예시:- 하이픈 없이 입력해주세요)">
 						
 						
 					</div>
-					<div class="form-check">
-						<input type="radio" name="gender" id="exampleRadios1" value="M" readonly="readonly" style="display: inline-block">
-						<label for="exampleRadios1" style="display: inline-block"> 남자 </label>
-						<input type="radio" name="gender" id="exampleRadios2" value="F" readonly="readonly" style="display: inline-block">
-						<label for="exampleRadios2" style="display: inline-block"> 여자 </label>
-					</div> 
+					
 					주소(우편번호)
 					<div class="form-group">
-					<input type="text" class="form-control form-control-lg" id="sample4_postcode" name="postcode" placeholder="우편번호">
+					<input type="text" class="form-control form-control-lg" value="${paddr.postcode}" id="sample4_postcode" name="postcode" placeholder="우편번호">
 					<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" class="form-control form-control-lg" id="sample4_roadAddress" name="street_address" placeholder="도로명주소">
+					<input type="text" class="form-control form-control-lg" id="sample4_roadAddress" value="${paddr.street_address}" name="street_address" placeholder="도로명주소">
 					<br>
-					<input type="text" class="form-control form-control-lg" id="sample4_jibunAddress" name="parcel_address" placeholder="지번주소">
+					<input type="text" class="form-control form-control-lg" id="sample4_jibunAddress" value="${paddr.parcel_address}" name="parcel_address" placeholder="지번주소">
 					<span id="guide" style="color:#999;display:none"></span>
 					<br>
-					<input type="text" class="form-control form-control-lg" id="sample4_extraAddress" name="deliver_state" placeholder="참고항목">
+					<input type="text" class="form-control form-control-lg" id="sample4_extraAddress" value="${paddr.deliver_state}" name="deliver_state" placeholder="참고항목">
 					<br>
-					<input type="text" class="form-control form-control-lg" id="sample4_detailAddress" name="detail_address" placeholder="상세주소">
+					<input type="text" class="form-control form-control-lg" id="sample4_detailAddress" value="${paddr.detail_address}" name="detail_address" placeholder="상세주소">
 					</div>
 					
 					<button class="btn btn-outline-secondary btn-block btn-lg" id="signup-btn">회원정보 수정완료</button>

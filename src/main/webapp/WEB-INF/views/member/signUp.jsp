@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="../info/header2.jsp"></jsp:include>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<jsp:include page="../info/header2.jsp"></jsp:include>
 <!-- Title page -->
 <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/bg-02.jpg');">
 	<h2 class="ltext-105 cl0 txt-center">회원가입</h2>
@@ -65,7 +65,7 @@
 					<input type="text" class="form-control form-control-lg" id="sample4_jibunAddress" name="parcel_address" placeholder="지번주소">
 					<span id="guide" style="color:#999;display:none"></span>
 					<br>
-					<input type="text" class="form-control form-control-lg" id="sample4_extraAddress" name="deliver_state" placeholder="참고항목">
+					<input type="text" class="form-control form-control-lg" id="sample4_extraAddress" name="more_information" placeholder="참고항목">
 					<br>
 					<input type="text" class="form-control form-control-lg" id="sample4_detailAddress" name="detail_address"placeholder="상세주소">
 					</div>

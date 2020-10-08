@@ -24,4 +24,6 @@ public class CosmeticReviewController {
 		cosmeticReviewService.insertcosmeticReview(cosmeticReview);
 		return "redirect:/cosmetic/cosmetic?cno="+cosmeticReview.getCno();
 	}
+	
+
 }

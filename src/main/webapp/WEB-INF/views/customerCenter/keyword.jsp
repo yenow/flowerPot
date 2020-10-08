@@ -5,7 +5,7 @@
 
 	<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" type="text"
 		name="search" placeholder="Search" id="search">
- 
+
 	<!-- 검색 버튼 -->
 	<button id="btnSearch" name="btnSearch"
 		class="flex-c-m size-122 ab-t-r fs-18 cl4 hov-cl1 trans-04">
@@ -17,9 +17,9 @@
 		$("#btnSearch").click(function() {
 			const keyword = $("#search").val();
 			if (keyword == '') {
-				alert("검색어 입력 필수임 ㅇㅅㅇ");
+				swal('경고','검색어를 입력해주세요','warning');
 			} else {
-				location.href = "search?keyword=" + keyword;
+				location.href = "${pageContext.request.contextPath }/customerCenter/customerCenter?category=${category}&searchName=" + keyword;
 			}
 		});
 	});

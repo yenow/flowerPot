@@ -1,22 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../info/header2.jsp"></jsp:include>
+<style type="text/css">
+@font-face {
+	font-family: 'UhBeeSeulvely';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSeulvely.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
 
+a:link {
+	text-decoration: none;
+}
+</style>
 <!-- Title page -->
-<section class="bg-img1 txt-center p-lr-15 p-tb-92"
-	style="background-image: url('${pageContext.request.contextPath }/resources/images/bg-02.jpg');">
-	<h2 class="ltext-105 cl0 txt-center">고객센터</h2>
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/banner_navy.png');">
+	<h2 style="font-family: UhBeeSeulvely; font-weight: bolder; color: #ffffff">
+		<a href="${pageContext.request.contextPath }/customerCenter/customerCenter" style="color: #ffffff">NOTICE</a>
+	</h2>
 </section>
-
 
 <div class="container">
 	<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-		<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04"> 홈 <i
-			class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-		</a> <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
+		<a href="${pageContext.request.contextPath }" class="stext-109 cl8 hov-cl1 trans-04">
+			홈 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+		</a>
+		<a href="${pageContext.request.contextPath }/customerCenter/customerCenter" class="stext-109 cl8 hov-cl1 trans-04">
 			고객센터 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-		</a> <span class="stext-109 cl4"> 공지사항 </span>
+		</a>
+		<span class="stext-109 cl4"> 공지사항 </span>
 	</div>
 </div>
 
@@ -35,17 +49,11 @@
 						<h4 class="mtext-112 cl2 p-b-27">Tags</h4>
 
 						<div class="flex-w m-r--5">
-							<a href="#"
-								class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-								Fashion </a> <a href="#"
-								class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-								Lifestyle </a> <a href="#"
-								class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-								Denim </a> <a href="#"
-								class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-								Streetstyle </a> <a href="#"
-								class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-								Crafts </a>
+							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Fashion </a>
+							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Lifestyle </a>
+							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Denim </a>
+							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Streetstyle </a>
+							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Crafts </a>
 						</div>
 					</div>
 				</div>
@@ -54,7 +62,9 @@
 			<div class="col-md-8 col-lg-9 p-b-80">
 				<div class="p-r-45 p-r-0-lg">
 					<div class="table col-12 board-list ">
-						<h2 class="my-3">공지사항</h2>
+							<c:if test="${category eq 'notice' }"> <h2 class="my-3">공지사항</h2> </c:if>
+							<c:if test="${category eq 'FAQ' }">  <h2 class="my-3">자주찾는질문(FAQ)</h2> </c:if>
+							<c:if test="${category eq 'enquiry' }"> <h2 class="my-3">1대1문의</h2>  </c:if>
 						<table class="table table-striped table-sm">
 							<thead>
 								<tr>
@@ -64,33 +74,24 @@
 								</tr>
 							</thead>
 							<tbody>
-
-								<c:if test="${!empty notice }">
-									<c:forEach var="notice" items="${notice }">
-										<th>${notice.ccno }</th>
-										<th><a
-											href="${pageContext.request.contextPath }/customerCenter/noticeContent?ccno=${notice.ccno }">${notice.title }</a></th>
-										<th>${notice.regdate }</th>
-										</tr>
-
-									</c:forEach>
-								</c:if>
-
-								<c:if test="${empty notice}">
+								<c:forEach var="cc" items="${cList }">
 									<tr>
-										<th colspan="3">공지사항이 존재하지 않습니다.</th>
+										<th>${cc.ccno }</th>
+										<th><a href="${pageContext.request.contextPath }/customerCenter/noticeContent?ccno=${notice.ccno }">${cc.title }</a></th>
+										<th>${cc.regdate }</th>
 									</tr>
-								</c:if>
+								</c:forEach>
+								<tr>
+									<th colspan="3">공지사항이 존재하지 않습니다.</th>
+								</tr>
 							</tbody>
 						</table>
 					</div>
 
 					<!-- Pagination -->
 					<div class="flex-l-m flex-w w-full p-t-10 m-lr--7 text-center">
-						<a href="#"
-							class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
-							1 </a> <a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7">
-							2 </a>
+						<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1"> 1 </a>
+						<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7"> 2 </a>
 					</div>
 				</div>
 			</div>
@@ -99,42 +100,5 @@
 		</div>
 	</div>
 </section>
-
-<script>
-	$(document)
-			.ready(
-					function() {
-
-						(function yajax() {
-							$
-									.ajax({
-										url : '${pageContext.request.contextPath }/magazine/magazineAjax',
-										type : 'GET',
-										dataType : 'json',
-										success : function(data) {
-											console.log(data);
-											$('#magazine-test a img')
-													.attr(
-															'src',
-															'${pageContext.request.contextPath }'
-																	+ data[0].rootfolder
-																	+ data[0].uuidname);
-											$('#magazine-title').html(
-													data[0].title)
-										}
-									});
-
-						})();
-					});
-
-	$(function abc(ccno) {
-		$
-				.ajax({
-					url : '${pageContext.request.contextPath }/customerCenter/customerCenter?ccno='
-							+ ccno,
-
-				})
-	})
-</script>
 
 <jsp:include page="../info/footer.jsp"></jsp:include>

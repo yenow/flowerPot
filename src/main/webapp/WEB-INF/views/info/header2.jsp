@@ -67,9 +67,9 @@
 							</form>
 						</a>
 						
-						<a href="${pageContext.request.contextPath }/member/order" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
+						<a href="${pageContext.request.contextPath }/member/myPage" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
 						
-						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter" class="flex-c-m trans-04 p-lr-25"> 고객센터 </a>
+						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=notice" class="flex-c-m trans-04 p-lr-25"> 고객센터 </a>
 						
 						<a href="${pageContext.request.contextPath }/ourCompany/Company_main" class="flex-c-m trans-04 p-lr-25"> 우리회사 </a>
 

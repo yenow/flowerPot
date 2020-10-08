@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</sql>
 	
 	<insert id="couponRegist">
-		INSERT INTO f_coupon values
+		INSERT INTO f_coupon (couNo,couponName,discountMoney,discountPercent,startDate,endDate ) values 
 		(couNo_seq.nextval,#{couponName},#{discountMoney,jdbcType=INTEGER},#{discountPercent,jdbcType=INTEGER},#{startDate},#{endDate})
 	</insert>
 	
@@ -46,6 +46,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectCoupListByCouno" resultType="com.flowerPot.admin.vo.CoupVo">
 		select * from f_coupon where couNo = #{couNo}
 	</select>
+	
+	<select id="selectOneCouponByName" resultType="com.flowerPot.admin.vo.CoupVo">
+		select * from f_coupon where couponName = #{couponName}
+	</select>
+	
+	<delete id="deleteCoupon">
+		delete from f_hasCoupon where mno = #{mno} and couNo = #{couNo}
+	</delete>
 	<!-- <select id="selectOneHasCoupon">
 		select * from f_hasCoupon where;
 	</select> -->

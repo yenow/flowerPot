@@ -118,5 +118,11 @@
 	
 	<context:component-scan base-package="com.flowerPot.event.service"/>	
 	<mybatis-spring:scan base-package="com.flowerPot.event.repository" />
+	
+	<context:component-scan base-package="com.flowerPot.order.service"/>	
+	<mybatis-spring:scan base-package="com.flowerPot.order.repository" />
+	
+	<context:component-scan base-package="com.flowerPot.point.service"/>	
+	<mybatis-spring:scan base-package="com.flowerPot.point.repository" />
 	<!-- /컴포넌트 스캔 -->	
 </beans>

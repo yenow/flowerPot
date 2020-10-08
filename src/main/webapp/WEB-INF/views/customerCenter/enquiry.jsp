@@ -2,21 +2,43 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../info/header2.jsp"></jsp:include>
+<style type="text/css">
+@font-face {
+	font-family: 'UhBeeSeulvely';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSeulvely.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
 
+a:link {
+	text-decoration: none;
+}
+</style>
 <!-- Title page -->
 <section class="bg-img1 txt-center p-lr-15 p-tb-92"
-	style="background-image: url('${pageContext.request.contextPath }/resources/images/bg-02.jpg');">
-	<h2 class="ltext-105 cl0 txt-center">고객센터</h2>
+	style="background-image: url('${pageContext.request.contextPath }/resources/images/banner_navy.png');">
+	<h2
+		style="font-family: UhBeeSeulvely; font-weight: bolder; color: #ffffff">
+		<a
+			href="${pageContext.request.contextPath }/customerCenter/customerCenter"
+			style="color: #ffffff">NOTICE</a>
+	</h2>
 </section>
+
 
 
 <div class="container">
 	<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-		<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04"> 홈 <i
+		<a href="${pageContext.request.contextPath }"
+			class="stext-109 cl8 hov-cl1 trans-04"> 홈 <i
 			class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-		</a> <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
-			고객센터 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-		</a> <span class="stext-109 cl4"> 공지사항 </span>
+		</a> <a
+			href="${pageContext.request.contextPath }/customerCenter/customerCenter"
+			class="stext-109 cl8 hov-cl1 trans-04"> 고객센터 <i
+			class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+		</a> <span class="stext-109 cl4"> 1:1 문의 </span>
 	</div>
 </div>
 

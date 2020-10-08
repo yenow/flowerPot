@@ -123,7 +123,7 @@
 			<!-- Icon header -->
 			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
 				<div class="flex-c-m h-full p-r-5">
-					<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
+					<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="${fn:length(shoppingCartList)}">
 						<i class="zmdi zmdi-shopping-cart"></i>
 					</div>
 				</div>
@@ -220,11 +220,11 @@
 					
 
 					<li class="p-b-13">
-						<a href="${pageContext.request.contextPath }/member/order" class="stext-102 cl2 hov-cl1 trans-04"> 마이페이지 </a>
+						<a href="${pageContext.request.contextPath }/member/myPage" class="stext-102 cl2 hov-cl1 trans-04"> 마이페이지 </a>
 					</li>
 
 					<li class="p-b-13">
-						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter" class="stext-102 cl2 hov-cl1 trans-04"> 고객센터 </a>
+						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=notice" class="stext-102 cl2 hov-cl1 trans-04"> 고객센터 </a>
 					</li>
 					
 					<li class="p-b-13">
@@ -367,18 +367,18 @@
 	<section class="section-slide">
 		<div class="wrap-slick1 rs2-slick1">
 			<div class="slick1">
-				<div class="item-slick1 bg-overlay1" style="background-image: url(images/slide-05.jpg);" data-thumb="images/thumb-01.jpg" data-caption="Women’s Wear">
+				<div class="item-slick1 bg-overlay1" style="background-image: url(${pageContext.request.contextPath }/resources/images/slide_yoona.jpg);" data-thumb="${pageContext.request.contextPath }/resources/images/slide_yoona.jpg" data-caption="Women’s Wear">
 					<div class="container h-full">
 						<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
 								<span class="ltext-202 txt-center cl0 respon2">
-									Women Collection 2018
+									New arrivals
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
 								<h2 class="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1">
-									New arrivals
+									Women Collection 2020
 								</h2>
 							</div>
 								
@@ -391,18 +391,18 @@
 					</div>
 				</div>
 
-				<div class="item-slick1 bg-overlay1" style="background-image: url(images/slide-06.jpg);" data-thumb="images/thumb-02.jpg" data-caption="Men’s Wear">
+				<div class="item-slick1 bg-overlay1" style="background-image: url(${pageContext.request.contextPath }/resources/images/slide_men.jpg);" data-thumb="${pageContext.request.contextPath }/resources/images/slide_men.jpg" data-caption="Men’s Wear">
 					<div class="container h-full">
 						<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
 								<span class="ltext-202 txt-center cl0 respon2">
-									Men New-Season
+									Winter 2020
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
 								<h2 class="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1">
-									Jackets & Coats
+									Men New-Season
 								</h2>
 							</div>
 								
@@ -411,22 +411,22 @@
 									Shop Now
 								</a>
 							</div>
-						</div>
+						</div>	
 					</div>
 				</div>
 
-				<div class="item-slick1 bg-overlay1" style="background-image: url(images/slide-07.jpg);" data-thumb="images/thumb-03.jpg" data-caption="Men’s Wear">
+				<div class="item-slick1 bg-overlay1" style="background-image: url(${pageContext.request.contextPath }/resources/images/slide_iu3.jpg);" data-thumb="${pageContext.request.contextPath }/resources/images/slide_iu3.jpg" data-caption="Men’s Wear">
 					<div class="container h-full">
 						<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
 								<span class="ltext-202 txt-center cl0 respon2">
-									Men Collection 2018
+								   Love Myself
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
 								<h2 class="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1">
-									NEW SEASON
+									Basic Items
 								</h2>
 							</div>
 								
