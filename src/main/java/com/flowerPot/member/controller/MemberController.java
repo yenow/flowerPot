@@ -356,6 +356,12 @@ public class MemberController {
 		return "redirect:/";
 	}
 	//
+	//회원 정보 수정 처리
+	@RequestMapping("/update_do")
+	public String memberUpdate(MemberVo vo, MemberAddressVo memberAddress) throws Exception {
+		memberService.updateMember(vo, memberAddress);
+		return "redirect:/member/myInfo";
+	}
 
 	// 아이디 중복인 요청 처리
 	@PostMapping("/checkId")
@@ -426,12 +432,6 @@ public class MemberController {
 	 * return "member/myInfo"; }
 	 */
 	
-	//회원 정보 수정 처리
-	@RequestMapping("/update_do")
-	public String memberUpdate(@ModelAttribute MemberVo vo) throws Exception {
-		memberService.updateMember(vo);
-		return "redirect:/member/myInfo";
-	}
 
 	/*
 	 * @PostMapping("/") public String register(@RequestBody MemberVo member) {

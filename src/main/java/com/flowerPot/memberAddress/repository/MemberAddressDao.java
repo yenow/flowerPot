@@ -8,4 +8,7 @@ public interface MemberAddressDao {
 
 	void insertMemberAddress(MemberAddressVo memberAddress);
 
+	void updateMemberAddress(MemberAddressVo memberAddress);
+	
+
 }

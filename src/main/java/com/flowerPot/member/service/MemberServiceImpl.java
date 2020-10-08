@@ -32,6 +32,11 @@ public class MemberServiceImpl implements MemberSerivce {
 		memberAddressDao.insertMemberAddress(memAddressVo);
 		authorityDao.insertAuthority(member);
 	}
+	@Override
+	public void updateMember(MemberVo vo, MemberAddressVo memberAddress) throws Exception {
+		memberDao.updateMember(vo);
+		memberAddressDao.updateMemberAddress(memberAddress);
+	}
 
 	@Override
 	public MemberVo selectOneMemberById(String id) {		
@@ -86,9 +91,9 @@ public class MemberServiceImpl implements MemberSerivce {
 
 	@Override
 	public void insertMember(MemberVo member) {
-		// TODO Auto-generated method stub
 		
 	}
+
 
 
 

@@ -33,5 +33,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from f_MemberAddress where mno = #{mno}
 	</select>
 	
+	<!-- 회원정보 수정처리 -->
+	<update id="updateMemberAddress" parameterType="com.flowerPot.vo.MemberAddressVo">
+	update f_memberAddress SET
+	postcode=#{postcode},
+	street_address=#{street_address},
+	parcel_address=#{parcel_address},
+	detail_address=#{detail_address},
+	more_infomation=#{more_information} 
+	where mno=#{mno}
+	</update>
+	
 </mapper>
 
