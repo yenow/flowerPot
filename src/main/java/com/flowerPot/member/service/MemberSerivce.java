@@ -2,6 +2,7 @@ package com.flowerPot.member.service;
 
 import java.util.List;
 import com.flowerPot.member.vo.MemberDTO;
+import com.flowerPot.vo.MemberAddressVo;
 import com.flowerPot.vo.MemberVo;
 
 public interface MemberSerivce {
@@ -30,6 +31,10 @@ public interface MemberSerivce {
 
 	//회원정보 조회
 	MemberVo viewMember(String id);
+	
+	void insertMember(MemberVo member, MemberAddressVo memAddressVo);
+	void updateMember(MemberVo vo, MemberAddressVo memberAddress) throws Exception;
+	
 
 	void giveAdminAuth(String empId);
 

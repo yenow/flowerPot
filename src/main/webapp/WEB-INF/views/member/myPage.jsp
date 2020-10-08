@@ -128,7 +128,7 @@
 				</div>
 			
 				<div class="col-md-8 col-lg-9 p-b-80" style="padding:50px">
-					<h2 class="text-center">비밀번호 수정</h2>
+				<%-- 	<h2 class="text-center">비밀번호 수정</h2>
 				<form action="${pageContext.request.contextPath }/member/signUp_ok" name="signup" id="signUpForm" method="post">
 				
 					<!-- <div class="form-group">
@@ -198,7 +198,7 @@
 					</div>
 					
 					<button class="btn btn-outline-secondary btn-block btn-lg" id="signup-btn">회원정보 수정완료</button>
-				</form>
+				</form> --%>
 				</div>
 
 				

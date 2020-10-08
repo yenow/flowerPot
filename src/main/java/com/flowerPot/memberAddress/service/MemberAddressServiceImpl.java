@@ -17,4 +17,10 @@ public class MemberAddressServiceImpl implements MemberAddressService {
 		return memberAddressDao.selectOneMemberAddressByMno(mno);
 	}
 
+	@Override
+	public void insertMemberAddress(MemberAddressVo memberAddress) {
+		memberAddressDao.insertMemberAddress(memberAddress);
+		
+	}
+
 }
