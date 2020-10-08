@@ -2,51 +2,65 @@
 <jsp:include page="../info/header2.jsp"></jsp:include>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<style>
+.form-control{border: solid 0.5px #6e6e6e;}
+.entermail{ margin-right:40%;}
+.sendmail{margin-left:70%; border:solild 0.5px #6e6e6e;}
+</style>
+
 <!-- Title page -->
-<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/bg-02.jpg');">
-	<h2 class="ltext-105 cl0 txt-center">회원가입</h2>
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/logo_SIGN.png');">
+	<h2 class="ltext-105 cl0 txt-center"></h2>
 </section>
 <section class="bg0 p-t-104 p-b-116">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-7">
-				<h2 class="text-center">회원가입</h2>
+				<!-- <h2 class="text-center">회원가입</h2> -->
 				<form action="${pageContext.request.contextPath }/member/signUp_ok" name="signup" id="signUpForm" method="post" >
 				
 					<div class="form-group">
-						<label for="user_id" style="text-align: left"><p><strong>아이디</strong>&nbsp;&nbsp;&nbsp;<span id="idChk"></span></p></label>
-						<input type="text" class="form-control form-control-lg" name="id" id="user_id" aria-describedby="emailHelp" placeholder="숫자와 영어로 4-10자">
+						<label for="user_id" style="text-align: left">
+						<p><strong>아이디</strong>&nbsp;&nbsp;&nbsp;<span id="idChk"></span></p></label>
+						<input type="text" class="form-control form-control-lg" name="id" id="user_id" aria-describedby="emailHelp" placeholder="숫자 + 영어: 4자~10자 입력해주세요 ^^">
 						<small id="emailHelp" class="form-text text-muted">  </small>
 					</div>
 					<div class="form-group">
-						<label for="password"style="text-align: left"><p><strong>비밀번호</strong>&nbsp;&nbsp;&nbsp;<span id="pwChk"></span></p></label>
-						<input type="password" class="form-control form-control-lg" name="password" id="password" placeholder="영문과 특수문자를 포함한 최소 8자">
+						<label for="password" style="text-align: left"><p><strong>비밀번호</strong>&nbsp;&nbsp;&nbsp;<span id="pwChk"></span></p></label>
+						<input type="password" class="form-control form-control-lg" name="password" id="password" placeholder="영문과 특수문자를 포함한 최소 8자를 입력해주세요 ^^ ">
 					</div>
 					<div class="form-group">
-						<label for="password_check"text-align: left"><p><strong>비밀번호확인</strong>&nbsp;&nbsp;&nbsp;<span id="pwChk2"></span></p></label>
-						<input type="password" class="form-control form-control-lg" name="password2" id="password_check" placeholder="비밀번호가 일치해야합니다.">
+						<label for="password_check" style="text-align: left"><p><strong>비밀번호확인</strong>&nbsp;&nbsp;&nbsp;<span id="pwChk2"></span></p></label>
+						<input type="password" class="form-control form-control-lg" name="password2" id="password_check" placeholder="비밀번호가 일치해야합니다.ㅜㅜ">
 					</div>
 					<div class="form-group">
-						<label for="user_name"text-align: left"><p><strong>이름</strong>&nbsp;&nbsp;&nbsp;<span id="nameChk"></span></p></label>
-						<input type="text" class="form-control form-control-lg" name="name" id="user_name" placeholder="한글로 최대 6자">
+						<label for="user_name" style="text-align: left"><p><strong>이름</strong>&nbsp;&nbsp;&nbsp;<span id="nameChk"></span></p></label>
+						<input type="text" class="form-control form-control-lg" name="name" id="user_name" placeholder="한글로 최대 6자 입력해주세요 !!">
 					</div>
 					<div class="form-group">
-						<label for="user_nick"text-align: left"><p><strong>닉네임</strong>&nbsp;&nbsp;&nbsp;<span id="nickChk"></span></p></label>
+						<label for="user_nick" style="text-align: left"><p><strong>닉네임</strong>&nbsp;&nbsp;&nbsp;<span id="nickChk"></span></p></label>
 						<input type="text" class="form-control form-control-lg" name="nickname" id="user_nick">
 					</div>
-					<div class="form-group">
-						<label for="user_email"text-align: left"><p><strong>이메일</strong>&nbsp;&nbsp;&nbsp;<span id="emailChk"></span></p></label>
-						<input type="email" class="form-control form-control-lg" name="email" id="user_email" placeholder="ex)aaa@naver.com" style="width: 50%; float:left;">
-						<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="send_email();" value="인증번호 전송" style="width: 50%;">
+					<div class="form-group email">
+						<label for="user_email" style="text-align: left"><p><strong>이메일</strong>&nbsp;&nbsp;&nbsp;<span id="emailChk"></span></p></label>
+						
+						<div class="entermail">
+						<input type="email" class="form-control form-control-lg" name="email" id="user_email" placeholder="ex)aaa@naver.com">
+						
+						<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="send_email();" value="인증번호 전송"></div>
+						
 						<div class="clear"></div>
+						
 						<div class="form-group">
-   					    <label for="user_codeNumber" text-align:left"=""></label>
-    					<input type="text" class="form-control form-control-lg" name="code_number" id="code_number" placeholder="인증번호 입력" style="width: 50%; float:left;">
-                        <input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="code_check();" value="인증 번호 확인" style="width: 50%;">
+   					    <label for="user_codeNumber" style="text-align: left"></label>
+    					<input type="text" class="form-control form-control-lg enternum" name="code_number" id="code_number" placeholder="인증번호 입력">
+                        <input type="button" class="btn btn-outline-secondary btn-block btn-lg entercheck" onclick="code_check();" value="인증 번호 확인">
                         </div>
 					</div>
+					
 					<div class="form-group">
-						<label for="user_phone"text-align: left"><p><strong>전화번호</strong>&nbsp;&nbsp;&nbsp;<span id="phoneChk"></span></p></label>
+						<label for="user_phone" style="text-align: left"><p><strong>전화번호</strong>&nbsp;&nbsp;&nbsp;<span id="phoneChk"></span></p></label>
 						<input type="tel" class="form-control form-control-lg" name="tel" id="user_phone" placeholder="(예시:- 하이픈 없이 입력해주세요)">
 
 					</div>
@@ -56,8 +70,10 @@
 						<input type="radio" name="gender" id="exampleRadios2" value="F" style="display: inline-block">
 						<label for="exampleRadios2" style="display: inline-block"> 여자 </label>
 					</div>
-					주소(우편번호)
+					
 					<div class="form-group">
+					<label for="user_address" style="text-align: left"><p><strong>주소(우편번호)</strong>&nbsp;&nbsp;&nbsp;
+					<span id="addressChk"></span></p></label>
 					<input type="text" class="form-control form-control-lg" id="sample4_postcode" name="postcode" placeholder="우편번호">
 					<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 					<input type="text" class="form-control form-control-lg" id="sample4_roadAddress" name="street_address" placeholder="도로명주소">
@@ -71,7 +87,7 @@
 					</div>
 					
 					<button class="btn btn-outline-secondary btn-block btn-lg" id="signup-btn">등록</button>
-				</form>
+				</form><br/><br/>
 
 
 
@@ -197,7 +213,7 @@ $(function() {
 		//전화번호 유효성검사
 		else if(!getPhone.test($("#user_phone").val())){
 			$('#user_phone').css("background-color", "pink");
-			$('#phoneChk').html('<b style="font-size:14px;color:red;">[예시:010-0000-0000]</b>');	  
+			$('#phoneChk').html('<b style="font-size:14px;color:red;">[하이픈 없이 입력해주세요!]</b>');	  
 			chk6 = false;
 		} 
 		//전화번호 중복확인 비동기 처리

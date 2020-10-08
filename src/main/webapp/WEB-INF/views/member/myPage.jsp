@@ -4,10 +4,8 @@
 <jsp:include page="../info/header2.jsp"></jsp:include>
 
 	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/bg-02.jpg');">
-		<h2 class="ltext-105 cl0 txt-center">
-			마이페이지
-		</h2>
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/logo_mypage.png');">
+		<h2 class="ltext-105 cl0 txt-center">   </h2>
 	</section>	
 
 	<div class="container">

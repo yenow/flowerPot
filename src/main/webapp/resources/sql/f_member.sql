@@ -18,6 +18,7 @@ create table f_member (
     primary key(mno),
     unique(id)
 );
+drop table f_member cascade constraint;
 
 ALTER TABLE f_member DROP PRIMARY KEY;
 alter table f_member add brand varchar2(100);
