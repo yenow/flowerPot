@@ -26,11 +26,12 @@ $(function() {
 	});
 });
 function check(){
-	if($.trim($('#empName').val())==''){
+/* 	if($.trim($('#empName').val())==''){
 	alert('사원 이름을 입력하세요!');
 	$('#empName').val('').focus();
 	return false;
-	}
+	} */
+
 }
 </script>
 </head>
@@ -52,7 +53,7 @@ function check(){
 					<div class="content">
 						<div class="container-fluid">
 							<div class="row">
-								<div class="col-md-6">
+								<div class="col-md-12">
 									<div class="card">
 											<form action="${pageContext.request.contextPath}/admin/empAdd" method="post" onsubmit="return check();">
 										<div class="card-header">
@@ -263,4 +264,40 @@ function check(){
 				</div>
 		</div>
 </body>
+<script>
+//start JQuery
+$(function() {
+	
+	
+	const getIdCheck= RegExp(/^[a-zA-Z0-9]{4,14}$/);
+	const getPwCheck= RegExp(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/);
+	const getName= RegExp(/^[가-힣]+$/);
+	const getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+	const getPhone = RegExp(/^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/);
+	
+	
+	//이름 입력값 검증.
+	$('#empName').on('keyup', function() {
+		//이름값 공백 확인
+		if($("#empName").val() === ""){
+		    $('#empName').css("background-color", "pink");
+			$('#nameChk').html('<b style="font-size:14px;color:red;">[이름은 필수정보!]</b>');
+			return false;
+		}		         
+		//이름값 유효성검사
+		else if(!getName.test($("#empName").val())){
+		    $('#empName').css("background-color", "pink");
+			$('#nameChk').html('<b style="font-size:14px;color:red;">[이름은 한글로 ~]</b>');
+			return false;
+		} else {
+			$('#empName').css("background-color", "aqua");
+			$('#nameChk').html('<b style="font-size:14px;color:green;">[참 잘했어요]</b>');
+			return false;
+		}
+		
+	});
+	
+	
+});
+</script>
 </html>

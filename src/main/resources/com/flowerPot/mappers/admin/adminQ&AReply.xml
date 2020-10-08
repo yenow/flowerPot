@@ -29,11 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update comments set replytitle=#{replytitle}, replytext=#{replytext}, updatedate=sysdate where rno = #{rno}
 	</update>
 	
-	<!-- 댓글 삭제 -->
-	<delete id="deleteReply">
-		delete from comments where rno = #{rno}
-	</delete>
-	
+
 	<!-- 댓글번호를 기준으로 게시물 번호값 알아내기 -->
 <!-- 	<select id="reply_bno" parameterType="int" resultType="int">
 	select ccno from qa_reply where rno=#{rno}

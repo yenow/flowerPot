@@ -38,7 +38,7 @@ $(function() {
 
 		<div class="main-panel">
 			<!-- header(nav) -->
-			<!--  <nav class="navbar navbar-expand-lg " color-on-scroll="500">  -->
+			<nav class="navbar navbar-expand-lg " color-on-scroll="500">
 				<div class="container-fluid">
 					<a class="navbar-brand" href="#pablo"> 회원 관리 </a>
 					<jsp:include page="info/header.jsp" />
@@ -56,7 +56,7 @@ $(function() {
 											<div class="col-md-12 ">
 												<div class="pull-right" style="text-align: right;">
 													<div class="input-group pull-right" style="text-align: right !important;">
-														<button class="btn btn-izone btn-flat authorize-button mr-3" id="popup_open_btn" data-toggle="modal" data-target="#myModal1"  style="background-color: #212b52; color: white;">권한</button>
+														<button class="btn btn-izone btn-flat authorize-button mr-3" id="popup_open_btn" data-toggle="modal" data-target="#myModal1"  style="background-color: #212b52; color: white; border:1px solid #212b52">권한</button>
 
 														<select id="condition" class="y-form-control" name="condition" style="width: 100px;">
 															<option value="mno">번호</option>

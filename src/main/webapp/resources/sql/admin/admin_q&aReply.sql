@@ -8,17 +8,18 @@ rno number(38) primary key -- 답글번호, number(38)은 오라클에서 최대
 ,updatedate date -- 답글 수정날짜
 );
 
-select * from comments where rno=8
+select * from comments where ccno=105
 
 select * from comments order by rno desc; --답글 번호를 기준으로 내림차순 정렬
 
 update comments set replytitle='안녕', replytext='메롱', updatedate=sysdate where rno =8
 
---외래키 설정
+--외래키 설정 (casecade로 부모 q&a게시글이 삭제되면 자손 답변도 함께 삭제)
 alter table comments add constraint fk_QAcomnts
-foreign key(ccno) references f_customerCenter(ccno); --주인테이블의 f_customerCenter의 기본키 컬럼 ccno를 참조하고 있다. 그러므로 Q&A 번호값만 저장됨.
+foreign key(ccno) references f_customerCenter(ccno) on delete cascade; --주인테이블의 f_customerCenter의 기본키 컬럼 ccno를 참조하고 있다. 그러므로 Q&A 번호값만 저장됨.
 
---답글번호값이 저장된 시퀀스 생성
+
+-- 답글번호값이 저장된 시퀀스 생성
 create sequence comment_seq
 start with 1 --1부터 시작
 increment by 1 --1씩 증가
