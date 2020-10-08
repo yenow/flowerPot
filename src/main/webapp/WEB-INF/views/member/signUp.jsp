@@ -65,7 +65,7 @@
 					<input type="text" class="form-control form-control-lg" id="sample4_jibunAddress" name="parcel_address" placeholder="지번주소">
 					<span id="guide" style="color:#999;display:none"></span>
 					<br>
-					<input type="text" class="form-control form-control-lg" id="sample4_extraAddress" name="deliver_state" placeholder="참고항목">
+					<input type="text" class="form-control form-control-lg" id="sample4_extraAddress" name="more_information" placeholder="참고항목">
 					<br>
 					<input type="text" class="form-control form-control-lg" id="sample4_detailAddress" name="detail_address"placeholder="상세주소">
 					</div>

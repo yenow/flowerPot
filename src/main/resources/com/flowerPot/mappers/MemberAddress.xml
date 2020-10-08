@@ -21,6 +21,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectCount" resultType="int">
 		select count(*) from f_MemberAddress
 	</select>
+	<insert id="insertMemberAddress" parameterType="com.flowerPot.vo.MemberAddressVo">
+	insert into f_memberAddress(mno,postcode,street_address,parcel_address,detail_address,more_infomation) values
+	(#{mno},#{postcode, jdbcType=VARCHAR},#{street_address, jdbcType=VARCHAR},#{parcel_address, jdbcType=VARCHAR},#{detail_address, jdbcType=VARCHAR},#{more_infomation, jdbcType=VARCHAR})
+<!-- 	<selectKey resultType="int" keyProperty="mno" order="After">
+	
+	</selectKey> -->
+	</insert>
 	
 	<select id="selectOneMemberAddressByMno" resultType="com.flowerPot.vo.MemberAddressVo">
 		select * from f_MemberAddress where mno = #{mno}

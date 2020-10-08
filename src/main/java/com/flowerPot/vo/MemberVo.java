@@ -15,6 +15,7 @@ public class MemberVo {
 	private String password;
 	private String name;
 	private String nickname;
+	private String phone;
 	private String address;
 	private String email;
 	private String gender;
@@ -34,7 +35,7 @@ public class MemberVo {
 	 * member_rank, Boolean enabled) {
 	 */
 
-	public MemberVo(int mno, String id, String password, String name, String nickname, String address, String email,
+	public MemberVo(int mno, String id, String password, String name, String nickname, String phone, String address, String email,
 		String gender, String tel,String birth, String member_rank, Boolean enabled) {
 		super();
 		this.mno = mno;
@@ -42,6 +43,7 @@ public class MemberVo {
 		this.password = password;
 		this.name = name;
 		this.nickname = nickname;
+		this.phone= phone;
 		this.address = address;
 		this.email = email;
 		this.gender = gender;

@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectListCosmeticReviewListById" resultType="com.flowerPot.vo.CosmeticReviewVo">
-		select  ccno, title, id, content from f_cosmeticReview where id = #{id} and category = 'rating'
+		select  * from f_cosmeticReview where id = #{id} and category = 'rating'
 	</select>
 	
 </mapper>

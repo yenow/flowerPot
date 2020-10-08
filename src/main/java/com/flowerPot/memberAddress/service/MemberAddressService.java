@@ -6,4 +6,6 @@ public interface MemberAddressService {
 
 	MemberAddressVo selectOneMemberAddressByMno(Integer mno);
 
+	void insertMemberAddress(MemberAddressVo memberAddress);
+
 }
