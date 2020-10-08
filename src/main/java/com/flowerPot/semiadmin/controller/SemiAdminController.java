@@ -200,11 +200,19 @@ public class SemiAdminController {
 		
 //form_editor 기능
 		@RequestMapping("/delivery")
-		public void delivery() {
+		public void delivery(Principal principal, Model model) {
 			System.out.println("delivery 실행중..");
-					
-					
-}
+			
+			MemberVo memberVo = new MemberVo();
+			if(principal!=null) {
+				log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
+				String id = principal.getName();
+				
+				memberVo = memberSerivce.selectOneMemberById(id);
+				String brand = memberVo.getBrand();
+			}
+		}
+		
 //form_editor 기능
 		@RequestMapping("/chart_count")
 		public void chartCount() {
