@@ -75,4 +75,10 @@ public class CustomerCenterDaoImpl implements CustomerCenterDao {
 		return session.selectOne("noticeContent", ccno);
 	}
 
+	@Override
+	public CustomerCenterVo getResCont(int ccno) {
+		// TODO Auto-generated method stub
+		return session.selectOne("ResContent",ccno);
+	}
+
 }

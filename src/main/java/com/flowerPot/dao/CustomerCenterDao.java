@@ -26,5 +26,7 @@ public interface CustomerCenterDao {
 
 	CustomerCenterVo getNotice(int ccno);
 
+	CustomerCenterVo getResCont(int ccno);
+
 
 }

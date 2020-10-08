@@ -26,4 +26,6 @@ public interface CustomerCenterService {
 
 	CustomerCenterVo getNotice(int ccno);
 
+	CustomerCenterVo getResCont(int ccno);
+
 }
