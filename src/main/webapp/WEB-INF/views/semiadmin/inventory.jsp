@@ -119,18 +119,16 @@
 			<div class="page-title">
 				<div class="row">
 					<div class="col-12 col-md-6 order-md-1 order-last">
-						<h3>Datatable</h3>
+						<h3>재고관리</h3>
 						<p class="text-subtitle text-muted">
-							We use 'simple-datatables' made by @fiduswriter. You can check the full documentation
-							<a href="https://github.com/fiduswriter/Simple-DataTables/wiki">here</a>
-							.
+							현재 화장품의 재고 상태를 보여줍니다	
 						</p>
 					</div>
 					<div class="col-12 col-md-6 order-md-2 order-first">
 						<nav aria-label="breadcrumb" class='breadcrumb-header'>
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Datatable</li>
+								<li class="breadcrumb-item active" aria-current="page">재고관리</li>
 							</ol>
 						</nav>
 					</div>
@@ -145,7 +143,6 @@
 						<div class="col-12">
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-title">Inventory</h4>
 								</div>
 								<div class="card-content">
 									<div class="card-body">

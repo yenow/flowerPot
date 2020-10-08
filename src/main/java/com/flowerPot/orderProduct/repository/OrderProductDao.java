@@ -1,6 +1,7 @@
 package com.flowerPot.orderProduct.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import com.flowerPot.vo.OrderProductVo;
 
@@ -15,4 +16,12 @@ public interface OrderProductDao {
 	int selectCount();
 
 	List<OrderProductVo> selectListOrderProductByOrderNum(String order_num);
+
+	List<OrderProductVo> selectListOrderProductByBrand(String brand);
+
+	List<OrderProductVo> selectListOrderProductByBrandCno(Map<String, Object> map);
+
+	OrderProductVo selectOneByono(Integer ono);
+
+	void updateOrderProductTOComplete(Integer ono);
 }

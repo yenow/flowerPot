@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,7 @@
 
 <link rel="stylesheet" href="../resources/semiadmin_css/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
 <link rel="stylesheet" href="../resources/semiadmin_css/assets/css/app.css">
-<link rel="shortcut icon" href="../resources/semiadmin_css/assets/images/favicon.svg" type="image/x-icon">
+<link rel="shortcut icon" href="../resources/semiadmin_css/assets/images/logo_main.png" type="image/x-icon">
 
 <style>
 .delButton {
@@ -38,7 +39,9 @@
 
 <body>
 	<div id="app">
+
 		<jsp:include page="sidebar.jsp"></jsp:include>
+
 		<div id="main">
 			<nav class="navbar navbar-header navbar-expand navbar-light">
 				<a class="sidebar-toggler" href="#">
@@ -63,7 +66,7 @@
 										</div>
 										<div>
 											<h6 class='text-bold'>New Order</h6>
-											<p class='text-xs'>An order made by Ahmad Saugi for product Samsung Galaxy S69</p>
+											<p class='text-xs'>An order made by Light &emp; Salt for FlowerPot</p>
 										</div>
 									</li>
 								</ul>
@@ -112,13 +115,13 @@
 					</ul>
 				</div>
 			</nav>
-			
-			<!-- Review 후기  메인  -->
+
+			<!-- table_datatable 메인  -->
 			<div class="main-content container-fluid">
 				<div class="page-title">
 					<div class="row">
 						<div class="col-12 col-md-6 order-md-1 order-last">
-							<h3>Review 후기</h3>
+							<h3>공지사항</h3>
 							<p class="text-subtitle text-muted">
 								FlowerPot SemiAdmin Notice
 								<a href="https://github.com/fiduswriter/Simple-DataTables/wiki">here</a>
@@ -128,52 +131,50 @@
 						<div class="col-12 col-md-6 order-md-2 order-first">
 							<nav aria-label="breadcrumb" class='breadcrumb-header'>
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="dashboard">Main</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Review 후기</li>
+									<li class="breadcrumb-item"><a href="dashboard.html">Main</a></li>
+									<li class="breadcrumb-item active" aria-current="page">공지사항</li>
 								</ol>
 							</nav>
 						</div>
 					</div>
 				</div>
+
 				<section class="section">
 					<div class="card">
 						<div class="card-header">
-							<form action="${pageContext.request.contextPath }/semiadmin/review" id="review-form" method="get">
-								<select class="form-select" aria-label="Default select example" name="cno" onchange="return cosmeticSubmit();">
+							<form action="${pageContext.request.contextPath }/semiadmin/delivery" id="review-form" method="get">
+								<select class="form-select" aria-label="Default select example" name="cno" onchange="return deliverySubmit();">
 									<option selected="selected" disabled="disabled">본사의 화장품을 선택해주세요</option>
 									<c:forEach var="c" items="${cList }">
 										<option value="${c.cno }">${c.name }</option>
 									</c:forEach>
 								</select>
 							</form>
+
 						</div>
-						
-						<c:if test="${cosmetic ne null }">
-							<h2 class="text-center">${cosmetic.name}</h2>
-						</c:if>
-						<%-- <c:if test="${cosmetic == null }">
-							<h2>화장품을 선택해주세요</h2>
-						</c:if> --%>
-						
 						<div class="card-body">
 							<table class='table table-striped' id="table1">
 								<thead>
 									<tr>
-										<th>아이디</th>
-										<th class="text-nowrap">닉네임</th>
-										<th style="width: 20%">제목</th>
-										<th style="width: 50%">내용</th>
-										<th>별점</th>
+										<th class="text-nowrap">회원번호</th>
+										<th class="text-nowrap">주문번호</th>
+										<th class="text-nowrap">수량</th>
+										<th class="text-nowrap">주문상태</th>
+										<th class="text-nowrap">배송상태</th>
+										<th class="text-nowrap">주문일</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="r" items="${relist}">
+									<c:forEach var="op" items="${opList}">
 										<tr>
-											<td class="text-nowrap">${r.id}</td>
-											<td class="text-nowrap">${r.nickname}</td>
-											<td class="text-nowrap" style="width: 20%">${r.title}</td>
-											<td class="text-nowrap" style="width: 50%">${r.content}</td>
-											<td class="text-nowrap">${r.rating}</td>
+											<td class="text-nowrap">${op.mno}</td>
+											<td class="text-nowrap">${op.order_num}</td>
+											<td class="text-nowrap" style="width: 20%">${op.amount}</td>
+											<td class="text-nowrap" style="width: 50%">${op.state}</td>
+											<td class="text-nowrap">${op.deliver_state}</td>
+											<td class="text-nowrap">
+												<javatime:format value="${op.regdate}" pattern="yyyy-MM-dd" />
+											</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -183,16 +184,15 @@
 				</section>
 			</div>
 			<!-- Bordered table end -->
-
 			<jsp:include page="footerbar.jsp"></jsp:include>
 		</div>
 	</div>
 
-<script>
-function cosmeticSubmit() {
-	document.querySelector('#review-form').submit();
-}
-</script>
-	
+	<script>
+		function deliverySubmit() {
+			document.querySelector('#review-form').submit();
+		}
+	</script>
+
 </body>
 </html>

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.flowerPot.cosmetic.service.CosmeticService;
 import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
 import com.flowerPot.member.service.MemberSerivce;
+import com.flowerPot.orderProduct.service.OrderProductService;
 import com.flowerPot.semiadmin.model.SemiCalendarVO;
 import com.flowerPot.semiadmin.model.SemiInventoryVO;
 import com.flowerPot.semiadmin.model.SemiNoticeVO;
@@ -25,6 +26,7 @@ import com.flowerPot.semiadmin.service.ISemiNoticeService;
 import com.flowerPot.vo.CosmeticReviewVo;
 import com.flowerPot.vo.CosmeticVo;
 import com.flowerPot.vo.MemberVo;
+import com.flowerPot.vo.OrderProductVo;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,11 +39,12 @@ public class SemiAdminController {
 	private ISemiNoticeService service;
 	@Autowired
 	private CosmeticService cosmeticService;
-
 	@Autowired
 	private MemberSerivce memberSerivce;
 	@Autowired
 	private CosmeticReviewService cosmeticReviewService;
+	@Autowired
+	private OrderProductService orderProductService;
 
 	// 공지사항
 	@RequestMapping("/semi_notice")
@@ -91,11 +94,11 @@ public class SemiAdminController {
 			memberVo = memberSerivce.selectOneMemberById(id);
 			// 회원정보로부터 브랜드명 가져오기
 			String brand = memberVo.getBrand();
-			// 본사의 화장품 목록이 필요하네..?
+			// 본사의 화장품 목록
 			cList = cosmeticService.selectListCosmeticByBrand(brand);
 
 			if(cno==null) {
-
+				relist = cosmeticReviewService.selectListCosmeticReviewListByBrand(brand);
 			}else {
 				// 화장품 리뷰 가져오기
 				log.info("화장품 리뷰 가져오기");
@@ -139,7 +142,7 @@ public class SemiAdminController {
 
 	}
 
-	//   inventory  재고 목록  추가 }
+	// inventory  재고 목록  추가 }
 	@PostMapping("/inventory")
 	public String inventory( Model model,CosmeticVo cosmetic) {
 
@@ -194,11 +197,14 @@ public class SemiAdminController {
 		System.out.println("todolist 실행중..");
 	}
 
-	//delivery 기능
+	//배송 관리
 	@RequestMapping("/delivery")
-	public void delivery(Principal principal, Model model) {
+	public String delivery(Principal principal, Model model, Integer cno) {
 		System.out.println("delivery 실행중..");
 
+		List<OrderProductVo> opList = new ArrayList<OrderProductVo>();
+		List<CosmeticVo> cList = new ArrayList<CosmeticVo>();
+				
 		MemberVo memberVo = new MemberVo();
 		if(principal!=null) {
 			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
@@ -206,7 +212,26 @@ public class SemiAdminController {
 
 			memberVo = memberSerivce.selectOneMemberById(id);
 			String brand = memberVo.getBrand();
+			// 본사의 화장품 목록
+			cList = cosmeticService.selectListCosmeticByBrand(brand);
+			
+			if(cno == null) {
+				opList = orderProductService.selectListOrderProductByBrand(brand);
+			}else {
+				opList = orderProductService.selectListOrderProductByBrandCno(brand,cno);
+			}
 		}
+		
+		model.addAttribute("cList",cList);
+		model.addAttribute("opList", opList);
+		return "/semiadmin/delivery";
+	}
+	
+	// 배송완료처리
+	@RequestMapping("delivery_complete")
+	public String delivery_complete(Integer ono, Integer cno) {
+		orderProductService.updateOrderProductTOComplete(ono);
+		return "redirect:/semiadmin/delivery?cno="+cno;
 	}
 
 	//form_editor 기능

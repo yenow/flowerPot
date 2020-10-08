@@ -4,7 +4,6 @@ create table f_member (
     password varchar2(100),
     name varchar2(20) not null,
     nickname varchar2(50),
-    address varchar2(100),
     email varchar2(100),
     phone varchar2(100),
     gender varchar2(2),    

@@ -43,4 +43,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from f_delivery where id= #{id}
 	</select>
 	
+	<update id="updateStateByDno">
+		update f_delivery set deliver_state = '배송완료' where dno = #{dno}
+	</update>
+	
 </mapper>

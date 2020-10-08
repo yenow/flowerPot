@@ -34,8 +34,13 @@ insert into f_order values(orderno_seq.nextval,3,222,'주문번호1416');
 
 insert into f_cosmeticReview values (crno_seq.nextval, 2401,3, 'rating',5, 'phantom1994','윤신영','title','content');
 
+select * from f_orderProduct where brand = '이니스프리';
+
+select * from f_orderProduct inner join f_cosmetic on f_orderProduct.cno = f_cosmetic.cno where f_cosmetic.brand = '이니스프리';
+
+select f_cosmeticReview.* from f_cosmeticReview inner join f_cosmetic on f_cosmeticReview.cno = f_cosmetic.cno where brand = '이니스프리';
 -- join 작업
-select f_cosmeticReview.* , f_cosmetic.brand from f_cosmeticReview inner join f_cosmetic on f_cosmeticReview.cno = f_cosmetic.cno where f_cosmetic.brand = '이니스프리';
+select * from f_cosmeticReview.* , f_cosmetic.brand from f_cosmeticReview inner join f_cosmetic on f_cosmeticReview.cno = f_cosmetic.cno where f_cosmetic.brand = '이니스프리';
 -- /join 작업
 
 select * from f_cosmetic where brand = '이니스프리';

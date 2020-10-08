@@ -27,5 +27,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectListOrderProductByOrderNum" resultType="com.flowerPot.vo.OrderProductVo">
 		select * from f_orderProduct where order_num = #{order_num}
 	</select>
+	
+	<select id="selectListOrderProductByBrand"  resultType="com.flowerPot.vo.OrderProductVo">
+		select * from f_orderProduct where brand = #{brand}
+	</select>
+	
+	<select id="selectListOrderProductByBrandCno" resultType="com.flowerPot.vo.OrderProductVo">
+		select * from f_orderProduct where brand = #{brand} and cno = #{cno}
+	</select>
+	
+	<select id="selectOneByono" resultType="com.flowerPot.vo.OrderProductVo">
+		select * from f_orderProduct where ono = #{ono}
+	</select>
+	
+	<update id="updateOrderProductTOComplete">
+		update f_orderProduct set state = '주문완료', deliver_state = '배송완료' where ono = #{ono}
+	</update>
 </mapper>
 

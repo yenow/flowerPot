@@ -30,4 +30,9 @@ public class CosmeticReviewServiceImpl implements CosmeticReviewService {
 		return null;
 	}
 
+	@Override
+	public List<CosmeticReviewVo> selectListCosmeticReviewListByBrand(String brand) {
+		return cosmeticReviewDao.selectListCosmeticReviewListByBrand(brand);
+	}
+
 }
