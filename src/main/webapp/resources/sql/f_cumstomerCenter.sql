@@ -120,6 +120,8 @@ delete  from  F_CUSTOMERCENTER where category='faq';
 delete  from  F_CUSTOMERCENTER where category='FAQ';
 select * from F_CUSTOMERCENTER where category ='FAQ'
 
+select * from F_CUSTOMERCENTER where ccno=13
+
 select * from F_CUSTOMERCENTER where category='enquiry'
 select * from F_CUSTOMERCENTER where category='notice' and ccno = 42
  /*

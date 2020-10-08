@@ -47,6 +47,7 @@ public class CustomerCenterController {
 		model.addAttribute("notice", notice);
 
 	}
+
 	@RequestMapping("noticeContent")
 	public String noticeContent(int ccno, Model model) {
 		System.out.println(ccno);
@@ -54,13 +55,11 @@ public class CustomerCenterController {
 		model.addAttribute("notice", content);
 		return "customerCenter/noticeContent";
 	}
-	
-	
+
 	@RequestMapping("FAQ")
 	public void FAQ(Model model) {
 		// 게시판 리스트 where category = 'FAQ'
 		CustomerCenterVo c = new CustomerCenterVo();
-
 		// model 를 이용해서 뷰페이지에 넘거야한다
 		List<CustomerCenterVo> question = service.getFaq();
 
@@ -90,9 +89,10 @@ public class CustomerCenterController {
 	}
 
 	@RequestMapping("enquiry/write_ok")
+	@ResponseBody
 	public String write_ok(@RequestBody CustomerCenterVo customer) {
 		this.service.wirteEnq(customer);
-		return "redirect:/customerCenter/enquiry";
+		return "success";
 	}
 
 	// @
@@ -126,10 +126,14 @@ public class CustomerCenterController {
 	// 검색어로 찾기
 	@RequestMapping("/search")
 	public String keyword(Model model, @ModelAttribute CustomerCenterVo vo) {
-		System.out.println(vo.getKeyword());
+		// System.out.println(vo.getKeyword());
 		List<CustomerCenterVo> result = service.searchKeyword(vo.getKeyword());
 		for (CustomerCenterVo c : result) {
-			System.out.println(c.getTitle() + ", " + c.getContent());
+			/*
+			 * System.out.println("####################검색결과 : " + c.getCcno());
+			 * System.out.println(c.getTitle() + ", " + c.getContent());
+			 */
+			System.out.println(c.getTitle());
 		}
 		String keyword = vo.getKeyword();
 		model.addAttribute("keyword", keyword);
@@ -173,10 +177,12 @@ public class CustomerCenterController {
 	@RequestMapping("enquiry/edit_ok")
 	public String edit_ok(Model model, CustomerCenterVo customer) {
 		log.info("customer1:" + customer);
-		System.out.println(customer.getCcno());
-		System.out.println(customer.getContent());
-		System.out.println(customer.getTitle());
-		System.out.println(customer.getCcno());
+		/*
+		 * System.out.println(customer.getCcno());
+		 * System.out.println(customer.getContent());
+		 * System.out.println(customer.getTitle());
+		 * System.out.println(customer.getCcno());
+		 */
 		service.editEnq(customer);
 		return "redirect:/customerCenter/enquiry/content?ccno=" + customer.getCcno();
 	}
@@ -186,6 +192,14 @@ public class CustomerCenterController {
 		service.deleteEnq(customer);
 		return "redirect:/customerCenter/enquiry";
 
+	}
+
+	@RequestMapping("resultContent")
+	public String resCont(int ccno, Model model) {
+	//	System.out.println(ccno);
+		CustomerCenterVo content = service.getResCont(ccno);
+		model.addAttribute("content", content);
+		return "customerCenter/searchResultContent";
 	}
 
 }

@@ -78,4 +78,10 @@ public class CustomerCenterServiceImpl implements CustomerCenterService {
 		return dao.getNotice(ccno);
 	}
 
+	@Override
+	public CustomerCenterVo getResCont(int ccno) {
+		// TODO Auto-generated method stub
+		return dao.getResCont(ccno);
+	}
+
 }

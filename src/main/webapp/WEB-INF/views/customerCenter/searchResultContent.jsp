@@ -23,12 +23,11 @@ a:link {
 </section>
 
 
-
 <div class="container">
 	<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-		<a href="${pageContext.request.contextPath }" class="stext-109 cl8 hov-cl1 trans-04"> 홈 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-		</a> <a href="${pageContext.request.contextPath }/customerCenter/customerCenter" class="stext-109 cl8 hov-cl1 trans-04"> 고객센터 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-		</a> <span class="stext-109 cl4"> 검색 결과 </span>
+		<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04"> 홈 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+		</a> <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04"> 고객센터 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+		</a> <span class="stext-109 cl4"> 공지사항 </span>
 	</div>
 </div>
 
@@ -39,8 +38,8 @@ a:link {
 			<div class="col-md-4 col-lg-3 p-b-80">
 				<div class="side-menu">
 					<jsp:include page="keyword.jsp"></jsp:include>
-					<jsp:include page="sidebar.jsp"></jsp:include>
 
+					<jsp:include page="sidebar.jsp"></jsp:include>
 
 
 					<div class="p-t-50">
@@ -58,71 +57,26 @@ a:link {
 					<div class="table col-12 board-list ">
 
 						<table class="table table-striped table-sm">
+							<thead>
+								<tr>
 
-							<c:if test="${!empty searchKeyword }">
-								<c:forEach var="searchKeyword" items="${searchKeyword}">
-									<tr>
-										<td>
-											<a href="${pageContext.request.contextPath }/customerCenter/searchResultContent?ccno=${searchKeyword.ccno }">${searchKeyword.title }</a>
-										</td>
-										<th>${searchKeyword.category }</th>
-										<th>${searchKeyword.regdate }</th>
-									</tr>
+									<th>${content.title }</th>
 
-								</c:forEach>
-							</c:if>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>${content.content }</th>
+
+								</tr>
+							</tbody>
 						</table>
+
 					</div>
-
-					<c:if test="${empty searchKeyword }">
-						<p style="text-align: center;">검색 결과가 존재하지 않습니다.</p>
-					</c:if>
-
-
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 </section>
-
-<script>
-	/* alert("${searchKeyword}"); */
-	$(document)
-			.ready(
-					function() {
-
-						(function yajax() {
-							$
-									.ajax({
-										url : '${pageContext.request.contextPath }/magazine/magazineAjax',
-										type : 'GET',
-										dataType : 'json',
-										success : function(data) {
-											console.log(data);
-											$('#magazine-test a img')
-													.attr(
-															'src',
-															'${pageContext.request.contextPath }'
-																	+ data[0].rootfolder
-																	+ data[0].uuidname);
-											$('#magazine-title').html(
-													data[0].title)
-										}
-									});
-
-						})();
-					});
-
-	$(function abc(ccno) {
-		$
-				.ajax({
-					url : '${pageContext.request.contextPath }/customerCenter/customerCenter?ccno='
-							+ ccno,
-
-				})
-	})
-</script>
 
 <jsp:include page="../info/footer.jsp"></jsp:include>
