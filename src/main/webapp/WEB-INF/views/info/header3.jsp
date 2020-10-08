@@ -224,7 +224,7 @@
 					</li>
 
 					<li class="p-b-13">
-						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter" class="stext-102 cl2 hov-cl1 trans-04"> 고객센터 </a>
+						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=notice" class="stext-102 cl2 hov-cl1 trans-04"> 고객센터 </a>
 					</li>
 					
 					<li class="p-b-13">

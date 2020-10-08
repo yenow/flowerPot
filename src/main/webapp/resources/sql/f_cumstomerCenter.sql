@@ -15,14 +15,14 @@ create table f_member (
 );
 
 create table f_customerCenter(
-ccno int primary key,
-mno int,
-title varchar2(200) not null,
-content varchar2(4000) not null,
-regdate date ,
-moddate date ,
-category varchar2(100) not null,
-url varchar2(4000)
+	ccno int primary key,
+	mno int,
+	title varchar2(200) not null,
+	content varchar2(4000) not null,
+	regdate date ,
+	moddate date ,
+	category varchar2(100) not null,
+	url varchar2(4000)
 );
 
 select * from f_member;
@@ -50,13 +50,13 @@ values (mno_seq.nextval,'dobby4567','isfree4567','박도비','바아악도오비
 
 
 insert into f_customerCenter (ccno,mno, title, content, regdate, moddate, category) 
-values (ccno_seq.nextval, 1,'dobby is free', 'DOBBY IS FREE', sysdate, sysdate ,'테스트');
+values (ccno_seq.nextval, 3,'dobby is free', 'DOBBY IS FREE', sysdate, sysdate ,'notice');
 
 insert into f_customerCenter (ccno,mno, title, content, regdate, moddate, category) 
-values (ccno_seq.nextval, 2,'DOBBY is NOT free', 'DOBBY IS not FREE', sysdate, sysdate ,'테스트');
+values (ccno_seq.nextval, 3,'DOBBY is NOT free', 'DOBBY IS not FREE', sysdate, sysdate ,'FAQ');
 
 insert into f_customerCenter (ccno,mno, title, content, regdate, moddate, category) 
-values (ccno_seq.nextval, 2,'DOBBY is NOT free', 'DOBBY WANNA FREE', sysdate, sysdate ,'테스트2');
+values (ccno_seq.nextval, 3,'DOBBY is NOT free', 'DOBBY WANNA FREE', sysdate, sysdate ,'enquiry');
 
 select ccno, title, content, regdate from f_customerCenter where category = '테스트';
 select ccno, title, content, regdate from f_customerCenter where category = '테스트2';

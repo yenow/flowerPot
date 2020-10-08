@@ -4,17 +4,17 @@
 
 	<ul>
 		<li class="bor18"><a
-			href="${pageContext.request.contextPath }/customerCenter/customerCenter"
+			href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=notice"
 			class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
 				공지사항 </a></li>
 
 		<li class="bor18"><a
-			href="${pageContext.request.contextPath }/customerCenter/FAQ"
+			href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=FAQ"
 			class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
 				자주찾는질문(FAQ) </a></li>
 
 		<li class="bor18"><a
-			href="${pageContext.request.contextPath }/customerCenter/enquiry"
+			href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=enquiry"
 			class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
 				1:1문의 </a></li>
 	</ul>

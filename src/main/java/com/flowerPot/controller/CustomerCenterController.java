@@ -40,14 +40,21 @@ public class CustomerCenterController {
 	@Autowired
 	private CustomerCenterService service;
 
+	// 고객센터 페이지,,,  
 	@RequestMapping("customerCenter")
-	public void noticeItem(Model model) throws Exception {
-		List<CustomerCenterVo> notice = service.getNotice();
-
-		model.addAttribute("notice", notice);
+	public void customerCenter(Criteria c, Model model) throws Exception {
+		List<CustomerCenterVo> cList = service.SelectListByCategory(c);
+		model.addAttribute("category", c.getCategory());
+		model.addAttribute("cList", cList);
 
 	}
-
+	
+	// 내용페이지
+	
+	// 글쓰기
+	
+	// 수정
+	
 	@RequestMapping("noticeContent")
 	public String noticeContent(int ccno, Model model) {
 		System.out.println(ccno);

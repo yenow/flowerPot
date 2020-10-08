@@ -2,6 +2,7 @@ package com.flowerPot.dao;
 
 import java.util.List;
 
+import com.flowerPot.domain.Criteria;
 import com.flowerPot.vo.CustomerCenterVo;
 
 public interface CustomerCenterDao {
@@ -27,6 +28,8 @@ public interface CustomerCenterDao {
 	CustomerCenterVo getNotice(int ccno);
 
 	CustomerCenterVo getResCont(int ccno);
+
+	List<CustomerCenterVo> SelectListByCategory(Criteria c);
 
 
 }

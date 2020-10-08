@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.flowerPot.domain.Criteria;
 import com.flowerPot.vo.CustomerCenterVo;
 
 @Repository
@@ -79,6 +80,11 @@ public class CustomerCenterDaoImpl implements CustomerCenterDao {
 	public CustomerCenterVo getResCont(int ccno) {
 		// TODO Auto-generated method stub
 		return session.selectOne("ResContent",ccno);
+	}
+
+	@Override
+	public List<CustomerCenterVo> SelectListByCategory(Criteria c) {
+		return session.selectList("SelectListByCategory", c);
 	}
 
 }

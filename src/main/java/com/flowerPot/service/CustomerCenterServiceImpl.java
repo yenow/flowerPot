@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.flowerPot.dao.CustomerCenterDao;
+import com.flowerPot.domain.Criteria;
 import com.flowerPot.vo.CustomerCenterVo;
 
 @Service
@@ -74,14 +75,17 @@ public class CustomerCenterServiceImpl implements CustomerCenterService {
 
 	@Override
 	public CustomerCenterVo getNotice(int ccno) {
-		// TODO Auto-generated method stub
 		return dao.getNotice(ccno);
 	}
 
 	@Override
 	public CustomerCenterVo getResCont(int ccno) {
-		// TODO Auto-generated method stub
 		return dao.getResCont(ccno);
+	}
+
+	@Override
+	public List<CustomerCenterVo> SelectListByCategory(Criteria c) {
+		return dao.SelectListByCategory(c);
 	}
 
 }
