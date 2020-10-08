@@ -4,7 +4,7 @@
 <div id="sidebar" class='active'>
 	<div class="sidebar-wrapper active">
 		<div class="sidebar-header">
-			<img src="../resources/semiadmin_css/assets/images/logo2.JPG" style="width: 80%; height: 80%">
+			<img src="../resources/semiadmin_css/assets/images/logo_main.png" style="width: 80%; height: 80%">
 		</div>
 		
 		<div class="sidebar-menu">

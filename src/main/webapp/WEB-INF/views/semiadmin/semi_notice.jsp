@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" href="../resources/semiadmin_css/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="../resources/semiadmin_css/assets/css/app.css">
-    <link rel="shortcut icon" href="../resources/semiadmin_css/assets/images/favicon.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="../resources/semiadmin_css/assets/images/logo_main.png" type="image/x-icon">
 
 <style>
 .delButton{ display: inline-block; padding: 0.4rem 0.55rem; 
@@ -110,7 +110,7 @@
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class='breadcrumb-header'>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index">Main</a></li>
+                        <li class="breadcrumb-item"><a href="dashboard.html">Main</a></li>
                         <li class="breadcrumb-item active" aria-current="page">공지사항</li>
                     </ol>
                 </nav>
