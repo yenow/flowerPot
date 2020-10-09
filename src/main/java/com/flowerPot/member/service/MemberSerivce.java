@@ -17,12 +17,10 @@ public interface MemberSerivce {
 	Integer checkPhone(String member);
 
 	MemberVo selectOneDeliMemById(String id);
-
 	//회원조회
 	public MemberVo selectOneMemberById(String id);
 	//이메일 전송체크
 	public void authentication(MemberDTO dto);
-
 	//회원 수정
 	public void updateMember(MemberVo vo) throws Exception;
 

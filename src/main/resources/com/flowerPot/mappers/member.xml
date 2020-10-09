@@ -115,9 +115,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<update id="updatePassword">
-	UPDATE f_member SET 
-	password=#{password }
-	where id=#{id}
+		UPDATE f_member SET password= #{password } where id=#{id}
 	</update>
 	
 </mapper>

@@ -1,6 +1,5 @@
 package com.flowerPot.member.controller;
 
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.Principal;
@@ -21,6 +20,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,10 +39,10 @@ import com.flowerPot.member.service.MemberSerivce;
 import com.flowerPot.memberAddress.service.MemberAddressService;
 import com.flowerPot.service.AuthorityService;
 import com.flowerPot.vo.CosmeticReviewVo;
-import com.flowerPot.vo.DeliveryVo;
 import com.flowerPot.vo.MemberAddressVo;
 import com.flowerPot.vo.MemberVo;
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.google.common.util.concurrent.Service;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -57,6 +57,14 @@ public class MemberController {
 	private MemberSerivce memberSerivce;
 	@Autowired
 	private MemberAddressService memberAddressService;
+	@Inject // 서비스를 호출하기 위해서 의존성을 주입
+	JavaMailSender mailSender; // 메일 서비스를 사용하기 위해 의존성을 주입함
+	@Autowired
+	private MemberSerivce memberService;
+	@Autowired
+	private AuthorityService authorityService;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	/*
 	 * @RequestMapping(value="/kakaologin", produces = "application/json", method=
 	 * {RequestMethod.GET, RequestMethod.POST}) public String
@@ -65,146 +73,183 @@ public class MemberController {
 	 * System.out.println("code :"+code); }
 	 */
 	/* NaverLoginBO */
-    private NaverLoginBO naverLoginBO;
-    private String apiResult1 = null;
-    
-    
-    @Autowired
-    private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
-        this.naverLoginBO = naverLoginBO;
-    }
-   
-    
- // 마이 페이지로 이동
-    
- 	@RequestMapping("/myPage")
- 	public String MyPage(Principal principal) {
- 		
- 		MemberVo memberVo = new MemberVo();
-		MemberAddressVo memberAddress  = new MemberAddressVo();
- 		if(principal!=null) {
-			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
+	private NaverLoginBO naverLoginBO;
+	private String apiResult1 = null;
+
+	@Autowired
+	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
+		this.naverLoginBO = naverLoginBO;
+	}
+
+	// 마이 페이지로 이동
+
+	@RequestMapping("/myPage")
+	public String MyPage(Principal principal) {
+
+		MemberVo memberVo = new MemberVo();
+		MemberAddressVo memberAddress = new MemberAddressVo();
+		if (principal != null) {
+			log.info("아이디:" + principal.getName()); // 일단 이걸로 member 정보를 가져오자..
 			String id = principal.getName();
-			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
-			memberAddress  = memberAddressService.selectOneMemberAddressByMno(memberVo.getMno());   // 회원주소록 가져오기
-			
-			
+			memberVo = memberSerivce.selectOneMemberById(id); // 회원정보 가져오기
+			memberAddress = memberAddressService.selectOneMemberAddressByMno(memberVo.getMno()); // 회원주소록 가져오기
+
 		}
- 		
- 		
- 		return "/member/myPage";
- 	}
- 	
- // 쿠폰 페이지로 이동
-    
-  	@RequestMapping("/coupon")
-  	public String coupon() {
-  		return "member/coupon";
-  }
-  	
- // 포인트 페이지로 이동
-    
-  	@RequestMapping("/point")
-  	public String point() {
-  		System.out.println("나의 포인트 페이지 호출됨");
-  		return "/member/point";
-  	}
- // 주문관리 페이지로 이동
-    
-  	@RequestMapping("/order")
-  	public String order() {
-  		System.out.println("나의 주문페이지 호출됨");
-  		return "/member/order";
-  	}
-  	
-    //나의 회원정보 이동 
-    @RequestMapping("/myInfo") 
-	  public String myInfo(Principal principal, Model model) {
-    	MemberVo memberVo = new MemberVo();
-		MemberAddressVo memberAddress  = new MemberAddressVo();
-    	System.out.println("나의 회원정보 호출됨");
-    	if(principal!=null) {
-			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
-    	String id = principal.getName();
-    	memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
-    	memberAddress  = memberAddressService.selectOneMemberAddressByMno(memberVo.getMno());   // 회원주소록 가져오기
-    	model.addAttribute("pid",memberVo);
-    	model.addAttribute("paddr",memberAddress);
-    	}
-    	return "/member/myInfo"; 
-	   }
-    
-    //나의 활동으로 이동 
-    @RequestMapping("/myActivity") 
-	  public String myActivity() {
-    	System.out.println("나의 활동으로 호출됨");
-    	return "/member/myActivity";
-	   }
-   
-    //나의 리뷰로 이동
-    @RequestMapping("/review") 
-	  public String costmeticReviewList(CosmeticReviewVo costmeticReview, Model model) {
-    List<CosmeticReviewVo> cmrList =cosmeticReviewService.selectListCosmeticReviewListById(costmeticReview);
-    model.addAttribute("cmrList",cmrList);
-  	System.out.println("나의 활동으로 호출됨");
-  	return "/member/review";
-	   }
-    
-   
-    
-    //나의 비밀번호 변경으로 이동
-    @RequestMapping("/password") 
-	  public String password() {
-  	System.out.println("나의 비밀번호변경으로 호출됨");
-  	return "/member/password";
-	   }
-    
-    
-    
-    //로그인 첫 화면 요청 메소드
-    @RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
-    public String login(Model model, HttpSession session) {
-        
-        /* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
-        String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-        
-        //https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
-        //redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
-        System.out.println("네이버:" + naverAuthUrl);
-        
-        //네이버 
-        model.addAttribute("naverLogin", naverAuthUrl);
- 
-        /* 생성한 인증 URL을 View로 전달 */
-        return "member/login";
-    }
- 
-    //네이버 로그인 성공시 callback호출 메소드
-    @RequestMapping(value = "/login/callback", method = { RequestMethod.GET, RequestMethod.POST })
-    public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
-            throws IOException {
-        System.out.println("여기는 callback");
-        OAuth2AccessToken oauthToken;
-        oauthToken = naverLoginBO.getAccessToken(session, code, state);
-        //로그인 사용자 정보를 읽어온다.
-        apiResult1 = naverLoginBO.getUserProfile(oauthToken);
-        System.out.println(apiResult1);
-        model.addAttribute("result", apiResult1);
- 
-        /* 네이버 로그인 성공 페이지 View 호출 */
-        return "/";
-    }
-	@Inject // 서비스를 호출하기 위해서 의존성을 주입
-	JavaMailSender mailSender; // 메일 서비스를 사용하기 위해 의존성을 주입함
 
-	@Autowired
-	private MemberSerivce memberService;
-	@Autowired
-	private AuthorityService authorityService;
+		return "/member/myPage";
+	}
 
+	// 쿠폰 페이지로 이동
 
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+	@RequestMapping("/coupon")
+	public String coupon() {
+		return "member/coupon";
+	}
+
+	// 포인트 페이지로 이동
+
+	@RequestMapping("/point")
+	public String point() {
+		System.out.println("나의 포인트 페이지 호출됨");
+		return "/member/point";
+	}
+	// 주문관리 페이지로 이동
+
+	@RequestMapping("/order")
+	public String order() {
+		System.out.println("나의 주문페이지 호출됨");
+		return "/member/order";
+	}
+
+	// 나의 회원정보 이동
+	@RequestMapping("/myInfo")
+	public String myInfo(Principal principal, Model model) {
+		MemberVo memberVo = new MemberVo();
+		MemberAddressVo memberAddress = new MemberAddressVo();
+		System.out.println("나의 회원정보 호출됨");
+		if (principal != null) {
+			log.info("아이디:" + principal.getName()); // 일단 이걸로 member 정보를 가져오자..
+			String id = principal.getName();
+			memberVo = memberSerivce.selectOneMemberById(id); // 회원정보 가져오기
+			memberAddress = memberAddressService.selectOneMemberAddressByMno(memberVo.getMno()); // 회원주소록 가져오기
+			model.addAttribute("pid", memberVo);
+			model.addAttribute("paddr", memberAddress);
+		}
+		return "/member/myInfo";
+	}
+
+	// 나의 활동으로 이동
+	@RequestMapping("/myActivity")
+	public String myActivity() {
+		System.out.println("나의 활동으로 호출됨");
+		return "/member/myActivity";
+	}
+
+	// 나의 리뷰로 이동
+	@RequestMapping("/review")
+	public String costmeticReviewList(CosmeticReviewVo costmeticReview, Model model) {
+		List<CosmeticReviewVo> cmrList = cosmeticReviewService.selectListCosmeticReviewListById(costmeticReview);
+		model.addAttribute("cmrList", cmrList);
+		System.out.println("나의 활동으로 호출됨");
+		return "/member/review";
+	}
+
+	// 로그인 첫 화면 요청 메소드
+	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
+	public String login(Model model, HttpSession session) {
+
+		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
+		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+
+		// https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
+		// redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
+		System.out.println("네이버:" + naverAuthUrl);
+
+		// 네이버
+		model.addAttribute("naverLogin", naverAuthUrl);
+
+		/* 생성한 인증 URL을 View로 전달 */
+		return "member/login";
+	}
+
+	// 회원가입 처리
+	@RequestMapping("/signUp_ok")
+	public String signUp_ok(MemberVo member, MemberAddressVo memberAddress) {
+		// 비밀번호 인코딩
+		log.info("회원정보 : " + member.toString());
+
+		member.setPassword(passwordEncoder.encode(member.getPassword()));
+		log.info("회원정보 : " + member.toString());
+		memberService.insertMember(member, memberAddress);
+
+		return "redirect:/";
+	}
+
+	// 회원 정보 수정 처리
+	@RequestMapping("/update_do")
+	public String memberUpdate(MemberVo vo, MemberAddressVo memberAddress) throws Exception {
+		log.info("회원정보:" + vo.toString());
+		log.info("회원정보:" + memberAddress.getMno());
+		memberService.updateMember(vo, memberAddress);
+		return "redirect:/member/myInfo";
+	}
+	// 회원가입 페이지로 이동
+
+	@RequestMapping("/password")
+	public void password() {
+
+	}
+
+	
+	// 나의 비밀번호 변경
+	@RequestMapping("/password_ok")
+	public void passwordUpdate(@ModelAttribute MemberVo vo, Principal principal, Model model,
+			HttpServletResponse response,HttpServletRequest request) throws Exception {
+		// 입력한 비밀번호 db와 같은지 체크
+		String result = null;
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		if (principal.getName() != null) {
+			log.info("아이디:" + principal.getName());
+			String id = principal.getName();
+			vo.setId(id);
+			MemberVo dbData = memberService.selectOneMemberById(id);
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+
+			if (encoder.matches(vo.getPassword(), dbData.getPassword())) {
+				out.println("<script>");
+				out.println("alert('기존 비밀번호가 다릅니다.');");
+				out.println("history.go(-1);");
+				out.println("</script>");
+				out.close();
+			} else {
+				vo.setPassword(passwordEncoder.encode(vo.getPassword()));
+				memberService.passwordUpdate(vo);
+				out.println("<script>");
+				out.println("alert('비밀번호를 변경하였습니다..');");
+				out.println("location.href='"+request.getContextPath()+"'/member/myPage");
+				out.println("</script>");
+				out.close();
+			} // else
+
+		}
+	}// passwordUpdate
+
+	// 네이버 로그인 성공시 callback호출 메소드
+	@RequestMapping(value = "/login/callback", method = { RequestMethod.GET, RequestMethod.POST })
+	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
+			throws IOException {
+		System.out.println("여기는 callback");
+		OAuth2AccessToken oauthToken;
+		oauthToken = naverLoginBO.getAccessToken(session, code, state);
+		// 로그인 사용자 정보를 읽어온다.
+		apiResult1 = naverLoginBO.getUserProfile(oauthToken);
+		System.out.println(apiResult1);
+		model.addAttribute("result", apiResult1);
+
+		/* 네이버 로그인 성공 페이지 View 호출 */
+		return "/";
+	}
 
 	// 로깅을 위한 ㅏ변수
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
@@ -344,27 +389,6 @@ public class MemberController {
 	// 회원가입 요청 처리
 	// Rest-api에서 Insert-> POST
 
-	// 회원가입 처리
-	@RequestMapping("/signUp_ok")
-	public String signUp_ok(MemberVo member, MemberAddressVo memberAddress) {
-		// 비밀번호 인코딩
-		log.info("회원정보 : " + member.toString());
-		member.setPassword(passwordEncoder.encode(member.getPassword()));
-		log.info("회원정보 : " + member.toString());
-		memberService.insertMember(member,memberAddress);
-		
-		return "redirect:/";
-	}
-	//
-	//회원 정보 수정 처리
-	@RequestMapping("/update_do")
-	public String memberUpdate(MemberVo vo, MemberAddressVo memberAddress) throws Exception {
-		log.info("회원정보:"+vo.toString());
-		log.info("회원정보:"+memberAddress.getMno());
-		memberService.updateMember(vo, memberAddress);
-		return "redirect:/member/myInfo";
-	}
-
 	// 아이디 중복인 요청 처리
 	@PostMapping("/checkId")
 	@ResponseBody
@@ -384,7 +408,7 @@ public class MemberController {
 		}
 		return result;
 
-	  }		
+	}
 
 	// 이메일 중복인 요청 처리
 	@PostMapping("/checkEmail")
@@ -404,7 +428,7 @@ public class MemberController {
 			result = "OK";
 		}
 		return result;
-	}	
+	}
 
 	// 전화번호 중복인 요청 처리
 	@PostMapping("/checkPhone")
@@ -425,15 +449,14 @@ public class MemberController {
 		}
 		return result;
 	}
-	
-	//회원정보 상세정보 조회
+
+	// 회원정보 상세정보 조회
 	/*
 	 * @RequestMapping("/view_do") public String memberView(String id, Model model)
 	 * { //회원 정보를 model에 저장 model.addAttribute("dto",memberService.viewMember(id));
 	 * System.out.println("아이디 확인"); logger.info("클릭한 아이디:"+id); //myInfo.jsp로 포워드
 	 * return "member/myInfo"; }
 	 */
-	
 
 	/*
 	 * @PostMapping("/") public String register(@RequestBody MemberVo member) {
@@ -494,35 +517,34 @@ public class MemberController {
 	 * 
 	 * return memberService.selectAll();
 	 */
-		
 
 	@PostMapping("searchMemberById")
 	@ResponseBody
-	public ResponseEntity<String> searchMemberById(String id){
-		ResponseEntity<String> r =null;
+	public ResponseEntity<String> searchMemberById(String id) {
+		ResponseEntity<String> r = null;
 		MemberVo member = new MemberVo();
 		member = memberService.selectOneMemberById(id);
-		if(member != null) {
+		if (member != null) {
 			r = new ResponseEntity<String>("success", HttpStatus.OK);
-		}else {
+		} else {
 			r = new ResponseEntity<String>("noID", HttpStatus.OK);
 		}
-		
+
 		return r;
 	}
-	
+
 	@PostMapping("insertAuthority")
 	@ResponseBody
 	public ResponseEntity<String> insertAuthority(@RequestBody Map<String, Object> map) {
-		ResponseEntity<String> r =null;
+		ResponseEntity<String> r = null;
 		String authority = (String) map.get("authority");
 		String brand = (String) map.get("brand");
-		List<String> id_list =  (List<String>) map.get("id_list");
+		List<String> id_list = (List<String>) map.get("id_list");
 		try {
-			authorityService.insertAuthorityById(authority,brand,id_list);
-			r= new ResponseEntity<String>("success", HttpStatus.OK);
+			authorityService.insertAuthorityById(authority, brand, id_list);
+			r = new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch (Exception e) {
-			r= new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
+			r = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
 		}
 		return r;
 	}
