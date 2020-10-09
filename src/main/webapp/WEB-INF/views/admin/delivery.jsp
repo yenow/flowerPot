@@ -53,7 +53,7 @@
 					<div class="content">
 						<div class="container-fluid">
 							<div class="row">
-								<div class="col-md-5">
+								<div class="col-md-3">
 									<div class="card">
 										<div class="card-header">
 											<h4 class="card-title">배송조회(sweettracker API)</h4>
@@ -62,17 +62,18 @@
 										<form action="http://info.sweettracker.co.kr/tracking/5" method="post" target="paramModal">
 											<div class="card-body">
 												<div class="row">
-													<div class="col-md-3">
-														<div class="form-group" style=>
-															<label>아이디</label><b id="comCheck"></b>
+													<div class="col-md-12">
+														<div class="form-group" style="margin:0 auto; ">
+															<label>아이디</label><b> </b><b id="idChk"></b>
+															<div style="display: flex">
 															<input type="text" class="form-control" id="idBox" placeholder="ID">
+															<button class="btn btn-flat " id="searchId" style="background-color: #212b52; color: white; border: 1px solid #212b52; float:right; ">검색</button>
+															</div>
 														</div>
 													</div>
-													<div class="col-md-3" style="display: inline-block;">
-														<div class="form-group" style="display: inline-block;">
-															<button class="btn btn-flat" id="searchId" style="background-color: #212b52; color: white; border: 1px solid #212b52; margin-top: 27px;">아이디 검색</button>
-														</div>
-													</div>
+													
+												</div>
+												<div class="row" style="display:none;">
 													<div class="col-md-3">
 														<div class="form-group">
 															<!-- <label for="t_key">API key</label>
@@ -93,9 +94,8 @@
 															<!-- 운송장 번호 -->
 														</div>
 													</div>
-													<div class="col-md-3"></div>
 												</div>
-												<button class="btn btn-flat pull-right" id="popup_open_btn" data-toggle="modal" data-target="#myModal1" href="#pablo" value="${coup.couponName}" style="background-color: #212b52; color: white; border: 1px solid #212b52; margin-bottom: 10px;">배송조회</button>
+												<button class="btn btn-flat pull-right" id="popup_open_btn" data-toggle="modal" data-target="#myModal1" href="#pablo" value="${coup.couponName}" style="background-color: #212b52; color: white; border: 1px solid #212b52; margin-bottom: 15px;">배송조회</button>
 											</div>
 										</form>
 
@@ -108,7 +108,7 @@
 							<div class="modal-dialog" style="margin-bottom: 0; padding-top: 100px;">
 								<div class="modal-content" style="border: 3px solid #00498c; border-radius: 20px; height: 800px;">
 
-									<div class="card-header" id="idChk">
+									<div class="card-header" id="idChk2">
 										<h4 class="card-title">XX님 배송조회(sweettracker API)</h4>
 									</div>
 									<div class="card-body" style="height: 400px">
@@ -131,9 +131,8 @@
 								</div>
 							</div>
 						</div>
+						<!-- End Modal -->
 					</div>
-				</div>
-		</div>
 
 		<!-- 본문 끝 -->
 
@@ -141,90 +140,97 @@
 		<jsp:include page="info/footer.jsp" />
 		<%--푸터 --%>
 	</div>
-	</div>
 </body>
 <script>
-	$(function() {
-		//엔터를 눌렀을때 키다운
-		$('#idBox').keydown(function(key) {
-			if (key.keyCode == 13) {
-				$('#searchId').click();
+$(function() {
+	//엔터를 눌렀을때 키다운
+	$('#idBox').keydown(function(key) {
+		if (key.keyCode == 13) {
+			$('#searchId').click();
+		}
+	});
+	//버튼 클릭 이벤트
+	$("#searchId").click(function() {
+		//ajax통신으로 서버에서 값 받아오기 
+		const id = $('#idBox').val();
+		console.log("id: " + id);
+		/* 모달창의 id입력박스가 비어있을떄 경고메시지 */
+		if ($.trim($('#idBox').val()) == '') {
+			$("#idBox").css("background-color", "pink");
+			$("#idChk").html("<b style='font-size:14px; color:red;'>ID를 입력해주세요</b>");
+			$('#idBox').val('').focus();
+			/* 비어있지 않다면 ajax 실행 */
+			return false;
+		}
+		$.ajax({
+			type:"get",
+			url: "${pageContext.request.contextPath}/admin/coupon/"+id,
+			headers:{
+				"Content-Type": "application/json"
+			},
+			/* data: id, */
+			dataType:"json",
+			success:function(result){
+				console.log(result);
+				console.log(result.id);
+				const memberId = result.id;
+				console.log('ID : '+memberId);
+				
+				
+				//.append()함수를통해서 가져온 정보를 html태그와 함께 누적해서 추가한다.
+				/* $("#idChk").html("<b></b>"); */ /* 이건 작동됨 */
+				$('#idBox').val('').focus();
+
+				$("#idBox").css("background-color", "#e8f0fe");/* 이게 안먹음 검색성공하면 녹색으로 색이바껴야하는데 안먹음*/
+				$("#idChk").html("<b style='font-size:14px; color:#008672;'>" +memberId+ "검색완료</b>");						
+			}
+			,error: function() {//DB에 데이터가 없을때 이곳에서 검증
+				$('#idBox').val('').focus();
+				$("#idBox").css("background-color", "pink");/* 이게 안먹음 검색실패하면 핑크색으로 색이바껴야하는데 안먹음*/
+				$("#idChk").html("<b style='font-size:14px; color:red;'>요청하신 회원의 정보를 찾을수 없습니다</b>");						
+				
 			}
 		});
-		//버튼 클릭 이벤트
-		$("#searchId")
-				.click(
-						function() {
-							//ajax통신으로 서버에서 값 받아오기 
-							const id = $('#idBox').val();
-							console.log("id: " + id);
-							/* 모달창의 id입력박스가 비어있을떄 경고메시지 */
-							if ($.trim($('#idBox').val()) == '') {
-								$("#idBox").css("background-color", "pink");
-								$("#idChk")
-										.html(
-												"<b style='font-size:14px; color:red;'>ID를 입력해주세요</b>");
-								$('#idBox').val('').focus();
-								/* 비어있지 않다면 ajax 실행 */
-								return false;
-							}
-							$
-									.ajax({
-										type : "get",
-										url : "${pageContext.request.contextPath}/admin/delivery/"
-												+ id,
-										headers : {
-											"Content-Type" : "application/json"
-										},
-										/* data: id, */
-										dataType : "json",
-										success : function(result) {
-
-											console.log(result.member);
-											console.log(result.member.name);
-											console.log(result.delivery);
-											const memName = result.member.name;
-											var t_code = null;
-											var t_invoice = null;
-											if (result.delivery == null) {
-												t_code = '택배 코드 없음!!'; //택배회사 코드 !!!!!!!!!!!!!!!!!!!!!!!!!!
-												t_invoice = '운송장 번호 없음!!'; //운송장번호 !!!!!!!!!!!!!!!!!!!!!!!!!!
-											} else {
-												t_code = result.delivery.t_code; //택배회사 코드 !!!!!!!!!!!!!!!!!!!!!!!!!!
-												t_invoice = result.delivery.t_invoice; //운송장번호 !!!!!!!!!!!!!!!!!!!!!!!!!!
-											}
-
-											console.log(t_code);
-											console.log(t_invoice);
-											/* 				const t_invoice = result.delivery.t_invoice; //운송장번호 !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-											 *///.append()함수를통해서 가져온 정보를 html태그와 함께 누적해서 추가한다.
-											$("#idChk").html("<b></b>"); /* 이건 작동됨 */
-											$('#idBox').val('').focus();
-											$("#idBox").css("background-color",
-													"#e8f0fe");/* 이게 안먹음 검색성공하면 녹색으로 색이바껴야하는데 안먹음*/
-											$('.fg1')
-													.append(
-															'<input type="hidden" name="t_code" value="'+t_code+'">');
-											$('.fg1')
-													.append(
-															'<input type="hidden" name="t_code" value="'+'확인'+'">');
-											$('.fg2')
-													.append(
-															'<input type="hidden" name="t_invoice" value="'+t_invoice+'">');
-											$('.fg2')
-													.append(
-															'<input type="hidden" name="t_invoice" value="'+'되냐'+'">');
-											$("#idChk")
-													.html(
-															'<h4 class="card-title">'
-																	+ memName
-																	+ '님 배송조회(sweettracker API)</h4>'); /* 이건 작동됨 */
-										},
-										error : function() {//DB에 데이터가 없을때 이곳에서 검증
-										}
-									});
-						})
-	});
+		$.ajax({
+			type : "get",
+			url : "${pageContext.request.contextPath}/admin/delivery/"+ id,
+			headers : {
+				"Content-Type" : "application/json"
+			},
+			/* data: id, */
+			dataType : "json",
+			success : function(result) {
+				console.log(result.member);
+				console.log(result.member.name);
+				console.log(result.delivery);
+				const memName = result.member.name;
+				var t_code = null;
+				var t_invoice = null;
+				if (result.delivery == null) {
+					t_code = '택배 코드 없음!!'; //택배회사 코드 !!!!!!!!!!!!!!!!!!!!!!!!!!
+					t_invoice = '운송장 번호 없음!!'; //운송장번호 !!!!!!!!!!!!!!!!!!!!!!!!!!
+				} else {
+					t_code = result.delivery.t_code; //택배회사 코드 !!!!!!!!!!!!!!!!!!!!!!!!!!
+					t_invoice = result.delivery.t_invoice; //운송장번호 !!!!!!!!!!!!!!!!!!!!!!!!!!
+				}
+				console.log(t_code);
+				console.log(t_invoice);
+				/* 				const t_invoice = result.delivery.t_invoice; //운송장번호 !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+				//.append()함수를통해서 가져온 정보를 html태그와 함께 누적해서 추가한다.
+				$("#idChk").html("<b></b>"); /* 이건 작동됨 */
+				$('#idBox').val('').focus();
+				$("#idBox").css("background-color",	"#e8f0fe");/* 이게 안먹음 검색성공하면 녹색으로 색이바껴야하는데 안먹음*/
+				$('.fg1').append('<input type="hidden" name="t_code" value="'+t_code+'">');
+				$('.fg1').append('<input type="hidden" name="t_code" value="'+'확인'+'">');
+				$('.fg2').append('<input type="hidden" name="t_invoice" value="'+t_invoice+'">');
+				$('.fg2').append('<input type="hidden" name="t_invoice" value="'+'되냐'+'">');
+				$("#idChk2").html('<h4 class="card-title">'+ memName + '님 배송조회(sweettracker API)</h4>'); /* 이건 작동됨 */
+				},
+				error : function() {//DB에 데이터가 없을때 이곳에서 검증
+			}
+		});
+	})
+});
 </script>
 
 </html>

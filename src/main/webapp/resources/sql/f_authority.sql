@@ -33,5 +33,6 @@ insert into f_authority values (auno_seq.nextval, 'admin0', 'ROLE_ADMIN','ROLE_A
 
 select mem.id, mem.password,  auth.authority from f_member mem left outer join f_authority auth on mem.id = auth.id where mem.id = 'user1';
 
+select * from f_authority
 select * from f_member
 

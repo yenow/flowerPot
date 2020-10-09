@@ -41,7 +41,8 @@ public class AdminQandAReplyController {
 	//댓글수정
 	@RequestMapping("/q&aComnt_modify")
 	public String modifyQandACmnt(ReplyVo rpl,Integer rno, Model m) {
-		
+		System.out.println(rno);
+		System.out.println(service.getReplyCont(rno));
 		m.addAttribute("reply",service.getReplyCont(rno));
 		return "/admin/q&aComnt_modify";
 	}
