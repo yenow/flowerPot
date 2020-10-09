@@ -19,12 +19,10 @@ public interface MemberSerivce {
 	Integer checkPhone(String member);
 
 	MemberVo selectOneDeliMemById(String id);
-
 	//회원조회
 	public MemberVo selectOneMemberById(String id);
 	//이메일 전송체크
 	public void authentication(MemberDTO dto);
-
 	//회원 수정
 	public void updateMember(MemberVo vo) throws Exception;
 
@@ -34,8 +32,11 @@ public interface MemberSerivce {
 	//회원정보 조회
 	MemberVo viewMember(String id);
 	
+	//회원가입기능
 	void insertMember(MemberVo member, MemberAddressVo memAddressVo);
 	
+
+	//회원정보 업데이트
 	void updateMember(MemberVo vo, MemberAddressVo memberAddress) throws Exception;
 	
 	void giveAdminAuth(String empId);

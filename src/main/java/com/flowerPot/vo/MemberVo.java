@@ -57,10 +57,6 @@ public class MemberVo {
 				+ ", member_rank=" + member_rank + ", enabled=" + enabled + ", regdate=" + regdate + ", point=" + point
 				+ ", authList=" + authList + ", brand=" + brand + "]";
 	}
-
-
-
-	
 	
 }
 

@@ -114,15 +114,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateMember">
 	UPDATE f_member SET 
 	nickname=#{nickname},
-	tel=#{tel},
-
+	tel=#{tel}
 	where id=#{id}
 	</update>
 	
 	<update id="updatePassword">
-	UPDATE f_member SET 
-	password=#{password}
-	where id=#{id}
+		UPDATE f_member SET password= #{password } where id=#{id}
 	</update>
 	
 	<update id="updatePoint">

@@ -1,191 +1,136 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <jsp:include page="../info/header2.jsp"></jsp:include>
 
-	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/bg-02.jpg');">
-		<h2 class="ltext-105 cl0 txt-center">
-			마이페이지
-		</h2>
-	</section>	
+<!-- Title page -->
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/bg-02.jpg');">
+	<h2 class="ltext-105 cl0 txt-center">마이페이지</h2>
+</section>
 
-	<div class="container">
-		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
-				홈
-				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-			</a>
-
-			<a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
-				마이페이지
-				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-			</a>
-
-			<span class="stext-109 cl4">
-				상품주문
-			</span>
-		</div>
+<div class="container">
+	<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+		<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04"> 홈 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+		</a> <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04"> 마이페이지 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+		</a> <span class="stext-109 cl4"> 상품주문 </span>
 	</div>
+</div>
 
-	<!-- Content page -->
-	<section class="bg0 p-t-62 p-b-60">
-		<div class="container">
-			<div class="row mb-4 text-center">
-				<div class="col-4 border rounded mx-5">
-					<h2 class="py-2">윤신영 님의 멤버십 등급은 Silver 입니다</h2>
-					<h3 class="py-2">최근 6개월 누적 구매 금액 : 원</h3>
-					<a href="" class="btn btn-primary">전체등급 알아보기</a>
-				</div>
-				<div class="col-2 border rounded mx-5">
-					<h3 class="py-2">적립금</h3>
-					<p><a href="">0</a>원</p>
-				</div>
-				<div class="col-2 border rounded mx-5">
-					<h3 class="py-2">쿠폰</h3>
-					<p><a href="">0</a>개</p>
+<!-- Content page -->
+<section class="bg0 p-t-62 p-b-60">
+	<div class="container">
+		<div class="row mb-4 text-center">
+			<div class="col-4 border rounded mx-5">
+				<h2 class="py-2">윤신영 님의 멤버십 등급은 Silver 입니다</h2>
+				<h3 class="py-2">최근 6개월 누적 구매 금액 : 원</h3>
+				<a href="" class="btn btn-primary">전체등급 알아보기</a>
+			</div>
+			<div class="col-2 border rounded mx-5">
+				<h3 class="py-2">적립금</h3>
+				<p>
+					<a href="">0</a>원
+				</p>
+			</div>
+			<div class="col-2 border rounded mx-5">
+				<h3 class="py-2">쿠폰</h3>
+				<p>
+					<a href="">0</a>개
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 col-lg-3 p-b-80">
+				<div class="side-menu">
+
+					<div class="p-t-55">
+						<h4 class="mtext-112 cl2 p-b-33">Categories</h4>
+
+						<ul>
+							<li class="bor18"><a href="${pageContext.request.contextPath }/member/order" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> 주문관리 </a></li>
+
+							<li class="bor18"><a href="${pageContext.request.contextPath }/member/coupon" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> 쿠폰 </a></li>
+
+							<li class="bor18"><a href="${pageContext.request.contextPath }/member/point" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> 포인트 </a></li>
+
+							<li class="bor18"><a href="${pageContext.request.contextPath }/member/myActivity" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> 내활동 </a></li>
+
+							<li class="bor18"><a href="${pageContext.request.contextPath }/member/review" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> 상품리뷰 </a></li>
+
+							<li class="bor18"><a href="${pageContext.request.contextPath }/member/myInfo" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> 내정보 관리 </a></li>
+
+							<li class="bor18"><a href="${pageContext.request.contextPath }/member/password" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> 내비밀번호 관리 </a></li>
+						</ul>
+					</div>
+
+
+					<div class="p-t-50">
+						<h4 class="mtext-112 cl2 p-b-27">Tags</h4>
+
+						<div class="flex-w m-r--5">
+							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Fashion </a> <a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Lifestyle </a> <a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Denim </a> <a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Streetstyle </a> <a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Crafts </a>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-4 col-lg-3 p-b-80">
-					<div class="side-menu">
-						
-						<div class="p-t-55">
-							<h4 class="mtext-112 cl2 p-b-33">
-								Categories
-							</h4>
 
-							<ul>
-								<li class="bor18">
-									<a href="${pageContext.request.contextPath }/member/order" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-										주문관리
-									</a>
-								</li>
-
-								<li class="bor18">
-									<a href="${pageContext.request.contextPath }/member/coupon" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-										쿠폰
-									</a>
-								</li>
-
-								<li class="bor18">
-									<a href="${pageContext.request.contextPath }/member/point" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-										포인트
-									</a>
-								</li>
-
-								<li class="bor18">
-									<a href="${pageContext.request.contextPath }/member/myActivity" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-										내활동
-									</a>
-								</li>
-
-								<li class="bor18">
-									<a href="${pageContext.request.contextPath }/member/review" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-										상품리뷰
-									</a>
-								</li>
-								
-									<li class="bor18">
-									<a href="${pageContext.request.contextPath }/member/myInfo" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> 내정보 관리 </a>
-							</li>
-							
-							<li class="bor18">
-									<a href="${pageContext.request.contextPath }/member/password" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> 내비밀번호 관리 </a>
-							</li>
-							</ul>
-						</div>
-
-
-						<div class="p-t-50">
-							<h4 class="mtext-112 cl2 p-b-27">
-								Tags
-							</h4>
-
-							<div class="flex-w m-r--5">
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Fashion
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Lifestyle
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Denim
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Streetstyle
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Crafts
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			
-				<div class="col-md-8 col-lg-9 p-b-80" style="padding:50px">
-					<h2 class="text-center">회원정보 수정</h2>
-				<form action="${pageContext.request.contextPath }/member/update_do" name="update" id="updateForm" method="post">
+			<div class="col-md-8 col-lg-9 p-b-80" style="padding: 50px">
+				<h2 class="text-center">회원정보 수정</h2>
+				<form action="${pageContext.request.contextPath}/member/update_do" method="post">
+					<input type="hidden" name="mno" value="${pid.mno }">
 					<div class="form-group">
-						<label for="user_id" style="text-align: left"><p><strong>아이디</strong>&nbsp;&nbsp;&nbsp;<span id="idChk"></span></p></label>
+						<label for="user_id" style="text-align: left"><p>
+								<strong>아이디</strong>&nbsp;&nbsp;&nbsp;<span id="idChk"></span>
+							</p></label>
 						<!--  id는 수정이 불가능하도록 readonly 속성 추가 -->
-						<input type="text" class="form-control form-control-lg"  value="${pid.id}" readonly="readonly" name="id" id="user_id" aria-describedby="emailHelp">
-						<small id="emailHelp" class="form-text text-muted">  </small>
+						<input type="text" class="form-control form-control-lg" value="${pid.id}" readonly="readonly" name="id" id="user_id" aria-describedby="emailHelp"> <small id="emailHelp" class="form-text text-muted"> </small>
 					</div>
 					<div class="form-group">
-				
-						<label for="user_name" text-align:="" left"=""><p><strong>이름</strong>&nbsp;&nbsp;&nbsp;<span id="nameChk"></span></p></label>
-						<input type="text" class="form-control form-control-lg" value="${pid.name}" readonly="readonly" name="name" id="user_name" placeholder="한글로 최대 6자">
+
+						<label for="user_name" text-align:="" left"=""><p>
+								<strong>이름</strong>&nbsp;&nbsp;&nbsp;<span id="nameChk"></span>
+							</p></label> <input type="text" class="form-control form-control-lg" value="${pid.name}" readonly="readonly" name="name" id="user_name" placeholder="한글로 최대 6자">
 					</div>
 					<div class="form-group">
-						<label for="user_nick" text-align:="" left"=""><p><strong>닉네임</strong>&nbsp;&nbsp;&nbsp;<span id="nickChk"></span></p></label>
-						<input type="text" class="form-control form-control-lg" value="${pid.nickname}" name="nickname" id="user_nick">
+						<label for="user_nick" text-align:="" left"=""><p>
+								<strong>닉네임</strong>&nbsp;&nbsp;&nbsp;<span id="nickChk"></span>
+							</p></label> <input type="text" class="form-control form-control-lg" value="${pid.nickname}" name="nickname" id="user_nick">
 					</div>
-					
-						<div class="form-group">
-						<label for="user_email"text-align: left"><p><strong>이메일</strong>&nbsp;&nbsp;&nbsp;<span id="emailChk"></span></p></label>
-						<input type="email" class="form-control form-control-lg" name="email" value="${pid.email}" id="user_email" placeholder="ex)aaa@naver.com" style="width: 50%; float:left;">
-						<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="send_email();" value="인증번호 전송" style="width: 50%;">
+
+					<div class="form-group">
+						<label for="user_email" text-align:left"><p>
+								<strong>이메일</strong>&nbsp;&nbsp;&nbsp;<span id="emailChk"></span>
+							</p></label> <input type="email" class="form-control form-control-lg" name="email" value="${pid.email}" id="user_email" placeholder="ex)aaa@naver.com" style="width: 50%; float: left;"> <input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="send_email();" value="인증번호 전송" style="width: 50%;">
 						<div class="clear"></div>
 						<div class="form-group">
-   					    <label for="user_codeNumber" text-align:left"=""></label>
-    					<input type="text" class="form-control form-control-lg" name="code_number" id="code_number" placeholder="인증번호 입력" style="width: 50%; float:left;">
-                        <input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="code_check();" value="인증 번호 확인" style="width: 50%;">
-                        </div>
+							<label for="user_codeNumber" text-align:left"=""></label> <input type="text" class="form-control form-control-lg" name="code_number" id="code_number" placeholder="인증번호 입력" style="width: 50%; float: left;"> <input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="code_check();" value="인증 번호 확인" style="width: 50%;">
+						</div>
 					</div>
 					<div class="form-group">
-						<label for="user_phone" text-align:="" left"=""><p><strong>전화번호</strong>&nbsp;&nbsp;&nbsp;<span id="phoneChk"></span></p></label>
-						<input type="tel" class="form-control form-control-lg" value="${pid.tel}" name="tel" id="user_phone" placeholder="(예시:- 하이픈 없이 입력해주세요)">
-						
-						
+						<label for="user_phone" text-align:="" left"=""><p>
+								<strong>전화번호</strong>&nbsp;&nbsp;&nbsp;<span id="phoneChk"></span>
+							</p></label> <input type="tel" class="form-control form-control-lg" value="${pid.tel}" name="tel" id="user_phone" placeholder="(예시:- 하이픈 없이 입력해주세요)">
+
+
 					</div>
-					
+
 					주소(우편번호)
 					<div class="form-group">
-					<input type="text" class="form-control form-control-lg" value="${paddr.postcode}" id="sample4_postcode" name="postcode" placeholder="우편번호">
-					<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" class="form-control form-control-lg" id="sample4_roadAddress" value="${paddr.street_address}" name="street_address" placeholder="도로명주소">
-					<br>
-					<input type="text" class="form-control form-control-lg" id="sample4_jibunAddress" value="${paddr.parcel_address}" name="parcel_address" placeholder="지번주소">
-					<span id="guide" style="color:#999;display:none"></span>
-					<br>
-					<input type="text" class="form-control form-control-lg" id="sample4_extraAddress" value="${paddr.deliver_state}" name="deliver_state" placeholder="참고항목">
-					<br>
-					<input type="text" class="form-control form-control-lg" id="sample4_detailAddress" value="${paddr.detail_address}" name="detail_address" placeholder="상세주소">
+						<input type="text" class="form-control form-control-lg" value="${paddr.postcode}" id="sample4_postcode" name="postcode" placeholder="우편번호"> 
+						
+						<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br> <input type="text" class="form-control form-control-lg" id="sample4_roadAddress" value="${paddr.street_address}" name="street_address" placeholder="도로명주소"> 
+						<br> <input type="text" class="form-control form-control-lg" id="sample4_jibunAddress" value="${paddr.parcel_address}" name="parcel_address" placeholder="지번주소"> 
+						<span id="guide" style="color: #999; display: none"></span> <br> <input type="text" class="form-control form-control-lg" id="sample4_extraAddress" value="${paddr.deliver_state}" name="deliver_state" placeholder="참고항목"> 
+						<br> <input type="text" class="form-control form-control-lg" id="sample4_detailAddress" value="${paddr.detail_address}"
+							name="detail_address" placeholder="상세주소">
 					</div>
-					
-					<button class="btn btn-outline-secondary btn-block btn-lg" id="signup-btn">회원정보 수정완료</button>
-				</form>
-				</div>
 
-				
+					<button type="submit" class="btn btn-outline-secondary btn-block btn-lg" id="signup-btn">회원정보 수정완료</button>
+				</form>
 			</div>
+
+
 		</div>
-	</section>	
+	</div>
+</section>
 
 <script>
 
@@ -199,22 +144,6 @@ $(function() {
 	const getPhone = RegExp(/^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/);
 	let chk1 = false, chk2 = false, chk3 = false, chk4 = false, chk5 = false; chk6 = false;
 
-	$(document).ready(function() {
-		
-		(function yajax() {
-			$.ajax({
-				url : '${pageContext.request.contextPath }/magazine/magazineAjax',
-				type : 'GET',
-				dataType : 'json',
-				success : function (data) {
-					console.log(data);
-					$('#magazine-test a img').attr('src','${pageContext.request.contextPath }'+data[0].rootfolder+data[0].uuidname);
-					$('#magazine-title').html(data[0].title)
-				}
-			});
-
-		})();
-	});
 	
 	//패스워드 입력값 검증.
 	$('#password').on('keydown', function() {

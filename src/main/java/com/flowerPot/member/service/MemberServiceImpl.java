@@ -90,7 +90,7 @@ public class MemberServiceImpl implements MemberSerivce {
 		memberDao.updateMember(vo);
 	}
 
-	//비밀번호 수정문
+	
 	@Override
 	public void passwordUpdate(MemberVo vo) throws Exception {
 		memberDao.updatePassword(vo);
@@ -110,9 +110,10 @@ public class MemberServiceImpl implements MemberSerivce {
 	public void insertMember(MemberVo member) {
 		
 	}
+
 	@Override
 	public List<CoupVo> getCoupList(MemberVo member) {
 		return coupDao.selectListCoupoBymno(member.getMno());
 	}
-	
+
 }
