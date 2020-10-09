@@ -46,5 +46,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateOrderProductTOComplete">
 		update f_orderProduct set state = '주문완료', deliver_state = '배송완료' where ono = #{ono}
 	</update>
+	
+	<select id="selectListOrderProductByMno"  resultType="com.flowerPot.vo.OrderProductVo">
+		select * from f_orderProduct where mno = #{mno} order by ono desc
+	</select>
+	
+	<select id="selectListByOrderNum" resultType="com.flowerPot.vo.OrderProductVo">
+		select * from f_orderProduct where order_num = #{order_num} order by ono desc
+	</select>
 </mapper>
 

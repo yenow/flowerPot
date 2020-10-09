@@ -9,4 +9,6 @@ public interface OrderDao {
 
 	void insertOrder(OrderVo orderVo);
 
+	List<OrderVo> selectListOrderByMno(Integer mno);
+
 }

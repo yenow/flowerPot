@@ -1,10 +1,14 @@
 package com.flowerPot.member.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.flowerPot.admin.dao.CoupMapper;
+import com.flowerPot.admin.vo.CoupVo;
 import com.flowerPot.dao.AuthorityDao;
 import com.flowerPot.member.repository.MemberDao;
 import com.flowerPot.member.vo.MemberDTO;
@@ -21,6 +25,8 @@ public class MemberServiceImpl implements MemberSerivce {
 	private AuthorityDao authorityDao;
 	@Autowired
 	private MemberAddressDao memberAddressDao;
+	@Autowired
+	private CoupMapper coupDao;
 
 	@Transactional
 	@Override
@@ -96,5 +102,9 @@ public class MemberServiceImpl implements MemberSerivce {
 
 	public void insertMember(MemberVo member) {
 		
+	}
+	@Override
+	public List<CoupVo> getCoupList(MemberVo member) {
+		return coupDao.selectListCoupoBymno(member.getMno());
 	}
 }

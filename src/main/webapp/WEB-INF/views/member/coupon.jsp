@@ -1,210 +1,123 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
 <jsp:include page="../info/header2.jsp"></jsp:include>
 
-	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/bg-02.jpg');">
-		<h2 class="ltext-105 cl0 txt-center">
-			마이페이지
-		</h2>
-	</section>	
+<!-- Title page -->
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/bg-02.jpg');">
+	<h2 class="ltext-105 cl0 txt-center">마이페이지</h2>
+</section>
 
+<div class="container">
+	<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+		<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
+			홈 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+		</a>
+
+		<a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
+			마이페이지 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+		</a>
+
+		<span class="stext-109 cl4"> 상품주문 </span>
+	</div>
+</div>
+
+<!-- Content page -->
+<section class="bg0 p-t-62 p-b-60">
 	<div class="container">
-		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
-				홈
-				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-			</a>
+		<jsp:include page="jumbotron.jsp"></jsp:include>
+		
+		<div class="row">
+			<div class="col-md-4 col-lg-3 p-b-80">
+				<jsp:include page="sidebar.jsp"></jsp:include>
+			</div>
 
-			<a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
-				마이페이지
-				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-			</a>
+			<div class="col-md-8 col-lg-9 p-b-80" style="padding: 50px">
+				<h2 class="text-center my-3">내가 가진 쿠폰 내역</h2>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">쿠폰이름</th>
+							<!-- <th scope="col">할인율</th>
+							<th scope="col">할인액</th> -->
+							<th scope="col">유효기간</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<c:forEach var="coup" items="${coupList }">
+								<td>${coup.couponName }</td>
+								<%-- <td>${coup.discountPercent }%</td>
+							<td>${coup.discountMoney }원</td> --%>
+								<td>
+									<javatime:format value="${coup.startDate }" pattern="yyyy년 MM월 dd일" />
+									~
+									<javatime:format value="${coup.endDate }" pattern="yyyy년 MM월 dd일" />
+								</td>
+							</c:forEach>
+							<c:if test="${fn:length(coupList) == 0}">
+								<td colspan="2" class="text-center">
+									가지고있는 쿠폰이 없습니다
+								</td>
+							</c:if>
+						</tr>
+					</tbody>
+				</table>
 
-			<span class="stext-109 cl4">
-				상품주문
-			</span>
+				<h2 class="text-center my-3 pt-4">사용한 쿠폰 내역</h2>
+				<div class="wrap-table-shopping-cart">
+					<table class="table " style="margin: 0;">
+						<tr>
+							<!-- <th class="column-1 text-center"></th> -->
+							<th scope="col" class="text-center">상품사진</th>
+							<th scope="col" class="text-center">상품이름</th>
+							<th scope="col" class="text-center">개수</th>
+							<th scope="col" class="text-center">배송 상태</th>
+							<th scope="col" class="text-center">주문상태</th>
+						</tr>
+						<c:set var="orderNum" property="0"></c:set>
+						<c:forEach var="order" items="${oList }">
+							<!-- 사용한 포인트가 있을때만 출력 -->
+							<c:if test="${order.orderProductList[0].couponName ne null }">
+								<tr>
+									<td colspan="4" class="align-middle">주문번호 : ${order.order_num }</td>
+									<td class="align-middle">${order.regdate }</td>
+								</tr>
+
+								<c:forEach var="op" items="${order.orderProductList }">
+									<tr class="">
+										<!-- <td class="column-1 text-center"><input class="align-self-center m-l-10" type="checkbox" id=""></td>  -->
+										<!-- 요부분 생각좀하자 -->
+										<td class="align-self-center text-center">
+											<div class="how-itemcart1" style="margin: 0 auto;">
+												<img src="${op.cosmeticVo.mappingList[0] }" alt="상품사진">
+											</div>
+										</td>
+										<td class="text-center align-middle">${op.cosmeticVo.name }</td>
+										<!-- 개수 -->
+										<td class="text-center align-middle">
+											<span> ${op.amount} </span>
+										</td>
+										<!--  -->
+										<td class="text-center align-middle">${op.deliver_state }</td>
+										<td class="text-center align-middle">${op.state }</td>
+									</tr>
+								</c:forEach>
+								<tr>
+									<td colspan="5">사용한 쿠폰 이름 : ${order.orderProductList[0].couponName }</td>
+								</tr>
+							</c:if>
+						</c:forEach>
+					</table>
+				</div>
+			</div>
+
+
 		</div>
 	</div>
-
-	<!-- Content page -->
-	<section class="bg0 p-t-62 p-b-60">
-		<div class="container">
-			<div class="row mb-4 text-center">
-				<div class="col-4 border rounded mx-5">
-					<h2 class="py-2">윤신영 님의 멤버십 등급은 Silver 입니다</h2>
-					<h3 class="py-2">최근 6개월 누적 구매 금액 : 원</h3>
-					<a href="" class="btn btn-primary">전체등급 알아보기</a>
-				</div>
-				<div class="col-2 border rounded mx-5">
-					<h3 class="py-2">적립금</h3>
-					<p><a href="">0</a>원</p>
-				</div>
-				<div class="col-2 border rounded mx-5">
-					<h3 class="py-2">쿠폰</h3>
-					<p><a href="">0</a>개</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4 col-lg-3 p-b-80">
-					<div class="side-menu">
-						
-						<div class="p-t-55">
-							<h4 class="mtext-112 cl2 p-b-33">
-								Categories
-							</h4>
-
-							<ul>
-								<li class="bor18">
-									<a href="${pageContext.request.contextPath }/member/order" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-										주문관리
-									</a>
-								</li>
-
-								<li class="bor18">
-									<a href="${pageContext.request.contextPath }/member/coupon" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-										쿠폰
-									</a>
-								</li>
-
-								<li class="bor18">
-									<a href="${pageContext.request.contextPath }/member/point" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-										포인트
-									</a>
-								</li>
-
-								<li class="bor18">
-									<a href="${pageContext.request.contextPath }/member/myActivity" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-										내활동
-									</a>
-								</li>
-
-								<li class="bor18">
-									<a href="${pageContext.request.contextPath }/member/review" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-										상품리뷰
-									</a>
-								</li>
-								
-								<li class="bor18">
-									<a href="${pageContext.request.contextPath }/member/myInfo" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> 내정보 관리 </a>
-							</li>
-							
-							<li class="bor18">
-									<a href="${pageContext.request.contextPath }/member/password" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> 내비밀번호 관리 </a>
-							</li>
-							</ul>
-						</div>
-
-
-						<div class="p-t-50">
-							<h4 class="mtext-112 cl2 p-b-27">
-								Tags
-							</h4>
-
-							<div class="flex-w m-r--5">
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Fashion
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Lifestyle
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Denim
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Streetstyle
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Crafts
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			
-				<div class="col-md-8 col-lg-9 p-b-80" style="padding:50px">
-					<h2 class="text-center">비밀번호 수정</h2>
-				<form action="${pageContext.request.contextPath }/member/signUp_ok" name="signup" id="signUpForm" method="post">
-				
-					<!-- <div class="form-group">
-						<label for="user_id" style="text-align: left"><p><strong>아이디</strong>&nbsp;&nbsp;&nbsp;<span id="idChk"></span></p></label>
-						<input type="text" class="form-control form-control-lg" name="id" id="user_id" aria-describedby="emailHelp" placeholder="숫자와 영어로 4-10자">
-						<small id="emailHelp" class="form-text text-muted">  </small>
-					</div> -->
-					<div class="form-group">
-						<label for="password" style="text-align: left"><p><strong>비밀번호</strong>&nbsp;&nbsp;&nbsp;<span id="pwChk"></span></p></label>
-						<input type="password" class="form-control form-control-lg" name="password" id="password" placeholder="영문과 특수문자를 포함한 최소 8자">
-					</div>
-					<div class="form-group">
-						<label for="password" style="text-align: left"><p><strong>새비밀번호</strong>&nbsp;&nbsp;&nbsp;<span id="pwChk"></span></p></label>
-						<input type="password" class="form-control form-control-lg" name="password" id="password" placeholder="영문과 특수문자를 포함한 최소 8자">
-					</div>
-					<div class="form-group">
-						<label for="password_check" text-align:="" left"=""><p><strong>새비밀번호확인</strong>&nbsp;&nbsp;&nbsp;<span id="pwChk2"></span></p></label>
-						<input type="password" class="form-control form-control-lg" name="password2" id="password_check" placeholder="비밀번호가 일치해야합니다.">
-					</div>
-					<button class="btn btn-outline-secondary btn-block btn-lg" id="signup-btn">비밀번호 변경</button>
-					</form>
-					<br/>
-					<h2 class="text-center">회원정보 수정</h2>
-				<form action="${pageContext.request.contextPath }/member/signUp_ok" name="signup" id="signUpForm" method="post">
-					<div class="form-group">
-						<label for="user_name" text-align:="" left"=""><p><strong>이름</strong>&nbsp;&nbsp;&nbsp;<span id="nameChk"></span></p></label>
-						<input type="text" class="form-control form-control-lg" name="name" id="user_name" placeholder="한글로 최대 6자">
-					</div>
-					<div class="form-group">
-						<label for="user_nick" text-align:="" left"=""><p><strong>닉네임</strong>&nbsp;&nbsp;&nbsp;<span id="nickChk"></span></p></label>
-						<input type="text" class="form-control form-control-lg" name="nickname" id="user_nick">
-					</div>
-					<!-- <div class="form-group">
-						<label for="user_email" text-align:="" left"=""><p><strong>이메일</strong>&nbsp;&nbsp;&nbsp;<span id="emailChk"></span></p></label>
-						<input type="email" class="form-control form-control-lg" name="email" id="user_email" placeholder="ex)aaa@naver.com" style="width: 50%; float:left;">
-						<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="send_email();" value="인증번호 전송" style="width: 50%;">
-						<div class="clear"></div>
-						<div class="form-group">
-   					    <label for="user_codeNumber" text-align:left"=""></label>
-    					<input type="text" class="form-control form-control-lg" name="code_number" id="code_number" placeholder="인증번호 입력" style="width: 50%; float:left;">
-                        <input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="code_check();" value="인증 번호 확인" style="width: 50%;">
-                        </div>
-					</div> -->
-					<div class="form-group">
-						<label for="user_phone" text-align:="" left"=""><p><strong>전화번호</strong>&nbsp;&nbsp;&nbsp;<span id="phoneChk"></span></p></label>
-						<input type="tel" class="form-control form-control-lg" name="tel" id="user_phone" placeholder="(예시:- 하이픈 없이 입력해주세요)">
-
-					</div>
-					<!-- <div class="form-check">
-						<input type="radio" name="gender" id="exampleRadios1" value="M" style="display: inline-block">
-						<label for="exampleRadios1" style="display: inline-block"> 남자 </label>
-						<input type="radio" name="gender" id="exampleRadios2" value="F" style="display: inline-block">
-						<label for="exampleRadios2" style="display: inline-block"> 여자 </label>
-					</div> -->
-					주소(우편번호)
-					<div class="form-group">
-					<input type="text" class="form-control form-control-lg" id="sample4_postcode" name="postcode" placeholder="우편번호">
-					<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" class="form-control form-control-lg" id="sample4_roadAddress" name="street_address" placeholder="도로명주소">
-					<br>
-					<input type="text" class="form-control form-control-lg" id="sample4_jibunAddress" name="parcel_address" placeholder="지번주소">
-					<span id="guide" style="color:#999;display:none"></span>
-					<br>
-					<input type="text" class="form-control form-control-lg" id="sample4_extraAddress" name="deliver_state" placeholder="참고항목">
-					<br>
-					<input type="text" class="form-control form-control-lg" id="sample4_detailAddress" name="detail_address" placeholder="상세주소">
-					</div>
-					
-					<button class="btn btn-outline-secondary btn-block btn-lg" id="signup-btn">회원정보 수정완료</button>
-				</form>
-				</div>
-
-				
-			</div>
-		</div>
-	</section>	
+</section>
 
 <script>
 

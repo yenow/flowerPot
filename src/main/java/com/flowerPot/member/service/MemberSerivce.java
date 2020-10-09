@@ -1,6 +1,8 @@
 package com.flowerPot.member.service;
 
 import java.util.List;
+
+import com.flowerPot.admin.vo.CoupVo;
 import com.flowerPot.member.vo.MemberDTO;
 import com.flowerPot.vo.MemberAddressVo;
 import com.flowerPot.vo.MemberVo;
@@ -37,5 +39,6 @@ public interface MemberSerivce {
 	
 
 	void giveAdminAuth(String empId);
+	List<CoupVo> getCoupList(MemberVo member);
 
 }

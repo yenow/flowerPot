@@ -57,4 +57,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- <select id="selectOneHasCoupon">
 		select * from f_hasCoupon where;
 	</select> -->
+	
+	<select id="selectListCoupoBymno" resultType="com.flowerPot.admin.vo.CoupVo">
+		select f_coupon.* from f_hasCoupon inner join f_coupon on f_hasCoupon.couNo = f_coupon.couNo where mno = #{mno}
+	</select>
 </mapper>

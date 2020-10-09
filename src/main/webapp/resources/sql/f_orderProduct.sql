@@ -54,3 +54,6 @@ update f_member set brand= '이니스프리' where mno = 3;
 
 select ono_seq.currval from dual;
 select LAST_NUMBER from user_sequences where SEQUENCE_NAME = 'ONO_SEQ';
+
+
+select * from f_orderProduct where mno = 3 order by ono desc;

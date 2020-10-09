@@ -25,7 +25,8 @@ public class MemberVo {
 	private Integer point;
 	private List<AuthorityVo> authList;
 	private String brand;
-//	private List<EmpVo> empList;
+	
+	//	private List<EmpVo> empList;
 
 	/*
 	 * public MemberVo(Integer mno, String id, String password, String name, String

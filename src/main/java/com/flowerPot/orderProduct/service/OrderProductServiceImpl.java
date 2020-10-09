@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.flowerPot.cosmetic.repository.CosmeticDao;
 import com.flowerPot.delivery.repository.DeliveryDao;
 import com.flowerPot.orderProduct.repository.OrderProductDao;
 import com.flowerPot.vo.OrderProductVo;
@@ -19,6 +20,8 @@ public class OrderProductServiceImpl implements OrderProductService {
 	private OrderProductDao orderProductDao;
 	@Autowired
 	private DeliveryDao deliveryDao;
+	@Autowired
+	private CosmeticDao cosmeticDao;
 	
 	@Override
 	public List<OrderProductVo> selectListOrderProductByBrand(String brand) {
@@ -39,6 +42,16 @@ public class OrderProductServiceImpl implements OrderProductService {
 		OrderProductVo order = orderProductDao.selectOneByono(ono);
 		deliveryDao.updateStateByDno(order.getDno());
 		orderProductDao.updateOrderProductTOComplete(ono);
+	}
+
+	@Override
+	public List<OrderProductVo> selectListOrderProductByMno(Integer mno) {
+		
+		List<OrderProductVo> list = orderProductDao.selectListOrderProductByMno(mno);
+		for(OrderProductVo op : list) {
+			op.setCosmeticVo(cosmeticDao.selectOneCosmeticByCno(op.getCno()));
+		}
+		return list;
 	}
 
 }

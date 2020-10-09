@@ -3,8 +3,11 @@ create table f_order(
 	mno number(30),
 	dno number(30),
 	order_num varchar2(200),
-	price 
+	final_price number(30),
+	regdate date
 );
+alter table f_order add final_price number(30);
+alter table f_order add regdate date;
 
 create sequence orderno_seq increment by 1 start with 1;
 

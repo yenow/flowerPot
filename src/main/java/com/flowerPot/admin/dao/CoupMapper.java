@@ -32,4 +32,6 @@ public interface CoupMapper {
 
 	void deleteCoupon(HasCouponVo hc);
 
+	List<CoupVo> selectListCoupoBymno(Integer mno);
+
 }

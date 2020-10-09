@@ -4,6 +4,7 @@ package com.flowerPot.member.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -24,7 +25,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,14 +34,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.flowerPot.admin.vo.CoupVo;
 import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
 import com.flowerPot.member.service.MemberSerivce;
 import com.flowerPot.memberAddress.service.MemberAddressService;
+import com.flowerPot.order.service.OrderService;
+import com.flowerPot.orderProduct.service.OrderProductService;
 import com.flowerPot.service.AuthorityService;
 import com.flowerPot.vo.CosmeticReviewVo;
-import com.flowerPot.vo.DeliveryVo;
 import com.flowerPot.vo.MemberAddressVo;
 import com.flowerPot.vo.MemberVo;
+import com.flowerPot.vo.OrderProductVo;
+import com.flowerPot.vo.OrderVo;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 
 import lombok.extern.slf4j.Slf4j;
@@ -57,6 +61,11 @@ public class MemberController {
 	private MemberSerivce memberSerivce;
 	@Autowired
 	private MemberAddressService memberAddressService;
+	@Autowired
+	private OrderProductService orderProductService;
+	@Autowired
+	private OrderService orderService;
+
 	/*
 	 * @RequestMapping(value="/kakaologin", produces = "application/json", method=
 	 * {RequestMethod.GET, RequestMethod.POST}) public String
@@ -65,129 +74,181 @@ public class MemberController {
 	 * System.out.println("code :"+code); }
 	 */
 	/* NaverLoginBO */
-    private NaverLoginBO naverLoginBO;
-    private String apiResult1 = null;
-    
-    
-    @Autowired
-    private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
-        this.naverLoginBO = naverLoginBO;
-    }
-   
-    
- // 마이 페이지로 이동
- 	@RequestMapping("/myPage")
- 	public String MyPage(Principal principal) {
- 		
- 		MemberVo memberVo = new MemberVo();
+	private NaverLoginBO naverLoginBO;
+	private String apiResult1 = null;
+	@Autowired
+	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
+		this.naverLoginBO = naverLoginBO;
+	}
+
+	// 회원 정보 시큐리티에서 가져오기
+	public MemberVo getMemberBysecurity(Principal principal) {
+		MemberVo memberVo = new MemberVo();
+		if(principal!=null) {
+			String id = principal.getName();
+			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
+		}
+		return memberVo;
+	}
+
+	// 마이 페이지로 이동
+	@RequestMapping("/myPage")
+	public String MyPage(Principal principal, Model model) {
+
+		MemberVo memberVo = new MemberVo();
 		MemberAddressVo memberAddress  = new MemberAddressVo();
- 		if(principal!=null) {
+		List<OrderProductVo> oList = new ArrayList<OrderProductVo>();
+		if(principal!=null) {
+			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
+			String id = principal.getName();
+			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
+
+			oList = orderProductService.selectListOrderProductByMno(memberVo.getMno());
+			log.info("주문리스트 : "+oList);
+		}
+
+		model.addAttribute("oList", oList);
+		return "/member/myPage";
+	}
+
+	// 쿠폰 페이지로 이동
+	@RequestMapping("/coupon")
+	public String coupon(Principal principal, Model model) {
+		System.out.println("쿠폰 페이지 호출됨");
+		MemberVo member = getMemberBysecurity(principal);
+		
+		//주문정보 가져오기
+		List<OrderVo> oList = new ArrayList<OrderVo>();
+		if(member != null) {
+			oList = orderService.selectListOrderByMno(member.getMno());
+		}
+		
+		//쿠폰 리스트 가져오기
+		List<CoupVo> coupList =  memberSerivce.getCoupList(member);
+		
+		model.addAttribute("member", member);
+		model.addAttribute("coupList", coupList);
+		model.addAttribute("oList", oList);
+		return "member/coupon";
+	}
+
+	// 포인트 페이지로 이동
+	@RequestMapping("/point")
+	public String point(Principal principal, Model model) {
+		System.out.println("나의 포인트 페이지 호출됨");
+		MemberVo member = getMemberBysecurity(principal);
+		
+		// 주문 정보 가져오기
+		List<OrderVo> oList = new ArrayList<OrderVo>();
+		if(member != null) {
+			oList = orderService.selectListOrderByMno(member.getMno());
+		}
+		
+		model.addAttribute("member", member);
+		model.addAttribute("oList", oList);
+		return "/member/point";
+	}
+	
+	// 주문관리 페이지로 이동
+	@RequestMapping("/order")
+	public String order(Principal principal, Model model) {
+		System.out.println("나의 주문페이지 호출됨");
+
+		MemberVo memberVo = new MemberVo();
+		MemberAddressVo memberAddress  = new MemberAddressVo();
+		List<OrderVo> oList = new ArrayList<OrderVo>();
+		if(principal!=null) {
+			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
+			String id = principal.getName();
+			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
+
+			oList = orderService.selectListOrderByMno(memberVo.getMno());
+			log.info("주문리스트 : "+oList);
+		}
+
+		model.addAttribute("member", memberVo);
+		model.addAttribute("oList", oList);
+		return "/member/order";
+	}
+
+	//나의 회원정보 이동 
+	@RequestMapping("/myInfo") 
+	public String myInfo(Principal principal, Model model) {
+		MemberVo memberVo = new MemberVo();
+		MemberAddressVo memberAddress  = new MemberAddressVo();
+		System.out.println("나의 회원정보 호출됨");
+		if(principal!=null) {
 			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
 			String id = principal.getName();
 			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
 			memberAddress  = memberAddressService.selectOneMemberAddressByMno(memberVo.getMno());   // 회원주소록 가져오기
+			model.addAttribute("pid",memberVo);
+			model.addAttribute("paddr",memberAddress);
+			
 		}
- 		return "/member/myPage";
- 	}
- 	
- // 쿠폰 페이지로 이동
-    
-  	@RequestMapping("/coupon")
-  	public String coupon() {
-  		return "member/coupon";
-  }
-  	
- // 포인트 페이지로 이동
-  	@RequestMapping("/point")
-  	public String point() {
-  		System.out.println("나의 포인트 페이지 호출됨");
-  		return "/member/point";
-  	}
- // 주문관리 페이지로 이동
-    
-  	@RequestMapping("/order")
-  	public String order() {
-  		System.out.println("나의 주문페이지 호출됨");
-  		return "/member/order";
-  	}
-  	
-    //나의 회원정보 이동 
-    @RequestMapping("/myInfo") 
-	  public String myInfo(Principal principal, Model model) {
-    	MemberVo memberVo = new MemberVo();
-		MemberAddressVo memberAddress  = new MemberAddressVo();
-    	System.out.println("나의 회원정보 호출됨");
-    	if(principal!=null) {
-			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
-    	String id = principal.getName();
-    	memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
-    	memberAddress  = memberAddressService.selectOneMemberAddressByMno(memberVo.getMno());   // 회원주소록 가져오기
-    	model.addAttribute("pid",memberVo);
-    	model.addAttribute("paddr",memberAddress);
-    	}
-    	return "/member/myInfo"; 
-	   }
-    
-    //나의 활동으로 이동 
-    @RequestMapping("/myActivity") 
-	  public String myActivity() {
-    	System.out.println("나의 활동으로 호출됨");
-    	return "/member/myActivity";
-	   }
-   
-    //나의 리뷰로 이동
-    @RequestMapping("/review") 
-	  public String costmeticReviewList(CosmeticReviewVo costmeticReview, Model model) {
-    List<CosmeticReviewVo> cmrList =cosmeticReviewService.selectListCosmeticReviewListById(costmeticReview);
-    model.addAttribute("cmrList",cmrList);
-  	System.out.println("나의 활동으로 호출됨");
-  	return "/member/review";
-	   }
-    
-   
-    
-    //나의 비밀번호 변경으로 이동
-    @RequestMapping("/password") 
-	  public String password() {
-  	System.out.println("나의 비밀번호변경으로 호출됨");
-  	return "/member/password";
-	   }
-    
-    
-    
-    //로그인 첫 화면 요청 메소드
-    @RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
-    public String login(Model model, HttpSession session) {
-        
-        /* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
-        String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-        
-        //https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
-        //redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
-        System.out.println("네이버:" + naverAuthUrl);
-        
-        //네이버 
-        model.addAttribute("naverLogin", naverAuthUrl);
- 
-        /* 생성한 인증 URL을 View로 전달 */
-        return "member/login";
-    }
- 
-    //네이버 로그인 성공시 callback호출 메소드
-    @RequestMapping(value = "/login/callback", method = { RequestMethod.GET, RequestMethod.POST })
-    public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
-            throws IOException {
-        System.out.println("여기는 callback");
-        OAuth2AccessToken oauthToken;
-        oauthToken = naverLoginBO.getAccessToken(session, code, state);
-        //로그인 사용자 정보를 읽어온다.
-        apiResult1 = naverLoginBO.getUserProfile(oauthToken);
-        System.out.println(apiResult1);
-        model.addAttribute("result", apiResult1);
- 
-        /* 네이버 로그인 성공 페이지 View 호출 */
-        return "/";
-    }
+		return "/member/myInfo"; 
+	}
+
+	//나의 활동으로 이동 
+	@RequestMapping("/myActivity") 
+	public String myActivity() {
+		System.out.println("나의 활동으로 호출됨");
+		return "/member/myActivity";
+	}
+
+	//나의 리뷰로 이동
+	@RequestMapping("/review") 
+	public String costmeticReviewList(CosmeticReviewVo costmeticReview, Model model) {
+		List<CosmeticReviewVo> cmrList =cosmeticReviewService.selectListCosmeticReviewListById(costmeticReview);
+		model.addAttribute("cmrList",cmrList);
+		System.out.println("나의 활동으로 호출됨");
+		return "/member/review";
+	}
+
+
+
+	//나의 비밀번호 변경으로 이동
+	@RequestMapping("/password") 
+	public String password() {
+		System.out.println("나의 비밀번호변경으로 호출됨");
+		return "/member/password";
+	}
+
+
+
+	//로그인 첫 화면 요청 메소드
+	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
+	public String login(Model model, HttpSession session) {
+
+		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
+		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+
+		//https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
+		//redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
+		System.out.println("네이버:" + naverAuthUrl);
+
+		//네이버 
+		model.addAttribute("naverLogin", naverAuthUrl);
+
+		/* 생성한 인증 URL을 View로 전달 */
+		return "member/login";
+	}
+
+	//네이버 로그인 성공시 callback호출 메소드
+	@RequestMapping(value = "/login/callback", method = { RequestMethod.GET, RequestMethod.POST })
+	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
+			throws IOException {
+		System.out.println("여기는 callback");
+		OAuth2AccessToken oauthToken;
+		oauthToken = naverLoginBO.getAccessToken(session, code, state);
+		//로그인 사용자 정보를 읽어온다.
+		apiResult1 = naverLoginBO.getUserProfile(oauthToken);
+		System.out.println(apiResult1);
+		model.addAttribute("result", apiResult1);
+
+		/* 네이버 로그인 성공 페이지 View 호출 */
+		return "/";
+	}
 	@Inject // 서비스를 호출하기 위해서 의존성을 주입
 	JavaMailSender mailSender; // 메일 서비스를 사용하기 위해 의존성을 주입함
 
@@ -344,7 +405,7 @@ public class MemberController {
 		member.setPassword(passwordEncoder.encode(member.getPassword()));
 		log.info("회원정보 : " + member.toString());
 		memberService.insertMember(member,memberAddress);
-		
+
 		return "redirect:/";
 	}
 	//
@@ -374,7 +435,7 @@ public class MemberController {
 		}
 		return result;
 
-	  }		
+	}		
 
 	// 이메일 중복인 요청 처리
 	@PostMapping("/checkEmail")
@@ -415,7 +476,7 @@ public class MemberController {
 		}
 		return result;
 	}
-	
+
 	//회원정보 상세정보 조회
 	/*
 	 * @RequestMapping("/view_do") public String memberView(String id, Model model)
@@ -423,7 +484,7 @@ public class MemberController {
 	 * System.out.println("아이디 확인"); logger.info("클릭한 아이디:"+id); //myInfo.jsp로 포워드
 	 * return "member/myInfo"; }
 	 */
-	
+
 
 	/*
 	 * @PostMapping("/") public String register(@RequestBody MemberVo member) {
@@ -484,7 +545,7 @@ public class MemberController {
 	 * 
 	 * return memberService.selectAll();
 	 */
-		
+
 
 	@PostMapping("searchMemberById")
 	@ResponseBody
@@ -497,10 +558,10 @@ public class MemberController {
 		}else {
 			r = new ResponseEntity<String>("noID", HttpStatus.OK);
 		}
-		
+
 		return r;
 	}
-	
+
 	@PostMapping("insertAuthority")
 	@ResponseBody
 	public ResponseEntity<String> insertAuthority(@RequestBody Map<String, Object> map) {

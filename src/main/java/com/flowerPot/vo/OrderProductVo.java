@@ -28,6 +28,8 @@ public class OrderProductVo {
 	private Integer final_price;
 	private String brand;
 	
+	private CosmeticVo cosmeticVo;
+	
 	public OrderProductVo(Integer ono, Integer cno, Integer dno, String order_num, Integer amount, String state,
 			String deliver_state, String member_rank, Integer point, String couponName, LocalDateTime regdate,
 			String tel, String email, Integer price, Integer final_price) {

@@ -24,4 +24,8 @@ public interface OrderProductDao {
 	OrderProductVo selectOneByono(Integer ono);
 
 	void updateOrderProductTOComplete(Integer ono);
+
+	List<OrderProductVo> selectListOrderProductByMno(Integer mno);
+
+	List<OrderProductVo> selectListByOrderNum(String order_num);
 }

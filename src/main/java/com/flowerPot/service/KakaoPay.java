@@ -156,6 +156,7 @@ public class KakaoPay {
 		 	orderVo.setDno(dno);
 		 	orderVo.setMno(mno);
 		 	orderVo.setOrder_num(order_num);
+		 	orderVo.setFinal_price(olist.get(0).getFinal_price());
 		 	orderDao.insertOrder(orderVo);
 		 	
 		 	// 최종 결제 가격
