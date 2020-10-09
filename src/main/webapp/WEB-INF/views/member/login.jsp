@@ -12,7 +12,8 @@
 	<div class="container">
 		<script type = "text/javascript" src = "https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 		<div class="p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-			<form name="f" action="${pageContext.request.contextPath }/login" method="post">
+			<form name="f" action="${pageContext.request.contextPath }/login" method="post" >
+				<input type="hidden" name=${_csrf.parameterName } value="${_csrf.token }">				
 				<h4 class="mtext-105 cl2 txt-center p-b-30"></h4>
 				<h4 class="mtext-105 cl2 txt-center p-b-30"></h4>
 				

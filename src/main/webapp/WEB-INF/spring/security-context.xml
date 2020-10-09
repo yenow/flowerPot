@@ -32,7 +32,7 @@
 		<security:form-login username-parameter="id" password-parameter="password" login-page="/member/login" default-target-url="/" authentication-failure-url="/member/login?fail=true"/>
 
 		<security:logout logout-url="/logout" />
-		<security:csrf disabled="true"/>
+		<security:csrf disabled="false"/>
 	</security:http>
 	
 	

@@ -35,10 +35,11 @@ public interface MemberSerivce {
 	MemberVo viewMember(String id);
 	
 	void insertMember(MemberVo member, MemberAddressVo memAddressVo);
+	
 	void updateMember(MemberVo vo, MemberAddressVo memberAddress) throws Exception;
 	
-
 	void giveAdminAuth(String empId);
 	List<CoupVo> getCoupList(MemberVo member);
+	
 
 }

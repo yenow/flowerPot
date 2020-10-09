@@ -16,7 +16,10 @@ import com.flowerPot.memberAddress.repository.MemberAddressDao;
 import com.flowerPot.vo.MemberAddressVo;
 import com.flowerPot.vo.MemberVo;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class MemberServiceImpl implements MemberSerivce {
 
 	@Autowired
@@ -107,4 +110,5 @@ public class MemberServiceImpl implements MemberSerivce {
 	public List<CoupVo> getCoupList(MemberVo member) {
 		return coupDao.selectListCoupoBymno(member.getMno());
 	}
+	
 }
