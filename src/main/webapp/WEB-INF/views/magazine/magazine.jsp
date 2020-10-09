@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <jsp:include page="../info/header2.jsp"></jsp:include>
 
@@ -109,9 +110,11 @@
 							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Crafts </a>
 						</div>
 					</div>
+					<sec:authorize access="hasRole('ROLE_MAGAZINE')" >
 					<div class="p-t-50">
 						<a href="${pageContext.request.contextPath }/magazine/magazine_write" class="btn btn-secondary btn-lg btn-block" >메거진 등록</a>
 					</div>
+					</sec:authorize>
 				</div>
 			</div>
 		</div>

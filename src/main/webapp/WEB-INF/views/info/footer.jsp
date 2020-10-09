@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!-- Footer -->
 <footer class="bg3 p-t-75 p-b-32">
@@ -37,14 +38,17 @@
 					<li class="p-b-10">
 						<a href="${pageContext.request.contextPath }/ourCompany/Company_main" class="stext-107 cl7 hov-cl1 trans-04"> 우리회사  </a>
 					</li>
-
+					<sec:authorize access="hasRole('ROLE_ADMIN')" >
 					<li class="p-b-10">
 						<a href="${pageContext.request.contextPath }/admin/dashboard" class="stext-107 cl7 hov-cl1 trans-04"> 관리자 </a>
 					</li>
-
+					</sec:authorize>
+					
+					<sec:authorize access="hasRole('ROLE_BRAND')" >
 					<li class="p-b-10">
 						<a href="${pageContext.request.contextPath }/semiadmin/dashboard" class="stext-107 cl7 hov-cl1 trans-04"> 브랜드 관리자 </a>
 					</li>
+					</sec:authorize>
 
 					<li class="p-b-10">
 						<a href="#" class="stext-107 cl7 hov-cl1 trans-04"> FAQs </a>

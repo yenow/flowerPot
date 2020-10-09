@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,14 +59,19 @@
 					<div class="right-top-bar flex-w h-full">
 
 						<a href="${pageContext.request.contextPath }/member/signUp" class="flex-c-m trans-04 p-lr-25"> 회원가입 </a>
-					
-						<a href="${pageContext.request.contextPath }/member/login" class="flex-c-m trans-04 p-lr-25"> 로그인 </a>
-
+						
+						<sec:authorize access="isAnonymous()" >
+							<a href="${pageContext.request.contextPath }/member/login" class="flex-c-m trans-04 p-lr-25"> 로그인 </a>
+						</sec:authorize>
+						
+						<sec:authorize access="isAuthenticated()" >
 						<a class="flex-c-m trans-04 p-lr-25">
 							<form action="${pageContext.request.contextPath}/logout" method="post">
-								<input type="submit" value="로그아웃">
+								<input type="hidden" name=${_csrf.parameterName } value="${_csrf.token }">	
+								<input type="submit" value="로그아웃" style="background-color: #222; color: #B2B2B2" >
 							</form>
 						</a>
+						</sec:authorize>
 						
 						<a href="${pageContext.request.contextPath }/member/myPage" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
 						

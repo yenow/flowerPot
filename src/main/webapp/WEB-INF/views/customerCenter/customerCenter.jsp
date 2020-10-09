@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <jsp:include page="../info/header2.jsp"></jsp:include>
 <style type="text/css">
@@ -49,22 +50,12 @@ a:link {
 					<jsp:include page="keyword.jsp"></jsp:include>
 
 					<jsp:include page="sidebar.jsp"></jsp:include>
-
-
-					<div class="p-t-50">
-						<h4 class="mtext-112 cl2 p-b-27">Tags</h4>
-
-						<div class="flex-w m-r--5">
-							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Fashion </a>
-							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Lifestyle </a>
-							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Denim </a>
-							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Streetstyle </a>
-							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Crafts </a>
+					
+					<sec:authorize access="hasRole('ROLE_USER')" >
+						<div class="p-t-50">
+							<a href="${pageContext.request.contextPath }/customerCenter/write" class="btn btn-secondary btn-lg btn-block">1대1 문의하기</a>
 						</div>
-					</div>
-					<div class="p-t-50">
-						<a href="${pageContext.request.contextPath }/customerCenter/write" class="btn btn-secondary btn-lg btn-block">1대1 문의하기</a>
-					</div>
+					</sec:authorize>
 				</div>
 			</div>
 
