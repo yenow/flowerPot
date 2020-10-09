@@ -5,7 +5,7 @@
                     <nav>
                         <ul class="footer-menu">
                             <li>
-                                <a href="${pageContext.request.contextPath }">
+                                <a href="${pageContext.request.contextPath}">
                                     Home
                                 </a>
                             </li>
@@ -20,7 +20,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="https://u-it.tistory.com/">
                                     Blog
                                 </a>
                             </li>
@@ -30,7 +30,7 @@
                             <script>
                                 document.write(new Date().getFullYear())
                             </script>
-                            <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                            <a href="https://u-it.tistory.com/">u-it</a>, made with love for a better web
                         </p>
                     </nav>
                 </div>

@@ -12,7 +12,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="password" column="password"/>
 		<result property="name" column="name"/>
 		<result property="nickname" column="nickname"/>
-		<result property="address" column="address"/>
 		<result property="email" column="email"/>
 		<result property="phone" column="phone"/>
 		<result property="tel" column="tel"/>
@@ -49,10 +48,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select mem.mno, mem.id, mem.password, mem.name ,auth.authority from f_member mem left outer join f_authority auth on mem.id = auth.id where mem.id = #{id}
 	</select>
 	
+	<!-- 회원들의 권한 목록 -->
+	<select id="getAuthList" resultMap="memberMap">
+		select mem.mno, mem.id, mem.password, mem.name ,auth.authority from f_member mem left outer join f_authority auth on mem.id = auth.id where mem.id = #{id}
+	</select>
+	
 	<insert id="insertMember">
 		<!-- int mno, String id, String password, String name, String nickname, String address, String email, String gender, String birth, String member_rank, boolean enabled -->
-		insert into f_member (mno,id,password,name,nickname,address,email,gender,tel,birth,member_rank,enabled,regdate) values
-		(mno_seq.nextval,#{id},#{password},#{name, jdbcType=VARCHAR},#{nickname, jdbcType=VARCHAR},#{address, jdbcType=VARCHAR},#{email, jdbcType=VARCHAR},#{gender, jdbcType=VARCHAR},#{tel, jdbcType=VARCHAR},#{birth, jdbcType=VARCHAR},#{member_rank, jdbcType=VARCHAR},#{enabled, jdbcType=CHAR},sysdate)
+		insert into f_member (mno,id,password,name,nickname,email,gender,tel,birth,member_rank,enabled,regdate) values
+		(mno_seq.nextval,#{id},#{password},#{name, jdbcType=VARCHAR},#{nickname, jdbcType=VARCHAR},#{email, jdbcType=VARCHAR},#{gender, jdbcType=VARCHAR},#{tel, jdbcType=VARCHAR},#{birth, jdbcType=VARCHAR},#{member_rank, jdbcType=VARCHAR},#{enabled, jdbcType=CHAR},sysdate)
 		<selectKey resultType="int" keyProperty="mno" order="AFTER">
 			select mno_seq.currval from dual
 		</selectKey>
@@ -111,7 +115,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	UPDATE f_member SET 
 	nickname=#{nickname},
 	tel=#{tel},
-	address=#{address}
+
 	where id=#{id}
 	</update>
 	

@@ -53,10 +53,12 @@ public class MemberVo {
 	@Override
 	public String toString() {
 		return "MemberVo [mno=" + mno + ", id=" + id + ", password=" + password + ", name=" + name + ", nickname="
-				+ nickname + ", address=, email=" + email + ", gender=" + gender + ", tel=" + tel
-				+ ", birth=" + birth + ", member_rank=" + member_rank + ", enabled=" + enabled + ", regdate=" + regdate
-				+ ", authList=" + authList + "]";
+				+ nickname + ", email=" + email + ", gender=" + gender + ", tel=" + tel + ", birth=" + birth
+				+ ", member_rank=" + member_rank + ", enabled=" + enabled + ", regdate=" + regdate + ", point=" + point
+				+ ", authList=" + authList + ", brand=" + brand + "]";
 	}
+
+
 
 	
 	

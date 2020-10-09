@@ -31,6 +31,7 @@ public class MemberServiceImpl implements MemberSerivce {
 	@Autowired
 	private CoupMapper coupDao;
 
+	//회원가입
 	@Transactional
 	@Override
 	public void insertMember(MemberVo member, MemberAddressVo memAddressVo) {
@@ -41,12 +42,15 @@ public class MemberServiceImpl implements MemberSerivce {
 		memberAddressDao.insertMemberAddress(memAddressVo);
 		authorityDao.insertAuthority(member);
 	}
+	
+	//회원정보수정
 	@Override
 	public void updateMember(MemberVo vo, MemberAddressVo memberAddress) throws Exception {
 		memberDao.updateMember(vo);
 		memberAddressDao.updateMemberAddress(memberAddress);
 	}
-
+	
+	//아이디를 기준으로 회원정보조회
 	@Override
 	public MemberVo selectOneMemberById(String id) {		
 		return memberDao.selectOneMemberById(id);

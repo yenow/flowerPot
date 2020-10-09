@@ -81,7 +81,6 @@ $(function() {
 														<th>ID</th>
 														<th>이름</th>
 														<th>닉네임</th>
-														<th>주소</th>
 														<th>이메일</th>
 														<th>성별</th>
 														<th>생일</th>
@@ -114,7 +113,6 @@ $(function() {
 															<td>${mem.id}</td>
 															<td>${mem.name}</td>
 															<td>${mem.nickname}</td>
-															<td>${mem.address}</td>
 															<td>${mem.email}</td>
 															<td>${mem.gender}</td>
 															<td>${mem.birth}</td>

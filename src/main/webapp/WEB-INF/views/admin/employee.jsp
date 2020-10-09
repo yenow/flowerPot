@@ -55,68 +55,68 @@ function check(){
 							<div class="row">
 								<div class="col-md-12">
 									<div class="card">
-											<form action="${pageContext.request.contextPath}/admin/empAdd" method="post" onsubmit="return check();">
-										<div class="card-header">
+										<form action="${pageContext.request.contextPath}/admin/empAdd" method="post" onsubmit="return check();">
+											<div class="card-header">
 												<button type="submit" class="btn btn-izone btn-flat pull-right" style="background-color: #212b52; color: white; border: 1px solid #212b52;">등록</button>
 
 												<h4 class="card-title">사원 등록</h4>
-										</div>
-										<div class="card-body">
-											<div class="row">
-												<div class="col-md-3">
-													<div class="form-group">
-														<label>Company (disabled)</label>
-														<input type="text" class="form-control" disabled placeholder="Company" value="FlowerPot Inc.">
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="form-group">
-														<label>부서</label>
-														<select id="department" class="form-control" name="deptNo">
-															<option value="10">기획</option>
-															<option value="20">총무</option>
-															<option value="30">인사</option>
-															<option value="40">개발</option>
-															<option value="50">물류</option>
-														</select>
-														<!-- <input type="text" class="form-control" name="" placeholder="부서" value="인사"> -->
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="form-group">
-														<label>직위</label>
-														<select id="position" class="form-control" name="poNo">
-															<option value="1">알바</option>
-															<option value="2">인턴</option>
-															<option value="3">사원</option>
-															<option value="4">주임</option>
-															<option value="5">대리</option>
-															<option value="6">팀장</option>
-															<option value="7">과장</option>
-															<option value="8">차장</option>
-															<option value="9">부장</option>
-															<option value="10">이사</option>
-															<option value="11">상무</option>
-															<option value="12">전무</option>
-															<option value="13">부사장</option>
-															<option value="14">사장</option>
-															<option value="15">부회장</option>
-															<option value="16">회장</option>
-														</select>
-														<!-- <input type="text" class="form-control" name="" placeholder="직위" value="팀장"> -->
-													</div>
-												</div>
-												
-												<div class="col-md-3">
-													<div class="form-group">
-														<label>이름</label>
-														<input type="text" id="empName" class="form-control" name="empName" placeholder="이름">
-													</div>
-												</div>
 											</div>
-											<div class="clearfix"></div>
-										</div>
-											</form>
+											<div class="card-body">
+												<div class="row">
+													<div class="col-md-3">
+														<div class="form-group">
+															<label>Company (disabled)</label>
+															<input type="text" class="form-control" disabled placeholder="Company" value="FlowerPot Inc.">
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="form-group">
+															<label>부서</label>
+															<select id="department" class="form-control" name="deptNo">
+																<option value="10">기획</option>
+																<option value="20">총무</option>
+																<option value="30">인사</option>
+																<option value="40">개발</option>
+																<option value="50">물류</option>
+															</select>
+															<!-- <input type="text" class="form-control" name="" placeholder="부서" value="인사"> -->
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="form-group">
+															<label>직위</label>
+															<select id="position" class="form-control" name="poNo">
+																<option value="1">알바</option>
+																<option value="2">인턴</option>
+																<option value="3">사원</option>
+																<option value="4">주임</option>
+																<option value="5">대리</option>
+																<option value="6">팀장</option>
+																<option value="7">과장</option>
+																<option value="8">차장</option>
+																<option value="9">부장</option>
+																<option value="10">이사</option>
+																<option value="11">상무</option>
+																<option value="12">전무</option>
+																<option value="13">부사장</option>
+																<option value="14">사장</option>
+																<option value="15">부회장</option>
+																<option value="16">회장</option>
+															</select>
+															<!-- <input type="text" class="form-control" name="" placeholder="직위" value="팀장"> -->
+														</div>
+													</div>
+
+													<div class="col-md-3">
+														<div class="form-group">
+															<label>이름</label>
+															<input type="text" id="empName" class="form-control" name="empName" placeholder="이름">
+														</div>
+													</div>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+										</form>
 									</div>
 								</div>
 								<div class="col-md-12">
@@ -165,11 +165,13 @@ function check(){
 															</td>
 															<td>
 																<%-- <button class=" pull-right" onclick="location='${pageContext.request.contextPath}/admin/employee/signUp'">아이디 발급</button> --%>
-																<form action="${pageContext.request.contextPath}/admin/employee/signUp" method="post">
-																	<input type="hidden" name="empId" value="${emp.empId}">
-																	<input type="hidden" name="empName" value="${emp.empName}">
-																	<input type="submit" value="아이디 발급" />
-																</form>
+																<c:if test="${empty emp.empId}">
+																	<form action="${pageContext.request.contextPath}/admin/employee/signUp" method="post">
+																		<input type="hidden" name="empNo" value="${emp.empNo}">
+																		<input type="hidden" name="empName" value="${emp.empName}">
+																		<input type="submit" value="아이디 발급" />
+																	</form>
+																</c:if>
 															</td>
 															<td>${emp.empName}</td>
 															<td>
@@ -178,31 +180,46 @@ function check(){
 															<td>
 																<c:forEach var="po" items="${emp.poList}">${po.poName}</c:forEach>
 															</td>
+
 															<td>
-																<c:forEach var="auth" items="${aList}">
-																	<c:if test="${auth == 'ROLE_ADMIN'}">관리자</c:if>
-																	<c:if test="${auth != 'ROLE_ADMIN'}">일반</c:if>
+																<c:set var="flag" value="true" />
+																<c:forEach var="auth" items="${emp.authList}">
+																	<c:if test="${auth.authority == 'ROLE_ADMIN'}">
+																		관리자
+																		<c:set var="flag" value="false" />
+																	</c:if>
+																	<c:if test="${auth.authority == 'ROLE_USER'}">일반</c:if>
 																</c:forEach>
 															</td>
+
 															<td>
-															<form action="${pageContext.request.contextPath}/admin/adminAuth">
-																<input type="hidden" name="empId" value="${emp.empId}" />
-																<input type="submit" value="관리자 권한" onclick="if(!confirm('관리자 권한을 부여하시겠습니까?')){return false;}">
-															</form>
+																<c:if test="${flag == true }">
+																	<c:if test="${emp.empId != null }">
+																		<form action="${pageContext.request.contextPath}/admin/adminAuth">
+																			<input type="hidden" name="empId" value="${emp.empId}" />
+																			<input type="submit" value="관리자 권한" onclick="if(!confirm('관리자 권한을 부여하시겠습니까?')){return false;}">
+																		</form>
+																	</c:if>
+																	<c:if test="${emp.empId == null }">
+																	</c:if>
+																</c:if>
+																<c:if test="${flag != true }">
+																
+																</c:if>
 															</td>
-															<td data-true ="${emp.empEnabled}">
+															<td data-true="${emp.empEnabled}">
 																<c:if test="${emp.empEnabled eq true}">활성화①</c:if>
 																<c:if test="${emp.empEnabled ne true}">비활성화②</c:if>
 															</td>
 															<td>
-															<form action="${pageContext.request.contextPath}/admin/empDel">
-																<input type="hidden" name="empNo" value="${emp.empNo}" />
-																<input type="submit" value="삭제" onclick="if(!confirm('정말로 삭제하시겠습니까??')){return false;}">
-															</form>
-															<form action="${pageContext.request.contextPath}/admin/empRestore">
-																<input type="hidden" name="empNo" value="${emp.empNo}" />
-																<input type="submit" value="복구" onclick="if(!confirm('복구 하시겠습니까??')){return false;}">
-															</form>
+																<form action="${pageContext.request.contextPath}/admin/empDel">
+																	<input type="hidden" name="empNo" value="${emp.empNo}" />
+																	<input type="submit" value="삭제" onclick="if(!confirm('정말로 삭제하시겠습니까??')){return false;}">
+																</form>
+																<form action="${pageContext.request.contextPath}/admin/empRestore">
+																	<input type="hidden" name="empNo" value="${emp.empNo}" />
+																	<input type="submit" value="복구" onclick="if(!confirm('복구 하시겠습니까??')){return false;}">
+																</form>
 															</td>
 
 														</tr>

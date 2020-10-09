@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 댓글 등록 -->
 	<insert id="insertReply" parameterType="com.flowerPot.admin.vo.ReplyVo">
 	<!-- parameterType 전달인자 타입 속성은 기본값으로 생략가능 -->
-		insert into comments (rno,ccno,replyer,replytitle,replytext,regdate,updatedate) values(comment_seq.nextval,#{ccno},'관리자',#{replytitle},#{replytext},sysdate)
+		insert into comments (rno,ccno,replyer,replytitle,replytext,regdate) values(comment_seq.nextval,#{ccno},'관리자',#{replytitle},#{replytext},sysdate)
 	<!-- sysdate는 오라클 날짜 함수. -->
 	</insert>
 	
