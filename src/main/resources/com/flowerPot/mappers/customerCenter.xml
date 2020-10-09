@@ -8,10 +8,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 리스트 가져오기 -->
 	<select id="SelectListByCategory" resultType="cc">
-		select * from f_customerCenter where category = #{category, jdbcType=VARCHAR} 
+		select * from 
+		<trim prefix="(" suffix=")">
+		select f_customerCenter.*, rownum as rnum from f_customerCenter where category = #{category, jdbcType=VARCHAR} 
 		<if test='searchName != null'>
 			and title like '%' ||#{SearchName}||'%'
 		</if>
+		 order by ccno desc  
+		</trim> 
+		<![CDATA[ where rnum <= #{pageNum}*#{amount} and rnum > (#{pageNum}-1)*#{amount} ]]>
 	</select>
 	
 	<!--  고객센터 등록 -->
@@ -30,6 +35,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update f_customerCenter set title = #{title}, content
 		= #{content}, moddate = sysdate where ccno = #{ccno}
 	</update>
+	
+	<!-- 카테고리별 전체 개수 -->
+	<select id="cc_selectCountByCategory" resultType="int">
+		select count(*) from f_customerCenter where category = #{category}
+	</select>
 
 	<select id="fq_list" resultType="cc">
 		select* from
@@ -81,7 +91,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="ResContent" resultType="cc">
 		select * from f_customerCenter where ccno = #{ccno}
 	</select>
-
+	
 	
 </mapper>
 

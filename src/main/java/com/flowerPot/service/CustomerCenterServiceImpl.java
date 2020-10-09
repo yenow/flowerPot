@@ -102,4 +102,9 @@ public class CustomerCenterServiceImpl implements CustomerCenterService {
 		return dao.getResCont(ccno);
 	}
 
+	@Override
+	public int selectCountByCategory(String category) {
+		return dao.selectCountByCategory(category);
+	}
+
 }

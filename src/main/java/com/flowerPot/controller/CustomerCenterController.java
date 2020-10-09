@@ -28,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.flowerPot.domain.Criteria;
+import com.flowerPot.domain.PageDTO;
 import com.flowerPot.member.service.MemberSerivce;
 import com.flowerPot.service.CustomerCenterService;
 import com.flowerPot.vo.CustomerCenterVo;
@@ -50,10 +51,13 @@ public class CustomerCenterController {
 	// 고객센터 페이지,,,  
 	@RequestMapping("customerCenter")
 	public void customerCenter(Criteria c, Model model) throws Exception {
+		c.setAmount(10);
 		List<CustomerCenterVo> cList = service.SelectListByCategory(c);
+		int total = service.selectCountByCategory(c.getCategory());
+		PageDTO page = new PageDTO(c, total);
+		model.addAttribute("page", page);
 		model.addAttribute("category", c.getCategory());
 		model.addAttribute("cList", cList);
-
 	}
 
 	// 게시판 내용페이지

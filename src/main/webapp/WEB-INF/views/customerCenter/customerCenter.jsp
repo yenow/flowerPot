@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <jsp:include page="../info/header2.jsp"></jsp:include>
 <style type="text/css">
 @font-face {
@@ -15,7 +17,7 @@ a:link {
 	text-decoration: none;
 }
 
-.h50{
+.h50 {
 	height: 50px;
 }
 </style>
@@ -61,7 +63,7 @@ a:link {
 						</div>
 					</div>
 					<div class="p-t-50">
-						<a href="${pageContext.request.contextPath }/customerCenter/write" class="btn btn-secondary btn-lg btn-block" >1대1 문의하기</a>
+						<a href="${pageContext.request.contextPath }/customerCenter/write" class="btn btn-secondary btn-lg btn-block">1대1 문의하기</a>
 					</div>
 				</div>
 			</div>
@@ -69,9 +71,15 @@ a:link {
 			<div class="col-md-8 col-lg-9 p-b-80">
 				<div class="p-r-45 p-r-0-lg">
 					<div class="table col-12 board-listt ">
-							<c:if test="${category eq 'notice' }"> <h2 class="my-4 text-center">공지사항</h2> </c:if>
-							<c:if test="${category eq 'FAQ' }">  <h2 class="my-4 text-center">자주찾는질문(FAQ)</h2> </c:if>
-							<c:if test="${category eq 'enquiry' }"> <h2 class="my-4 text-center">1대1문의</h2>  </c:if>
+						<c:if test="${category eq 'notice' }">
+							<h2 class="my-4 text-center">공지사항</h2>
+						</c:if>
+						<c:if test="${category eq 'FAQ' }">
+							<h2 class="my-4 text-center">자주찾는질문(FAQ)</h2>
+						</c:if>
+						<c:if test="${category eq 'enquiry' }">
+							<h2 class="my-4 text-center">1대1문의</h2>
+						</c:if>
 						<table class="table table-striped table-sm ">
 							<thead>
 								<tr>
@@ -94,18 +102,38 @@ a:link {
 						</table>
 					</div>
 
-					<!-- Pagination -->
+
 					<div class="flex-c-m flex-w w-full p-t-10 m-lr--7 magazine-nav">
-						<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-						  <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-						</svg></a>
-						<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1"> 1 </a>
+						<!-- Pagination -->
+						<c:if test="${page.prev eq true}">
+							<a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=${pg.cri.category}&pageNum=${pg.startPage-10}" class="flex-c-m how-pagination1 trans-04 m-all-7">
+								<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+								</svg>
+							</a>
+						</c:if>
+						<c:forEach var="num" begin="${page.startPage }" end="${page.endPage }" step="1">
+
+							<a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=${pg.cri.category}&pageNum=${num}" class="flex-c-m how-pagination1 trans-04 m-all-7"> ${num } </a>
+
+						</c:forEach>
+
+						<c:if test="${page.next eq true}">
+							<a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=${pg.cri.category}&pageNum=${pg.startPage+10}" class="flex-c-m how-pagination1 trans-04 m-all-7">
+								<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						  		<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+								</svg>
+							</a>
+						</c:if>
+
+						<!-- <a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1"> 1 </a>
 						<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7"> 2 </a>
 						<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7">
 						<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 						  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
 						</svg>
-					</a>
+						</a>
+						 -->
 					</div>
 				</div>
 			</div>
