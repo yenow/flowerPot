@@ -7,10 +7,11 @@ create table f_customerCenter(
 	content varchar2(3000),
 	regDate date,
 	modDate date,
-	category int 
-	--공지사항 1 , FAQ 2 , Q&A 3
+	category int,
+	url varchar2(100)
 );
 
+drop table f_customerCenter;
 select * from F_CUSTOMERCENTER
 
 INSERT INTO f_customerCenter (ccno,title,content,regDate,category) 

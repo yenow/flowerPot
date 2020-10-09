@@ -1,6 +1,7 @@
 package com.flowerPot.controller;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -27,7 +28,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.flowerPot.admin.dao.CReplyMapper;
+import com.flowerPot.admin.vo.ReplyVo;
 import com.flowerPot.domain.Criteria;
+import com.flowerPot.domain.CustomerEnum;
 import com.flowerPot.domain.PageDTO;
 import com.flowerPot.member.service.MemberSerivce;
 import com.flowerPot.service.CustomerCenterService;
@@ -46,14 +50,19 @@ public class CustomerCenterController {
 	private CustomerCenterService service;
 	@Autowired
 	private MemberSerivce memberSerivce;
+	@Autowired
+	private CReplyMapper ReplyDao;
 
 
 	// 고객센터 페이지,,,  
 	@RequestMapping("customerCenter")
 	public void customerCenter(Criteria c, Model model) throws Exception {
 		c.setAmount(10);
+		CustomerEnum.categoryChangeToNum(c);
+		
+		log.info("카테고리:"+c);
 		List<CustomerCenterVo> cList = service.SelectListByCategory(c);
-		int total = service.selectCountByCategory(c.getCategory());
+		int total = service.selectCountByCategory(c);
 		PageDTO page = new PageDTO(c, total);
 		model.addAttribute("page", page);
 		model.addAttribute("category", c.getCategory());
@@ -106,6 +115,13 @@ public class CustomerCenterController {
 		log.info("customer1:" + customer);
 		service.editEnq(customer);
 		return "redirect:/customerCenter/content?ccno=" + customer.getCcno();
+	}
+	
+	@RequestMapping("rcontent")
+	public String rcontent(int rno, Model model) {
+		ReplyVo reply = ReplyDao.getReplyCont(rno);
+		model.addAttribute("reply", reply);
+		return "customerCenter/rcontent";
 	}
 
 	@RequestMapping("noticeContent")

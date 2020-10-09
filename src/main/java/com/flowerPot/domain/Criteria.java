@@ -13,6 +13,7 @@ public class Criteria { // pageNum 과 amount 값을 같이 전달하는 용도,
   private int pageNum;
   private int amount;
   private String category; 
+  private int n_category; 
   private String categoryName; 
   private String SearchName;
  

@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime"%>
 
 <jsp:include page="../info/header2.jsp"></jsp:include>
 <style type="text/css">
@@ -86,8 +87,22 @@ a:link {
 										<th class="text-center h50 align-middle">${cc.ccno }</th>
 										<th class="text-center h50 align-middle" style="width: 50%"><a href="${pageContext.request.contextPath }/customerCenter/content?ccno=${cc.ccno }">${cc.title }</a></th>
 										<th class="text-center h50 align-middle">${cc.memberVo.nickname }</th>
-										<th class="text-center h50 align-middle">${cc.regdate }</th>
+										<th class="text-center h50 align-middle"> ${cc.regdate } </th>
 									</tr>
+									<c:if test="${cc.rlist ne null}">
+										<c:forEach var="r" items="${cc.rlist }">
+										<tr>
+											<th class="text-center h50 align-middle">
+												<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-return-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+												  <path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"/>
+												</svg>
+											</th>
+											<th class="text-center h50 align-middle" style="width: 50%"><a href="${pageContext.request.contextPath }/customerCenter/rcontent?rno=${r.rno }">${r.replytitle }</a></th>
+											<th class="text-center h50 align-middle">${r.replyer }</th>
+											<th class="text-center h50 align-middle"> ${r.regdate } </th>
+										</tr>
+										</c:forEach>
+									</c:if>
 								</c:forEach>
 							</tbody>
 						</table>

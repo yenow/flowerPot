@@ -7,6 +7,11 @@ rno number(38) primary key -- 답글번호, number(38)은 오라클에서 최대
 ,regdate date -- 답글 등록날짜, date는 오라클 날짜 타입
 ,updatedate date -- 답글 수정날짜
 );
+create sequence comment_seq
+start with 1 --1부터 시작
+increment by 1 --1씩 증가
+nocache;--임시 저장 장소를 사용하지 않겠다.
+
 
 select * from comments where ccno=104
 select * from comments where rno=12

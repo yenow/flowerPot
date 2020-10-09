@@ -31,6 +31,6 @@ public interface CustomerCenterService {
 
 	List<CustomerCenterVo> SelectListByCategory(Criteria c);
 
-	int selectCountByCategory(String category);
+	int selectCountByCategory(Criteria c);
 
 }

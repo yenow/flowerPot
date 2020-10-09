@@ -1,13 +1,13 @@
 package com.flowerPot.service;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
+import com.flowerPot.admin.dao.CReplyMapper;
+import com.flowerPot.admin.vo.ReplyVo;
 import com.flowerPot.dao.CustomerCenterDao;
 import com.flowerPot.domain.Criteria;
 import com.flowerPot.member.repository.MemberDao;
@@ -23,6 +23,8 @@ public class CustomerCenterServiceImpl implements CustomerCenterService {
 	private CustomerCenterDao dao;
 	@Autowired
 	private MemberDao memberDao;
+	@Autowired
+	private CReplyMapper cReplyMapper;
 	
 	// 카테고리별, 검색어 조건으로 고객센터 리스트 가져오기
 	@Override
@@ -30,6 +32,10 @@ public class CustomerCenterServiceImpl implements CustomerCenterService {
 		List<CustomerCenterVo> list = dao.SelectListByCategory(c);
 		for(CustomerCenterVo cc : list) {
 			cc.setMemberVo(memberDao.selectOneMemberByMno(cc.getMno()));
+			List<ReplyVo> rList = new ArrayList<ReplyVo>();
+			rList = cReplyMapper.SelectListByCcno(cc.getCcno());
+			cc.setRlist(rList);
+			log.info("게시판 리스트:"+rList);
 		}
 		log.info("게시판 리스트:"+list);
 		return list;
@@ -67,6 +73,7 @@ public class CustomerCenterServiceImpl implements CustomerCenterService {
 		return dao.searchKeyword(keyword);
 	}
 
+	// 게시판작업
 	@Override
 	public void wirteEnq(CustomerCenterVo customer) {
 		if (customer.getUrl() == null) {
@@ -103,8 +110,8 @@ public class CustomerCenterServiceImpl implements CustomerCenterService {
 	}
 
 	@Override
-	public int selectCountByCategory(String category) {
-		return dao.selectCountByCategory(category);
+	public int selectCountByCategory(Criteria c) {
+		return dao.selectCountByCategory(c);
 	}
 
 }

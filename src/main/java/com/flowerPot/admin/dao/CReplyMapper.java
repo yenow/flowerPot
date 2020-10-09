@@ -16,4 +16,8 @@ public interface CReplyMapper {
 
 	List<ReplyVo> getReplyContList(ReplyVo rpl);
 
+	List<ReplyVo> SelectListByCcno(int ccno);
+
+	ReplyVo getReplyByRno(int rno);
+
 }
