@@ -76,7 +76,6 @@ public class MemberController {
    
     
  // 마이 페이지로 이동
-    
  	@RequestMapping("/myPage")
  	public String MyPage(Principal principal) {
  		
@@ -87,11 +86,7 @@ public class MemberController {
 			String id = principal.getName();
 			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
 			memberAddress  = memberAddressService.selectOneMemberAddressByMno(memberVo.getMno());   // 회원주소록 가져오기
-			
-			
 		}
- 		
- 		
  		return "/member/myPage";
  	}
  	
@@ -103,7 +98,6 @@ public class MemberController {
   }
   	
  // 포인트 페이지로 이동
-    
   	@RequestMapping("/point")
   	public String point() {
   		System.out.println("나의 포인트 페이지 호출됨");
@@ -335,7 +329,6 @@ public class MemberController {
 	}
 
 	// 회원가입 페이지로 이동
-
 	@RequestMapping("/signUp")
 	public void signUp() {
 
@@ -343,7 +336,6 @@ public class MemberController {
 
 	// 회원가입 요청 처리
 	// Rest-api에서 Insert-> POST
-
 	// 회원가입 처리
 	@RequestMapping("/signUp_ok")
 	public String signUp_ok(MemberVo member, MemberAddressVo memberAddress) {

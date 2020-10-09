@@ -30,4 +30,5 @@ category varchar2(100) not null
 //	private string 
 	private String url;
 
+	private MemberVo memberVo;
 }

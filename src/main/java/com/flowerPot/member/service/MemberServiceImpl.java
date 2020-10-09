@@ -19,7 +19,6 @@ public class MemberServiceImpl implements MemberSerivce {
 	private MemberDao memberDao;
 	@Autowired
 	private AuthorityDao authorityDao;
-	
 	@Autowired
 	private MemberAddressDao memberAddressDao;
 
@@ -27,6 +26,7 @@ public class MemberServiceImpl implements MemberSerivce {
 	@Override
 	public void insertMember(MemberVo member, MemberAddressVo memAddressVo) {
 		memberDao.insertMember(member);
+		authorityDao.insertAuthority(member);
 		System.out.println("회원번호:"+member.getMno());
 		memAddressVo.setMno(member.getMno());
 		memberAddressDao.insertMemberAddress(memAddressVo);

@@ -14,6 +14,10 @@
 a:link {
 	text-decoration: none;
 }
+
+.h50{
+	height: 50px;
+}
 </style>
 <!-- Title page -->
 <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/banner_navy.png');">
@@ -56,42 +60,52 @@ a:link {
 							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Crafts </a>
 						</div>
 					</div>
+					<div class="p-t-50">
+						<a href="${pageContext.request.contextPath }/customerCenter/write" class="btn btn-secondary btn-lg btn-block" >1대1 문의하기</a>
+					</div>
 				</div>
 			</div>
 
 			<div class="col-md-8 col-lg-9 p-b-80">
 				<div class="p-r-45 p-r-0-lg">
-					<div class="table col-12 board-list ">
-							<c:if test="${category eq 'notice' }"> <h2 class="my-3">공지사항</h2> </c:if>
-							<c:if test="${category eq 'FAQ' }">  <h2 class="my-3">자주찾는질문(FAQ)</h2> </c:if>
-							<c:if test="${category eq 'enquiry' }"> <h2 class="my-3">1대1문의</h2>  </c:if>
-						<table class="table table-striped table-sm">
+					<div class="table col-12 board-listt ">
+							<c:if test="${category eq 'notice' }"> <h2 class="my-4 text-center">공지사항</h2> </c:if>
+							<c:if test="${category eq 'FAQ' }">  <h2 class="my-4 text-center">자주찾는질문(FAQ)</h2> </c:if>
+							<c:if test="${category eq 'enquiry' }"> <h2 class="my-4 text-center">1대1문의</h2>  </c:if>
+						<table class="table table-striped table-sm ">
 							<thead>
 								<tr>
-									<th></th>
-									<th>제목</th>
-									<th>등록일</th>
+									<th class="text-center h50 align-middle">번호</th>
+									<th class="text-center h50 align-middle" style="width: 50%">제목</th>
+									<th class="text-center h50 align-middle">작성자</th>
+									<th class="text-center h50 align-middle">등록일</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach var="cc" items="${cList }">
 									<tr>
-										<th>${cc.ccno }</th>
-										<th><a href="${pageContext.request.contextPath }/customerCenter/noticeContent?ccno=${notice.ccno }">${cc.title }</a></th>
-										<th>${cc.regdate }</th>
+										<th class="text-center h50 align-middle">${cc.ccno }</th>
+										<th class="text-center h50 align-middle" style="width: 50%"><a href="${pageContext.request.contextPath }/customerCenter/content?ccno=${cc.ccno }">${cc.title }</a></th>
+										<th class="text-center h50 align-middle">${cc.memberVo.nickname }</th>
+										<th class="text-center h50 align-middle">${cc.regdate }</th>
 									</tr>
 								</c:forEach>
-								<tr>
-									<th colspan="3">공지사항이 존재하지 않습니다.</th>
-								</tr>
 							</tbody>
 						</table>
 					</div>
 
 					<!-- Pagination -->
-					<div class="flex-l-m flex-w w-full p-t-10 m-lr--7 text-center">
+					<div class="flex-c-m flex-w w-full p-t-10 m-lr--7 magazine-nav">
+						<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						  <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+						</svg></a>
 						<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1"> 1 </a>
 						<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7"> 2 </a>
+						<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7">
+						<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+						</svg>
+					</a>
 					</div>
 				</div>
 			</div>

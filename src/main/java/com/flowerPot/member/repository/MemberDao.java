@@ -47,5 +47,7 @@ public interface MemberDao {
 
 	public void updatePoint(Map<String, Object> map);
 
+	public MemberVo selectOneMemberByMno(int mno);
+
 
 }

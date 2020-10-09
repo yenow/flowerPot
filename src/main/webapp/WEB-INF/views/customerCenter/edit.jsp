@@ -44,30 +44,28 @@
 	</nav>
 	<!-- /nav -->
 	
-	
 	<!-- start of content -->
-	<div class="row" style="padding : 0 20px;">	
+	<div class="row" style="padding : 0 100px;">	
 		<div class="col-12">
 			<h2 class="text-center my-3">1:1 문의</h2>
 		</div>
 		<div class="col-12">
-			<form action="${pageContext.request.contextPath }/customerCenter/enquiry" method="post" enctype="multipart/form-data" onsubmit="return false;">
-				
+			<form action="#" id="enq" method="post" enctype="multipart/form-data" onsubmit="retrurn false;">
+				<input type="hidden" name="ccno" value="${customerCenter.ccno }">
 				<div>
 					<h2 class="my-3"></h2>
 	
 					
-					<input type="text" class="form-control" id="title" placeholder="제목을 입력해주세요" name="title"  size="130">
-					<textarea rows="20" cols="100" id="summernote" name="content" class="summernote"></textarea>
+					<input type="text" class="form-control" id="title" placeholder="제목을 수정해주세요" name="title" value="${customerCenter.title }" size="130">
+					<textarea rows="20" cols="100" id="summernote" name="content" class="summernote"> ${customerCenter.content}</textarea>
 						
 	
-					<input type="submit" value="확인" onclick="return check();">
-					<!-- <a href="content" onclick="check()"; id="submitBtn">수정</a> -->
+					<input type="submit" value="수정" onclick="retrurn check();">
 				</div>
 			</form>
 		</div>
 	</div>
-	
+	<!-- end of content -->
 	<script>
 		var url;
 		function check() {
@@ -83,32 +81,30 @@
 				$("#title").focus();
 				return false;
 
-			}  else {
+			} else {
 				var text = confirm("작성? ㅇㅅㅇ?");
 				if (text) {
-				const boardInfo = {
-					title : $("#title").val(),//db에 저장할 게시판 제목
-					content : $("#summernote").val(),// " 내용
-					url : url,// " 이미지 파일 경로
+					const boardInfo = {
+						title : $("#title").val(),//db에 저장할 게시판 제목
+						content : $("#summernote").val(),// " 내용
+						url : url,// " 이미지 파일 경로
 
-					// email : "<c:out value='${login.email}'/>"// " 작성자 이메일
-					};
-				console.log(boardInfo);
-							
-				$.ajax({
-					type : "post",
-					url : "${pageContext.request.contextPath }/customerCenter/enquiry/write_ok", //controller mapping address
-					headers : {
-						"Content-Type" : "application/json"
-					},//json형식으로 보내기
-					data : JSON.stringify(boardInfo),//보낼 정보
-					success : function() {
-						window.location.replace("${pageContext.request.contextPath }/customerCenter/enquiry");//성공시 페이지 이동 괄호 안 controller mapping address
+							// email : "<c:out value='${login.email}'/>"// " 작성자 이메일
+						};
+						console.log(boardInfo);
+						$.ajax({
+							type : "post",
+							url : "${pageContext.request.contextPath }/customerCenter/edit_ok", //controller mapping address
+							headers : {
+								"Content-Type" : "application/json"
+							},//json형식으로 보내기
+							data : JSON.stringify(boardInfo),//보낼 정보
+							success : function() {
+								window.location.replace("${pageContext.request.contextPath }/customerCenter/content?ccno=${content.ccno}");//성공시 페이지 이동 괄호 안 controller mapping address
+							}
+							});
 						}
-					});
-				}
-			} 
-
+				} 
 		}
 
 		$(document).ready(
