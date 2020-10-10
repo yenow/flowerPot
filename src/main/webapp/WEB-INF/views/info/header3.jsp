@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -213,11 +214,22 @@
 					<li class="p-b-13">
 						<a href="${pageContext.request.contextPath }/member/signUp" class="stext-102 cl2 hov-cl1 trans-04"> 회원가입 </a>
 					</li>
-
+					
+					<sec:authorize access="isAnonymous()" >
 					<li class="p-b-13">
 						<a href="${pageContext.request.contextPath }/member/login" class="stext-102 cl2 hov-cl1 trans-04"> 로그인 </a>
 					</li>
+					</sec:authorize>
 					
+					<sec:authorize access="isAuthenticated()" >
+					<li class="p-b-13">
+						<form action="${pageContext.request.contextPath}/logout" method="post">
+							<input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }">
+							<input type="submit" value="로그아웃" style="background-color: #fff; color: black;" class="stext-102 cl2 hov-cl1 trans-04" >
+						</form>
+						<%-- <a href="${pageContext.request.contextPath}/logout"  class="stext-102 cl2 hov-cl1 trans-04" >로그아웃</a> --%>
+					</li>
+					</sec:authorize>
 
 					<li class="p-b-13">
 						<a href="${pageContext.request.contextPath }/member/myPage" class="stext-102 cl2 hov-cl1 trans-04"> 마이페이지 </a>
@@ -445,6 +457,7 @@
 	</section>
 	
 <script type="text/javascript">
+
 function shoppingList() {
 	var totalPrice = 0;
 	for(var i=0; i<$('.c-price').length; i++){

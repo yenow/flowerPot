@@ -160,6 +160,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectListCosmeticByBrand" resultType="com.flowerPot.vo.CosmeticVo">
 		select * from f_cosmetic where brand = #{brand}
 	</select>
+	
+	<select id="selectCosmeticByName" resultType="com.flowerPot.vo.CosmeticVo">
+		select * from f_cosmetic where name = #{name}
+	</select>
 </mapper>
 
 	<!-- <sql id="list">

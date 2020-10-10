@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 public class DeliveryVo {
 
 	private Integer dno;
+	private String id;    //  이거 누가 만든거지?
 	private String t_code; //택배회사 코드
 	private String t_invoice; //운송장번호
 	private String postcode;

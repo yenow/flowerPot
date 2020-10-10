@@ -41,7 +41,7 @@
 	<!-- /nav -->
 	<!-- content -->
 	<div class="container-fluid">
-		<h2 class="text-center my-3">Q&A 답변 등록</h2>
+		<h2 class="text-center my-3">Q&A 답변 수정</h2>
 		<form action="${pageContext.request.contextPath}/comments/q&aComnt_modify_ok" method="post" >
 			 <input type="hidden" name="rno" value="${reply.rno}"> 
 			 <input type="hidden" name="ccno" value="${reply.ccno}"> 
@@ -51,9 +51,9 @@
 			<div class="mb-3">
 				<div class="input-group">
 					<div class="input-group-prepend" >
-						<span class="input-group-text" style="background-color: #212b52; color: white; opacity: 0.9">제목</span>
+						<span class="input-group-text" style="background-color: #212b52; color: white; opacity: 0.9" >제목</span>
 					</div>
-					<input type="text" class="form-control" id="username" name="replytitle" placeholder="${reply.replytitle}" value="${reply.replytitle}" required="">
+					<input type="text" class="form-control" id="username" name="replytitle" placeholder="제목을 입력해주세요" value="${reply.replytitle}" required="">
 					<div class="invalid-feedback" style="width: 100%;">Your username is required.</div>
 				</div>
 			</div>

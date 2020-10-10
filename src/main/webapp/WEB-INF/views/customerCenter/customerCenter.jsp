@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime"%>
+
 <jsp:include page="../info/header2.jsp"></jsp:include>
 <style type="text/css">
 @font-face {
@@ -13,6 +17,10 @@
 
 a:link {
 	text-decoration: none;
+}
+
+.h50 {
+	height: 50px;
 }
 </style>
 <!-- Title page -->
@@ -43,55 +51,95 @@ a:link {
 					<jsp:include page="keyword.jsp"></jsp:include>
 
 					<jsp:include page="sidebar.jsp"></jsp:include>
-
-
-					<div class="p-t-50">
-						<h4 class="mtext-112 cl2 p-b-27">Tags</h4>
-
-						<div class="flex-w m-r--5">
-							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Fashion </a>
-							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Lifestyle </a>
-							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Denim </a>
-							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Streetstyle </a>
-							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"> Crafts </a>
+					
+					<sec:authorize access="hasRole('ROLE_USER')" >
+						<div class="p-t-50">
+							<a href="${pageContext.request.contextPath }/customerCenter/write" class="btn btn-secondary btn-lg btn-block">1대1 문의하기</a>
 						</div>
-					</div>
+					</sec:authorize>
 				</div>
 			</div>
 
 			<div class="col-md-8 col-lg-9 p-b-80">
 				<div class="p-r-45 p-r-0-lg">
-					<div class="table col-12 board-list ">
-							<c:if test="${category eq 'notice' }"> <h2 class="my-3">공지사항</h2> </c:if>
-							<c:if test="${category eq 'FAQ' }">  <h2 class="my-3">자주찾는질문(FAQ)</h2> </c:if>
-							<c:if test="${category eq 'enquiry' }"> <h2 class="my-3">1대1문의</h2>  </c:if>
-						<table class="table table-striped table-sm">
+					<div class="table col-12 board-listt ">
+						<c:if test="${category eq 'notice' }">
+							<h2 class="my-4 text-center">공지사항</h2>
+						</c:if>
+						<c:if test="${category eq 'FAQ' }">
+							<h2 class="my-4 text-center">자주찾는질문(FAQ)</h2>
+						</c:if>
+						<c:if test="${category eq 'enquiry' }">
+							<h2 class="my-4 text-center">1대1문의</h2>
+						</c:if>
+						<table class="table table-striped table-sm ">
 							<thead>
 								<tr>
-									<th></th>
-									<th>제목</th>
-									<th>등록일</th>
+									<th class="text-center h50 align-middle">번호</th>
+									<th class="text-center h50 align-middle" style="width: 50%">제목</th>
+									<th class="text-center h50 align-middle">작성자</th>
+									<th class="text-center h50 align-middle">등록일</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach var="cc" items="${cList }">
 									<tr>
-										<th>${cc.ccno }</th>
-										<th><a href="${pageContext.request.contextPath }/customerCenter/noticeContent?ccno=${notice.ccno }">${cc.title }</a></th>
-										<th>${cc.regdate }</th>
+										<th class="text-center h50 align-middle">${cc.ccno }</th>
+										<th class="text-center h50 align-middle" style="width: 50%"><a href="${pageContext.request.contextPath }/customerCenter/content?ccno=${cc.ccno }">${cc.title }</a></th>
+										<th class="text-center h50 align-middle">${cc.memberVo.nickname }</th>
+										<th class="text-center h50 align-middle"> ${cc.regdate } </th>
 									</tr>
+									<c:if test="${cc.rlist ne null}">
+										<c:forEach var="r" items="${cc.rlist }">
+										<tr>
+											<th class="text-center h50 align-middle">
+												<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-return-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+												  <path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"/>
+												</svg>
+											</th>
+											<th class="text-center h50 align-middle" style="width: 50%"><a href="${pageContext.request.contextPath }/customerCenter/rcontent?rno=${r.rno }">${r.replytitle }</a></th>
+											<th class="text-center h50 align-middle">${r.replyer }</th>
+											<th class="text-center h50 align-middle"> ${r.regdate } </th>
+										</tr>
+										</c:forEach>
+									</c:if>
 								</c:forEach>
-								<tr>
-									<th colspan="3">공지사항이 존재하지 않습니다.</th>
-								</tr>
 							</tbody>
 						</table>
 					</div>
 
-					<!-- Pagination -->
-					<div class="flex-l-m flex-w w-full p-t-10 m-lr--7 text-center">
-						<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1"> 1 </a>
+
+					<div class="flex-c-m flex-w w-full p-t-10 m-lr--7 magazine-nav">
+						<!-- Pagination -->
+						<c:if test="${page.prev eq true}">
+							<a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=${pg.cri.category}&pageNum=${pg.startPage-10}" class="flex-c-m how-pagination1 trans-04 m-all-7">
+								<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+								</svg>
+							</a>
+						</c:if>
+						<c:forEach var="num" begin="${page.startPage }" end="${page.endPage }" step="1">
+
+							<a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=${pg.cri.category}&pageNum=${num}" class="flex-c-m how-pagination1 trans-04 m-all-7"> ${num } </a>
+
+						</c:forEach>
+
+						<c:if test="${page.next eq true}">
+							<a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=${pg.cri.category}&pageNum=${pg.startPage+10}" class="flex-c-m how-pagination1 trans-04 m-all-7">
+								<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						  		<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+								</svg>
+							</a>
+						</c:if>
+
+						<!-- <a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1"> 1 </a>
 						<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7"> 2 </a>
+						<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7">
+						<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+						</svg>
+						</a>
+						 -->
 					</div>
 				</div>
 			</div>

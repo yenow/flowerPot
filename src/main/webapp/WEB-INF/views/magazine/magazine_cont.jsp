@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime"%>
+
 <jsp:include page="../info/header2.jsp"></jsp:include>
 <div class="container">
 	<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -16,7 +18,7 @@
 					<div class="wrap-pic-w how-pos5-parent">
 						<img src="${pageContext.request.contextPath}${magazineVo.rootfolder}${magazineVo.UUIDName}" alt="IMG-BLOG">
 						<div class="flex-col-c-m size-123 bg9 how-pos5">
-							<span class="ltext-107 cl2 txt-center"> 22 </span> <span class="stext-109 cl3 txt-center"> Jan 2018 </span>
+							<span class="ltext-107 cl2 txt-center"> <javatime:format value="${event.moddate}" pattern="dd" /> </span> <span class="stext-109 cl3 txt-center"> <javatime:format value="${event.moddate}" pattern="MMM yyyy" /> </span>
 						</div>
 					</div>
 					<div class="p-t-32">

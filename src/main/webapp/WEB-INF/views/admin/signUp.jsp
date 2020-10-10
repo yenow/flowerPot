@@ -90,18 +90,21 @@
 											<h4 class="card-title">직원 회원가입</h4>
 										</div>
 										<div class="card-body">
-											<form>
+											<form action="${pageContext.request.contextPath}/admin/employee/signUp_ok" method="post">
+												<input type="hidden" name="empNo" value="${empNo}">
+												<input type="hidden" name="name" value="${empName}">
+											
 												<div class="row">
 													<div class="col-md-4">
 														<div class="form-group">
 															<label>이름</label><span id="nameChk"></span>
-															<text id="user_name" name="name" class="form-control" placeholder="이름">${empName}</text>
+															<text id="user_name" class="form-control" placeholder="이름" >${empName}</text>
 														</div>
 													</div>
 													<div class="col-md-4">
 														<div class="form-group">
 															<label>닉네임</label><span id="nickChk"></span>
-															<input type="text" id="user_nick" name="nickname"class="form-control" placeholder="이름" value="">
+															<input type="text" id="user_nick" name="nickname"class="form-control" placeholder="이름" >
 														</div>
 													</div>
 													<div class="col-md-4">
@@ -118,13 +121,13 @@
 													<div class="col-md-6">
 														<div class="form-group">
 															<label>비밀번호</label><span id="pwChk"></span>
-															<input type="text" id="password" class="form-control" name="password" placeholder="비밀번호" value="">
+															<input type="password" id="password" class="form-control" name="password" placeholder="비밀번호" value="">
 														</div>
 													</div>
 													<div class="col-md-6">
 														<div class="form-group">
 															<label>비밀번호 확인</label><span id="pwChk2"></span>
-															<input type="text" id="password_check" class="form-control" name="password2" placeholder="비밀번호 확인" value="">
+															<input type="password" id="password_check" class="form-control" name="password2" placeholder="비밀번호 확인" value="">
 														</div>
 													</div>
 													
@@ -147,7 +150,7 @@
 													<div class="col-md-3">
 														<div class="form-group">
 															<label>인증번호 입력</label>
-															<input type="text" name="roadAddr" id="sample4_roadAddress" class="form-control" placeholder="도로명 주소">
+															<input type="text" class="form-control" placeholder="인증번호">
 														</div>
 													</div>
 
@@ -171,9 +174,9 @@
 														<div class="form-group">
 															<label style="text-align: right;">성별</label>
 															<div class="form-control" style="border: 0 solid; text-align: center;">
-																<input type="radio" name="gender" value="남자">
+																<input type="radio" name="gender" value="M">
 																남자
-																<input type="radio" name="gender" value="여자">
+																<input type="radio" name="gender" value="F">
 																여자
 															</div>
 														</div>

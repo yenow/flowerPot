@@ -24,6 +24,7 @@ import com.flowerPot.admin.service.CoupService;
 import com.flowerPot.admin.vo.CoupVo;
 import com.flowerPot.attachFile.service.AttachFileService;
 import com.flowerPot.brand.service.BrandService;
+import com.flowerPot.cosmetic.repository.CosmeticDao;
 import com.flowerPot.cosmetic.service.CosmeticService;
 import com.flowerPot.cosmetic.service.TypeService;
 import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
@@ -66,6 +67,22 @@ public class CosmeticController {
 	private BrandService brandService;
 	@Autowired 
 	private CoupService CoupService;
+	@Autowired 
+	CosmeticDao cosmeticDao;
+	
+	// 화장품 이름 유효성 검증
+	@RequestMapping("isexistName")
+	@ResponseBody
+	public ResponseEntity<String> isexistName(String name){
+		ResponseEntity<String> r = null;
+		CosmeticVo cosmetic = cosmeticDao.selectCosmeticByName(name);
+		if(cosmetic==null) {
+			r = new ResponseEntity<String>("no", HttpStatus.OK);
+		}else {
+			r = new ResponseEntity<String>("yes", HttpStatus.OK);
+		}
+		return r;
+	}
 	
 	@RequestMapping("addlikey")
 	@ResponseBody

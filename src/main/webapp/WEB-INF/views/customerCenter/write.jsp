@@ -20,8 +20,8 @@
 </head>
 <body >
 
-	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #efbbcf; padding: 2px;">
-		<a class="navbar-brand" href="${pageContext.request.contextPath}">이벤트</a>
+	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #efbbcf; padding: 5 20px;">
+		<a class="navbar-brand" href="${pageContext.request.contextPath}">고객센터</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -44,59 +44,33 @@
 	</nav>
 	<!-- /nav -->
 	
+	
 	<!-- start of content -->
-	<div class="row" style="padding : 0 20px;">	
+	<div class="row" style="padding : 0 100px;">	
 		<div class="col-12">
-			<h2 class="text-center my-3">1:1 문의</h2>
+			<h2 class="text-center my-4">1:1 문의</h2>
 		</div>
 		<div class="col-12">
-			<form action="${pageContext.request.contextPath }/customerCenter/enquiry/edit_ok" id="enq" method="post" enctype="multipart/form-data" onsubmit="retrurn check();">
-				<input type="hidden" name="ccno" value="${customerCenter.ccno }">
+			<form action="#" method="post" enctype="multipart/form-data" onsubmit="return false;">
+				<input type="hidden" id="mno" value="${memberVo.mno }" name="">
 				<div>
 					<h2 class="my-3"></h2>
 	
 					
-					<input type="text" class="form-control" id="title" placeholder="제목을 수정해주세요" name="title" value="${customerCenter.title }" size="130">
-					<textarea rows="20" cols="100" id="summernote" name="content" class="summernote"> ${customerCenter.content}</textarea>
+					<input type="text" class="form-control" id="title" placeholder="제목을 입력해주세요" name="title"  size="130">
+					<textarea rows="20" cols="100" id="summernote" name="content" class="summernote"></textarea>
 						
 	
-					<input type="submit" value="수정">
-					<!-- <a href"="content" onclick="check()"; id="submitBtn">수정</a> -->
+					<input type="submit" class="btn btn-outline-secondary btn-lg btn-block" value="확인" onclick="return check();">
+					<!-- <a href="content" onclick="check()"; id="submitBtn">수정</a> -->
 				</div>
 			</form>
 		</div>
 	</div>
-	<!-- end of content -->
-
-	<!-- <script>
-	$(document)
-			.ready(
-					function() {
-
-						(function yajax() {
-							$
-									.ajax({
-										url : '${pageContext.request.contextPath }/magazine/magazineAjax',
-										type : 'GET',
-										dataType : 'json',
-										success : function(data) {
-											console.log(data);
-											$('#magazine-test a img')
-													.attr(
-															'src',
-															'${pageContext.request.contextPath }'
-																	+ data[0].rootfolder
-																	+ data[0].uuidname);
-											$('#magazine-title').html(
-													data[0].title)
-										}
-									});
-
-						})();
-					});
-</script> -->
+	
 	<script>
 		var url;
+		// 유효성검증, 폼전송
 		function check() {
 
 			if ($.trim($("#title").val()) == "") {
@@ -105,43 +79,42 @@
 				return false;
 
 			} else if ($.trim($("#summernote").val()) == "") {
-
 				alert("내용을 입력해 주세요 ㅇㅅㅇ!");
 				$("#title").focus();
 				return false;
 
-			} /* else {
-						var text = confirm("작성? ㅇㅅㅇ?");
-						if (text) {
-							const boardInfo = {
-								title : $("#title").val(),//db에 저장할 게시판 제목
-								content : $("#summernote").val(),// " 내용
-								url : url,// " 이미지 파일 경로
-
-							// email : "<c:out value='${login.email}'/>"// " 작성자 이메일
-							};
-							console.log(boardInfo);
-							$.ajax({
-										type : "post",
-										url : "edit_ok", //controller mapping address
-										headers : {
-											"Content-Type" : "application/json"
-										},//json형식으로 보내기
-										data : JSON.stringify(boardInfo),//보낼 정보
-										success : function() {
-											window.location
-													.replace("${pageContext.request.contextPath }/customerCenter/enquiry/content?ccno=${content.ccno}");//성공시 페이지 이동 괄호 안 controller mapping address
-										}
-									});
+			} else {
+				var text = confirm("작성하시겠습니까?");
+				if (text) {
+				const boardInfo = {
+					title : $("#title").val(),//db에 저장할 게시판 제목
+					content : $("#summernote").val(),// " 내용
+					mno : $("#mno").val(),
+					url : url,// " 이미지 파일 경로
+					// email : "<c:out value='${login.email}'/>"// " 작성자 이메일
+				};
+				
+				console.log(boardInfo);
+							
+				$.ajax({
+					type : "post",
+					url : "${pageContext.request.contextPath }/customerCenter/write_ok", //controller mapping address
+					headers : {
+						"Content-Type" : "application/json"
+					},//json형식으로 보내기
+					data : JSON.stringify(boardInfo),//보낼 정보
+					success : function() {
+						window.location.replace("${pageContext.request.contextPath }/customerCenter/customerCenter?category=enquiry");//성공시 페이지 이동 괄호 안 controller mapping address
 						}
-					} */
+					});
+				}
+			} 
 
 		}
 
 		$(document).ready(
 			function() {
 			$('#summernote').summernote({
-				
 				height : 500,
 				MinHeight : 700,
 				callbacks : { //여기 부분이 이미지를 첨부하는 부분
@@ -151,25 +124,24 @@
 					}
 				}
 			});
-							/**
-							 * 이미지 파일 업로드
-							 */
+			
+		// 이미지 파일 업로드
 		function uploadSummernoteImageFile(file, editor) {
 			data = new FormData();
 			data.append("file", file);
-			$.ajax({
-				data : data,
-				type : "POST",
-				url : "${pageContext.request.contextPath}/customerCenter/uploadSummernoteImageFile",
-				contentType : false,
-				processData : false,
-				success : function(data) {
-					console.log(data)
-					//항상 업로드된 파일의 url이 있어야 한다.
-					$(editor).summernote('insertImage',data.url);/* url을 이용해 summernote 작성란에 이미지가 보여지게 함  */
-					url = data.url;
-				}
-			});
-				}
+				$.ajax({
+					data : data,
+					type : "POST",
+					url : "${pageContext.request.contextPath}/customerCenter/uploadSummernoteImageFile",
+					contentType : false,
+					processData : false,
+					success : function(data) {
+						console.log(data)
+						//항상 업로드된 파일의 url이 있어야 한다.
+						$(editor).summernote('insertImage',data.url);/* url을 이용해 summernote 작성란에 이미지가 보여지게 함  */
+						url = data.url;
+					}
+				});
+			}
 		});
 	</script>

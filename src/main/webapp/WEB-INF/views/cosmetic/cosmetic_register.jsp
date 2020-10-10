@@ -247,6 +247,25 @@ function deleteButton(data) {
 
 		
 $(document).ready(function () {
+	$('#name').on('blur',function() {
+		
+		$.ajax({
+			url: '${pageContext.request.contextPath}/cosmetic/isexistName',
+			data: {'name': $('#name').val()},       
+			type: 'POST',          
+			dataType: 'html',     
+			success : function(data){
+				console.log(data);
+				if(data=='no'){
+					
+				}else{
+					alert('중복된 이름입니다');
+					$('#name').val('');
+				}
+			}
+		});
+	});
+	
 	// 파일 용량 체크
 	function fileSizeCheck(file) {
 		if(file.size>20971520){ // 20MB
@@ -394,9 +413,6 @@ $(document).ready(function () {
 			alert('사용방법을 입력해주세요');
 			return false;
 		}
-		
-		// 아이디 중복 검증
-		// ajax
 		
 		//console.log(useMethod);
 		var formdata = {'type':type,'sub_type': sub_type,'brand':brand,'skinType':skinType,'price':price,'name':name

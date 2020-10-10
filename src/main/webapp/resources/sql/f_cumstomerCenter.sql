@@ -1,29 +1,22 @@
-create table f_member (
-    mno number(30),
-    id varchar2(100),
-    password varchar2(100),
-    name varchar2(20),
-    nickname varchar2(50),
-    address varchar2(100),
-    email varchar2(100),
-    gender varchar2(2),    
-    birth varchar2(10),
-    member_rank varchar2(15),
-    authority varchar2(15),
-    primary key(mno),
-    unique(id)
-);
-
 create table f_customerCenter(
 	ccno int primary key,
 	mno int,
-	title varchar2(200) not null,
-	content varchar2(4000) not null,
-	regdate date ,
+	title varchar2(200) not null,  -- 제목
+	content varchar2(4000) not null,  -- 내용
+	regdate date ,    
 	moddate date ,
-	category varchar2(100) not null,
-	url varchar2(4000)
+	category int not null,   -- 카테고리
+	url varchar2(200)     -- url
 );
+-- 시퀀스
+create sequence ccno_seq increment by 1 start with 1 minvalue 1 nocache;
+
+-- 제약조건 
+alter table f_customerCenter add constraint f_customerCenter_fk_mno foreign key (mno) references f_member(mno);
+
+
+
+
 
 select * from f_member;
 select * from f_customerCenter;
@@ -33,6 +26,9 @@ drop table f_customerCenter;
 drop sequence mno_seq;
 drop sequence ccno_seq;
 
+select * from f_customerCenter;
+select * from (select f_customerCenter.*, rownum from f_customerCenter order by ccno desc) where rownum <= 10
+select f_customerCenter.*, rownum from f_customerCenter order by ccno desc;
 
 alter table f_customerCenter add constraint  f_mno foreign key (mno) references f_member(mno);
 
@@ -136,3 +132,7 @@ alter table f_customerCenter add constraint  f_mno foreign key (mno) references 
 
 alter table f_faq add constraint f_ccno foreign key (ccno) references f_customerCenter(ccno);
 */
+
+select f_customerCenter.*, rownum as rnum from f_customerCenter where category = 'notice' order by ccno desc;
+--select *, rownum from f_customerCenter where category = 'notice' order by ccno desc;
+select * from ( select f_customerCenter.*, rownum as rnum from f_customerCenter where category = 'notice' order by ccno desc )  where rnum <= (1*5) and rnum > (1-1)*5;  

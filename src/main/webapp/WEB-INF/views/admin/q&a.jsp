@@ -36,7 +36,7 @@ $(function() {
 			<!-- header(nav) -->
 			<nav class="navbar navbar-expand-lg " color-on-scroll="500">
 				<div class="container-fluid">
-					<a class="navbar-brand" href="#pablo"> 소통 관리 </a>
+					<a class="navbar-brand" href="#pablo"> 소통 관리 </a><p class="card-category">공지사항, FAQ, Q&A를 관리하는 페이지 입니다</p>
 					<jsp:include page="info/header.jsp" />
 					<%--헤더(네비) --%>
 					<!-- 본문 시작 -->

@@ -31,5 +31,7 @@ public interface CustomerCenterDao {
 
 	List<CustomerCenterVo> SelectListByCategory(Criteria c);
 
+	int selectCountByCategory(Criteria c);
+
 
 }

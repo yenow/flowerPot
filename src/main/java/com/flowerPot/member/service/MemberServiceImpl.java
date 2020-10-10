@@ -1,10 +1,14 @@
 package com.flowerPot.member.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.flowerPot.admin.dao.CoupMapper;
+import com.flowerPot.admin.vo.CoupVo;
 import com.flowerPot.dao.AuthorityDao;
 import com.flowerPot.member.repository.MemberDao;
 import com.flowerPot.member.vo.MemberDTO;
@@ -12,32 +16,41 @@ import com.flowerPot.memberAddress.repository.MemberAddressDao;
 import com.flowerPot.vo.MemberAddressVo;
 import com.flowerPot.vo.MemberVo;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class MemberServiceImpl implements MemberSerivce {
 
 	@Autowired
 	private MemberDao memberDao;
 	@Autowired
 	private AuthorityDao authorityDao;
-	
 	@Autowired
 	private MemberAddressDao memberAddressDao;
+	@Autowired
+	private CoupMapper coupDao;
 
+	//회원가입
 	@Transactional
 	@Override
 	public void insertMember(MemberVo member, MemberAddressVo memAddressVo) {
 		memberDao.insertMember(member);
+		authorityDao.insertAuthority(member);
 		System.out.println("회원번호:"+member.getMno());
 		memAddressVo.setMno(member.getMno());
 		memberAddressDao.insertMemberAddress(memAddressVo);
 		authorityDao.insertAuthority(member);
 	}
+	
+	//회원정보수정
 	@Override
 	public void updateMember(MemberVo vo, MemberAddressVo memberAddress) throws Exception {
 		memberDao.updateMember(vo);
 		memberAddressDao.updateMemberAddress(memberAddress);
 	}
-
+	
+	//아이디를 기준으로 회원정보조회
 	@Override
 	public MemberVo selectOneMemberById(String id) {		
 		return memberDao.selectOneMemberById(id);
@@ -77,7 +90,7 @@ public class MemberServiceImpl implements MemberSerivce {
 		memberDao.updateMember(vo);
 	}
 
-	//비밀번호 수정문
+	
 	@Override
 	public void passwordUpdate(MemberVo vo) throws Exception {
 		memberDao.updatePassword(vo);
@@ -97,4 +110,10 @@ public class MemberServiceImpl implements MemberSerivce {
 	public void insertMember(MemberVo member) {
 		
 	}
+
+	@Override
+	public List<CoupVo> getCoupList(MemberVo member) {
+		return coupDao.selectListCoupoBymno(member.getMno());
+	}
+
 }

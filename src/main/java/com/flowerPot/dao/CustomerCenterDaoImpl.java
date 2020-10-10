@@ -87,4 +87,9 @@ public class CustomerCenterDaoImpl implements CustomerCenterDao {
 		return session.selectList("SelectListByCategory", c);
 	}
 
+	@Override
+	public int selectCountByCategory(Criteria c) {
+		return session.selectOne("cc_selectCountByCategory", c);
+	}
+
 }

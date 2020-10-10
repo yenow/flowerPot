@@ -1,5 +1,5 @@
 create table semi_notice(
-  s_bno number(38) 
+   s_bno number(38) 
   ,s_title varchar2(100)
   ,s_content varchar2(4000)
   ,s_writer varchar2(100)

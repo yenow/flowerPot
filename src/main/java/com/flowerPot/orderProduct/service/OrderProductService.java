@@ -12,4 +12,6 @@ public interface OrderProductService {
 
 	void updateOrderProductTOComplete(Integer ono);
 
+	List<OrderProductVo> selectListOrderProductByMno(Integer mno);
+
 }

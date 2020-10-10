@@ -64,7 +64,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectEmpList" resultMap="empMap">
 		select * from
 		(select rownum rnum, empA.empNo, empA.empEnabled, empA.empId, empA.empName, empA.deptName, empA.poName from 
-														<!--empId는 나중에 member 아이디가 발급되었을 때 트랜잭션작업으로 추가되어야함 안그러면 이곳이 3중 쿼리가될것임. -->
+													<!--empId는 나중에 member 아이디가 발급되었을 때 트랜잭션작업으로 추가되어야함 안그러면 이곳이 3중 쿼리가될것임. -->
 		(select * from employee emp 
 		left outer join department dept on emp.deptNo = dept.deptNo 
 		left outer join position po on emp.poNo = po.poNo 
@@ -74,6 +74,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!--  -->
+	<update id="addEmpId">
+		update employee set empId=#{empId} WHERE empNo=#{empNo}
+	</update>
+	
+	
 	<select id="getArticleList" resultType="com.flowerPot.vo.MemberVo">		
  		SELECT * FROM 
 		(SELECT rownum rnum, mno, id, name, nickname, address, email, gender, birth, member_rank, regdate, enabled

@@ -10,6 +10,30 @@ create table f_delivery(
 	more_infomation varchar2(100),
 	deliver_state varchar2(100)
 );
+-- 시퀀스
+create sequence dno_seq  start with 1 increment by 1;
+-- 제약조건
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 alter table f_delivery add (t_invoice varchar2(100),t_code varchar2(100)); --운송장번호 --택배회사 코드 추가
 alter table tbl_inyeon_fboard add constraint fb_fk_email foreign key (email) references tbl_inyeon_user(email);

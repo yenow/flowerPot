@@ -45,7 +45,7 @@ public class OrderProductDaoTest {
 	public void insertOrderProduct() {
 
 		OrderProductVo orderProduct = new OrderProductVo(0, 0, 0, 0, "order_num", 0, "state", 
-				"deliver_state", "member_rank", 0," coupon_name", LocalDateTime.now(), "tel", "email", 100,"이니스프리");
+				"deliver_state", "member_rank", 0," coupon_name", LocalDateTime.now(), "tel", "email", 100,"이니스프리", null);
 		OrderProductVo orderProduct2 = new OrderProductVo(0,0, 0, "order_num", 0, "state", 
 				"deliver_state", "member_rank", 0," coupon_name", LocalDateTime.now(), "tel", "email", 100, 100);		
 
