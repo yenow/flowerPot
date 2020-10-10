@@ -49,5 +49,9 @@ public interface MemberDao {
 
 	public MemberVo selectOneMemberByMno(int mno);
 
+	public List<Integer> selectAllMemberMno();
+
+	public void updateRankByMno(MemberVo m);
+
 
 }

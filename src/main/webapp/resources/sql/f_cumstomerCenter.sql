@@ -10,9 +10,24 @@ create table f_customerCenter(
 );
 -- 시퀀스
 create sequence ccno_seq increment by 1 start with 1 minvalue 1 nocache;
-
 -- 제약조건 
 alter table f_customerCenter add constraint f_customerCenter_fk_mno foreign key (mno) references f_member(mno);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

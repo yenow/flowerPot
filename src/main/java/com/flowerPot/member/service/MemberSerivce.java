@@ -40,7 +40,12 @@ public interface MemberSerivce {
 	void updateMember(MemberVo vo, MemberAddressVo memberAddress) throws Exception;
 	
 	void giveAdminAuth(String empId);
+	
 	List<CoupVo> getCoupList(MemberVo member);
+	
+	List<Integer> selectAllMemberMno();
+	
+	void updateRankByMno(MemberVo m);
 	
 
 }

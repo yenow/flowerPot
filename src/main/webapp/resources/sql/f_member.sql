@@ -21,7 +21,7 @@ create sequence mno_seq increment by 1 start with 1 minvalue 1;  -- 시퀀스
 
 
 
-
+select *.mno from f_member where enable == 1;
 
 
 ALTER TABLE f_member modify member_rank varchar2(15) default '씨앗';

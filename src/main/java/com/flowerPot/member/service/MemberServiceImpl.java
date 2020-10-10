@@ -18,7 +18,7 @@ import com.flowerPot.vo.MemberVo;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Service
+@Service("memberService")
 @Slf4j
 public class MemberServiceImpl implements MemberSerivce {
 
@@ -114,6 +114,16 @@ public class MemberServiceImpl implements MemberSerivce {
 	@Override
 	public List<CoupVo> getCoupList(MemberVo member) {
 		return coupDao.selectListCoupoBymno(member.getMno());
+	}
+
+	@Override
+	public List<Integer> selectAllMemberMno() {
+		return memberDao.selectAllMemberMno();
+	}
+
+	@Override
+	public void updateRankByMno(MemberVo m) {
+		memberDao.updateRankByMno(m);
 	}
 
 }
