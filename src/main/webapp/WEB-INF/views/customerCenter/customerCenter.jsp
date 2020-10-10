@@ -85,7 +85,7 @@ a:link {
 								<c:forEach var="cc" items="${cList }">
 									<tr>
 										<th class="text-center h50 align-middle">${cc.ccno }</th>
-										<th class="text-center h50 align-middle" style="width: 50%"><a href="${pageContext.request.contextPath }/customerCenter/content?ccno=${cc.ccno }">${cc.title }</a></th>
+										<th class="text-center h50 align-middle" style="width: 50%"><a href="${pageContext.request.contextPath }/customerCenter/content?ccno=${cc.ccno }&mno=${cc.mno}">${cc.title }</a></th>
 										<th class="text-center h50 align-middle">${cc.memberVo.nickname }</th>
 										<th class="text-center h50 align-middle"> ${cc.regdate } </th>
 									</tr>

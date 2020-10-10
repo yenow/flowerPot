@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <jsp:include page="../info/header2.jsp"></jsp:include>
 <style type="text/css">
@@ -80,8 +81,10 @@ a:link {
 						</div>
 						<hr />
 						<div class="text-right">
-							<a href="${pageContext.request.contextPath }/customerCenter/edit?ccno=${content.ccno}" class="btn btn-secondary btn-primary">수정</a>
-							<a href="${pageContext.request.contextPath }/customerCenter/delete?category?ccno=${content.ccno}" class="btn btn-secondary btn-primary">삭제</a>
+							<c:if test="${myContent ne null }">
+								<a href="${pageContext.request.contextPath }/customerCenter/edit?ccno=${content.ccno}" class="btn btn-secondary btn-primary">수정</a>
+								<a href="${pageContext.request.contextPath }/customerCenter/delete?category?ccno=${content.ccno}" class="btn btn-secondary btn-primary">삭제</a>
+							</c:if>
 							<a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=" class="btn btn-secondary btn-primary">목록</a>
 						</div>
 

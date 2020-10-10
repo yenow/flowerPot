@@ -8,12 +8,17 @@ create table f_cosmeticReview(
 	title varchar2(100),    -- 평가제목
 	content varchar2(3000),  -- 평가내용
 	rating number(5) ,  --평점
-	
+	regdate date,
 	primary key (crno)
 );
 -- 시퀀스
 create sequence crno_seq  start with 1 increment by 1;
-insert into F_COSMETICREVIEW values(crno_seq.nextval, 1,1, '아주좋습니다.',5,'abcd1234','june123','aaa123','aaa123')
+
+
+
+update f_cosmeticReview set regdate = sysdate;
+
+insert into F_COSMETICREVIEW values(crno_seq.nextval, 1,1, 'rating','phantom1994','띠용','title','content입니다 내용입니다',5);
 insert into F_COSMETICREVIEW values(crno_seq.nextval, 1,1, '아주좋습니다.123',5,'abcd1234','june123','aaa123','aaa123')
 select * from f_cosmeticReview;
 drop table f_cosmeticReview;

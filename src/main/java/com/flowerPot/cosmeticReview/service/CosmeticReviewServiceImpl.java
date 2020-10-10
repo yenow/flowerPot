@@ -40,4 +40,10 @@ public class CosmeticReviewServiceImpl implements CosmeticReviewService {
 		return cosmeticReviewDao.selectListCosmeticReviewListById(cosmeticReviewVo);
 	}
 
+	@Override
+	public List<CosmeticReviewVo> selectListCosmeticReivewByMno(Integer mno) {
+		
+		return cosmeticReviewDao.selectListCosmeticReivewByMno(mno);
+	}
+
 }

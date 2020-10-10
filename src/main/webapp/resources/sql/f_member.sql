@@ -15,11 +15,11 @@ create table f_member (
     brand varchar2(100)
 );
 -- 시퀀스
-create sequence mno_seq increment by 1 start with 1 minvalue 1;  -- 시퀀스
+create sequence mno_seq increment by 1 start with 1;  -- 시퀀스
 
 
 -----------------------------------------------------------------------------------------------------------
-
+select * from f_member;
 
 
 select *.mno from f_member where enable == 1;

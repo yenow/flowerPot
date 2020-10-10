@@ -9,8 +9,8 @@ create sequence auno_seq increment by 1 start with 1 minvalue 1;
 alter table f_authority add constraint f_authority_fk_id foreign key (id) references f_member(id);  -- 제약조건 추가
 
 
-
-
+insert into f_authority values (auno_seq.nextval,'phantom1994','ROLE_ADMIN');
+select * from f_authority;
 
 
 

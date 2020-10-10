@@ -53,13 +53,22 @@ public class CustomerCenterController {
 	@Autowired
 	private CReplyMapper ReplyDao;
 
+	// 회원 정보 시큐리티에서 가져오기
+	public MemberVo getMemberBysecurity(Principal principal) {
+		MemberVo memberVo = new MemberVo();
+		if(principal!=null) {
+			String id = principal.getName();
+			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
+		}
+		return memberVo;
+	}
 
 	// 고객센터 페이지,,,  
 	@RequestMapping("customerCenter")
 	public void customerCenter(Criteria c, Model model) throws Exception {
 		c.setAmount(10);
 		CustomerEnum.categoryChangeToNum(c);
-		
+
 		log.info("카테고리:"+c);
 		List<CustomerCenterVo> cList = service.SelectListByCategory(c);
 		int total = service.selectCountByCategory(c);
@@ -71,9 +80,16 @@ public class CustomerCenterController {
 
 	// 게시판 내용페이지
 	@RequestMapping("content")
-	public String EnqCont(int ccno, Model model) {
+	public String EnqCont(Principal principal,int ccno,int mno, Model model) {
 		System.out.println(ccno);
 		CustomerCenterVo content = service.getContent(ccno);
+		
+		MemberVo member = getMemberBysecurity(principal);
+		if(member != null) {
+			if (member.getMno()==mno) {
+				model.addAttribute("myContent", true);
+			}
+		}
 		model.addAttribute("content", content);
 		return "/customerCenter/content";
 	}
@@ -83,12 +99,12 @@ public class CustomerCenterController {
 	public String write(Principal principal, Model model) {
 		MemberVo memberVo = new MemberVo();
 		// 현재 로그인되어있는 아이디를 가져옴
- 		if(principal!=null) {
+		if(principal!=null) {
 			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
 			String id = principal.getName();
 			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
 		}
- 		model.addAttribute("memberVo",memberVo);
+		model.addAttribute("memberVo",memberVo);
 		return "customerCenter/write";
 	}
 
@@ -108,7 +124,7 @@ public class CustomerCenterController {
 		model.addAttribute("customerCenter", customerCenter);
 		return "/customerCenter/edit";
 	}
-	
+
 	// 수정처리
 	@RequestMapping("edit_ok")
 	public String edit_ok(Model model, CustomerCenterVo customer) {
@@ -116,7 +132,7 @@ public class CustomerCenterController {
 		service.editEnq(customer);
 		return "redirect:/customerCenter/content?ccno=" + customer.getCcno();
 	}
-	
+
 	@RequestMapping("rcontent")
 	public String rcontent(int rno, Model model) {
 		ReplyVo reply = ReplyDao.getReplyCont(rno);

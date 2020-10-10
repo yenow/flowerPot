@@ -16,4 +16,6 @@ public interface CosmeticReviewService {
 
 	List<CosmeticReviewVo> selectListCosmeticReviewListByBrand(String brand);
 
+	List<CosmeticReviewVo> selectListCosmeticReivewByMno(Integer mno);
+
 }

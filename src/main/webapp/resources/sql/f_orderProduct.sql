@@ -20,6 +20,7 @@ create table f_orderProduct(
 create sequence ono_seq increment by 1 start with 1;
 -- 제약조건
 
+drop table f_orderProduct;
 
 
 
