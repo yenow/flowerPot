@@ -2,9 +2,7 @@ create table f_type(
 	type varchar2(50),
 	sub_type varchar2(50)
 );
-
-select * from f_type;
-
+-- 기본 데이터
 insert into f_type values ('스킨케어','페이셜');
 insert into f_type values ('스킨케어','마스크팩');
 insert into f_type values ('스킨케어','클렌징');

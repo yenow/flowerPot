@@ -1,23 +1,28 @@
 create table f_member (
-    mno number(30),
-    id varchar2(100) not null,
-    password varchar2(100),
+    mno number(30)  primary key,
+    id varchar2(100) not null unique,
+    password varchar2(100) not null,
     name varchar2(20) not null,
     nickname varchar2(50),
-    email varchar2(100),
-    phone varchar2(100),
+    email varchar2(100),  -- unique ??
+ 	tel varchar2(50),
     gender varchar2(2),    
-    tel varchar2(100),
     birth varchar2(10),
     member_rank varchar2(15) default '씨앗',  -- 씨앗, 새싹, 꽃, 나무
     enabled char(1) default '1',
     regdate date,
     point number(30) default 0,  -- 포인트
-    brand varchar2(100),
-    primary key(mno),
-    unique(id)
+    brand varchar2(100)
 );
+-- 시퀀스
 create sequence mno_seq increment by 1 start with 1 minvalue 1;  -- 시퀀스
+
+-----------------------------------------------------------------------------------------------------------
+
+
+
+
+
 
 ALTER TABLE f_member modify member_rank varchar2(15) default '씨앗';
 alter table f_member add brand varchar2(100);

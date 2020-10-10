@@ -18,6 +18,4 @@ public class MemberAddressVo {
 	private String parcel_address;
 	private String detail_address;
 	private String more_infomation;
-	private String deliver_state;
-	
 }

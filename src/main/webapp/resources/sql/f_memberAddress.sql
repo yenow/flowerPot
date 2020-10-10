@@ -1,12 +1,30 @@
 create table f_memberAddress(
-	mno number(30),
+	mno number(30) primary,   -- 회원번호
 	postcode varchar2(100),
-	street_address varchar2(100),
-	parcel_address varchar2(100),
-	detail_address varchar2(100),
-	more_infomation varchar2(100),
-	deliver_state varchar2(100)
+	street_address varchar2(100),  -- 도로명주소
+	parcel_address varchar2(100),  -- 
+	detail_address varchar2(100),  -- 상세주소
+	more_infomation varchar2(100)   -- 추가정보
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 select * from f_memberAddress;
 
