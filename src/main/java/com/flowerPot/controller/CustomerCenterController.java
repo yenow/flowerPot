@@ -56,8 +56,8 @@ public class CustomerCenterController {
 	// 수정
 	
 	@RequestMapping("noticeContent")
-	public String noticeContent(int ccno, Model model) {
-		System.out.println(ccno);
+	public String noticeContent(int ccno, Model model, Criteria c) {
+		
 		CustomerCenterVo content = service.getNotice(ccno);
 		model.addAttribute("notice", content);
 		return "customerCenter/noticeContent";
