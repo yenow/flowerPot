@@ -10,23 +10,26 @@
 
 				<ul>
 					<li class="p-b-10">
-						<a href="comestic_list.jsp" class="stext-107 cl7 hov-cl1 trans-04"> Skin Care  </a>
+						<a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=스킨케어" class="stext-107 cl7 hov-cl1 trans-04"> Skin Care  </a>
 					</li>
 
 					<li class="p-b-10">
-						<a href=comestic_list.jsp" class="stext-107 cl7 hov-cl1 trans-04"> Make UP </a>
+						<a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=메이크업" class="stext-107 cl7 hov-cl1 trans-04"> Make UP </a>
 					</li>
 
 					<li class="p-b-10">
-						<a href="comestic_list.jsp" class="stext-107 cl7 hov-cl1 trans-04"> Body Care</a>
+						<a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=바디케어" class="stext-107 cl7 hov-cl1 trans-04"> Body Care</a>
 					</li>
 
 					<li class="p-b-10">
-						<a href="comestic_list.jsp" class="stext-107 cl7 hov-cl1 trans-04"> Perfume / Diffuser </a>
+						<a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=향수/디퓨져" class="stext-107 cl7 hov-cl1 trans-04"> Perfume / Diffuser </a>
 					</li>
 					
 					<li class="p-b-10">
-						<a href="customerCenter.jsp" class="stext-107 cl7 hov-cl1 trans-04">  F A Q </a>
+						<a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=헤어케어" class="stext-107 cl7 hov-cl1 trans-04"> Hair Care </a>
+					</li>
+					<li class="p-b-10">
+						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=FAQ" class="stext-107 cl7 hov-cl1 trans-04">  F A Q </a>
 					</li>
 				</ul>
 			</div>

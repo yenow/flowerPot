@@ -117,6 +117,7 @@ public class CustomerCenterController {
 		return "redirect:/customerCenter/content?ccno=" + customer.getCcno();
 	}
 	
+	// 답글페이지
 	@RequestMapping("rcontent")
 	public String rcontent(int rno, Model model) {
 		ReplyVo reply = ReplyDao.getReplyCont(rno);
