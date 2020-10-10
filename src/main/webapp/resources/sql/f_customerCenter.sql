@@ -15,5 +15,5 @@ drop table f_customerCenter
 
 create sequence ccno_seq
 start with 1
-increment by 1
+increment by 1;
 

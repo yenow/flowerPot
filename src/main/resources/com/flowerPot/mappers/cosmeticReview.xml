@@ -7,8 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.flowerPot.cosmeticReview.repository.CosmeticReviewDao">
 	
 	<insert id="insertcosmeticReview">
-		insert into f_cosmeticReview (crno,cno,mno,category,rating,id,nickname,content,title) 
-		values (crno_seq.nextval,#{cno, jdbcType=NUMERIC},#{mno, jdbcType=NUMERIC},#{category, jdbcType=VARCHAR},#{rating, jdbcType=NUMERIC},#{id, jdbcType=VARCHAR},#{nickname, jdbcType=VARCHAR},#{content, jdbcType=VARCHAR},#{title, jdbcType=VARCHAR})
+		insert into f_cosmeticReview (crno,cno,mno,category,rating,id,nickname,content,title,regdate) 
+		values (crno_seq.nextval,#{cno, jdbcType=NUMERIC},#{mno, jdbcType=NUMERIC},#{category, jdbcType=VARCHAR},#{rating, jdbcType=NUMERIC},#{id, jdbcType=VARCHAR},#{nickname, jdbcType=VARCHAR},#{content, jdbcType=VARCHAR},#{title, jdbcType=VARCHAR},sysdate)
 	</insert>
 
 	<select id="selectListCosmeticReviewListByCno" resultType="com.flowerPot.vo.CosmeticReviewVo">
@@ -25,5 +25,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectListCosmeticReviewListByBrand" resultType="com.flowerPot.vo.CosmeticReviewVo">
 		select f_cosmeticReview.* from f_cosmeticReview inner join f_cosmetic on f_cosmeticReview.cno = f_cosmetic.cno where brand = #{brand} and category = 'rating'
+	</select>
+	
+	<select id="selectListCosmeticReivewByMno" resultType="com.flowerPot.vo.CosmeticReviewVo">
+		select  * from f_cosmeticReview where mno = #{mno} and category = 'rating'
 	</select>
 </mapper>

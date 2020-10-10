@@ -63,7 +63,7 @@
 							<li class="active-menu"><a href="${pageContext.request.contextPath }">home</a></li>
 	
 							<!-- 쇼핑 리스트 -->
-							<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list" class="dropdown-toggle">Shop</a>
+							<li><a href="#" class="dropdown-toggle">Shop</a>
 								<ul class="sub-menu">
 									<li style="border-bottom: 1px solid #ccc; margin: 0 10px;" >
 									<a href="#main-menu" class="font-weight-bold" >화장품 종류</a></li>
@@ -85,7 +85,12 @@
 
 							<li><a href="${pageContext.request.contextPath }/today/today">오늘의추천</a></li>
 
-							<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+							<li><a href="${pageContext.request.contextPath }/event/event" class="dropdown-toggle">이벤트</a>
+								<ul class="sub-menu">
+									<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+									<li><a href="${pageContext.request.contextPath }/event/dayCheck">출석체크</a></li>
+								</ul>
+							</li>
 							
 							<li><a href="${pageContext.request.contextPath }/ourCompany/Company_main">우리회사</a></li>
 						</ul>
@@ -145,7 +150,7 @@
 				<li class="active-menu"><a href="${pageContext.request.contextPath }">home</a></li>
 
 				<!-- 쇼핑 리스트 -->
-				<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list" class="dropdown-toggle">Shop</a>
+				<li><a href="#" class="dropdown-toggle">Shop</a>
 					<ul class="sub-menu">
 						<li style="border-bottom: 1px solid #ccc; margin: 0 10px;"><a href="#main-menu" class="font-weight-bold">화장품 종류</a></li>
 						<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=스킨케어">스킨케어</a></li>
@@ -166,7 +171,12 @@
 
 				<li><a href="${pageContext.request.contextPath }/today/today">오늘의추천</a></li>
 
-				<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+				<li><a href="${pageContext.request.contextPath }/event/event" class="dropdown-toggle">이벤트</a>
+					<ul class="sub-menu">
+						<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+						<li><a href="${pageContext.request.contextPath }/event/dayCheck">출석체크</a></li>
+					</ul>
+				</li>
 
 				<li><a href="${pageContext.request.contextPath }/ourCompany/Company_main">우리회사</a></li>
 			</ul>
@@ -203,51 +213,67 @@
 			</div>
 
 			<div class="sidebar-content flex-w w-full p-lr-65 js-pscroll">
+				
+			
 				<ul class="sidebar-link w-full">
-
-					<li class="p-b-13">
-						<a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-							My Wishlist
-						</a>
+					<li class="p-b-35 ltext-103">
+					Menu
 					</li>
-
-					<li class="p-b-13">
-						<a href="${pageContext.request.contextPath }/member/signUp" class="stext-102 cl2 hov-cl1 trans-04"> 회원가입 </a>
-					</li>
-					
+					<!--  로그아웃 상태 -->
 					<sec:authorize access="isAnonymous()" >
-					<li class="p-b-13">
-						<a href="${pageContext.request.contextPath }/member/login" class="stext-102 cl2 hov-cl1 trans-04"> 로그인 </a>
+					<li class="p-b-25 ltext-102">
+						<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						  <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm2.5 8.5a.5.5 0 0 1 0-1h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5z"/>
+						</svg>
+						<a href="${pageContext.request.contextPath }/member/login" class="ltext-102 cl2 hov-cl1 trans-04"> 로그인 </a>
+					</li>
+					<li class="p-b-25 ltext-102">
+						<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						  <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+						</svg>
+						<a href="${pageContext.request.contextPath }/member/signUp" class="ltext-102 cl2 hov-cl1 trans-04"> 회원가입 </a>
 					</li>
 					</sec:authorize>
 					
+					<!-- 로그인이 되어있을떄 -->
 					<sec:authorize access="isAuthenticated()" >
-					<li class="p-b-13">
+					<li class="p-b-25 ltext-102">
 						<form action="${pageContext.request.contextPath}/logout" method="post">
 							<input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }">
-							<input type="submit" value="로그아웃" style="background-color: #fff; color: black;" class="stext-102 cl2 hov-cl1 trans-04" >
+							<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							  <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm9.5 8.5a.5.5 0 0 0 0-1H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5z"/>
+							</svg>
+							<input type="submit" value="로그아웃" style="background-color: #fff; color: black;" class="ltext-102 cl2 hov-cl1 trans-04" >
 						</form>
 						<%-- <a href="${pageContext.request.contextPath}/logout"  class="stext-102 cl2 hov-cl1 trans-04" >로그아웃</a> --%>
 					</li>
+					<li class="p-b-25 ltext-102">
+						<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-archive" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+						</svg>
+						<a href="${pageContext.request.contextPath }/member/order" class="ltext-102 cl2 hov-cl1 trans-04"> 마이페이지 </a>
+					</li>
 					</sec:authorize>
 
-					<li class="p-b-13">
-						<a href="${pageContext.request.contextPath }/member/myPage" class="stext-102 cl2 hov-cl1 trans-04"> 마이페이지 </a>
-					</li>
-
-					<li class="p-b-13">
-						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=notice" class="stext-102 cl2 hov-cl1 trans-04"> 고객센터 </a>
+					<li class="p-b-25 ltext-102">
+						<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bookmarks-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						  <path fill-rule="evenodd" d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4z"/>
+						  <path fill-rule="evenodd" d="M4.268 1H12a1 1 0 0 1 1 1v11.768l.223.148A.5.5 0 0 0 14 13.5V2a2 2 0 0 0-2-2H6a2 2 0 0 0-1.732 1z"/>
+						</svg>
+						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=notice" class="ltext-102 cl2 hov-cl1 trans-04"> 고객센터 </a>
 					</li>
 					
-					<li class="p-b-13">
-						<a href="${pageContext.request.contextPath }/ourCompany/Company_main" class="stext-102 cl2 hov-cl1 trans-04"> 우리회사 </a>
+					<li class="p-b-25 ltext-102">
+						<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-building" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						  <path fill-rule="evenodd" d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694L1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z"/>
+						  <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z"/>
+						</svg>
+						<a href="${pageContext.request.contextPath }/ourCompany/Company_main" class="ltext-102 cl2 hov-cl1 trans-04"> 우리회사 </a>
 					</li>
 				</ul>
 
 				<div class="sidebar-gallery w-full p-tb-30">
-					<span class="mtext-101 cl5">
-						@ CozaStore
-					</span>
+					
 
 					<div class="flex-w flex-sb p-t-36 gallery-lb">
 						<!-- item gallery sidebar -->
@@ -308,7 +334,7 @@
 
 				<div class="sidebar-gallery w-full">
 					<span class="mtext-101 cl5">
-						About Us
+						flowerPot
 					</span>
 
 					<p class="stext-108 cl6 p-t-27">

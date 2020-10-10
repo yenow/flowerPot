@@ -73,7 +73,7 @@
 						</a>
 						</sec:authorize>
 						
-						<a href="${pageContext.request.contextPath }/member/myPage" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
+						<a href="${pageContext.request.contextPath }/member/order" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
 						
 						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=notice" class="flex-c-m trans-04 p-lr-25"> 고객센터 </a>
 						
@@ -98,7 +98,7 @@
 							<li class="active-menu"><a href="${pageContext.request.contextPath }">home</a></li>
 	
 							<!-- 쇼핑 리스트 -->
-							<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list" class="dropdown-toggle">Shop</a>
+							<li><a href="#" class="dropdown-toggle">Shop</a>
 								<ul class="sub-menu">
 									<li style="border-bottom: 1px solid #ccc; margin: 0 10px; " ><a href="#main-menu" class="font-weight-bold" >화장품 종류</a></li>
 									<li><a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=스킨케어">스킨케어</a></li>
@@ -119,7 +119,12 @@
 
 							<li><a href="${pageContext.request.contextPath }/today/today">오늘의추천</a></li>
 
-							<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+							<li><a href="${pageContext.request.contextPath }/event/event" class="dropdown-toggle">이벤트</a>
+								<ul class="sub-menu">
+									<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+									<li><a href="${pageContext.request.contextPath }/event/dayCheck">출석체크</a></li>
+								</ul>
+							</li>
 						</ul>
 					</div>
 

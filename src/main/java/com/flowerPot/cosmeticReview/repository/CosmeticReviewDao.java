@@ -15,4 +15,6 @@ public interface CosmeticReviewDao {
 	List<CosmeticReviewVo> selectListCosmeticReviewListByBrand(String brand);
 
 	List<CosmeticReviewVo> selectListCosmeticReviewListById(CosmeticReviewVo cosmeticReviewVo);
+
+	List<CosmeticReviewVo> selectListCosmeticReivewByMno(Integer mno);
 }

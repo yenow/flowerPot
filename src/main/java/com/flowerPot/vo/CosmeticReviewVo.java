@@ -1,5 +1,7 @@
 package com.flowerPot.vo;
 
+import java.time.LocalDateTime;
+
 import org.apache.ibatis.type.Alias;
 
 import lombok.AllArgsConstructor;
@@ -31,5 +33,6 @@ public class CosmeticReviewVo {
 	private String nickname;
 	private String title;
 	private String content;
+	private LocalDateTime regdate;
 	
 }
