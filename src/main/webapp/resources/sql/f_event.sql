@@ -16,19 +16,6 @@ alter table f_event add constraint f_event_fk_mno foreign key (mno) references f
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 alter table f_event add mappingURL varchar2(100);
 create sequence eno_seq increment by 1 start with 1;
 

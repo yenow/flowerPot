@@ -15,7 +15,7 @@
 <body>
 	<!-- nav -->
 	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #efbbcf; padding: 2px;">
-		<a class="navbar-brand" href="${pageContext.request.contextPath}">이벤트</a>
+		<a class="navbar-brand" href="${pageContext.request.contextPath}/resources/images/logo_event.png"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>

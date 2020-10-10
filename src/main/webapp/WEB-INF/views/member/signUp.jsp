@@ -1,20 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../info/header2.jsp"></jsp:include>
 
 <style>
-.form-control {
-	border: solid 0.5px #6e6e6e;
+.double {
+	border: dotted 0.5px #c5d2cf;
 }
 
-.entermail {
-	margin-right: 40%;
-}
-
-.sendmail {
-	margin-left: 70%;
-	border: solild 0.5px #6e6e6e;
+.
+enroll {
+	padding: 20%;
 }
 </style>
 
@@ -39,7 +35,7 @@
 						<input type="text" class="form-control form-control-lg" name="id" id="user_id" aria-describedby="emailHelp" placeholder="숫자 + 영어: 4자~10자 입력해주세요 ^^">
 						<small id="emailHelp" class="form-text text-muted"> </small>
 					</div>
-					<div class="form-group">
+					<div class="form-group ">
 						<label for="password" style="text-align: left"><p>
 								<strong>비밀번호</strong>&nbsp;&nbsp;&nbsp;<span id="pwChk"></span>
 							</p></label>
@@ -51,94 +47,107 @@
 							</p></label>
 						<input type="password" class="form-control form-control-lg" name="password2" id="password_check" placeholder="비밀번호가 일치해야합니다.ㅜㅜ">
 					</div>
-					<div class="form-group">
-						<label for="user_name" style="text-align: left"><p>
-								<strong>이름</strong>&nbsp;&nbsp;&nbsp;<span id="nameChk"></span>
-							</p></label>
-						<input type="text" class="form-control form-control-lg" name="name" id="user_name" placeholder="한글로 최대 6자 입력해주세요 !!">
+
+					<hr class="double">
+
+					<br />
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="user_name"><p>
+									<strong>이름</strong>&nbsp;&nbsp;&nbsp;<span id="nameChk"></span>
+								</p></label>
+							<input type="text" class="form-control form-control-lg " name="name" id="user_name" placeholder="한글로 최대 6자 입력해주세요 !!">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="user_nick"><p>
+									<strong>닉네임</strong>&nbsp;&nbsp;&nbsp;<span id="nickChk"></span>
+								</p></label>
+							<input type="text" class="form-control form-control-lg" name="nickname" id="user_nick" placeholder="닉네임을 입력해주세요!!">
+						</div>
 					</div>
-					<div class="form-group">
-						<label for="user_nick" style="text-align: left"><p>
-								<strong>닉네임</strong>&nbsp;&nbsp;&nbsp;<span id="nickChk"></span>
-							</p></label>
-						<input type="text" class="form-control form-control-lg" name="nickname" id="user_nick">
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="user_phone" style="text-align: left"><p>
+									<strong>전화번호</strong><span id="phoneChk"></span>
+								</p></label>
+							<input type="tel" class="form-control form-control-lg" name="tel" id="user_phone" placeholder="(예시:- 하이픈 없이 입력해주세요)">
+						</div>
+
+
+						<div class="form-group col-md-4">
+							<label for="user_name"><p>
+									<strong>성별</strong>&nbsp;&nbsp;&nbsp;<span id="nickChk"></span>
+								</p></label>
+							<div style="text-align: center; padding-left: 70px;">
+								<input type="radio" name="gender" id="exampleRadios1" value="M" style="display: inline-block;">
+								<label for="exampleRadios1" style="display: inline-block"> 남자 </label>
+
+								<input type="radio" name="gender" id="exampleRadios2" value="F" style="display: inline-block; margin-left: 30px;">
+								<label for="exampleRadios2" style="display: inline-block;"> 여자 </label>
+							</div>
+						</div>
+
 					</div>
+
+
+
 					<div class="form-group email">
 						<label for="user_email" style="text-align: left"><p>
 								<strong>이메일</strong>&nbsp;&nbsp;&nbsp;<span id="emailChk"></span>
 							</p></label>
-
 						<input type="email" class="form-control form-control-lg test" name="email" id="user_email" placeholder="ex)aaa@naver.com">
-
+						<br />
 						<input type="button" class=" test2 btn btn-outline-secondary btn-block btn-lg" onclick="send_email();" value="인증번호 전송">
+						<br />
+
+						<input type="text" class="form-control form-control-lg enternum" name="code_number" id="code_number" placeholder="인증번호 입력">
+						<br />
+						<input type="button" class="btn btn-outline-secondary btn-block btn-lg entercheck" onclick="code_check();" value="인증 번호 확인">
 					</div>
+
+					<hr class="double">
 
 					<div class="clear"></div>
 
+					<br />
+
+
 					<div class="form-group">
 
-					<input type="text" class="form-control form-control-lg" id="sample4_postcode" name="postcode" placeholder="우편번호">
-					<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" class="form-control form-control-lg" id="sample4_roadAddress" name="street_address" placeholder="도로명주소">
-					<br>
-					<input type="text" class="form-control form-control-lg" id="sample4_jibunAddress" name="parcel_address" placeholder="지번주소">
-					<span id="guide" style="color:#999;display:none"></span>
-					<br>
-					<input type="text" class="form-control form-control-lg" id="sample4_extraAddress" name="more_information" placeholder="참고항목">
-					<br>
-					<input type="text" class="form-control form-control-lg" id="sample4_detailAddress" name="detail_address"placeholder="상세주소">
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="user_nick" style="text-align: left"><p>
+										<strong>주소)우편번호</strong>&nbsp;&nbsp;&nbsp;<span id="nickChk"></span>
+									</p></label>
+								<input type="text" class="form-control form-control-lg" id="sample4_postcode" name="postcode" placeholder="우편번호">
+							</div>
 
-						<label for="user_codeNumber" style="text-align: left"></label>
-						<input type="text" class="form-control form-control-lg enternum" name="code_number" id="code_number" placeholder="인증번호 입력">
-						<input type="button" class="btn btn-outline-secondary btn-block btn-lg entercheck" onclick="code_check();" value="인증 번호 확인">
+							<div class="form-group col-md-6">
+								<label for="inputPassword4" > .</label>
+								<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+							</div>
+						</div>
 
+						<input type="text" class="form-control form-control-lg" id="sample4_jibunAddress" name="parcel_address" placeholder="지번주소"><br/>
+
+						<input type="text" class="form-control form-control-lg" id="sample4_roadAddress" name="street_address" placeholder="도로명주소"><br/>
+
+						<input type="text" class="form-control form-control-lg" id="sample4_detailAddress" name="detail_address" placeholder="상세주소">
+
+						<label for="user_codeNumber" style="text-align: left"></label><br/>
+
+						<input type="text" class="form-control form-control-lg" id="sample4_extraAddress" name="more_information" placeholder="참고항목">
+						
 					</div>
+					<button class="btn btn-outline-secondary btn-block btn-lg " id="signup-btn">등록</button>
+					<br />
 			</div>
-
-			<div class="form-group">
-				<label for="user_phone" style="text-align: left"><p>
-						<strong>전화번호</strong>&nbsp;&nbsp;&nbsp;<span id="phoneChk"></span>
-					</p></label>
-				<input type="tel" class="form-control form-control-lg" name="tel" id="user_phone" placeholder="(예시:- 하이픈 없이 입력해주세요)">
-
-			</div>
-			<div class="form-check">
-				<input type="radio" name="gender" id="exampleRadios1" value="M" style="display: inline-block">
-				<label for="exampleRadios1" style="display: inline-block"> 남자 </label>
-				<input type="radio" name="gender" id="exampleRadios2" value="F" style="display: inline-block">
-				<label for="exampleRadios2" style="display: inline-block"> 여자 </label>
-			</div>
-
-			<div class="form-group">
-				<label for="user_address" style="text-align: left"><p>
-						<strong>주소(우편번호)</strong>&nbsp;&nbsp;&nbsp; <span id="addressChk"></span>
-					</p></label>
-				<input type="text" class="form-control form-control-lg" id="sample4_postcode" name="postcode" placeholder="우편번호">
-				<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
-				<br>
-				
-				<input type="text" class="form-control form-control-lg" id="sample4_roadAddress" name="street_address" placeholder="도로명주소">
-				<br>
-				
-				<input type="text" class="form-control form-control-lg" id="sample4_jibunAddress" name="parcel_address" placeholder="지번주소">
-				<span id="guide" style="color: #999; display: none"></span> <br>
-				
-				<input type="text" class="form-control form-control-lg" id="sample4_extraAddress" name="deliver_state" placeholder="참고항목">
-				<br>
-				
-				<input type="text" class="form-control form-control-lg" id="sample4_detailAddress" name="detail_address" placeholder="상세주소">
-			</div>
-
-			<button class="btn btn-outline-secondary btn-block btn-lg" id="signup-btn">등록</button>
-			</form>
-			<br />
-			<br />
-
-
-
 		</div>
 	</div>
-	</div>
+
+	<!-- footer  -->
 	<jsp:include page="../info/footer.jsp"></jsp:include>
 </section>
 

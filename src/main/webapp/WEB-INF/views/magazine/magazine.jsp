@@ -7,8 +7,8 @@
 
 
 <!-- Title page -->
-<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/bg-02.jpg');">
-	<h2 class="ltext-105 cl0 txt-center">매거진</h2>
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/logo_magazine.png');">
+	<h2 class="ltext-105 cl0 txt-center"></h2>
 </section>
 
 <div class="container">
