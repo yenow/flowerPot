@@ -56,16 +56,6 @@ public class SemiAdminController {
 
 	}
 	
-	// { dashboard _ main }
-	@RequestMapping("/dashboard")
-	public void dashboard(Model model) {
-		System.out.println("dashboard 실행중..");
-
-		// { semi _ notice 같은 게시물 띄우게 하기 }
-		List<SemiNoticeVO> blist = service.getArticles();
-		model.addAttribute("blist",blist);
-	}
-
 
 	//  공지사항 게시글 번호로 지우기  } 
 	@RequestMapping("/semi_notice_del_ok")
