@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="getBrandList" resultType="com.flowerPot.admin.vo.BrandVo">		
  		SELECT * FROM 
-		(SELECT rownum rnum,bno,company,brandName,busNo, ceoName, tel, email, postcode, roadAddr, jibunAddr, extraAddr, introduce, regDate
+		(SELECT rownum rnum,bno,company,name,brandName,busNo, ceoName, tel, email, postcode, roadAddr, jibunAddr, extraAddr, introduce, regDate
 		FROM
 		(SELECT * FROM f_brand 
  		<include refid="search"/>

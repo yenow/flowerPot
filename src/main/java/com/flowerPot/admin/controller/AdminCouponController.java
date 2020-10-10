@@ -74,7 +74,7 @@ public class AdminCouponController {
 	@RequestMapping("/couponRegistToMember")
 	public String couponRegistToMember(String id, Integer couNo, Integer radio) {
 		Log.info("couNo:"+couNo);
-		
+		Log.info("id:"+id);
 		service.insertCouponToMember(id,couNo,radio);
 		return "redirect:/admin/coupon";
 	}

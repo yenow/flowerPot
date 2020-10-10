@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.mortbay.log.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,8 @@ public class AuthorityServiceImpl implements AuthorityService {
 				map.put("authority", authority);
 				map.put("id", id);
 				map.put("brand", brand);
+				Log.info("id:"+id);
+				Log.info("brand:"+brand);
 				memberDao.updateBrandById(map);
 				// 권한목록을 가져와서... 있으면 insert를 하면 안되는것인가..
 				authorityDao.insertAuthorityById(map);

@@ -203,11 +203,11 @@ $(function() {
 											<option value="ROLE_ADMIN">전체 관리자</option>
 										</select>
 										<select class="custom-select" id="brand-select">
-											<option value="" selected="selected">브랜드</option>
-											<option value="이니스프리">이니스프리</option>
-											<option value="이니스프리">이니스프리</option>
-											<option value="이니스프리">이니스프리</option>
-											<option value="이니스프리">이니스프리</option>
+											<option value="NO" selected="selected">브랜드</option>
+											<c:forEach var="brand" items="${bList }">
+												<option value="${brand.brandName }">${brand.brandName }</option>
+											</c:forEach>
+											
 										</select>
 										
 										<div class="input-group my-3">
