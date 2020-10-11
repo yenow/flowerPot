@@ -12,3 +12,6 @@ create sequence comment_seq start with 1 increment by 1 nocache;
 -- 제약조건
 alter table comments add constraint comments_fk_ccno foreign key (ccno) references f_customerCenter(ccno);
 
+insert into comments values (comment_seq,0,'phantom1994','replytitle','replytext',sysdate,sysdate);
+
+select * from comments

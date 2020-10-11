@@ -52,6 +52,9 @@ public interface MemberDao {
 	public List<Integer> selectAllMemberMno();
 
 	public void updateRankByMno(MemberVo m);
+	
+	//회원 탈퇴
+	public void withdrawal(MemberVo member) throws Exception;
 
 
 }

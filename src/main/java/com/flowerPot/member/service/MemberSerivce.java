@@ -47,5 +47,7 @@ public interface MemberSerivce {
 	
 	void updateRankByMno(MemberVo m);
 	
+	//회원 탈퇴
+	public void withdrawal(MemberVo member) throws Exception;
 
 }

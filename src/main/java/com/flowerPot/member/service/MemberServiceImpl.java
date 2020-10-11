@@ -125,5 +125,10 @@ public class MemberServiceImpl implements MemberSerivce {
 	public void updateRankByMno(MemberVo m) {
 		memberDao.updateRankByMno(m);
 	}
+	//회원 탈퇴
+	@Override
+	public void withdrawal(MemberVo member) throws Exception {
+		memberDao.withdrawal(member);
+	}
 
 }
