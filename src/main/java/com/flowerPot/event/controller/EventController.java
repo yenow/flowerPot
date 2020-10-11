@@ -96,6 +96,7 @@ public class EventController {
 		return "redirect:/event/event";
 	}
 
+	
 	@RequestMapping("dayCheck")
 	public void dayCheck(Principal pricipal ,Model model) {
 		MemberVo member = getMemberBysecurity(pricipal);

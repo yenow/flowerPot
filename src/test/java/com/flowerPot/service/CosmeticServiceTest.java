@@ -58,6 +58,7 @@ public class CosmeticServiceTest {
 			attachFileDao.insertAttachFile(a);
 			
 			// CosmeticReviewVo 삽입
+
 			CosmeticReviewVo cr = new CosmeticReviewVo();
 			cosmeticReviewDao.insertcosmeticReview(cr);
 			cosmeticReviewDao.insertcosmeticReview(cr);

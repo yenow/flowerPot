@@ -65,6 +65,7 @@ public class MemberController {
 	@Autowired
 	private MemberAddressService memberAddressService;
 	@Autowired
+
 	private OrderProductService orderProductService;
 	@Autowired
 	private OrderService orderService;
@@ -535,6 +536,10 @@ public class MemberController {
 		String authority = (String) map.get("authority");
 		String brand = (String) map.get("brand");
 		List<String> id_list = (List<String>) map.get("id_list");
+		
+		log.info("brand:"+brand);
+		log.info("authority:"+authority);
+		log.info("id_list:"+id_list);
 		try {
 			authorityService.insertAuthorityById(authority, brand, id_list);
 			r = new ResponseEntity<String>("success", HttpStatus.OK);

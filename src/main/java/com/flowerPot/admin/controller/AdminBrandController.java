@@ -58,6 +58,7 @@ public class AdminBrandController {
 	@PostMapping("/brandAdd_ok")
 	@ResponseBody
 	public String brandAdd(@RequestBody BrandVo brand) {
+		brand.setName(brand.getBrandName());
 		System.out.println(brand);
 		service.insertBrand(brand);
 		String result = "addSuccess";
