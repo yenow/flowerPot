@@ -20,7 +20,7 @@ alter table f_magazine add constraint f_magazine_fk_mno foreign key (mno) refere
 
 
 --------------------------------------------------------------------------------------------------------------
-
+select * from f_magazine;
 
 
 
