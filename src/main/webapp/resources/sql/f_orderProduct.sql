@@ -31,7 +31,7 @@ create sequence ono_seq increment by 1 start with 1;
 
 drop table f_orderProduct;
 select * from f_orderProduct;
-
+select ono_seq.nextval from dual;
 
 drop sequence ordPro_seq;
  

@@ -85,8 +85,8 @@
 
 	<!-- 에러페이지 송출 -->
 
-<!-- 	<error-page>
+ 	<error-page>
 		<location>/WEB-INF/views/error/error.jsp</location>
 	</error-page>
- -->
+
 </web-app>
