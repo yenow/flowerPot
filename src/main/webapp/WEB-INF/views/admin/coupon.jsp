@@ -174,7 +174,7 @@ function check(){
 													<%-- <fmt:formatDate value="${coup.endPDate}" pattern="yyyy년 MM월 dd일"/> --%>
 													</td>
 													<td>
-														<button id="popup_open_btn" data-toggle="modal" data-target="#myModal1" href="#pablo" value="${coup.couponName}" onclick="return giftCoupon(this);">쿠폰 발급</button>
+														<button id="popup_open_btn" class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal1" href="#pablo" value="${coup.couponName}" onclick="return giftCoupon(this);">쿠폰 발급</button>
 													</td>
 												</tr>
 											</c:forEach>

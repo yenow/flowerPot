@@ -126,11 +126,11 @@ $(function() {
 															<td>
 																<form action="${pageContext.request.contextPath}/admin/member_delete">
 																	<input type="hidden" name="mno" value="${mem.mno}" />
-																	<input type="submit" value="탈퇴">
+																	<input class="btn btn-outline-dark" type="submit" value="탈퇴">
 																</form>
 																<form action="${pageContext.request.contextPath}/admin/member_restore">
 																	<input type="hidden" name="mno" value="${mem.mno}" />
-																	<input type="submit" value="복구">
+																	<input class="btn btn-outline-dark" type="submit" value="복구">
 																</form>
 															</td>
 														</tr>

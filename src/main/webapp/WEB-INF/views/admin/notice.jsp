@@ -108,10 +108,10 @@ $(function() {
 													</c:if>
 															</td>
 															<td>
-																<button onclick="location='${pageContext.request.contextPath}/admin/customer/notice_content/${notice.ccno}'">내용</button>
+																<button class="btn btn-outline-dark" onclick="location='${pageContext.request.contextPath}/admin/customer/notice_content/${notice.ccno}'">내용</button>
 																<form action="${pageContext.request.contextPath}/admin/customer/notice_del" method="post">
-																	<input type="hidden" name="ccno" value="${notice.ccno}" />
-																	<button type="submit" >삭제</button>
+																	<input  type="hidden" name="ccno" value="${notice.ccno}" />
+																	<button class="btn btn-outline-dark" type="submit" >삭제</button>
 																</form>
 															</td>
 														</tr>
