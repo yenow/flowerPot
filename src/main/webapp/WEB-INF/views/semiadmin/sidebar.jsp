@@ -53,7 +53,7 @@
 				</a>
 				
 				
-				<li class="sidebar-item  has-sub">
+				<!-- <li class="sidebar-item  has-sub">
 					<a href="#"	class='sidebar-link'> 
 					<i data-feather="trending-up" width="20"></i>
 						<span>현황 Charts</span>
@@ -62,7 +62,7 @@
 					<ul class="submenu ">
 						<li><a href="chart_count">재고수량</a></li>
 						<li><a href="chart_product">품목별 판매량</a></li>
-				</ul></li>
+				</ul></li> -->
 
 
 				<li class='sidebar-title'>개인 스케줄</li>

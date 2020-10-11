@@ -37,7 +37,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.flowerPot.admin.vo.CoupVo;
 import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
-import com.flowerPot.member.service.MemberSerivce;
+import com.flowerPot.member.service.MemberService;
 import com.flowerPot.memberAddress.service.MemberAddressService;
 import com.flowerPot.order.service.OrderService;
 import com.flowerPot.orderProduct.service.OrderProductService;
@@ -59,7 +59,7 @@ public class MemberController {
 	@Autowired
 	private CosmeticReviewService cosmeticReviewService;
 	@Autowired
-	private MemberSerivce memberSerivce;
+	private MemberService memberSerivce;
 	@Autowired
 	private MemberAddressService memberAddressService;
 	@Autowired
@@ -69,7 +69,7 @@ public class MemberController {
 	@Inject // 서비스를 호출하기 위해서 의존성을 주입
 	JavaMailSender mailSender; // 메일 서비스를 사용하기 위해 의존성을 주입함
 	@Autowired
-	private MemberSerivce memberService;
+	private MemberService memberService;
 	@Autowired
 	private AuthorityService authorityService;
 	@Autowired
@@ -269,7 +269,7 @@ public class MemberController {
 	public String signUp_ok(MemberVo member, MemberAddressVo memberAddress) {
 		// 비밀번호 인코딩
 		log.info("회원정보 : " + member.toString());
-
+		member.setMember_rank("씨앗");
 		member.setPassword(passwordEncoder.encode(member.getPassword()));
 		log.info("회원정보 : " + member.toString());
 		memberService.insertMember(member, memberAddress);
@@ -314,7 +314,7 @@ public class MemberController {
 				memberService.passwordUpdate(vo);
 				out.println("<script>");
 				out.println("alert('비밀번호를 변경하였습니다..');");
-				out.println("location.href='"+request.getContextPath()+"'/member/myPage");
+				out.println("location.href='"+request.getContextPath()+"'/member/order");
 				out.println("</script>");
 				out.close();
 			} // else

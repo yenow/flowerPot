@@ -98,12 +98,12 @@ enroll {
 							</p></label>
 						<input type="email" class="form-control form-control-lg test" name="email" id="user_email" placeholder="ex)aaa@naver.com">
 						<br />
-						<input type="button" class=" test2 btn btn-outline-secondary btn-block btn-lg" onclick="send_email();" value="인증번호 전송">
+						<!-- <input type="button" class=" test2 btn btn-outline-secondary btn-block btn-lg" onclick="send_email();" value="인증번호 전송"> -->
 						<br />
 
-						<input type="text" class="form-control form-control-lg enternum" name="code_number" id="code_number" placeholder="인증번호 입력">
+						<!-- <input type="text" class="form-control form-control-lg enternum" name="code_number" id="code_number" placeholder="인증번호 입력">
 						<br />
-						<input type="button" class="btn btn-outline-secondary btn-block btn-lg entercheck" onclick="code_check();" value="인증 번호 확인">
+						<input type="button" class="btn btn-outline-secondary btn-block btn-lg entercheck" onclick="code_check();" value="인증 번호 확인"> -->
 					</div>
 
 					<hr class="double">

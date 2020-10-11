@@ -204,10 +204,10 @@ $(function() {
 										</select>
 										<select class="custom-select" id="brand-select">
 											<option value="" selected="selected">브랜드</option>
-											<option value="이니스프리">이니스프리</option>
-											<option value="이니스프리">이니스프리</option>
-											<option value="이니스프리">이니스프리</option>
-											<option value="이니스프리">이니스프리</option>
+											<!-- 이부분 -->
+											<c:forEach var="b" items="${blist }">
+												<option value="${b.brandName }" >${b.brandName }</option>
+											</c:forEach>
 										</select>
 										
 										<div class="input-group my-3">

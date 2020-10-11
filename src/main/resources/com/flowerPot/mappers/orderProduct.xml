@@ -7,16 +7,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.flowerPot.orderProduct.repository.OrderProductDao">
 	
 	<insert id="insertOrderProduct">
-		insert into f_orderProduct (ono,mno,cno,dno,order_num,amount,point,couponName,regdate,final_price) 
-		values (ono_seq.nextval,#{mno},#{cno},#{dno,jdbcType=NUMERIC},#{order_num},#{amount},#{point},#{couponName,jdbcType=VARCHAR},sysdate,#{final_price})
+		insert into f_orderProduct (ono,mno,cno,dno,order_num,amount,point,couponName,regdate,final_price,member_rank,brand) 
+		values (ono_seq.nextval,#{mno},#{cno},#{dno,jdbcType=NUMERIC},#{order_num},#{amount},#{point},#{couponName,jdbcType=VARCHAR},sysdate,#{final_price},#{member_rank, jdbcType=VARCHAR},#{brand, jdbcType=VARCHAR})
 		<selectKey keyProperty="ono" order="AFTER" resultType="int"> 
 			select LAST_NUMBER from user_sequences where SEQUENCE_NAME = 'ONO_SEQ'
 		</selectKey>
 	</insert>
 	
 	<insert id="insertOrderProductNoMember">
-		insert into f_orderProduct (ono,cno,dno,order_num,amount,point,couponName,regdate,tel,email,final_price) 
-		values (ono_seq.nextval,#{cno},#{dno,jdbcType=NUMERIC},#{order_num},#{amount},#{point,jdbcType=NUMERIC},#{couponName,jdbcType=VARCHAR},sysdate,#{tel},#{email},#{final_price})
+		insert into f_orderProduct (ono, cno, dno, order_num, amount,point, couponName, regdate, tel, email, final_price, brand) 
+		values (ono_seq.nextval,#{cno},#{dno,jdbcType=NUMERIC},#{order_num},#{amount},#{point,jdbcType=NUMERIC},#{couponName,jdbcType=VARCHAR},sysdate, #{tel}, #{email}, #{final_price}, #{brand, jdbcType=VARCHAR})
 	</insert>
 	
 	<delete id="deleteAll">

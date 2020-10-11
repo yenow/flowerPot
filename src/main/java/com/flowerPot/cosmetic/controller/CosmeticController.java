@@ -31,7 +31,7 @@ import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
 import com.flowerPot.description.service.DescriptionService;
 import com.flowerPot.domain.CosmeticCriteria;
 import com.flowerPot.domain.CosmeticPageDTO;
-import com.flowerPot.member.service.MemberSerivce;
+import com.flowerPot.member.service.MemberService;
 import com.flowerPot.memberAddress.service.MemberAddressService;
 import com.flowerPot.vo.AttachFileVo;
 import com.flowerPot.vo.BrandVo;
@@ -58,7 +58,7 @@ public class CosmeticController {
 	@Autowired 
 	private CosmeticReviewService cosmeticReviewService;
 	@Autowired
-	private MemberSerivce memberSerivce;
+	private MemberService memberSerivce;
 	@Autowired
 	private MemberAddressService memberAddressService;
 	@Autowired

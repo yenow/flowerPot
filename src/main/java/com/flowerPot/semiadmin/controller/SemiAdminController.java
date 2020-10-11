@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.flowerPot.cosmetic.service.CosmeticService;
 import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
-import com.flowerPot.member.service.MemberSerivce;
+import com.flowerPot.member.service.MemberService;
 import com.flowerPot.orderProduct.service.OrderProductService;
 import com.flowerPot.semiadmin.model.SemiCalendarVO;
 import com.flowerPot.semiadmin.model.SemiInventoryVO;
@@ -40,11 +40,21 @@ public class SemiAdminController {
 	@Autowired
 	private CosmeticService cosmeticService;
 	@Autowired
-	private MemberSerivce memberSerivce;
+	private MemberService memberSerivce;
 	@Autowired
 	private CosmeticReviewService cosmeticReviewService;
 	@Autowired
 	private OrderProductService orderProductService;
+
+	// 회원 정보 시큐리티에서 가져오기
+	public MemberVo getMemberBysecurity(Principal principal) {
+		MemberVo memberVo = new MemberVo();
+		if(principal!=null) {
+			String id = principal.getName();
+			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
+		}
+		return memberVo;
+	}
 
 	// 공지사항
 	@RequestMapping("/semi_notice")
@@ -55,7 +65,7 @@ public class SemiAdminController {
 		model.addAttribute("blist",blist);
 
 	}
-	
+
 
 	//  공지사항 게시글 번호로 지우기  } 
 	@RequestMapping("/semi_notice_del_ok")
@@ -194,7 +204,7 @@ public class SemiAdminController {
 
 		List<OrderProductVo> opList = new ArrayList<OrderProductVo>();
 		List<CosmeticVo> cList = new ArrayList<CosmeticVo>();
-				
+
 		MemberVo memberVo = new MemberVo();
 		if(principal!=null) {
 			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
@@ -204,19 +214,19 @@ public class SemiAdminController {
 			String brand = memberVo.getBrand();
 			// 본사의 화장품 목록
 			cList = cosmeticService.selectListCosmeticByBrand(brand);
-			
+
 			if(cno == null) {
 				opList = orderProductService.selectListOrderProductByBrand(brand);
 			}else {
 				opList = orderProductService.selectListOrderProductByBrandCno(brand,cno);
 			}
 		}
-		
+
 		model.addAttribute("cList",cList);
 		model.addAttribute("opList", opList);
 		return "/semiadmin/delivery";
 	}
-	
+
 	// 배송완료처리
 	@RequestMapping("delivery_complete")
 	public String delivery_complete(Integer ono, Integer cno) {

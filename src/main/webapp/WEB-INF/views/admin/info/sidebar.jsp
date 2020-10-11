@@ -12,7 +12,7 @@
                     <li id="Dashboard">
                         <a class="nav-link" href="${pageContext.request.contextPath}/admin/dashboard">
                             <i class="nc-icon nc-chart-pie-35"></i>
-                            <p>종합 현황(손도못댐)</p>
+                            <p>종합 현황</p>
                         </a>
                     </li>
                     <li id="coupon">
@@ -39,12 +39,12 @@
                             <p>회원 관리</p>
                         </a>
                     </li>
-                	<li id="inventory">
+                	<%-- <li id="inventory">
                         <a class="nav-link" href="${pageContext.request.contextPath}/admin/inventory">
                             <i class="nc-icon nc-notes"></i>
                             <p>재고 관리(구상도못함)</p>
                         </a>
-                    </li>
+                    </li> --%>
                 	<li id="delevery">
                         <a class="nav-link" href="${pageContext.request.contextPath}/admin/delivery">
                             <i class="nc-icon nc-delivery-fast"></i>
@@ -57,12 +57,12 @@
                             <p>소통 관리</p>
                         </a>
                     </li>
-                	<li id="Notifications">
+                <%-- 	<li id="Notifications">
                         <a class="nav-link" href="${pageContext.request.contextPath}/admin/notifications">
                             <i class="nc-icon nc-bell-55"></i>
                             <p>신규 알림</p>
                         </a>
-                    </li>
+                    </li> --%>
                     <li><a><i></i><p> </p></a></li>
                 	<li><a><i></i><p> </p></a></li>
                 	<li><a><i></i><p> </p></a></li>
@@ -74,10 +74,7 @@
                             <p>메인페이지</p>
                         </a>
                     </li>
-                    
-                    
-                    
-                    
+        
                 </ul>
             </div>
         </div>

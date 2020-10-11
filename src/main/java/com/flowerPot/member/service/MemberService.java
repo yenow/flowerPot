@@ -7,7 +7,7 @@ import com.flowerPot.member.vo.MemberDTO;
 import com.flowerPot.vo.MemberAddressVo;
 import com.flowerPot.vo.MemberVo;
 
-public interface MemberSerivce {
+public interface MemberService {
 
 	//회원 가입기능
 	void insertMember(MemberVo member);

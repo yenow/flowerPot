@@ -25,7 +25,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.flowerPot.domain.Criteria;
 import com.flowerPot.domain.PageDTO;
 import com.flowerPot.magazine.service.MagazineService;
-import com.flowerPot.member.service.MemberSerivce;
+import com.flowerPot.member.service.MemberService;
 import com.flowerPot.vo.MagazineVo;
 import com.flowerPot.vo.MemberVo;
 
@@ -40,7 +40,7 @@ public class MagazineController {
 	@Autowired
 	private MagazineService magazineService;
 	@Autowired
-	private MemberSerivce memberSerivce;
+	private MemberService memberSerivce;
 
 	// 회원 정보 시큐리티에서 가져오기
 	public MemberVo getMemberBysecurity(Principal principal) {

@@ -7,7 +7,7 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
-import com.flowerPot.member.service.MemberSerivce;
+import com.flowerPot.member.service.MemberService;
 import com.flowerPot.point.service.PointService;
 import com.flowerPot.vo.MemberVo;
 import com.flowerPot.vo.PointVo;
@@ -15,12 +15,12 @@ import com.flowerPot.vo.PointVo;
 public class CloudJobExecutor extends QuartzJobBean {
 
 	private PointService pointService;
-	private MemberSerivce memberService;
+	private MemberService memberService;
 	
 	public void setPointService(PointService pointService) {
 		this.pointService = pointService;
 	}
-	public void setMemberService(MemberSerivce memberService) {
+	public void setMemberService(MemberService memberService) {
 		this.memberService = memberService;
 	}
 

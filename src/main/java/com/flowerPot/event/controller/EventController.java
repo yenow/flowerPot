@@ -21,7 +21,7 @@ import com.flowerPot.attachFile.service.AttachFileService;
 import com.flowerPot.attendance.repository.AttendanceDao;
 import com.flowerPot.domain.Criteria;
 import com.flowerPot.event.service.EventService;
-import com.flowerPot.member.service.MemberSerivce;
+import com.flowerPot.member.service.MemberService;
 import com.flowerPot.vo.AttachFileVo;
 import com.flowerPot.vo.AttendanceVo;
 import com.flowerPot.vo.EventVo;
@@ -33,7 +33,7 @@ public class EventController {
 
 	@Autowired private EventService eventService;
 	@Autowired private AttachFileService AttachFileService;
-	@Autowired private MemberSerivce memberSerivce;
+	@Autowired private MemberService memberService;
 	@Autowired private AttendanceDao attendanceDao;
 	
 	// 회원 정보 시큐리티에서 가져오기
@@ -41,7 +41,7 @@ public class EventController {
 			MemberVo memberVo = new MemberVo();
 			if(principal!=null) {
 				String id = principal.getName();
-				memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
+				memberVo = memberService.selectOneMemberById(id);   // 회원정보 가져오기
 			}
 			return memberVo;
 		}
@@ -122,7 +122,7 @@ public class EventController {
 		}
 		
 		if(flag) {
-			memberSerivce.addPoint(member.getMno());  // 포인트 증가
+			memberService.addPoint(member.getMno());  // 포인트 증가
 			rttr.addAttribute("today", false);
 		}else {
 			rttr.addAttribute("today", true);

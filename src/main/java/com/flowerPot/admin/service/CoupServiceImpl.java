@@ -14,7 +14,7 @@ import com.flowerPot.admin.commons.SearchVO;
 import com.flowerPot.admin.dao.CoupMapper;
 import com.flowerPot.admin.vo.CoupVo;
 import com.flowerPot.member.repository.MemberDao;
-import com.flowerPot.member.service.MemberSerivce;
+import com.flowerPot.member.service.MemberService;
 import com.flowerPot.vo.HasCouponVo;
 import com.flowerPot.vo.MemberVo;
 
