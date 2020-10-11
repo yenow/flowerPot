@@ -47,5 +47,5 @@ public interface MemberSerivce {
 	
 	void updateRankByMno(MemberVo m);
 	
-
+	void addPoint(Integer mno);
 }

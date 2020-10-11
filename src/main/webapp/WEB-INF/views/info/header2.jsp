@@ -119,7 +119,13 @@
 
 							<li><a href="${pageContext.request.contextPath }/today/today">오늘의추천</a></li>
 
-							<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+							<li><a href="${pageContext.request.contextPath }/event/event" class="dropdown-toggle">이벤트</a>
+								
+								<ul class="sub-menu">
+									<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+									<li><a href="${pageContext.request.contextPath }/event/dayCheck">출석체크</a></li>
+								</ul>
+							</li>
 						</ul>
 					</div>
 
@@ -206,7 +212,12 @@
 
 				<li><a href="${pageContext.request.contextPath }/today/today.jsp">오늘의추천</a></li>
 
-				<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+				<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a>
+					<ul class="sub-menu">
+									<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+									<li><a href="${pageContext.request.contextPath }/event/dayCheck">출석체크</a></li>
+								</ul>
+				</li>
 			</ul>
 		</div>
 

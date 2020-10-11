@@ -53,5 +53,7 @@ public interface MemberDao {
 
 	public void updateRankByMno(MemberVo m);
 
+	public void addPoint(Integer mno);
+
 
 }

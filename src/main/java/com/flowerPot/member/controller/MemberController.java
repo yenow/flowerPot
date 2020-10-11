@@ -191,8 +191,11 @@ public class MemberController {
 
 	//나의 리뷰로 이동
 	@RequestMapping("/review") 
-	public String costmeticReviewList(CosmeticReviewVo costmeticReview, Model model) {
-		List<CosmeticReviewVo> cmrList =cosmeticReviewService.selectListCosmeticReviewListById(costmeticReview);
+	public String costmeticReviewList(Principal principal, Model model) {
+		
+		MemberVo member = getMemberBysecurity(principal);
+		
+		List<CosmeticReviewVo> cmrList =cosmeticReviewService.selectListCosmeticReviewListByMno(member);
 		model.addAttribute("cmrList",cmrList);
 		System.out.println("나의 활동으로 호출됨");
 		return "/member/review";
@@ -202,8 +205,10 @@ public class MemberController {
 
 	//나의 비밀번호 변경으로 이동
 	@RequestMapping("/password") 
-	public String password() {
+	public String password(Principal principal, Model model) {
 		System.out.println("나의 비밀번호변경으로 호출됨");
+		MemberVo member =getMemberBysecurity(principal);
+		model.addAttribute("member", member);
 		return "/member/password";
 	}
 	

@@ -137,4 +137,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateRankByMno">
 		update f_member set member_rank = #{member_rank} where mno = #{mno}
 	</update>	
+	
+	<update id="addPoint">
+		update f_member set point = point+50 where mno = #{mno}
+	</update>
 </mapper>

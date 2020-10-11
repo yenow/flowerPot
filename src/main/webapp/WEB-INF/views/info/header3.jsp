@@ -85,7 +85,13 @@
 
 							<li><a href="${pageContext.request.contextPath }/today/today">오늘의추천</a></li>
 
-							<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+							<li><a href="${pageContext.request.contextPath }/event/event" class="dropdown-toggle">이벤트</a>
+								
+								<ul class="sub-menu">
+									<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+									<li><a href="${pageContext.request.contextPath }/event/dayCheck">출석체크</a></li>
+								</ul>
+							</li>
 							
 							<li><a href="${pageContext.request.contextPath }/ourCompany/Company_main">우리회사</a></li>
 						</ul>

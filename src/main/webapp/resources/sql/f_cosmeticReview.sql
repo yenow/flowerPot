@@ -8,7 +8,7 @@ create table f_cosmeticReview(
 	title varchar2(100),    -- 평가제목
 	content varchar2(3000),  -- 평가내용
 	rating number(5) ,  --평점
-	
+	regdate date,
 	primary key (crno)
 );
 -- 시퀀스
@@ -17,6 +17,8 @@ insert into F_COSMETICREVIEW values(crno_seq.nextval, 1,1, '아주좋습니다.'
 insert into F_COSMETICREVIEW values(crno_seq.nextval, 1,1, '아주좋습니다.123',5,'abcd1234','june123','aaa123','aaa123')
 select * from f_cosmeticReview;
 drop table f_cosmeticReview;
+
+alter table f_cosmeticReview add regdate date;
 
 
 insert into

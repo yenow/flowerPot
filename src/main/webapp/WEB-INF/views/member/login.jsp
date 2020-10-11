@@ -59,55 +59,24 @@
 					</div>
 				</div>
 
-
-				<br>
-				<br>
-
-				<div class="row">
-					<div class="col-sm-6" style="float: left">
-						<button type="submit"
-							class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer"
-							style="background: black">LOGIN</button>
-					</div>
-
-					<div class="col-sm-6" style="float: left;">
-						<button onclick="location.href='http://localhost:8080/controller/member/signUp'"
-							class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer"
-							style="background: black">SignUp</button>
-
-				<c:if test="${not empty param.fail }">
-					<div>
-						<p>로그인에 실패 하였습니다</p>
-						<p>${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</p>
-					</div>
-				</c:if>
-
- 				<br/>
-
-				
  				<!-- button 바 전체 -->
 				
-					<div class="col-sm-6 login" style="float: left">
+					<div class="col-sm-6 login my-1" style="float: left">
 						<button type="submit" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer " >LOGIN</button>
 					</div><br/>
 					
-					<div class="col-sm-6 signup" style="float: left;">
+					<div class="col-sm-6 signup my-1" style="float: left;">
 						<button type="submit" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" >SignUp</button>
+					</div>
 
-
-						<c:if test="${not empty param.fail }">
+					<%-- <c:if test="${not empty param.fail }">
 							<div>
 								<p>로그인에 실패 하였습니다</p>
 								<p>${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</p>
 							</div>
-						</c:if>
-					</div><br/>
-				
+						</c:if> --%>
 
-				<div class="gray" style="height: 10px;"></div>
-				<br/>
-
-					<div class="col-sm-6 naver">
+					<div class="col-sm-6 naver my-1">
 					
 						<button onclick="location.href='${naverLogin}'" class="btn btn-block mb-2 btn-primary"
 							style="text-align:center; background-color:#30b802; border: 3px #30b802;" ><%-- <a href="${url}"> --%>
@@ -129,7 +98,7 @@
 					</div>
 					
 					
-					<div class="col-sm-6 kakao">
+					<div class="col-sm-6 kakao my-1">
 						<button onclick="location.href='${kakao_url}'" class="btn btn-block mb-2 btn-secondary" 
 						style="text-align:center; background-color:#F7E600; border: 3px #3A1D1D; color:#3A1D1D; font-weight: bolder;" ><%-- <a href="${url}"> --%>
 						 	<img width="30px" src="${pageContext.request.contextPath}/resources/images/kakaoTalk01.PNG"/>

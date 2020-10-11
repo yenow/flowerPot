@@ -12,6 +12,7 @@
 <jsp:include page="../info/header2.jsp"></jsp:include>
 
 <!-- ?? -->
+
 <div class="container">
 	<div class="bread-crumb flex-w  p-r-15 p-t-30 p-lr-0-lg">
 		<a href="${pageContext.request.contextPath }" class="stext-109 cl8 hov-cl1 trans-04"> 홈
@@ -23,7 +24,7 @@
 		</a> 
 		<span class="stext-109 cl4"> ${type } </span>
 	</div>
-</div>
+</div> 
 
 <!-- Product -->
 <div class="bg0 m-t-23 p-b-140">
@@ -163,7 +164,8 @@
 								<img src="${cosmetic.mappingURL }" alt="${cosmetic.name }">
 							</c:if>
 							<!-- 퀵뷰 -->
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"> Quick View </a>
+							<a href="${pageContext.request.contextPath }/cosmetic/cosmetic_ok?cno=${cosmetic.cno}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 "> Quick View </a>
+							<!-- js-show-modal1 -->
 						</div>
 						
 						
@@ -173,6 +175,7 @@
 								<!-- 화장품 이름 -->
 								<a href="${pageContext.request.contextPath }/cosmetic/cosmetic_ok?cno=${cosmetic.cno}" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6 p-t-6" 
 								style="width: 100%; text-align: center; color: black;"> 
+								
 								${cosmetic.name } </a>
 								<span class="stext-105 cl3" style="width: 100%; text-align: center; color: red;"> ${cosmetic.price }원 </span>
 							</div>
