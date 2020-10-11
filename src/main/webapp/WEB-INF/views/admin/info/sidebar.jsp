@@ -39,12 +39,12 @@
                             <p>회원 관리</p>
                         </a>
                     </li>
-                	<li id="inventory">
+                	<%-- <li id="inventory">
                         <a class="nav-link" href="${pageContext.request.contextPath}/admin/inventory">
                             <i class="nc-icon nc-notes"></i>
                             <p>재고 관리(구상도못함)</p>
                         </a>
-                    </li>
+                    </li> --%>
                 	<li id="delevery">
                         <a class="nav-link" href="${pageContext.request.contextPath}/admin/delivery">
                             <i class="nc-icon nc-delivery-fast"></i>
