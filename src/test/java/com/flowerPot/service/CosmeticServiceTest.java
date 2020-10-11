@@ -58,7 +58,7 @@ public class CosmeticServiceTest {
 			attachFileDao.insertAttachFile(a);
 			
 			// CosmeticReviewVo 삽입
-			CosmeticReviewVo cr = new CosmeticReviewVo(0, cosmetic.getCno(), 0, "rating", 4, "id", "nickname", "title", "content");
+			CosmeticReviewVo cr = new CosmeticReviewVo();
 			cosmeticReviewDao.insertcosmeticReview(cr);
 			cosmeticReviewDao.insertcosmeticReview(cr);
 			cosmeticReviewDao.insertcosmeticReview(cr);

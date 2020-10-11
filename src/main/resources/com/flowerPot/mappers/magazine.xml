@@ -7,13 +7,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.flowerPot.magazine.repository.MagazineDao">
 	<!-- 매거진 리스트 불러오기 -->
 	<insert id="insertMagazine">
-		insert into f_magazine (mgno, mno,name,title,content,category,UUIDName,originalName,rootfolder,regdate) values 
-		(mgno_seq.nextval,#{mno},#{name},#{title}, #{content}, #{category}, #{UUIDName}, #{originalName}, #{rootfolder}, sysdate)
+		insert into f_magazine (mgno, mno,title,name,content,category,UUIDName,originalName,rootfolder,regdate) values 
+		(mgno_seq.nextval,#{mno},#{title},#{name}, #{content}, #{category}, #{UUIDName}, #{originalName}, #{rootfolder}, sysdate)
 	</insert>
 	
 	<!-- 매거진 리스트 가져오기 -->
 	<select id="selectMagazineList" resultType="com.flowerPot.vo.MagazineVo">
-		 <![CDATA[ select * from (select m.*,rownum as rnum from f_magazine m order by mgno desc) where rnum >  #{amount}*(#{pageNum}-1) and rnum <= #{amount}*#{pageNum} and category= #{category} ]]>
+		 <![CDATA[ select * from (select m.*,rownum as rnum from f_magazine m where m.category= #{category} order by mgno desc) where rnum >  #{amount}*(#{pageNum}-1) and rnum <= #{amount}*#{pageNum} ]]>
 		
 	</select>
 	

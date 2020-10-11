@@ -50,7 +50,7 @@
 			<h2 class="text-center my-3">1:1 문의</h2>
 		</div>
 		<div class="col-12">
-			<form action="#" id="enq" method="post" enctype="multipart/form-data" onsubmit="retrurn false;">
+			<form action="${pageContext.request.contextPath }/customerCenter/edit_ok" id="enq" method="post" enctype="multipart/form-data" onsubmit="return false;">
 				<input type="hidden" name="ccno" value="${customerCenter.ccno }">
 				<div>
 					<h2 class="my-3"></h2>
@@ -60,7 +60,7 @@
 					<textarea rows="20" cols="100" id="summernote" name="content" class="summernote"> ${customerCenter.content}</textarea>
 						
 	
-					<input type="submit" value="수정" onclick="retrurn check();">
+					<input type="submit" value="수정" onclick="return check();">
 				</div>
 			</form>
 		</div>
@@ -90,8 +90,8 @@
 						url : url,// " 이미지 파일 경로
 
 							// email : "<c:out value='${login.email}'/>"// " 작성자 이메일
-						};
-						console.log(boardInfo);
+					};
+					console.log(boardInfo);
 						$.ajax({
 							type : "post",
 							url : "${pageContext.request.contextPath }/customerCenter/edit_ok", //controller mapping address

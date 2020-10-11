@@ -114,7 +114,7 @@
 									<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip">Tip</a></li>
 									<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Interview">Interview</a></li>
 									<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=COVID19">COVID19</a></li>
-									<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Setec">Setec</a></li>
+									<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=setec">Setec</a></li>
 								</ul></li>
 
 							<li><a href="${pageContext.request.contextPath }/today/today">오늘의추천</a></li>

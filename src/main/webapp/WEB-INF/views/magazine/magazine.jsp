@@ -68,7 +68,7 @@
 							<li class="bor18"><a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> Tip </a></li>
 							<li class="bor18"><a href="${pageContext.request.contextPath }/magazine/magazine?category=Interview" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> Interview </a></li>
 							<li class="bor18"><a href="${pageContext.request.contextPath }/magazine/magazine?category=COVID19" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> COVID19 </a></li>
-							<li class="bor18"><a href="${pageContext.request.contextPath }/magazine/magazine?category=Setec" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> Setec </a></li>
+							<li class="bor18"><a href="${pageContext.request.contextPath }/magazine/magazine?category=setec" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> Setec </a></li>
 						</ul>
 					</div>
 					<div class="p-t-55">

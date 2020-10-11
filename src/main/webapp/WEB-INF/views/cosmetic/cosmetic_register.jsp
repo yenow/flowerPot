@@ -33,6 +33,8 @@
 				<li class="nav-item"><a href="contact.html" class="nav-link">오늘의 추천</a></li>
 				<!-- 이벤트 -->
 				<li class="nav-item"><a href="contact.html" class="nav-link">이벤트</a></li>
+				<!-- 이벤트 -->
+				<li class="nav-item"><a href="${pageContext.request.contextPath}/semiadmin/dashboard" class="nav-link">브랜드 관리자</a></li>
 			</ul>
 		</div>
 	</nav>

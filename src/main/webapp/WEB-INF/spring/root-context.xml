@@ -29,6 +29,7 @@
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
+		
 		<property name="configLocation" value="classpath:/mybatis-config.xml" />
 		<!-- classpath경로는 이클립스 가상경로가 src/main/resources 이다. 이 경로에 있는 mybatis-config.xml 
 			파일을 읽어들임 이 파일의 기능은 데이터 저장빈 클래스의 객체명 별칭을 관리한다. -->

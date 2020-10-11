@@ -111,6 +111,7 @@ public class CustomerCenterController {
 	
 	// 수정처리
 	@RequestMapping("edit_ok")
+	@ResponseBody
 	public String edit_ok(Model model, CustomerCenterVo customer) {
 		log.info("customer1:" + customer);
 		service.editEnq(customer);

@@ -79,7 +79,7 @@
 									<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip">Tip</a></li>
 									<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Interview">Interview</a></li>
 									<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=COVID19">COVID19</a></li>
-									<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Setec">Setec</a></li>
+									<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=setec">Setec</a></li>
 								</ul></li>
 
 							<li><a href="${pageContext.request.contextPath }/today/today">오늘의추천</a></li>
@@ -166,7 +166,7 @@
 						<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip">Tip</a></li>
 						<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Interview">Interview</a></li>
 						<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=COVID19">COVID19</a></li>
-						<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Setec">Setec</a></li>
+						<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=setec">Setec</a></li>
 					</ul></li>
 
 				<li><a href="${pageContext.request.contextPath }/today/today">오늘의추천</a></li>
@@ -413,7 +413,7 @@
 					</div>
 				</div>
 
-				<div class="item-slick1 bg-overlay1" style="background-image: url(${pageContext.request.contextPath }/resources/images/slide_iu3.jpg);" data-thumb="${pageContext.request.contextPath }/resources/images/slide_iu3.jpg" data-caption="Men’s Wear">
+				<div class="item-slick1 bg-overlay1" style="background-image: url(${pageContext.request.contextPath }/resources/images/iu.jpeg);" data-thumb="${pageContext.request.contextPath }/resources/images/iu.jpeg" data-caption="Men’s Wear">
 					<div class="container h-full">
 						<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
@@ -425,7 +425,7 @@
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
-								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn2 p-lr-15 trans-04"> Shop Now </a>
+								<a href="${pageContext.request.contextPath }/cosmetic/cosmetic_list?type=스킨케어" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn2 p-lr-15 trans-04"> Shop Now </a>
 							</div>
 						</div>
 					</div>

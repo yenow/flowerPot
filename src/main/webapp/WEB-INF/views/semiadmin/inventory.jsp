@@ -194,6 +194,8 @@
 											</tbody>
 
 										</table>
+										
+										<a href="${pageContext.request.contextPath }/cosmetic/cosmetic_register" class="btn btn-outline-secondary my-4 mx-4 float-right">화장품 등록</a>
 									</div>
 								</div>
 							</div>
