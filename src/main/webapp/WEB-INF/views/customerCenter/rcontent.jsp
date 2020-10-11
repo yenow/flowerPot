@@ -65,23 +65,21 @@ a:link {
 					<div class="table col-12 board-list ">
 						<div class="p-t-32">
 							<!-- 날짜 -->
-							<div class="text-center">${content.regdate }</div>
+							<div class="text-center">${reply.regdate }</div>
 							<!-- 제목 -->
-							<h4 class="ltext-109 cl2 p-b-28 text-center mt-2">${content.title }</h4>
+							<h4 class="ltext-109 cl2 p-b-28 text-center mt-2">${reply.replytitle }</h4>
 							<div>
 								<img class="border rounded-circle ml-2 d-inlineblock" src="${pageContext.request.contextPath }/resources/images/product-min-02.jpg" width="50" height="50" alt="작성자 이름" /> <span class="cl12 m-l-4 m-r-6">|</span>
-								<p class="ml-2 d-inline-block">by ${content.memberVo.nickname }</p>
+								<p class="ml-2 d-inline-block">by 관리자</p>
 								<span class="cl12 m-l-4 m-r-6">|</span>
-								<p class="ml-2 d-inline-block">${content.memberVo.email }</p>
+								<p class="ml-2 d-inline-block">phantom_ysy@naver.com</p>
 							</div>
 							<hr />
 							<!-- 내용 -->
-							<div class="stext-117 cl6 p-b-26" style="min-height: 300px;">${content.content }</div>
+							<div class="stext-117 cl6 p-b-26" style="min-height: 300px;">${reply.replytext }</div>
 						</div>
 						<hr />
 						<div class="text-right">
-							<a href="${pageContext.request.contextPath }/customerCenter/edit?ccno=${content.ccno}" class="btn btn-secondary btn-primary">수정</a>
-							<a href="${pageContext.request.contextPath }/customerCenter/delete?category?ccno=${content.ccno}" class="btn btn-secondary btn-primary">삭제</a>
 							<a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=notice" class="btn btn-secondary btn-primary">목록</a>
 						</div>
 
