@@ -9,7 +9,7 @@
 <!-- Content page -->
 <section class="bg0 p-t-62 p-b-60">
 	<div class="container">
-		<h2>카카오페이 결제가 정상적으로 완료되었습니다.</h2>
+		<h2 class="text-center my-3">카카오페이 결제가 정상적으로 완료되었습니다.</h2>
 		<table class="table" style="width: 1000px;">
 			<tbody>
 				<tr>
