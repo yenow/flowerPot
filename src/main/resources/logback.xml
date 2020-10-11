@@ -25,5 +25,10 @@
 	<!-- <logger name="jdbc.resultsettable" level="OFF" /> -->
 	
     <logger name="com.zaxxer.hikari" level="INFO" />  <!-- 계속 반복해서 커넥션풀 정보 띄우는거 멈춤 -->
+    <logger name="org.quartz.core.JobRunShell" level="OFF" />
+    <logger name="org.mortbay.log" level="OFF" />
+    <logger name=" org.springframework.scheduling.quartz.SchedulerFactoryBean" level="OFF" />
+   
+   
 </configuration>
 

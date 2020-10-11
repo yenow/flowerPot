@@ -29,8 +29,7 @@ public class CloudJobExecutor extends QuartzJobBean {
 		// TODO Auto-generated method stub
 		// 실제 수행할 로직..
 		System.out.println(arg0.toString());
-		System.out.println("로그야 찍혀라");
-		Log.info("로그야 찍혀라");
+		
 		
 		System.out.println(pointService);
 		System.out.println(memberService);

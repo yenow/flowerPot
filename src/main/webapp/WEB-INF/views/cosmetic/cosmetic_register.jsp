@@ -210,7 +210,7 @@ console.log(''==null);
 				success : function(data) {
 					//항상 업로드된 파일의 url이 있어야 한다.
 					console.log(data);
-					attachList.push(data);
+					attachList.push(data.attach);
 					console.log(attachList);
 					
 					$(editor).summernote('insertImage', data.url);
@@ -451,7 +451,7 @@ $(document).ready(function () {
 				success : function(data) {
 					if(data=='success'){
 						alert('등록성공');
-						location.href='${pageContext.request.contextPath}/cosmetic/cosmetic_list?type=스킨케어';
+						location.href='${pageContext.request.contextPath}/semiadmin/inventory';
 						
 					}else{
 						alert('등록실패');

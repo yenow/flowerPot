@@ -35,7 +35,7 @@
 				<li class="sidebar-item">
 					<a href="inventory" class='sidebar-link'>
 					<i data-feather="layers" width="20"></i>
-						<span>재고관리</span>
+						<span>상품/재고관리</span>
 				</a></li>
 				
 				<li class='sidebar-title'>평가 조회</li>

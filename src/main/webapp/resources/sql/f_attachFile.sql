@@ -17,6 +17,9 @@ create table f_attachFile (
 create sequence atno_seq start with 1 increment by 1;
 -- 제약조건
 
+select atno_seq.nextval from dual;
+select * from f_attachFile;
+
 
 
 
