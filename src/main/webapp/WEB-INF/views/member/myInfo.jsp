@@ -72,7 +72,7 @@
 						
 						<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br> <input type="text" class="form-control form-control-lg" id="sample4_roadAddress" value="${paddr.street_address}" name="street_address" placeholder="도로명주소"> 
 						<br> <input type="text" class="form-control form-control-lg" id="sample4_jibunAddress" value="${paddr.parcel_address}" name="parcel_address" placeholder="지번주소"> 
-						<span id="guide" style="color: #999; display: none"></span> <br> <input type="text" class="form-control form-control-lg" id="sample4_extraAddress" value="${paddr.deliver_state}" name="deliver_state" placeholder="참고항목"> 
+						<span id="guide" style="color: #999; display: none"></span> <br> <input type="text" class="form-control form-control-lg" id="sample4_extraAddress" value="${paddr.more_infomation}" name="deliver_state" placeholder="참고항목"> 
 						<br> <input type="text" class="form-control form-control-lg" id="sample4_detailAddress" value="${paddr.detail_address}"
 							name="detail_address" placeholder="상세주소">
 					</div>
