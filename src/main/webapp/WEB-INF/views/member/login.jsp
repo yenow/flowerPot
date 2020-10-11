@@ -39,7 +39,7 @@
 					<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30 " type="text" name="id" placeholder="아이디">
 				</div>
 				
-				<br>
+				
 
 				<div class="bor8 m-b-20 how-pos4-parent login_alert">
 					<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" name="password" placeholder="비밀번호">
@@ -66,7 +66,7 @@
 					</div><br/>
 					
 					<div class="col-sm-6 signup my-1" style="float: left;">
-						<button type="submit" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" >SignUp</button>
+						<a href="${pageContext.request.contextPath }/member/signUp" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" >SignUp</a>
 					</div>
 
 					<%-- <c:if test="${not empty param.fail }">
@@ -76,7 +76,7 @@
 							</div>
 						</c:if> --%>
 
-					<div class="col-sm-6 naver my-1">
+					<div class="naver my-2" style="width: 50%">
 					
 						<button onclick="location.href='${naverLogin}'" class="btn btn-block mb-2 btn-primary"
 							style="text-align:center; background-color:#30b802; border: 3px #30b802;" ><%-- <a href="${url}"> --%>
@@ -98,7 +98,7 @@
 					</div>
 					
 					
-					<div class="col-sm-6 kakao my-1">
+					<div class="kakao my-1" style="width: 50%">
 						<button onclick="location.href='${kakao_url}'" class="btn btn-block mb-2 btn-secondary" 
 						style="text-align:center; background-color:#F7E600; border: 3px #3A1D1D; color:#3A1D1D; font-weight: bolder;" ><%-- <a href="${url}"> --%>
 						 	<img width="30px" src="${pageContext.request.contextPath}/resources/images/kakaoTalk01.PNG"/>
@@ -120,6 +120,6 @@
 
 <jsp:include page="../info/footer.jsp"></jsp:include>
 
-<script src="assets/js/feather-icons/feather.min.js"></script>
-<script src="assets/js/app.js"></script>
-<script src="assets/js/main.js"></script>
+<!-- <script src="assets/js/feather-icons/feather.min.js"></script> -->
+<!-- <script src="assets/js/app.js"></script>
+<script src="assets/js/main.js"></script> -->

@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.flowerPot.order.repository.OrderDao">
 	
 	<insert id="insertOrder">
-		insert into f_order (orderno, mno, dno, order_num, final_price, regdate) values (orderno_seq.nextval, #{mno, jdbcType=NUMBERIC}, #{dno},#{order_num},#{final_price}, sysdate)
+		insert into f_order (orderno, mno, dno, order_num, final_price, regdate) values (orderno_seq.nextval, #{mno, jdbcType=NUMERIC}, #{dno},#{order_num},#{final_price}, sysdate)
 	</insert>
 	
 	<select id="selectListOrderByMno" resultType="com.flowerPot.vo.OrderVo">
