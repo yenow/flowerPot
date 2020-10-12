@@ -1,6 +1,7 @@
 package com.flowerPot.member.controller;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.security.Principal;
 import java.util.ArrayList;
@@ -59,7 +60,7 @@ public class MemberController {
 	@Autowired
 	private CosmeticReviewService cosmeticReviewService;
 	@Autowired
-	private MemberService memberSerivce;
+	private MemberService memberService;
 	@Autowired
 	private MemberAddressService memberAddressService;
 	@Autowired
@@ -68,8 +69,7 @@ public class MemberController {
 	private OrderService orderService;
 	@Inject // 서비스를 호출하기 위해서 의존성을 주입
 	JavaMailSender mailSender; // 메일 서비스를 사용하기 위해 의존성을 주입함
-	@Autowired
-	private MemberService memberService;
+
 	@Autowired
 	private AuthorityService authorityService;
 	@Autowired
@@ -97,7 +97,7 @@ public class MemberController {
 		MemberVo memberVo = new MemberVo();
 		if(principal!=null) {
 			String id = principal.getName();
-			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
+			memberVo = memberService.selectOneMemberById(id);   // 회원정보 가져오기
 		}
 		return memberVo;
 	}
@@ -112,7 +112,7 @@ public class MemberController {
 		if(principal!=null) {
 			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
 			String id = principal.getName();
-			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
+			memberVo = memberService.selectOneMemberById(id);   // 회원정보 가져오기
 
 			oList = orderProductService.selectListOrderProductByMno(memberVo.getMno());
 			log.info("주문리스트 : "+oList);
@@ -135,7 +135,7 @@ public class MemberController {
 		}
 		
 		//쿠폰 리스트 가져오기
-		List<CoupVo> coupList =  memberSerivce.getCoupList(member);
+		List<CoupVo> coupList =  memberService.getCoupList(member);
 		
 		model.addAttribute("member", member);
 		model.addAttribute("coupList", coupList);
@@ -171,7 +171,7 @@ public class MemberController {
 		if(principal!=null) {
 			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
 			String id = principal.getName();
-			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
+			memberVo = memberService.selectOneMemberById(id);   // 회원정보 가져오기
 
 			oList = orderService.selectListOrderByMno(memberVo.getMno());
 			log.info("주문리스트 : "+oList);
@@ -238,7 +238,7 @@ public class MemberController {
 		if (principal != null) {
 			log.info("아이디:" + principal.getName()); // 일단 이걸로 member 정보를 가져오자..
 			String id = principal.getName();
-			memberVo = memberSerivce.selectOneMemberById(id); // 회원정보 가져오기
+			memberVo = memberService.selectOneMemberById(id); // 회원정보 가져오기
 			memberAddress = memberAddressService.selectOneMemberAddressByMno(memberVo.getMno()); // 회원주소록 가져오기
 			model.addAttribute("pid", memberVo);
 			model.addAttribute("paddr", memberAddress);
@@ -464,6 +464,8 @@ public class MemberController {
 		System.out.println("parameter:" + member);
 		String result = null;
 		Integer checkNum = memberService.checkId(member);
+		
+		
 		System.out.println(checkNum);
 		if (checkNum == 1) {
 			System.out.println("아이디가 중복됨!");
@@ -473,6 +475,8 @@ public class MemberController {
 			System.out.println("아이디 사용가능!");
 			result = "OK";
 		}
+		
+		System.out.println("결과:"+result);
 		return result;
 	}		
 

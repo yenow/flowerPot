@@ -12,7 +12,7 @@
 
 			<li class="bor18"><a href="${pageContext.request.contextPath }/member/point" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> 포인트 </a></li>
 
-			<li class="bor18"><a href="${pageContext.request.contextPath }/member/myActivity" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> 내활동 </a></li>
+			<%-- <li class="bor18"><a href="${pageContext.request.contextPath }/member/myActivity" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> 내활동 </a></li> --%>
 
 			<li class="bor18"><a href="${pageContext.request.contextPath }/member/review" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> 상품리뷰 </a></li>
 

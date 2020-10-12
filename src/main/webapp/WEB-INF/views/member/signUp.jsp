@@ -164,64 +164,50 @@ enroll {
 		chk6 = false;
 		//회원가입 검증~~
 		//ID 입력값 검증.
-		$('#user_id')
-				.on(
-						'keyup',
-						function() {
-							if ($("#user_id").val() === "") {
-								$('#user_id').css("background-color", "pink");
-								$('#idChk')
-										.html(
-												'<b style="font-size:14px;color:red;">[아이디는 필수 정보에요!]</b>');
-								chk1 = false;
-							}
-							//아이디 유효성검사
-							else if (!getIdCheck.test($("#user_id").val())) {
-								$('#user_id').css("background-color", "pink");
-								$('#idChk')
-										.html(
-												'<b style="font-size:14px;color:red;">[영문자,숫자 4-14자]</b>');
-								chk1 = false;
-							}
-							//ID 중복확인 비동기 처리
-							else {
-								//ID 중복확인 비동기 통신
-								const id = $(this).val();
-								console.log(id);
-								$
-										.ajax({
-											type : "POST",
-											url : "${pageContext.request.contextPath}/member/checkId",
-											headers : {
-												"Content-Type" : "application/json"
-											},
-											dataType : "text",
-											data : id,
-											success : function(result) {
-												if (result === "OK") {
-													$("#user_id").css(
-															"background-color",
-															"aqua");
-													$("#idChk")
-															.html(
-																	"<b style='font-size:14px; color:green;'>[아이디는 사용 가능!]</b>");
-													chk1 = true;
-												} else {
-													$("#user_id").css(
-															"background-color",
-															"pink");
-													$("#idChk")
-															.html(
-																	"<b style='font-size:14px; color:red;'>[아이디가 중복됨!]</b>");
-													chk1 = false;
-												}
-											},
-											error : function() {
-												console.log("통신 실패!");
-											}
-										});
-							}
+		$('#user_id').on('keyup',function() {
+			if ($("#user_id").val() === "") {
+				$('#user_id').css("background-color", "pink");
+				$('#idChk').html('<b style="font-size:14px;color:red;">[아이디는 필수 정보에요!]</b>');
+					chk1 = false;
+				}
+				//아이디 유효성검사
+				else if (!getIdCheck.test($("#user_id").val())) {
+					$('#user_id').css("background-color", "pink");
+					$('#idChk').html('<b style="font-size:14px;color:red;">[영문자,숫자 4-14자]</b>');
+						chk1 = false;
+					}
+				//ID 중복확인 비동기 처리
+					else {
+					//ID 중복확인 비동기 통신
+					const id = $(this).val();
+					console.log(id);
+					$.ajax({
+						type : "POST",
+						url : "${pageContext.request.contextPath}/member/checkId",
+						headers : {
+						"Content-Type" : "application/json"
+						},
+						dataType : "text",
+						data : id,
+						success : function(result) {
+							console.log(result);
+							if (result === "OK") {
+								$("#user_id").css("background-color","aqua");
+								$("#idChk").html("<b style='font-size:14px; color:green;'>[아이디는 사용 가능!]</b>");
+									chk1 = true;
+								} else {
+								$("#user_id").css("background-color","pink");
+								$("#idChk")
+								.html("<b style='font-size:14px; color:red;'>[아이디가 중복됨!]</b>");
+									chk1 = false;
+									}
+								},error : function() {
+									console.log("통신 실패!");
+								}
 						});
+					}
+			});
+		
 		$('#user_email')
 				.on(
 						'keyup',
