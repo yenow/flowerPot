@@ -25,15 +25,10 @@ a:link {
 
 <div class="container">
 	<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-		<a href="${pageContext.request.contextPath }" class="stext-109 cl8 hov-cl1 trans-04">
-			홈 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+		<a href="${pageContext.request.contextPath }" class="stext-109 cl8 hov-cl1 trans-04"> 홈 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+		</a> <a href="${pageContext.request.contextPath }/customerCenter/customerCenter" class="stext-109 cl8 hov-cl1 trans-04"> 고객센터 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+		</a> <span class="stext-109 cl4"> <a href="${pageContext.request.contextPath }/customerCenter/enquiry" class="stext-109 cl8 hov-cl1 trans-04"> 1:1 문의 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 		</a>
-		<a href="${pageContext.request.contextPath }/customerCenter/customerCenter" class="stext-109 cl8 hov-cl1 trans-04">
-			고객센터 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-		</a>
-		<span class="stext-109 cl4"> <a href="${pageContext.request.contextPath }/customerCenter/enquiry" class="stext-109 cl8 hov-cl1 trans-04">
-				1:1 문의 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-			</a>
 		</span>
 	</div>
 </div>
@@ -79,13 +74,11 @@ a:link {
 							<div class="stext-117 cl6 p-b-26" style="min-height: 300px;">${content.content }</div>
 						</div>
 						<hr />
-						<sec:authorize access="hasRole('ROLE_ADMIN')" >
+
 						<div class="text-right">
-							<a href="${pageContext.request.contextPath }/customerCenter/edit?ccno=${content.ccno}" class="btn btn-secondary btn-primary">수정</a>
-							<a href="${pageContext.request.contextPath }/customerCenter/delete?category?ccno=${content.ccno}" class="btn btn-secondary btn-primary">삭제</a>
-							<a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=" class="btn btn-secondary btn-primary">목록</a>
+							<a href="${pageContext.request.contextPath }/customerCenter/edit?ccno=${content.ccno}" class="btn btn-secondary btn-primary">수정</a> <a href="${pageContext.request.contextPath }/customerCenter/delete?category?ccno=${content.ccno}" class="btn btn-secondary btn-primary">삭제</a> <a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=" class="btn btn-secondary btn-primary">목록</a>
 						</div>
-						</sec:authorize>
+
 						<!-- <h2 class="my-3">1:1 문의</h2>
 						<table class="table table-striped table-sm">
 							<thead>
