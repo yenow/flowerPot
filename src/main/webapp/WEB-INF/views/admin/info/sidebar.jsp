@@ -54,7 +54,7 @@
                 	<li id="communication">
                         <a class="nav-link" href="${pageContext.request.contextPath}/admin/customer/notice">
                             <i class="nc-icon nc-notification-70"></i>
-                            <p>소통 관리</p>
+                            <p>고객센터</p>
                         </a>
                     </li>
                 <%-- 	<li id="Notifications">

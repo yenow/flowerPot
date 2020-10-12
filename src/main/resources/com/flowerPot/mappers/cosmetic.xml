@@ -150,7 +150,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<update id="updateCosmeticStock">
-		update f_cosmetic set stockNumber = stockNumber + #{plusStock} where cno = #{cno}
+		update f_cosmetic set stockNumber = stockNumber + #{plusStock}, discountPersent = #{discountPersent} where cno = #{cno}
 	</update>
 	
 	<select id="selectListCosmetic" resultType="com.flowerPot.vo.CosmeticVo">

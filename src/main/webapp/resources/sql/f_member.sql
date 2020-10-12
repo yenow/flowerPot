@@ -62,3 +62,6 @@ insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,m
 select * from f_member;
 select * from f_point;
 
+SELECT COUNT(*) FROM f_member 
+		where id= 'gasg23223';
+

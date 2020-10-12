@@ -104,12 +104,13 @@ public class EventController {
 	}
 	
 	@RequestMapping("dayCheck")
-	public void dayCheck() {
-		
+	public void dayCheck(String today, Model model) {
+		Log.info("오늘:"+today);
+		model.addAttribute("today",today);
 	}
 	
 	@RequestMapping("dayCheck_ok")
-	public String dayCheck_ok(Principal principal, HttpServletRequest request, RedirectAttributes rttr) {
+	public String dayCheck_ok(Principal principal, HttpServletRequest request, Model model, RedirectAttributes rttr) {
 		MemberVo member = getMemberBysecurity(principal);
 		List<AttendanceVo> atList = attendanceDao.selectListByMno(member.getMno());
 		boolean flag = true;
@@ -123,9 +124,11 @@ public class EventController {
 		
 		if(flag) {
 			memberService.addPoint(member.getMno());  // 포인트 증가
-			rttr.addAttribute("today", false);
+			Log.info("성공");
+			rttr.addAttribute("today", "True");
 		}else {
-			rttr.addAttribute("today", true);
+			Log.info("실패");
+			rttr.addAttribute("today", "False");
 		}
 		
 		

@@ -175,7 +175,7 @@
 															<td class="text-nowrap">${i.name}</td>
 															<td >${i.discountPersent}</td>
 															<td style="min-width: 100px;">
-															<input id="plusDiscountPersent" type="number" name="plusDiscountPersent" value="${i.discountPersent}" style="border: 2px solid #0d6efd; width: 50%;">
+															<input id="plusDiscountPersent" type="number" name="discountPersent" value="${i.discountPersent}" style="border: 2px solid #0d6efd; width: 50%;">
 																<div id="emailHelp" class="form-text">단위는  %입니다</div>
 															</td>
 															<td >${i.stockNumber}</td>
