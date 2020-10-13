@@ -1,6 +1,7 @@
 package com.flowerPot.member.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.flowerPot.admin.vo.CoupVo;
 import com.flowerPot.member.vo.MemberDTO;
@@ -48,4 +49,5 @@ public interface MemberService {
 	void updateRankByMno(MemberVo m);
 	
 	void addPoint(Integer mno);
+	
 }

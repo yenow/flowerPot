@@ -1,7 +1,6 @@
 package com.flowerPot.member.controller;
 
 import java.io.IOException;
-
 import java.io.PrintWriter;
 import java.security.Principal;
 import java.util.ArrayList;
@@ -26,6 +25,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,7 +38,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.flowerPot.admin.vo.CoupVo;
 import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
+import com.flowerPot.email.respository.EmailSender;
 import com.flowerPot.member.service.MemberService;
+import com.flowerPot.member.vo.Email;
 import com.flowerPot.memberAddress.service.MemberAddressService;
 import com.flowerPot.order.service.OrderService;
 import com.flowerPot.orderProduct.service.OrderProductService;
@@ -158,6 +160,12 @@ public class MemberController {
 		model.addAttribute("member", member);
 		model.addAttribute("oList", oList);
 		return "/member/point";
+	}
+	
+	//비밀번호 찾기 폼
+	@RequestMapping("/find_pw_form.do")
+	public String find_pw_form(){
+		return "/member/find_pw_form";
 	}
 	
 	// 주문관리 페이지로 이동

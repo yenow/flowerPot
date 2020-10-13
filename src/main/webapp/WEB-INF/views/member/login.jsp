@@ -55,7 +55,7 @@
 					<div class="float-right foundbox">
 						<a href="forgot_id">아이디찾기</a> 
 						<span class="bar">|</span> <a
-							href="forgot_pw" class="link">비밀번호 찾기</a>
+							href="${pageContext.request.contextPath }/member/find_pw_form.do" class="link" id="find_pw_">비밀번호 찾기</a>
 					</div>
 				</div>
 
