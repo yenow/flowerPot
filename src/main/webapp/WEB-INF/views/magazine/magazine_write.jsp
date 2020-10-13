@@ -38,8 +38,8 @@
 	</nav>
 	<!-- /nav -->
 	<!-- content -->
-	<div class="container-fluid">
-		<h2 class="text-center my-3">매거진 등록</h2>
+	<div class="container-fluid" style="padding: 70px 300px;">
+		<h2 class="text-center my-3" >매거진 등록</h2>
 		<form action="${pageContext.request.contextPath}/magazine/magazine_write_ok" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="mno" value="${member.mno }"> 
 			<input type="hidden" name="name" value="${member.name }"> 
@@ -56,13 +56,22 @@
 			</div>
 			<!-- /카테고리 -->
 			<!-- 섬네일 이미지 등록 -->
-			<div class="form-group">
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroupFileAddon01">섬네일 이미지 업로드</span>
+				</div>
+				<div class="custom-file">
+					<input type="file" name="imgFile" class="custom-file-input" id="exampleFormControlFile1" aria-describedby="inputGroupFileAddon01">
+					<label class="custom-file-label" for="inputGroupFile01">파일을 선택해주세요</label>
+				</div>
+			</div>
+			<!-- <div class="form-group">
 				<label for="exampleFormControlFile1">섬네일 이미지 </label>
 				<input type="file" name="imgFile" class="form-control-file" id="exampleFormControlFile1">
-			</div>
+			</div> -->
 			<!-- title -->
 			<div class="mb-3">
-				<label for="username">제목</label>
+				
 				<div class="input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text">제목</span>
@@ -78,7 +87,7 @@
 			</div>
 			<!-- 제출 -->
 			<div class="text-center">
-				<input type="submit" class="btn btn-primary" value="등록">
+				<input type="submit" class="btn btn-outline-secondary btn-lg btn-block" value="등록">
 			</div>
 		</form>
 	</div>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime"%>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/fmt"   prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <jsp:include page="../info/header2.jsp"></jsp:include>
@@ -19,7 +19,7 @@
 					<div class="wrap-pic-w how-pos5-parent">
 						<img src="${pageContext.request.contextPath}${magazineVo.rootfolder}${magazineVo.UUIDName}" alt="IMG-BLOG">
 						<div class="flex-col-c-m size-123 bg9 how-pos5">
-							<span class="ltext-107 cl2 txt-center"> <javatime:format value="${event.moddate}" pattern="dd" /> </span> <span class="stext-109 cl3 txt-center"> <javatime:format value="${event.moddate}" pattern="MMM yyyy" /> </span>
+							<span class="ltext-107 cl2 txt-center"> <fmt:formatDate value="${magazineVo.regdate}" pattern="dd" /> </span> <span class="stext-109 cl3 txt-center"> <fmt:formatDate value="${magazineVo.regdate}" pattern="yyyy년 MM월" /> </span>
 						</div>
 					</div>
 					<div class="p-t-32">

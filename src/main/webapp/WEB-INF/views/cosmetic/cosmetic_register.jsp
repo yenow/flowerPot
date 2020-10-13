@@ -40,7 +40,7 @@
 	</nav>
 	<!-- /nav -->
 	<!-- content -->
-	<div class="container-fluid p-b-85" style="padding: 0 100px;" >
+	<div class="container-fluid p-b-85" style="padding: 0 300px;" >
 		<h2 class="text-center my-5">화장품 등록  </h2>
 		<form class="cosmetic-form" action="${pageContext.request.contextPath}/cosmetic/cosmetic_register_ok" method="post" enctype="multipart/form-data" onsubmit="return false;">
 			<!-- 화장품 타입, 화장품 브랜드 -->
