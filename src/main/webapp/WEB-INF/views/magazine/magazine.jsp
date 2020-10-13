@@ -7,8 +7,8 @@
 
 
 <!-- Title page -->
-<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/bg-02.jpg');">
-	<h2 class="ltext-105 cl0 txt-center">매거진</h2>
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/logo_magazine.png');">
+	<h2 class="ltext-105 cl0 txt-center"></h2>
 </section>
 
 <div class="container">
@@ -68,7 +68,7 @@
 							<li class="bor18"><a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> Tip </a></li>
 							<li class="bor18"><a href="${pageContext.request.contextPath }/magazine/magazine?category=Interview" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> Interview </a></li>
 							<li class="bor18"><a href="${pageContext.request.contextPath }/magazine/magazine?category=COVID19" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> COVID19 </a></li>
-							<li class="bor18"><a href="${pageContext.request.contextPath }/magazine/magazine?category=Setec" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> Setec </a></li>
+							<li class="bor18"><a href="${pageContext.request.contextPath }/magazine/magazine?category=setec" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> Setec </a></li>
 						</ul>
 					</div>
 					<div class="p-t-55">
@@ -181,7 +181,7 @@
 		
 							$div2 = $('<div class="p-t-32"><h4 class="p-b-15"><a href="${pageContext.request.contextPath }/magazine/magazine_cont?category=${category}&mgno='+mgList[i].mgno+'" class="ltext-108 cl2 hov-cl1 trans-04"> '+mgList[i].title+' </a></h4>'
 									+ '<div class="flex-w flex-sb-m p-t-18"><span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10"> <span>'   //'<p class="stext-117 cl6 txt_line"> '+mgList[i].content +' </p>
-									+'<span class="cl4">By</span> 작성자 <span class="cl12 m-l-4 m-r-6">|</span>'
+									+'<span class="cl4">By</span> '+ mgList[i].name +' <span class="cl12 m-l-4 m-r-6">|</span>'
 									+'</span> <span> '+ mgList[i].category +' <span class="cl12 m-l-4 m-r-6">|</span>'
 									+'</span></span> '
 									+'<a href="${pageContext.request.contextPath }/magazine/magazine_cont?category=${category}&mgno='+mgList[i].mgno+'" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">Continue Reading <i class="fa fa-long-arrow-right m-l-9"></i></a></div></div>');  // 매거진 내용 페이로 이동

@@ -2,6 +2,7 @@ package com.flowerPot.member.service;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.flowerPot.admin.dao.CoupMapper;
 import com.flowerPot.admin.vo.CoupVo;
+import com.flowerPot.attendance.repository.AttendanceDao;
 import com.flowerPot.dao.AuthorityDao;
 import com.flowerPot.member.repository.MemberDao;
 import com.flowerPot.member.vo.MemberDTO;
@@ -20,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service("memberService")
 @Slf4j
-public class MemberServiceImpl implements MemberSerivce {
+public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private MemberDao memberDao;
@@ -30,6 +32,8 @@ public class MemberServiceImpl implements MemberSerivce {
 	private MemberAddressDao memberAddressDao;
 	@Autowired
 	private CoupMapper coupDao;
+	@Autowired
+	private AttendanceDao attendanceDao;
 
 	//회원가입
 	@Transactional
@@ -125,5 +129,15 @@ public class MemberServiceImpl implements MemberSerivce {
 	public void updateRankByMno(MemberVo m) {
 		memberDao.updateRankByMno(m);
 	}
+
+	// 포인트 증가, 그리고 출석체크테이블에 insert
+	@Transactional
+	@Override
+	public void addPoint(Integer mno) {
+		attendanceDao.insertAttendance(mno);
+		memberDao.addPoint(mno);
+	}
+
+	
 
 }

@@ -126,11 +126,11 @@ $(function() {
 															<td>
 																<form action="${pageContext.request.contextPath}/admin/member_delete">
 																	<input type="hidden" name="mno" value="${mem.mno}" />
-																	<input type="submit" value="탈퇴">
+																	<input class="btn btn-outline-dark" type="submit" value="탈퇴">
 																</form>
 																<form action="${pageContext.request.contextPath}/admin/member_restore">
 																	<input type="hidden" name="mno" value="${mem.mno}" />
-																	<input type="submit" value="복구">
+																	<input class="btn btn-outline-dark" type="submit" value="복구">
 																</form>
 															</td>
 														</tr>
@@ -203,11 +203,13 @@ $(function() {
 											<option value="ROLE_ADMIN">전체 관리자</option>
 										</select>
 										<select class="custom-select" id="brand-select">
-											<option value="NO" selected="selected">브랜드</option>
-											<c:forEach var="brand" items="${bList }">
-												<option value="${brand.brandName }">${brand.brandName }</option>
+
+											<option value="" selected="selected">브랜드</option>
+											<!-- 이부분 -->
+											<c:forEach var="b" items="${blist }">
+												<option value="${b.brandName }" >${b.brandName }</option>
 											</c:forEach>
-											
+
 										</select>
 										
 										<div class="input-group my-3">

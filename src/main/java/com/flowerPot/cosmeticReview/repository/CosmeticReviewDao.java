@@ -3,6 +3,7 @@ package com.flowerPot.cosmeticReview.repository;
 import java.util.List;
 
 import com.flowerPot.vo.CosmeticReviewVo;
+import com.flowerPot.vo.MemberVo;
 
 public interface CosmeticReviewDao {
 
@@ -16,5 +17,5 @@ public interface CosmeticReviewDao {
 
 	List<CosmeticReviewVo> selectListCosmeticReviewListById(CosmeticReviewVo cosmeticReviewVo);
 
-	List<CosmeticReviewVo> selectListCosmeticReivewByMno(Integer mno);
+	List<CosmeticReviewVo> selectListCosmeticReviewListByMno(MemberVo member);
 }

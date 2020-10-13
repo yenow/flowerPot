@@ -4,14 +4,37 @@
 <jsp:include page="../info/header2.jsp"></jsp:include>
 
 	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/bg-02.jpg');">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/logo_mypage.png');">
 		<h2 class="ltext-105 cl0 txt-center">
-			마이페이지
+			
 		</h2>
 	</section>	
 
 	<div class="container">
 		<jsp:include page="jumbotron.jsp"></jsp:include>
+
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
+				홈
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
+				마이페이지
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<span class="stext-109 cl4">
+				상품주문
+			</span>
+		</div>
+	</div>
+
+	<!-- Content page -->
+	<section class="bg0 p-t-62 p-b-60">
+		<div class="container">
+			<jsp:include page="jumbotron.jsp"></jsp:include>
+
 		
 		<div class="row">
 			<div class="col-md-4 col-lg-3 p-b-80">
@@ -267,7 +290,6 @@ $(function() {
                 }
             }
         }).open();
-    }
+    });
 </script>
-
-<jsp:include page="../info/footer.jsp"></jsp:include>
+<jsp:include page="../info/footer.jsp"></jsp:include> 

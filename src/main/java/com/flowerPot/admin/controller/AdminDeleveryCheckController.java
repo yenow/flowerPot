@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flowerPot.admin.vo.MemberDeliveryVo;
 import com.flowerPot.delivery.service.DeliveryService;
-import com.flowerPot.member.service.MemberSerivce;
+import com.flowerPot.member.service.MemberService;
 import com.flowerPot.vo.DeliveryVo;
 import com.flowerPot.vo.MemberVo;
 
@@ -25,7 +25,7 @@ public class AdminDeleveryCheckController {
 /*	@Autowired
 	private DeliveryMapper service;*/
 	@Autowired
-	private MemberSerivce memberSerivce;
+	private MemberService memberSerivce;
 	@Autowired
 	private DeliveryService deliveryService;
 	

@@ -36,6 +36,8 @@ select mno_seq.nextval from dual;
 drop sequence mno_seq
 select * from f_member;
 
+update f_member set member_rank = '씨앗';
+
 alter table f_member modify nickname varchar2(50) not null
 drop table f_member;
 
@@ -59,4 +61,7 @@ insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,m
 
 select * from f_member;
 select * from f_point;
+
+SELECT COUNT(*) FROM f_member 
+		where id= 'gasg23223';
 

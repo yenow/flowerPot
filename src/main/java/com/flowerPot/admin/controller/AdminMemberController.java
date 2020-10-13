@@ -25,29 +25,29 @@ public class AdminMemberController {
 
 	
 	//회원 관리(목록)
-	@RequestMapping("/member")
-	public void memList(SearchVO search, Model model) {
-		System.out.println("찾아옴");
-		System.out.println(search);
-		PageCreator pc = new PageCreator();
-		pc.setPaging(search);
-		List<MemberVo> mList = service.getArticleList(search);
-		pc.setArticleTotalCount(service.countArticles(search));
+		@RequestMapping("/member")
+		public void memList(SearchVO search, Model model) {
+			System.out.println("찾아옴");
+			System.out.println(search);
+			PageCreator pc = new PageCreator();
+			pc.setPaging(search);
+			List<MemberVo> mList = service.getArticleList(search);
+			pc.setArticleTotalCount(service.countArticles(search));
+			
+			List<BrandVo> blist = brandService.selectListAllBrand();
+			
+			model.addAttribute("blist", blist);
+			model.addAttribute("mList", mList);
+			model.addAttribute("pc", pc);
+		}
 		
-		List<BrandVo> bList = brandService.selectListAllBrand();
-		
-		model.addAttribute("bList", bList);
-		model.addAttribute("mList", mList);
-		model.addAttribute("pc", pc);
-	}
-	
-	//회원 탈퇴
-	@RequestMapping("/member_delete")
-	public String memDelete(Integer mno) {
-		service.deleteMember(mno);
-		
-		return "redirect:/admin/member";
-	}
+		//회원 탈퇴
+		@RequestMapping("/member_delete")
+		public String memDelete(Integer mno) {
+			service.deleteMember(mno);
+			
+			return "redirect:/admin/member";
+		}
 	
 	//회원 탈퇴 복구
 	@RequestMapping("/member_restore")

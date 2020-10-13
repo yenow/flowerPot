@@ -32,7 +32,7 @@ drop table f_orderProduct;
 
 drop table f_orderProduct;
 select * from f_orderProduct;
-
+select ono_seq.nextval from dual;
 
 drop sequence ordPro_seq;
  

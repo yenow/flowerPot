@@ -5,9 +5,9 @@
 <jsp:include page="../info/header2.jsp"></jsp:include>
 
 	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/bg-02.jpg');">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/logo_mypage.png');">
 		<h2 class="ltext-105 cl0 txt-center">
-			마이페이지
+			
 		</h2>
 	</section>	
 
@@ -54,10 +54,10 @@
 							<c:set var="orderNum" property="0"></c:set>
 							<c:forEach var="order" items="${oList }">
 								<tr>
-									<td colspan="4" class="align-middle">
+									<td colspan="4" class="align-middle mtext-110">
 										주문번호 :  ${order.order_num }
 									</td>
-									<td class="align-middle">
+									<td class="align-middle mtext-110">
 											 ${order.regdate }
 									</td>
 								</tr>
@@ -81,7 +81,7 @@
 									</tr>
 								</c:forEach>
 								<tr>
-									<td colspan="5">결재금액 : ${order.final_price }</td>
+									<td colspan="5" class="mtext-111">결재금액 : ${order.final_price }원</td>
 								</tr>
 							</c:forEach>
 						</table>

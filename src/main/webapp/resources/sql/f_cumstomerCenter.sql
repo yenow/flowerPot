@@ -6,13 +6,14 @@ create table f_customerCenter(
 	regdate date ,    
 	moddate date ,
 	category int not null,   -- 카테고리
-	url varchar2(200)     -- url
+	URL varchar2(200)     -- url
 );
 -- 시퀀스
 create sequence ccno_seq increment by 1 start with 1 minvalue 1 nocache;
 -- 제약조건 
 alter table f_customerCenter add constraint f_customerCenter_fk_mno foreign key (mno) references f_member(mno);
 
+alter table f_customerCenter add URL varchar2(200);
 
 
 

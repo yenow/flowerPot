@@ -99,7 +99,7 @@
 															<td>${brand.bno}</td>
 															<td>${brand.company}</td>
 															<td>
-																<button onclick="location='${pageContext.request.contextPath}/admin/brandInfo/${brand.bno}';">상세정보</button>
+																<button class="btn btn-outline-dark" onclick="location='${pageContext.request.contextPath}/admin/brandInfo/${brand.bno}';">상세정보</button>
 															</td>
 															<td>${brand.brandName}</td>
 															<td>${brand.ceoName}</td>
@@ -107,7 +107,7 @@
 															<td>
 																<form action="${pageContext.request.contextPath}/admin/brandDelete" name="deleteBrand">
 																	<input type="hidden" name="bno" value="${brand.bno}" />
-																	<input type="submit" value="삭제" onclick="if(!confirm('삭제하시면 복구할수 없습니다. \n 정말로 삭제하시겠습니까??')){return false;}" />
+																	<input class="btn btn-outline-dark" type="submit" value="삭제" onclick="if(!confirm('삭제하시면 복구할수 없습니다. \n 정말로 삭제하시겠습니까??')){return false;}" />
 																</form>
 															</td>
 														</tr>

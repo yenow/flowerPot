@@ -88,6 +88,7 @@ public class KakaoPay {
 		 			flag=true;
 		 		}
 		 		
+		 		log.info("회원번호:"+orderProduct.getMno());
 		 		// 회원인 경우
 		 		if(orderProduct.getMno()!=null) {
 		 			orderProduct.setOrder_num(order_num);   //  주문번호 저장

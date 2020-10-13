@@ -23,6 +23,8 @@ insert into F_COSMETICREVIEW values(crno_seq.nextval, 1,1, '아주좋습니다.1
 select * from f_cosmeticReview;
 drop table f_cosmeticReview;
 
+alter table f_cosmeticReview add regdate date;
+
 
 insert into
 F_COSMETICREVIEW  values

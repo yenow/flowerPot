@@ -1,20 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../info/header2.jsp"></jsp:include>
 
 <style>
-.form-control {
-	border: solid 0.5px #6e6e6e;
+.double {
+	border: dotted 0.5px #c5d2cf;
 }
-
-.entermail {
-	margin-right: 40%;
-}
-
-.sendmail {
-	margin-left: 70%;
-	border: solild 0.5px #6e6e6e;
+.
+enroll {
+	padding: 20%;
 }
 </style>
 
@@ -39,7 +34,7 @@
 						<input type="text" class="form-control form-control-lg" name="id" id="user_id" aria-describedby="emailHelp" placeholder="숫자 + 영어: 4자~10자 입력해주세요 ^^">
 						<small id="emailHelp" class="form-text text-muted"> </small>
 					</div>
-					<div class="form-group">
+					<div class="form-group ">
 						<label for="password" style="text-align: left"><p>
 								<strong>비밀번호</strong>&nbsp;&nbsp;&nbsp;<span id="pwChk"></span>
 							</p></label>
@@ -51,94 +46,107 @@
 							</p></label>
 						<input type="password" class="form-control form-control-lg" name="password2" id="password_check" placeholder="비밀번호가 일치해야합니다.ㅜㅜ">
 					</div>
-					<div class="form-group">
-						<label for="user_name" style="text-align: left"><p>
-								<strong>이름</strong>&nbsp;&nbsp;&nbsp;<span id="nameChk"></span>
-							</p></label>
-						<input type="text" class="form-control form-control-lg" name="name" id="user_name" placeholder="한글로 최대 6자 입력해주세요 !!">
+
+					<hr class="double">
+
+					<br />
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="user_name"><p>
+									<strong>이름</strong>&nbsp;&nbsp;&nbsp;<span id="nameChk"></span>
+								</p></label>
+							<input type="text" class="form-control form-control-lg " name="name" id="user_name" placeholder="한글로 최대 6자 입력해주세요 !!">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="user_nick"><p>
+									<strong>닉네임</strong>&nbsp;&nbsp;&nbsp;<span id="nickChk"></span>
+								</p></label>
+							<input type="text" class="form-control form-control-lg" name="nickname" id="user_nick" placeholder="닉네임을 입력해주세요!!">
+						</div>
 					</div>
-					<div class="form-group">
-						<label for="user_nick" style="text-align: left"><p>
-								<strong>닉네임</strong>&nbsp;&nbsp;&nbsp;<span id="nickChk"></span>
-							</p></label>
-						<input type="text" class="form-control form-control-lg" name="nickname" id="user_nick">
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="user_phone" style="text-align: left"><p>
+									<strong>전화번호</strong><span id="phoneChk"></span>
+								</p></label>
+							<input type="tel" class="form-control form-control-lg" name="tel" id="user_phone" placeholder="(예시:- 하이픈 없이 입력해주세요)">
+						</div>
+
+
+						<div class="form-group col-md-4">
+							<label for="user_name"><p>
+									<strong>성별</strong>&nbsp;&nbsp;&nbsp;<span id="nickChk"></span>
+								</p></label>
+							<div style="text-align: center; padding-left: 70px;">
+								<input type="radio" name="gender" id="exampleRadios1" value="M" style="display: inline-block;">
+								<label for="exampleRadios1" style="display: inline-block"> 남자 </label>
+
+								<input type="radio" name="gender" id="exampleRadios2" value="F" style="display: inline-block; margin-left: 30px;">
+								<label for="exampleRadios2" style="display: inline-block;"> 여자 </label>
+							</div>
+						</div>
+
 					</div>
+
+
+
 					<div class="form-group email">
 						<label for="user_email" style="text-align: left"><p>
 								<strong>이메일</strong>&nbsp;&nbsp;&nbsp;<span id="emailChk"></span>
 							</p></label>
-
 						<input type="email" class="form-control form-control-lg test" name="email" id="user_email" placeholder="ex)aaa@naver.com">
+						<br />
+						<!-- <input type="button" class=" test2 btn btn-outline-secondary btn-block btn-lg" onclick="send_email();" value="인증번호 전송"> -->
+						<br />
 
-						<input type="button" class=" test2 btn btn-outline-secondary btn-block btn-lg" onclick="send_email();" value="인증번호 전송">
+						<!-- <input type="text" class="form-control form-control-lg enternum" name="code_number" id="code_number" placeholder="인증번호 입력">
+						<br />
+						<input type="button" class="btn btn-outline-secondary btn-block btn-lg entercheck" onclick="code_check();" value="인증 번호 확인"> -->
 					</div>
+
+					<hr class="double">
 
 					<div class="clear"></div>
 
+					<br />
+
+
 					<div class="form-group">
 
-					<input type="text" class="form-control form-control-lg" id="sample4_postcode" name="postcode" placeholder="우편번호">
-					<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" class="form-control form-control-lg" id="sample4_roadAddress" name="street_address" placeholder="도로명주소">
-					<br>
-					<input type="text" class="form-control form-control-lg" id="sample4_jibunAddress" name="parcel_address" placeholder="지번주소">
-					<span id="guide" style="color:#999;display:none"></span>
-					<br>
-					<input type="text" class="form-control form-control-lg" id="sample4_extraAddress" name="more_information" placeholder="참고항목">
-					<br>
-					<input type="text" class="form-control form-control-lg" id="sample4_detailAddress" name="detail_address"placeholder="상세주소">
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="user_nick" style="text-align: left"><p>
+										<strong>주소)우편번호</strong>&nbsp;&nbsp;&nbsp;<span id="nickChk"></span>
+									</p></label>
+								<input type="text" class="form-control form-control-lg" id="sample4_postcode" name="postcode" placeholder="우편번호">
+							</div>
 
-						<label for="user_codeNumber" style="text-align: left"></label>
-						<input type="text" class="form-control form-control-lg enternum" name="code_number" id="code_number" placeholder="인증번호 입력">
-						<input type="button" class="btn btn-outline-secondary btn-block btn-lg entercheck" onclick="code_check();" value="인증 번호 확인">
+							<div class="form-group col-md-6">
+								<label for="inputPassword4" > .</label>
+								<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+							</div>
+						</div>
 
+						<input type="text" class="form-control form-control-lg" id="sample4_jibunAddress" name="parcel_address" placeholder="지번주소"><br/>
+
+						<input type="text" class="form-control form-control-lg" id="sample4_roadAddress" name="street_address" placeholder="도로명주소"><br/>
+
+						<input type="text" class="form-control form-control-lg" id="sample4_detailAddress" name="detail_address" placeholder="상세주소">
+
+						<label for="user_codeNumber" style="text-align: left"></label><br/>
+
+						<input type="text" class="form-control form-control-lg" id="sample4_extraAddress" name="more_information" placeholder="참고항목">
+						
 					</div>
+					<button class="btn btn-outline-secondary btn-block btn-lg " id="signup-btn">등록</button>
+					<br />
 			</div>
-
-			<div class="form-group">
-				<label for="user_phone" style="text-align: left"><p>
-						<strong>전화번호</strong>&nbsp;&nbsp;&nbsp;<span id="phoneChk"></span>
-					</p></label>
-				<input type="tel" class="form-control form-control-lg" name="tel" id="user_phone" placeholder="(예시:- 하이픈 없이 입력해주세요)">
-
-			</div>
-			<div class="form-check">
-				<input type="radio" name="gender" id="exampleRadios1" value="M" style="display: inline-block">
-				<label for="exampleRadios1" style="display: inline-block"> 남자 </label>
-				<input type="radio" name="gender" id="exampleRadios2" value="F" style="display: inline-block">
-				<label for="exampleRadios2" style="display: inline-block"> 여자 </label>
-			</div>
-
-			<div class="form-group">
-				<label for="user_address" style="text-align: left"><p>
-						<strong>주소(우편번호)</strong>&nbsp;&nbsp;&nbsp; <span id="addressChk"></span>
-					</p></label>
-				<input type="text" class="form-control form-control-lg" id="sample4_postcode" name="postcode" placeholder="우편번호">
-				<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
-				<br>
-				
-				<input type="text" class="form-control form-control-lg" id="sample4_roadAddress" name="street_address" placeholder="도로명주소">
-				<br>
-				
-				<input type="text" class="form-control form-control-lg" id="sample4_jibunAddress" name="parcel_address" placeholder="지번주소">
-				<span id="guide" style="color: #999; display: none"></span> <br>
-				
-				<input type="text" class="form-control form-control-lg" id="sample4_extraAddress" name="deliver_state" placeholder="참고항목">
-				<br>
-				
-				<input type="text" class="form-control form-control-lg" id="sample4_detailAddress" name="detail_address" placeholder="상세주소">
-			</div>
-
-			<button class="btn btn-outline-secondary btn-block btn-lg" id="signup-btn">등록</button>
-			</form>
-			<br />
-			<br />
-
-
-
 		</div>
 	</div>
-	</div>
+
+	<!-- footer  -->
 	<jsp:include page="../info/footer.jsp"></jsp:include>
 </section>
 
@@ -147,7 +155,6 @@
 <script>
 	//start JQuery
 	$(function() {
-
 		const getIdCheck = RegExp(/^[a-zA-Z0-9]{4,14}$/);
 		const getPwCheck = RegExp(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/);
 		const getName = RegExp(/^[가-힣]+$/);
@@ -155,70 +162,52 @@
 		const getPhone = RegExp(/^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/);
 		let chk1 = false, chk2 = false, chk3 = false, chk4 = false, chk5 = false;
 		chk6 = false;
-
 		//회원가입 검증~~
 		//ID 입력값 검증.
-		$('#user_id')
-				.on(
-						'keyup',
-						function() {
-							if ($("#user_id").val() === "") {
-								$('#user_id').css("background-color", "pink");
-								$('#idChk')
-										.html(
-												'<b style="font-size:14px;color:red;">[아이디는 필수 정보에요!]</b>');
-								chk1 = false;
-							}
-
-							//아이디 유효성검사
-							else if (!getIdCheck.test($("#user_id").val())) {
-								$('#user_id').css("background-color", "pink");
-								$('#idChk')
-										.html(
-												'<b style="font-size:14px;color:red;">[영문자,숫자 4-14자]</b>');
-								chk1 = false;
-							}
-							//ID 중복확인 비동기 처리
-							else {
-								//ID 중복확인 비동기 통신
-								const id = $(this).val();
-								console.log(id);
-
-								$
-										.ajax({
-											type : "POST",
-											url : "${pageContext.request.contextPath}/member/checkId",
-											headers : {
-												"Content-Type" : "application/json"
-											},
-											dataType : "text",
-											data : id,
-											success : function(result) {
-												if (result === "OK") {
-													$("#user_id").css(
-															"background-color",
-															"aqua");
-													$("#idChk")
-															.html(
-																	"<b style='font-size:14px; color:green;'>[아이디는 사용 가능!]</b>");
-													chk1 = true;
-												} else {
-													$("#user_id").css(
-															"background-color",
-															"pink");
-													$("#idChk")
-															.html(
-																	"<b style='font-size:14px; color:red;'>[아이디가 중복됨!]</b>");
-													chk1 = false;
-												}
-											},
-											error : function() {
-												console.log("통신 실패!");
-											}
-										});
-							}
+		$('#user_id').on('keyup',function() {
+			if ($("#user_id").val() === "") {
+				$('#user_id').css("background-color", "pink");
+				$('#idChk').html('<b style="font-size:14px;color:red;">[아이디는 필수 정보에요!]</b>');
+					chk1 = false;
+				}
+				//아이디 유효성검사
+				else if (!getIdCheck.test($("#user_id").val())) {
+					$('#user_id').css("background-color", "pink");
+					$('#idChk').html('<b style="font-size:14px;color:red;">[영문자,숫자 4-14자]</b>');
+						chk1 = false;
+					}
+				//ID 중복확인 비동기 처리
+					else {
+					//ID 중복확인 비동기 통신
+					const id = $(this).val();
+					console.log(id);
+					$.ajax({
+						type : "POST",
+						url : "${pageContext.request.contextPath}/member/checkId",
+						headers : {
+						"Content-Type" : "application/json"
+						},
+						dataType : "text",
+						data : id,
+						success : function(result) {
+							console.log(result);
+							if (result === "OK") {
+								$("#user_id").css("background-color","aqua");
+								$("#idChk").html("<b style='font-size:14px; color:green;'>[아이디는 사용 가능!]</b>");
+									chk1 = true;
+								} else {
+								$("#user_id").css("background-color","pink");
+								$("#idChk")
+								.html("<b style='font-size:14px; color:red;'>[아이디가 중복됨!]</b>");
+									chk1 = false;
+									}
+								},error : function() {
+									console.log("통신 실패!");
+								}
 						});
-
+					}
+			});
+		
 		$('#user_email')
 				.on(
 						'keyup',
@@ -231,7 +220,6 @@
 												'<b style="font-size:14px;color:red;">[이메일는 필수 정보에요!]</b>');
 								chk5 = false;
 							}
-
 							//이메일 유효성검사
 							else if (!getMail.test($("#user_email").val())) {
 								$('#user_email')
@@ -246,7 +234,6 @@
 								//ID 중복확인 비동기 통신
 								const email = $(this).val();
 								console.log(email);
-
 								$
 										.ajax({
 											type : "POST",
@@ -281,7 +268,6 @@
 										});
 							}
 						});
-
 		//전화번호 입력값 검증.
 		$('#user_phone')
 				.on(
@@ -295,7 +281,6 @@
 												'<b style="font-size:14px;color:red;">[전화번호는 필수 정보에요!]</b>');
 								chk6 = false;
 							}
-
 							//전화번호 유효성검사
 							else if (!getPhone.test($("#user_phone").val())) {
 								$('#user_phone')
@@ -310,7 +295,6 @@
 								//전화번호 중복확인 비동기 통신
 								const phone = $(this).val();
 								console.log(phone);
-
 								$
 										.ajax({
 											type : "POST",
@@ -345,7 +329,6 @@
 										});
 							}
 						});
-
 		//패스워드 입력값 검증.
 		$('#password')
 				.on(
@@ -374,9 +357,7 @@
 												'<b style="font-size:14px;color:green;">[√]</b>');
 								chk2 = true;
 							}
-
 						});
-
 		//패스워드 확인란 입력값 검증.
 		$('#password_check')
 				.on(
@@ -408,9 +389,7 @@
 												'<b style="font-size:14px;color:green;">[√]</b>');
 								chk3 = true;
 							}
-
 						});
-
 		//이름 입력값 검증.
 		$('#user_name')
 				.on(
@@ -438,9 +417,7 @@
 												'<b style="font-size:14px;color:green;">[참 잘했어요]</b>');
 								chk4 = true;
 							}
-
 						});
-
 		/* $('#signup-btn').click(function(e) {
 			if(chk1 && chk2 && chk3 && chk4) {
 				//아이디 정보
@@ -486,7 +463,6 @@
 				alert('입력정보를 다시 확인하세요.');			
 			}
 		}); */
-
 		///////////////////////////////////////////////////////////////////////////////////////////
 		//로그인 검증~~
 		//ID 입력값 검증.
@@ -501,7 +477,6 @@
 												'<b style="font-size:14px;color:red;">[아이디는 필수!]</b>');
 								chk1 = false;
 							}
-
 							//아이디 유효성검사
 							else if (!getIdCheck.test($("#signInId").val())) {
 								$('#signInId').css("background-color", "pink");
@@ -517,7 +492,6 @@
 								chk1 = true;
 							}
 						});
-
 		//패스워드 입력값 검증.
 		$('#signInPw')
 				.on(
@@ -546,19 +520,15 @@
 												'<b style="font-size:14px;color:green;">[참 잘했어요]</b>');
 								chk2 = true;
 							}
-
 						});
-
 		//로그인 버튼 클릭 이벤트
 		$("#signIn-btn").click(function() {
 			if (chk1 && ch2) {
 				//ajax통신으로 서버에서 값 받아오기 
 				const id = $('#signInId').val();
 				const pw = $('#signInPw').val();
-
 				console.log("id: " + id);
 				console.log("pw: " + pw);
-
 				const userInfo = {
 					account : id,
 					password : pw
@@ -573,28 +543,23 @@
 					dataType : "text",
 					success : function(data) {
 						console.log("result:" + data);
-
 					}
 				});
 			} else {
 				alert("입력정보를 다시 확인하세요!");
 			}
 		})
-
 	});//end JQuery
-
 	//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
 	function sample4_execDaumPostcode() {
 		new daum.Postcode(
 				{
 					oncomplete : function(data) {
 						// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
 						// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
 						// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
 						var roadAddr = data.roadAddress; // 도로명 주소 변수
 						var extraRoadAddr = ''; // 참고 항목 변수
-
 						// 법정동명이 있을 경우 추가한다. (법정리는 제외)
 						// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
 						if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
@@ -609,19 +574,16 @@
 						if (extraRoadAddr !== '') {
 							extraRoadAddr = ' (' + extraRoadAddr + ')';
 						}
-
 						// 우편번호와 주소 정보를 해당 필드에 넣는다.
 						document.getElementById('sample4_postcode').value = data.zonecode;
 						document.getElementById("sample4_roadAddress").value = roadAddr;
 						document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
-
 						// 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
 						if (roadAddr !== '') {
 							document.getElementById("sample4_extraAddress").value = extraRoadAddr;
 						} else {
 							document.getElementById("sample4_extraAddress").value = '';
 						}
-
 						var guideTextBox = document.getElementById("guide");
 						// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
 						if (data.autoRoadAddress) {
@@ -630,7 +592,6 @@
 							guideTextBox.innerHTML = '(예상 도로명 주소 : '
 									+ expRoadAddr + ')';
 							guideTextBox.style.display = 'block';
-
 						} else if (data.autoJibunAddress) {
 							var expJibunAddr = data.autoJibunAddress;
 							guideTextBox.innerHTML = '(예상 지번 주소 : '
@@ -664,11 +625,6 @@
 			}
 		});
 	});
-
 	$(function code_check() {
-
 	});
 </script>
-
-
-

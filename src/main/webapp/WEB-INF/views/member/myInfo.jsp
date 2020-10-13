@@ -3,8 +3,8 @@
 <jsp:include page="../info/header2.jsp"></jsp:include>
 
 <!-- Title page -->
-<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/bg-02.jpg');">
-	<h2 class="ltext-105 cl0 txt-center">마이페이지</h2>
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/logo_mypage.png');">
+	<h2 class="ltext-105 cl0 txt-center"></h2>
 </section>
 
 <div class="container">
@@ -18,8 +18,7 @@
 <!-- Content page -->
 <section class="bg0 p-t-62 p-b-60">
 	<div class="container">
-		<div class="row mb-4 text-center">
-			<jsp:include page="jumbotron.jsp"></jsp:include>
+		<jsp:include page="jumbotron.jsp"></jsp:include>
 		
 		<div class="row">
 			<div class="col-md-4 col-lg-3 p-b-80">
@@ -52,11 +51,11 @@
 					<div class="form-group">
 						<label for="user_email" text-align:left"><p>
 								<strong>이메일</strong>&nbsp;&nbsp;&nbsp;<span id="emailChk"></span>
-							</p></label> <input type="email" class="form-control form-control-lg" name="email" value="${pid.email}" id="user_email" placeholder="ex)aaa@naver.com" style="width: 50%; float: left;"> <input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="send_email();" value="인증번호 전송" style="width: 50%;">
+							</p></label>  <input type="email" class="form-control form-control-lg" name="email" value="${pid.email}" id="user_email" placeholder="ex)aaa@naver.com" style="width: 50%; float: left;"> <input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="send_email();" value="인증번호 전송" style="width: 50%;">
 						<div class="clear"></div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label for="user_codeNumber" text-align:left"=""></label> <input type="text" class="form-control form-control-lg" name="code_number" id="code_number" placeholder="인증번호 입력" style="width: 50%; float: left;"> <input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="code_check();" value="인증 번호 확인" style="width: 50%;">
-						</div>
+						</div> -->
 					</div>
 					<div class="form-group">
 						<label for="user_phone" text-align:="" left"=""><p>
@@ -65,12 +64,15 @@
 
 
 					</div>
-
-					주소(우편번호)
+	
+					<label for="user_phone" text-align:="" left"=""><p>
+						<strong>주소(우편번호)</strong>&nbsp;&nbsp;&nbsp;<span id="phoneChk"></span>
+					</p></label>
+				
 					<div class="form-group">
 						<input type="text" class="form-control form-control-lg" value="${paddr.postcode}" id="sample4_postcode" name="postcode" placeholder="우편번호"> 
 						
-						<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br> <input type="text" class="form-control form-control-lg" id="sample4_roadAddress" value="${paddr.street_address}" name="street_address" placeholder="도로명주소"> 
+						<input type="button" class="btn btn-outline-secondary btn-block btn-lg mt-2" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br> <input type="text" class="form-control form-control-lg" id="sample4_roadAddress" value="${paddr.street_address}" name="street_address" placeholder="도로명주소"> 
 						<br> <input type="text" class="form-control form-control-lg" id="sample4_jibunAddress" value="${paddr.parcel_address}" name="parcel_address" placeholder="지번주소"> 
 						<span id="guide" style="color: #999; display: none"></span> <br> <input type="text" class="form-control form-control-lg" id="sample4_extraAddress" value="${paddr.more_infomation}" name="deliver_state" placeholder="참고항목"> 
 						<br> <input type="text" class="form-control form-control-lg" id="sample4_detailAddress" value="${paddr.detail_address}"

@@ -7,10 +7,6 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<!-- Service Class 선언 -->
-	<!-- <bean id="wordCloudService" class="com.flowerPot.point.service.PointServiceImpl" /> -->
-
-
 	<!-- <bean name="wordCloudJob" class="org.springframework.scheduling.quartz.JobDetailBean"> 
 		Quartz 1.8.x버전 -->
 	<bean name="wordCloudJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean"><!-- Quartz 2.x 버전 -->
@@ -35,7 +31,7 @@
 		</property>
 		<property name="cronExpression">
 			<!-- 매 5분마다 실행 -->
-			<value>0 0/1 * * * ?</value>
+			<value>0 0 0/5 * * ?</value>
 			<!-- 매일 오후 3시 20분마다 실행 -->
 			<!-- <value>0/30 0 0 * * ?</value> -->
 		</property>

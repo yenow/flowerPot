@@ -39,7 +39,7 @@
 					<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30 " type="text" name="id" placeholder="아이디">
 				</div>
 				
-				<br>
+				
 
 				<div class="bor8 m-b-20 how-pos4-parent login_alert">
 					<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" name="password" placeholder="비밀번호">
@@ -55,59 +55,28 @@
 					<div class="float-right foundbox">
 						<a href="forgot_id">아이디찾기</a> 
 						<span class="bar">|</span> <a
-							href="forgot_pw" class="link">비밀번호 찾기</a>
+							href="${pageContext.request.contextPath }/member/find_pw_form.do" class="link" id="find_pw_">비밀번호 찾기</a>
 					</div>
 				</div>
 
-
-				<br>
-				<br>
-
-				<div class="row">
-					<div class="col-sm-6" style="float: left">
-						<button type="submit"
-							class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer"
-							style="background: black">LOGIN</button>
-					</div>
-
-					<div class="col-sm-6" style="float: left;">
-						<button onclick="location.href='http://localhost:8080/controller/member/signUp'"
-							class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer"
-							style="background: black">SignUp</button>
-
-				<c:if test="${not empty param.fail }">
-					<div>
-						<p>로그인에 실패 하였습니다</p>
-						<p>${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</p>
-					</div>
-				</c:if>
-
- 				<br/>
-
-				
  				<!-- button 바 전체 -->
 				
-					<div class="col-sm-6 login" style="float: left">
+					<div class="col-sm-6 login my-1" style="float: left">
 						<button type="submit" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer " >LOGIN</button>
 					</div><br/>
 					
-					<div class="col-sm-6 signup" style="float: left;">
-						<button type="submit" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" >SignUp</button>
+					<div class="col-sm-6 signup my-1" style="float: left;">
+						<a href="${pageContext.request.contextPath }/member/signUp" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" >SignUp</a>
+					</div>
 
-
-						<c:if test="${not empty param.fail }">
+					<%-- <c:if test="${not empty param.fail }">
 							<div>
 								<p>로그인에 실패 하였습니다</p>
 								<p>${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</p>
 							</div>
-						</c:if>
-					</div><br/>
-				
+						</c:if> --%>
 
-				<div class="gray" style="height: 10px;"></div>
-				<br/>
-
-					<div class="col-sm-6 naver">
+					<div class="naver my-2" style="width: 50%">
 					
 						<button onclick="location.href='${naverLogin}'" class="btn btn-block mb-2 btn-primary"
 							style="text-align:center; background-color:#30b802; border: 3px #30b802;" ><%-- <a href="${url}"> --%>
@@ -129,7 +98,7 @@
 					</div>
 					
 					
-					<div class="col-sm-6 kakao">
+					<div class="kakao my-1" style="width: 50%">
 						<button onclick="location.href='${kakao_url}'" class="btn btn-block mb-2 btn-secondary" 
 						style="text-align:center; background-color:#F7E600; border: 3px #3A1D1D; color:#3A1D1D; font-weight: bolder;" ><%-- <a href="${url}"> --%>
 						 	<img width="30px" src="${pageContext.request.contextPath}/resources/images/kakaoTalk01.PNG"/>
@@ -151,6 +120,6 @@
 
 <jsp:include page="../info/footer.jsp"></jsp:include>
 
-<script src="assets/js/feather-icons/feather.min.js"></script>
-<script src="assets/js/app.js"></script>
-<script src="assets/js/main.js"></script>
+<!-- <script src="assets/js/feather-icons/feather.min.js"></script> -->
+<!-- <script src="assets/js/app.js"></script>
+<script src="assets/js/main.js"></script> -->

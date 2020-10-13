@@ -5,6 +5,7 @@
 <jsp:include page="../info/header2.jsp"></jsp:include>
 
 <!-- breadcrumb -->
+<!-- 
 <div class="container">
 	<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
 		<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
@@ -17,7 +18,7 @@
 
 		<span class="stext-109 cl4"> Lightweight Jacket </span>
 	</div>
-</div>
+</div> -->
 
 
 <!-- Product Detail -->
@@ -225,7 +226,8 @@
 										</div>
 									</c:if>
 								</c:forEach>
-
+								
+								<c:if test="${member ne null }">
 								<form action="${pageContext.request.contextPath }/cosmeticReviewRegister" class="w-full cosmeticReview-form" onsubmit="return onsubmitCometicReview();">
 									<input type="hidden" name="cno" value="${cosmetic.cno }">
 									<input type="hidden" name="category" value="query">
@@ -242,6 +244,7 @@
 
 									<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">제출</button>
 								</form>
+								</c:if>
 							</div>
 						</div>
 					</div>
@@ -272,7 +275,8 @@
 										</c:if>
 									</c:forEach>
 									<!-- /Review -->
-
+									
+									<c:if test="${member ne null }">
 									<!-- 로그인하고 상품을 구입해야 댓글 작성할수 있게 -->
 									<!-- Add review -->
 									<form action="${pageContext.request.contextPath }/cosmeticReviewRegister" class="w-full cosmeticReview-form" onsubmit="return onsubmitCometicReview();">
@@ -296,6 +300,7 @@
 
 										<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">제출</button>
 									</form>
+									</c:if>
 								</div>
 							</div>
 						</div>

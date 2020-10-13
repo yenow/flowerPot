@@ -27,7 +27,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select f_cosmeticReview.* from f_cosmeticReview inner join f_cosmetic on f_cosmeticReview.cno = f_cosmetic.cno where brand = #{brand} and category = 'rating'
 	</select>
 	
-	<select id="selectListCosmeticReivewByMno" resultType="com.flowerPot.vo.CosmeticReviewVo">
+
+	<select id="selectListCosmeticReviewListByMno" resultType="com.flowerPot.vo.CosmeticReviewVo">
 		select  * from f_cosmeticReview where mno = #{mno} and category = 'rating'
 	</select>
 </mapper>

@@ -113,6 +113,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select c.*,a.mappingURL from f_cosmetic c left outer join f_attachFile
 		a on c.cno=a.cno where c.cno = #{cno, jdbcType=NUMERIC}
 		<!-- select * from f_cosmetic where cno = #{cno, jdbcType=NUMERIC} -->
+		<!--  1day 1commit -->
 	</select>
 
 	<update id="updateCosmeticHitsByCno">
@@ -150,7 +151,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<update id="updateCosmeticStock">
-		update f_cosmetic set stockNumber = stockNumber + #{plusStock} where cno = #{cno}
+		update f_cosmetic set stockNumber = stockNumber + #{plusStock}, discountPersent = #{discountPersent} where cno = #{cno}
 	</update>
 	
 	<select id="selectListCosmetic" resultType="com.flowerPot.vo.CosmeticVo">

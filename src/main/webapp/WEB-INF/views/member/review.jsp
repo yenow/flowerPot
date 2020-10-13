@@ -5,8 +5,8 @@
 <jsp:include page="../info/header2.jsp"></jsp:include>
 
 <!-- Title page -->
-<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/bg-02.jpg');">
-	<h2 class="ltext-105 cl0 txt-center">마이페이지</h2>
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath }/resources/images/logo_mypage.png');">
+	<h2 class="ltext-105 cl0 txt-center"></h2>
 </section>
 
 <div class="container">
@@ -28,12 +28,17 @@
 			</div>
 
 			<div class="col-md-8 col-lg-9 p-b-80" style="padding: 50px">
+
+
+	
+
 				<table class="table">
 					<thead>
 						<tr class="text-center" style="background: #E6E6F2;">
 							
 							<th class="text-center">제목</th>
 							<th class="text-center">내용</th>
+							<th class="text-center">작성자</th>
 							<th class="text-center">작성시간</th>
 						</tr>
 					</thead>
@@ -41,9 +46,15 @@
 						
 							<c:forEach var="cmr" items="${crList}">
 								<tr>
+
+								
 									<td style="text-align: center;">${cmr.title}</td>
 									<td style="text-align: center;">${cmr.content}</td>
-									<td style="text-align: center;"><javatime:format value="${cmr.regdate}" pattern="yyyy년  MM월 dd일" /></td>
+									<td style="text-align: center;">${cmr.nickname}</td>
+									<td style="text-align: center;">${cmr.regdate}
+										
+									</td>
+
 								</tr>
 							</c:forEach>
 					</tbody>

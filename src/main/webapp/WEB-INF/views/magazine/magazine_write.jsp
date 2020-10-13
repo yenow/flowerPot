@@ -41,7 +41,8 @@
 	<div class="container-fluid">
 		<h2 class="text-center my-3">매거진 등록</h2>
 		<form action="${pageContext.request.contextPath}/magazine/magazine_write_ok" method="post" enctype="multipart/form-data">
-			<%-- <input type="hidden" name="mno" value="${login.mno }"> --%>
+			<input type="hidden" name="mno" value="${member.mno }"> 
+			<input type="hidden" name="name" value="${member.name }"> 
 			<!-- 카테고리 -->
 			<div class="mb-3">
 				<label for="country">카테고리</label> <select class="custom-select d-block w-100" id="country" name="category" required="">

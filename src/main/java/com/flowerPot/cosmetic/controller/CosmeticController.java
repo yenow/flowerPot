@@ -31,7 +31,7 @@ import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
 import com.flowerPot.description.service.DescriptionService;
 import com.flowerPot.domain.CosmeticCriteria;
 import com.flowerPot.domain.CosmeticPageDTO;
-import com.flowerPot.member.service.MemberSerivce;
+import com.flowerPot.member.service.MemberService;
 import com.flowerPot.memberAddress.service.MemberAddressService;
 import com.flowerPot.vo.AttachFileVo;
 import com.flowerPot.vo.BrandVo;
@@ -58,7 +58,7 @@ public class CosmeticController {
 	@Autowired 
 	private CosmeticReviewService cosmeticReviewService;
 	@Autowired
-	private MemberSerivce memberSerivce;
+	private MemberService memberSerivce;
 	@Autowired
 	private MemberAddressService memberAddressService;
 	@Autowired
@@ -69,7 +69,17 @@ public class CosmeticController {
 	private CoupService CoupService;
 	@Autowired 
 	CosmeticDao cosmeticDao;
-	
+
+	// 회원 정보 시큐리티에서 가져오기
+	public MemberVo getMemberBysecurity(Principal principal) {
+		MemberVo memberVo = new MemberVo();
+		if(principal!=null) {
+			String id = principal.getName();
+			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
+		}
+		return memberVo;
+	}
+
 	// 화장품 이름 유효성 검증
 	@RequestMapping("isexistName")
 	@ResponseBody
@@ -83,7 +93,7 @@ public class CosmeticController {
 		}
 		return r;
 	}
-	
+
 	@RequestMapping("addlikey")
 	@ResponseBody
 	public ResponseEntity<String> addlikey(Integer cno, HttpServletRequest request) {
@@ -97,14 +107,14 @@ public class CosmeticController {
 			return new ResponseEntity<String>("not", HttpStatus.OK);
 		}
 	}
-	
+
 	// 결제 페이지로 이동
 	@RequestMapping("payment")
 	public void payment(Principal principal ,Model model,Integer root,CosmeticVo cosmetic,HttpSession session) { // root는 장바구니에서 접근하는지, 바로구매인지 구분하는 변수
 		// 로그인된 회원정보 가져오기
 		MemberVo memberVo = new MemberVo();
 		MemberAddressVo memberAddress  = new MemberAddressVo();
-		
+
 		List<CoupVo> coupList = new ArrayList<CoupVo>();
 		log.info("cosmetic:"+cosmetic);
 		if(principal!=null) {
@@ -112,39 +122,39 @@ public class CosmeticController {
 			String id = principal.getName();
 			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
 			memberAddress  = memberAddressService.selectOneMemberAddressByMno(memberVo.getMno());   // 회원주소록 가져오기
-			
+
 			//쿠폰 목록 가져오기
 			coupList = CoupService.selectCoupList(memberVo.getMno());
 			log.info("쿠폰목록:"+coupList);
 		}
-		
+
 
 		//User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		//if(user!=null) {
 		//	log.info("멤버객체:"+ user.getMemberVo());
 		//}
-	
-		
+
+
 		//List<CosmeticVo> clist = (List<CosmeticVo>) session.getAttribute("shoppingCartList");
 		//log.info("화장품 리스트");
 		//for(CosmeticVo c : clist) {
 		//	log.info("화장품 : "+c);
 		//}
-		
+
 		// 이거는 바로 구매를 했을경우 
 		if(root==1) {
 			CosmeticVo c = cosmeticService.selectOneCosmeticByCno(cosmetic.getCno());
 			c.setNumProduct(cosmetic.getNumProduct());
 			model.addAttribute("cosmetic", c);
 		}
-		
+
 		model.addAttribute("coupList", coupList);
 		model.addAttribute("memberAddress", memberAddress);  // 회원 주소정보
 		model.addAttribute("member", memberVo);  // 어떤멤버인지
 		model.addAttribute("root", root);
-		
+
 	}
-	
+
 	// ajax, 장바구니에 담긴 화장품 개수 업데이트
 	@RequestMapping("shopping_list_update")
 	@ResponseBody
@@ -162,7 +172,7 @@ public class CosmeticController {
 		log.info("장바구니:"+cList);
 		return new ResponseEntity<String>("success",HttpStatus.OK);
 	}
-	
+
 	// ajax, 장바구니에 담긴 화장품 삭제
 	@RequestMapping("shopping_list_del")
 	@ResponseBody
@@ -180,7 +190,7 @@ public class CosmeticController {
 		log.info("장바구니:"+cList);
 		return new ResponseEntity<String>("success",HttpStatus.OK);
 	}
-	
+
 	// 장바구니 담기
 	@RequestMapping("shoppingCart_register")
 	public String shoppingCart_register(Integer cno,Integer isNextpage,Integer numProduct,HttpServletRequest request, HttpServletResponse response , HttpSession session) {
@@ -194,7 +204,7 @@ public class CosmeticController {
 			return "redirect:/";
 		}
 	}
-	
+
 	// 윤신영 - 화장품 페이지 이동 브랜치
 	@RequestMapping("cosmetic_ok")
 	public void cosmetic_ok(Integer cno,HttpServletRequest request,HttpServletResponse response) throws IOException {
@@ -211,16 +221,16 @@ public class CosmeticController {
 			out.print("</script>");
 			out.close();
 		}
-		
-		
+
+
 	}
-	
+
 	// 윤신영 - 화장품 구입 페이지
 	@RequestMapping("cosmetic")
-	public void cosmetic(Integer cno,Model model, HttpSession session) throws IOException {
+	public void cosmetic(Principal principal, Integer cno,Model model, HttpSession session) throws IOException {
 		cosmeticService.updateCosmeticHitsByCno(cno);
 		CosmeticVo cosmetic = cosmeticService.selectOneCosmeticByCno(cno);  // 상품번호로,, 화장품 정보 가져오기
-		
+
 		if(session.getAttribute("Cosmetic"+cno)!=null) {
 			// 화장품에 한번 들어와본적이 있을떄
 			log.info("중복조회");
@@ -231,33 +241,37 @@ public class CosmeticController {
 			session.setMaxInactiveInterval(3600);
 		}
 		
+		
+		MemberVo member = getMemberBysecurity(principal);
+
 		DescriptionVo description = descriptionService.selectOneDescriptionByCno(cno);
 		List<CosmeticReviewVo> crList = cosmeticReviewService.selectListCosmeticReviewListByCno(cno);
+		model.addAttribute("member", member);
 		model.addAttribute("cosmetic", cosmetic);
 		model.addAttribute("description", description);
 		model.addAttribute("crList", crList);
 	}
-	
+
 	// 윤신영 - 화장품 리스트 페이지 이동
 	@RequestMapping("cosmetic_list")
 	public void cosmetic_list(Model model,CosmeticCriteria c) {
 		log.info("화장품 리스트 페이지 이동"+c);
 		log.info("받은 파라미터"+c);
-		
+
 		List<CosmeticVo> cList = null;
 		// type이 null이 아닐떄, 화장품 리스트를 가져올수 있다.
 		if(c.getType()!=null) {
 			List<TypeVo> tList = typeService.selectListSubType(c.getType()); // 타입에 해당하는 서브 타입 가져오기
 			cList = cosmeticService.selectListCosmeticByCategory(c);  // 화장품 리스트 가져오기
 			log.info("타입:"+tList);
-			
+
 			model.addAttribute("tList", tList);
 		}
 		int total =  cosmeticService.selectCountByCategory(c);
 		CosmeticPageDTO cosmeticPageDTO = new CosmeticPageDTO(c, total);
 		// 브랜드정보
 		List<BrandVo> bList = brandService.selectListAllBrand();
-		
+
 		log.info("페이징 정보 : "+cosmeticPageDTO);
 		model.addAttribute("cosmeticPageDTO",cosmeticPageDTO);
 		model.addAttribute("cList", cList);
@@ -265,9 +279,9 @@ public class CosmeticController {
 		// 카테고리 정보
 		model.addAttribute("CosmeticCriteria", c);
 		model.addAttribute("type", c.getType());
-		
+
 	}
-	
+
 	// 윤신영 - 화장품 등록 페이지 이동
 	@RequestMapping("cosmetic_register")
 	public void cosmetic_register(Model model) {
@@ -277,7 +291,7 @@ public class CosmeticController {
 		model.addAttribute("tList", tList);
 		model.addAttribute("bList", bList);
 	}
-	
+
 	// 아작스 - 서브 타입 가져오기
 	@RequestMapping("subTypeList")
 	@ResponseBody
@@ -286,7 +300,7 @@ public class CosmeticController {
 		List<TypeVo> tList =typeService.selectListSubType(type);
 		return new ResponseEntity<List<TypeVo>>(tList,HttpStatus.OK);
 	}
-	
+
 	/*
 	@RequestMapping(value = "cosmetic_register_ok", method = RequestMethod.POST)
 	@ResponseBody
@@ -294,20 +308,20 @@ public class CosmeticController {
 		log.info("cosmetic : " + cosmetic.toString());
 		log.info("description : " + description.toString());
 		cosmeticService.cosmetic_register_ok(cosmetic,description);
-		
+
 		return "cosmetic/cosmetic";
 	}
-	*/
-	
+	 */
+
 	// 윤신영 - 화장품 등록 (아작스)
 	@RequestMapping(value = "cosmeticRegister", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> cosmeticRegister(CosmeticVo cosmetic,  DescriptionVo description){
 		ResponseEntity<String> r = null;
-		
+
 		log.info("cosmetic : "+cosmetic.toString());
 		log.info("description : "+description.toString());
-		
+
 		try {
 			cosmeticService.insertCosmeticAndDescription(cosmetic,description);
 			r= new ResponseEntity<String>(Integer.toString(cosmetic.getCno()),HttpStatus.OK);
@@ -318,7 +332,7 @@ public class CosmeticController {
 		log.info("cosmetic cno : "+cosmetic.toString());
 		return r;
 	}
-	
+
 	// 윤신영 - 첨부파일사진 등록 (아작스)
 	@RequestMapping(value = "AttachRegister", method = RequestMethod.POST)
 	@ResponseBody
