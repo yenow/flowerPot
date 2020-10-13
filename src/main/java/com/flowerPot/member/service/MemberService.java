@@ -48,6 +48,11 @@ public interface MemberService {
 	
 	void updateRankByMno(MemberVo m);
 	
+
 	void addPoint(Integer mno);
 	
+
+	//회원 탈퇴
+	public void withdrawal(MemberVo member) throws Exception;
+
 }

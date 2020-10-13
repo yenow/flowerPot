@@ -29,7 +29,7 @@ create table f_memberAddress(
 select * from f_memberAddress;
 
 alter table f_memberAddress add foreign key(mno) references f_member(mno)
-insert into f_memberAddress values (2,'postcode','street_address','parcel_address','detail_address','more_infomation','deliver_state');
+insert into f_memberAddress values (2,'postcode','street_address','parcel_address','detail_address','more_infomation');
 
 -- 현재 계정 모든 테이블 조회
 SELECT * FROM tab;

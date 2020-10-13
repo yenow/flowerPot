@@ -7,8 +7,8 @@
 .double {
 	border: dotted 0.5px #c5d2cf;
 }
-.
-enroll {
+
+.enroll {
 	padding: 20%;
 }
 </style>
@@ -104,6 +104,12 @@ enroll {
 						<!-- <input type="text" class="form-control form-control-lg enternum" name="code_number" id="code_number" placeholder="인증번호 입력">
 						<br />
 						<input type="button" class="btn btn-outline-secondary btn-block btn-lg entercheck" onclick="code_check();" value="인증 번호 확인"> -->
+						<input type="button" class=" test2 btn btn-outline-secondary btn-block btn-lg" onclick="send_email();" value="인증번호 전송">
+						<br />
+
+						<input type="text" class="form-control form-control-lg enternum" name="code_number" id="code_number" placeholder="인증번호 입력">
+						<br />
+						<input type="button" class="btn btn-outline-secondary btn-block btn-lg entercheck" onclick="code_check();" value="인증 번호 확인">
 					</div>
 
 					<hr class="double">
@@ -111,6 +117,25 @@ enroll {
 					<div class="clear"></div>
 
 					<br />
+
+
+					<div class="form-group">
+
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="user_nick" style="text-align: left"><p>
+										<strong>주소)우편번호</strong>&nbsp;&nbsp;&nbsp;<span id="nickChk"></span>
+									</p></label>
+								<input type="text" class="form-control form-control-lg" id="sample4_postcode" name="postcode" placeholder="우편번호">
+							</div>
+
+							<div class="form-group col-md-6">
+								<label for="inputPassword4" > .</label>
+								<input type="button" class="btn btn-outline-secondary btn-block btn-lg" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+							</div>
+						</div>
+
+						<input type="text" class="form-control form-control-lg" id="sample4_jibunAddress" name="parcel_address" placeholder="지번주소"><br/>
 
 
 					<div class="form-group">

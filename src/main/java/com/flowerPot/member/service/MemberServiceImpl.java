@@ -129,6 +129,11 @@ public class MemberServiceImpl implements MemberService {
 	public void updateRankByMno(MemberVo m) {
 		memberDao.updateRankByMno(m);
 	}
+	//회원 탈퇴
+	@Override
+	public void withdrawal(MemberVo member) throws Exception {
+		memberDao.withdrawal(member);
+	}
 
 	// 포인트 증가, 그리고 출석체크테이블에 insert
 	@Transactional

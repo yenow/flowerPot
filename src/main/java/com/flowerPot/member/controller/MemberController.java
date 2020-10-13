@@ -120,6 +120,55 @@ public class MemberController {
 		return "/member/myPage";
 	}
 
+	//회원 삭제로 이동
+	@RequestMapping("/withdrawal")
+	public String getWithdrawal(Principal principal, Model model) throws Exception{
+		logger.info("get withdrawal");
+		MemberVo memberVo = new MemberVo();
+		System.out.println("나의 회원삭제 호출됨");
+		if (principal != null) {
+			log.info("아이디:" + principal.getName());
+			String id = principal.getName();
+			memberVo = memberService.selectOneMemberById(id);
+			model.addAttribute("pid", memberVo);
+		}
+		return "/member/withdrawal";
+
+	}
+	
+	// 회원 탈퇴 post
+	@RequestMapping("/withdrawal_ok")
+	public void postWithdrawal(@ModelAttribute MemberVo vo, Principal principal, Model model,
+			HttpServletResponse response,HttpServletRequest request) throws Exception {
+		
+		// 입력한 비밀번호 db와 같은지 체크
+		String result = null;
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		if (principal.getName() != null) {
+			log.info("아이디:" + principal.getName());
+			String id = principal.getName();
+			vo.setId(id);
+			MemberVo dbData = memberService.selectOneMemberById(id);
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+
+			if (encoder.matches(vo.getPassword(), dbData.getPassword())) {
+				out.println("<script>");
+				out.println("alert('기존 비밀번호가 다릅니다.');");
+				out.println("history.go(-1);");
+				out.println("</script>");
+				out.close();
+			} else {
+				vo.setPassword(passwordEncoder.encode(vo.getPassword()));
+				memberService.withdrawal(vo);
+				out.println("<script>");
+				out.println("alert('회원삭제 했습니다.');");
+				out.println("location.href='"+request.getContextPath()+"'/");
+				out.println("</script>");
+				out.close();
+			}
+	}
+	}
 	// 쿠폰 페이지로 이동
 	@RequestMapping("/coupon")
 	public String coupon(Principal principal, Model model) {
@@ -332,7 +381,7 @@ public class MemberController {
 		}
 	}// passwordUpdate
 
-	// 로깅을 위한 ㅏ변수
+	// 로깅을 위한 변수
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	private static final String String = null;
 	private String apiResult = null;

@@ -19,6 +19,8 @@
 			<li class="bor18"><a href="${pageContext.request.contextPath }/member/myInfo" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> 내정보 관리 </a></li>
 
 			<li class="bor18"><a href="${pageContext.request.contextPath }/member/password" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> 내비밀번호 관리 </a></li>
+			
+			<li class="bor18"><a href="${pageContext.request.contextPath }/member/withdrawal" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"> 계정 삭제 </a></li>
 		</ul>
 	</div>
 

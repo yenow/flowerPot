@@ -118,6 +118,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where id=#{id}
 	</update>
 	
+	<!-- 회원삭제 -->
+	<update id ="withdrawal">
+		update f_member set enabled=0 where id = #{id}
+	</update>
+	
 	<update id="updatePassword">
 		UPDATE f_member SET password= #{password } where id=#{id}
 	</update>
