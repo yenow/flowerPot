@@ -15,7 +15,7 @@ create sequence dno_seq  start with 1 increment by 1;
 -- 제약조건
 
 
-
+-- commit
 
 
 
