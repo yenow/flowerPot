@@ -172,7 +172,7 @@ function changeValue(tag,flag) {
 		var amount = Number($($('.cosmetic-amount').get(i)).val());
 		console.log(price);
 		console.log(amount);
-		$('.price-product').html(price*amount);
+		$($('.price-product').get(i)).html(price*amount);
 		productPrice = productPrice + price*amount;  // 상품 금액 
 	}
 	//console.log(productPrice);
@@ -186,6 +186,8 @@ function changeValue(tag,flag) {
 changeValue();
 
 $(document).ready(function() {
+	
+	// 장바구니에서 상품 삭제
 	$('.cosmetic-delete').click(function() {
 		// console.log(this);
 		// console.log($(this));
