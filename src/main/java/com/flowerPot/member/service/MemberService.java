@@ -50,5 +50,5 @@ public interface MemberService {
 	void addPoint(Integer mno);
 	
 	//아이디 찾기
-	String searchId(MemberVo vo);
+	List<MemberVo> searchId(MemberVo vo);
 }

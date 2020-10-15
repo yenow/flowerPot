@@ -138,7 +138,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String searchId(MemberVo vo) {
+	public List<MemberVo> searchId(MemberVo vo) {
 	
 		return memberDao.searchId(vo);
 	}

@@ -13,7 +13,7 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <div class="contact-clean">
-	<form class="form-horizontal" form action="${pageContext.request.contextPath}/member/searchId_do" method="post">
+	<form class="form-horizontal" action="${pageContext.request.contextPath}/member/searchId_do" method="post">
 		<h2 class="text-center">아이디 찾기</h2>
 		<p class="text-center">
 			아래 이름과 휴대폰 번호를 입력하시면,<br> 아이디를 알려드립니다.<br> <br>
@@ -50,7 +50,3 @@
 
 
 <jsp:include page="../info/footer.jsp"></jsp:include>
-
-<!-- <script src="assets/js/feather-icons/feather.min.js"></script> -->
-<!-- <script src="assets/js/app.js"></script>
-<script src="assets/js/main.js"></script> -->

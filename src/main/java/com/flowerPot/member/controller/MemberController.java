@@ -134,11 +134,16 @@ public class MemberController {
 	}
 	
 	//아이디 찾기 로직
-	@RequestMapping("/searchId_ok")
+	@RequestMapping("/searchId_do")
 	@ResponseBody
-	public String userIdSearch(MemberVo vo) {
+	public ModelAndView userIdSearch(@ModelAttribute MemberVo vo) {
+		ModelAndView mav = new ModelAndView();
+		List<MemberVo> userList = memberService.searchId(vo);
+		System.out.println(userList);
+		mav.setViewName("/member/MemberId");
+		mav.addObject("userFindId", userList);
+		return mav;
 		
-		return memberService.searchId(vo);
 	}
 	//로그인시 비번 찾기 페이지 이동	
 	@RequestMapping("/searchPw_ok")

@@ -55,7 +55,7 @@ public interface MemberDao {
 
 	public void addPoint(Integer mno);
 	
-	public String searchId(MemberVo vo);
+	public List<MemberVo> searchId(MemberVo vo);
 
 
 }

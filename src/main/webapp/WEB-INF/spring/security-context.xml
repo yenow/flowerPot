@@ -21,6 +21,7 @@
 		<security:intercept-url pattern="/member/login" access="permitAll"/>
 		<security:intercept-url pattern="/member/searchPw" access="permitAll"/>
 		<security:intercept-url pattern="/member/searchId" access="permitAll"/>
+		<security:intercept-url pattern="/member/searchId_do" access="permitAll"/>
 		<security:intercept-url pattern="/member/**" access="hasRole('ROLE_USER')"/>
 	
 		<security:intercept-url pattern="/member/signUp" access="permitAll"/>
