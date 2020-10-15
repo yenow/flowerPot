@@ -137,4 +137,12 @@ public class MemberServiceImpl implements MemberService {
 		memberDao.addPoint(mno);
 	}
 
+	@Override
+	public String searchId(MemberVo vo) {
+	
+		return memberDao.searchId(vo);
+	}
+
+	
+
 }

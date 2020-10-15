@@ -48,4 +48,7 @@ public interface MemberService {
 	void updateRankByMno(MemberVo m);
 	
 	void addPoint(Integer mno);
+	
+	//아이디 찾기
+	String searchId(MemberVo vo);
 }

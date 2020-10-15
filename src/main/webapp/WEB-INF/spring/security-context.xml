@@ -19,6 +19,8 @@
 		<security:intercept-url pattern="/" access="permitAll"/>  <!-- 주어진 pattern속성으로 주어진 URL에 대해서 access속성의 권한을 요구한다. 모든 URL을 보호하고, 엑세스하기 위해서는 ROLE_USER 역할을 요구한다. 접두어 'ROLE_'이 없어도 동일한 의미이다-->
 		<security:intercept-url pattern="/member/signUp" access="permitAll"/>
 		<security:intercept-url pattern="/member/login" access="permitAll"/>
+		<security:intercept-url pattern="/member/searchPw" access="permitAll"/>
+		<security:intercept-url pattern="/member/searchId" access="permitAll"/>
 		<security:intercept-url pattern="/member/**" access="hasRole('ROLE_USER')"/>
 	
 		<security:intercept-url pattern="/member/signUp" access="permitAll"/>

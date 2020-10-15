@@ -74,7 +74,7 @@ public class MemberController {
 	private AuthorityService authorityService;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	
+
 
 	/*
 	 * @RequestMapping(value="/kakaologin", produces = "application/json", method=
@@ -121,22 +121,86 @@ public class MemberController {
 		model.addAttribute("oList", oList);
 		return "/member/myPage";
 	}
+	//로그인시 비밀번호 찾기
+	@RequestMapping("/searchPw")
+	public String SearchPw() {
+		return "/member/searchPw";
+	}
 
+	//로그인시 아이디 찾기 페이지 이동
+	@RequestMapping("/searchId")
+	public String UserSearch() {
+		return "/member/searchId";
+	}
+	
+	//아이디 찾기 로직
+	@RequestMapping("/searchId_ok")
+	@ResponseBody
+	public String userIdSearch(MemberVo vo) {
+		
+		return memberService.searchId(vo);
+	}
+	//로그인시 비번 찾기 페이지 이동	
+	@RequestMapping("/searchPw_ok")
+	public void searchPw(@ModelAttribute MemberVo vo, Principal principal, Model model,
+			HttpServletResponse response,HttpServletRequest request) throws Exception {
+		//입력한 아이디 값을 db에 같은지 체크
+		String result = null;
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		//아
+		if(principal.getName() != null) {
+
+		}
+
+	}
+	/*// 나의 비밀번호 변경
+	@RequestMapping("/password_ok")
+	public void passwordUpdate(@ModelAttribute MemberVo vo, Principal principal, Model model,
+			HttpServletResponse response,HttpServletRequest request) throws Exception {
+		// 입력한 비밀번호 db와 같은지 체크
+		String result = null;
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		if (principal.getName() != null) {
+			log.info("아이디:" + principal.getName());
+			String id = principal.getName();
+			vo.setId(id);
+			MemberVo dbData = memberService.selectOneMemberById(id);
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+
+			if (encoder.matches(vo.getPassword(), dbData.getPassword())) {
+				out.println("<script>");
+				out.println("alert('기존 비밀번호가 다릅니다.');");
+				out.println("history.go(-1);");
+				out.println("</script>");
+				out.close();
+			} else {
+				vo.setPassword(passwordEncoder.encode(vo.getPassword()));
+				memberService.passwordUpdate(vo);
+				out.println("<script>");
+				out.println("alert('비밀번호를 변경하였습니다..');");
+				out.println("location.href='"+request.getContextPath()+"'/member/order");
+				out.println("</script>");
+				out.close();
+			} // else
+
+		}
+	}// passwordUpdate*/
 	// 쿠폰 페이지로 이동
 	@RequestMapping("/coupon")
 	public String coupon(Principal principal, Model model) {
 		System.out.println("쿠폰 페이지 호출됨");
 		MemberVo member = getMemberBysecurity(principal);
-		
+
 		//주문정보 가져오기
 		List<OrderVo> oList = new ArrayList<OrderVo>();
 		if(member != null) {
 			oList = orderService.selectListOrderByMno(member.getMno());
 		}
-		
+
 		//쿠폰 리스트 가져오기
 		List<CoupVo> coupList =  memberSerivce.getCoupList(member);
-		
+
 		model.addAttribute("member", member);
 		model.addAttribute("coupList", coupList);
 		model.addAttribute("oList", oList);
@@ -148,18 +212,18 @@ public class MemberController {
 	public String point(Principal principal, Model model) {
 		System.out.println("나의 포인트 페이지 호출됨");
 		MemberVo member = getMemberBysecurity(principal);
-		
+
 		// 주문 정보 가져오기
 		List<OrderVo> oList = new ArrayList<OrderVo>();
 		if(member != null) {
 			oList = orderService.selectListOrderByMno(member.getMno());
 		}
-		
+
 		model.addAttribute("member", member);
 		model.addAttribute("oList", oList);
 		return "/member/point";
 	}
-	
+
 	// 주문관리 페이지로 이동
 	@RequestMapping("/order")
 	public String order(Principal principal, Model model) {
@@ -192,9 +256,9 @@ public class MemberController {
 	//나의 리뷰로 이동
 	@RequestMapping("/review") 
 	public String costmeticReviewList(Principal principal, Model model) {
-		
+
 		MemberVo member = getMemberBysecurity(principal);
-		
+
 		List<CosmeticReviewVo> cmrList =cosmeticReviewService.selectListCosmeticReviewListByMno(member);
 		model.addAttribute("cmrList",cmrList);
 		System.out.println("나의 활동으로 호출됨");
@@ -211,7 +275,7 @@ public class MemberController {
 		model.addAttribute("member", member);
 		return "/member/password";
 	}
-	
+
 
 	//네이버 로그인 성공시 callback호출 메소드
 	@RequestMapping(value = "/login/callback", method = { RequestMethod.GET, RequestMethod.POST })
@@ -287,7 +351,7 @@ public class MemberController {
 	}
 	// 회원가입 페이지로 이동
 
-	
+
 	// 나의 비밀번호 변경
 	@RequestMapping("/password_ok")
 	public void passwordUpdate(@ModelAttribute MemberVo vo, Principal principal, Model model,
@@ -322,7 +386,7 @@ public class MemberController {
 		}
 	}// passwordUpdate
 
-	// 로깅을 위한 ㅏ변수
+	// 로깅을 위한 변수
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	private static final String String = null;
 	private String apiResult = null;

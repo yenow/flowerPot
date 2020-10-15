@@ -51,7 +51,7 @@ enroll {
 
 					<br />
 
-					<div class="form-row">
+					<div class="f-row">
 						<div class="form-group col-md-6">
 							<label for="user_name"><p>
 									<strong>이름</strong>&nbsp;&nbsp;&nbsp;<span id="nameChk"></span>
