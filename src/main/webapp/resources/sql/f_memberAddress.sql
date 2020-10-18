@@ -1,5 +1,5 @@
 create table f_memberAddress(
-	mno number(30) primary,   -- 회원번호
+	mno number(30) primary key,   -- 회원번호
 	postcode varchar2(100),
 	street_address varchar2(100),  -- 도로명주소
 	parcel_address varchar2(100),  -- 
