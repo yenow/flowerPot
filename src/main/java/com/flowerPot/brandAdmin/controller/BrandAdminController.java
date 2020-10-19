@@ -12,4 +12,10 @@ public class BrandAdminController {
 	public void dashboard() {
 		
 	}
+	
+	
+	@RequestMapping("test")
+	public void test() {
+		
+	}
 }

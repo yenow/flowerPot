@@ -30,8 +30,6 @@
 		<security:intercept-url pattern="/customerCenter/edit" access="hasRole('ROLE_USER')"/>
 		<security:intercept-url pattern="/customerCenter/delete" access="hasRole('ROLE_USER')"/>
 		
-		
-		
 		<security:intercept-url pattern="/event/dayCheck_ok" access="hasRole('ROLE_USER')"/>
 		
 		<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
