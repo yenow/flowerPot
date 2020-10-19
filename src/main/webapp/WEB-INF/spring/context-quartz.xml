@@ -24,16 +24,13 @@
 
 	<!-- <bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean"> 
 		Quartz 1.8.x 버전 -->
-	<bean id="cronTrigger"
-		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"><!-- Quartz 2.x 버전 -->
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"><!-- Quartz 2.x 버전 -->
 		<property name="jobDetail">
 			<ref bean="wordCloudJob" />
 		</property>
 		<property name="cronExpression">
 			<!-- 매 5분마다 실행 -->
-			<value>0 0 0/5 * * ?</value>
-			<!-- 매일 오후 3시 20분마다 실행 -->
-			<!-- <value>0/30 0 0 * * ?</value> -->
+			<value>0 0/5 * * * ?</value>
 		</property>
 	</bean>
 
