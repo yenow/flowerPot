@@ -57,7 +57,10 @@
 	<context:component-scan base-package="com.flowerPot.admin.controller2" />
 	<context:component-scan base-package="com.flowerPot.controller" />
 	<context:component-scan base-package="com.flowerPot.semiadmin.controller" />
+	<context:component-scan base-package="com.flowerPot.brandAdmin.controller" />
+	<context:component-scan base-package="com.flowerPot.lastAdmin.controller" />
 	<context:component-scan base-package="com.flowerPot.exception" />
+	
 	<context:component-scan base-package="com.test.sts" />
 
 	

@@ -39,9 +39,10 @@
 		<security:intercept-url pattern="/cosmetic/cosmetic_register" access="hasRole('ROLE_BRAND')"/>	
 		
 		<security:intercept-url pattern="/member/login_naver" access="permitAll"/>
+		<security:intercept-url pattern="/lastAdmin/**" access="permitAll"/>
+		<security:intercept-url pattern="/brandAdmin/**" access="permitAll"/>
 		
 		<security:form-login username-parameter="id" password-parameter="password" login-page="/member/login" default-target-url="/" authentication-failure-url="/member/login?fail=true"/>
-
 		<security:logout logout-url="/logout" />
 		<security:csrf disabled="true"/>
 	</security:http>
