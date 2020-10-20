@@ -52,7 +52,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<trim prefix="(" suffix=")">
 			select f_cosmetic.* from f_cosmetic
 				<where>
-				type = #{type, jdbcType=VARCHAR}
+					
+					<if test="type != 'All'">
+						type = #{type}
+					</if>
+					<if test="type == 'All'">
+						type is not null
+					</if>
 					<if test="sub_type != 'All'">
 						and sub_type = #{sub_type}
 					</if>

@@ -447,9 +447,9 @@
 	$('.point_discount').html($('.cosmetic-point').val());  
 	$('.final_price').html(String(final_price));
 }
-
-	changePrice();
+changePrice();
     
+    // 주문 결제
     function ordersubmit() {
     	console.log($('.cosmetic-cno').length);
     	console.log($('.cosmetic-cno').get(0));
@@ -458,58 +458,59 @@
     	var olist = [];
     	
     	// 배송정보, 주문자 정보 유효성 검증
-    	validate();
+    	var flag = validate();
     	
-    	// 배달 정보 객체
-    	var delivery = {'postcode': $('.postcode').val() ,'street_address': $('.street_address').val() ,'parcel_address': $('.parcel_address').val() ,'detail_address': $('.detail_address').val(), 'more_infomation': $('.more_infomation').val()};
-    	
-    	var dno;
-    	
-    	// 배송정보 아작스
-    	$.ajax({
-    		type: "POST",
-    		url: "${pageContext.request.contextPath }/delivery_register", 
-    		data : delivery,
-    		dataType : "html",
-    		success : function(data) {
-    			console.log(data+"배달정보입력");
-    			
-    			dno = Number(data);
-    		}
-    	}).done(function (data) { 
-    		
-    		// 배달정보를 넣은후 여
-    		for(var i=0; i<len; i++){
-        		var OrderProduct={};
-        		OrderProduct.cno = $($('.cosmetic-cno').get(i)).val();
-        		OrderProduct.mno = $('.member-mno').val(); 
-        		OrderProduct.dno = dno;
-        		OrderProduct.amount = Number($($('.cosmetic-numProduct').get(i)).html());
-        		OrderProduct.couponName = $('.coupon-select option:selected').val();
-				OrderProduct.member_rank = $($('.member-member_rank').get(i)).val();    		
-        		OrderProduct.point = $('.cosmetic-point').val();
-        		OrderProduct.tel = $('.nomember-tel').val();
-        		OrderProduct.email = $('.nomember-email').val();
-        		OrderProduct.final_price = Number($('.final_price').html());
-        		OrderProduct.brand = $($('.cosmetic-brand').get(i)).val();
-        		olist.push(OrderProduct);
-        		console.log(OrderProduct);
-        	}
-    		
-    		// 카카오 결제
-    		$.ajax({
-        		type: "POST",
-        		url: "${pageContext.request.contextPath }/kakaoPay", 
-        		data: JSON.stringify(olist), 
-        		contentType: "application/json",
-        		dataType : "html",
-        		success: function(data) { 
-        			console.log(data);
-        			location.href=data;
-        		}
-        	});
-    		
-    	});
+    	if(flag!=false){
+    		// 배달 정보 객체
+	    	var delivery = {'postcode': $('.postcode').val() ,'street_address': $('.street_address').val() ,'parcel_address': $('.parcel_address').val() ,'detail_address': $('.detail_address').val(), 'more_infomation': $('.more_infomation').val()};
+	    	var dno;
+	    	
+	    	// 배송정보 아작스
+	    	$.ajax({
+	    		type: "POST",
+	    		url: "${pageContext.request.contextPath }/delivery_register", 
+	    		data : delivery,
+	    		dataType : "html",
+	    		success : function(data) {
+	    			console.log(data+"배달정보입력");
+	    			
+	    			dno = Number(data);
+	    		}
+	    	}).done(function (data) { 
+	    		
+	    		// 배달정보를 넣은후 여
+	    		for(var i=0; i<len; i++){
+	        		var OrderProduct={};
+	        		OrderProduct.cno = $($('.cosmetic-cno').get(i)).val();
+	        		OrderProduct.mno = $('.member-mno').val(); 
+	        		OrderProduct.dno = dno;
+	        		OrderProduct.amount = Number($($('.cosmetic-numProduct').get(i)).html());
+	        		OrderProduct.couponName = $('.coupon-select option:selected').val();
+					OrderProduct.member_rank = $($('.member-member_rank').get(i)).val();    		
+	        		OrderProduct.point = $('.cosmetic-point').val();
+	        		OrderProduct.tel = $('.nomember-tel').val();
+	        		OrderProduct.email = $('.nomember-email').val();
+	        		OrderProduct.final_price = Number($('.final_price').html());
+	        		OrderProduct.brand = $($('.cosmetic-brand').get(i)).val();
+	        		olist.push(OrderProduct);
+	        		console.log(OrderProduct);
+	        	}
+	    		
+	    		// 카카오 결제
+	    		$.ajax({
+	        		type: "POST",
+	        		url: "${pageContext.request.contextPath }/kakaoPay", 
+	        		data: JSON.stringify(olist), 
+	        		contentType: "application/json",
+	        		dataType : "html",
+	        		success: function(data) { 
+	        			console.log(data);
+	        			location.href=data;
+	        		}
+	        	});
+	    		
+	    	});
+   	 	}
     	
     }
     

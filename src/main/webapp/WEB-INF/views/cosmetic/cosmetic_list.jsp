@@ -178,10 +178,10 @@
 								style="width: 100%; text-align: center; color: black;"> ${cosmetic.name } </a>
 								
 								<!-- 할인률 적용 -->
-								<c:if test="${c.discountPersent == 0}">
-									<s class="text-center"><span class="stext-105 cl3" style="width: 100%; text-align: center; color: red;"><fmt:formatNumber value="${cosmetic.price }" type="number" groupingUsed="true" />원</span></s>
+								<c:if test="${cosmetic.discountPersent == 0}">
+									<span class="stext-105 cl3" style="width: 100%; text-align: center; color: red;"><fmt:formatNumber value="${cosmetic.price }" type="number" groupingUsed="true" />원</span>
 								</c:if>
-								<c:if test="${c.discountPersent != 0}">
+								<c:if test="${cosmetic.discountPersent != 0}">
 									<span class="stext-105 cl3" style="width: 100%; text-align: center; color: #222;"><del><fmt:formatNumber value="${cosmetic.price }" type="number" groupingUsed="true" />원 </del></span>
 									<span class="stext-105 cl3" style="width: 100%; text-align: center; color: red;">
 										<!-- 소수점 버리기 -->

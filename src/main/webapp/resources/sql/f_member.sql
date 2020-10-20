@@ -36,7 +36,7 @@ select mno_seq.nextval from dual;
 drop sequence mno_seq
 select * from f_member;
 
-update f_member set member_rank = '씨앗';
+update f_member set brand = '이니스프리';
 
 alter table f_member modify nickname varchar2(50) not null
 drop table f_member;

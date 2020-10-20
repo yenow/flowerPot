@@ -7,15 +7,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.flowerPot.admin.dao.CoupMapper;
 import com.flowerPot.admin.vo.CoupVo;
@@ -56,7 +62,11 @@ public class KakaoPay {
 	 @Autowired
 	 private CoupMapper coupMapper;
 	    
+	 @Transactional
 	 public String kakaoPayReady(List<OrderProductVo> olist) {
+		 	HttpServletRequest req = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+		 	HttpSession session = req.getSession();
+		 	
 		 	// 주문번호 생성
 		    String order_num= UUID.randomUUID().toString();  // 주문번호
 		    log.info("주문번호:"+order_num);
@@ -112,6 +122,7 @@ public class KakaoPay {
 		 			}else if(orderProduct.getMember_rank().equals("나무")) {
 		 				addpoint = addpoint + price*5/100;
 		 			}
+		 			
 		 			log.info("original_price:"+original_price);
 		 			log.info("price:"+price);
 		 			log.info("discountPercent:"+discountPercent);
@@ -162,6 +173,8 @@ public class KakaoPay {
 		 	
 		 	// 최종 결제 가격
 		 	Integer final_price = olist.get(0).getFinal_price();
+		 	// 장바구니 세션 종료
+		 	session.removeAttribute("shoppingCartList");
 		 
 	        RestTemplate restTemplate = new RestTemplate();
 	        
