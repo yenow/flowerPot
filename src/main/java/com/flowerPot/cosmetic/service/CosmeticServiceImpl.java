@@ -87,6 +87,7 @@ public class CosmeticServiceImpl implements CosmeticService {
 			cosmetic.setDrating(Math.round(drating / crList.size() * 100) / 100.0);
 		} else {
 			cosmetic.setRating(rating);
+			cosmetic.setDrating(0.0);
 		}
 
 		return cosmetic;

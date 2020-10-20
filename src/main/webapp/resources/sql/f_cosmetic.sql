@@ -24,7 +24,7 @@ create sequence cno_seq  start with 1 increment by 1;
 
 select * from f_cosmetic;
 
-
+update  F_COSMETIC set discountPersent = 10;
 
 
 

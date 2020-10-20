@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 
 <jsp:include page="../info/header2.jsp"></jsp:include>
 
@@ -87,12 +88,17 @@
 					
 					<!-- 재고정보 -->
 					<div class="d-flex justify-content-between py-2">
-						<span class="mtext-106">재고</span> <span class="mtext-106">${stock.stockNumber }</span>
+						<span class="mtext-106">재고</span> <span class="mtext-106">${cosmetic.stockNumber }개</span>
 					</div>
 
 					<!-- 화장품가격 -->
 					<div class="d-flex justify-content-between py-2">
-						<span class="mtext-106"> 가격 </span> <span class="mtext-106"> <span class="product-price"> ${cosmetic.price } </span><span>원</span> </span>
+						<span class="mtext-106"> 가격 </span><span class="mtext-106"><span class="product-price">${cosmetic.price }</span><span>원</span></span>
+					</div>
+					
+					<!-- 할인율정보 -->
+					<div class="d-flex justify-content-between py-2">
+						<span class="mtext-106">할인율</span><span class="mtext-106"><span data-discountPersent="${cosmetic.discountPersent }"  class="product-discountPersent" >${cosmetic.discountPersent }</span><span>%</span></span>
 					</div>
 
 					<!-- 결제 혜택 -->
@@ -379,8 +385,11 @@ function changeValue(tag,flag) {
 	
 	//console.log("계산양 :"+amount);
 	var price = $('.product-price').html();
+	var discountPersent = $('.product-discountPersent').data('discountpersent');   // data- 속성은 대문자가 적용이 안되나?
+	console.log(discountPersent);
+	console.log(typeof discountPersent);
 	//console.log(price);
-	$('.total-price').html(amount*Number(price));
+	$('.total-price').html(amount*Number(price)*(100-discountPersent)/100);
 
 }
 changeValue(null,2);

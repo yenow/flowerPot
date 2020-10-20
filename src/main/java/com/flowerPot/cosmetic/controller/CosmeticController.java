@@ -128,19 +128,6 @@ public class CosmeticController {
 			log.info("쿠폰목록:"+coupList);
 		}
 
-
-		//User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		//if(user!=null) {
-		//	log.info("멤버객체:"+ user.getMemberVo());
-		//}
-
-
-		//List<CosmeticVo> clist = (List<CosmeticVo>) session.getAttribute("shoppingCartList");
-		//log.info("화장품 리스트");
-		//for(CosmeticVo c : clist) {
-		//	log.info("화장품 : "+c);
-		//}
-
 		// 이거는 바로 구매를 했을경우 
 		if(root==1) {
 			CosmeticVo c = cosmeticService.selectOneCosmeticByCno(cosmetic.getCno());

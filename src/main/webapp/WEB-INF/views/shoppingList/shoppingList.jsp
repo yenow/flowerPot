@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+
 <jsp:include page="../info/header2.jsp"></jsp:include>
-
-
 <!-- breadcrumb -->
 <div class="container">
 	<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -13,8 +13,6 @@
 		<span class="stext-109 cl4"> Shoping Cart </span>
 	</div>
 </div>
-
-
 <!-- Shoping Cart -->
 <form class="bg0 p-t-75 p-b-85">
 	<div class="container">
@@ -43,7 +41,23 @@
 									</td>
 									<td class="text-center align-middle">${cosmetic.name }</td>
 									<!-- 상품하나의 가격 -->
-									<td class="text-center align-middle"><span class="price">${cosmetic.price }</span><span>원</span></td>
+									<td class="text-center align-middle">
+										<c:if test="${cosmetic.discountPersent == 0 }">
+											<span class="price">${cosmetic.price }</span><span>원</span>
+										</c:if>
+										<c:if test="${cosmetic.discountPersent != 0 }">
+											<del><span class="pricex">${cosmetic.price }</span><span>원</span></del><br />
+											
+											<span class="price">
+												<fmt:parseNumber var= "discountPrice" integerOnly= "true" value= "${cosmetic.price*(100-cosmetic.discountPersent)/100 }" />
+												<fmt:formatNumber value="${discountPrice}" type="number" groupingUsed="false" />
+											</span>
+											<span>원</span>
+										</c:if>
+										
+										
+										
+									</td>
 									<!-- 개수선택 -->
 									<td class="text-center align-middle">
 										<div class="wrap-num-product flex-w" style="margin : 0 auto;">
@@ -70,7 +84,7 @@
 			<div class="col-12 m-lr-0-xl p-t-30">
 				<div class="text-left mtext-106 font-weight-bold py-2 my-2" style="border-bottom: 2px solid #888;">결재금액</div>
 				<div class="row text-center" style="margin: 0;">
-					<div class="col-4 py-2 my-2" >
+					<div class="col-6 py-2 my-2" >
 						<div class="my-2">
 							<span class="mtext-110 cl2 "> 상품금액 </span>
 						</div>
@@ -79,15 +93,7 @@
 						</div>
 					</div>
 					
-					<div class="col-4 py-2 my-2" >
-						<div class="my-2">
-							<span class="mtext-110 cl2 "> 할인금액 </span>
-						</div>
-						<div class="">
-							<span class="mtext-110 cl2 "> <span>-</span> <span class="discount-price"></span><span>원</span> </span>
-						</div>
-					</div>
-					<div class="col-4 py-2 my-2">
+					<div class="col-6 py-2 my-2">
 						<div class=" my-2">
 							<span class="mtext-110 cl2 "> 배송비 </span>
 						</div>
@@ -166,21 +172,25 @@ function changeValue(tag,flag) {
 	}
 	//console.log($('.price').get(1));  get이라는 함수를 통해서,, 배열인덱스를 가져올수있음.
 	var productPrice=0;
+	
 	// console.log($('.price').length);
 	for(var i=0; i<$('.price').length; i++){
 		var price = Number($($('.price').get(i)).html());
 		var amount = Number($($('.cosmetic-amount').get(i)).val());
+		var discountPrice =  Number($($('.discountPrice').get(i)).val());  
 		console.log(price);
 		console.log(amount);
-		$($('.price-product').get(i)).html(price*amount);
-		productPrice = productPrice + price*amount;  // 상품 금액 
+		// 한 종류의 상품가격
+		$($('.price-product').get(i)).html(price*amount); 
+		productPrice = productPrice + price*amount;  // 전체 상품 금액 
+		
 	}
-	//console.log(productPrice);
-	//console.log(String(productPrice));
+	// 전체 상품의 가격의 합
 	$('.product-price').html(String(productPrice));
 	
+	
 	// 할인금액 적용된 최종가격
-	var totalPrice = Number($('.product-price').html())-Number($('.discount-price').html())+Number($('.delivery-price').html())
+	var totalPrice = Number($('.product-price').html())+Number($('.delivery-price').html())
 	$('.total-price').html( String(totalPrice));
 }
 changeValue();

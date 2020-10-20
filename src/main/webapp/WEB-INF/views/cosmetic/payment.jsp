@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 
 
 <jsp:include page="../info/header2.jsp"></jsp:include>
@@ -41,13 +42,35 @@
 										</td>
 										<td class="text-center align-middle cosmetic-name">${cosmetic.name }</td>
 										<!-- 상품하나의 가격 -->
-										<td class="text-center align-middle "><span class="cosmetic-price">${cosmetic.price }</span><span>원</span></td>
+										<td class="text-center align-middle ">
+											<c:if test="${cosmetic.discountPersent == 0 }">
+												<span class="cosmetic-price">${cosmetic.price }</span><span>원</span>
+											</c:if>
+											<c:if test="${cosmetic.discountPersent != 0 }">
+												<del><span class="cosmetic-price">${cosmetic.price }</span><span>원</span></del><br />
+												<span>
+													<fmt:parseNumber var="discountPrice" integerOnly= "true" value= "${cosmetic.price*(100-cosmetic.discountPersent)/100 }" />
+													<fmt:formatNumber value="${discountPrice}" type="number" groupingUsed="false" />
+												</span>
+												<span>원</span>
+											</c:if>
+										</td>
 										<!-- 개수선택 -->
 										<td class="text-center align-middle">
 											<span class="cosmetic-numProduct">${cosmetic.numProduct}</span><span>개</span>
 										</td>
 										<!-- 총금액 -->
-										<td class="text-center align-middle"><span class="cosmetic-totalprice">${cosmetic.price*cosmetic.numProduct}</span><span>원</span></td>
+										<td class="text-center align-middle">
+											<c:if test="${cosmetic.discountPersent == 0 }">
+												<span class="cosmetic-totalprice">${cosmetic.price*cosmetic.numProduct}</span><span>원</span>
+											</c:if>
+											<c:if test="${cosmetic.discountPersent != 0 }">
+												<del><span class="cosmetic-totalprice">${cosmetic.price*cosmetic.numProduct}</span><span>원</span></del><br />
+												
+												<span><fmt:parseNumber var="discountPrice" integerOnly= "true" value= "${cosmetic.price*(100-cosmetic.discountPersent)/100 }" /><fmt:formatNumber value="${discountPrice*cosmetic.numProduct}" type="number" groupingUsed="false" /></span>
+												<span>원</span>
+											</c:if>
+										</td>
 									</tr>
 								</c:forEach>
 							</c:if>
@@ -68,7 +91,17 @@
 										<td class="text-center align-middle">${cosmetic.name }</td>
 										<!-- 상품하나의 가격 -->
 										<td class="text-center align-middle ">
-											<span class="cosmetic-price">${cosmetic.price }</span><span>원</span>
+											<c:if test="${cosmetic.discountPersent == 0 }">
+												<span class="cosmetic-price">${cosmetic.price }</span><span>원</span>
+											</c:if>
+											<c:if test="${cosmetic.discountPersent != 0 }">
+												<del><span class="cosmetic-price">${cosmetic.price }</span><span>원</span></del><br />
+												<span>
+													<fmt:parseNumber var="discountPrice" integerOnly= "true" value= "${cosmetic.price*(100-cosmetic.discountPersent)/100 }" />
+													<fmt:formatNumber value="${discountPrice}" type="number" groupingUsed="false" />
+												</span>
+												<span>원</span>
+											</c:if>
 										</td>
 										<!-- 개수선택 -->
 										<td class="text-center align-middle">
@@ -76,8 +109,19 @@
 										</td>
 										<!--  -->
 										<td class="text-center align-middle">
-											<span class="cosmetic-totalprice">${cosmetic.price*cosmetic.numProduct}</span>
-											<span>원</span>
+											<c:if test="${cosmetic.discountPersent == 0 }">
+												<span class="cosmetic-totalprice">${cosmetic.price*cosmetic.numProduct}</span><span>원</span>
+											</c:if>
+											<c:if test="${cosmetic.discountPersent != 0 }">
+												<del><span class="cosmetic-totalprice">${cosmetic.price }</span><span>원</span></del><br />
+												
+												<span >
+													<fmt:parseNumber var="discountPrice" integerOnly= "true" value= "${cosmetic.price*(100-cosmetic.discountPersent)/100 }" />
+													<fmt:formatNumber value="${discountPrice*cosmetic.numProduct}" type="number" groupingUsed="false" />
+												</span>
+												<span>원</span>
+											</c:if>
+											
 										</td>
 									</tr>
 							</c:if>
@@ -343,19 +387,17 @@
         }).open();
     }
 
-// 총액 계산 함수
-function changePrice() {
-	
-	var order_price=0;
-	var product_price=0;
-	var product_discount=0;
-	var delivery_price=Number($('.delivery_price').html());
-	//console.log($($('.cosmetic-price').get(0)));
-	//console.log($($('.cosmetic-numProduct').get(0)));
-	//console.log($('.cosmetic-price').length);
-	for(var i=0; i< $('.cosmetic-price').length; i++){
-		
-		var price = Number($($('.cosmetic-price').get(i)).html());
+ // 총액 계산 함수
+ function changePrice() {
+ 	
+ 	var order_price=0;
+ 	var product_price=0;
+ 	var product_discount = 0;
+ 	var delivery_price = Number($('.delivery_price').html());
+ 	
+ 	for(var i=0; i< $('.cosmetic-price').length; i++){
+ 		
+ 		var price = Number($($('.cosmetic-price').get(i)).html());
 		var numProduct = Number($($('.cosmetic-numProduct').get(i)).html());
 		console.log(price);  // 상품가격
 		console.log(numProduct);   // 상품개수
@@ -452,10 +494,7 @@ function changePrice() {
         		OrderProduct.brand = $($('.cosmetic-brand').get(i)).val();
         		olist.push(OrderProduct);
         		console.log(OrderProduct);
-        		
-        		
         	}
-    		
     		
     		// 카카오 결제
     		$.ajax({
@@ -490,35 +529,6 @@ function maxPoint(tag) {
 	}
 	
 }
-/*
-<div class="form-group row">
-						<div class="col-sm-3">
-							<input type="text" class="form-control postcode" value="${memberAddress.postcode }" id="sample4_postcode" placeholder="우편번호">
-						</div>
-						<div class="col-sm-3">
-							<input type="button" class="btn btn-outline-secondary" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
-						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-sm-4">
-							<input type="text" class="form-control street_address" value="${memberAddress.street_address }" id="sample4_roadAddress" placeholder="도로명주소">
-							<span id="guide" style="color: #999; display: none"></span>
-						</div>
-						<div class="col-sm-4">
-							<input type="text" class="form-control parcel_address" value="${memberAddress.parcel_address }" id="sample4_jibunAddress" placeholder="지번주소">
-						</div>
-					</div>
-
-					<div class="form-group row">
-						<div class="col-sm-4">
-							<input type="text" class="form-control detail_address" value="${memberAddress.detail_address }" id="sample4_detailAddress" placeholder="상세주소">
-						</div>
-						<div class="col-sm-4">
-							<input type="text" class="form-control more_infomation" value="${memberAddress.more_infomation }" id="sample4_extraAddress" placeholder="참고항목">
-						</div>
-					</div> 
- */
-
 
 // 유효성 검증
 function validate() {

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 
 <c:if test="${type==null }">
 	<script>
@@ -32,7 +33,7 @@
 		<!-- Type 제목 -->
 		<h2 id="type-name" class="text-left font-weight-bold">${type }</h2>
 		
-		<!-- 화장품 유형 필터 -->
+			<!-- 화장품 유형 필터 -->
 			<div class="d-flex justify-content-center align-items-center">
 			<span class="mtext-106 m-r-10" style="font-weight : bolder; border-bottom: 2px solid #888;">유형별</span>
 			
@@ -174,10 +175,19 @@
 								<span class="stext-105 cl3" style="width: 100%; text-align: center;"> [${cosmetic.brand }] </span>
 								<!-- 화장품 이름 -->
 								<a href="${pageContext.request.contextPath }/cosmetic/cosmetic_ok?cno=${cosmetic.cno}" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6 p-t-6" 
-								style="width: 100%; text-align: center; color: black;"> 
+								style="width: 100%; text-align: center; color: black;"> ${cosmetic.name } </a>
 								
-								${cosmetic.name } </a>
-								<span class="stext-105 cl3" style="width: 100%; text-align: center; color: red;"> ${cosmetic.price }원 </span>
+								<!-- 할인률 적용 -->
+								<c:if test="${c.discountPersent == 0}">
+									<s class="text-center"><span class="stext-105 cl3" style="width: 100%; text-align: center; color: red;"><fmt:formatNumber value="${cosmetic.price }" type="number" groupingUsed="true" />원</span></s>
+								</c:if>
+								<c:if test="${c.discountPersent != 0}">
+									<span class="stext-105 cl3" style="width: 100%; text-align: center; color: #222;"><del><fmt:formatNumber value="${cosmetic.price }" type="number" groupingUsed="true" />원 </del></span>
+									<span class="stext-105 cl3" style="width: 100%; text-align: center; color: red;">
+										<!-- 소수점 버리기 -->
+										<fmt:parseNumber var= "discountPrice" integerOnly= "true" value= "${cosmetic.price*(100-cosmetic.discountPersent)/100 }" />
+										<fmt:formatNumber value="${discountPrice}" type="number" groupingUsed="true"></fmt:formatNumber>원</span>
+								</c:if>
 							</div>
 
 							<!-- 좋아요 -->

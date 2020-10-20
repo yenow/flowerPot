@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE  rnum BETWEEN #{pageStart} AND #{pageEnd}
 	</select>
 	<!-- 쿠폰발급시 발급대상 회원의 ID를 검색하기 위한 쿼리문 -->
-	<select id="selectMemOne" resultType="mem">
+	<select id="selectMemOne" resultType="com.flowerPot.vo.MemberVo">
 		SELECT * FROM f_member WHERE id = #{id}
 	</select>
 	
