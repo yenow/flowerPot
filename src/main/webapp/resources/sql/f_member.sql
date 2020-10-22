@@ -29,7 +29,7 @@ ALTER TABLE f_member modify member_rank varchar2(15) default '씨앗';
 alter table f_member add brand varchar2(100);
 
 create sequence mno_seq increment by 1 start with 1 minvalue 1;
-select * from f_member;
+select * from f_member where id is not null;
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 select mno_seq.nextval from dual;
 

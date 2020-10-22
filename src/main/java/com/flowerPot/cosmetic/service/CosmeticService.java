@@ -39,4 +39,6 @@ public interface CosmeticService {
 
 	List<CosmeticVo> selectListCosmeticByBrand(String brand);
 
+	void updateCosmeticByCno(CosmeticVo cosmetic);
+
 }

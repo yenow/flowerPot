@@ -171,6 +171,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectCosmeticByName" resultType="com.flowerPot.vo.CosmeticVo">
 		select * from f_cosmetic where name = #{name}
 	</select>
+	
+	<update id="updateCosmeticByCno">
+		update f_cosmetic set name = #{name},price = #{price},discountPersent = #{discountPersent},stockNumber = stockNumber + #{stockNumber},content = #{content} where cno = #{cno}
+	</update>
 </mapper>
 
 	<!-- <sql id="list">

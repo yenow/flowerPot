@@ -41,26 +41,29 @@ public class CosmeticVo {
 	private List<CosmeticVo> list;
 	
 	
-	
-	
-	public CosmeticVo(int cno, String type, String brand, String skinType, int price, int discountPersent, int stockNumber) {
+	public CosmeticVo(Integer cno, String name, String code, String type, String sub_type, String brand, String content,
+			String skinType, Integer price, Integer discountPersent) {
 		super();
 		this.cno = cno;
+		this.name = name;
+		this.code = code;
 		this.type = type;
+		this.sub_type = sub_type;
 		this.brand = brand;
+		this.content = content;
 		this.skinType = skinType;
 		this.price = price;
 		this.discountPersent = discountPersent;
-		this.stockNumber = stockNumber;
 	}
-
-	public CosmeticVo(int cno, String name, String type, String brand, String skinType, int price, int discountPersent,
+	
+	public CosmeticVo(int cno, String name, String type, String brand, String skinType,String sub_type, int price, int discountPersent,
 			int stockNumber) {
 		super();
 		this.cno = cno;
 		this.name = name;
 		this.type = type;
 		this.brand = brand;
+		this.sub_type = sub_type;
 		this.skinType = skinType;
 		this.price = price;
 		this.discountPersent = discountPersent;
@@ -104,18 +107,5 @@ public class CosmeticVo {
 		this.rating = rating;
 	}
 
+
 }
-
-
-/*
- create table f_cosmetic(
-		cno number(30),   --화장품 번호
-		type varchar2(50),   --화장품 번호
-		brand varchar2(50),   --브랜드
-		price number(30),    --화장품 번호
-		tag varchar2(50),
-		discountPersent number(30),
-		stockNumber number(30),
-		primary key(cno)
-	);
-		*/

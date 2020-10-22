@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.flowerPot.cosmetic.service.CosmeticService;
 import com.flowerPot.description.service.DescriptionService;
@@ -19,8 +20,11 @@ import com.flowerPot.vo.CosmeticVo;
 import com.flowerPot.vo.DescriptionVo;
 import com.flowerPot.vo.MemberVo;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @RequestMapping("brandAdmin")
+@Slf4j
 public class BrandAdminController {
 
 	@Autowired
@@ -78,9 +82,18 @@ public class BrandAdminController {
 		model.addAttribute("description", description);
 	}
 	
+	@RequestMapping("cosmeticUpdate_ok")
+	public String cosmeticUpdate_ok(CosmeticVo cosmetic, Model model) {
+		log.info("화장품 수정 데이터 : " + cosmetic);
+		cosmeticService.updateCosmeticByCno(cosmetic);
+		return "redirect:/brandAdmin/cosmeticContent?cno="+cosmetic.getCno();
+	}
+	
 	@RequestMapping("cosmeticDelete")
-	public void cosmetic_delete(Integer cno, Model model) {
-		
+	public ModelAndView cosmetic_delete(Integer cno, Model model) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:/brandAdmin/orderManage");
+		return mv;
 	}
 	
 }

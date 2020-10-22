@@ -39,19 +39,16 @@ public class CosmeticDaoTest {
 	private AttachFileDao attachFileDao;
 	
 	List<CosmeticVo> cList = null;
+	CosmeticVo cosmetic = new CosmeticVo();
 	
 	@Before
 	public void testCase() {
-		cList = cosmeticTestCase.insertCosmeticTestCase();
-	}
-	/*
-	@Test
-	public void insertCosmetic() {
+		/* cList = cosmeticTestCase.insertCosmeticTestCase(); */
+		
 		cosmeticDao.deleteByName("화장품이름");
 		int before = cosmeticDao.selectCount();
-		//int cno, String type, String brand, String skinType, int price, int discountPersent, int stockNumber
-		// CosmeticVo c = new CosmeticVo(0,"화장품이름","스킨","이니스프리","스킨타입",111,0,100);
-		CosmeticVo c = new CosmeticVo(0,"화장품이름","스킨","이니스프리","스킨타입",111,0,100,LocalDateTime.now());
+		// Integer cno, String name, String code, String type, String sub_type, String brand, String content, String skinType, Integer price, Integer discountPersent
+		CosmeticVo c = new CosmeticVo(0,"화장품이름","code","스킨케어","페이셜","이니스프리","내용","지성",10000,0);
 		cosmeticDao.insertCosmetic(c);
 		int after = cosmeticDao.selectCount();
 		assertThat(before, is(after-1));
@@ -60,7 +57,6 @@ public class CosmeticDaoTest {
 		assertNotEquals(c.getCno(),new Integer(0));
 		cosmeticDao.deleteByName("화장품이름");
 	}
-	*/
 	
 	@Test
 	public void insertCosmeticTestCase() {
@@ -109,5 +105,16 @@ public class CosmeticDaoTest {
 		c.setSub_type("페이셜");
 		int count = cosmeticDao.selectCountByCategory(c);
 		log.info("카운트수:"+count);
+	}
+	
+	@Test
+	public void updateCosmeticByCno() {
+		cosmetic.setCno(0);
+		cosmetic.setName("화장품이름수정");
+		cosmetic.setDiscountPersent(10);
+		cosmetic.setStockNumber(1000);
+		cosmetic.setContent("화장품내용수정");
+		cosmetic.setPrice(15000);
+		cosmeticDao.updateCosmeticByCno(cosmetic);
 	}
 }

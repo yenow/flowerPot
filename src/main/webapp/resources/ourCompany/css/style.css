@@ -2025,3 +2025,8 @@ figure figcaption {
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); }
+  
+  
+.border-gray {
+	border-color: #ccc;
+}

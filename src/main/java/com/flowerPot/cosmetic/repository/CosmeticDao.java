@@ -40,5 +40,7 @@ public interface CosmeticDao {
 
 	CosmeticVo selectCosmeticByName(String name);
 
+	void updateCosmeticByCno(CosmeticVo cosmetic);
+
 
 }

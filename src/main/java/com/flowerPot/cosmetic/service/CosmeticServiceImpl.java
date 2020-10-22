@@ -154,4 +154,9 @@ public class CosmeticServiceImpl implements CosmeticService {
 
 		return cosmeticDao.selectListCosmeticByBrand(brand);
 	}
+
+	@Override
+	public void updateCosmeticByCno(CosmeticVo cosmetic) {
+		cosmeticDao.updateCosmeticByCno(cosmetic);
+	}
 }
