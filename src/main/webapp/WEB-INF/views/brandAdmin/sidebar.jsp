@@ -13,12 +13,12 @@
 					</a>
 				</li>
 				<li class="sidebar-item">
-					<a class="sidebar-link waves-effect waves-dark sidebar-link" href="${initParam.cpath }/brandAdmin/orderManage" aria-expanded="false">
+					<a class="sidebar-link waves-effect waves-dark sidebar-link" href="${initParam.cpath }/brandAdmin/cosmeticManage" aria-expanded="false">
 						<i class="mdi mdi-chart-bar"></i><span class="hide-menu">상품관리</span>
 					</a>
 				</li>
 				<li class="sidebar-item">
-					<a class="sidebar-link waves-effect waves-dark sidebar-link" href="widgets.html" aria-expanded="false">
+					<a class="sidebar-link waves-effect waves-dark sidebar-link" href="${initParam.cpath }/brandAdmin/orderManage" aria-expanded="false">
 						<i class="mdi mdi-chart-bubble"></i><span class="hide-menu">주문관리</span>
 					</a>
 				</li>

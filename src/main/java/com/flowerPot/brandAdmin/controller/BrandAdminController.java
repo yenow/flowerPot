@@ -15,10 +15,14 @@ import com.flowerPot.cosmetic.service.CosmeticService;
 import com.flowerPot.description.service.DescriptionService;
 import com.flowerPot.domain.CosmeticCriteria;
 import com.flowerPot.domain.CosmeticPageDTO;
+import com.flowerPot.domain.OrderCriteria;
 import com.flowerPot.member.service.MemberService;
+import com.flowerPot.orderProduct.repository.OrderProductDao;
+import com.flowerPot.orderProduct.service.OrderProductService;
 import com.flowerPot.vo.CosmeticVo;
 import com.flowerPot.vo.DescriptionVo;
 import com.flowerPot.vo.MemberVo;
+import com.flowerPot.vo.OrderProductVo;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,6 +37,10 @@ public class BrandAdminController {
 	private CosmeticService cosmeticService;
 	@Autowired
 	private DescriptionService descriptionService;
+	@Autowired
+	private OrderProductService orderProductService;
+	@Autowired
+	private OrderProductDao orderProductDao;
 		
 	// 회원 정보 시큐리티에서 가져오기
 	public MemberVo getMemberBysecurity(Principal principal) {
@@ -50,8 +58,8 @@ public class BrandAdminController {
 
 	}
 
-	@RequestMapping("orderManage")
-	public void orderManage(Principal principal, Model model, CosmeticCriteria c) {
+	@RequestMapping("cosmeticManage")
+	public void cosmeticManage(Principal principal, Model model, CosmeticCriteria c) {
 		MemberVo member = getMemberBysecurity(principal);
 		
 		List<CosmeticVo> cList = new ArrayList<CosmeticVo>();
@@ -92,8 +100,24 @@ public class BrandAdminController {
 	@RequestMapping("cosmeticDelete")
 	public ModelAndView cosmetic_delete(Integer cno, Model model) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:/brandAdmin/orderManage");
+		mv.setViewName("redirect:/brandAdmin/cosmeticManage");
 		return mv;
+	}
+	
+	@RequestMapping("orderManage")
+	public void orderManage(Principal principal, Model model, OrderCriteria oc) {
+		MemberVo member = getMemberBysecurity(principal);
+		
+		List<OrderProductVo> opList = new ArrayList<OrderProductVo>();
+		List<CosmeticVo> cList = new ArrayList<CosmeticVo>();
+		if(member.getBrand()!=null) {
+			oc.setBrand(member.getBrand());
+			opList = orderProductService.selectListByOrderCriteria(oc);
+			cList = cosmeticService.selectListCosmeticByBrand(member.getBrand());
+		}
+		
+		model.addAttribute("opList", opList);
+		model.addAttribute("cList", cList);
 	}
 	
 }

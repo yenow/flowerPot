@@ -54,5 +54,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectListByOrderNum" resultType="com.flowerPot.vo.OrderProductVo">
 		select * from f_orderProduct where order_num = #{order_num} order by ono desc
 	</select>
+	
+	<select id="selectListByOrderCriteria" resultType="com.flowerPot.vo.OrderProductVo">
+		select * from f_orderProduct
+		<where>
+			brand = #{brand} 
+			<if test="cno != null">
+				and cno = #{cno}
+			</if>
+		</where>
+	</select>
+	
 </mapper>
 

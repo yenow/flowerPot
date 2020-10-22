@@ -24,9 +24,9 @@ create sequence ono_seq increment by 1 start with 1;
 
 
 
-
-
-
+select * from f_orderProduct o left outer join f_member m on o.mno = m.mno where o.brand = '이니스프리' WHERE o.cno = 1 
+select * from (select * from f_orderProduct o left outer join f_member m on o.mno = m.mno) o2 inner join f_cosmetic c on o2.cno = c.cno;
+select * from f_orderProduct o left outer join f_member m on o.mno = m.mno;
 
 
 drop table f_orderProduct;

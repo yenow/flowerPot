@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
@@ -14,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.flowerPot.cosmetic.repository.CosmeticDao;
+import com.flowerPot.domain.OrderCriteria;
 import com.flowerPot.member.repository.MemberDao;
 import com.flowerPot.order.repository.OrderDao;
 import com.flowerPot.orderProduct.repository.OrderProductDao;
@@ -45,7 +47,7 @@ public class OrderProductDaoTest {
 	public void insertOrderProduct() {
 
 		OrderProductVo orderProduct = new OrderProductVo(0, 0, 0, 0, "order_num", 0, "state", 
-				"deliver_state", "member_rank", 0," coupon_name", LocalDateTime.now(), "tel", "email", 100,"이니스프리", null);
+				"deliver_state", "member_rank", 0," coupon_name", LocalDateTime.now(), "tel", "email", 100,"이니스프리", null,null);
 		OrderProductVo orderProduct2 = new OrderProductVo(0,0, 0, "order_num", 0, "state", 
 				"deliver_state", "member_rank", 0," coupon_name", LocalDateTime.now(), "tel", "email", 100, 100);		
 
@@ -65,5 +67,14 @@ public class OrderProductDaoTest {
 		map.put("mno", 3);
 		memberDao.updatePoint(map);
 
+	}
+	
+	@Test
+	public void selectListByOrderCriteria() {
+		OrderCriteria oc = new OrderCriteria();
+		oc.setBrand("이니스프리");
+		oc.setCno(1);
+		List<OrderProductVo> opList = orderProductDao.selectListByOrderCriteria(oc);
+		log.info("주문리스트 : "+opList);
 	}
 }

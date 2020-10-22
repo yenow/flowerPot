@@ -10,7 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.flowerPot.cosmetic.repository.CosmeticDao;
 import com.flowerPot.delivery.repository.DeliveryDao;
+import com.flowerPot.domain.OrderCriteria;
+import com.flowerPot.member.repository.MemberDao;
 import com.flowerPot.orderProduct.repository.OrderProductDao;
+import com.flowerPot.vo.MemberVo;
 import com.flowerPot.vo.OrderProductVo;
 
 @Service
@@ -22,6 +25,8 @@ public class OrderProductServiceImpl implements OrderProductService {
 	private DeliveryDao deliveryDao;
 	@Autowired
 	private CosmeticDao cosmeticDao;
+	@Autowired
+	private MemberDao memberDao;
 	
 	@Override
 	public List<OrderProductVo> selectListOrderProductByBrand(String brand) {
@@ -49,6 +54,18 @@ public class OrderProductServiceImpl implements OrderProductService {
 		
 		List<OrderProductVo> list = orderProductDao.selectListOrderProductByMno(mno);
 		for(OrderProductVo op : list) {
+			op.setCosmeticVo(cosmeticDao.selectOneCosmeticByCno(op.getCno()));
+		}
+		return list;
+	}
+
+	@Override
+	public List<OrderProductVo> selectListByOrderCriteria(OrderCriteria oc) {
+		List<OrderProductVo> list = orderProductDao.selectListByOrderCriteria(oc);
+		for(OrderProductVo op :list) {
+			if(op.getMno()!=null) {
+				op.setMemberVo(memberDao.selectOneMemberByMno(op.getMno()));
+			}
 			op.setCosmeticVo(cosmeticDao.selectOneCosmeticByCno(op.getCno()));
 		}
 		return list;
