@@ -59,7 +59,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from f_orderProduct
 		<where>
 			brand = #{brand} 
-			<if test="cno != null">
+			<if test="cno != 0">
 				and cno = #{cno}
 			</if>
 		</where>

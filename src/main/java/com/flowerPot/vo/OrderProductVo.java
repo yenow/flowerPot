@@ -23,6 +23,7 @@ public class OrderProductVo {
 	private Integer point;
 	private String couponName;
 	private LocalDateTime regdate;
+	private String name;
 	private String tel;
 	private String email;
 	private Integer final_price;
