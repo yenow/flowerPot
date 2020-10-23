@@ -33,6 +33,7 @@ import com.flowerPot.domain.CosmeticCriteria;
 import com.flowerPot.domain.CosmeticPageDTO;
 import com.flowerPot.member.service.MemberService;
 import com.flowerPot.memberAddress.service.MemberAddressService;
+import com.flowerPot.orderProduct.repository.OrderProductDao;
 import com.flowerPot.vo.AttachFileVo;
 import com.flowerPot.vo.BrandVo;
 import com.flowerPot.vo.CosmeticReviewVo;
@@ -40,6 +41,7 @@ import com.flowerPot.vo.CosmeticVo;
 import com.flowerPot.vo.DescriptionVo;
 import com.flowerPot.vo.MemberAddressVo;
 import com.flowerPot.vo.MemberVo;
+import com.flowerPot.vo.OrderProductVo;
 import com.flowerPot.vo.TypeVo;
 
 import lombok.extern.slf4j.Slf4j;
@@ -68,7 +70,9 @@ public class CosmeticController {
 	@Autowired 
 	private CoupService CoupService;
 	@Autowired 
-	CosmeticDao cosmeticDao;
+	private CosmeticDao cosmeticDao;
+	@Autowired
+	private OrderProductDao orderProductDao;
 
 	// 회원 정보 시큐리티에서 가져오기
 	public MemberVo getMemberBysecurity(Principal principal) {
@@ -233,10 +237,21 @@ public class CosmeticController {
 
 		DescriptionVo description = descriptionService.selectOneDescriptionByCno(cno);
 		List<CosmeticReviewVo> crList = cosmeticReviewService.selectListCosmeticReviewListByCno(cno);
+		
+		
+		boolean flag = false;
+		if(member.getMno()!=null) {
+			List<OrderProductVo> oList = orderProductDao.selectListByMno(member.getMno());
+			if(oList != null) {
+				flag = true;
+			}
+		}
+		
 		model.addAttribute("member", member);
 		model.addAttribute("cosmetic", cosmetic);
 		model.addAttribute("description", description);
 		model.addAttribute("crList", crList);
+		model.addAttribute("flag", flag);
 	}
 
 	// 윤신영 - 화장품 리스트 페이지 이동

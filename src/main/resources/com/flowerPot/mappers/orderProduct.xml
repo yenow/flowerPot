@@ -65,5 +65,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 	
+	<select id="selectListByMno" resultType="com.flowerPot.vo.OrderProductVo">
+		select * from f_orderProduct where mno = #{mno}
+	</select>
 </mapper>
 

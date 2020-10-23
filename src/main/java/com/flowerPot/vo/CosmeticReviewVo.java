@@ -35,4 +35,6 @@ public class CosmeticReviewVo {
 	private String content;
 	private LocalDateTime regdate;
 	
+	private CosmeticVo cosmeticVo;
+	
 }

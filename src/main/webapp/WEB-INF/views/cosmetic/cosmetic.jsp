@@ -233,8 +233,11 @@
 									</c:if>
 								</c:forEach>
 								
-								<c:if test="${member ne null }">
+								<c:if test="${flag ne false }">
 								<form action="${pageContext.request.contextPath }/cosmeticReviewRegister" class="w-full cosmeticReview-form" onsubmit="return onsubmitCometicReview();">
+									<input type="hidden" name="mno" value="${member.mno }">
+									<input type="hidden" name="id" value="${member.id }">
+									<input type="hidden" name="nickname" value="${member.nickname }">
 									<input type="hidden" name="cno" value="${cosmetic.cno }">
 									<input type="hidden" name="category" value="query">
 									<h5 class="mtext-108 cl2 p-b-7">문의 작성</h5>
@@ -282,10 +285,13 @@
 									</c:forEach>
 									<!-- /Review -->
 									
-									<c:if test="${member ne null }">
+									<c:if test="${flag ne false }">
 									<!-- 로그인하고 상품을 구입해야 댓글 작성할수 있게 -->
 									<!-- Add review -->
 									<form action="${pageContext.request.contextPath }/cosmeticReviewRegister" class="w-full cosmeticReview-form" onsubmit="return onsubmitCometicReview();">
+										<input type="hidden" name="mno" value="${member.mno }">
+										<input type="hidden" name="id" value="${member.id }">
+										<input type="hidden" name="nickname" value="${member.nickname }">
 										<input type="hidden" name="cno" value="${cosmetic.cno }">
 										<input type="hidden" name="category" value="rating">
 										<h5 class="mtext-108 cl2 p-b-7">리뷰 작성</h5>

@@ -15,7 +15,7 @@
 	<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/resources/brandAdmin/assets/images/favicon.png">
-    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+    <title>브랜드 관리자</title>
     <!-- Custom CSS -->
     <link href="${pageContext.request.contextPath}/resources/brandAdmin/assets/libs/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" />
     <link href="${pageContext.request.contextPath}/resources/brandAdmin/assets/extra-libs/calendar/calendar.css" rel="stylesheet" />
@@ -62,11 +62,15 @@
 				<!-- ============================================================== -->
 				<a class="navbar-brand" href="index.html">
 					<!-- Logo icon -->
-					<b class="logo-icon p-l-10"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //--> <!-- Dark Logo icon --> <img src="${pageContext.request.contextPath}/resources/brandAdmin/assets/images/logo-icon.png" alt="homepage" class="light-logo" />
+					<b class="logo-icon p-l-10"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //--> <!-- Dark Logo icon --> 
+					<img src="${pageContext.request.contextPath}/resources/brandAdmin/assets/images/logo-icon.png" alt="homepage" class="light-logo" />
 					</b>
 					<!--End Logo icon -->
 					<!-- Logo text -->
-					<span class="logo-text"> <!-- dark Logo text --> <img src="${pageContext.request.contextPath}/resources/brandAdmin/assets/images/logo-text.png" alt="homepage" class="light-logo" />
+					
+					<span class="logo-text"> <!-- dark Logo text --> 
+						<%-- <img src="${pageContext.request.contextPath}/resources/brandAdmin/assets/images/logo-text.png" alt="homepage" class="light-logo" /> --%>
+						브랜드 관리자
 					</span>
 					<!-- Logo icon -->
 					<!-- <b class="logo-icon"> -->

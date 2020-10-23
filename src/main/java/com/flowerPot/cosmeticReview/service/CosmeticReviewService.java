@@ -11,8 +11,6 @@ public interface CosmeticReviewService {
 
 	List<CosmeticReviewVo> selectListCosmeticReviewListByCno(Integer cno);
 
-	List<CosmeticReviewVo> selectListCosmeticReviewByBrand(String brand);
-
 	List<CosmeticReviewVo> selectListCosmeticReviewListByBrand(String brand);
 
 	List<CosmeticReviewVo> selectListCosmeticReviewListByMno(MemberVo member);

@@ -15,6 +15,8 @@ public class CosmeticReviewServiceImpl implements CosmeticReviewService {
 
 	@Autowired
 	private CosmeticReviewDao cosmeticReviewDao;
+	@Autowired
+	private CosmeticDao cosmeticDao;
 	
 	@Override
 	public void insertcosmeticReview(CosmeticReviewVo cosmeticReview) {
@@ -26,14 +28,14 @@ public class CosmeticReviewServiceImpl implements CosmeticReviewService {
 		return cosmeticReviewDao.selectListCosmeticReviewListByCno(cno);
 	}
 
-	@Override
-	public List<CosmeticReviewVo> selectListCosmeticReviewByBrand(String brand) {
-		return cosmeticReviewDao.selectListCosmeticReviewListByBrand(brand);
-	}
 
 	@Override
 	public List<CosmeticReviewVo> selectListCosmeticReviewListByBrand(String brand) {
-		return cosmeticReviewDao.selectListCosmeticReviewListByBrand(brand);
+		List<CosmeticReviewVo> list = cosmeticReviewDao.selectListCosmeticReviewListByBrand(brand);
+		for(CosmeticReviewVo cr : list) {
+			cr.setCosmeticVo(cosmeticDao.selectOneCosmeticByCno(cr.getCno()));
+		}
+		return list;
 	}
 
 
@@ -41,5 +43,6 @@ public class CosmeticReviewServiceImpl implements CosmeticReviewService {
 	public List<CosmeticReviewVo> selectListCosmeticReviewListByMno(MemberVo member) {
 		return cosmeticReviewDao.selectListCosmeticReviewListByMno(member);
 	}
+
 
 }

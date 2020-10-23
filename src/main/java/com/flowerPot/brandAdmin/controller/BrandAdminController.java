@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.flowerPot.cosmetic.service.CosmeticService;
+import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
 import com.flowerPot.description.service.DescriptionService;
 import com.flowerPot.domain.CosmeticCriteria;
 import com.flowerPot.domain.CosmeticPageDTO;
@@ -19,6 +20,7 @@ import com.flowerPot.domain.OrderCriteria;
 import com.flowerPot.member.service.MemberService;
 import com.flowerPot.orderProduct.repository.OrderProductDao;
 import com.flowerPot.orderProduct.service.OrderProductService;
+import com.flowerPot.vo.CosmeticReviewVo;
 import com.flowerPot.vo.CosmeticVo;
 import com.flowerPot.vo.DescriptionVo;
 import com.flowerPot.vo.MemberVo;
@@ -41,6 +43,8 @@ public class BrandAdminController {
 	private OrderProductService orderProductService;
 	@Autowired
 	private OrderProductDao orderProductDao;
+	@Autowired
+	private CosmeticReviewService cosmeticReviewService;
 		
 	// 회원 정보 시큐리티에서 가져오기
 	public MemberVo getMemberBysecurity(Principal principal) {
@@ -52,12 +56,13 @@ public class BrandAdminController {
 		return memberVo;
 	}
 
-
+	// 메인페이지
 	@RequestMapping("home")
 	public void dashboard() {
 
 	}
 
+	// 화장품 관리
 	@RequestMapping("cosmeticManage")
 	public void cosmeticManage(Principal principal, Model model, CosmeticCriteria c) {
 		MemberVo member = getMemberBysecurity(principal);
@@ -75,6 +80,7 @@ public class BrandAdminController {
 		model.addAttribute("PageDTO", cosmeticPageDTO);
 	}
 	
+	// 화장품 내용
 	@RequestMapping("cosmeticContent")
 	public void cosmeticContent(Integer cno, Model model) {
 		CosmeticVo cosmetic = cosmeticService.selectOneCosmeticByCno(cno);
@@ -82,6 +88,7 @@ public class BrandAdminController {
 		model.addAttribute("cosmetic", cosmetic);
 	}
 	
+	// 화장품 수정 페이지
 	@RequestMapping("cosmeticUpdate")
 	public void cosmetic_update(Integer cno, Model model) {
 		CosmeticVo cosmetic = cosmeticService.selectOneCosmeticByCno(cno);
@@ -90,6 +97,7 @@ public class BrandAdminController {
 		model.addAttribute("description", description);
 	}
 	
+	// 화장품 수정 처리
 	@RequestMapping("cosmeticUpdate_ok")
 	public String cosmeticUpdate_ok(CosmeticVo cosmetic, Model model) {
 		log.info("화장품 수정 데이터 : " + cosmetic);
@@ -97,6 +105,7 @@ public class BrandAdminController {
 		return "redirect:/brandAdmin/cosmeticContent?cno="+cosmetic.getCno();
 	}
 	
+	// 화장품 삭제 처리
 	@RequestMapping("cosmeticDelete")
 	public ModelAndView cosmetic_delete(Integer cno, Model model) {
 		ModelAndView mv = new ModelAndView();
@@ -104,6 +113,7 @@ public class BrandAdminController {
 		return mv;
 	}
 	
+	// 주문관리
 	@RequestMapping("orderManage")
 	public void orderManage(Principal principal, Model model, OrderCriteria oc) {
 		MemberVo member = getMemberBysecurity(principal);
@@ -118,6 +128,23 @@ public class BrandAdminController {
 		
 		model.addAttribute("opList", opList);
 		model.addAttribute("cList", cList);
+	}
+	
+	// 상품리뷰관리	
+	@RequestMapping("cosmeticReview")
+	public void cosmeticReview(Principal principal, Model model) {
+		MemberVo member = getMemberBysecurity(principal);
+		
+		List<CosmeticVo> cList = new ArrayList<CosmeticVo>();
+		List<CosmeticReviewVo> crList = new ArrayList<CosmeticReviewVo>();
+		
+		if(member.getBrand()!=null) {
+			crList = cosmeticReviewService.selectListCosmeticReviewListByBrand(member.getBrand());
+			cList = cosmeticService.selectListCosmeticByBrand(member.getBrand());
+		}
+		
+		model.addAttribute("cList", cList);
+		model.addAttribute("crList", crList);
 	}
 	
 }

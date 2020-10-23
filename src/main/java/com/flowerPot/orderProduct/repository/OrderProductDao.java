@@ -33,4 +33,6 @@ public interface OrderProductDao {
 	List<OrderProductVo> selectListByOrderCriteria(OrderCriteria oc);
 
 	List<OrderProductVo> selectListOrderProductByBrand(String brand);
+
+	List<OrderProductVo> selectListByMno(Integer integer);
 }
