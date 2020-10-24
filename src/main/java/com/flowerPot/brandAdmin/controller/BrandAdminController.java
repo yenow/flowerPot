@@ -16,6 +16,7 @@ import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
 import com.flowerPot.description.service.DescriptionService;
 import com.flowerPot.domain.CosmeticCriteria;
 import com.flowerPot.domain.CosmeticPageDTO;
+import com.flowerPot.domain.Criteria;
 import com.flowerPot.domain.OrderCriteria;
 import com.flowerPot.member.service.MemberService;
 import com.flowerPot.orderProduct.repository.OrderProductDao;
@@ -147,4 +148,15 @@ public class BrandAdminController {
 		model.addAttribute("crList", crList);
 	}
 	
+	//고객센터
+	@RequestMapping("customerCenter")
+	public void customerCenter(Principal principal, Criteria c, Model model) {
+		
+	}
+	
+	//분석 페이지
+	@RequestMapping("analysis")
+	public void analysis(Principal principal, Criteria c, Model model) {
+		MemberVo member = getMemberBysecurity(principal);
+	}
 }

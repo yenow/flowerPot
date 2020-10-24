@@ -7,8 +7,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("lastAdmin")
 public class LastAdminController {
 
-	@RequestMapping("dashboard")
-	public void dashboard() {
+	// 메인페이지
+	@RequestMapping("home")
+	public void home() {
+		
+	}
+	
+	// 브랜드관리
+	@RequestMapping("brandManage")
+	public void brandManage() {
+		
+	}
+	
+	// 회원관리
+	@RequestMapping("memberManage")
+	public void memberManage() {
+		
+	}
+	
+	// 쿠폰관리
+	@RequestMapping("couponManage")
+	public void couponManage() {
+		
+	}
+	
+	@RequestMapping("customerCenter")
+	public void customerCenter() {
 		
 	}
 }

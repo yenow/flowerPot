@@ -5,14 +5,14 @@
 <div class="page-breadcrumb">
 	<div class="row">
 		<div class="col-12 d-flex no-block align-items-center">
-			<h4 class="page-title">주문관리</h4>
+			<h4 class="page-title">고객센터</h4>
 			<div class="ml-auto text-right">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item">
 							<a href="#">Home</a>
 						</li>
-						<li class="breadcrumb-item active" aria-current="page">주문관리</li>
+						<li class="breadcrumb-item active" aria-current="page">고객센터</li>
 					</ol>
 				</nav>
 			</div>
@@ -24,13 +24,13 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
-					<h5 class="card-title my-3">상품선택</h5>
-					<form action="${pageContext.request.contextPath }/brandAdmin/orderManage">
-						<select name="cno" aria-controls="zero_config" class="form-control form-control-sm border-gray" onchange="return selectCosmetic(this);">
-							<option selected="selected">상품별...</option>
-							<c:forEach var="c" items="${cList }">
-								<option value="${c.cno }">${c.name }</option>
-							</c:forEach>
+					<h5 class="card-title my-3">카테고리</h5>
+					<form action="#">
+						<select name="category" aria-controls="zero_config" class="form-control form-control-sm border-gray" onchange="return selectCosmetic(this);">
+							<option selected="selected">카테고리...</option>
+							<option value="1">공지사항</option>
+							<option value="2">FAQ</option>
+							<option value="3">1대1문의</option>
 						</select>
 					</form>
 				</div>
@@ -45,21 +45,10 @@
 									<th>내용</th>
 									<th>작성자</th>
 									<th>작성날짜</th>
-									<th>답글달기</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="cr" items="${crList }">
-									<tr>
-										<td>${cr.cosmeticVo.name }</td>
-										<td>${cr.category }</td>
-										<td>${cr.title }</td>
-										<td>${cr.content }</td>
-										<td>${cr.id }</td>
-										<td>${cr.regdate }</td>
-										<td><button id="myInput" type="button" class="btn btn-primary">답글</button></td>
-									</tr>
-								</c:forEach>
+								
 							</tbody>
 						</table>
 					</div>
@@ -102,34 +91,10 @@
 	</div>
 </div>
 
-<div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
 	function selectCosmetic(selectBox) {
 		$('form').submit();
 	}
-	
-	$('#myModal').on('shown.bs.modal', function () {
-		  $('#myInput').trigger('focus')
-		})
 </script>
 
 <jsp:include page="footer.jsp"></jsp:include>

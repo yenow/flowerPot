@@ -15,14 +15,14 @@
 	<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/resources/brandAdmin/assets/images/favicon.png">
-    <title>브랜드 관리자</title>
+    <title>관리자</title>
     <!-- Custom CSS -->
     <link href="${pageContext.request.contextPath}/resources/brandAdmin/assets/libs/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" />
     <link href="${pageContext.request.contextPath}/resources/brandAdmin/assets/extra-libs/calendar/calendar.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/brandAdmin/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
     <link href="${pageContext.request.contextPath}/resources/brandAdmin/dist/css/style.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/brandAdmin/dist/css/myCss.css" rel="stylesheet">
-   <%--  <link href="${pageContext.request.contextPath}/resources/brandAdmin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet"> --%>
+    <%-- <link href="${pageContext.request.contextPath}/resources/brandAdmin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet"> --%>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Main Quill library -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -60,7 +60,7 @@
 				<!-- ============================================================== -->
 				<!-- Logo -->
 				<!-- ============================================================== -->
-				<a class="navbar-brand" href="${initParam.cpath }/brandAdmin/home">
+				<a class="navbar-brand" href="${initParam.cpath }/lastAdmin/home">
 					<!-- Logo icon -->
 					<b class="logo-icon p-l-10"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //--> <!-- Dark Logo icon --> 
 					<img src="${pageContext.request.contextPath}/resources/brandAdmin/assets/images/logo-icon.png" alt="homepage" class="light-logo" />
@@ -70,7 +70,7 @@
 					
 					<span class="logo-text"> <!-- dark Logo text --> 
 						<%-- <img src="${pageContext.request.contextPath}/resources/brandAdmin/assets/images/logo-text.png" alt="homepage" class="light-logo" /> --%>
-						브랜드 관리자
+						관리자
 					</span>
 					<!-- Logo icon -->
 					<!-- <b class="logo-icon"> -->
