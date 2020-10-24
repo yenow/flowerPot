@@ -6,27 +6,27 @@
 		<nav class="sidebar-nav">
 			<ul id="sidebarnav" class="p-t-30">
 				<li class="sidebar-item">
-					<a class="sidebar-link waves-effect waves-dark sidebar-link" href="${initParam.cpath }/lastAdminAdmin/home" aria-expanded="false">
+					<a class="sidebar-link waves-effect waves-dark sidebar-link" href="${initParam.cpath }/lastAdmin/home" aria-expanded="false">
 						<i class="mdi mdi-view-dashboard"></i><span class="hide-menu">홈</span>
 					</a>
 				</li>
 				<li class="sidebar-item">
-					<a class="sidebar-link waves-effect waves-dark sidebar-link" href="${initParam.cpath }/lastAdminAdmin/brandManage" aria-expanded="false">
+					<a class="sidebar-link waves-effect waves-dark sidebar-link" href="${initParam.cpath }/lastAdmin/brandManage" aria-expanded="false">
 						<i class="mdi mdi-chart-bar"></i><span class="hide-menu">브랜드관리</span>
 					</a>
 				</li>
 				<li class="sidebar-item">
-					<a class="sidebar-link waves-effect waves-dark sidebar-link" href="${initParam.cpath }/lastAdminAdmin/memberManage" aria-expanded="false">
+					<a class="sidebar-link waves-effect waves-dark sidebar-link" href="${initParam.cpath }/lastAdmin/memberManage" aria-expanded="false">
 						<i class="mdi mdi-chart-bubble"></i><span class="hide-menu">회원관리</span>
 					</a>
 				</li>
 				<li class="sidebar-item">
-					<a class="sidebar-link waves-effect waves-dark sidebar-link" href="${initParam.cpath }/lastAdminAdmin/couponManage" aria-expanded="false">
+					<a class="sidebar-link waves-effect waves-dark sidebar-link" href="${initParam.cpath }/lastAdmin/couponManage" aria-expanded="false">
 						<i class="mdi mdi-border-inside"></i><span class="hide-menu">쿠폰관리</span>
 					</a>
 				</li>
 				<li class="sidebar-item">
-					<a class="sidebar-link waves-effect waves-dark sidebar-link" href="${initParam.cpath }/lastAdminAdmin/customerCenter" aria-expanded="false">
+					<a class="sidebar-link waves-effect waves-dark sidebar-link" href="${initParam.cpath }/lastAdmin/customerCenter" aria-expanded="false">
 						<i class="mdi mdi-receipt"></i><span class="hide-menu">고객센터</span>
 					</a>
 				</li>

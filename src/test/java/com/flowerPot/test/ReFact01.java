@@ -8,7 +8,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import lombok.extern.slf4j.Slf4j;
 
 public class ReFact01 {
-
+	
 	public static void main(String[] args) {
 		
 		int original_price = 12144;
@@ -21,5 +21,7 @@ public class ReFact01 {
 		System.out.println(addpoint*2/100);
 		Double addpoint2 = price2 * amount * (100-discountPercent)/100;
 		System.out.println(addpoint2*2/100);
+		
+		System.out.println("올림 :" + Math.ceil(20.1));
 	} 
 }

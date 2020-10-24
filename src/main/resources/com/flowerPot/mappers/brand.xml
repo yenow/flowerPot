@@ -13,4 +13,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectListNameAllBrand" resultType="string">
 		select name from f_brand 
 	</select>
+	
+	<insert id="insertBrand">
+		insert into f_brand (bno,name,company,tel,email,roadAddr,regDate) values 
+		(bno_seq.nextval, #{name}, #{company}, #{tel}, #{email}, #{roadAddr}, sysdate)
+	</insert>
 </mapper>

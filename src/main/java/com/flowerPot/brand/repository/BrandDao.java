@@ -10,4 +10,6 @@ public interface BrandDao {
 
 	List<String> selectListNameAllBrand();
 
+	void insertBrand(BrandVo brand);
+
 }
