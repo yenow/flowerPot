@@ -3,20 +3,24 @@ package com.flowerPot.lastAdmin.controller;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flowerPot.brand.repository.BrandDao;
 import com.flowerPot.coupon.repository.CouponDao;
+import com.flowerPot.coupon.repository.HasCouponDao;
 import com.flowerPot.member.repository.MemberDao;
 import com.flowerPot.vo.BrandVo;
 import com.flowerPot.vo.CouponVo;
+import com.flowerPot.vo.HasCouponVo;
 import com.flowerPot.vo.MemberVo;
 
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +36,8 @@ public class LastAdminController {
 	private CouponDao couponDao;
 	@Autowired
 	private MemberDao memberDao;
+	@Autowired
+	private HasCouponDao hasCouponDao;
 	
 	// 메인페이지
 	@RequestMapping("home")
@@ -95,9 +101,49 @@ public class LastAdminController {
 	public ResponseEntity<String> isMember(String id) {
 		MemberVo member = memberDao.selectOneMemberById(id);
 		if(member==null) {
-			return new ResponseEntity<String>("exist", HttpStatus.OK);
-		}else {
 			return new ResponseEntity<String>("null", HttpStatus.OK);
+		}else {
+			return new ResponseEntity<String>("exist", HttpStatus.OK);
 		}
+	}
+	
+	@RequestMapping("memberAdd")
+	@ResponseBody
+	public ResponseEntity<MemberVo> memberAdd(String id) {
+		
+		MemberVo member = memberDao.selectOneMemberById(id);
+		
+		return new ResponseEntity<MemberVo>(member, HttpStatus.OK);
+		
+	}
+	
+	@RequestMapping("couponDeploy")
+	@ResponseBody
+	public ResponseEntity<String> couponDeploy(@RequestBody Map<String, Object> map) {
+		List<Integer> list = (List<Integer>) map.get("memberArray");
+		Integer couNo = (Integer) map.get("couNo");
+		Integer kinds = (Integer) map.get("kinds");
+		try {
+			if(kinds==1) {
+				List<Integer> mnolist = memberDao.selectMnoList();
+				for(Integer mno : mnolist) {
+					HasCouponVo hc = new HasCouponVo();
+					hc.setCouNo(couNo);
+					hc.setMno(mno);
+					hasCouponDao.insertOne(hc);
+				}
+			}else {
+				for(Integer mno : list) {
+					HasCouponVo hc = new HasCouponVo();
+					hc.setCouNo(couNo);
+					hc.setMno(mno);
+					hasCouponDao.insertOne(hc);
+				}
+			}
+		} catch (Exception e) {
+			return new ResponseEntity<String>("fail",HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<String>("success",HttpStatus.OK);
 	}
 }

@@ -134,7 +134,6 @@
 	<context:component-scan base-package="com.flowerPot.coupon.service"/>	
 	<mybatis-spring:scan base-package="com.flowerPot.coupon.repository" />
 	
-	
 	<mybatis-spring:scan base-package="com.flowerPot.attendance.repository" />
 	<!-- /컴포넌트 스캔 -->	
 </beans>

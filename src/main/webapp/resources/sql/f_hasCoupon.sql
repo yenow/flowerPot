@@ -29,6 +29,7 @@ alter table f_hasCoupon add constraint f_hasCoupon_fk_couNo foreign key (couNo) 
 
 
 drop table f_hasCoupon;
-
+select * from f_member;
+select * from f_member where enabled = 1;
 select * from f_hasCoupon;
 delete from f_hasCoupon;

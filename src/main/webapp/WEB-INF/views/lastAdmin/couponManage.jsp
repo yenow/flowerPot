@@ -80,7 +80,7 @@
 							<th>${coupon.end_date }</th>
 							<th>
 								<!-- Button trigger modal -->
-								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">쿠폰 발급</button>
+								<button type="button" data-couno="${coupon.couNo }" class="btn btn-primary coupon-button" data-toggle="modal" data-target="#exampleModal">쿠폰 발급</button>
 							</th>
 						</tr>
 					</c:forEach>
@@ -122,24 +122,23 @@
 							<h6 >사용자아이디 검색</h6>
 							<div class="input-group	">
 								<input type="text" class="form-control member-id" placeholder="사용자아아디" aria-label="Recipient's username" aria-describedby="button-addon2">
-								<div>
-							      
-							    </div>
 								<div class="input-group-append">
 									<button class="btn btn-outline-secondary" type="button" id="member-add-button">추가</button>
 								</div>
+								<div>
+							      
+							    </div>
 							</div>
 						</div>
 						<div class="col-12">
-							<ul class="list-group">
-								<li class="list-group-item">Cras justo odio</li>
+							<ul class="list-group mt-3 member-list">
 							</ul>
 						</div>
 					</div>
 				</div>
 				<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+				<button type="button" class="btn btn-primary" id="last-button">쿠폰발급</button>
 			</div>
 			</form>
 		</div>
@@ -152,35 +151,50 @@
 	
 	$(document).ready(function() {
 		var memberArray = new Array();
+		var couNo=0;
+		var kinds;
+		
+		$('.coupon-button').click(function() {
+			couNo = $(this).data('couno');
+			console.log(couNo);
+		});
 		
 		$('.kinds').change(function() {
 		    var valueCheck = $('.kinds:checked').val();
 		    console.log(valueCheck);
 		    
 		    if(valueCheck==1){
-		    	$('.member-search').hide('fast');
+		    	kinds = 1;
+		    	$('.member-search').hide();
 		    }else{
-		    	$('.member-search').show('fast');
+		    	kinds = 2;
+		    	$('.member-search').show();
 		    }
 		});
 		
 		
 		// 아이디 검증
 		$('.member-id').change(function(){
+			var id = $('.member-id').val();
+			console.log(id);
 			$.ajax({
 				type: "POST",
-				url: "${initParam}/lastAdmin/isMember", 
+				url: "${initParam.cpath}/lastAdmin/isMember", 
 				data: {'id' : id}, 
+				
 				success: function(data) { 
 					console.log(data); 
 					if(data=='exist'){
-						$('.member-id').next().attr('class','valid-feedback');
-						$('.member-id').next().val('존재하는 아이디');
+						console.log($('.member-id').next().get(0));
+						$('.member-id').attr('class','form-control member-id is-valid');
+						$('.member-id').next().next().attr('class','valid-feedback');
+						$('.member-id').next().next().html('존재하는 아이디');
 					}else{
-						$('.member-id').next().attr('class','valid-feedback');
-						$('.member-id').next().val('존재하지 않는 아이디');
+						console.log($('.member-id').next());
+						$('.member-id').attr('class','form-control member-id is-invalid');
+						$('.member-id').next().next().attr('class','invalid-feedback');
+						$('.member-id').next().next().html('존재하지 않는 아이디');
 					}
-					
 					// 존재하지 않는 아이디입니다
 				}
 			});
@@ -189,19 +203,51 @@
 		$('#member-add-button').click(function() {
 			var id = $('.member-id').val();
 			
-			console.log($(this));
-			console.log($(this).get(0));
-			// $(this).parent().prev()  div태그
 			$.ajax({
 				type: "POST",
-				url: "${initParam}/lastAdmin/memberAdd", 
+				url: "${pageContext.request.contextPath }/lastAdmin/memberAdd", 
 				data: {'id' : id}, 
+				dataType : 'html',
 				success: function(data) { 
-					console.log(data); 
-					memberArray.put(id);
-					$('.member-id').val('');
-					
-					// 존재하지 않는 아이디입니다
+					console.log(data);
+					if(data!=null){
+						// 아이디가 존재할때
+						memberArray.push(data.mno);
+						$('.member-list').append($('<li data-mno="'+data.mno+'" class="list-group-item">'+id+'</li>'))
+						$('.member-id').val('');
+					}else{
+						// 아이디가 존재 X
+						swal({
+							  text: "존재하지 않는 아이디입니다",
+						});
+						$('.member-id').val('');
+					}
+				}
+			});
+		});
+		
+		// 클릭시 쿠폰 발급
+		$('#last-button').click(function () {
+			$.ajax({
+				type: "POST",
+				url: "${pageContext.request.contextPath }/lastAdmin/couponDeploy", 
+				data: JSON.stringify({'memberArray': memberArray, 'couNo' : couNo, 'kinds': kinds}),
+				dataType : 'html',
+				contentType: "application/json",
+				success: function(data) { 
+					if(data=='success'){
+						swal({
+							 icon: "success",
+							 text: "발급성공",
+						});
+						$('#myModal').modal('hide')
+					}else{
+						swal({
+							 icon: "warning",
+							 text: "발급실패",
+						});
+						$('#myModal').modal('hide')
+					}
 				}
 			});
 		});

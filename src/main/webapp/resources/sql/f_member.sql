@@ -9,7 +9,7 @@ create table f_member (
     gender varchar2(2),    
     birth varchar2(10),
     member_rank varchar2(15) default '씨앗',  -- 씨앗, 새싹, 꽃, 나무
-    enabled char(1) default '1',
+    enabled number(1) default 1,
     regdate date,
     point number(30) default 0,  -- 포인트
     brand varchar2(100)
@@ -21,7 +21,7 @@ create sequence mno_seq increment by 1 start with 1 minvalue 1;  -- 시퀀스
 -----------------------------------------------------------------------------------------------------------
 
 
-
+ALTER TABLE f_member modify  enabled number(1) default 1;
 select *.mno from f_member where enable == 1;
 
 
