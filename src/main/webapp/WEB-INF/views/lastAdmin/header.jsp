@@ -23,6 +23,9 @@
     <link href="${pageContext.request.contextPath}/resources/brandAdmin/dist/css/style.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/brandAdmin/dist/css/myCss.css" rel="stylesheet">
     <%-- <link href="${pageContext.request.contextPath}/resources/brandAdmin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet"> --%>
+    
+    <script src="${pageContext.request.contextPath}/resources/brandAdmin/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/brandAdmin/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Main Quill library -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
