@@ -65,3 +65,4 @@ select * from f_point;
 SELECT COUNT(*) FROM f_member 
 		where id= 'gasg23223';
 
+select * from ( select f_member.*,rownum as rnum from f_member where id like '%'||'p'||'%'  )  where rnum >= 1 and rnum <= 10;

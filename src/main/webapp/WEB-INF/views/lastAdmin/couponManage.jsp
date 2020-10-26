@@ -28,15 +28,15 @@
 				<div class="form-row pb-3">
 					<div class="col-md-4 mb-3">
 						<label for="validationDefault01">쿠폰이름</label>
-						<input type="text" name="couponName" class="form-control border-gray" id="validationDefault01" placeholder="쿠폰이름"  required>
+						<input type="text" name="couponName" class="form-control border-gray" id="validationDefault01" placeholder="쿠폰이름을 입력해주세요"  required>
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="validationDefault02">쿠폰 할인율</label>
-						<input type="number" name="discountPercent" class="form-control border-gray" id="validationDefault02" placeholder="쿠폰 할인율"  required>
+						<input type="number" name="discountPercent" class="form-control border-gray" id="validationDefault02" placeholder="쿠폰 할인율" value="0"  required>
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="validationDefault02">쿠폰 할인액</label>
-						<input type="number" name="discountMoney" class="form-control border-gray" id="validationDefault02" placeholder="쿠폰 할인액"  required>
+						<input type="number" name="discountMoney" class="form-control border-gray" id="validationDefault02" placeholder="쿠폰 할인액" value="0" required>
 					</div>
 				</div>
 				<div class="form-row">
@@ -50,12 +50,13 @@
 					</div>
 				</div>
 				<div>
-					<button class="btn btn-primary" type="submit">쿠폰 등록</button>
+					<button class="btn btn-primary float-right" type="submit">쿠폰 등록</button>
 				</div>
 				
 			</form>
 		</div>
 	</div>
+	<hr />
 	<div class="card">
 		<div class="card-body">
 			<h4 class="my-2">쿠폰 목록</h4>
@@ -63,8 +64,8 @@
 				<thead>
 					<tr>
 						<th>쿠폰이름</th>
-						<th>할인율</th>
 						<th>할인액</th>
+						<th>할인률</th>
 						<th>시작일</th>
 						<th>종료일</th>
 						<th>회원발급</th>
@@ -236,17 +237,24 @@
 				contentType: "application/json",
 				success: function(data) { 
 					if(data=='success'){
+						$('#myModal').modal('hide');
 						swal({
 							 icon: "success",
 							 text: "발급성공",
 						});
-						$('#myModal').modal('hide')
+						
+						for(var i=0; memberArray.length; i++){
+							memberArray.pop();
+						}
+						console.log(memberArray);
+						
 					}else{
+						$('#myModal').modal('hide');
 						swal({
 							 icon: "warning",
 							 text: "발급실패",
 						});
-						$('#myModal').modal('hide')
+						
 					}
 				}
 			});

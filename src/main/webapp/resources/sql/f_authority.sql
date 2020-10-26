@@ -11,7 +11,7 @@ alter table f_authority add constraint f_authority_fk_id foreign key (id) refere
 
 insert into f_authority  values (auno_seq.nextval, 'phantom1994' , 'ROLE_ADMIN');
 insert into f_authority  values (auno_seq.nextval, 'phantom1994' , 'ROLE_BRAND');
-
+select * from f_authority;
 
 
 

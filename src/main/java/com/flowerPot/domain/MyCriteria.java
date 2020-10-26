@@ -39,13 +39,17 @@ public class MyCriteria {
 	}
 	
 	public void calPageInfo(int totalCount) {
-		double realEnd = Math.ceil((double)totalCount/amount);
+		int realEnd = (int)Math.ceil((double)totalCount/amount);  // 마지막 페이지
 		startNum = (int)(Math.floor((double)pageNum/10)*10 +1);
-		endNum = (int)(Math.ceil((double)pageNum/10)*10);
+		endNum = (int)(Math.ceil((double)pageNum/10)*10);   // 보여줄 페이지중 마지막 페이지
 		
-		if(realEnd > endNum ) {
+		if(endNum > realEnd ) {
+			endNum = realEnd;
+		}else {
+			// 페이지가 더 남아 있다
 			next = true;
 		}
+		
 		
 		if(startNum >= 11) {
 			prev = true;

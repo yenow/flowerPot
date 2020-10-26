@@ -141,4 +141,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="addPoint">
 		update f_member set point = point+50 where mno = #{mno}
 	</update>
+	
+	<select id="selectListAll" resultType="com.flowerPot.vo.MemberVo">
+		select * from 
+		<trim prefix="(" suffix=")"> 
+		select f_member.*,rownum as rnum from f_member 
+		<where> 
+			<if test="searchCategory != null">
+				${searchCategory} like '%'|| #{searchName} || '%'
+			</if>
+		</where> 
+		</trim>
+		<![CDATA[ where rnum >= #{minNum} and rnum <= #{maxNum}  ]]>
+
+	</select>
 </mapper>

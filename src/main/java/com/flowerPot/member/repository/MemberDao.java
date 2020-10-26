@@ -3,6 +3,8 @@ package com.flowerPot.member.repository;
 import java.util.List;
 
 import java.util.Map;
+
+import com.flowerPot.domain.MyCriteria;
 import com.flowerPot.member.vo.MemberDTO;
 
 import com.flowerPot.vo.MemberVo;
@@ -54,6 +56,8 @@ public interface MemberDao {
 	public void updateRankByMno(MemberVo m);
 
 	public void addPoint(Integer mno);
+
+	public List<MemberVo> selectListAll(MyCriteria myCriteria);
 
 
 }
