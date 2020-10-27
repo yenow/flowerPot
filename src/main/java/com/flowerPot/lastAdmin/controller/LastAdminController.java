@@ -126,7 +126,7 @@ public class LastAdminController {
 		return "redirect:/lastAdmin/couponManage";
 	}
 	
-	
+	// 고객센터
 	@RequestMapping("customerCenter")
 	public void customerCenter() {
 		
@@ -143,6 +143,7 @@ public class LastAdminController {
 		}
 	}
 	
+	// 회원 추가
 	@RequestMapping("memberAdd")
 	@ResponseBody
 	public ResponseEntity<MemberVo> memberAdd(String id) {
@@ -153,6 +154,7 @@ public class LastAdminController {
 		
 	}
 	
+	// 쿠폰 배포
 	@RequestMapping("couponDeploy")
 	@ResponseBody
 	public ResponseEntity<String> couponDeploy(@RequestBody Map<String, Object> map) {
