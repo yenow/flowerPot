@@ -45,7 +45,7 @@ public class LastAdminController {
 	@Autowired
 	private AuthorityDao authorityDao;
 	
-	// 메인페이지
+	// 관리자 메인페이지
 	@RequestMapping("home")
 	public void home() {
 		
