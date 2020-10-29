@@ -51,7 +51,7 @@ public class LastAdminController {
 		
 	}
 	
-	// 브랜드관리
+	// 브랜드관리 메인페이지
 	@RequestMapping("brandManage")
 	public void brandManage(Model model) {
 		List<BrandVo> bList = brandDao.selectListAllBrand();
