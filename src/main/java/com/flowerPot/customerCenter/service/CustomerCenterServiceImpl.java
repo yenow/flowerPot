@@ -1,4 +1,4 @@
-package com.flowerPot.service;
+package com.flowerPot.customerCenter.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.flowerPot.admin.dao.CReplyMapper;
 import com.flowerPot.admin.vo.ReplyVo;
-import com.flowerPot.dao.CustomerCenterDao;
+import com.flowerPot.customerCenter.repository.CustomerCenterDao;
 import com.flowerPot.domain.Criteria;
 import com.flowerPot.member.repository.MemberDao;
 import com.flowerPot.vo.CustomerCenterVo;

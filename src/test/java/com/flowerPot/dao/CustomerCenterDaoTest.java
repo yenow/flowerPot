@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.flowerPot.customerCenter.repository.CustomerCenterDao;
 import com.flowerPot.domain.Criteria;
 import com.flowerPot.vo.CustomerCenterVo;
 

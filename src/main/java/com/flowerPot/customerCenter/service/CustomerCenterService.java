@@ -1,4 +1,4 @@
-package com.flowerPot.service;
+package com.flowerPot.customerCenter.service;
 
 import java.util.List;
 
