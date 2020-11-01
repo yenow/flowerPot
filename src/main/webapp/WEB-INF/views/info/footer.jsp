@@ -40,7 +40,7 @@
 					</li>
 					<sec:authorize access="hasRole('ROLE_ADMIN')" >
 					<li class="p-b-10">
-						<a href="${pageContext.request.contextPath }/admin/dashboard" class="stext-107 cl7 hov-cl1 trans-04"> 관리자 </a>
+						<a href="${pageContext.request.contextPath }/lastAdmin/home" class="stext-107 cl7 hov-cl1 trans-04"> 관리자 </a>
 					</li>
 					</sec:authorize>
 					
