@@ -15,7 +15,7 @@ import com.flowerPot.admin.commons.SearchVO;
 import com.flowerPot.admin.service.EmpService;
 import com.flowerPot.admin.vo.EmpVo;
 import com.flowerPot.dao.AuthorityDao;
-import com.flowerPot.member.service.MemberSerivce;
+import com.flowerPot.member.service.MemberService;
 import com.flowerPot.vo.AuthorityVo;
 import com.flowerPot.vo.MemberAddressVo;
 import com.flowerPot.vo.MemberVo;

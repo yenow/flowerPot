@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.flowerPot.admin.commons.PageCreator;
 import com.flowerPot.admin.commons.SearchVO;
 import com.flowerPot.admin.service.MemService;
+import com.flowerPot.brand.service.BrandService;
+import com.flowerPot.vo.BrandVo;
 import com.flowerPot.vo.MemberVo;
 
 @Controller
@@ -18,6 +20,8 @@ public class AdminMemberController {
 	
 	@Autowired
 	private MemService service;
+	@Autowired
+	private BrandService brandService;
 
 	
 	//회원 관리(목록)
@@ -29,6 +33,10 @@ public class AdminMemberController {
 		pc.setPaging(search);
 		List<MemberVo> mList = service.getArticleList(search);
 		pc.setArticleTotalCount(service.countArticles(search));
+		
+		List<BrandVo> blist = brandService.selectListAllBrand();
+		
+		model.addAttribute("blist", blist);
 		model.addAttribute("mList", mList);
 		model.addAttribute("pc", pc);
 	}

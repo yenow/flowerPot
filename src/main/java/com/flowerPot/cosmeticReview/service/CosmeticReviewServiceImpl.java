@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.flowerPot.cosmetic.repository.CosmeticDao;
 import com.flowerPot.cosmeticReview.repository.CosmeticReviewDao;
 import com.flowerPot.vo.CosmeticReviewVo;
+import com.flowerPot.vo.MemberVo;
 
 @Service
 public class CosmeticReviewServiceImpl implements CosmeticReviewService {
@@ -35,9 +36,10 @@ public class CosmeticReviewServiceImpl implements CosmeticReviewService {
 		return cosmeticReviewDao.selectListCosmeticReviewListByBrand(brand);
 	}
 
+
 	@Override
-	public List<CosmeticReviewVo> selectListCosmeticReviewListById(CosmeticReviewVo cosmeticReviewVo) {
-		return cosmeticReviewDao.selectListCosmeticReviewListById(cosmeticReviewVo);
+	public List<CosmeticReviewVo> selectListCosmeticReviewListByMno(MemberVo member) {
+		return cosmeticReviewDao.selectListCosmeticReviewListByMno(member);
 	}
 
 }

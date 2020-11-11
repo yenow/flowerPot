@@ -148,6 +148,7 @@ public class UploadController {
 		String currentDay = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		String uploadFolderPath = uploadPath + currentDay + "\\";
 		File uploadPathFile = new File(uploadFolderPath);
+		
 		if (uploadPathFile.exists() == false) {
 			uploadPathFile.mkdirs();
 		}

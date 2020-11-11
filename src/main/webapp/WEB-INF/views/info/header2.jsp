@@ -73,7 +73,7 @@
 						</a>
 						</sec:authorize>
 						
-						<a href="${pageContext.request.contextPath }/member/myPage" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
+						<a href="${pageContext.request.contextPath }/member/order" class="flex-c-m trans-04 p-lr-25"> 마이페이지 </a>
 						
 						<a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=notice" class="flex-c-m trans-04 p-lr-25"> 고객센터 </a>
 						
@@ -114,12 +114,18 @@
 									<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Tip">Tip</a></li>
 									<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Interview">Interview</a></li>
 									<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=COVID19">COVID19</a></li>
-									<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=Setec">Setec</a></li>
+									<li><a href="${pageContext.request.contextPath }/magazine/magazine?category=setec">Setec</a></li>
 								</ul></li>
 
 							<li><a href="${pageContext.request.contextPath }/today/today">오늘의추천</a></li>
 
-							<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+							<li><a href="${pageContext.request.contextPath }/event/event" class="dropdown-toggle">이벤트</a>
+								
+								<ul class="sub-menu">
+									<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+									<li><a href="${pageContext.request.contextPath }/event/dayCheck">출석체크</a></li>
+								</ul>
+							</li>
 						</ul>
 					</div>
 
@@ -206,7 +212,12 @@
 
 				<li><a href="${pageContext.request.contextPath }/today/today.jsp">오늘의추천</a></li>
 
-				<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+				<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a>
+					<ul class="sub-menu">
+									<li><a href="${pageContext.request.contextPath }/event/event">이벤트</a></li>
+									<li><a href="${pageContext.request.contextPath }/event/dayCheck">출석체크</a></li>
+								</ul>
+				</li>
 			</ul>
 		</div>
 

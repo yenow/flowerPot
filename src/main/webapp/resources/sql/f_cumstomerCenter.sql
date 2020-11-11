@@ -6,15 +6,31 @@ create table f_customerCenter(
 	regdate date ,    
 	moddate date ,
 	category int not null,   -- 카테고리
-	url varchar2(200)     -- url
+	URL varchar2(200)     -- url
 );
 -- 시퀀스
 create sequence ccno_seq increment by 1 start with 1 minvalue 1 nocache;
-
 -- 제약조건 
 alter table f_customerCenter add constraint f_customerCenter_fk_mno foreign key (mno) references f_member(mno);
+select * from F_CUSTOMERCENTER
+select ccno_seq.nextval from dual
+alter table f_customerCenter add URL varchar2(200);
 
-drop table f_customerCenter
+
+update F_CUSTOMERCENTER set title = 'DOBBY IS FREE', content = 'DOBBY IS FREE' where ccno = 12
+
+
+delete F_CUSTOMERCENTER where ccno = 11
+
+
+
+
+
+
+
+
+
+
 
 drop sequence ccno_seq
 
@@ -40,6 +56,8 @@ create sequence ccno_seq increment by 1 start with 1 minvalue 1 nocache;
 insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,member_rank,authority ) 
 values (mno_seq.nextval,'dobby1234','isfree1234','김도비','도오비이','주소','dobby1234@gmail.com','M','01-18','골드','고객');
 
+
+drop table f_customerCenter
 
 
 insert into f_member (mno,id,password,name,nickname,address,email,gender,birth,member_rank,authority ) 

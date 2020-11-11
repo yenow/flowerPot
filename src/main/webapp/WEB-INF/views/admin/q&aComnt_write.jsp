@@ -15,6 +15,7 @@
 <!-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/write.css">  -->
 </head>
 <body>
+	<jsp:include page="info/navbar.jsp"></jsp:include>
 	<!-- nav -->
 	<%-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #efbbcf; padding: 2px;">
 		<a class="navbar-brand" href="${pageContext.request.contextPath}">FlowerPot</a>

@@ -7,8 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.flowerPot.attachFile.repository.AttachFileDao">
 	
 	<insert id="insertAttachFile">
-		insert into f_attachFile (atno,cno,uuidName,originalFileName,uploadFolderPath,mappingURL,realName) 
-		values (atno_seq.nextval,#{cno},#{uuidName},#{originalFileName},#{uploadFolderPath},#{mappingURL},#{realName})
+		insert into f_attachFile(atno,cno,uuidName,originalFileName,uploadFolderPath,mappingURL,realName) values 
+		(atno_seq.nextval,#{cno, jdbcType=NUMERIC},#{uuidName, jdbcType=VARCHAR},#{originalFileName, jdbcType=VARCHAR},#{uploadFolderPath, jdbcType=VARCHAR},#{mappingURL, jdbcType=VARCHAR},#{realName, jdbcType=VARCHAR})
 	</insert>
 	
 	<insert id="insertAttachListToEvent">

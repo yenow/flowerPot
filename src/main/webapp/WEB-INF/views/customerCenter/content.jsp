@@ -76,7 +76,8 @@ a:link {
 						<hr />
 
 						<div class="text-right">
-							<a href="${pageContext.request.contextPath }/customerCenter/edit?ccno=${content.ccno}" class="btn btn-secondary btn-primary">수정</a> <a href="${pageContext.request.contextPath }/customerCenter/delete?category?ccno=${content.ccno}" class="btn btn-secondary btn-primary">삭제</a> <a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=" class="btn btn-secondary btn-primary">목록</a>
+
+							<a href="${pageContext.request.contextPath }/customerCenter/edit?ccno=${content.ccno}" class="btn btn-secondary btn-primary">수정</a> <a href="${pageContext.request.contextPath }/customerCenter/delete?category?ccno=${content.ccno}" class="btn btn-secondary btn-primary">삭제</a> <a href="${pageContext.request.contextPath }/customerCenter/customerCenter?category=notice" class="btn btn-secondary btn-primary">목록</a>
 						</div>
 
 						<!-- <h2 class="my-3">1:1 문의</h2>

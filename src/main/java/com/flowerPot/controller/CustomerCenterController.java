@@ -33,7 +33,7 @@ import com.flowerPot.admin.vo.ReplyVo;
 import com.flowerPot.domain.Criteria;
 import com.flowerPot.domain.CustomerEnum;
 import com.flowerPot.domain.PageDTO;
-import com.flowerPot.member.service.MemberSerivce;
+import com.flowerPot.member.service.MemberService;
 import com.flowerPot.service.CustomerCenterService;
 import com.flowerPot.vo.CustomerCenterVo;
 import com.flowerPot.vo.MemberAddressVo;
@@ -49,7 +49,7 @@ public class CustomerCenterController {
 	@Autowired
 	private CustomerCenterService service;
 	@Autowired
-	private MemberSerivce memberSerivce;
+	private MemberService memberSerivce;
 	@Autowired
 	private CReplyMapper ReplyDao;
 
@@ -111,6 +111,7 @@ public class CustomerCenterController {
 	
 	// 수정처리
 	@RequestMapping("edit_ok")
+	@ResponseBody
 	public String edit_ok(Model model, CustomerCenterVo customer) {
 		log.info("customer1:" + customer);
 		service.editEnq(customer);

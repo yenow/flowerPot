@@ -22,7 +22,7 @@ create table f_cosmetic(
 create sequence cno_seq  start with 1 increment by 1;
 -- 제약조건
 
-
+select * from f_cosmetic;
 
 
 

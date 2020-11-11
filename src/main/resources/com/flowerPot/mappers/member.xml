@@ -129,4 +129,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectOneMemberByMno" resultType="com.flowerPot.vo.MemberVo">
 		select * from f_member where mno = #{mno}
 	</select>
+	
+	<select id="selectAllMemberMno" resultType="int"> 
+		select f_member.mno from f_member where enabled = 1
+	</select>
+	
+	<update id="updateRankByMno">
+		update f_member set member_rank = #{member_rank} where mno = #{mno}
+	</update>	
+	
+	<update id="addPoint">
+		update f_member set point = point+50 where mno = #{mno}
+	</update>
 </mapper>

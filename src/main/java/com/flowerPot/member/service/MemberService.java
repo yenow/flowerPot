@@ -7,7 +7,7 @@ import com.flowerPot.member.vo.MemberDTO;
 import com.flowerPot.vo.MemberAddressVo;
 import com.flowerPot.vo.MemberVo;
 
-public interface MemberSerivce {
+public interface MemberService {
 
 	//회원 가입기능
 	void insertMember(MemberVo member);
@@ -40,7 +40,12 @@ public interface MemberSerivce {
 	void updateMember(MemberVo vo, MemberAddressVo memberAddress) throws Exception;
 	
 	void giveAdminAuth(String empId);
+	
 	List<CoupVo> getCoupList(MemberVo member);
 	
-
+	List<Integer> selectAllMemberMno();
+	
+	void updateRankByMno(MemberVo m);
+	
+	void addPoint(Integer mno);
 }

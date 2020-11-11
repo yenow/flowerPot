@@ -1,6 +1,7 @@
 package com.flowerPot.member.controller;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.security.Principal;
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.flowerPot.admin.vo.CoupVo;
 import com.flowerPot.cosmeticReview.service.CosmeticReviewService;
-import com.flowerPot.member.service.MemberSerivce;
+import com.flowerPot.member.service.MemberService;
 import com.flowerPot.memberAddress.service.MemberAddressService;
 import com.flowerPot.order.service.OrderService;
 import com.flowerPot.orderProduct.service.OrderProductService;
@@ -59,7 +60,7 @@ public class MemberController {
 	@Autowired
 	private CosmeticReviewService cosmeticReviewService;
 	@Autowired
-	private MemberSerivce memberSerivce;
+	private MemberService memberService;
 	@Autowired
 	private MemberAddressService memberAddressService;
 	@Autowired
@@ -68,8 +69,7 @@ public class MemberController {
 	private OrderService orderService;
 	@Inject // 서비스를 호출하기 위해서 의존성을 주입
 	JavaMailSender mailSender; // 메일 서비스를 사용하기 위해 의존성을 주입함
-	@Autowired
-	private MemberSerivce memberService;
+
 	@Autowired
 	private AuthorityService authorityService;
 	@Autowired
@@ -97,7 +97,7 @@ public class MemberController {
 		MemberVo memberVo = new MemberVo();
 		if(principal!=null) {
 			String id = principal.getName();
-			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
+			memberVo = memberService.selectOneMemberById(id);   // 회원정보 가져오기
 		}
 		return memberVo;
 	}
@@ -112,7 +112,7 @@ public class MemberController {
 		if(principal!=null) {
 			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
 			String id = principal.getName();
-			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
+			memberVo = memberService.selectOneMemberById(id);   // 회원정보 가져오기
 
 			oList = orderProductService.selectListOrderProductByMno(memberVo.getMno());
 			log.info("주문리스트 : "+oList);
@@ -135,7 +135,7 @@ public class MemberController {
 		}
 		
 		//쿠폰 리스트 가져오기
-		List<CoupVo> coupList =  memberSerivce.getCoupList(member);
+		List<CoupVo> coupList =  memberService.getCoupList(member);
 		
 		model.addAttribute("member", member);
 		model.addAttribute("coupList", coupList);
@@ -171,7 +171,7 @@ public class MemberController {
 		if(principal!=null) {
 			log.info("아이디:"+principal.getName());  // 일단 이걸로 member 정보를 가져오자..
 			String id = principal.getName();
-			memberVo = memberSerivce.selectOneMemberById(id);   // 회원정보 가져오기
+			memberVo = memberService.selectOneMemberById(id);   // 회원정보 가져오기
 
 			oList = orderService.selectListOrderByMno(memberVo.getMno());
 			log.info("주문리스트 : "+oList);
@@ -191,8 +191,11 @@ public class MemberController {
 
 	//나의 리뷰로 이동
 	@RequestMapping("/review") 
-	public String costmeticReviewList(CosmeticReviewVo costmeticReview, Model model) {
-		List<CosmeticReviewVo> cmrList =cosmeticReviewService.selectListCosmeticReviewListById(costmeticReview);
+	public String costmeticReviewList(Principal principal, Model model) {
+		
+		MemberVo member = getMemberBysecurity(principal);
+		
+		List<CosmeticReviewVo> cmrList =cosmeticReviewService.selectListCosmeticReviewListByMno(member);
 		model.addAttribute("cmrList",cmrList);
 		System.out.println("나의 활동으로 호출됨");
 		return "/member/review";
@@ -202,8 +205,10 @@ public class MemberController {
 
 	//나의 비밀번호 변경으로 이동
 	@RequestMapping("/password") 
-	public String password() {
+	public String password(Principal principal, Model model) {
 		System.out.println("나의 비밀번호변경으로 호출됨");
+		MemberVo member =getMemberBysecurity(principal);
+		model.addAttribute("member", member);
 		return "/member/password";
 	}
 	
@@ -233,7 +238,7 @@ public class MemberController {
 		if (principal != null) {
 			log.info("아이디:" + principal.getName()); // 일단 이걸로 member 정보를 가져오자..
 			String id = principal.getName();
-			memberVo = memberSerivce.selectOneMemberById(id); // 회원정보 가져오기
+			memberVo = memberService.selectOneMemberById(id); // 회원정보 가져오기
 			memberAddress = memberAddressService.selectOneMemberAddressByMno(memberVo.getMno()); // 회원주소록 가져오기
 			model.addAttribute("pid", memberVo);
 			model.addAttribute("paddr", memberAddress);
@@ -264,7 +269,7 @@ public class MemberController {
 	public String signUp_ok(MemberVo member, MemberAddressVo memberAddress) {
 		// 비밀번호 인코딩
 		log.info("회원정보 : " + member.toString());
-
+		member.setMember_rank("씨앗");
 		member.setPassword(passwordEncoder.encode(member.getPassword()));
 		log.info("회원정보 : " + member.toString());
 		memberService.insertMember(member, memberAddress);
@@ -309,7 +314,7 @@ public class MemberController {
 				memberService.passwordUpdate(vo);
 				out.println("<script>");
 				out.println("alert('비밀번호를 변경하였습니다..');");
-				out.println("location.href='"+request.getContextPath()+"'/member/myPage");
+				out.println("location.href='"+request.getContextPath()+"'/member/order");
 				out.println("</script>");
 				out.close();
 			} // else
@@ -459,6 +464,8 @@ public class MemberController {
 		System.out.println("parameter:" + member);
 		String result = null;
 		Integer checkNum = memberService.checkId(member);
+		
+		
 		System.out.println(checkNum);
 		if (checkNum == 1) {
 			System.out.println("아이디가 중복됨!");
@@ -468,6 +475,8 @@ public class MemberController {
 			System.out.println("아이디 사용가능!");
 			result = "OK";
 		}
+		
+		System.out.println("결과:"+result);
 		return result;
 	}		
 

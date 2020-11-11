@@ -31,6 +31,7 @@
 									<input type="hidden" class="member-mno" value="${member.mno }" />
 									<input type="hidden" class="member-member_rank" value="${member.member_rank }" />
 									<input type="hidden" class="cosmetic-cno" value="${cosmetic.cno }" />
+									<input type="hidden" class="cosmetic-brand" value="${cosmetic.brand }" />
 									<input type="hidden" class="cosmetic-discountPersent" value="${cosmetic.discountPersent }" />
 									<tr class="table_row">
 										<td class="text-center">
@@ -56,6 +57,7 @@
 								<input type="hidden" class="member-mno" value="${member.mno }" />
 								<input type="hidden" class="member-member_rank" value="${member.member_rank }" />
 								<input type="hidden" class="cosmetic-cno" value="${cosmetic.cno }" />
+								<input type="hidden" class="cosmetic-brand" value="${cosmetic.brand }" />
 								<input type="hidden" class="cosmetic-discountPersent" value="${cosmetic.discountPersent }" />
 								<tr class="table_row">
 										<td class="text-center">
@@ -442,14 +444,18 @@ function changePrice() {
         		OrderProduct.dno = dno;
         		OrderProduct.amount = Number($($('.cosmetic-numProduct').get(i)).html());
         		OrderProduct.couponName = $('.coupon-select option:selected').val();
-				OrderProduct.member_rank 	=$($('.member-member_rank').get(0)).val()      		
+				OrderProduct.member_rank = $($('.member-member_rank').get(i)).val();    		
         		OrderProduct.point = $('.cosmetic-point').val();
         		OrderProduct.tel = $('.nomember-tel').val();
         		OrderProduct.email = $('.nomember-email').val();
         		OrderProduct.final_price = Number($('.final_price').html());
+        		OrderProduct.brand = $($('.cosmetic-brand').get(i)).val();
         		olist.push(OrderProduct);
         		console.log(OrderProduct);
+        		
+        		
         	}
+    		
     		
     		// 카카오 결제
     		$.ajax({
